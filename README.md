@@ -1,4 +1,3 @@
-# Warcraft-Maul-Buildtools
+# SotE III v0.0.1
 
-
-have node installed, run build.bat
+A new hero arena map
