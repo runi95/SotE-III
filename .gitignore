@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+/units.json
+/src
+/target
+/node_modules
+/package-lock.json
+/settings.bat
+/app/src/Generated/*
+/maps/map/war3map.lua
+/logs
+/backups
