@@ -1,6 +1,5 @@
 import { Spell } from './Spell';
 
-// FIXME: This spell does not work as intended
 export class PsychicScream extends Spell {
     protected abilityId: number = FourCC('A01G');
 
