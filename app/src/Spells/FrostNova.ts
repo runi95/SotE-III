@@ -2,7 +2,6 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
-// FIXME: This spell does not work as intended
 export class FrostNova extends Spell {
     protected readonly abilityId: number = FourCC('A01J');
     private readonly dummyUnitId: number = FourCC('n001');
