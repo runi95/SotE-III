@@ -1,8 +1,8 @@
 import { Spell } from './Spell';
 
 export class Betrayal extends Spell {
-    protected abilityId: number = FourCC('A00H');
-    private buffId: number = FourCC('Beng');
+    protected readonly abilityId: number = FourCC('A00H');
+    private readonly buffId: number = FourCC('Beng');
 
     protected condition(): boolean {
         return super.condition() && !UnitHasBuffBJ(GetTriggerUnit(), this.buffId);

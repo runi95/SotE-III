@@ -3,9 +3,6 @@ import { DamageEngineGlobals } from '../../DamageEngine/DamageEngineGlobals';
 
 export class LoadedCannonUse implements DamageEvent {
     private readonly itemTypeId: number = FourCC('I00X');
-    private readonly dummyUnitTypeId: number = FourCC('n001');
-    private readonly dummyAbilityId: number = FourCC('A025');
-    private readonly timedLifeBuffId: number = FourCC('BTLF');
 
     public event(globals: DamageEngineGlobals): void {
         if (!globals.IsDamageSpell) {
@@ -24,9 +21,7 @@ export class LoadedCannonUse implements DamageEvent {
             if (GetEnumUnit() !== globals.DamageEventTarget as unit &&
                 IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(globals.DamageEventSource as unit)) &&
                 IsUnitAliveBJ(GetEnumUnit())) {
-                // DisableTrigger(GetTriggeringTrigger());
                 UnitDamageTargetBJ(globals.DamageEventSource as unit, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                // EnableTrigger(GetTriggeringTrigger());
             }
         });
 

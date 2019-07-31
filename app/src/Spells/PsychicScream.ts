@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class PsychicScream extends Spell {
-    protected abilityId: number = FourCC('A01G');
+    protected readonly abilityId: number = FourCC('A01G');
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();

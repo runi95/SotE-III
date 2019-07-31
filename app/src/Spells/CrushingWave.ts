@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class CrushingWave extends Spell {
-    protected abilityId: number = FourCC('A00O');
-    private dummyUnitId: number = FourCC('n00L');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A00O');
+    private readonly dummyUnitId: number = FourCC('n00L');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

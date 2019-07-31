@@ -3,7 +3,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class GoblinMine extends Spell {
-    protected abilityId: number = FourCC('A02E');
+    protected readonly abilityId: number = FourCC('A02E');
     private readonly dummyUnitTypeId: number = FourCC('n018');
     private readonly timerUtils: TimerUtils;
 

@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class Devour extends Spell {
-    protected abilityId: number = FourCC('A00A');
+    protected readonly abilityId: number = FourCC('A00A');
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();

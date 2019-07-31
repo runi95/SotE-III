@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class StormCloud extends Spell {
-    protected abilityId: number = FourCC('A003');
-    private dummyUnitId: number = FourCC('n004');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A003');
+    private readonly dummyUnitId: number = FourCC('n004');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

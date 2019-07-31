@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class SummonFelbeast extends Spell {
-    protected abilityId: number = FourCC('A013');
+    protected readonly abilityId: number = FourCC('A013');
     private readonly summonId: number = FourCC('n00F');
     private readonly summonAbilityId: number = FourCC('A014');
     private readonly timedLifeBuffId: number = FourCC('BTLF');

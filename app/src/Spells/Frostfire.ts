@@ -3,7 +3,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Frostfire extends Spell {
-    protected abilityId: number = FourCC('A01C');
+    protected readonly abilityId: number = FourCC('A01C');
     private readonly unitTypeId: number = FourCC('n00G');
     private readonly dummyAbilityId: number = FourCC('Amrf');
     private readonly timedLifeBuffId: number = FourCC('BTLF');

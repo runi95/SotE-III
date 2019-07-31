@@ -2,8 +2,8 @@ import { Spell } from './Spell';
 import { StunUtils } from '../Utility/StunUtils';
 
 export class Permafrost extends Spell {
-    protected abilityId: number = FourCC('A01I');
-    private stunUtils: StunUtils;
+    protected readonly abilityId: number = FourCC('A01I');
+    private readonly stunUtils: StunUtils;
 
     constructor(stunUtils: StunUtils) {
         super();

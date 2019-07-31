@@ -2,7 +2,7 @@ import { Trigger } from '../JassOverrides/Trigger';
 
 export abstract class ItemPickup {
     protected readonly abstract itemTypeId: number;
-    protected trig: Trigger = new Trigger();
+    protected readonly trig: Trigger = new Trigger();
 
     protected constructor() {
         this.trig.AddCondition(() => this.condition());

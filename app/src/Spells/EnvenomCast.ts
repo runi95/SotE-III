@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class EnvenomCast extends Spell {
-    protected abilityId: number = FourCC('A010');
+    protected readonly abilityId: number = FourCC('A010');
     private readonly addAbilityId: number = FourCC('A017');
 
     protected action(): void {

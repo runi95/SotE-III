@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Fireball extends Spell {
-    protected abilityId: number = FourCC('A01U');
-    private dummyUnitId: number = FourCC('n012');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A01U');
+    private readonly dummyUnitId: number = FourCC('n012');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

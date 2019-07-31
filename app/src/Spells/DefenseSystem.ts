@@ -4,7 +4,7 @@ import { GameGlobals } from '../Game/GameGlobals';
 import { Timer } from '../JassOverrides/Timer';
 
 export class DefenseSystem extends Spell {
-    protected abilityId: number = FourCC('A029');
+    protected readonly abilityId: number = FourCC('A029');
     private readonly defenseSystemDummyAbilityId: number = FourCC('A02A');
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;

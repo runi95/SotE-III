@@ -2,7 +2,7 @@ import { Spell } from './Spell';
 import { GameGlobals } from '../Game/GameGlobals';
 
 export class Cryostasis extends Spell {
-    protected abilityId: number = FourCC('A01M');
+    protected readonly abilityId: number = FourCC('A01M');
     private readonly gameGlobals: GameGlobals;
     private readonly dummyUnitTypeId: number = FourCC('n00K');
 

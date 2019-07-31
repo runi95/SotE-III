@@ -1,11 +1,11 @@
 import { Trigger } from '../JassOverrides/Trigger';
 
 export class SnareTrapDeath {
-    private unitTypeId: number = FourCC('n00E');
-    private dummyUnitTypeId: number = FourCC('n001');
-    private dummyAbilityId: number = FourCC('A00Z');
-    private dummyTimedLifeAbilityId: number = FourCC('BTLF');
-    private trig: Trigger = new Trigger();
+    private readonly unitTypeId: number = FourCC('n00E');
+    private readonly dummyUnitTypeId: number = FourCC('n001');
+    private readonly dummyAbilityId: number = FourCC('A00Z');
+    private readonly dummyTimedLifeAbilityId: number = FourCC('BTLF');
+    private readonly trig: Trigger = new Trigger();
 
     constructor() {
         this.trig.AddCondition(() => {

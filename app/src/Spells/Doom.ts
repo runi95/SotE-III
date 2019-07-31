@@ -3,8 +3,8 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Doom extends Spell {
-    protected abilityId: number = FourCC('A012');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A012');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

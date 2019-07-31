@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Rupture extends Spell {
-    protected abilityId: number = FourCC('A00I');
-    private dummyAbilityId: number = FourCC('A011');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A00I');
+    private readonly dummyAbilityId: number = FourCC('A011');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

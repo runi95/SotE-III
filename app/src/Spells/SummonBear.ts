@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class SummonBear extends Spell {
-    protected abilityId: number = FourCC('A00P');
+    protected readonly abilityId: number = FourCC('A00P');
     private readonly summonId: number = FourCC('n00B');
-    private timerUtils: TimerUtils;
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

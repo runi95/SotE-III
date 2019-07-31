@@ -3,8 +3,8 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Swarm extends Spell {
-    protected abilityId: number = FourCC('A01F');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A01F');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

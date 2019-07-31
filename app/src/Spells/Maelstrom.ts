@@ -3,8 +3,8 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Maelstrom extends Spell {
-    protected abilityId: number = FourCC('A001');
-    private dummyUnitId: number = FourCC('n002');
+    protected readonly abilityId: number = FourCC('A001');
+    private readonly dummyUnitId: number = FourCC('n002');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {

@@ -4,7 +4,6 @@ import { GameGlobals } from '../Game/GameGlobals';
 import { Timer } from '../JassOverrides/Timer';
 
 export class RazorBlades {
-    private readonly abilityId: number = FourCC('A01U');
     private readonly dummyUnitId: number = FourCC('n016');
     private readonly defenseSystemAbilityId: number = FourCC('A02A');
     private readonly gameGlobals: GameGlobals;

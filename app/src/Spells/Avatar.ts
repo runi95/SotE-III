@@ -3,8 +3,8 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class Avatar extends Spell {
-    protected abilityId: number = FourCC('A01E');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A01E');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

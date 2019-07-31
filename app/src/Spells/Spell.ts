@@ -1,9 +1,8 @@
 import { Trigger } from '../JassOverrides/Trigger';
 
 export abstract class Spell {
-
-    protected abstract abilityId: number;
-    private trig: Trigger = new Trigger();
+    protected readonly abstract abilityId: number;
+    private readonly trig: Trigger = new Trigger();
 
     constructor() {
         this.trig.AddCondition(() => this.condition());

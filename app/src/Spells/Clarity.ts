@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class Clarity extends Spell {
-    protected abilityId: number = FourCC('A00M');
+    protected readonly abilityId: number = FourCC('A00M');
 
     protected action(): void {
         SetUnitManaBJ(GetTriggerUnit(), GetUnitStateSwap(UNIT_STATE_MANA,

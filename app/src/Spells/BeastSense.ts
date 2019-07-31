@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class BeastSense extends Spell {
-    protected abilityId: number = FourCC('A00V');
+    protected readonly abilityId: number = FourCC('A00V');
     private readonly dummyUnitId: number = FourCC('n001');
     private readonly dummyAbilityId: number = FourCC('A00W');
     private readonly timedLifeBuffId: number = FourCC('BTLF');

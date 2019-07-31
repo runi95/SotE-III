@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class SummonClockwerkGoblin extends Spell {
-    protected abilityId: number = FourCC('A02C');
+    protected readonly abilityId: number = FourCC('A02C');
     private readonly dummyUnitTypeId: number = FourCC('n017');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
 

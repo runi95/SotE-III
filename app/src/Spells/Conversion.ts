@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class Conversion extends Spell {
-    protected abilityId: number = FourCC('A01O');
+    protected readonly abilityId: number = FourCC('A01O');
 
     protected action(): void {
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);

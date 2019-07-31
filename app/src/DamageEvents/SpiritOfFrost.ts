@@ -3,7 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 
 export class SpiritOfFrost implements DamageEvent {
-    private gameGlobals: GameGlobals;
+    private readonly gameGlobals: GameGlobals;
     private readonly abilityId: number = FourCC('A01L');
     private readonly dummyUnitTypeId: number = FourCC('n00J');
     private readonly timedLifeBuffId: number = FourCC('BTLF');

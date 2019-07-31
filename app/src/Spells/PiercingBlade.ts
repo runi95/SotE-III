@@ -3,9 +3,9 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class PiercingBlade extends Spell {
-    protected abilityId: number = FourCC('A00L');
-    private dummyUnitId: number = FourCC('n00M');
-    private timerUtils: TimerUtils;
+    protected readonly abilityId: number = FourCC('A00L');
+    private readonly dummyUnitId: number = FourCC('n00M');
+    private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
         super();

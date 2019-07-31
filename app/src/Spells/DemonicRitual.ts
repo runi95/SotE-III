@@ -1,7 +1,7 @@
 import { Spell } from './Spell';
 
 export class DemonicRitual extends Spell {
-    protected abilityId: number = FourCC('A015');
+    protected readonly abilityId: number = FourCC('A015');
 
     protected action(): void {
         const abilityLevel: number = GetUnitAbilityLevel(GetTriggerUnit(), this.abilityId);
