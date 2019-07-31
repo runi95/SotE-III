@@ -2,7 +2,6 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
-// FIXME: This spell does not work as intended
 export class Swarm extends Spell {
     protected abilityId: number = FourCC('A01F');
     private timerUtils: TimerUtils;
@@ -20,7 +19,7 @@ export class Swarm extends Spell {
         let y: number = GetUnitY(trig);
         const targetX: number = GetSpellTargetX();
         const targetY: number = GetSpellTargetY();
-        const dist: number = SquareRoot(Pow(x - targetX, 2) + Pow(y - targetY, 2));
+        const dist: number = Math.sqrt(Pow(x - targetX, 2) + Pow(y - targetY, 2));
         const multX: number = 100 * ((targetX - x) / dist);
         const multY: number = 100 * ((targetY - y) / dist);
         const damage: number = 50 * abilityLevel + 2 * GetHeroInt(trig, true);
@@ -58,6 +57,10 @@ export class Swarm extends Spell {
             }
 
             if (ticks <= 0) {
+                SetUnitPosition(trig, x, y);
+                FogModifierStop(fog);
+                DestroyFogModifier(fog);
+
                 this.timerUtils.ReleaseTimer(t);
             }
         });
