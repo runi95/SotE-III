@@ -44,6 +44,7 @@ import { StunUtils } from '../Utility/StunUtils';
 import { FrostNova } from './FrostNova';
 import { GoblinBombShip } from './GoblinBombShip';
 import { SnareTrapDeath } from './SnareTrapDeath';
+import { Shackles } from './Shackles';
 
 export class SpellController {
     private spells: any[];
@@ -82,6 +83,7 @@ export class SpellController {
             new RazorBlades(gameGlobals, timerUtils),
             new RazorBladesStop(gameGlobals),
             new Rupture(timerUtils),
+            new Shackles(timerUtils),
             new ShadowStep(),
             new SnareTrap(),
             new SnareTrapDeath(),
