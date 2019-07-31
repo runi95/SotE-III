@@ -365,7 +365,7 @@ export class GameGlobals {
         'n014',
     ];
 
-    public CreepUnitArraySize: number = 93;
+    public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
 
     // ========================================
     //
@@ -401,7 +401,8 @@ export class GameGlobals {
         'N00Y',
         'N006',
         'N003',
+        'N011',
     ];
 
-    public HeroArraySize: number = 6;
+    public HeroArraySize: number = this.HeroUnitTypeID.length;
 }
