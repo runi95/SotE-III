@@ -55,7 +55,7 @@ export class DamageEngine {
     private lastTrig: trigger[] = [];
     private lastType: number[] = [];
 
-    private damageEngineGlobals: DamageEngineGlobals;
+    private readonly damageEngineGlobals: DamageEngineGlobals;
 
     constructor(damageEngineGlobals: DamageEngineGlobals) {
         this.damageEngineGlobals = damageEngineGlobals;

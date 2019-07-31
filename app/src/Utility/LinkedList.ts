@@ -1,4 +1,4 @@
-import { Node } from "./Node";
+import { Node } from './Node';
 
 export class LinkedList<T> {
     private head: Node<T> | undefined;
@@ -25,21 +25,21 @@ export class LinkedList<T> {
             this.head = { value, next: this.head as Node<T> };
             this.size++;
         }
-    };
+    }
 
     public pop(): Node<T> | undefined {
         if (this.isEmpty()) {
             this.size = 0;
             return undefined;
-        } else {
-            const temp = this.head as Node<T>;
-            this.head = (this.head as Node<T>).next;
-            temp.next = undefined;
-
-            this.size--;
-            return temp;
         }
-    };
+
+        const temp: Node<T> = this.head as Node<T>;
+        this.head = (this.head as Node<T>).next;
+        temp.next = undefined;
+
+        this.size--;
+        return temp;
+    }
 
     public getSize(): number {
         return this.size;

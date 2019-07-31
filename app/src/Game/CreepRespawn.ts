@@ -2,7 +2,7 @@ import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
 
 export class CreepRespawn {
-    private trig: Trigger = new Trigger();
+    private readonly trig: Trigger = new Trigger();
 
     constructor(gameGlobals: GameGlobals) {
         this.trig.AddCondition(() => {

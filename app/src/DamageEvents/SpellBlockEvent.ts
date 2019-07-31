@@ -3,7 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 
 export class SpellBlockEvent implements DamageEvent {
-    private gameGlobals: GameGlobals;
+    private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;

@@ -6,7 +6,7 @@ import { YellowEntrance } from './YellowEntrance';
 import { OrangeEntrance } from './OrangeEntrance';
 
 export class TeleportController {
-    private teleports: any[];
+    private readonly teleports: any[];
 
     constructor() {
         this.teleports = [
