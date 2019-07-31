@@ -21,7 +21,7 @@ export class PsychicScream extends Spell {
                 const uY: number = GetUnitY(GetEnumUnit());
                 const dist: number = Math.sqrt(Pow(uX - x, 2) + Pow(uY - y, 2));
                 const multX: number = 100 * ((uX - x) / dist);
-                const multY: number = 100 * ((uY - y / dist));
+                const multY: number = 100 * ((uY - y) / dist);
                 let targetX: number = uX;
                 let targetY: number = uY;
 
