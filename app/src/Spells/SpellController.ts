@@ -13,7 +13,6 @@ import { DefenseSystem } from './DefenseSystem';
 import { DemonicRitual } from './DemonicRitual';
 import { Devour } from './Devour';
 import { Doom } from './Doom';
-import { Envenom } from '../DamageEvents/Envenom';
 import { EnvenomCast } from './EnvenomCast';
 import { Fireball } from './Fireball';
 import { Frostfire } from './Frostfire';
@@ -60,7 +59,7 @@ export class SpellController {
             new CrushingWave(timerUtils),
             new Cryostasis(gameGlobals),
             new CryostasisStop(gameGlobals),
-            new DeathGrasp(stunUtils),
+            new DeathGrasp(stunUtils, timerUtils),
             new DefenseSystem(gameGlobals, timerUtils),
             new DemonicRitual(),
             new Devour(),

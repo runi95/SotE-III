@@ -1,14 +1,18 @@
 import { Spell } from './Spell';
 import { StunUtils } from '../Utility/StunUtils';
+import { TimerUtils } from '../Utility/TimerUtils';
+import { Timer } from '../JassOverrides/Timer';
 
 export class DeathGrasp extends Spell {
-    protected abilityId: number = FourCC('A009');
-    private stunUtils: StunUtils;
+    protected readonly abilityId: number = FourCC('A009');
+    private readonly stunUtils: StunUtils;
+    private readonly timerUtils: TimerUtils;
 
-    constructor(stunUtils: StunUtils) {
+    constructor(stunUtils: StunUtils, timerUtils: TimerUtils) {
         super();
 
         this.stunUtils = stunUtils;
+        this.timerUtils = timerUtils;
     }
 
     protected action(): void {
@@ -18,7 +22,11 @@ export class DeathGrasp extends Spell {
         UnitDamageTargetBJ(targ, trig, 100, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
         this.stunUtils.StunUnit(targ, 1);
-        TriggerSleepAction(1.00); // TODO: We don't want to use sleep action here!
-        SetUnitPosition(targ, GetUnitX(trig), GetUnitY(trig));
+
+        const t: Timer = this.timerUtils.NewTimer();
+        t.start(1, false, () => {
+            SetUnitPosition(targ, GetUnitX(trig), GetUnitY(trig));
+            this.timerUtils.ReleaseTimer(t);
+        });
     }
 }
