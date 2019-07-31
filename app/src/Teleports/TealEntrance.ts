@@ -1,5 +1,9 @@
-export class TealEntrance {
+import { SpawnTeleporter } from './SpawnTeleporter';
+
+export class TealEntrance extends SpawnTeleporter {
     protected readonly playerId: number = 2;
-    protected readonly entranceRegion: rect = Rect(9696, -10784, 9760, -10720);
-    protected readonly exitRegion: rect = Rect(8544, -10784, 8608, -10720);
+
+    constructor() {
+        super(Rect(8544, -10784, 8608, -10720), Rect(9696, -10784, 9760, -10720));
+    }
 }

@@ -3,8 +3,8 @@ import { Teleporter } from './Teleporter';
 export abstract class SpawnTeleporter extends Teleporter {
     protected abstract readonly playerId: number;
 
-    protected constructor() {
-        super();
+    constructor(entranceRegion: rect, exitRegion: rect) {
+        super(entranceRegion, exitRegion);
 
         this.trig.AddCondition(() => this.condition());
     }
