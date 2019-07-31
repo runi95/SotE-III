@@ -1,22 +1,21 @@
 import { Log } from '../lib/Serilog/Serilog';
 
 export class Trigger {
+    private readonly nativeTrigger: trigger;
 
     constructor() {
         this.nativeTrigger = CreateTrigger();
     }
-
-    nativeTrigger: trigger;
-
 
     public static EvaluateCondition(func: () => boolean): boolean {
         let answer: boolean = false;
 
         xpcall(() => {
             answer = func();
-        }, (err: any) => {
-            this.printError(err);
-        });
+        },
+               (err: any) => {
+                   this.printError(err);
+               });
 
         return answer;
     }
