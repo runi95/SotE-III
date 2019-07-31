@@ -42,6 +42,7 @@ import { Betrayal } from './Betrayal';
 import { CrushingWave } from './CrushingWave';
 import { PiercingBlade } from './PiercingBlade';
 import { StunUtils } from '../Utility/StunUtils';
+import { FrostNova } from './FrostNova';
 
 export class SpellController {
     private spells: any[];
@@ -67,6 +68,7 @@ export class SpellController {
             new Fireball(timerUtils),
             new Frostfire(timerUtils),
             new FrostFireDamage(),
+            new FrostNova(timerUtils),
             new GoblinMine(timerUtils),
             new Immunity(gameGlobals),
             new Maelstrom(timerUtils),
