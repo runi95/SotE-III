@@ -1,7 +1,7 @@
 import { Avatar } from './Avatar';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { GameGlobals } from '../Game/GameGlobals';
-import { Backstab } from './Backstab';
+import { Backstab } from '../DamageEvents/Backstab';
 import { BeastSense } from './BeastSense';
 import { Clarity } from './Clarity';
 import { ClockwerkGoblinDeath } from './ClockwerkGoblinDeath';
@@ -13,16 +13,16 @@ import { DefenseSystem } from './DefenseSystem';
 import { DemonicRitual } from './DemonicRitual';
 import { Devour } from './Devour';
 import { Doom } from './Doom';
-import { Envenom } from './Envenom';
+import { Envenom } from '../DamageEvents/Envenom';
 import { EnvenomCast } from './EnvenomCast';
 import { Fireball } from './Fireball';
 import { Frostfire } from './Frostfire';
 import { FrostFireDamage } from './FrostFireDamage';
 import { GoblinMine } from './GoblinMine';
-import { Immunity } from './Immunity';
+import { Immunity } from '../DamageEvents/Immunity';
 import { Maelstrom } from './Maelstrom';
-import { ManaBrilliance } from './ManaBrilliance';
-import { ManaShield } from './ManaShield';
+import { ManaBrilliance } from '../DamageEvents/ManaBrilliance';
+import { ManaShield } from '../DamageEvents/ManaShield';
 import { Permafrost } from './Permafrost';
 import { PsychicScream } from './PsychicScream';
 import { RazorBlades } from './RazorBlades';
@@ -30,7 +30,7 @@ import { RazorBladesStop } from './RazorBladesStop';
 import { Rupture } from './Rupture';
 import { ShadowStep } from './ShadowStep';
 import { SnareTrap } from './SnareTrap';
-import { SpiritOfFrost } from './SpiritOfFrost';
+import { SpiritOfFrost } from '../DamageEvents/SpiritOfFrost';
 import { StormCloud } from './StormCloud';
 import { SummonBear } from './SummonBear';
 import { SummonClockwerkGoblin } from './SummonClockwerkGoblin';
@@ -63,7 +63,6 @@ export class SpellController {
             new DemonicRitual(),
             new Devour(),
             new Doom(timerUtils),
-            new Envenom(gameGlobals),
             new EnvenomCast(),
             new Fireball(timerUtils),
             new Frostfire(timerUtils),

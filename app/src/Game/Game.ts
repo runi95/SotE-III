@@ -1,15 +1,14 @@
 import { DamageEngine } from '../DamageEngine/DamageEngine';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { PhysicalBlockEvent } from '../DamageEvents/PhysicalBlockEvent';
 import { GameGlobals } from './GameGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
-import { SpellBlockEvent } from '../DamageEvents/SpellBlockEvent';
 import { SpellController } from '../Spells/SpellController';
 import { StunUtils } from '../Utility/StunUtils';
 import { TeleportController } from '../Teleports/TeleportController';
 import { ItemController } from '../Items/ItemController';
 import { CreepRespawn } from './CreepRespawn';
 import { PlayerRespawn } from './PlayerRespawn';
+import { DamageEventController } from '../DamageEvents/DamageEventController';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -17,13 +16,12 @@ export class Game {
     private readonly stunUtils: StunUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
     private readonly damageEngine: DamageEngine;
-    private readonly physicalBlockEvent: PhysicalBlockEvent;
-    private readonly spellBlockEvent: SpellBlockEvent;
     private readonly creepRespawn: CreepRespawn;
     private readonly playerRespawn: PlayerRespawn;
     private readonly spellController: SpellController;
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
+    private readonly damageEventController: DamageEventController;
 
     private readonly arenaGate: destructable;
 
@@ -33,16 +31,12 @@ export class Game {
         this.stunUtils = new StunUtils(this.timerUtils);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);
-        this.physicalBlockEvent = new PhysicalBlockEvent(this.gameGlobals);
-        this.spellBlockEvent = new SpellBlockEvent(this.gameGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
         this.playerRespawn = new PlayerRespawn(this.gameGlobals);
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils);
         this.teleportController = new TeleportController();
         this.itemController = new ItemController(this.gameGlobals);
-
-        this.damageEngine.AddInitialDamageModificationEvent(this.physicalBlockEvent);
-        this.damageEngine.AddInitialDamageModificationEvent(this.spellBlockEvent);
+        this.damageEventController = new DamageEventController(this.gameGlobals, this.damageEngine);
 
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
         ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
