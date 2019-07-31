@@ -25,7 +25,7 @@ export class Fireball extends Spell {
         const intelligence: number = GetHeroInt(trig, true);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const damage: number = 100.00 * abilityLevel + 2.00 * intelligence;
-        const distance: number = Math.sqrt(Pow(spawnX - x, 2.00) + Pow(spawnY - y, 2.00));
+        const distance: number = Math.sqrt(Pow(spawnX - x, 2) + Pow(spawnY - y, 2));
         const loc: location = GetSpellTargetLoc();
         if (distance < 150) {
             DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
