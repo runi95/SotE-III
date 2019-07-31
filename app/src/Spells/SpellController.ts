@@ -43,6 +43,7 @@ import { PiercingBlade } from './PiercingBlade';
 import { StunUtils } from '../Utility/StunUtils';
 import { FrostNova } from './FrostNova';
 import { GoblinBombShip } from './GoblinBombShip';
+import { SnareTrapDeath } from './SnareTrapDeath';
 
 export class SpellController {
     private spells: any[];
@@ -83,6 +84,7 @@ export class SpellController {
             new Rupture(timerUtils),
             new ShadowStep(),
             new SnareTrap(),
+            new SnareTrapDeath(),
             new SpiritOfFrost(gameGlobals),
             new StormCloud(timerUtils),
             new SummonBear(timerUtils),
