@@ -15,7 +15,7 @@ export class PsychicScream extends Spell {
         const grp: group = GetUnitsInRangeOfLocAll(1000, loc);
 
         ForGroup(grp, () => {
-            if (IsUnitEnemy(GetEnumUnit(), Player(playerId))) {
+            if (IsUnitEnemy(GetEnumUnit(), Player(playerId)) && IsUnitAliveBJ(GetEnumUnit())) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 const uX: number = GetUnitX(GetEnumUnit());
                 const uY: number = GetUnitY(GetEnumUnit());
