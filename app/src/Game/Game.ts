@@ -141,9 +141,9 @@ export class Game {
     }
 
     private printGameModeInfo(): void {
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, `|c00FF0000${GetPlayerName(Player(0))}|r may change the game rules`);
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Lives: |cffffcc0010|r');
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Teams: |cffffcc00none|r');
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Sudden death: |cffffcc00true|r');
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, `|c00FF0303${GetPlayerName(Player(0))}|r may change the game rules`);
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Lives: |cFFFFCC0010|r');
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Teams: |cFFFFCC00none|r');
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Sudden death: |cFFFFCC00true|r');
     }
 }
