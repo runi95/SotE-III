@@ -18,7 +18,7 @@ export class Shackles extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damage: number = 10 * abilityLevel + intelligence;
+        const damage: number = 5 * abilityLevel + intelligence / 2;
         const light: lightning = AddLightning('LEAS', true, GetUnitX(trig), GetUnitY(trig), GetUnitX(targ), GetUnitY(targ));
 
         UnitAddAbility(targ, this.dummySlowAbilityId);
