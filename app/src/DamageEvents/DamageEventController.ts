@@ -8,12 +8,15 @@ import { ManaBrilliance } from './ManaBrilliance';
 import { Envenom } from './Envenom';
 import { Immunity } from './Immunity';
 import { SpiritOfFrost } from './SpiritOfFrost';
+import { TimerUtils } from '../Utility/TimerUtils';
+import { BurnVictim } from './BurnVictim';
 
 export class DamageEventController {
-    constructor(gameGlobals: GameGlobals, damageEngine: DamageEngine) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
         // Initial damage events
         damageEngine.AddInitialDamageEvent(new ManaBrilliance());
         damageEngine.AddInitialDamageEvent(new SpiritOfFrost(gameGlobals));
+        damageEngine.AddInitialDamageEvent(new BurnVictim(timerUtils));
 
         // Initial damage modification events
         damageEngine.AddInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));

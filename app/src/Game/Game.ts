@@ -40,7 +40,7 @@ export class Game {
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils);
         this.teleportController = new TeleportController();
         this.itemController = new ItemController(this.gameGlobals);
-        this.damageEventController = new DamageEventController(this.gameGlobals, this.damageEngine);
+        this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils, this.damageEngine);
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
 
