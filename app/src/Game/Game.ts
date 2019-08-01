@@ -53,6 +53,7 @@ export class Game {
         this.spawnShops();
         this.initializeScoreboard();
         this.enableDebugMode();
+        this.printGameModeInfo();
     }
 
     private initializePlayers(): void {
@@ -131,11 +132,18 @@ export class Game {
 
     private enableDebugMode(): void {
         if (this.gameGlobals.PlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
-            BJDebugMsg('Activating debug mode...');
+            // BJDebugMsg('Activating debug mode...');
             this.gameGlobals.DebugMode = true;
             for (let i: number = 0; i < this.gameGlobals.HeroArraySize; i++) {
                 CreateUnit(Player(0), FourCC(this.gameGlobals.HeroUnitTypeID[i]), 2810.00, 7680.00, bj_UNIT_FACING);
             }
         }
+    }
+
+    private printGameModeInfo(): void {
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, `|c00FF0000${GetPlayerName(Player(0))}|r may change the game rules`);
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Lives: |cffffcc0010|r');
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Teams: |cffffcc00none|r');
+        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Sudden death: |cffffcc00true|r');
     }
 }
