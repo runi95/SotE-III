@@ -4,6 +4,7 @@ import { Timer } from '../JassOverrides/Timer';
 
 export class Shackles extends Spell {
     protected readonly abilityId: number = FourCC('A02G');
+    protected readonly dummySlowAbilityId: number = FourCC('A02H');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -19,9 +20,8 @@ export class Shackles extends Spell {
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 10 * abilityLevel + intelligence;
         const light: lightning = AddLightning('LEAS', true, GetUnitX(trig), GetUnitY(trig), GetUnitX(targ), GetUnitY(targ));
-        const eff: effect = AddSpecialEffectTarget('Abilities\\Spells\\Human\\AerialShackles\\AerialShacklesTarget.mdl',
-                                                   targ, 'chest,mount');
-        SetUnitMoveSpeed(targ, GetUnitDefaultMoveSpeed(targ) - 100);
+
+        UnitAddAbility(targ, this.dummySlowAbilityId);
 
         let ticks: number = 100;
         const t: Timer = this.timerUtils.NewTimer();
@@ -39,8 +39,7 @@ export class Shackles extends Spell {
             MoveLightning(light, true, x, y, targX, targY);
 
             if (!IsUnitAliveBJ(targ) || dist > 1000 || ticks <= 0) {
-                SetUnitMoveSpeed(targ, GetUnitDefaultMoveSpeed(targ) + 100);
-                DestroyEffect(eff);
+                UnitRemoveAbility(targ, this.dummySlowAbilityId);
                 DestroyLightning(light);
 
                 this.timerUtils.ReleaseTimer(t);
