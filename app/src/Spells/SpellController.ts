@@ -45,6 +45,7 @@ import { FrostNova } from './FrostNova';
 import { GoblinBombShip } from './GoblinBombShip';
 import { SnareTrapDeath } from './SnareTrapDeath';
 import { Shackles } from './Shackles';
+import { Combust } from './Combust';
 
 export class SpellController {
     private spells: any[];
@@ -57,6 +58,7 @@ export class SpellController {
             new Betrayal(),
             new Clarity(),
             new ClockwerkGoblinDeath(stunUtils),
+            new Combust(),
             new Conversion(),
             new CrushingWave(timerUtils),
             new Cryostasis(gameGlobals),
