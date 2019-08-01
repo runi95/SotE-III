@@ -139,6 +139,24 @@ export class GameGlobals {
         new Point(2985.00, 13092.00),
         new Point(3888.00, 12723.00),
         new Point(4364.00, 14942.00),
+
+        // Murloc Slaves
+        new Point(13650.00, 6656.00),
+        new Point(13126.00, 7360.00),
+        new Point(13881.00, 7318.00),
+        new Point(13254.00, 7793.00),
+        new Point(14140.00, 8922.00),
+
+        // Murlocs
+        new Point(15217.00, 9473.00),
+        new Point(13750.00, 9676.00),
+        new Point(12953.00, 10512.00),
+        new Point(13345.00, 11188.00),
+        new Point(14426.00, 11188.00),
+        new Point(15038.00, 11509.00),
+
+        // Murloc Mages
+        new Point(13766.00, 10428.00),
     ];
 
     // ========================================
@@ -242,6 +260,18 @@ export class GameGlobals {
         300.00,
         60.00,
         285.00,
+        3.00,
+        157.00,
+        319.00,
+        150.00,
+        160.00,
+        219.00,
+        197.00,
+        334.00,
+        170.00,
+        72.00,
+        157.00,
+        180.00,
     ];
 
     // ========================================
@@ -364,6 +394,24 @@ export class GameGlobals {
         'n014',
         'n014',
         'n014',
+
+        // Murloc Slaves
+        'n01C',
+        'n01C',
+        'n01C',
+        'n01C',
+        'n01C',
+
+        // Murlocs
+        'n01A',
+        'n01A',
+        'n01A',
+        'n01A',
+        'n01A',
+        'n01A',
+
+        // Murloc Mages
+        'n01B',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
