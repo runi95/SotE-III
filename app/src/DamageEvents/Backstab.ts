@@ -2,8 +2,10 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 
 export class Backstab implements DamageEvent {
+    private readonly unitTypeId: number = FourCC('E000');
+
     public event(globals: DamageEngineGlobals): void {
-        if (GetUnitTypeId(globals.DamageEventSource as unit) !== FourCC('E000')) {
+        if (GetUnitTypeId(globals.DamageEventSource as unit) !== this.unitTypeId) {
             return;
         }
 
