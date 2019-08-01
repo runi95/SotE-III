@@ -9,6 +9,7 @@ import { ItemController } from '../Items/ItemController';
 import { CreepRespawn } from './CreepRespawn';
 import { PlayerRespawn } from './PlayerRespawn';
 import { DamageEventController } from '../DamageEvents/DamageEventController';
+import { Commands } from './Commands';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -22,6 +23,7 @@ export class Game {
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
     private readonly damageEventController: DamageEventController;
+    private readonly commands: Commands;
 
     private readonly arenaGate: destructable;
 
@@ -37,11 +39,12 @@ export class Game {
         this.teleportController = new TeleportController();
         this.itemController = new ItemController(this.gameGlobals);
         this.damageEventController = new DamageEventController(this.gameGlobals, this.damageEngine);
-
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
-        ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
 
+        ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
         this.init();
+
+        this.commands = new Commands(this.gameGlobals.DebugMode);
     }
 
     private init(): void {
