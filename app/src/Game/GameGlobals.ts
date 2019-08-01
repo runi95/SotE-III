@@ -13,6 +13,7 @@ export class GameGlobals {
     public Multiboard: multiboard | undefined = undefined;
 
     public DebugMode: boolean = false;
+    public TeleportMovement: boolean = false;
 
     public TheArenaRegion: rect = Rect(864.00, 5600.00, 5024.00, 9760.00);
     public PlayerColorCodes: string[] = ['|c00FF0303', '|c000042FF', '|c001CE6B9', '|c00540081', '|c00FFFC01', '|c00fEBA0E'];

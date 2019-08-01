@@ -1,11 +1,12 @@
 import { Trigger } from '../JassOverrides/Trigger';
+import { GameGlobals } from './GameGlobals';
 
 export class Commands {
-    private readonly debugMode: boolean;
+    private readonly gameGlobals: GameGlobals;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(debugMode: boolean) {
-        this.debugMode = debugMode;
+    constructor(gameGlobals: GameGlobals) {
+        this.gameGlobals = gameGlobals;
 
         this.trig.AddAction(() => this.action());
         this.trig.RegisterPlayerChatEvent(Player(0), '-', false);
@@ -23,7 +24,7 @@ export class Commands {
         }
 
         const substr: string = chatstring.substr(1);
-        if (this.debugMode && substr.startsWith('gold ')) {
+        if (this.gameGlobals.DebugMode && substr.startsWith('gold ')) {
             const gold: number = parseInt(substr.substr('gold '.length), undefined);
             if (!gold) {
                 BJDebugMsg('Invalid gold amount!');
@@ -31,7 +32,7 @@ export class Commands {
             }
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, gold);
-        } else if (this.debugMode && substr.startsWith('lumber ')) {
+        } else if (this.gameGlobals.DebugMode && substr.startsWith('lumber ')) {
             const lumber: number = parseInt(substr.substr('lumber '.length), undefined);
             if (!lumber) {
                 BJDebugMsg('Invalid lumber amount!');
@@ -39,6 +40,13 @@ export class Commands {
             }
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, lumber);
+        } else if (this.gameGlobals.DebugMode && substr === 'tp') {
+            this.gameGlobals.TeleportMovement = !this.gameGlobals.TeleportMovement;
+            if (this.gameGlobals.TeleportMovement) {
+                BJDebugMsg('Teleport movement has been |c0020C000activated|r!');
+            } else {
+                BJDebugMsg('Teleport movement has been |c00FF0303deactivated|r!');
+            }
         }
     }
 }
