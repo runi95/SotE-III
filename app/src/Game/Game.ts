@@ -87,9 +87,9 @@ export class Game {
         const tombOfAncientsY: number = I2R(GetRandomInt(0, 25400) - 12700);
         const arcaneVaultX: number = I2R(GetRandomInt(0, 10630) - 2370);
         const arcaneVaultY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), FourCC('n00R'), ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
-        CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), FourCC('n00Q'), tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
-        CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
+        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'), ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
+        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'), tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
+        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
     }
 
     private initializeScoreboard(): void {
