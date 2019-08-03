@@ -22,6 +22,8 @@ import { MoonArmor } from './Recipes/MoonArmor';
 import { VialOfMagic } from './Recipes/VialOfMagic';
 import { Soulcage } from './Recipes/Soulcage';
 import { CircesStaff } from './Recipes/CircesStaff';
+import { TheAegisResetCharges } from './Abilities/TheAegisResetCharges';
+import { TheAegis } from './Recipes/TheAegis';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -42,6 +44,7 @@ export class ItemController {
             new RunedBracers(),
             new SteelShieldDrop(gameGlobals),
             new SteelShieldPickup(gameGlobals),
+            new TheAegisResetCharges(),
         ];
 
         this.itemRecipes = [
@@ -55,6 +58,7 @@ export class ItemController {
             new VialOfMagic(),
             new Soulcage(),
             new CircesStaff(),
+            new TheAegis(),
         ];
     }
 }
