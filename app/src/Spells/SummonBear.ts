@@ -26,7 +26,7 @@ export class SummonBear extends Spell {
         // BlzSetUnitAttackCooldown(summon, 2.00, 1)
         // BlzSetUnitDiceSides(summon, 1, 1)
         // BlzSetUnitDiceNumber(summon, 4, 1)
-        BlzSetUnitBaseDamage(summon, 0.50 * str, 1);
+        BlzSetUnitBaseDamage(summon, Math.ceil(0.50 * str), 1);
         // UnitApplyTimedLifeBJ(60, 'BTLF', summon)
 
         const maxDistance: number = 1200;
