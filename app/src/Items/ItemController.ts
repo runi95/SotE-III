@@ -10,6 +10,8 @@ import { ImrpovedMoonArmorPickup } from './Abilities/ImprovedMoonArmorPickup';
 import { MoonArmorPickup } from './Abilities/MoonArmorPickup';
 import { RunedBracers } from './Abilities/RunedBracers';
 import { SteelShieldDrop } from './Abilities/SteelShieldDrop';
+import { TheAegisDrop } from './Abilities/TheAegisDrop';
+import { TheAegisPickup } from './Abilities/TheAegisPickup';
 import { SteelShieldPickup } from './Abilities/SteelShieldPickup';
 import { GameGlobals } from '../Game/GameGlobals';
 import { CoralScales } from './Recipes/CoralScales';
@@ -45,6 +47,8 @@ export class ItemController {
             new SteelShieldDrop(gameGlobals),
             new SteelShieldPickup(gameGlobals),
             new TheAegisResetCharges(),
+            new TheAegisDrop(gameGlobals),
+            new TheAegisPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
