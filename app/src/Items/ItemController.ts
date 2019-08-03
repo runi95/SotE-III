@@ -21,6 +21,7 @@ import { ManaBlade } from './Recipes/ManaBlade';
 import { MoonArmor } from './Recipes/MoonArmor';
 import { VialOfMagic } from './Recipes/VialOfMagic';
 import { Soulcage } from './Recipes/Soulcage';
+import { CircesStaff } from './Recipes/CircesStaff';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -53,6 +54,7 @@ export class ItemController {
             new MoonArmor(),
             new VialOfMagic(),
             new Soulcage(),
+            new CircesStaff(),
         ];
     }
 }
