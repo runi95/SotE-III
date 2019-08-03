@@ -157,6 +157,21 @@ export class GameGlobals {
 
         // Murloc Mages
         new Point(13766.00, 10428.00),
+
+        // Centaur Archers
+        new Point(9785.00, 14390.00),
+        new Point(14258.00, 13593.00),
+        new Point(14406.00, 14904.00),
+        new Point(14906.00, 14380.00),
+
+        // Centaurs
+        new Point(9144.00, 13500.00),
+        new Point(12191.00, 14248.00),
+        new Point(11697.00, 13117.00),
+        new Point(12461.00, 13117.00),
+        new Point(12857.00, 14414.00),
+        new Point(13126.00, 14512.00),
+        new Point(13229.00, 14263.00),
     ];
 
     // ========================================
@@ -272,6 +287,17 @@ export class GameGlobals {
         72.00,
         157.00,
         180.00,
+        280.00,
+        232.00,
+        216.00,
+        231.00,
+        45.00,
+        270.00,
+        0.00,
+        180.00,
+        330.00,
+        245.00,
+        145.00,
     ];
 
     // ========================================
@@ -412,6 +438,21 @@ export class GameGlobals {
 
         // Murloc Mages
         'n01B',
+
+        // Centaur Archers
+        'n01E',
+        'n01E',
+        'n01E',
+        'n01E',
+
+        // Centaurs
+        'n01D',
+        'n01D',
+        'n01D',
+        'n01D',
+        'n01D',
+        'n01D',
+        'n01D',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
