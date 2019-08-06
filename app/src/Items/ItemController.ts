@@ -26,9 +26,9 @@ import { Soulcage } from './Recipes/Soulcage';
 import { CircesStaff } from './Recipes/CircesStaff';
 import { TheAegisResetCharges } from './Abilities/TheAegisResetCharges';
 import { TheAegis } from './Recipes/TheAegis';
-import {Ancile} from "./Recipes/Ancile";
-import {AncileDrop} from "./Abilities/AncileDrop";
-import {AncilePickup} from "./Abilities/AncilePickup";
+import { Ancile } from './Recipes/Ancile';
+import { AncileDrop } from './Abilities/AncileDrop';
+import { AncilePickup } from './Abilities/AncilePickup';
 
 export class ItemController {
     private itemAbilities: any[];
