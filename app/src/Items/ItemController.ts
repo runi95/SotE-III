@@ -29,7 +29,7 @@ import { TheAegis } from './Recipes/TheAegis';
 import { Ancile } from './Recipes/Ancile';
 import { AncileDrop } from './Abilities/AncileDrop';
 import { AncilePickup } from './Abilities/AncilePickup';
-import {Fragarach} from "./Recipes/Fragarach";
+import { Fragarach } from './Recipes/Fragarach';
 
 export class ItemController {
     private itemAbilities: any[];
