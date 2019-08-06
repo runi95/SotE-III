@@ -26,6 +26,9 @@ import { Soulcage } from './Recipes/Soulcage';
 import { CircesStaff } from './Recipes/CircesStaff';
 import { TheAegisResetCharges } from './Abilities/TheAegisResetCharges';
 import { TheAegis } from './Recipes/TheAegis';
+import {Ancile} from "./Recipes/Ancile";
+import {AncileDrop} from "./Abilities/AncileDrop";
+import {AncilePickup} from "./Abilities/AncilePickup";
 
 export class ItemController {
     private itemAbilities: any[];
@@ -49,6 +52,8 @@ export class ItemController {
             new TheAegisResetCharges(),
             new TheAegisDrop(gameGlobals),
             new TheAegisPickup(gameGlobals),
+            new AncileDrop(gameGlobals),
+            new AncilePickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -63,6 +68,7 @@ export class ItemController {
             new Soulcage(),
             new CircesStaff(),
             new TheAegis(),
+            new Ancile(),
         ];
     }
 }
