@@ -30,6 +30,7 @@ import { Ancile } from './Recipes/Ancile';
 import { AncileDrop } from './Abilities/AncileDrop';
 import { AncilePickup } from './Abilities/AncilePickup';
 import { Fragarach } from './Recipes/Fragarach';
+import {SwordOfFreyr} from "./Recipes/SwordOfFreyr";
 
 export class ItemController {
     private itemAbilities: any[];
@@ -71,6 +72,7 @@ export class ItemController {
             new TheAegis(),
             new Ancile(),
             new Fragarach(),
+            new SwordOfFreyr(),
         ];
     }
 }
