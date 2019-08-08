@@ -11,8 +11,8 @@ export class CaduceusUse extends ItemUse {
     }
 
     protected action(): void {
-        AddSpecialEffect('Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTarget.mdl',
-                         GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()));
+        DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTarget.mdl',
+                         GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit())));
         SetUnitPosition(GetTriggerUnit(), GetUnitX(this.arcaneVault), GetUnitY(this.arcaneVault));
     }
 }
