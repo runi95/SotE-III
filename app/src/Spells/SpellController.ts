@@ -46,6 +46,7 @@ import { GoblinBombShip } from './GoblinBombShip';
 import { SnareTrapDeath } from './SnareTrapDeath';
 import { Shackles } from './Shackles';
 import { Combust } from './Combust';
+import { Immolation } from './Immolation';
 
 export class SpellController {
     private spells: any[];
@@ -97,6 +98,7 @@ export class SpellController {
             new SummonHawk(timerUtils),
             new SummonQuilbeast(timerUtils),
             new Swarm(timerUtils),
+            new Immolation(timerUtils),
         ];
     }
 }
