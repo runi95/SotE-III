@@ -38,7 +38,7 @@ export class Shackles extends Spell {
             }
             MoveLightning(light, true, x, y, targX, targY);
 
-            if (!IsUnitAliveBJ(targ) || dist > 1000 || ticks <= 0) {
+            if (!UnitAlive(targ) || dist > 1000 || ticks <= 0) {
                 UnitRemoveAbility(targ, this.dummySlowAbilityId);
                 DestroyLightning(light);
 

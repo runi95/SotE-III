@@ -20,7 +20,7 @@ export class LoadedCannonUse implements DamageEvent {
         ForGroup(grp, () => {
             if (GetEnumUnit() !== globals.DamageEventTarget as unit &&
                 IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(globals.DamageEventSource as unit)) &&
-                IsUnitAliveBJ(GetEnumUnit())) {
+                UnitAlive(GetEnumUnit())) {
                 UnitDamageTargetBJ(globals.DamageEventSource as unit, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });

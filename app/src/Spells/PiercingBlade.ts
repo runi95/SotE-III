@@ -40,7 +40,7 @@ export class PiercingBlade extends Spell {
             const grp: group = GetUnitsInRangeOfLocAll(50.00, loc);
 
             ForGroup(grp, () => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && IsUnitAliveBJ(GetEnumUnit())) {
+                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);

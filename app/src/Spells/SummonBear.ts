@@ -41,7 +41,7 @@ export class SummonBear extends Spell {
                 IssueTargetOrderBJ(summon, 'move', trig);
             }
 
-            if (!IsUnitAliveBJ(summon)) {
+            if (!UnitAlive(summon)) {
                 this.timerUtils.ReleaseTimer(t);
             }
         });

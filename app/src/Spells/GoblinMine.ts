@@ -33,7 +33,7 @@ export class GoblinMine extends Spell {
                                            GetUnitX(summon), GetUnitY(summon)));
 
             ForGroup(grp, () => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && IsUnitAliveBJ(GetEnumUnit())) {
+                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });

@@ -29,7 +29,7 @@ export class Maelstrom extends Spell {
 
             const grp: group = GetUnitsInRangeOfLocAll(500.00, loc);
             ForGroup(grp, () => {
-                if (IsUnitEnemy(GetEnumUnit(), trigOwner) && IsUnitAliveBJ(GetEnumUnit())) {
+                if (IsUnitEnemy(GetEnumUnit(), trigOwner) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });

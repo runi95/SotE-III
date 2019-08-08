@@ -38,7 +38,7 @@ export class CrushingWave extends Spell {
             const grp: group = GetUnitsInRangeOfLocAll(75.00, loc);
 
             ForGroup(grp, () => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && IsUnitAliveBJ(GetEnumUnit())) {
+                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
@@ -54,7 +54,7 @@ export class CrushingWave extends Spell {
                                                GetUnitX(dummy), GetUnitY(dummy)));
 
                 ForGroup(detonationGroup, () => {
-                    if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && IsUnitAliveBJ(GetEnumUnit())) {
+                    if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), 30.00 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });

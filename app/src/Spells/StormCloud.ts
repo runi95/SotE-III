@@ -32,7 +32,7 @@ export class StormCloud extends Spell {
 
             const grp: group = GetUnitsInRangeOfLocAll(300.00, loc);
             ForGroup(grp, () => {
-                if (IsUnitEnemy(GetEnumUnit(), trigOwner) && IsUnitAliveBJ(GetEnumUnit()) && GetRandomInt(1, 10) === 1) {
+                if (IsUnitEnemy(GetEnumUnit(), trigOwner) && UnitAlive(GetEnumUnit()) && GetRandomInt(1, 10) === 1) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
