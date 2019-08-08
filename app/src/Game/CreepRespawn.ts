@@ -15,8 +15,10 @@ export class CreepRespawn {
 
         this.trig.AddAction(() => {
             const userData: number = GetUnitUserData(GetTriggerUnit());
+            const unitTypeId: number = GetUnitTypeId(GetTriggerUnit());
+            RemoveUnit(GetTriggerUnit());
             SetUnitUserData(CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),
-                                       GetUnitTypeId(GetTriggerUnit()),
+                                       unitTypeId,
                                        gameGlobals.CreepSpawnPoint[userData].x,
                                        gameGlobals.CreepSpawnPoint[userData].y,
                                        gameGlobals.CreepSpawnAngle[userData]),
