@@ -1,4 +1,5 @@
 import { Point } from '../Utility/Point';
+import { Region } from '../Utility/Region';
 
 export class GameGlobals {
     public CryostasisSummons: unit[] = [];
@@ -517,4 +518,74 @@ export class GameGlobals {
     ];
 
     public HeroArraySize: number = this.HeroUnitTypeID.length;
+
+    // ========================================
+    //
+    // 	Hero Selection
+    //
+    // ========================================
+    public HeroSelectRegions: Region[] = [
+        new Region(-15104, -14976, -10240, -10112),
+        new Region(-15104, -14976, -10496, -10368),
+        new Region(-15104, -14976, -10752, -10624),
+        new Region(-15104, -14976, -11008, -10880),
+        new Region(-15104, -14976, -11264, -11136),
+        new Region(-14848, -14720, -11392, -11264),
+        new Region(-14592, -14464, -11392, -11264),
+        new Region(-14336, -14208, -11392, -11264),
+        new Region(-14080, -13952, -11392, -11264),
+        new Region(-13824, -13696, -11264, -11136),
+        new Region(-13824, -13696, -11008, -10880),
+        new Region(-13824, -13696, -10752, -10624),
+        new Region(-13824, -13696, -10496, -10368),
+        new Region(-13824, -13696, -10240, -10112),
+        new Region(-14080, -13952, -10112, -9984),
+        new Region(-14336, -14208, -10112, -9984),
+        new Region(-14592, -14464, -10112, -9984),
+        new Region(-14848, -14720, -10112, -9984),
+    ];
+
+    public HeroSelectPoints: Point[] = [
+        new Point(-15234.00, -10179.00),
+        new Point(-15234.00, -10429.00),
+        new Point(-15234.00, -10691.00),
+        new Point(-15234.00, -10944.00),
+        new Point(-15234.00, -11197.00),
+        new Point(-14788.00, -11515.00),
+        new Point(-14526.00, -11515.00),
+        new Point(-14272.00, -11515.00),
+        new Point(-14000.00, -11515.00),
+        new Point(-13565.00, -11200.00),
+        new Point(-13565.00, -10950.00),
+        new Point(-13565.00, -10680.00),
+        new Point(-13565.00, -10430.00),
+        new Point(-13565.00, -10175.00),
+        new Point(-14000.00, -9854.00),
+        new Point(-14270.00, -9854.00),
+        new Point(-14530.00, -9854.00),
+        new Point(-14790.00, -9854.00),
+    ];
+
+    public HeroSelectAngles: number[] = [
+        0.00,
+        0.00,
+        0.00,
+        0.00,
+        0.00,
+        90.00,
+        90.00,
+        90.00,
+        90.00,
+        90.00,
+        180.00,
+        180.00,
+        180.00,
+        180.00,
+        180.00,
+        270.00,
+        270.00,
+        270.00,
+        270.00,
+        270.00,
+    ];
 }

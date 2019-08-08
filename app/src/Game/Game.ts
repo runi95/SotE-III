@@ -12,6 +12,7 @@ import { DamageEventController } from '../DamageEvents/DamageEventController';
 import { Commands } from './Commands';
 import { TeleportMovement } from './TeleportMovement';
 import { Timer } from '../JassOverrides/Timer';
+import { Hero } from './Hero';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -32,6 +33,7 @@ export class Game {
     private readonly ancientOfWonders: unit;
     private readonly tombOfAncients: unit;
     private readonly arcaneVault: unit;
+    private readonly heroes: Hero[];
 
     constructor() {
         this.gameGlobals = new GameGlobals();
@@ -58,6 +60,7 @@ export class Game {
                                          tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
         this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'),
                                       arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
+        this.heroes = [];
 
         ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
         this.init();
@@ -74,6 +77,7 @@ export class Game {
     }
 
     private init(): void {
+        this.initializeHeroSelection();
         this.initializePlayers();
         this.spawnAllCreeps();
         this.initializeScoreboard();
@@ -81,15 +85,28 @@ export class Game {
         this.printGameModeInfo();
     }
 
+    private initializeHeroSelection(): void {
+        for (let i: number = 0; i < this.gameGlobals.HeroArraySize; i++) {
+            this.heroes.push(new Hero(this.gameGlobals,
+                                      Rect(this.gameGlobals.HeroSelectRegions[i].minX,
+                                           this.gameGlobals.HeroSelectRegions[i].minY,
+                                           this.gameGlobals.HeroSelectRegions[i].maxX,
+                                           this.gameGlobals.HeroSelectRegions[i].maxY),
+                                      FourCC(this.gameGlobals.HeroUnitTypeID[i]),
+                                      this.gameGlobals.HeroSelectPoints[i].x,
+                                      this.gameGlobals.HeroSelectPoints[i].y,
+                                      this.gameGlobals.HeroSelectAngles[i]));
+        }
+    }
+
     private initializePlayers(): void {
+        const heroSelectorId: number = FourCC('e001');
         for (let i: number = 0; i < 5; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) === MAP_CONTROL_USER) {
                 this.gameGlobals.PlayerCount++;
                 SetPlayerStateBJ(Player(i), PLAYER_STATE_RESOURCE_GOLD, 500);
-                CreateUnit(Player(i), FourCC(this.gameGlobals.HeroUnitTypeID[GetRandomInt(0, this.gameGlobals.HeroArraySize)]),
-                           GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]),
-                           GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]), bj_UNIT_FACING);
                 FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, this.gameGlobals.PlayerSpawnRegion[i], true, false));
+                CreateUnit(Player(i), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
             }
         }
     }
