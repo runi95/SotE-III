@@ -467,6 +467,14 @@ export class GameGlobals {
         'n01D',
         'n01D',
         'n01D',
+
+        // Ice Revenants
+        'n01G',
+        'n01G',
+        'n01G',
+        'n01G',
+        'n01G',
+        'n01G',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
