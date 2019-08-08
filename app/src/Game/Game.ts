@@ -11,6 +11,7 @@ import { PlayerRespawn } from './PlayerRespawn';
 import { DamageEventController } from '../DamageEvents/DamageEventController';
 import { Commands } from './Commands';
 import { TeleportMovement } from './TeleportMovement';
+import { Timer } from '../JassOverrides/Timer';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -45,12 +46,12 @@ export class Game {
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils, this.damageEngine);
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
-        const ancientOfWondersX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const ancientOfWondersY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        const tombOfAncientsX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const tombOfAncientsY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        const arcaneVaultX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const arcaneVaultY: number = I2R(GetRandomInt(0, 25400) - 12700);
+        const ancientOfWondersX: number = GetRandomInt(0, 10630) - 2370;
+        const ancientOfWondersY: number = GetRandomInt(0, 25400) - 12700;
+        const tombOfAncientsX: number = GetRandomInt(0, 10630) - 2370;
+        const tombOfAncientsY: number = GetRandomInt(0, 25400) - 12700;
+        const arcaneVaultX: number = GetRandomInt(0, 10630) - 2370;
+        const arcaneVaultY: number = GetRandomInt(0, 25400) - 12700;
         this.ancientOfWonders = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'),
                                            ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
         this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'),
@@ -63,6 +64,13 @@ export class Game {
 
         this.commands = new Commands(this.gameGlobals);
         this.itemController = new ItemController(this.gameGlobals, this.arcaneVault);
+
+        const t: Timer = this.timerUtils.NewTimer();
+        t.start(240, true, () => {
+            const newX: number = GetRandomInt(0, 10630) - 2370;
+            const newY: number = GetRandomInt(0, 25400) - 12700;
+            SetUnitPosition(this.arcaneVault, newX, newY);
+        });
     }
 
     private init(): void {
