@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class CrushingWave extends Spell {
     protected readonly abilityId: number = FourCC('A00O');
@@ -35,25 +36,25 @@ export class CrushingWave extends Spell {
             ticks--;
 
             const loc: location = GetUnitLoc(dummy);
-            const grp: group = GetUnitsInRangeOfLocAll(75.00, loc);
+            const grp: GroupInRange = new GroupInRange(75.00, loc);
 
-            ForGroup(grp, () => {
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
             RemoveLocation(loc);
-            DestroyGroup(grp);
+            grp.Destroy();
 
             if (ticks <= 0) {
                 const detonationLoc: location = GetUnitLoc(dummy);
-                const detonationGroup: group = GetUnitsInRangeOfLocAll(150.00, detonationLoc);
+                const detonationGroup: GroupInRange = new GroupInRange(150.00, detonationLoc);
 
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl',
                                                GetUnitX(dummy), GetUnitY(dummy)));
 
-                ForGroup(detonationGroup, () => {
+                detonationGroup.For(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), 30.00 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
@@ -61,7 +62,7 @@ export class CrushingWave extends Spell {
 
                 RemoveUnit(dummy);
                 RemoveLocation(detonationLoc);
-                DestroyGroup(detonationGroup);
+                detonationGroup.Destroy();
 
                 this.timerUtils.ReleaseTimer(t);
             }

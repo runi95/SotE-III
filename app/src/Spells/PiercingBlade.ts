@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class PiercingBlade extends Spell {
     protected readonly abilityId: number = FourCC('A00L');
@@ -37,9 +38,9 @@ export class PiercingBlade extends Spell {
             ticks--;
 
             const loc: location = GetUnitLoc(dummy);
-            const grp: group = GetUnitsInRangeOfLocAll(50.00, loc);
+            const grp: GroupInRange = new GroupInRange(50.00, loc);
 
-            ForGroup(grp, () => {
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -48,7 +49,7 @@ export class PiercingBlade extends Spell {
             });
 
             RemoveLocation(loc);
-            DestroyGroup(grp);
+            grp.Destroy();
 
             if (ticks <= 0) {
                 RemoveUnit(dummy);

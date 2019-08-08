@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class StormCloud extends Spell {
     protected readonly abilityId: number = FourCC('A003');
@@ -30,15 +31,15 @@ export class StormCloud extends Spell {
         t.start(0.05, true, () => {
             ticks--;
 
-            const grp: group = GetUnitsInRangeOfLocAll(300.00, loc);
-            ForGroup(grp, () => {
+            const grp: GroupInRange = new GroupInRange(300.00, loc);
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), trigOwner) && UnitAlive(GetEnumUnit()) && GetRandomInt(1, 10) === 1) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
-            DestroyGroup(grp);
+            grp.Destroy();
 
             if (ticks <= 0) {
                 RemoveUnit(dummy);

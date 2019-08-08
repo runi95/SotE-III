@@ -1,4 +1,5 @@
 import { Trigger } from '../JassOverrides/Trigger';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Combust {
     private readonly abilityId: number = FourCC('A008');
@@ -19,16 +20,16 @@ export class Combust {
         const loc: location = GetUnitLoc(GetDyingUnit());
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 100 + intelligence;
-        const grp: group = GetUnitsInRangeOfLocAll(150, loc);
+        const grp: GroupInRange = new GroupInRange(150, loc);
         DestroyEffect(AddSpecialEffectLoc('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl', loc));
 
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

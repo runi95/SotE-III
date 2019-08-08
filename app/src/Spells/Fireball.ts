@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Fireball extends Spell {
     protected readonly abilityId: number = FourCC('A01U');
@@ -29,16 +30,16 @@ export class Fireball extends Spell {
         const loc: location = GetSpellTargetLoc();
         if (distance < 150) {
             DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
-            const grp: group = GetUnitsInRangeOfLocAll(1000.00, loc);
+            const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-            ForGroup(grp, () => {
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
             RemoveLocation(loc);
-            DestroyGroup(grp);
+            grp.Destroy();
         } else {
             const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, spawnX, spawnY, angle);
 
@@ -49,16 +50,16 @@ export class Fireball extends Spell {
             t.start(0.25 + travelTime, false, () => {
                 DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
                 RemoveUnit(dummy);
-                const grp: group = GetUnitsInRangeOfLocAll(1000.00, loc);
+                const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-                ForGroup(grp, () => {
+                grp.For(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
                 RemoveLocation(loc);
-                DestroyGroup(grp);
+                grp.Destroy();
 
                 this.timerUtils.ReleaseTimer(t);
             });

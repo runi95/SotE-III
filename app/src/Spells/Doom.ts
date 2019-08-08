@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { Group } from '../JassOverrides/Group';
 
 export class Doom extends Spell {
     protected readonly abilityId: number = FourCC('A012');
@@ -29,9 +30,9 @@ export class Doom extends Spell {
             const eff: effect = AddSpecialEffect('Units\\Demon\\Infernal\\InfernalBirth.mdl', rngX, rngY);
 
             const r: rect = Rect(rngX - 175.0, rngY - 175.0, rngX + 175.0, rngY + 175.0);
-            const grp: group = GetUnitsInRectAll(r);
+            const grp: Group = new Group(GetUnitsInRectAll(r));
 
-            ForGroup(grp, () => {
+            grp.For(() => {
                 if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                     UnitDamageTargetBJ(GetTriggerUnit(), GetEnumUnit(),
                                        damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
@@ -39,7 +40,7 @@ export class Doom extends Spell {
             });
 
             RemoveRect(r);
-            DestroyGroup(grp);
+            grp.Destroy();
             DestroyEffect(eff);
 
             if (ticks <= 0) {

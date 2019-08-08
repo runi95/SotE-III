@@ -2,6 +2,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from '../Game/GameGlobals';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class RazorBlades {
     private readonly dummyUnitId: number = FourCC('n016');
@@ -98,9 +99,9 @@ export class RazorBlades {
 
     private dealBladeDamage(trig: unit, blade: unit, aoe: number): void {
         const loc: location = GetUnitLoc(blade);
-        const grp: group = GetUnitsInRangeOfLocAll(aoe, loc);
+        const grp: GroupInRange = new GroupInRange(aoe, loc);
 
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
                                                GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -109,6 +110,6 @@ export class RazorBlades {
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

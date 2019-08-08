@@ -1,4 +1,5 @@
 import { Trigger } from '../JassOverrides/Trigger';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class SnareTrapDeath {
     private readonly unitTypeId: number = FourCC('n00E');
@@ -14,9 +15,9 @@ export class SnareTrapDeath {
 
         this.trig.AddAction(() => {
             const loc: location = GetUnitLoc(GetDyingUnit());
-            const grp: group = GetUnitsInRangeOfLocAll(150.00, loc);
+            const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-            ForGroupBJ(grp, () => {
+            grp.For(() => {
                 if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                     const dummy: unit = CreateUnit(GetOwningPlayer(GetDyingUnit()),
                                                    this.dummyUnitTypeId, GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit()), bj_UNIT_FACING);
@@ -27,7 +28,7 @@ export class SnareTrapDeath {
             });
 
             RemoveLocation(loc);
-            DestroyGroup(grp);
+            grp.Destroy();
         });
     }
 

@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Swarm extends Spell {
     protected readonly abilityId: number = FourCC('A01F');
@@ -39,17 +40,17 @@ export class Swarm extends Spell {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl', x, y));
 
                 const loc: location = Location(x, y);
-                const grp: group = GetUnitsInRangeOfLocAll(100, loc);
+                const grp: GroupInRange = new GroupInRange(100, loc);
                 const playerId: number = GetPlayerId(GetOwningPlayer(trig));
 
-                ForGroup(grp, () => {
+                grp.For(() => {
                     if (IsUnitEnemy(GetEnumUnit(), Player(playerId))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
                 RemoveLocation(loc);
-                DestroyGroup(grp);
+                grp.Destroy();
             } else {
                 x = x - multX;
                 y = y - multY;

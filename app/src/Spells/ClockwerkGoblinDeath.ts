@@ -1,5 +1,6 @@
 import { Trigger } from '../JassOverrides/Trigger';
 import { StunUtils } from '../Utility/StunUtils';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class ClockwerkGoblinDeath {
     private readonly unitTypeId: number = FourCC('n017');
@@ -22,9 +23,9 @@ export class ClockwerkGoblinDeath {
         const trig: unit = GetTriggerUnit();
         const damage: number = GetUnitUserData(trig);
         const loc: location = GetUnitLoc(trig);
-        const grp: group = GetUnitsInRangeOfLocAll(150.00, loc);
+        const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 this.stunUtils.StunUnit(GetEnumUnit(), 1);
@@ -32,6 +33,6 @@ export class ClockwerkGoblinDeath {
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

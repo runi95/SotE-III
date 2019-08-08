@@ -1,4 +1,5 @@
 import { Spell } from './Spell';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class PsychicScream extends Spell {
     protected readonly abilityId: number = FourCC('A01G');
@@ -11,9 +12,9 @@ export class PsychicScream extends Spell {
         const y: number = GetUnitY(trig);
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
         const loc: location = Location(x, y);
-        const grp: group = GetUnitsInRangeOfLocAll(1000, loc);
+        const grp: GroupInRange = new GroupInRange(1000, loc);
 
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (IsUnitEnemy(GetEnumUnit(), Player(playerId)) && UnitAlive(GetEnumUnit())) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 const uX: number = GetUnitX(GetEnumUnit());
@@ -40,6 +41,6 @@ export class PsychicScream extends Spell {
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class GoblinMine extends Spell {
     protected readonly abilityId: number = FourCC('A02E');
@@ -25,14 +26,14 @@ export class GoblinMine extends Spell {
         const t: Timer = this.timerUtils.NewTimer();
         t.start(2, false, () => {
             const loc: location = GetUnitLoc(summon);
-            const grp: group = GetUnitsInRangeOfLocAll(300.00, loc);
+            const grp: GroupInRange = new GroupInRange(300.00, loc);
 
             DestroyEffect(AddSpecialEffect('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl',
                                            GetUnitX(summon), GetUnitY(summon)));
             DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl',
                                            GetUnitX(summon), GetUnitY(summon)));
 
-            ForGroup(grp, () => {
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
@@ -40,7 +41,7 @@ export class GoblinMine extends Spell {
 
             RemoveUnit(summon);
             RemoveLocation(loc);
-            DestroyGroup(grp);
+            grp.Destroy();
 
             this.timerUtils.ReleaseTimer(t);
         });

@@ -1,5 +1,6 @@
 import { DamageEvent } from '../../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../../DamageEngine/DamageEngineGlobals';
+import { GroupInRange } from '../../JassOverrides/GroupInRange';
 
 export class LoadedCannonUse implements DamageEvent {
     private readonly itemTypeId: number = FourCC('I00X');
@@ -14,10 +15,10 @@ export class LoadedCannonUse implements DamageEvent {
         }
 
         const loc: location = GetUnitLoc(globals.DamageEventTarget as unit);
-        const grp: group = GetUnitsInRangeOfLocAll(200.00, loc);
+        const grp: GroupInRange = new GroupInRange(200.00, loc);
         const damage: number = 0.10 * globals.DamageEventAmount;
 
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (GetEnumUnit() !== globals.DamageEventTarget as unit &&
                 IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(globals.DamageEventSource as unit)) &&
                 UnitAlive(GetEnumUnit())) {
@@ -26,6 +27,6 @@ export class LoadedCannonUse implements DamageEvent {
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

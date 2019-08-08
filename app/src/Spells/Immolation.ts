@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Immolation extends Spell {
     protected readonly abilityId: number = FourCC('A00K');
@@ -23,8 +24,8 @@ export class Immolation extends Spell {
         t.start(1, true, () => {
             ticks--;
             const loc: location = GetUnitLoc(trig);
-            const grp: group = GetUnitsInRangeOfLocAll(128, loc);
-            ForGroup(grp, () => {
+            const grp: GroupInRange = new GroupInRange(128, loc);
+            grp.For(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\NightElf\\Immolation\\ImmolationDamage.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -32,8 +33,8 @@ export class Immolation extends Spell {
                 }
             });
 
-            DestroyGroup(grp);
             RemoveLocation(loc);
+            grp.Destroy();
 
             if (ticks <= 0) {
                 this.timerUtils.ReleaseTimer(t);

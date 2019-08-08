@@ -1,6 +1,7 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class GoblinBombShip extends Spell {
     protected readonly abilityId: number = FourCC('A02F');
@@ -40,16 +41,16 @@ export class GoblinBombShip extends Spell {
             }
 
             if (ticks === 5) {
-                const grp: group = GetUnitsInRangeOfLocAll(300, loc);
+                const grp: GroupInRange = new GroupInRange(300, loc);
 
-                ForGroup(grp, () => {
+                grp.For(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
-                DestroyGroup(grp);
                 RemoveLocation(loc);
+                grp.Destroy();
             }
 
             if (ticks <= 0) {

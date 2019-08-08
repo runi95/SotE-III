@@ -1,4 +1,5 @@
 import { Spell } from './Spell';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class BeastSense extends Spell {
     protected readonly abilityId: number = FourCC('A00V');
@@ -8,8 +9,8 @@ export class BeastSense extends Spell {
 
     protected action(): void {
         const loc: location = GetUnitLoc(GetTriggerUnit());
-        const grp: group = GetUnitsInRangeOfLocAll(3000.00, loc);
-        ForGroup(grp, () => {
+        const grp: GroupInRange = new GroupInRange(3000.00, loc);
+        grp.For(() => {
             if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                 const x: number = GetUnitX(GetEnumUnit());
                 const y: number = GetUnitY(GetEnumUnit());
@@ -22,6 +23,6 @@ export class BeastSense extends Spell {
         });
 
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }

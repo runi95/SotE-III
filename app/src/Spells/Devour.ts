@@ -1,4 +1,5 @@
 import { Spell } from './Spell';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Devour extends Spell {
     protected readonly abilityId: number = FourCC('A00A');
@@ -6,9 +7,9 @@ export class Devour extends Spell {
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const loc: location = GetUnitLoc(trig);
-        const grp: group = GetUnitsInRangeOfLocAll(300.00, loc);
+        const grp: GroupInRange = new GroupInRange(300.00, loc);
         const damage: number = 3 * GetHeroStr(GetTriggerUnit(), true);
-        ForGroup(grp, () => {
+        grp.For(() => {
             if (UnitAlive(GetEnumUnit())) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl',
                                                GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -17,6 +18,6 @@ export class Devour extends Spell {
             }
         });
         RemoveLocation(loc);
-        DestroyGroup(grp);
+        grp.Destroy();
     }
 }
