@@ -8,8 +8,8 @@ export class TeleportMovement {
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
 
-        this.trig.AddCondition(() => this.gameGlobals.TeleportMovement && GetIssuedOrderIdBJ() === 851971);
-        this.trig.AddAction(() => SetUnitPosition(GetOrderedUnit(), GetOrderPointX(), GetOrderPointY()));
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER);
+        this.trig.addCondition(() => this.gameGlobals.TeleportMovement && GetIssuedOrderIdBJ() === 851971);
+        this.trig.addAction(() => SetUnitPosition(GetOrderedUnit(), GetOrderPointX(), GetOrderPointY()));
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER);
     }
 }

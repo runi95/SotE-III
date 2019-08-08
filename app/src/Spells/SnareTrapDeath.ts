@@ -9,15 +9,15 @@ export class SnareTrapDeath {
     private readonly trig: Trigger = new Trigger();
 
     constructor() {
-        this.trig.AddCondition(() => {
+        this.trig.addCondition(() => {
             return GetUnitTypeId(GetTriggerUnit()) === this.unitTypeId;
         });
 
-        this.trig.AddAction(() => {
+        this.trig.addAction(() => {
             const loc: location = GetUnitLoc(GetDyingUnit());
             const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                     const dummy: unit = CreateUnit(GetOwningPlayer(GetDyingUnit()),
                                                    this.dummyUnitTypeId, GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit()), bj_UNIT_FACING);
@@ -28,7 +28,7 @@ export class SnareTrapDeath {
             });
 
             RemoveLocation(loc);
-            grp.Destroy();
+            grp.destroy();
         });
     }
 

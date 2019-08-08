@@ -33,14 +33,14 @@ export class PiercingBlade extends Spell {
         IssuePointOrder(dummy, 'move', x, y);
 
         let ticks: number = 40;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
 
             const loc: location = GetUnitLoc(dummy);
             const grp: GroupInRange = new GroupInRange(50.00, loc);
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
                                                    GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -49,11 +49,11 @@ export class PiercingBlade extends Spell {
             });
 
             RemoveLocation(loc);
-            grp.Destroy();
+            grp.destroy();
 
             if (ticks <= 0) {
                 RemoveUnit(dummy);
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

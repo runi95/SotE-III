@@ -36,7 +36,7 @@ export class BurnVictim implements DamageEvent {
         const damage: number = 5 * abilityLevel + intelligence;
 
         let ticks: number = 5;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;
 
@@ -44,7 +44,7 @@ export class BurnVictim implements DamageEvent {
 
             if (ticks <= 0) {
                 UnitRemoveAbility(targ, this.dummyAbilityId);
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

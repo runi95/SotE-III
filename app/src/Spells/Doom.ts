@@ -21,7 +21,7 @@ export class Doom extends Spell {
         UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
         let ticks: number = 10;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.75, true, () => {
             ticks--;
 
@@ -32,7 +32,7 @@ export class Doom extends Spell {
             const r: rect = Rect(rngX - 175.0, rngY - 175.0, rngX + 175.0, rngY + 175.0);
             const grp: Group = new Group(GetUnitsInRectAll(r));
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                     UnitDamageTargetBJ(GetTriggerUnit(), GetEnumUnit(),
                                        damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
@@ -40,11 +40,11 @@ export class Doom extends Spell {
             });
 
             RemoveRect(r);
-            grp.Destroy();
+            grp.destroy();
             DestroyEffect(eff);
 
             if (ticks <= 0) {
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

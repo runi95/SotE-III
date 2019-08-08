@@ -17,7 +17,7 @@ export class TimerUtils {
         }
     }
 
-    public NewTimer(): Timer {
+    public newTimer(): Timer {
         const t: Node<Timer> | undefined = this.timerQueue.pop();
         if (t === undefined) {
             BJDebugMsg('Warning: Exceeded timer QUANTITY, make sure all timers are getting recycled correctly!');
@@ -27,7 +27,7 @@ export class TimerUtils {
         return t.value;
     }
 
-    public ReleaseTimer(t: Timer): void {
+    public releaseTimer(t: Timer): void {
         if (t === undefined) {
             return BJDebugMsg('Warning: attempt to release an undefined timer');
         }

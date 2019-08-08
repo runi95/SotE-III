@@ -32,7 +32,7 @@ export class GoblinBombShip extends Spell {
         UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, summon);
 
         let ticks: number = 15;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.10, true, () => {
             ticks--;
 
@@ -43,19 +43,19 @@ export class GoblinBombShip extends Spell {
             if (ticks === 5) {
                 const grp: GroupInRange = new GroupInRange(300, loc);
 
-                grp.For(() => {
+                grp.for(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
                 RemoveLocation(loc);
-                grp.Destroy();
+                grp.destroy();
             }
 
             if (ticks <= 0) {
                 DestroyEffect(eff);
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

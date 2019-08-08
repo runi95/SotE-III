@@ -9,8 +9,8 @@ export abstract class Teleporter {
         this.exitRegion = exitRegion;
         this.entranceRegion = entranceRegion;
 
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterEnterRectSimple(this.entranceRegion);
+        this.trig.addAction(() => this.action());
+        this.trig.registerEnterRectSimple(this.entranceRegion);
     }
 
     protected action(): void {

@@ -6,9 +6,9 @@ export class Combust {
     private readonly trig: Trigger = new Trigger();
 
     constructor() {
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);
     }
 
     private condition(): boolean {
@@ -23,13 +23,13 @@ export class Combust {
         const grp: GroupInRange = new GroupInRange(150, loc);
         DestroyEffect(AddSpecialEffectLoc('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl', loc));
 
-        grp.For(() => {
+        grp.for(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

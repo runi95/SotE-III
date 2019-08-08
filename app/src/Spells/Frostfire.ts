@@ -21,7 +21,7 @@ export class Frostfire extends Spell {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
 
         let ticks: number = 20;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.10, true, () => {
             ticks--;
 
@@ -34,7 +34,7 @@ export class Frostfire extends Spell {
             SetUnitFlyHeightBJ(dummy, 10.00, 100.00);
 
             if (ticks <= 0) {
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
 

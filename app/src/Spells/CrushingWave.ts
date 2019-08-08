@@ -31,21 +31,21 @@ export class CrushingWave extends Spell {
         IssuePointOrder(dummy, 'move', x, y);
 
         let ticks: number = travelTime;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
 
             const loc: location = GetUnitLoc(dummy);
             const grp: GroupInRange = new GroupInRange(75.00, loc);
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
             RemoveLocation(loc);
-            grp.Destroy();
+            grp.destroy();
 
             if (ticks <= 0) {
                 const detonationLoc: location = GetUnitLoc(dummy);
@@ -54,7 +54,7 @@ export class CrushingWave extends Spell {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl',
                                                GetUnitX(dummy), GetUnitY(dummy)));
 
-                detonationGroup.For(() => {
+                detonationGroup.for(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), 30.00 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
@@ -62,9 +62,9 @@ export class CrushingWave extends Spell {
 
                 RemoveUnit(dummy);
                 RemoveLocation(detonationLoc);
-                detonationGroup.Destroy();
+                detonationGroup.destroy();
 
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

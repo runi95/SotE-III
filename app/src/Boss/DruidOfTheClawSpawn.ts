@@ -10,9 +10,9 @@ export class DruidOfTheClawSpawn {
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
 
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterEnterRectSimple(this.region);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerEnterRectSimple(this.region);
     }
 
     private condition(): boolean {

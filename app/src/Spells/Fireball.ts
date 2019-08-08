@@ -32,36 +32,36 @@ export class Fireball extends Spell {
             DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
             const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
             RemoveLocation(loc);
-            grp.Destroy();
+            grp.destroy();
         } else {
             const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, spawnX, spawnY, angle);
 
             IssuePointOrder(dummy, 'move', x, y);
 
             const travelTime: number = distance / 500.00;
-            const t: Timer = this.timerUtils.NewTimer();
+            const t: Timer = this.timerUtils.newTimer();
             t.start(0.25 + travelTime, false, () => {
                 DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
                 RemoveUnit(dummy);
                 const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-                grp.For(() => {
+                grp.for(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
                 RemoveLocation(loc);
-                grp.Destroy();
+                grp.destroy();
 
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             });
         }
     }

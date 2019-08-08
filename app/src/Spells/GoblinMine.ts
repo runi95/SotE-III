@@ -23,7 +23,7 @@ export class GoblinMine extends Spell {
         const summon: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitTypeId, x, y, bj_UNIT_FACING);
         const damage: number = 100 * abilityLevel + 2 * intelligence;
 
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(2, false, () => {
             const loc: location = GetUnitLoc(summon);
             const grp: GroupInRange = new GroupInRange(300.00, loc);
@@ -33,7 +33,7 @@ export class GoblinMine extends Spell {
             DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl',
                                            GetUnitX(summon), GetUnitY(summon)));
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
@@ -41,9 +41,9 @@ export class GoblinMine extends Spell {
 
             RemoveUnit(summon);
             RemoveLocation(loc);
-            grp.Destroy();
+            grp.destroy();
 
-            this.timerUtils.ReleaseTimer(t);
+            this.timerUtils.releaseTimer(t);
         });
     }
 }

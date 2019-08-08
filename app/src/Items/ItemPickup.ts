@@ -5,9 +5,9 @@ export abstract class ItemPickup {
     protected readonly trig: Trigger = new Trigger();
 
     protected constructor() {
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_PICKUP_ITEM);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_PICKUP_ITEM);
     }
 
     protected condition(): boolean {

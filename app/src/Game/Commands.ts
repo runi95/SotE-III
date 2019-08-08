@@ -8,13 +8,13 @@ export class Commands {
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
 
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterPlayerChatEvent(Player(0), '-', false);
-        this.trig.RegisterPlayerChatEvent(Player(1), '-', false);
-        this.trig.RegisterPlayerChatEvent(Player(2), '-', false);
-        this.trig.RegisterPlayerChatEvent(Player(3), '-', false);
-        this.trig.RegisterPlayerChatEvent(Player(4), '-', false);
-        this.trig.RegisterPlayerChatEvent(Player(5), '-', false);
+        this.trig.addAction(() => this.action());
+        this.trig.registerPlayerChatEvent(Player(0), '-', false);
+        this.trig.registerPlayerChatEvent(Player(1), '-', false);
+        this.trig.registerPlayerChatEvent(Player(2), '-', false);
+        this.trig.registerPlayerChatEvent(Player(3), '-', false);
+        this.trig.registerPlayerChatEvent(Player(4), '-', false);
+        this.trig.registerPlayerChatEvent(Player(5), '-', false);
     }
 
     private action(): void {

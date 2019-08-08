@@ -18,7 +18,7 @@ export class LoadedCannonUse implements DamageEvent {
         const grp: GroupInRange = new GroupInRange(200.00, loc);
         const damage: number = 0.10 * globals.DamageEventAmount;
 
-        grp.For(() => {
+        grp.for(() => {
             if (GetEnumUnit() !== globals.DamageEventTarget as unit &&
                 IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(globals.DamageEventSource as unit)) &&
                 UnitAlive(GetEnumUnit())) {
@@ -27,6 +27,6 @@ export class LoadedCannonUse implements DamageEvent {
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

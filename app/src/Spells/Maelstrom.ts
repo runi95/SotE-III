@@ -24,22 +24,22 @@ export class Maelstrom extends Spell {
         const loc: location = GetUnitLoc(dummy);
 
         let ticks: number = 100;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
 
             const grp: GroupInRange = new GroupInRange(500.00, loc);
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), trigOwner) && UnitAlive(GetEnumUnit())) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
-            grp.Destroy();
+            grp.destroy();
 
             if (ticks <= 0) {
                 RemoveUnit(dummy);
                 RemoveLocation(loc);
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

@@ -20,14 +20,14 @@ export class Permafrost extends Spell {
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 50.00 * abilityLevel + 1.00 * intelligence;
 
-        grp.For(() => {
+        grp.for(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                this.stunUtils.StunUnit(GetEnumUnit(), 2);
+                this.stunUtils.stunUnit(GetEnumUnit(), 2);
             }
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

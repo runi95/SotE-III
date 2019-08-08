@@ -13,7 +13,7 @@ export class Region {
         this.maxY = maxY;
     }
 
-    public GetCenter(): Point {
+    public getCenter(): Point {
         return new Point((this.minX + this.maxX) / 2, (this.minY + this.maxY) / 2);
     }
 }

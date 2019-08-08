@@ -21,12 +21,12 @@ export class DeathGrasp extends Spell {
         DestroyEffect(AddSpecialEffectTarget('war3mapImported\\Death Grip.mdx', targ, 'origin'));
         UnitDamageTargetBJ(targ, trig, 100, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
-        this.stunUtils.StunUnit(targ, 1);
+        this.stunUtils.stunUnit(targ, 1);
 
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(1, false, () => {
             SetUnitPosition(targ, GetUnitX(trig), GetUnitY(trig));
-            this.timerUtils.ReleaseTimer(t);
+            this.timerUtils.releaseTimer(t);
         });
     }
 }

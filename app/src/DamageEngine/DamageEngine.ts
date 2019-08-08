@@ -10,15 +10,15 @@ export class DamageEngine {
     /**
      * Damage Event Arrays
      */
-    private initialDamageEvent: DamageEvent[] = [];
-    private zeroDamageEvent: DamageEvent[] = [];
-    private damageEventAOEActions: DamageEvent[] = [];
-    private damageEventLethalActions: DamageEvent[] = [];
-    private initialDamageModificationEvent: DamageEvent[] = [];
-    private multiplicativeDamageModificationEvent: DamageEvent[] = [];
-    private preFinalDamageModificationEvent: DamageEvent[] = [];
-    private finalDamageModificationEvent: DamageEvent[] = [];
-    private afterDamageEvent: DamageEvent[] = [];
+    private initialDamageEvents: DamageEvent[] = [];
+    private zeroDamageEvents: DamageEvent[] = [];
+    private damageEventAOEEvents: DamageEvent[] = [];
+    private damageEventLethalEvents: DamageEvent[] = [];
+    private initialDamageModificationEvents: DamageEvent[] = [];
+    private multiplicativeDamageModificationEvents: DamageEvent[] = [];
+    private preFinalDamageModificationEvents: DamageEvent[] = [];
+    private finalDamageModificationEvents: DamageEvent[] = [];
+    private afterDamageEvents: DamageEvent[] = [];
 
     /**
      * Damage Engine Variables
@@ -59,114 +59,114 @@ export class DamageEngine {
 
     constructor(damageEngineGlobals: DamageEngineGlobals) {
         this.damageEngineGlobals = damageEngineGlobals;
-        this.otrg.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGED);
-        this.otrg.AddFilterFuncCondition(Filter(() => this.OnDamage()));
+        this.otrg.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGED);
+        this.otrg.addFilterFuncCondition(Filter(() => this.OnDamage()));
 
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGING);
-        this.trig.AddFilterFuncCondition(Filter(() => this.OnPreDamage()));
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGING);
+        this.trig.addFilterFuncCondition(Filter(() => this.OnPreDamage()));
     }
 
     /**
      * Adds an event that triggers right before a unit takes damage
      *  - Do not change the damage in any way during these events!
      */
-    public AddInitialDamageEvent(event: DamageEvent): void {
-        this.initialDamageEvent.push(event);
+    public addInitialDamageEvent(event: DamageEvent): void {
+        this.initialDamageEvents.push(event);
     }
 
     /**
      * Adds an event that triggers right after a unit has taken 0 damage
      */
-    public AddZeroDamageEvent(event: DamageEvent): void {
-        this.zeroDamageEvent.push(event);
+    public addZeroDamageEvent(event: DamageEvent): void {
+        this.zeroDamageEvents.push(event);
     }
 
     /**
      * Add an event that adds or subtracts damage before it has been applied
      */
-    public AddInitialDamageModificationEvent(event: DamageEvent): void {
-        this.initialDamageModificationEvent.push(event);
+    public addInitialDamageModificationEvent(event: DamageEvent): void {
+        this.initialDamageModificationEvents.push(event);
     }
 
     /**
      * Add an event that multiplies or subtracts damage before it has been applied
      */
-    public AddMultiplicativeDamageModificationEvent(event: DamageEvent): void {
-        this.multiplicativeDamageModificationEvent.push(event);
+    public addMultiplicativeDamageModificationEvent(event: DamageEvent): void {
+        this.multiplicativeDamageModificationEvents.push(event);
     }
 
     /**
      * Adds an event that triggers right before armor and resistance has been factored in
      */
-    public AddPreFinalDamageModificationEvent(event: DamageEvent): void {
-        this.preFinalDamageModificationEvent.push(event);
+    public addPreFinalDamageModificationEvent(event: DamageEvent): void {
+        this.preFinalDamageModificationEvents.push(event);
     }
 
     /**
      * Adds an event that triggers right before a unit takes lethal damage
      */
-    public AddLethalDamageEvent(event: DamageEvent): void {
-        this.damageEventLethalActions.push(event);
+    public addLethalDamageEvent(event: DamageEvent): void {
+        this.damageEventLethalEvents.push(event);
     }
 
     /**
      * Adds an event that triggers immediately once more than 1 unit has taken
      * damage from the same source
      */
-    public AddAOEDamageEvent(event: DamageEvent): void {
-        this.damageEventAOEActions.push(event);
+    public addAOEDamageEvent(event: DamageEvent): void {
+        this.damageEventAOEEvents.push(event);
     }
 
     /**
      * Adds an event that triggers after all other damage modifiers
      * have been factored in (even armor and resistance)
      */
-    public AddFinalDamageModificationEvent(event: DamageEvent): void {
-        this.finalDamageModificationEvent.push(event);
+    public addFinalDamageModificationEvent(event: DamageEvent): void {
+        this.finalDamageModificationEvents.push(event);
     }
 
     /**
      * Adds an event that triggers after damage has been applied
      * to the target
      */
-    public AddAfterDamageEvent(event: DamageEvent): void {
-        this.afterDamageEvent.push(event);
+    public addAfterDamageEvent(event: DamageEvent): void {
+        this.afterDamageEvents.push(event);
     }
 
-    private InitialDamageEvent(): void {
-        this.initialDamageEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private initialDamageEvent(): void {
+        this.initialDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private ZeroDamageEvent(): void {
-        this.zeroDamageEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private zeroDamageEvent(): void {
+        this.zeroDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private DamageEventAOE(): void {
-        this.damageEventAOEActions.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private damageEventAOE(): void {
+        this.damageEventAOEEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private DamageEventLethal(): void {
-        this.damageEventLethalActions.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private damageEventLethal(): void {
+        this.damageEventLethalEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private InitialDamageModificationEvent(): void {
-        this.initialDamageModificationEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private initialDamageModificationEvent(): void {
+        this.initialDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private MultiplicativeDamageModificationEvent(): void {
-        this.multiplicativeDamageModificationEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private multiplicativeDamageModificationEvent(): void {
+        this.multiplicativeDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private PreFinalDamageModificationEvent(): void {
-        this.preFinalDamageModificationEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private preFinalDamageModificationEvent(): void {
+        this.preFinalDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private FinalDamageModificationEvent(): void {
-        this.finalDamageModificationEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private finalDamageModificationEvent(): void {
+        this.finalDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private AfterDamageEvent(): void {
-        this.afterDamageEvent.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+    private afterDamageEvent(): void {
+        this.afterDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
     }
 
     private Error(): void {
@@ -183,7 +183,7 @@ export class DamageEngine {
 
     private OnAOEEnd(): void {
         if (this.damageEngineGlobals.DamageEventAOE > 1) {
-            this.DamageEventAOE();
+            this.damageEventAOE();
             this.damageEngineGlobals.DamageEventAOE = 1;
         }
 
@@ -200,7 +200,7 @@ export class DamageEngine {
             if (this.damageEngineGlobals.DamageEventPrevAmt !== 0.00
                 && this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
                 this.recursive = true;
-                this.AfterDamageEvent();
+                this.afterDamageEvent();
                 this.recursive = false;
             }
 
@@ -345,12 +345,12 @@ export class DamageEngine {
             this.damageEngineGlobals.DamageEventArmorPierced = 0.00;
             if (!this.damageEngineGlobals.DamageEventOverride) {
                 this.recursive = true;
-                this.InitialDamageModificationEvent(); // DamageModifierEvent 1.00
+                this.initialDamageModificationEvent(); // DamageModifierEvent 1.00
                 this.damageEngineGlobals.DamageEventOverride = this.damageEngineGlobals.DamageEventOverride ||
                     this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
                 if (!this.damageEngineGlobals.DamageEventOverride) {
-                    this.MultiplicativeDamageModificationEvent();
-                    this.PreFinalDamageModificationEvent();
+                    this.multiplicativeDamageModificationEvent();
+                    this.preFinalDamageModificationEvent();
                 }
                 this.recursive = false;
 
@@ -425,7 +425,7 @@ export class DamageEngine {
         let r: number = GetEventDamage();
         this.recursive = true;
         if (this.damageEngineGlobals.DamageEventPrevAmt === 0.00) {
-            this.ZeroDamageEvent();
+            this.zeroDamageEvent();
         } else {
             if (this.damageEngineGlobals.DamageEventAmount !== 0.00 && r !== 0.00) {
                 this.damageEngineGlobals.DamageScalingWC3 = r / this.damageEngineGlobals.DamageEventAmount;
@@ -439,12 +439,12 @@ export class DamageEngine {
             this.damageEngineGlobals.DamageEventAmount = r * this.damageEngineGlobals.DamageScalingWC3;
 
             if (this.damageEngineGlobals.DamageEventAmount > 0.00) {
-                this.FinalDamageModificationEvent(); // event 4.00
+                this.finalDamageModificationEvent(); // event 4.00
 
                 this.damageEngineGlobals.LethalDamageHP = GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) -
                     this.damageEngineGlobals.DamageEventAmount;
                 if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
-                    this.DamageEventLethal();
+                    this.damageEventLethal();
 
                     this.damageEngineGlobals.DamageEventAmount = GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) -
                         this.damageEngineGlobals.LethalDamageHP;
@@ -457,7 +457,7 @@ export class DamageEngine {
             }
             BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
             if (this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
-                this.InitialDamageEvent(); // event 1.00
+                this.initialDamageEvent(); // event 1.00
             }
         }
 

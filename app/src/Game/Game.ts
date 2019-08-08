@@ -68,7 +68,7 @@ export class Game {
         this.commands = new Commands(this.gameGlobals);
         this.itemController = new ItemController(this.gameGlobals, this.arcaneVault);
 
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(240, true, () => {
             const newX: number = GetRandomInt(0, 10630) - 2370;
             const newY: number = GetRandomInt(0, 25400) - 12700;

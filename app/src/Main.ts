@@ -16,8 +16,8 @@ ceres.addHook('main::after', () => {
 
     xpcall(() => {
         const init: Trigger = new Trigger();
-        init.RegisterTimerEvent(0.00, false);
-        init.AddAction(() => Main());
+        init.registerTimerEvent(0.00, false);
+        init.addAction(() => Main());
     },     (err) => {
         Log.Fatal(err);
     });

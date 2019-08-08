@@ -10,9 +10,9 @@ export class ClockwerkGoblinDeath {
     constructor(stunUtils: StunUtils) {
         this.stunUtils = stunUtils;
 
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);
     }
 
     private condition(): boolean {
@@ -25,14 +25,14 @@ export class ClockwerkGoblinDeath {
         const loc: location = GetUnitLoc(trig);
         const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-        grp.For(() => {
+        grp.for(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                this.stunUtils.StunUnit(GetEnumUnit(), 1);
+                this.stunUtils.stunUnit(GetEnumUnit(), 1);
             }
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

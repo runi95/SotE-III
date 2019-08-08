@@ -10,7 +10,7 @@ export class BeastSense extends Spell {
     protected action(): void {
         const loc: location = GetUnitLoc(GetTriggerUnit());
         const grp: GroupInRange = new GroupInRange(3000.00, loc);
-        grp.For(() => {
+        grp.for(() => {
             if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
                 const x: number = GetUnitX(GetEnumUnit());
                 const y: number = GetUnitY(GetEnumUnit());
@@ -23,6 +23,6 @@ export class BeastSense extends Spell {
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

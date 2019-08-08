@@ -19,12 +19,12 @@ export class Hero {
         this.facingAngle = facingAngle;
         this.gameGlobals = gameGlobals;
 
-        this.trig.AddCondition(() => {
+        this.trig.addCondition(() => {
             return !this.isHeroPicked && GetUnitTypeId(GetEnteringUnit()) === FourCC('e001');
         });
         const statueUnit: unit = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE),
                                             this.heroId, this.dummyX, this.dummyY, this.facingAngle);
-        this.trig.AddAction(() => {
+        this.trig.addAction(() => {
             this.isHeroPicked = true;
             RemoveUnit(GetEnteringUnit());
             RemoveUnit(statueUnit);
@@ -32,6 +32,6 @@ export class Hero {
                        GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[GetPlayerId(GetOwningPlayer(GetEnteringUnit()))]),
                        GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[GetPlayerId(GetOwningPlayer(GetEnteringUnit()))]), bj_UNIT_FACING);
         });
-        this.trig.RegisterEnterRectSimple((() => this.selectRect)());
+        this.trig.registerEnterRectSimple((() => this.selectRect)());
     }
 }

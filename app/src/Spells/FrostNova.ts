@@ -24,14 +24,14 @@ export class FrostNova extends Spell {
         const damage: number = 200.00 * abilityLevel + 3.00 * intelligence;
         const brillianceAura: effect = AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Drain\\ManaDrainCaster.mdl');
 
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(2, false, () => {
             DestroyEffect(brillianceAura);
             DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl'));
 
             const grp: GroupInRange = new GroupInRange(200.00, loc);
 
-            grp.For(() => {
+            grp.for(() => {
                 if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
                     UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
@@ -46,8 +46,8 @@ export class FrostNova extends Spell {
             });
 
             RemoveLocation(loc);
-            grp.Destroy();
-            this.timerUtils.ReleaseTimer(t);
+            grp.destroy();
+            this.timerUtils.releaseTimer(t);
         });
     }
 }

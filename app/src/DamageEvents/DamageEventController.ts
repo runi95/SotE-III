@@ -15,19 +15,19 @@ import { TheAegis } from './TheAegis';
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
         // Initial damage events
-        damageEngine.AddInitialDamageEvent(new ManaBrilliance());
-        damageEngine.AddInitialDamageEvent(new SpiritOfFrost(gameGlobals));
-        damageEngine.AddInitialDamageEvent(new BurnVictim(timerUtils));
-        damageEngine.AddInitialDamageEvent(new TheAegis(timerUtils));
+        damageEngine.addInitialDamageEvent(new ManaBrilliance());
+        damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals));
+        damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
+        damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
 
         // Initial damage modification events
-        damageEngine.AddInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));
-        damageEngine.AddInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
-        damageEngine.AddInitialDamageModificationEvent(new Backstab());
-        damageEngine.AddInitialDamageModificationEvent(new Envenom(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new Backstab());
+        damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
 
         // Final damage modification events
-        damageEngine.AddFinalDamageModificationEvent(new ManaShield());
-        damageEngine.AddFinalDamageModificationEvent(new Immunity(gameGlobals));
+        damageEngine.addFinalDamageModificationEvent(new ManaShield());
+        damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
     }
 }

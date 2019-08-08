@@ -24,7 +24,7 @@ export class Shackles extends Spell {
         UnitAddAbility(targ, this.dummySlowAbilityId);
 
         let ticks: number = 100;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
 
@@ -42,7 +42,7 @@ export class Shackles extends Spell {
                 UnitRemoveAbility(targ, this.dummySlowAbilityId);
                 DestroyLightning(light);
 
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

@@ -6,7 +6,7 @@ export abstract class SpawnTeleporter extends Teleporter {
     protected constructor(entranceRegion: rect, exitRegion: rect) {
         super(entranceRegion, exitRegion);
 
-        this.trig.AddCondition(() => this.condition());
+        this.trig.addCondition(() => this.condition());
     }
 
     protected condition(): boolean {

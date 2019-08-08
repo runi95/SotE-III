@@ -5,7 +5,7 @@ export class Group {
         this.grp = grp;
     }
 
-    public For(exp: (u: unit) => void): void {
+    public for(exp: (u: unit) => void): void {
         let u: unit = FirstOfGroup(this.grp);
         while (u) {
             exp(u);
@@ -14,7 +14,7 @@ export class Group {
         }
     }
 
-    public Destroy(): void {
+    public destroy(): void {
         DestroyGroup(this.grp);
     }
 }

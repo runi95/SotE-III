@@ -30,7 +30,7 @@ export class SummonHawk extends Spell {
         // UnitApplyTimedLifeBJ(60, 'BTLF', summon)
 
         const maxDistance: number = 1200;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(trig);
             const newY: number = GetUnitY(trig);
@@ -42,7 +42,7 @@ export class SummonHawk extends Spell {
             }
 
             if (!UnitAlive(summon)) {
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

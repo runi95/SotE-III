@@ -28,14 +28,14 @@ export class DefenseSystem extends Spell {
         SetUnitScalePercent(trig, 150, 150, 150);
         BlzSetUnitArmor(trig, BlzGetUnitArmor(trig) + bonusArmor);
 
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(10, false, () => {
             UnitRemoveAbilityBJ(this.defenseSystemDummyAbilityId, trig);
             this.gameGlobals.PlayerPhysicalBlock[playerId] -= bonusPhysical;
             SetUnitScalePercent(trig, 100, 100, 100);
             BlzSetUnitArmor(trig, BlzGetUnitArmor(trig) - bonusArmor);
 
-            this.timerUtils.ReleaseTimer(t);
+            this.timerUtils.releaseTimer(t);
         });
     }
 }

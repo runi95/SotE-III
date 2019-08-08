@@ -14,7 +14,7 @@ export class PsychicScream extends Spell {
         const loc: location = Location(x, y);
         const grp: GroupInRange = new GroupInRange(1000, loc);
 
-        grp.For(() => {
+        grp.for(() => {
             if (IsUnitEnemy(GetEnumUnit(), Player(playerId)) && UnitAlive(GetEnumUnit())) {
                 UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 const uX: number = GetUnitX(GetEnumUnit());
@@ -41,6 +41,6 @@ export class PsychicScream extends Spell {
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }

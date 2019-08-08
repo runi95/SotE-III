@@ -22,7 +22,7 @@ export class Rupture extends Spell {
         UnitAddAbilityBJ(this.dummyAbilityId, targ);
 
         let ticks: number = 200;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
             const x: number = GetUnitX(targ);
@@ -34,7 +34,7 @@ export class Rupture extends Spell {
 
             if (ticks <= 0) {
                 UnitRemoveAbility(targ, this.dummyAbilityId);
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

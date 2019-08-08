@@ -7,15 +7,15 @@ export class StunnedUnit {
         this.duration = duration;
     }
 
-    public GetUnit(): unit {
+    public getUnit(): unit {
         return this.unit;
     }
 
-    public AddDuration(duration: number): void {
+    public addDuration(duration: number): void {
         this.duration += duration;
     }
 
-    public GetDuration(): number {
+    public getDuration(): number {
         return this.duration;
     }
 }

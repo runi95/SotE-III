@@ -30,7 +30,7 @@ export class Swarm extends Spell {
         FogModifierStart(fog);
 
         let ticks: number = 5;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(0.03, true, () => {
             ticks--;
 
@@ -43,14 +43,14 @@ export class Swarm extends Spell {
                 const grp: GroupInRange = new GroupInRange(100, loc);
                 const playerId: number = GetPlayerId(GetOwningPlayer(trig));
 
-                grp.For(() => {
+                grp.for(() => {
                     if (IsUnitEnemy(GetEnumUnit(), Player(playerId))) {
                         UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
                 RemoveLocation(loc);
-                grp.Destroy();
+                grp.destroy();
             } else {
                 x = x - multX;
                 y = y - multY;
@@ -62,7 +62,7 @@ export class Swarm extends Spell {
                 FogModifierStop(fog);
                 DestroyFogModifier(fog);
 
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

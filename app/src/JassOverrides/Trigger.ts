@@ -7,7 +7,7 @@ export class Trigger {
         this.nativeTrigger = CreateTrigger();
     }
 
-    public static EvaluateCondition(func: () => boolean): boolean {
+    public static evaluateCondition(func: () => boolean): boolean {
         let answer: boolean = false;
 
         xpcall(() => {
@@ -24,57 +24,57 @@ export class Trigger {
         Log.Fatal(err);
     }
 
-    public AddAction(actionFunc: () => void): triggeraction {
+    public addAction(actionFunc: () => void): triggeraction {
         return TriggerAddAction(this.nativeTrigger, () => xpcall(() => actionFunc(), err => Trigger.printError(err)));
 
     }
 
-    public RegisterTimerEvent(timeout: number, periodic: boolean): event {
+    public registerTimerEvent(timeout: number, periodic: boolean): event {
         return TriggerRegisterTimerEvent(this.nativeTrigger, timeout, periodic);
     }
 
-    public RegisterTimerEventSingle(timeout: number): event {
+    public registerTimerEventSingle(timeout: number): event {
         return TriggerRegisterTimerEventSingle(this.nativeTrigger, timeout);
     }
 
-    public RegisterTimerEventPeriodic(timeout: number): event {
+    public registerTimerEventPeriodic(timeout: number): event {
         return TriggerRegisterTimerEventPeriodic(this.nativeTrigger, timeout);
     }
 
-    public RegisterPlayerStateEvent(whichPlayer: player, whichState: playerstate, opcode: limitop, limitval: number): event {
+    public registerPlayerStateEvent(whichPlayer: player, whichState: playerstate, opcode: limitop, limitval: number): event {
         return TriggerRegisterPlayerStateEvent(this.nativeTrigger, whichPlayer, whichState, opcode, limitval);
     }
 
-    public RegisterDeathEvent(whichWidget: widget): event {
+    public registerDeathEvent(whichWidget: widget): event {
         return TriggerRegisterDeathEvent(this.nativeTrigger, whichWidget);
     }
 
-    public RegisterDialogEventBJ(whichDialog: dialog): event {
+    public registerDialogEventBJ(whichDialog: dialog): event {
         return TriggerRegisterDialogEventBJ(this.nativeTrigger, whichDialog);
     }
 
 
-    public RegisterEnterRectSimple(r: rect): event {
+    public registerEnterRectSimple(r: rect): event {
         return TriggerRegisterEnterRectSimple(this.nativeTrigger, r);
     }
 
-    public AddCondition(func: () => boolean): triggercondition {
-        return TriggerAddCondition(this.nativeTrigger, Condition(() => Trigger.EvaluateCondition(func)));
+    public addCondition(func: () => boolean): triggercondition {
+        return TriggerAddCondition(this.nativeTrigger, Condition(() => Trigger.evaluateCondition(func)));
     }
 
-    public AddFilterFuncCondition(filter: filterfunc): triggercondition {
+    public addFilterFuncCondition(filter: filterfunc): triggercondition {
         return TriggerAddCondition(this.nativeTrigger, filter);
     }
 
-    public RegisterAnyUnitEventBJ(whichEvent: playerunitevent): void {
+    public registerAnyUnitEventBJ(whichEvent: playerunitevent): void {
         TriggerRegisterAnyUnitEventBJ(this.nativeTrigger, whichEvent);
     }
 
-    public RegisterPlayerChatEvent(whichPlayer: player, chatMessageToDetect: string, exactMatchOnly: boolean): event {
+    public registerPlayerChatEvent(whichPlayer: player, chatMessageToDetect: string, exactMatchOnly: boolean): event {
         return TriggerRegisterPlayerChatEvent(this.nativeTrigger, whichPlayer, chatMessageToDetect, exactMatchOnly);
     }
 
-    public RegisterPlayerUnitEventSimple(whichPlayer: player, whichEvent: playerunitevent): event {
+    public registerPlayerUnitEventSimple(whichPlayer: player, whichEvent: playerunitevent): event {
         return TriggerRegisterPlayerUnitEventSimple(this.nativeTrigger, whichPlayer, whichEvent);
     }
 }

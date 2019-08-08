@@ -35,14 +35,14 @@ export class TheAegis implements DamageEvent {
         UnitApplyTimedLifeBJ(3, this.timedLifeBuffId, dummy);
 
         let ticks: number = 100;
-        const t: Timer = this.timerUtils.NewTimer();
+        const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;
 
             SetItemCharges(theAegis, 100 - ticks);
 
             if (ticks <= 0) {
-                this.timerUtils.ReleaseTimer(t);
+                this.timerUtils.releaseTimer(t);
             }
         });
     }

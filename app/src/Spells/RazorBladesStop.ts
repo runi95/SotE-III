@@ -8,9 +8,9 @@ export class RazorBladesStop {
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
 
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_ORDER);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_ORDER);
     }
 
     private condition(): boolean {

@@ -7,8 +7,8 @@ export class FrostFireDamage {
     private readonly trig: Trigger = new Trigger();
 
     constructor() {
-        this.trig.AddCondition(() => GetUnitTypeId(GetTriggerUnit()) === this.unitTypeId);
-        this.trig.AddAction(() => {
+        this.trig.addCondition(() => GetUnitTypeId(GetTriggerUnit()) === this.unitTypeId);
+        this.trig.addAction(() => {
             const x: number = GetUnitX(GetTriggerUnit());
             const y: number = GetUnitY(GetTriggerUnit());
             const dummy: unit = CreateUnit(GetOwningPlayer(GetTriggerUnit()), this.dummyUnitTypeId, x, y, bj_UNIT_FACING);

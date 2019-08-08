@@ -18,23 +18,23 @@ export class StunUtils {
      * @param unit - The unit to stun
      * @param duration - The duration (in seconds) to stun the unit for
      */
-    public StunUnit(unit: unit, duration: number): void {
+    public stunUnit(unit: unit, duration: number): void {
         const handleId: number = GetHandleIdBJ(unit);
         if (this.stunnedUnits.has(handleId)) {
-            (this.stunnedUnits.get(handleId) as StunnedUnit).AddDuration(duration);
+            (this.stunnedUnits.get(handleId) as StunnedUnit).addDuration(duration);
         } else {
             const stunnedUnit: StunnedUnit = new StunnedUnit(unit, duration);
             this.stunnedUnits.set(handleId, stunnedUnit);
-            UnitAddAbilityBJ(this.stunAbilityId, stunnedUnit.GetUnit());
-            PauseUnit(stunnedUnit.GetUnit(), true);
-            const t: Timer = this.timerUtils.NewTimer();
+            UnitAddAbilityBJ(this.stunAbilityId, stunnedUnit.getUnit());
+            PauseUnit(stunnedUnit.getUnit(), true);
+            const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
-                stunnedUnit.AddDuration(-0.05);
-                if (stunnedUnit.GetDuration() <= 0) {
-                    UnitRemoveAbility(stunnedUnit.GetUnit(), this.stunAbilityId);
-                    PauseUnit(stunnedUnit.GetUnit(), false);
+                stunnedUnit.addDuration(-0.05);
+                if (stunnedUnit.getDuration() <= 0) {
+                    UnitRemoveAbility(stunnedUnit.getUnit(), this.stunAbilityId);
+                    PauseUnit(stunnedUnit.getUnit(), false);
                     this.stunnedUnits.delete(handleId);
-                    this.timerUtils.ReleaseTimer(t);
+                    this.timerUtils.releaseTimer(t);
                 }
             });
         }

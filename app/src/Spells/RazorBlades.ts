@@ -15,9 +15,9 @@ export class RazorBlades {
         this.gameGlobals = gameGlobals;
         this.timerUtils = timerUtils;
 
-        this.trig.AddCondition(() => this.condition());
-        this.trig.AddAction(() => this.action());
-        this.trig.RegisterAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_ORDER);
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_ORDER);
     }
 
     private condition(): boolean {
@@ -50,7 +50,7 @@ export class RazorBlades {
             let ticker: number = 0;
             let tickerOne: number = 0;
             let tickerTwo: number = 180;
-            const t: Timer = this.timerUtils.NewTimer();
+            const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
                 SetUnitPosition(bladeOne, GetUnitX(trig) + 150.00 * CosBJ(tickerOne), GetUnitY(trig) + 150.00 * SinBJ(tickerOne));
                 SetUnitPosition(bladeTwo, GetUnitX(trig) + 150.00 * CosBJ(tickerTwo), GetUnitY(trig) + 150.00 * SinBJ(tickerTwo));
@@ -83,7 +83,7 @@ export class RazorBlades {
                     IssueImmediateOrderBJ(trig, 'undefend');
                     RemoveUnit(bladeOne);
                     RemoveUnit(bladeTwo);
-                    this.timerUtils.ReleaseTimer(t);
+                    this.timerUtils.releaseTimer(t);
                 }
             });
         } else {
@@ -101,7 +101,7 @@ export class RazorBlades {
         const loc: location = GetUnitLoc(blade);
         const grp: GroupInRange = new GroupInRange(aoe, loc);
 
-        grp.For(() => {
+        grp.for(() => {
             if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
                                                GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
@@ -110,6 +110,6 @@ export class RazorBlades {
         });
 
         RemoveLocation(loc);
-        grp.Destroy();
+        grp.destroy();
     }
 }
