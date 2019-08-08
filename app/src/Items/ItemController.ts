@@ -30,13 +30,15 @@ import { Ancile } from './Recipes/Ancile';
 import { AncileDrop } from './Abilities/AncileDrop';
 import { AncilePickup } from './Abilities/AncilePickup';
 import { Fragarach } from './Recipes/Fragarach';
-import {SwordOfFreyr} from "./Recipes/SwordOfFreyr";
+import { SwordOfFreyr } from './Recipes/SwordOfFreyr';
+import { Caduceus } from './Recipes/Caduceus';
+import { CaduceusUse } from './Abilities/CaduceusUse';
 
 export class ItemController {
     private itemAbilities: any[];
     private itemRecipes: any[];
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, arcaneVault: unit) {
         this.itemAbilities = [
             new ClarityPotionUse(),
             new ExecutionerAxe(),
@@ -56,6 +58,7 @@ export class ItemController {
             new TheAegisPickup(gameGlobals),
             new AncileDrop(gameGlobals),
             new AncilePickup(gameGlobals),
+            new CaduceusUse(arcaneVault),
         ];
 
         this.itemRecipes = [
@@ -73,6 +76,7 @@ export class ItemController {
             new Ancile(),
             new Fragarach(),
             new SwordOfFreyr(),
+            new Caduceus(),
         ];
     }
 }

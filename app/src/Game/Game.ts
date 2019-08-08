@@ -28,6 +28,9 @@ export class Game {
     private readonly teleportMovement: TeleportMovement;
 
     private readonly arenaGate: destructable;
+    private readonly ancientOfWonders: unit;
+    private readonly tombOfAncients: unit;
+    private readonly arcaneVault: unit;
 
     constructor() {
         this.gameGlobals = new GameGlobals();
@@ -39,21 +42,32 @@ export class Game {
         this.playerRespawn = new PlayerRespawn(this.gameGlobals);
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils);
         this.teleportController = new TeleportController();
-        this.itemController = new ItemController(this.gameGlobals);
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils, this.damageEngine);
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
+        const ancientOfWondersX: number = I2R(GetRandomInt(0, 10630) - 2370);
+        const ancientOfWondersY: number = I2R(GetRandomInt(0, 25400) - 12700);
+        const tombOfAncientsX: number = I2R(GetRandomInt(0, 10630) - 2370);
+        const tombOfAncientsY: number = I2R(GetRandomInt(0, 25400) - 12700);
+        const arcaneVaultX: number = I2R(GetRandomInt(0, 10630) - 2370);
+        const arcaneVaultY: number = I2R(GetRandomInt(0, 25400) - 12700);
+        this.ancientOfWonders = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'),
+                                           ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
+        this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'),
+                                         tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
+        this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'),
+                                      arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
 
         ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
         this.init();
 
         this.commands = new Commands(this.gameGlobals);
+        this.itemController = new ItemController(this.gameGlobals, this.arcaneVault);
     }
 
     private init(): void {
         this.initializePlayers();
         this.spawnAllCreeps();
-        this.spawnShops();
         this.initializeScoreboard();
         this.enableDebugMode();
         this.printGameModeInfo();
@@ -81,18 +95,6 @@ export class Game {
                                        this.gameGlobals.CreepSpawnAngle[i]),
                             i);
         }
-    }
-
-    private spawnShops(): void {
-        const ancientOfWondersX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const ancientOfWondersY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        const tombOfAncientsX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const tombOfAncientsY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        const arcaneVaultX: number = I2R(GetRandomInt(0, 10630) - 2370);
-        const arcaneVaultY: number = I2R(GetRandomInt(0, 25400) - 12700);
-        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'), ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
-        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'), tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
-        CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
     }
 
     private initializeScoreboard(): void {
