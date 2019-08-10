@@ -181,6 +181,53 @@ export class GameGlobals {
         new Point(14270.00, 1870.00),
         new Point(13486.00, -954.00),
         new Point(12475.00, -2151.00),
+
+        // Burning Archers
+        new Point(-9153.00, -11970.00),
+
+        // Giant Skeleton Warriors
+        new Point(-9145.00, -11707.00),
+        new Point(-8888.00, -11970.00),
+        new Point(-7873.00, -11450.00),
+        new Point(-6980.00, -10940.00),
+
+        // Skeletal Orcs
+        new Point(-9150.00, -9662.00),
+        new Point(-8647.00, -10560.00),
+        new Point(-7613.00, -10048.00),
+        new Point(-6845.00, -10940.00),
+        new Point(-5956.00, 9659.00),
+
+        // Eredar Warlocks
+        new Point(14080.00, -15335.00),
+
+        // Eredar Diabolists
+        new Point(14334.00, -15362.00),
+
+        // Nether Dragons
+        new Point(14847.00, -14336.00),
+
+        // Fel Ravagers
+        new Point(12287.00, -15358.00),
+        new Point(12800.00, -13818.00),
+        new Point(14333.00, -12820.00),
+
+        // Fel Beasts
+        new Point(8704.00, -13938.00),
+        new Point(8703.00, -14833.00),
+        new Point(8831.00, -13807.00),
+        new Point(9359.00, -15489.00),
+        new Point(9600.00, -14336.00),
+        new Point(10108.00, -13445.00),
+        new Point(10121.00, -14984.00),
+        new Point(11264.00, -13310.00),
+        new Point(11780.00, -14848.00),
+        new Point(12681.00, -13945.00),
+        new Point(13191.00, -12670.00),
+        new Point(13803.00, -11629.00),
+        new Point(14209.00, -12806.00),
+        new Point(14452.00, -12809.00),
+        new Point(14858.00, -11770.00),
     ];
 
     // ========================================
@@ -313,6 +360,37 @@ export class GameGlobals {
         330.00,
         350.00,
         262.00,
+        48.00,
+        48.00,
+        48.00,
+        290.00,
+        90.00,
+        18.00,
+        175.00,
+        312.00,
+        280.00,
+        320.00,
+        285.00,
+        56.00,
+        235.00,
+        233.00,
+        132.00,
+        93.00,
+        185.00,
+        90.00,
+        94.00,
+        267.00,
+        175.00,
+        248.00,
+        180.00,
+        350.00,
+        353.00,
+        90.00,
+        117.00,
+        90.00,
+        71.00,
+        114.00,
+        0.00,
     ];
 
     // ========================================
@@ -476,6 +554,53 @@ export class GameGlobals {
         'n01G',
         'n01G',
         'n01G',
+
+        // Burning Archers
+        'n01I',
+
+        // Giant Skeleton Warriors
+        'n01H',
+        'n01H',
+        'n01H',
+        'n01H',
+
+        // Skeletal Orcs
+        'n01J',
+        'n01J',
+        'n01J',
+        'n01J',
+        'n01J',
+
+        // Eredar Warlocks
+        'n01K',
+
+        // Eredar Diabolists
+        'n01L',
+
+        // Nether Dragons
+        'n01M',
+
+        // Fel Ravagers
+        'n01N',
+        'n01N',
+        'n01N',
+
+        // Fel Beasts
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
+        'n01O',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
