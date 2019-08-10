@@ -5,6 +5,7 @@ import { Timer } from '../JassOverrides/Timer';
 export class SummonHawk extends Spell {
     protected readonly abilityId: number = FourCC('A00R');
     private readonly summonId: number = FourCC('n00D');
+    private isSummonAlive: boolean = false;
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -14,6 +15,12 @@ export class SummonHawk extends Spell {
     }
 
     protected action(): void {
+        if (this.isSummonAlive) {
+            return;
+        }
+
+        this.isSummonAlive = true;
+
         const trig: unit = GetTriggerUnit();
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
@@ -42,6 +49,7 @@ export class SummonHawk extends Spell {
             }
 
             if (!UnitAlive(summon)) {
+                this.isSummonAlive = false;
                 this.timerUtils.releaseTimer(t);
             }
         });

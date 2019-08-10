@@ -2,9 +2,9 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
-export class SummonBear extends Spell {
-    protected readonly abilityId: number = FourCC('A00P');
-    private readonly summonId: number = FourCC('n00B');
+export class ToArms extends Spell {
+    protected readonly abilityId: number = FourCC('A030');
+    private readonly summonId: number = FourCC('n01P');
     private isSummonAlive: boolean = false;
     private readonly timerUtils: TimerUtils;
 
@@ -27,14 +27,11 @@ export class SummonBear extends Spell {
         const str: number = GetHeroStr(trig, true);
         const summon: unit = CreateUnit(GetOwningPlayer(trig), this.summonId, x, y, bj_UNIT_FACING);
 
-        BlzSetUnitMaxHP(summon, 25 * str);
+        BlzSetUnitMaxHP(summon, 10 * str);
         SetUnitLifePercentBJ(summon, 100);
-        // BlzSetUnitArmor( summon, 10.00 )
-        // BlzSetUnitAttackCooldown(summon, 2.00, 1)
-        // BlzSetUnitDiceSides(summon, 1, 1)
-        // BlzSetUnitDiceNumber(summon, 4, 1)
-        BlzSetUnitBaseDamage(summon, Math.ceil(0.50 * str), 1);
-        // UnitApplyTimedLifeBJ(60, 'BTLF', summon)
+        BlzSetUnitArmor(summon, str / 10);
+        BlzSetUnitAttackCooldown(summon, 1.00 - (str * 0.06) / (5 + (str * 0.06)), 1);
+        BlzSetUnitBaseDamage(summon, Math.ceil(0.80 * str), 0);
 
         const maxDistance: number = 1200;
         const t: Timer = this.timerUtils.newTimer();

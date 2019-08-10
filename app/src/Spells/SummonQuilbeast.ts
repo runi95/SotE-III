@@ -5,6 +5,7 @@ import { Timer } from '../JassOverrides/Timer';
 export class SummonQuilbeast extends Spell {
     protected readonly abilityId: number = FourCC('A00Q');
     private readonly summonId: number = FourCC('n00C');
+    private isSummonAlive: boolean = false;
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -14,6 +15,12 @@ export class SummonQuilbeast extends Spell {
     }
 
     protected action(): void {
+        if (this.isSummonAlive) {
+            return;
+        }
+
+        this.isSummonAlive = true;
+
         const trig: unit = GetTriggerUnit();
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
@@ -42,6 +49,7 @@ export class SummonQuilbeast extends Spell {
             }
 
             if (!UnitAlive(summon)) {
+                this.isSummonAlive = false;
                 this.timerUtils.releaseTimer(t);
             }
         });

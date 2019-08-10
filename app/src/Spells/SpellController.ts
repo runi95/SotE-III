@@ -47,6 +47,8 @@ import { SnareTrapDeath } from './SnareTrapDeath';
 import { Shackles } from './Shackles';
 import { Combust } from './Combust';
 import { Immolation } from './Immolation';
+import { ToArms } from './ToArms';
+import { HolyLight } from './HolyLight';
 
 export class SpellController {
     private spells: any[];
@@ -99,6 +101,8 @@ export class SpellController {
             new SummonQuilbeast(timerUtils),
             new Swarm(timerUtils),
             new Immolation(timerUtils),
+            new ToArms(timerUtils),
+            new HolyLight(),
         ];
     }
 }
