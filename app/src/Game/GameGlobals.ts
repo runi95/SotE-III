@@ -206,11 +206,13 @@ export class GameGlobals {
 
         // Nether Dragons
         new Point(14847.00, -14336.00),
+        new Point(5758.00, -15611.00),
 
         // Fel Ravagers
         new Point(12287.00, -15358.00),
         new Point(12800.00, -13818.00),
         new Point(14333.00, -12820.00),
+        new Point(7156.00, -14826.00),
 
         // Fel Beasts
         new Point(8704.00, -13938.00),
@@ -228,6 +230,9 @@ export class GameGlobals {
         new Point(14209.00, -12806.00),
         new Point(14452.00, -12809.00),
         new Point(14858.00, -11770.00),
+        new Point(5639.00, -14978.00),
+        new Point(6146.00, -14198.00),
+        new Point(6789.00, -15737.00),
     ];
 
     // ========================================
@@ -372,10 +377,18 @@ export class GameGlobals {
         320.00,
         285.00,
         56.00,
+
+        // Nether Dragons
         235.00,
+        50.00,
+
+        // Fel Ravagers
         233.00,
         132.00,
         93.00,
+        116.00,
+
+        // Fel Beasts
         185.00,
         90.00,
         94.00,
@@ -391,6 +404,9 @@ export class GameGlobals {
         71.00,
         114.00,
         0.00,
+        0.00,
+        115.00,
+        175.00,
     ];
 
     // ========================================
@@ -579,13 +595,18 @@ export class GameGlobals {
 
         // Nether Dragons
         'n01M',
+        'n01M',
 
         // Fel Ravagers
         'n01N',
         'n01N',
         'n01N',
+        'n01N',
 
         // Fel Beasts
+        'n01O',
+        'n01O',
+        'n01O',
         'n01O',
         'n01O',
         'n01O',
