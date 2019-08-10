@@ -11,6 +11,7 @@ import { SpiritOfFrost } from './SpiritOfFrost';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { BurnVictim } from './BurnVictim';
 import { TheAegis } from './TheAegis';
+import { ScrollOfTownPortal } from './ScrollOfTownPortal';
 
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
@@ -19,6 +20,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals));
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
+        damageEngine.addInitialDamageEvent(new ScrollOfTownPortal());
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));

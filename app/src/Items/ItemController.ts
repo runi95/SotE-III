@@ -33,12 +33,14 @@ import { Fragarach } from './Recipes/Fragarach';
 import { SwordOfFreyr } from './Recipes/SwordOfFreyr';
 import { Caduceus } from './Recipes/Caduceus';
 import { CaduceusUse } from './Abilities/CaduceusUse';
+import { ScrollOfTownPortalUse } from './Abilities/ScrollOfTownPortalUse';
+import { TimerUtils } from '../Utility/TimerUtils';
 
 export class ItemController {
     private itemAbilities: any[];
     private itemRecipes: any[];
 
-    constructor(gameGlobals: GameGlobals, arcaneVault: unit) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, arcaneVault: unit) {
         this.itemAbilities = [
             new ClarityPotionUse(),
             new ExecutionerAxe(),
@@ -59,6 +61,7 @@ export class ItemController {
             new AncileDrop(gameGlobals),
             new AncilePickup(gameGlobals),
             new CaduceusUse(arcaneVault),
+            new ScrollOfTownPortalUse(gameGlobals, timerUtils),
         ];
 
         this.itemRecipes = [
