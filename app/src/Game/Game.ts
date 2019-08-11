@@ -13,6 +13,7 @@ import { Commands } from './Commands';
 import { TeleportMovement } from './TeleportMovement';
 import { Timer } from '../JassOverrides/Timer';
 import { Hero } from './Hero';
+import { BossController } from '../Boss/BossController';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -26,6 +27,7 @@ export class Game {
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
     private readonly damageEventController: DamageEventController;
+    private readonly bossController: BossController;
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
 
@@ -46,6 +48,7 @@ export class Game {
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils);
         this.teleportController = new TeleportController();
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils, this.damageEngine);
+        this.bossController = new BossController();
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
         const ancientOfWondersX: number = GetRandomInt(0, 10630) - 2370;

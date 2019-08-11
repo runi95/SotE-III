@@ -7,8 +7,6 @@ export class GameGlobals {
     public PlayerPhysicalBlock: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerSpellBlock: number[] = [0, 0, 0, 0, 0, 0];
 
-    public BossDruidOfTheClaw: unit | undefined;
-
     public PlayerCount: number = 0;
 
     public Multiboard: multiboard | undefined = undefined;
