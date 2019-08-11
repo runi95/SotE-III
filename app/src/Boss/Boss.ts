@@ -5,6 +5,7 @@ export abstract class Boss {
     protected readonly abstract x: number;
     protected readonly abstract y: number;
     protected readonly abstract angle: number;
+    protected readonly lootItemId: number | undefined = undefined;
     protected bossHandleId: number | undefined = undefined;
     protected readonly spawnTrig: Trigger = new Trigger();
     protected readonly deathTrig: Trigger = new Trigger();
@@ -37,5 +38,11 @@ export abstract class Boss {
 
     protected deathAction(): void {
         this.bossHandleId = undefined;
+
+        if (this.lootItemId === undefined) {
+            return;
+        }
+
+        CreateItem(this.lootItemId, GetUnitX(GetDyingUnit()), GetUnitY(GetDyingUnit()));
     }
 }
