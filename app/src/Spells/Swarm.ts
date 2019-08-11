@@ -43,9 +43,9 @@ export class Swarm extends Spell {
                 const grp: GroupInRange = new GroupInRange(100, loc);
                 const playerId: number = GetPlayerId(GetOwningPlayer(trig));
 
-                grp.for(() => {
-                    if (IsUnitEnemy(GetEnumUnit(), Player(playerId))) {
-                        UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                grp.for((u: unit) => {
+                    if (IsUnitEnemy(u, Player(playerId))) {
+                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 

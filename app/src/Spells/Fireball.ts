@@ -32,9 +32,9 @@ export class Fireball extends Spell {
             DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
             const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-            grp.for(() => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                    UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            grp.for((u: unit) => {
+                if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
@@ -52,9 +52,9 @@ export class Fireball extends Spell {
                 RemoveUnit(dummy);
                 const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
-                grp.for(() => {
-                    if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                        UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                grp.for((u: unit) => {
+                    if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 

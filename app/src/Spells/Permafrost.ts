@@ -18,12 +18,12 @@ export class Permafrost extends Spell {
         const grp: GroupInRange = new GroupInRange(1000.00, loc);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damage: number = 50.00 * abilityLevel + 1.00 * intelligence;
+        const damage: number = 50.00 * abilityLevel + intelligence;
 
-        grp.for(() => {
-            if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                this.stunUtils.stunUnit(GetEnumUnit(), 2);
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                this.stunUtils.stunUnit(u, 2);
             }
         });
 

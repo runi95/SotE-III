@@ -17,12 +17,12 @@ export class SnareTrapDeath {
             const loc: location = GetUnitLoc(GetDyingUnit());
             const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-            grp.for(() => {
-                if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
+            grp.for((u: unit) => {
+                if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(u))) {
                     const dummy: unit = CreateUnit(GetOwningPlayer(GetDyingUnit()),
-                                                   this.dummyUnitTypeId, GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit()), bj_UNIT_FACING);
+                                                   this.dummyUnitTypeId, GetUnitX(u), GetUnitY(u), bj_UNIT_FACING);
                     UnitAddAbilityBJ(this.dummyAbilityId, dummy);
-                    IssueTargetOrderBJ(dummy, 'ensnare', GetEnumUnit());
+                    IssueTargetOrderBJ(dummy, 'ensnare', u);
                     UnitApplyTimedLifeBJ(2, this.dummyTimedLifeAbilityId, dummy);
                 }
             });

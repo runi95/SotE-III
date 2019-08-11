@@ -101,11 +101,11 @@ export class RazorBlades {
         const loc: location = GetUnitLoc(blade);
         const grp: GroupInRange = new GroupInRange(aoe, loc);
 
-        grp.for(() => {
-            if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
-                                               GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
-                UnitDamageTargetBJ(trig, GetEnumUnit(), 20, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                                               GetUnitX(u), GetUnitY(u)));
+                UnitDamageTargetBJ(trig, u, 20, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 

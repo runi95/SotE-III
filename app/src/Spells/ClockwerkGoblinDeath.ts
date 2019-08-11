@@ -25,10 +25,10 @@ export class ClockwerkGoblinDeath {
         const loc: location = GetUnitLoc(trig);
         const grp: GroupInRange = new GroupInRange(150.00, loc);
 
-        grp.for(() => {
-            if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                this.stunUtils.stunUnit(GetEnumUnit(), 1);
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                this.stunUtils.stunUnit(u, 1);
             }
         });
 

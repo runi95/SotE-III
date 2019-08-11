@@ -33,9 +33,9 @@ export class GoblinMine extends Spell {
             DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl',
                                            GetUnitX(summon), GetUnitY(summon)));
 
-            grp.for(() => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
-                    UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            grp.for((u: unit) => {
+                if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 

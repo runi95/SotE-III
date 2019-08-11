@@ -18,11 +18,11 @@ export class LoadedCannonUse implements DamageEvent {
         const grp: GroupInRange = new GroupInRange(200.00, loc);
         const damage: number = 0.10 * globals.DamageEventAmount;
 
-        grp.for(() => {
-            if (GetEnumUnit() !== globals.DamageEventTarget as unit &&
-                IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(globals.DamageEventSource as unit)) &&
-                UnitAlive(GetEnumUnit())) {
-                UnitDamageTargetBJ(globals.DamageEventSource as unit, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        grp.for((u: unit) => {
+            if (u !== globals.DamageEventTarget as unit &&
+                IsUnitEnemy(u, GetOwningPlayer(globals.DamageEventSource as unit)) &&
+                UnitAlive(u)) {
+                UnitDamageTargetBJ(globals.DamageEventSource as unit, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 

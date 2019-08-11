@@ -10,14 +10,14 @@ export class BeastSense extends Spell {
     protected action(): void {
         const loc: location = GetUnitLoc(GetTriggerUnit());
         const grp: GroupInRange = new GroupInRange(3000.00, loc);
-        grp.for(() => {
-            if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
-                const x: number = GetUnitX(GetEnumUnit());
-                const y: number = GetUnitY(GetEnumUnit());
+        grp.for((u: unit) => {
+            if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(u))) {
+                const x: number = GetUnitX(u);
+                const y: number = GetUnitY(u);
                 const dummy: unit = CreateUnit(GetOwningPlayer(GetTriggerUnit()), this.dummyUnitId, x, y, bj_UNIT_FACING);
 
                 UnitAddAbilityBJ(this.dummyAbilityId, dummy);
-                IssueTargetOrderById(dummy, 852570, GetEnumUnit());
+                IssueTargetOrderById(dummy, 852570, u);
                 UnitApplyTimedLifeBJ(1.00, this.timedLifeBuffId, dummy);
             }
         });

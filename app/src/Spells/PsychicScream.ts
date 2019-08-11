@@ -14,11 +14,11 @@ export class PsychicScream extends Spell {
         const loc: location = Location(x, y);
         const grp: GroupInRange = new GroupInRange(1000, loc);
 
-        grp.for(() => {
-            if (IsUnitEnemy(GetEnumUnit(), Player(playerId)) && UnitAlive(GetEnumUnit())) {
-                UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                const uX: number = GetUnitX(GetEnumUnit());
-                const uY: number = GetUnitY(GetEnumUnit());
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, Player(playerId)) && UnitAlive(u)) {
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                const uX: number = GetUnitX(u);
+                const uY: number = GetUnitY(u);
                 const dist: number = Math.sqrt(Pow(uX - x, 2) + Pow(uY - y, 2));
                 const multX: number = 100 * ((uX - x) / dist);
                 const multY: number = 100 * ((uY - y) / dist);
@@ -36,7 +36,7 @@ export class PsychicScream extends Spell {
                 }
 
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl', uX, uY));
-                SetUnitPosition(GetEnumUnit(), targetX, targetY);
+                SetUnitPosition(u, targetX, targetY);
             }
         });
 

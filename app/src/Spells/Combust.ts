@@ -23,9 +23,9 @@ export class Combust {
         const grp: GroupInRange = new GroupInRange(150, loc);
         DestroyEffect(AddSpecialEffectLoc('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl', loc));
 
-        grp.for(() => {
-            if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 

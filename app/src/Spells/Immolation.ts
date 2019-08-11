@@ -25,11 +25,11 @@ export class Immolation extends Spell {
             ticks--;
             const loc: location = GetUnitLoc(trig);
             const grp: GroupInRange = new GroupInRange(128, loc);
-            grp.for(() => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
+            grp.for((u: unit) => {
+                if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\NightElf\\Immolation\\ImmolationDamage.mdl',
-                                                   GetUnitX(GetEnumUnit()), GetUnitY(GetEnumUnit())));
-                    UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                                                   GetUnitX(u), GetUnitY(u)));
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 

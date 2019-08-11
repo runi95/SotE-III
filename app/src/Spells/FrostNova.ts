@@ -31,16 +31,16 @@ export class FrostNova extends Spell {
 
             const grp: GroupInRange = new GroupInRange(200.00, loc);
 
-            grp.for(() => {
-                if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig))) {
-                    UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            grp.for((u: unit) => {
+                if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
-                    const x: number = GetUnitX(GetEnumUnit());
-                    const y: number = GetUnitY(GetEnumUnit());
+                    const x: number = GetUnitX(u);
+                    const y: number = GetUnitY(u);
                     const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, 0);
 
                     UnitAddAbility(dummy, this.dummyAbilityId);
-                    IssueTargetOrder(dummy, 'slow', GetEnumUnit());
+                    IssueTargetOrder(dummy, 'slow', u);
                     UnitApplyTimedLifeBJ(2.00, this.timedLifeBuffId, dummy);
                 }
             });

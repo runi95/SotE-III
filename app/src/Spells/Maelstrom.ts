@@ -29,9 +29,9 @@ export class Maelstrom extends Spell {
             ticks--;
 
             const grp: GroupInRange = new GroupInRange(500.00, loc);
-            grp.for(() => {
-                if (IsUnitEnemy(GetEnumUnit(), trigOwner) && UnitAlive(GetEnumUnit())) {
-                    UnitDamageTargetBJ(trig, GetEnumUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            grp.for((u: unit) => {
+                if (IsUnitEnemy(u, trigOwner) && UnitAlive(u)) {
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
             grp.destroy();

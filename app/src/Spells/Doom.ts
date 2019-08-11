@@ -32,9 +32,9 @@ export class Doom extends Spell {
             const r: rect = Rect(rngX - 175.0, rngY - 175.0, rngX + 175.0, rngY + 175.0);
             const grp: Group = new Group(GetUnitsInRectAll(r));
 
-            grp.for(() => {
-                if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(GetEnumUnit()))) {
-                    UnitDamageTargetBJ(GetTriggerUnit(), GetEnumUnit(),
+            grp.for((u: unit) => {
+                if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(u))) {
+                    UnitDamageTargetBJ(GetTriggerUnit(), u,
                                        damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
