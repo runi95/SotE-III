@@ -4,6 +4,7 @@ import { Region } from '../Utility/Region';
 export class GameGlobals {
     public CryostasisSummons: unit[] = [];
     public RazorBladesOn: boolean[] = [false, false, false, false, false, false];
+    public DivineShieldLife: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerPhysicalBlock: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerSpellBlock: number[] = [0, 0, 0, 0, 0, 0];
 

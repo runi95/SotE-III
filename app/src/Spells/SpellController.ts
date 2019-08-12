@@ -49,6 +49,7 @@ import { Combust } from './Combust';
 import { Immolation } from './Immolation';
 import { ToArms } from './ToArms';
 import { HolyLight } from './HolyLight';
+import { DivineShield } from './DivineShield';
 
 export class SpellController {
     private spells: any[];
@@ -103,6 +104,7 @@ export class SpellController {
             new Immolation(timerUtils),
             new ToArms(timerUtils),
             new HolyLight(),
+            new DivineShield(gameGlobals),
         ];
     }
 }

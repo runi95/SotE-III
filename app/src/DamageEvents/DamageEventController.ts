@@ -12,6 +12,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { BurnVictim } from './BurnVictim';
 import { TheAegis } from './TheAegis';
 import { ScrollOfTownPortal } from './ScrollOfTownPortal';
+import { DivineShield } from './DivineShield';
 
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
@@ -27,6 +28,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new DivineShield(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
