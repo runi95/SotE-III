@@ -12,7 +12,6 @@ export class Backstab implements DamageEvent {
         const sourceAngle: number = GetUnitFacing(globals.DamageEventSource as unit);
         const targetAngle: number = GetUnitFacing(globals.DamageEventTarget as unit);
         const angleDiff: number = Math.sqrt(Pow(sourceAngle - targetAngle, 2));
-        BJDebugMsg(`angleDiff(${angleDiff})`);
         if (angleDiff <= 35 || angleDiff >= 325) {
             const dmg: number = globals.DamageEventAmount * 2.00;
             const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
