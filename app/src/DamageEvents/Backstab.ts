@@ -9,29 +9,20 @@ export class Backstab implements DamageEvent {
             return;
         }
 
-        const angleBetweenPoints: number = Math.atan2(
-            GetUnitY(globals.DamageEventTarget as unit) - GetUnitY(globals.DamageEventSource as unit),
-            GetUnitX(globals.DamageEventTarget as unit) - GetUnitX(globals.DamageEventSource as unit)) * 180 / Math.PI;
-        if (angleBetweenPoints < 0.00) {
-            if (RAbsBJ(GetUnitFacing(globals.DamageEventTarget as unit) - (angleBetweenPoints + 360.00)) < 20.00) {
-                this.dealCriticalDamage(globals);
-            }
-        } else {
-            if (RAbsBJ(GetUnitFacing(globals.DamageEventTarget as unit) - angleBetweenPoints) < 20.00) {
-                this.dealCriticalDamage(globals);
-            }
+        const sourceAngle: number = GetUnitFacing(globals.DamageEventSource as unit);
+        const targetAngle: number = GetUnitFacing(globals.DamageEventTarget as unit);
+        const angleDiff: number = Math.sqrt(Pow(sourceAngle - targetAngle, 2));
+        BJDebugMsg(`angleDiff(${angleDiff})`);
+        if (angleDiff <= 35 || angleDiff >= 325) {
+            const dmg: number = globals.DamageEventAmount * 2.00;
+            const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
+            const txt: texttag = CreateTextTagLocBJ(I2S(R2I(dmg)), sourceLoc, 1, 10, 100.00, 0.00, 0.00, 0.00);
+            globals.DamageEventAmount = dmg;
+            SetTextTagPermanentBJ(txt, false);
+            SetTextTagLifespanBJ(txt, 2.00);
+            SetTextTagVelocityBJ(txt, 64, 90);
+
+            RemoveLocation(sourceLoc);
         }
-    }
-
-    private dealCriticalDamage(globals: DamageEngineGlobals): void {
-        const dmg: number = globals.DamageEventAmount * 2.00
-        const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
-        const txt: texttag = CreateTextTagLocBJ(I2S(R2I(dmg)), sourceLoc, 1, 10, 100.00, 0.00, 0.00, 0.00);
-        globals.DamageEventAmount = dmg;
-        SetTextTagPermanentBJ(txt, false);
-        SetTextTagLifespanBJ(txt, 2.00);
-        SetTextTagVelocityBJ(txt, 64, 90);
-
-        RemoveLocation(sourceLoc);
     }
 }
