@@ -13,6 +13,7 @@ import { BurnVictim } from './BurnVictim';
 import { TheAegis } from './TheAegis';
 import { ScrollOfTownPortal } from './ScrollOfTownPortal';
 import { DivineShield } from './DivineShield';
+import { Redemption } from './Redemption';
 
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
@@ -22,6 +23,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal());
+        damageEngine.addInitialDamageEvent(new Redemption());
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));
