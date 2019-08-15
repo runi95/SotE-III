@@ -5,6 +5,6 @@ export class Drink extends Spell {
 
     protected action(): void {
         SetUnitLifeBJ(GetTriggerUnit(), GetUnitStateSwap(UNIT_STATE_LIFE,
-                                                         GetTriggerUnit()) + 1.5 * GetHeroInt(GetTriggerUnit(), true));
+                                                         GetTriggerUnit()) + 2 * GetHeroInt(GetTriggerUnit(), true));
     }
 }
