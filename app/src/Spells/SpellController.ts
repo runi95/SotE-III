@@ -51,6 +51,8 @@ import { ToArms } from './ToArms';
 import { HolyLight } from './HolyLight';
 import { DivineShield } from './DivineShield';
 import { HolyLance } from './HolyLance';
+import { DarkCorruption } from './DarkCorruption';
+import { Drink } from './Drink';
 
 export class SpellController {
     private spells: any[];
@@ -107,6 +109,8 @@ export class SpellController {
             new HolyLight(),
             new DivineShield(gameGlobals),
             new HolyLance(timerUtils),
+            new DarkCorruption(),
+            new Drink(),
         ];
     }
 }
