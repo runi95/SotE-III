@@ -273,6 +273,33 @@ export class GameGlobals {
         new Point(3626.00, -9630.00),
         new Point(5704.00, -9123.00),
         new Point(8401.00, -6552.00),
+
+        // Crystal Arachnathids
+        new Point(-7168.00, -610.00),
+        new Point(-6952.00, -801.00),
+        new Point(-8721.00, -1177.00),
+        new Point(-5573.00, -2253.00),
+        new Point(-5571.00, -2395.00),
+        new Point(-7197.00, -2750.00),
+        new Point(-4917.00, -4329.00),
+        new Point(-6130.00, -4159.00),
+        new Point(-4287.00, -4663.00),
+        new Point(-7299.00, -5243.00),
+        new Point(-5223.00, -5660.00),
+        new Point(-7295.00, -6680.00),
+        new Point(-4391.00, -6918.00),
+        new Point(-4463.00, -7070.00),
+        new Point(-5884.00, -7679.00),
+        new Point(-8766.00, -7804.00),
+        new Point(-7122.00, -8024.00),
+
+        // Arachnathid Earth-borers
+        new Point(-8824.00, -1266.00),
+        new Point(-7327.00, -2650.00),
+        new Point(-4807.00, -3514.00),
+        new Point(-5414.00, -5690.00),
+        new Point(-5928.00, -7525.00),
+        new Point(-8819.00, -7635.00),
     ];
 
     // ========================================
@@ -488,6 +515,33 @@ export class GameGlobals {
         90.00,
         70.00,
         127.00,
+
+        // Crystal Arachnathids
+        339.00,
+        130.00,
+        154.00,
+        217.00,
+        141.00,
+        261.00,
+        44.00,
+        253.00,
+        353.00,
+        305.00,
+        152.00,
+        244.00,
+        192.00,
+        119.00,
+        24.00,
+        321.00,
+        125.00,
+
+        // Arachnathid Earth-borers
+        151.00,
+        20.00,
+        55.00,
+        107.00,
+        357.00,
+        7.00,
     ];
 
     // ========================================
@@ -744,6 +798,33 @@ export class GameGlobals {
         'n01U',
         'n01U',
         'n01U',
+
+        // Crystal Arachnathids
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+        'n01W',
+
+        // Arachnathid Earth-borers
+        'n01V',
+        'n01V',
+        'n01V',
+        'n01V',
+        'n01V',
+        'n01V',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
