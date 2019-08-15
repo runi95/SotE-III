@@ -865,6 +865,9 @@ export class GameGlobals {
         'N003',
         'N011',
         'H000',
+        'N01X',
+        'N01Y',
+        'N01Z',
     ];
 
     public HeroArraySize: number = this.HeroUnitTypeID.length;
