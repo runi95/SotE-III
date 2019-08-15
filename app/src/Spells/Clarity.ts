@@ -5,6 +5,6 @@ export class Clarity extends Spell {
 
     protected action(): void {
         SetUnitManaBJ(GetTriggerUnit(), GetUnitStateSwap(UNIT_STATE_MANA,
-                                                         GetTriggerUnit()) + 1.5 * I2R(GetHeroInt(GetTriggerUnit(), true)));
+                                                         GetTriggerUnit()) + 1.5 * GetHeroInt(GetTriggerUnit(), true));
     }
 }
