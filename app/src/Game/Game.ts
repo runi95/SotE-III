@@ -167,9 +167,11 @@ export class Game {
         if (this.gameGlobals.PlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
             // BJDebugMsg('Activating debug mode...');
             this.gameGlobals.DebugMode = true;
+            /*
             for (let i: number = 0; i < this.gameGlobals.HeroArraySize; i++) {
                 CreateUnit(Player(0), FourCC(this.gameGlobals.HeroUnitTypeID[i]), 2810.00, 7680.00, bj_UNIT_FACING);
             }
+            */
         }
     }
 
