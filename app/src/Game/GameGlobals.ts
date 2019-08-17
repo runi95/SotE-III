@@ -7,6 +7,7 @@ export class GameGlobals {
     public DivineShieldLife: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerPhysicalBlock: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerSpellBlock: number[] = [0, 0, 0, 0, 0, 0];
+    public PlayerHero: (unit | undefined)[] = [undefined, undefined, undefined, undefined, undefined, undefined];
 
     public PlayerCount: number = 0;
 

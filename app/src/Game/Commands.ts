@@ -23,30 +23,37 @@ export class Commands {
             return;
         }
 
-        const substr: string = chatstring.substr(1);
-        if (this.gameGlobals.DebugMode && substr.startsWith('gold ')) {
-            const gold: number = parseInt(substr.substr('gold '.length), undefined);
+        const split: string[] = chatstring.substr(1).split(' ');
+        if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
+            const gold: number = S2I(split[1]);
             if (!gold) {
                 BJDebugMsg('Invalid gold amount!');
                 return;
             }
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, gold);
-        } else if (this.gameGlobals.DebugMode && substr.startsWith('lumber ')) {
-            const lumber: number = parseInt(substr.substr('lumber '.length), undefined);
+        } else if (this.gameGlobals.DebugMode && split[0] === 'lumber' && split.length === 2) {
+            const lumber: number = S2I(split[1]);
             if (!lumber) {
                 BJDebugMsg('Invalid lumber amount!');
                 return;
             }
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, lumber);
-        } else if (this.gameGlobals.DebugMode && substr === 'tp') {
+        } else if (this.gameGlobals.DebugMode && split[0] === 'tp' && split.length === 1) {
             this.gameGlobals.TeleportMovement = !this.gameGlobals.TeleportMovement;
             if (this.gameGlobals.TeleportMovement) {
                 BJDebugMsg('Teleport movement has been |c0020C000activated|r!');
             } else {
                 BJDebugMsg('Teleport movement has been |c00FF0303deactivated|r!');
             }
+        } else if (this.gameGlobals.DebugMode && split[0] === 'anim' && split.length === 2) {
+            const playerId: number = GetPlayerId(GetTriggerPlayer());
+            if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
+                SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId] as unit, S2I(split[1]));
+            }
+        } else {
+            BJDebugMsg('Unknown command!');
         }
     }
 }

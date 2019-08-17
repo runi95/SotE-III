@@ -28,9 +28,11 @@ export class Hero {
             this.isHeroPicked = true;
             RemoveUnit(GetEnteringUnit());
             RemoveUnit(statueUnit);
-            CreateUnit(GetOwningPlayer(GetEnteringUnit()), this.heroId,
-                       GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[GetPlayerId(GetOwningPlayer(GetEnteringUnit()))]),
-                       GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[GetPlayerId(GetOwningPlayer(GetEnteringUnit()))]), bj_UNIT_FACING);
+            const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
+            this.gameGlobals.PlayerHero[playerId] = CreateUnit(GetOwningPlayer(GetEnteringUnit()), this.heroId,
+                                                               GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                                                               GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                                                               bj_UNIT_FACING);
         });
         this.trig.registerEnterRectSimple((() => this.selectRect)());
     }
