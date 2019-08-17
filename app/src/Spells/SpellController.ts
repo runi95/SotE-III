@@ -58,6 +58,7 @@ import { Brawl } from './Brawl';
 import { PandarenChi } from './PandarenChi';
 import { CommandoFlag } from './CommandoFlag';
 import { Challenge } from './Challenge';
+import { ChiMaster } from './ChiMaster';
 
 export class SpellController {
     private spells: any[];
@@ -121,6 +122,7 @@ export class SpellController {
             new PandarenChi(timerUtils),
             new CommandoFlag(),
             new Challenge(),
+            new ChiMaster(timerUtils),
         ];
     }
 }
