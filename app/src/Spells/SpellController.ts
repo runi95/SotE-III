@@ -55,6 +55,7 @@ import { DarkCorruption } from './DarkCorruption';
 import { Drink } from './Drink';
 import { Slash } from './Slash';
 import { Brawl } from './Brawl';
+import { PandarenChi } from './PandarenChi';
 
 export class SpellController {
     private spells: any[];
@@ -115,6 +116,7 @@ export class SpellController {
             new Drink(),
             new Slash(timerUtils, stunUtils),
             new Brawl(),
+            new PandarenChi(timerUtils),
         ];
     }
 }
