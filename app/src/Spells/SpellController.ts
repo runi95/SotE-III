@@ -54,6 +54,7 @@ import { HolyLance } from './HolyLance';
 import { DarkCorruption } from './DarkCorruption';
 import { Drink } from './Drink';
 import { Slash } from './Slash';
+import { Brawl } from './Brawl';
 
 export class SpellController {
     private spells: any[];
@@ -113,6 +114,7 @@ export class SpellController {
             new DarkCorruption(),
             new Drink(),
             new Slash(timerUtils, stunUtils),
+            new Brawl(),
         ];
     }
 }
