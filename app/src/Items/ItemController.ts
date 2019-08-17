@@ -35,6 +35,12 @@ import { Caduceus } from './Recipes/Caduceus';
 import { CaduceusUse } from './Abilities/CaduceusUse';
 import { ScrollOfTownPortalUse } from './Abilities/ScrollOfTownPortalUse';
 import { TimerUtils } from '../Utility/TimerUtils';
+import { AgileSlippers } from './Recipes/AgileSlippers';
+import { ArmoredBoots } from './Recipes/ArmoredBoots';
+import { ArmoredBootsDrop } from './Abilities/ArmoredBootsDrop';
+import { ArmoredBootsPickup } from './Abilities/ArmoredBootsPickup';
+import { ThrowableAxe } from './Recipes/ThrowableAxe';
+import { AdeptCrystalBall } from './Recipes/AdeptCrystalBall';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -62,6 +68,8 @@ export class ItemController {
             new AncilePickup(gameGlobals),
             new CaduceusUse(arcaneVault),
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
+            new ArmoredBootsDrop(gameGlobals),
+            new ArmoredBootsPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -80,6 +88,10 @@ export class ItemController {
             new Fragarach(),
             new SwordOfFreyr(),
             new Caduceus(),
+            new AgileSlippers(),
+            new ArmoredBoots(),
+            new ThrowableAxe(),
+            new AdeptCrystalBall(),
         ];
     }
 }
