@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 
-export class IronShield extends ItemRecipe {
+export class SteelShield extends ItemRecipe {
     private readonly ironShield: number = FourCC('I005');
     protected readonly isRecipeUniquesOnly: boolean = false;
     protected readonly recipe: number[] = [this.ironShield, this.ironShield];

@@ -16,7 +16,7 @@ import { SteelShieldPickup } from './Abilities/SteelShieldPickup';
 import { GameGlobals } from '../Game/GameGlobals';
 import { CoralScales } from './Recipes/CoralScales';
 import { IronClaws } from './Recipes/IronClaws';
-import { IronShield } from './Recipes/IronShield';
+import { SteelShield } from './Recipes/SteelShield';
 import { LoadedCannon } from './Recipes/LoadedCannon';
 import { ManaAxe } from './Recipes/ManaAxe';
 import { ManaBlade } from './Recipes/ManaBlade';
@@ -67,7 +67,7 @@ export class ItemController {
         this.itemRecipes = [
             new CoralScales(),
             new IronClaws(),
-            new IronShield(),
+            new SteelShield(),
             new LoadedCannon(),
             new ManaAxe(),
             new ManaBlade(),
