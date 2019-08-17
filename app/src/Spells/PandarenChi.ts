@@ -5,7 +5,6 @@ import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class PandarenChi extends Spell {
     protected readonly abilityId: number = FourCC('A03J');
-    private readonly dummyUnitId: number = FourCC('n020');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -22,7 +21,7 @@ export class PandarenChi extends Spell {
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
         const damagePerTick: number = (75 * abilityLevel + intelligence) / 20;
         const healingPerTick: number = (50 * abilityLevel + intelligence) / 20;
-        const dummy: unit = CreateUnitAtLoc(p, this.dummyUnitId, loc, bj_UNIT_FACING);
+        const eff: effect = AddSpecialEffectLoc('Abilities\\Spells\\NightElf\\Tranquility\\Tranquility.mdl', loc);
 
         let ticks: number = 20;
         const t: Timer = this.timerUtils.newTimer();
@@ -45,7 +44,7 @@ export class PandarenChi extends Spell {
             });
 
             if (ticks <= 0) {
-                RemoveUnit(dummy);
+                DestroyEffect(eff);
                 RemoveLocation(loc);
 
                 this.timerUtils.releaseTimer(t);
