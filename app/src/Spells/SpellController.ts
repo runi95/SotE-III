@@ -53,6 +53,7 @@ import { DivineShield } from './DivineShield';
 import { HolyLance } from './HolyLance';
 import { DarkCorruption } from './DarkCorruption';
 import { Drink } from './Drink';
+import { Slash } from './Slash';
 
 export class SpellController {
     private spells: any[];
@@ -111,6 +112,7 @@ export class SpellController {
             new HolyLance(timerUtils),
             new DarkCorruption(),
             new Drink(),
+            new Slash(timerUtils, stunUtils),
         ];
     }
 }
