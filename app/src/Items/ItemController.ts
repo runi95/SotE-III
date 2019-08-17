@@ -20,7 +20,7 @@ import { SteelShield } from './Recipes/SteelShield';
 import { LoadedCannon } from './Recipes/LoadedCannon';
 import { ManaAxe } from './Recipes/ManaAxe';
 import { ManaBlade } from './Recipes/ManaBlade';
-import { MoonArmor } from './Recipes/MoonArmor';
+import { ImprovedMoonArmor } from './Recipes/ImprovedMoonArmor';
 import { VialOfMagic } from './Recipes/VialOfMagic';
 import { Soulcage } from './Recipes/Soulcage';
 import { CircesStaff } from './Recipes/CircesStaff';
@@ -71,7 +71,7 @@ export class ItemController {
             new LoadedCannon(),
             new ManaAxe(),
             new ManaBlade(),
-            new MoonArmor(),
+            new ImprovedMoonArmor(),
             new VialOfMagic(),
             new Soulcage(),
             new CircesStaff(),
