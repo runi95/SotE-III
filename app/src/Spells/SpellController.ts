@@ -57,6 +57,7 @@ import { Slash } from './Slash';
 import { Brawl } from './Brawl';
 import { PandarenChi } from './PandarenChi';
 import { CommandoFlag } from './CommandoFlag';
+import { Challenge } from './Challenge';
 
 export class SpellController {
     private spells: any[];
@@ -119,6 +120,7 @@ export class SpellController {
             new Brawl(),
             new PandarenChi(timerUtils),
             new CommandoFlag(),
+            new Challenge(),
         ];
     }
 }
