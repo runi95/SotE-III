@@ -42,6 +42,8 @@ import { ArmoredBootsPickup } from './Abilities/ArmoredBootsPickup';
 import { ThrowableAxe } from './Recipes/ThrowableAxe';
 import { AdeptCrystalBall } from './Recipes/AdeptCrystalBall';
 import { MasterCrystalBall } from './Recipes/MasterCrystalBall';
+import { ScrollOfAgility } from './Recipes/ScrollOfAgility';
+import { CloakOfShadowWalk } from './Recipes/CloakOfShadowWalk';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -94,6 +96,8 @@ export class ItemController {
             new ThrowableAxe(),
             new AdeptCrystalBall(),
             new MasterCrystalBall(),
+            new ScrollOfAgility(),
+            new CloakOfShadowWalk(),
         ];
     }
 }
