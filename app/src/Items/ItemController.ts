@@ -44,6 +44,9 @@ import { AdeptCrystalBall } from './Recipes/AdeptCrystalBall';
 import { MasterCrystalBall } from './Recipes/MasterCrystalBall';
 import { ScrollOfAgility } from './Recipes/ScrollOfAgility';
 import { CloakOfShadowWalk } from './Recipes/CloakOfShadowWalk';
+import { ReinforcedScales } from './Recipes/ReinforcedScales';
+import { ReinforcedScalesDrop } from './Abilities/ReinforcedScalesDrop';
+import { ReinforcedScalesPickup } from './Abilities/ReinforcedScalesPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -73,6 +76,8 @@ export class ItemController {
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
             new ArmoredBootsDrop(gameGlobals),
             new ArmoredBootsPickup(gameGlobals),
+            new ReinforcedScalesDrop(gameGlobals),
+            new ReinforcedScalesPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -98,6 +103,7 @@ export class ItemController {
             new MasterCrystalBall(),
             new ScrollOfAgility(),
             new CloakOfShadowWalk(),
+            new ReinforcedScales(),
         ];
     }
 }
