@@ -26,13 +26,13 @@ export class StunUtils {
             const stunnedUnit: StunnedUnit = new StunnedUnit(unit, duration);
             this.stunnedUnits.set(handleId, stunnedUnit);
             UnitAddAbilityBJ(this.stunAbilityId, stunnedUnit.getUnit());
-            PauseUnit(stunnedUnit.getUnit(), true);
+            BlzPauseUnitEx(stunnedUnit.getUnit(), true);
             const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
                 stunnedUnit.addDuration(-0.05);
                 if (stunnedUnit.getDuration() <= 0) {
                     UnitRemoveAbility(stunnedUnit.getUnit(), this.stunAbilityId);
-                    PauseUnit(stunnedUnit.getUnit(), false);
+                    BlzPauseUnitEx(stunnedUnit.getUnit(), false);
                     this.stunnedUnits.delete(handleId);
                     this.timerUtils.releaseTimer(t);
                 }
