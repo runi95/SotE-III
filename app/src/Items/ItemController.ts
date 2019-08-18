@@ -41,6 +41,7 @@ import { ArmoredBootsDrop } from './Abilities/ArmoredBootsDrop';
 import { ArmoredBootsPickup } from './Abilities/ArmoredBootsPickup';
 import { ThrowableAxe } from './Recipes/ThrowableAxe';
 import { AdeptCrystalBall } from './Recipes/AdeptCrystalBall';
+import { MasterCrystalBall } from './Recipes/MasterCrystalBall';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -92,6 +93,7 @@ export class ItemController {
             new ArmoredBoots(),
             new ThrowableAxe(),
             new AdeptCrystalBall(),
+            new MasterCrystalBall(),
         ];
     }
 }
