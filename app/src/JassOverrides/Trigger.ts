@@ -77,4 +77,8 @@ export class Trigger {
     public registerPlayerUnitEventSimple(whichPlayer: player, whichEvent: playerunitevent): event {
         return TriggerRegisterPlayerUnitEventSimple(this.nativeTrigger, whichPlayer, whichEvent);
     }
+
+    public registerFrameEvent(whichFrameHandle: framehandle, whichEvent: frameeventtype): event {
+        return BlzTriggerRegisterFrameEvent(this.nativeTrigger, whichFrameHandle, whichEvent);
+    }
 }
