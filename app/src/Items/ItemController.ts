@@ -8,7 +8,6 @@ import { MoonArmorDrop } from './Abilities/MoonArmorDrop';
 import { ImprovedMoonArmorDrop } from './Abilities/ImprovedMoonArmorDrop';
 import { ImrpovedMoonArmorPickup } from './Abilities/ImprovedMoonArmorPickup';
 import { MoonArmorPickup } from './Abilities/MoonArmorPickup';
-import { RunedBracers } from './Abilities/RunedBracers';
 import { SteelShieldDrop } from './Abilities/SteelShieldDrop';
 import { TheAegisDrop } from './Abilities/TheAegisDrop';
 import { TheAegisPickup } from './Abilities/TheAegisPickup';
@@ -47,6 +46,9 @@ import { CloakOfShadowWalk } from './Recipes/CloakOfShadowWalk';
 import { ReinforcedScales } from './Recipes/ReinforcedScales';
 import { ReinforcedScalesDrop } from './Abilities/ReinforcedScalesDrop';
 import { ReinforcedScalesPickup } from './Abilities/ReinforcedScalesPickup';
+import { LionsRing } from './Recipes/LionsRing';
+import { LionsRingDrop } from './Abilities/LionsRingDrop';
+import { LionsRingPickup } from './Abilities/LionsRingPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -64,7 +66,6 @@ export class ItemController {
             new LoadedCannonUse(),
             new MoonArmorDrop(gameGlobals),
             new MoonArmorPickup(gameGlobals),
-            new RunedBracers(),
             new SteelShieldDrop(gameGlobals),
             new SteelShieldPickup(gameGlobals),
             new TheAegisResetCharges(),
@@ -78,6 +79,8 @@ export class ItemController {
             new ArmoredBootsPickup(gameGlobals),
             new ReinforcedScalesDrop(gameGlobals),
             new ReinforcedScalesPickup(gameGlobals),
+            new LionsRingDrop(gameGlobals),
+            new LionsRingPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -104,6 +107,7 @@ export class ItemController {
             new ScrollOfAgility(),
             new CloakOfShadowWalk(),
             new ReinforcedScales(),
+            new LionsRing(),
         ];
     }
 }

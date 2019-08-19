@@ -14,6 +14,8 @@ import { TheAegis } from './TheAegis';
 import { ScrollOfTownPortal } from './ScrollOfTownPortal';
 import { DivineShield } from './DivineShield';
 import { Redemption } from './Redemption';
+import { RunedBracers } from './RunedBracers';
+import { LionsRing } from './LionsRing';
 
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
@@ -24,6 +26,8 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal());
         damageEngine.addInitialDamageEvent(new Redemption());
+        damageEngine.addInitialDamageEvent(new RunedBracers());
+        damageEngine.addInitialDamageEvent(new LionsRing());
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));

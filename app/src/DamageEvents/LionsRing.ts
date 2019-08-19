@@ -1,10 +1,10 @@
-import { DamageEvent } from '../../DamageEngine/DamageEvent';
-import { DamageEngineGlobals } from '../../DamageEngine/DamageEngineGlobals';
+import { DamageEvent } from '../DamageEngine/DamageEvent';
+import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 
-export class RunedBracers implements DamageEvent {
-    private readonly itemTypeId: number = FourCC('I00S');
+export class LionsRing implements DamageEvent {
+    private readonly itemTypeId: number = FourCC('I01L');
     private readonly dummyUnitTypeId: number = FourCC('n001');
-    private readonly dummyAbilityId: number = FourCC('A025');
+    private readonly dummyAbilityId: number = FourCC('A043');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
 
     public event(globals: DamageEngineGlobals): void {
