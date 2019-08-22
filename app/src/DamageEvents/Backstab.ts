@@ -15,7 +15,7 @@ export class Backstab implements DamageEvent {
         if (angleDiff <= 35 || angleDiff >= 325) {
             const dmg: number = globals.DamageEventAmount * 2.00;
             const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
-            const txt: texttag = CreateTextTagLocBJ(I2S(R2I(dmg)), sourceLoc, 1, 10, 100.00, 0.00, 0.00, 0.00);
+            const txt: texttag = CreateTextTagLocBJ(dmg.toString(), sourceLoc, 1, 10, 100.00, 0.00, 0.00, 0.00);
             globals.DamageEventAmount = dmg;
             SetTextTagPermanentBJ(txt, false);
             SetTextTagLifespanBJ(txt, 2.00);

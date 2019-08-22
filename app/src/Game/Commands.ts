@@ -25,7 +25,7 @@ export class Commands {
 
         const split: string[] = chatstring.substr(1).split(' ');
         if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
-            const gold: number = S2I(split[1]);
+            const gold: number = Number(split[1]);
             if (!gold) {
                 BJDebugMsg('Invalid gold amount!');
                 return;
@@ -33,7 +33,7 @@ export class Commands {
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, gold);
         } else if (this.gameGlobals.DebugMode && split[0] === 'lumber' && split.length === 2) {
-            const lumber: number = S2I(split[1]);
+            const lumber: number = Number(split[1]);
             if (!lumber) {
                 BJDebugMsg('Invalid lumber amount!');
                 return;
@@ -50,7 +50,7 @@ export class Commands {
         } else if (this.gameGlobals.DebugMode && split[0] === 'anim' && split.length === 2) {
             const playerId: number = GetPlayerId(GetTriggerPlayer());
             if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
-                SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId] as unit, S2I(split[1]));
+                SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId] as unit, Number(split[1]));
             }
         } else {
             BJDebugMsg('Unknown command!');

@@ -30,7 +30,7 @@ export class LionsRing implements DamageEvent {
                 UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
                 IssueTargetOrder(dummy, 'chainlightning', globals.DamageEventSource as unit);
             } else {
-                SetItemCharges(itm, R2I(charges));
+                SetItemCharges(itm, charges);
             }
         }
     }
