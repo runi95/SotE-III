@@ -81,4 +81,8 @@ export class Trigger {
     public registerFrameEvent(whichFrameHandle: framehandle, whichEvent: frameeventtype): event {
         return BlzTriggerRegisterFrameEvent(this.nativeTrigger, whichFrameHandle, whichEvent);
     }
+
+    public registerPlayerSyncEvent(whichPlayer: player, prefix: string, fromServer: boolean): event {
+        return BlzTriggerRegisterPlayerSyncEvent(this.nativeTrigger, whichPlayer, prefix, fromServer);
+    }
 }
