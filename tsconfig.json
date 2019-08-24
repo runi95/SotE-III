@@ -17,7 +17,6 @@
 			"lua-types/core/os",
 			"lua-types/special/5.3",
 			"busted-tstl"
-
 		]
 	},
 	"tstl": {
