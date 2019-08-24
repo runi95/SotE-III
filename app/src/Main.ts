@@ -203,7 +203,7 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     const menu: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
     const menuBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', menu, 0, 0);
     const menuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', menu, 0, 0);
-    const fogOfWarCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menuTitle, 0, 0);
+    const fogOfWarCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
     const fogOfWarText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
     const allVersusAllCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
     const allVersusAllText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
