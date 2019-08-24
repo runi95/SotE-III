@@ -53,6 +53,9 @@ export class Trigger {
         return TriggerRegisterDialogEventBJ(this.nativeTrigger, whichDialog);
     }
 
+    public registerDialogButtonEvent(whichButton: button): event {
+        return TriggerRegisterDialogButtonEvent(this.nativeTrigger, whichButton);
+    }
 
     public registerEnterRectSimple(r: rect): event {
         return TriggerRegisterEnterRectSimple(this.nativeTrigger, r);
@@ -84,5 +87,9 @@ export class Trigger {
 
     public registerPlayerSyncEvent(whichPlayer: player, prefix: string, fromServer: boolean): event {
         return BlzTriggerRegisterPlayerSyncEvent(this.nativeTrigger, whichPlayer, prefix, fromServer);
+    }
+
+    public registerPlayerEventLeave(whichPlayer: player): event {
+        return TriggerRegisterPlayerEventLeave(this.nativeTrigger, whichPlayer);
     }
 }
