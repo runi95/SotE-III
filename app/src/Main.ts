@@ -204,17 +204,17 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     const menuBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', menu, 0, 0);
     const menuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', menu, 0, 0);
     const fogOfWarCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
-    const fogOfWarText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const allVersusAllCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
-    const allVersusAllText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const suddenDeathCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
-    const suddenDeathText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const livesLabel: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const livesMinValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const livesSlider: framehandle = BlzCreateFrame('EscMenuSliderTemplate', menu, 0, 0);
-    const livesMaxValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const livesCurrentValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', menu, 0, 0);
-    const startButton: framehandle = BlzCreateFrame('ScriptDialogButton', menu, 0, 0);
+    const fogOfWarText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const allVersusAllCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
+    const allVersusAllText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const suddenDeathCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
+    const suddenDeathText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const livesLabel: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const livesMinValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const livesSlider: framehandle = BlzCreateFrame('EscMenuSliderTemplate', fogOfWarCheckbox, 0, 0);
+    const livesMaxValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const livesCurrentValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const startButton: framehandle = BlzCreateFrame('ScriptDialogButton', fogOfWarCheckbox, 0, 0);
 
     BlzFrameSetSize(menu, 0.3, 0.3);
     BlzFrameSetSize(menuBackdrop, 0.3, 0.3);
@@ -253,27 +253,20 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetText(livesCurrentValueText, '10');
     BlzFrameSetText(startButton, 'Start Game');
 
-    const fakeMenu: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
-    const fakeMenuBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', fakeMenu, 0, 0);
-    const fakeMenuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuFogOfWarCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenu);
-    const fakeMenuFogOfWarText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuAllVersusAllCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenu);
-    const fakeMenuAllVersusAllText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuSuddenDeathCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenu);
-    const fakeMenuSuddenDeathText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuLivesText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuLivesValue: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
-    const fakeMenuWaitingForHostText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenu, 0, 0);
+    const fakeMenuFogOfWarCheckbox: FakeCheckbox = new FakeCheckbox(menu);
+    const fakeMenuFogOfWarText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuAllVersusAllCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
+    const fakeMenuAllVersusAllText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
+                                                                 fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuSuddenDeathCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
+    const fakeMenuSuddenDeathText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
+                                                                fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuLivesText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuLivesValue: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuWaitingForHostText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
+                                                                   fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
 
-    BlzFrameSetSize(fakeMenu, 0.3, 0.3);
-    BlzFrameSetSize(fakeMenuBackdrop, 0.3, 0.3);
-
-    BlzFrameSetAbsPoint(fakeMenu, FRAMEPOINT_CENTER, 0.4, 0.35);
-
-    BlzFrameSetPoint(fakeMenuBackdrop, FRAMEPOINT_CENTER, fakeMenu, FRAMEPOINT_CENTER, 0.0, 0.0);
-    BlzFrameSetPoint(fakeMenuTitle, FRAMEPOINT_TOPLEFT, fakeMenu, FRAMEPOINT_TOPLEFT, 0.11, -0.02);
-    fakeMenuFogOfWarCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuTitle, FRAMEPOINT_CENTER, -0.12, -0.03);
+    fakeMenuFogOfWarCheckbox.setFramePoint(FRAMEPOINT_CENTER, menuTitle, FRAMEPOINT_CENTER, -0.12, -0.03);
     BlzFrameSetPoint(fakeMenuFogOfWarText, FRAMEPOINT_LEFT, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
     fakeMenuAllVersusAllCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuFogOfWarCheckbox.getBorderFrame(),
                                                FRAMEPOINT_CENTER, 0.0, -0.025);
@@ -283,12 +276,11 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetPoint(fakeMenuSuddenDeathText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(fakeMenuLivesText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_CENTER, 0.0, -0.025);
     BlzFrameSetPoint(fakeMenuLivesValue, FRAMEPOINT_LEFT, fakeMenuLivesText, FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(fakeMenuWaitingForHostText, FRAMEPOINT_CENTER, fakeMenu, FRAMEPOINT_CENTER, 0.0, -0.11);
+    BlzFrameSetPoint(fakeMenuWaitingForHostText, FRAMEPOINT_CENTER, menu, FRAMEPOINT_CENTER, 0.0, -0.11);
     fakeMenuFogOfWarCheckbox.setChecked(false);
     fakeMenuAllVersusAllCheckbox.setChecked(false);
     fakeMenuSuddenDeathCheckbox.setChecked(false);
 
-    BlzFrameSetText(fakeMenuTitle, 'SotE Rules');
     BlzFrameSetText(fakeMenuFogOfWarText, 'Disable Fog of War');
     BlzFrameSetText(fakeMenuAllVersusAllText, 'All vs All');
     BlzFrameSetText(fakeMenuSuddenDeathText, 'Disable Sudden Death');
@@ -324,7 +316,6 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     const startButtonTrigger: Trigger = new Trigger();
     startButtonTrigger.addAction(() => {
         BlzFrameSetVisible(menu, false);
-        BlzFrameSetVisible(fakeMenu, false);
 
         gameGlobals.GameIsFogOfWarEnabled = isFogOfWarEnabled;
         gameGlobals.GameIsTeamsEnabled = isTeamsEnabled;
@@ -341,8 +332,8 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
         showHostMenu = true;
     }
 
-    BlzFrameSetVisible(menu, showHostMenu);
-    BlzFrameSetVisible(fakeMenu, !showHostMenu);
+    BlzFrameSetVisible(fogOfWarCheckbox, showHostMenu);
+    BlzFrameSetVisible(fakeMenuFogOfWarCheckbox.getBorderFrame(), !showHostMenu);
 }
 
 function spawnAllCreeps(gameGlobals: GameGlobals): void {
