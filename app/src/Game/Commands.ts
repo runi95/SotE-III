@@ -1,13 +1,16 @@
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 
 export class Commands {
+    private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly gameGlobals: GameGlobals;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, playerVictoryUtils: PlayerVictoryUtils) {
         this.gameGlobals = gameGlobals;
+        this.playerVictoryUtils = playerVictoryUtils;
 
         this.trig.addAction(() => this.action());
         this.trig.registerPlayerChatEvent(Player(0), '-', false);
@@ -53,6 +56,8 @@ export class Commands {
             if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
                 SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId], Number(split[1]));
             }
+        } else if (this.gameGlobals.DebugMode && split[0] === 'defeat' && split.length === 2) {
+            this.playerVictoryUtils.defeatPlayer(Number(split[1]), 'has been forcefully defeated!');
         } else {
             BJDebugMsg('Unknown command!');
         }

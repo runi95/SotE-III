@@ -14,10 +14,12 @@ import { TeleportMovement } from './TeleportMovement';
 import { Timer } from '../JassOverrides/Timer';
 import { BossController } from '../Boss/BossController';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
     private readonly randomNumberGenerator: RandomNumberGenerator;
+    private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
@@ -40,12 +42,13 @@ export class Game {
     constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
         this.randomNumberGenerator = randomNumberGenerator;
+        this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.timerUtils);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
-        this.playerRespawn = new PlayerRespawn(this.gameGlobals);
+        this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils);
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils, this.randomNumberGenerator);
         this.teleportController = new TeleportController();
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils,
@@ -69,7 +72,7 @@ export class Game {
         ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
         this.init();
 
-        this.commands = new Commands(this.gameGlobals);
+        this.commands = new Commands(this.gameGlobals, this.playerVictoryUtils);
         this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.arcaneVault);
 
         const t: Timer = this.timerUtils.newTimer();
@@ -122,10 +125,6 @@ export class Game {
                     }
                 }
             }
-        }
-
-        for (let i: number = 0; i < this.gameGlobals.PlayerLives.length; i++) {
-            this.gameGlobals.PlayerLives[i] = this.gameGlobals.GameStartingLife;
         }
 
         if (this.gameGlobals.GameIsSuddenDeathEnabled) {

@@ -863,7 +863,7 @@ export class GameGlobals {
     // 	Player Lives
     //
     // ========================================
-    public PlayerLives: number[] = [10, 10, 10, 10, 10, 10];
+    public PlayerLives: number[] = [];
 
     // ========================================
     //

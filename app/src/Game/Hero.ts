@@ -30,6 +30,7 @@ export class Hero {
             RemoveUnit(statueUnit);
             const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
             this.gameGlobals.PlayerHeroId[playerId] = this.heroId;
+            this.gameGlobals.PlayerLives[playerId] = this.gameGlobals.GameStartingLife;
         });
         this.trig.registerEnterRectSimple((() => this.selectRect)());
     }

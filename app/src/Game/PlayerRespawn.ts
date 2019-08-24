@@ -1,12 +1,15 @@
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
+import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 
 export class PlayerRespawn {
     private readonly gameGlobals: GameGlobals;
+    private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, playerVictoryUtils: PlayerVictoryUtils) {
         this.gameGlobals = gameGlobals;
+        this.playerVictoryUtils = playerVictoryUtils;
 
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
@@ -29,9 +32,7 @@ export class PlayerRespawn {
                        GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]), true);
             SetUnitManaPercentBJ(GetTriggerUnit(), 100);
         } else {
-            DisplayTextToForce(GetPlayersAll(),
-                               `${this.gameGlobals.PlayerColorCodes[playerId]}${GetPlayerName(Player(playerId))}|r has been defeated!`);
-            CreateFogModifierRectBJ(true, Player(playerId), FOG_OF_WAR_VISIBLE, GetPlayableMapRect());
+            this.playerVictoryUtils.defeatPlayer(playerId, 'has been defeated!');
         }
     }
 }
