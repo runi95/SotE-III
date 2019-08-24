@@ -18,7 +18,8 @@ ceres.addHook('main::after', () => {
         seedRandomNumberGenerator(randomNumberGenerator);
         spawnAllCreeps(gameGlobals);
         initializeHeroSelection(gameGlobals);
-        setPlayerCameras(gameGlobals, randomNumberGenerator);
+        setPlayerCameras(gameGlobals);
+        initializeGameOptionFrames(gameGlobals, randomNumberGenerator);
     },     (err) => {
         Log.Fatal(err);
     });
@@ -179,7 +180,7 @@ function createCheckboxTrigger(frame: framehandle, event: (state: boolean) => vo
     checkboxUncheckedTrigger.registerFrameEvent(frame, FRAMEEVENT_CHECKBOX_UNCHECKED);
 }
 
-function setPlayerCameras(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator): void {
+function setPlayerCameras(gameGlobals: GameGlobals): void {
     SetCameraPosition(-14400.00, -10700.00);
     const heroSelectionArea: rect = Rect(-15616, -11904, -13184, -9472);
     SetCameraBoundsToRect(heroSelectionArea);
@@ -190,7 +191,9 @@ function setPlayerCameras(gameGlobals: GameGlobals, randomNumberGenerator: Rando
         }
         SetPlayerStateBJ(Player(i), PLAYER_STATE_RESOURCE_GOLD, 500);
     }
+}
 
+function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator): void {
     BlzLoadTOCFile('war3mapImported\\Templates.toc');
 
     // EscMenuSliderTemplate
