@@ -152,13 +152,11 @@ export class Game {
     private beginHeroSelection(): void {
         const heroSelectorId: number = FourCC('e001');
         const randomizedPlayerIdArray: number[] = [...this.gameGlobals.ActivePlayerIdList];
-        if (this.gameGlobals.ActivePlayerIdList.length > 1) {
-            for (let i: number = this.gameGlobals.ActivePlayerIdList.length; i > 0; i--) {
-                const j: number = this.randomNumberGenerator.random(0, i + 1);
-                const temp: number = randomizedPlayerIdArray[i];
-                randomizedPlayerIdArray[i] = randomizedPlayerIdArray[j];
-                randomizedPlayerIdArray[j] = temp;
-            }
+        for (let i: number = this.gameGlobals.ActivePlayerIdList.length - 1; i > 0; i--) {
+            const j: number = this.randomNumberGenerator.random(0, i + 1);
+            const temp: number = randomizedPlayerIdArray[i];
+            randomizedPlayerIdArray[i] = randomizedPlayerIdArray[j];
+            randomizedPlayerIdArray[j] = temp;
         }
 
         let index: number = 0;
