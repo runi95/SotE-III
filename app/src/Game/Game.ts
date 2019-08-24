@@ -190,7 +190,7 @@ export class Game {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 2 + i,
                                          `${this.gameGlobals.PlayerColorCodes[i]}${GetPlayerName(Player(i))}|r`);
-                MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 2 + i, '10');
+                MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 2 + i, this.gameGlobals.GameStartingLife.toString());
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 3, 2 + i, '1');
             } else {
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 2 + i, `${this.gameGlobals.PlayerColorCodes[i]}None|r`);
