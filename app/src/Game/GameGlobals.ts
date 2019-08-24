@@ -7,7 +7,9 @@ export class GameGlobals {
     public DivineShieldLife: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerPhysicalBlock: number[] = [0, 0, 0, 0, 0, 0];
     public PlayerSpellBlock: number[] = [0, 0, 0, 0, 0, 0];
-    public PlayerHero: (unit | undefined)[] = [undefined, undefined, undefined, undefined, undefined, undefined];
+    public PlayerHero: unit[] = [];
+    public PlayerHeroId: number[] = [];
+    public ActivePlayerIdList: number[] = [];
 
     public PlayerCount: number = 0;
 
@@ -18,6 +20,18 @@ export class GameGlobals {
 
     public TheArenaRegion: rect = Rect(864.00, 5600.00, 5024.00, 9760.00);
     public PlayerColorCodes: string[] = ['|c00FF0303', '|c000042FF', '|c001CE6B9', '|c00540081', '|c00FFFC01', '|c00fEBA0E'];
+
+    // ========================================
+    //
+    // 	Game Settings
+    //
+    // ========================================
+
+    public GameIsFogOfWarEnabled: boolean = true;
+    public GameIsTeamsEnabled: boolean = true;
+    public GameIsSuddenDeathEnabled: boolean = true;
+    public GameStartingLife: number = 10;
+    public GameSuddenDeathTime: number = 600;
 
     // ========================================
     //

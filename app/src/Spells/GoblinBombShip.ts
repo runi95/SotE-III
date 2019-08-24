@@ -2,23 +2,26 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class GoblinBombShip extends Spell {
     protected readonly abilityId: number = FourCC('A02F');
     protected readonly dummyUnitTypeId: number = FourCC('n019');
     protected readonly timedLifeBuffId: number = FourCC('BTLF');
     private readonly timerUtils: TimerUtils;
+    private readonly randomNumberGenerator: RandomNumberGenerator;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
         super();
 
         this.timerUtils = timerUtils;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const loc: location = GetSpellTargetLoc();
-        const rng: number = GetRandomInt(0, 359);
+        const rng: number = this.randomNumberGenerator.random(0, 359);
         const x: number = GetLocationX(loc) + 300.00 * CosBJ(rng);
         const y: number = GetLocationY(loc) + 300.00 * SinBJ(rng);
         const angle: number = (rng + 180) % 360;

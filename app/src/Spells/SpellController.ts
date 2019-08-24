@@ -59,11 +59,12 @@ import { PandarenChi } from './PandarenChi';
 import { CommandoFlag } from './CommandoFlag';
 import { Challenge } from './Challenge';
 import { ChiMaster } from './ChiMaster';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class SpellController {
     private spells: any[];
 
-    constructor(gameGlobals: GameGlobals, stunUtils: StunUtils, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, stunUtils: StunUtils, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
         this.spells = [
             new Avatar(timerUtils),
             new Backstab(),
@@ -86,7 +87,7 @@ export class SpellController {
             new Frostfire(timerUtils),
             new FrostFireDamage(),
             new FrostNova(timerUtils),
-            new GoblinBombShip(timerUtils),
+            new GoblinBombShip(timerUtils, randomNumberGenerator),
             new GoblinMine(timerUtils),
             new Immunity(gameGlobals),
             new Maelstrom(timerUtils),
@@ -102,8 +103,8 @@ export class SpellController {
             new ShadowStep(),
             new SnareTrap(),
             new SnareTrapDeath(),
-            new SpiritOfFrost(gameGlobals),
-            new StormCloud(timerUtils),
+            new SpiritOfFrost(gameGlobals, randomNumberGenerator),
+            new StormCloud(timerUtils, randomNumberGenerator),
             new SummonBear(timerUtils),
             new SummonClockwerkGoblin(),
             new SummonFelbeast(),

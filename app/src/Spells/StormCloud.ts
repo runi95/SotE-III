@@ -2,16 +2,19 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class StormCloud extends Spell {
     protected readonly abilityId: number = FourCC('A003');
     private readonly dummyUnitId: number = FourCC('n004');
     private readonly timerUtils: TimerUtils;
+    private readonly randomNumberGenerator: RandomNumberGenerator
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
         super();
 
         this.timerUtils = timerUtils;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
 
@@ -33,7 +36,7 @@ export class StormCloud extends Spell {
 
             const grp: GroupInRange = new GroupInRange(300.00, loc);
             grp.for((u: unit) => {
-                if (IsUnitEnemy(u, trigOwner) && UnitAlive(u) && GetRandomInt(1, 10) === 1) {
+                if (IsUnitEnemy(u, trigOwner) && UnitAlive(u) && this.randomNumberGenerator.random(1, 10) === 1) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl',
                                                    GetUnitX(u), GetUnitY(u)));
                     UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);

@@ -1,22 +1,25 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class SpiritOfFrost implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
+    private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly abilityId: number = FourCC('A01L');
     private readonly dummyUnitTypeId: number = FourCC('n00J');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public event(globals: DamageEngineGlobals): void {
         const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId);
 
         if (abilityLevel > 0) {
-            if (GetRandomInt(1, 100) < 10) {
+            if (this.randomNumberGenerator.random(1, 100) < 10) {
                 const mana: number = GetUnitStateSwap(UNIT_STATE_MANA, globals.DamageEventTarget as unit);
                 if (mana > 25) {
                     const x: number = GetUnitX(globals.DamageEventTarget as unit) + GetRandomReal(0.00, 500.00) - 250.00;

@@ -29,10 +29,7 @@ export class Hero {
             RemoveUnit(GetEnteringUnit());
             RemoveUnit(statueUnit);
             const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
-            this.gameGlobals.PlayerHero[playerId] = CreateUnit(GetOwningPlayer(GetEnteringUnit()), this.heroId,
-                                                               GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                                                               GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                                                               bj_UNIT_FACING);
+            this.gameGlobals.PlayerHeroId[playerId] = this.heroId;
         });
         this.trig.registerEnterRectSimple((() => this.selectRect)());
     }

@@ -12,11 +12,12 @@ import { DamageEventController } from '../DamageEvents/DamageEventController';
 import { Commands } from './Commands';
 import { TeleportMovement } from './TeleportMovement';
 import { Timer } from '../JassOverrides/Timer';
-import { Hero } from './Hero';
 import { BossController } from '../Boss/BossController';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
+    private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
@@ -36,26 +37,28 @@ export class Game {
     private readonly tombOfAncients: unit;
     private readonly arcaneVault: unit;
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.randomNumberGenerator = randomNumberGenerator;
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.timerUtils);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
         this.playerRespawn = new PlayerRespawn(this.gameGlobals);
-        this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils);
+        this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils, this.randomNumberGenerator);
         this.teleportController = new TeleportController();
-        this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils, this.damageEngine);
+        this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils,
+                                                               this.randomNumberGenerator, this.damageEngine);
         this.bossController = new BossController();
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
-        const ancientOfWondersX: number = GetRandomInt(0, 10630) - 2370;
-        const ancientOfWondersY: number = GetRandomInt(0, 25400) - 12700;
-        const tombOfAncientsX: number = GetRandomInt(0, 10630) - 2370;
-        const tombOfAncientsY: number = GetRandomInt(0, 25400) - 12700;
-        const arcaneVaultX: number = GetRandomInt(0, 10630) - 2370;
-        const arcaneVaultY: number = GetRandomInt(0, 25400) - 12700;
+        const ancientOfWondersX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
+        const ancientOfWondersY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
+        const tombOfAncientsX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
+        const tombOfAncientsY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
+        const arcaneVaultX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
+        const arcaneVaultY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
         this.ancientOfWonders = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'),
                                            ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
         this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'),
@@ -71,29 +74,105 @@ export class Game {
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(240, true, () => {
-            const newX: number = GetRandomInt(0, 10630) - 2370;
-            const newY: number = GetRandomInt(0, 25400) - 12700;
+            const newX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
+            const newY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
             SetUnitPosition(this.arcaneVault, newX, newY);
         });
     }
 
     private init(): void {
         this.initializePlayers();
+        this.beginHeroSelection();
         this.initializeScoreboard();
         this.enableDebugMode();
         this.printGameModeInfo();
     }
 
     private initializePlayers(): void {
-        const heroSelectorId: number = FourCC('e001');
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) === MAP_CONTROL_USER) {
                 this.gameGlobals.PlayerCount++;
-                SetPlayerStateBJ(Player(i), PLAYER_STATE_RESOURCE_GOLD, 500);
-                FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, this.gameGlobals.PlayerSpawnRegion[i], true, false));
-                CreateUnit(Player(i), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
+                this.gameGlobals.ActivePlayerIdList.push(i);
             }
         }
+    }
+
+    private startGame(): void {
+        SetCameraBoundsToRect(GetPlayableMapRect());
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            if (this.gameGlobals.PlayerHeroId[i] !== undefined) {
+                const x: number = GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]);
+                const y: number = GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]);
+                this.gameGlobals.PlayerHero[i] = CreateUnit(Player(i), this.gameGlobals.PlayerHeroId[i], x, y, bj_UNIT_FACING);
+                SetCameraPositionForPlayer(Player(i), x, y);
+            }
+
+            if (!this.gameGlobals.GameIsFogOfWarEnabled) {
+                FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, GetPlayableMapRect(), false, false));
+            }
+
+            if (this.gameGlobals.GameIsTeamsEnabled) {
+                if (i < 3) {
+                    for (let j: number = 0; j < 3; j++) {
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
+                    }
+                } else {
+                    for (let j: number = 3; j < 5; j++) {
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
+                    }
+                }
+            }
+        }
+
+        for (let i: number = 0; i < this.gameGlobals.PlayerLives.length; i++) {
+            this.gameGlobals.PlayerLives[i] = this.gameGlobals.GameStartingLife;
+        }
+
+        if (this.gameGlobals.GameIsSuddenDeathEnabled) {
+            this.initiateArenaFight();
+        }
+    }
+
+    // TODO: Finish this setting
+    private initiateArenaFight(): void {
+        let ticks: number = this.gameGlobals.GameSuddenDeathTime;
+        const t: Timer = this.timerUtils.newTimer();
+        t.start(1, true, () => {
+            ticks--;
+
+            if (ticks === 60) {
+                DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `Arena battle will start in 1 minute`);
+            }
+
+            if (ticks <= 0) {
+                this.timerUtils.releaseTimer(t);
+            }
+        });
+    }
+
+    private beginHeroSelection(): void {
+        const heroSelectorId: number = FourCC('e001');
+        const randomizedPlayerIdArray: number[] = [...this.gameGlobals.ActivePlayerIdList];
+        if (this.gameGlobals.ActivePlayerIdList.length > 1) {
+            for (let i: number = this.gameGlobals.ActivePlayerIdList.length; i > 0; i--) {
+                const j: number = this.randomNumberGenerator.random(0, i + 1);
+                const temp: number = randomizedPlayerIdArray[i];
+                randomizedPlayerIdArray[i] = randomizedPlayerIdArray[j];
+                randomizedPlayerIdArray[j] = temp;
+            }
+        }
+
+        let index: number = 0;
+        const t: Timer = this.timerUtils.newTimer();
+        t.start(0.1, true, () => {
+            if (this.gameGlobals.ActivePlayerIdList.every(playerId => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
+                BJDebugMsg('Hero selection has finished!');
+                this.timerUtils.releaseTimer(t);
+                this.startGame();
+            } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
+                CreateUnit(Player(randomizedPlayerIdArray[index++]), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
+            }
+        });
     }
 
     private initializeScoreboard(): void {
@@ -148,9 +227,9 @@ export class Game {
 
     private printGameModeInfo(): void {
         DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, `|c00FF0303${GetPlayerName(Player(0))}|r may change the game rules`);
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Lives: |cFFFFCC0010|r');
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Teams: |cFFFFCC00none|r');
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Fog of war: |cFFFFCC00true|r');
-        DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Sudden death: |cFFFFCC00true|r');
+        // DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Lives: |cFFFFCC0010|r');
+        // DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Teams: |cFFFFCC00none|r');
+        // DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Fog of war: |cFFFFCC00true|r');
+        // DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 30, 'Sudden death: |cFFFFCC00true|r');
     }
 }

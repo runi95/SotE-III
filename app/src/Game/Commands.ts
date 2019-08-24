@@ -1,5 +1,6 @@
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class Commands {
     private readonly gameGlobals: GameGlobals;
@@ -50,7 +51,7 @@ export class Commands {
         } else if (this.gameGlobals.DebugMode && split[0] === 'anim' && split.length === 2) {
             const playerId: number = GetPlayerId(GetTriggerPlayer());
             if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
-                SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId] as unit, Number(split[1]));
+                SetUnitAnimationByIndex(this.gameGlobals.PlayerHero[playerId], Number(split[1]));
             }
         } else {
             BJDebugMsg('Unknown command!');

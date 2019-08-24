@@ -16,16 +16,18 @@ import { DivineShield } from './DivineShield';
 import { Redemption } from './Redemption';
 import { RunedBracers } from './RunedBracers';
 import { LionsRing } from './LionsRing';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class DamageEventController {
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, damageEngine: DamageEngine) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils,
+                randomNumberGenerator: RandomNumberGenerator, damageEngine: DamageEngine) {
         // Initial damage events
         damageEngine.addInitialDamageEvent(new ManaBrilliance());
-        damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals));
+        damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal());
-        damageEngine.addInitialDamageEvent(new Redemption());
+        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator));
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
 
