@@ -17,7 +17,6 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 import { PlayerLeaves } from './PlayerLeaves';
 import { ArenaUtils } from '../Utility/ArenaUtils';
-import { Hero } from './Hero';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
