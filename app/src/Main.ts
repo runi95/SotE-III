@@ -365,7 +365,7 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
         fakeMenuFogOfWarCheckbox.setChecked(state);
     });
 
-    let isAllRandomEnabled: boolean = true;
+    let isAllRandomEnabled: boolean = false;
     createCheckboxTrigger(allRandomCheckbox, (state: boolean) => {
         isAllRandomEnabled = state;
         fakeMenuAllRandomCheckbox.setChecked(state);
