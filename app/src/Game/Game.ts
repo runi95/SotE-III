@@ -232,7 +232,14 @@ export class Game {
     }
 
     private enableDebugMode(): void {
-        if (this.gameGlobals.PlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
+        let nonBotPlayerCount: number = 0;
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) === MAP_CONTROL_USER) {
+                nonBotPlayerCount++;
+            }
+        }
+
+        if (nonBotPlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
             // BJDebugMsg('Activating debug mode...');
             this.gameGlobals.DebugMode = true;
             /*
