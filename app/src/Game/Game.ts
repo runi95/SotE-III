@@ -154,7 +154,7 @@ export class Game {
             } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
                 const playerId: number = randomizedPlayerIdArray[index++];
                 const heroSelector: unit = CreateUnit(Player(playerId), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
-                if (GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
+                if (this.gameGlobals.GameIsAllRandomEnabled || GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
                     UnitAddAbility(heroSelector, FourCC('Aloc'));
                     const availableHeroIndexes: number[] = [];
                     for (let i: number = 0; i < this.gameGlobals.HeroList.length; i++) {

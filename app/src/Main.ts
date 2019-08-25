@@ -260,13 +260,15 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     const menuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', menu, 0, 0);
     const fogOfWarCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', menu, 0, 0);
     const fogOfWarText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const allRandomCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
+    const allRandomText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
+    const suddenDeathCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
+    const suddenDeathText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const teamsText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const threeVersusThreeRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, true);
     const threeVersusThreeText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const noTeamsRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, false);
     const noTeamsText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
-    const suddenDeathCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
-    const suddenDeathText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const livesLabel: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const livesMinValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
     const livesSlider: framehandle = BlzCreateFrame('EscMenuSliderTemplate', fogOfWarCheckbox, 0, 0);
@@ -277,6 +279,7 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetSize(menu, 0.3, 0.3);
     BlzFrameSetSize(menuBackdrop, 0.3, 0.3);
     BlzFrameSetSize(fogOfWarCheckbox, 0.02, 0.02);
+    BlzFrameSetSize(allRandomCheckbox, 0.02, 0.02);
     BlzFrameSetSize(suddenDeathCheckbox, 0.02, 0.02);
     BlzFrameSetSize(livesSlider, 0.2, 0.02);
     BlzFrameSetSize(startButton, 0.22, 0.035);
@@ -287,15 +290,17 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetPoint(menuTitle, FRAMEPOINT_TOPLEFT, menu, FRAMEPOINT_TOPLEFT, 0.11, -0.02);
     BlzFrameSetPoint(fogOfWarCheckbox, FRAMEPOINT_CENTER, menuTitle, FRAMEPOINT_CENTER, -0.12, -0.03);
     BlzFrameSetPoint(fogOfWarText, FRAMEPOINT_LEFT, fogOfWarCheckbox, FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(teamsText, FRAMEPOINT_LEFT, fogOfWarCheckbox, FRAMEPOINT_LEFT, 0.0, -0.025);
+    BlzFrameSetPoint(allRandomCheckbox, FRAMEPOINT_CENTER, fogOfWarCheckbox, FRAMEPOINT_CENTER, 0.0, -0.025);
+    BlzFrameSetPoint(allRandomText, FRAMEPOINT_LEFT, allRandomCheckbox, FRAMEPOINT_RIGHT, 0.01, 0.0);
+    BlzFrameSetPoint(suddenDeathCheckbox, FRAMEPOINT_CENTER, allRandomCheckbox, FRAMEPOINT_CENTER, 0.0, -0.025);
+    BlzFrameSetPoint(suddenDeathText, FRAMEPOINT_LEFT, suddenDeathCheckbox, FRAMEPOINT_RIGHT, 0.01, 0.0);
+    BlzFrameSetPoint(teamsText, FRAMEPOINT_LEFT, suddenDeathCheckbox, FRAMEPOINT_LEFT, 0.0, -0.025);
     threeVersusThreeRadioButton.setFramePoint(FRAMEPOINT_LEFT, teamsText, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(threeVersusThreeText, FRAMEPOINT_LEFT,
                      threeVersusThreeRadioButton.getHiddenButtonFrame(), FRAMEPOINT_RIGHT, 0.005, 0.0);
     noTeamsRadioButton.setFramePoint(FRAMEPOINT_LEFT, threeVersusThreeText, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(noTeamsText, FRAMEPOINT_LEFT, noTeamsRadioButton.getHiddenButtonFrame(), FRAMEPOINT_RIGHT, 0.005, 0.0);
-    BlzFrameSetPoint(suddenDeathCheckbox, FRAMEPOINT_LEFT, teamsText, FRAMEPOINT_LEFT, 0.0, -0.025);
-    BlzFrameSetPoint(suddenDeathText, FRAMEPOINT_LEFT, suddenDeathCheckbox, FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(livesMinValueText, FRAMEPOINT_CENTER, suddenDeathCheckbox, FRAMEPOINT_CENTER, 0.0, -0.04);
+    BlzFrameSetPoint(livesMinValueText, FRAMEPOINT_LEFT, teamsText, FRAMEPOINT_LEFT, 0.0, -0.04);
     BlzFrameSetPoint(livesSlider, FRAMEPOINT_LEFT, livesMinValueText, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(livesMaxValueText, FRAMEPOINT_LEFT, livesSlider, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(livesLabel, FRAMEPOINT_CENTER, livesSlider, FRAMEPOINT_CENTER, 0.0, 0.015);
@@ -306,10 +311,11 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
 
     BlzFrameSetText(menuTitle, 'SotE Rules');
     BlzFrameSetText(fogOfWarText, 'Disable Fog of War');
+    BlzFrameSetText(allRandomText, 'All Random');
+    BlzFrameSetText(suddenDeathText, 'Disable Sudden Death');
     BlzFrameSetText(teamsText, 'Teams:');
     BlzFrameSetText(threeVersusThreeText, '3 vs 3');
     BlzFrameSetText(noTeamsText, 'All vs All');
-    BlzFrameSetText(suddenDeathText, 'Disable Sudden Death');
     BlzFrameSetText(livesLabel, 'Lives');
     BlzFrameSetText(livesMinValueText, '1');
     BlzFrameSetText(livesMaxValueText, '100');
@@ -318,10 +324,13 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
 
     const fakeMenuFogOfWarCheckbox: FakeCheckbox = new FakeCheckbox(menu);
     const fakeMenuFogOfWarText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
-    const fakeMenuTeamsText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuAllRandomCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
+    const fakeMenuAllRandomText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
+                                                              fakeMenuAllRandomCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuSuddenDeathCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
     const fakeMenuSuddenDeathText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
                                                                 fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuTeamsText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuLivesText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuLivesValue: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuWaitingForHostText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
@@ -329,19 +338,23 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
 
     fakeMenuFogOfWarCheckbox.setFramePoint(FRAMEPOINT_CENTER, menuTitle, FRAMEPOINT_CENTER, -0.12, -0.03);
     BlzFrameSetPoint(fakeMenuFogOfWarText, FRAMEPOINT_LEFT, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(fakeMenuTeamsText, FRAMEPOINT_LEFT, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_LEFT, 0.0, -0.025);
-    fakeMenuSuddenDeathCheckbox.setFramePoint(FRAMEPOINT_LEFT, fakeMenuTeamsText,
-                                              FRAMEPOINT_LEFT, 0.0, -0.025);
+    fakeMenuAllRandomCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_CENTER, 0.0, -0.025);
+    BlzFrameSetPoint(fakeMenuAllRandomText, FRAMEPOINT_LEFT, fakeMenuAllRandomCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
+    fakeMenuSuddenDeathCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuAllRandomCheckbox.getBorderFrame(),
+                                              FRAMEPOINT_CENTER, 0.0, -0.025);
     BlzFrameSetPoint(fakeMenuSuddenDeathText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(fakeMenuLivesText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_CENTER, 0.0, -0.025);
+    BlzFrameSetPoint(fakeMenuTeamsText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_LEFT, 0.0, -0.025);
+    BlzFrameSetPoint(fakeMenuLivesText, FRAMEPOINT_LEFT, fakeMenuTeamsText, FRAMEPOINT_LEFT, 0.0, -0.025);
     BlzFrameSetPoint(fakeMenuLivesValue, FRAMEPOINT_LEFT, fakeMenuLivesText, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(fakeMenuWaitingForHostText, FRAMEPOINT_CENTER, menu, FRAMEPOINT_CENTER, 0.0, -0.11);
     fakeMenuFogOfWarCheckbox.setChecked(false);
     fakeMenuSuddenDeathCheckbox.setChecked(false);
+    fakeMenuAllRandomCheckbox.setChecked(false);
 
     BlzFrameSetText(fakeMenuFogOfWarText, 'Disable Fog of War');
-    BlzFrameSetText(fakeMenuTeamsText, 'Teams: 3 vs 3');
+    BlzFrameSetText(fakeMenuAllRandomText, 'All Random');
     BlzFrameSetText(fakeMenuSuddenDeathText, 'Disable Sudden Death');
+    BlzFrameSetText(fakeMenuTeamsText, 'Teams: 3 vs 3');
     BlzFrameSetText(fakeMenuLivesText, 'Lives:');
     BlzFrameSetText(fakeMenuLivesValue, '10');
     BlzFrameSetText(fakeMenuWaitingForHostText, 'Waiting for host...');
@@ -350,6 +363,12 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     createCheckboxTrigger(fogOfWarCheckbox, (state: boolean) => {
         isFogOfWarEnabled = !state;
         fakeMenuFogOfWarCheckbox.setChecked(state);
+    });
+
+    let isAllRandomEnabled: boolean = true;
+    createCheckboxTrigger(allRandomCheckbox, (state: boolean) => {
+        isAllRandomEnabled = state;
+        fakeMenuAllRandomCheckbox.setChecked(state);
     });
 
     let isTeamsEnabled: boolean = true;
@@ -385,6 +404,7 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
         BlzFrameSetVisible(menu, false);
 
         gameGlobals.GameIsFogOfWarEnabled = isFogOfWarEnabled;
+        gameGlobals.GameIsAllRandomEnabled = isAllRandomEnabled;
         gameGlobals.GameIsTeamsEnabled = isTeamsEnabled;
         gameGlobals.GameIsSuddenDeathEnabled = isSuddenDeathEnabled;
         gameGlobals.GameStartingLife = lives;
