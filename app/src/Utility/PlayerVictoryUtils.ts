@@ -17,6 +17,10 @@ export class PlayerVictoryUtils {
         DisplayTextToForce(GetPlayersAll(),
                            `${this.gameGlobals.PlayerColorCodes[playerId]}${GetPlayerName(Player(playerId))}|r ${messageSuffix}`);
         CreateFogModifierRectBJ(true, Player(playerId), FOG_OF_WAR_VISIBLE, GetPlayableMapRect());
+        if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
+            RemoveUnit(this.gameGlobals.PlayerHero[playerId]);
+            this.gameGlobals.PlayerHero.splice(playerId, 1);
+        }
 
         this.gameGlobals.PlayerLives[playerId] = 0;
         this.checkForLosersAndVictors();
