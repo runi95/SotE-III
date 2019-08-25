@@ -29,11 +29,13 @@ export class PlayerVictoryUtils {
     public checkForLosersAndVictors(): void {
         const alivePlayers: AlivePlayers[] = [];
         const deadPlayers: number[] = [];
-        for (let i: number = 0; i < this.gameGlobals.PlayerLives.length; i++) {
-            if (this.gameGlobals.PlayerLives[i] > 0) {
-                alivePlayers.push({ playerId: i, lives: this.gameGlobals.PlayerLives[i] });
-            } else {
-                deadPlayers.push(i);
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            if (this.gameGlobals.PlayerLives[i] !== undefined) {
+                if (this.gameGlobals.PlayerLives[i] > 0) {
+                    alivePlayers.push({ playerId: i, lives: this.gameGlobals.PlayerLives[i] });
+                } else {
+                    deadPlayers.push(i);
+                }
             }
         }
 
