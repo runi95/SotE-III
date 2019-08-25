@@ -165,8 +165,8 @@ export class Game {
 
                     const selectedIndex: number = this.randomNumberGenerator.random(0, availableHeroIndexes.length - 1);
                     IssuePointOrder(heroSelector, 'move',
-                                    this.gameGlobals.HeroSelectRegions[selectedIndex].getCenter().x,
-                                    this.gameGlobals.HeroSelectRegions[selectedIndex].getCenter().y);
+                                    this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().x,
+                                    this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().y);
                 }
             }
         });
