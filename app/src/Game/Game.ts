@@ -214,12 +214,16 @@ export class Game {
         }
 
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 9, 'Arena in...');
-        MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 9, this.gameGlobals.GameSuddenDeathTime.toString());
+        if (this.gameGlobals.GameIsSuddenDeathEnabled) {
+            MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 9, this.gameGlobals.GameSuddenDeathTime.toString());
+        } else {
+            MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 9, '|cFF808080(disabled)|r');
+        }
 
         MultiboardSetItemIconBJ(this.gameGlobals.Multiboard, 1, 9, 'UI\\Widgets\\Console\\Human\\Human-Minimap-Ally-Off.blp');
 
         MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 9, 10.00);
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 9, 4.00);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 9, 8.00);
 
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 8, false, false);
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 8, false, false);
