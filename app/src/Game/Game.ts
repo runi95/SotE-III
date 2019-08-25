@@ -139,7 +139,7 @@ export class Game {
         const heroSelectorId: number = FourCC('e001');
         const randomizedPlayerIdArray: number[] = [...this.gameGlobals.ActivePlayerIdList];
         for (let i: number = this.gameGlobals.ActivePlayerIdList.length - 1; i > 0; i--) {
-            const j: number = this.randomNumberGenerator.random(0, i + 1);
+            const j: number = this.randomNumberGenerator.random(0, i);
             const temp: number = randomizedPlayerIdArray[i];
             randomizedPlayerIdArray[i] = randomizedPlayerIdArray[j];
             randomizedPlayerIdArray[j] = temp;
