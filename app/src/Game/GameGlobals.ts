@@ -34,7 +34,7 @@ export class GameGlobals {
     // ========================================
 
     public GameIsFogOfWarEnabled: boolean = true;
-    public GameIsAllRandomEnabled: boolean = true;
+    public GameIsAllRandomEnabled: boolean = false;
     public GameIsTeamsEnabled: boolean = true;
     public GameIsSuddenDeathEnabled: boolean = true;
     public GameStartingLife: number = 10;
