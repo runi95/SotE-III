@@ -34,4 +34,8 @@ export class Hero {
         });
         this.trig.registerEnterRectSimple((() => this.selectRect)());
     }
+
+    public getIsHeroPicked(): boolean {
+        return this.isHeroPicked;
+    }
 }

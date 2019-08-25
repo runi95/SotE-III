@@ -1,5 +1,6 @@
 import { Point } from '../Utility/Point';
 import { Region } from '../Utility/Region';
+import { Hero } from './Hero';
 
 export class GameGlobals {
     public CryostasisSummons: unit[] = [];
@@ -962,4 +963,8 @@ export class GameGlobals {
         270.00,
         270.00,
     ];
+
+    public SelectedHeroIndexes: number[] = [];
+
+    public HeroList: Hero[] = [];
 }

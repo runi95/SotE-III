@@ -415,17 +415,16 @@ function spawnAllCreeps(gameGlobals: GameGlobals): void {
 }
 
 function initializeHeroSelection(gameGlobals: GameGlobals): void {
-    const heroes: Hero[] = [];
     for (let i: number = 0; i < gameGlobals.HeroArraySize; i++) {
-        heroes.push(new Hero(gameGlobals,
-                             Rect(gameGlobals.HeroSelectRegions[i].minX,
-                                  gameGlobals.HeroSelectRegions[i].minY,
-                                  gameGlobals.HeroSelectRegions[i].maxX,
-                                  gameGlobals.HeroSelectRegions[i].maxY),
-                             FourCC(gameGlobals.HeroUnitTypeID[i]),
-                             gameGlobals.HeroSelectPoints[i].x,
-                             gameGlobals.HeroSelectPoints[i].y,
-                             gameGlobals.HeroSelectAngles[i]));
+        gameGlobals.HeroList.push(new Hero(gameGlobals,
+                                           Rect(gameGlobals.HeroSelectRegions[i].minX,
+                                                gameGlobals.HeroSelectRegions[i].minY,
+                                                gameGlobals.HeroSelectRegions[i].maxX,
+                                                gameGlobals.HeroSelectRegions[i].maxY),
+                                           FourCC(gameGlobals.HeroUnitTypeID[i]),
+                                           gameGlobals.HeroSelectPoints[i].x,
+                                           gameGlobals.HeroSelectPoints[i].y,
+                                           gameGlobals.HeroSelectAngles[i]));
     }
 }
 

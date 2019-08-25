@@ -17,6 +17,7 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 import { PlayerLeaves } from './PlayerLeaves';
 import { ArenaUtils } from '../Utility/ArenaUtils';
+import { Hero } from './Hero';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -95,7 +96,7 @@ export class Game {
 
     private initializePlayers(): void {
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) === MAP_CONTROL_USER) {
+            if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 this.gameGlobals.PlayerCount++;
                 this.gameGlobals.ActivePlayerIdList.push(i);
             }
@@ -148,11 +149,25 @@ export class Game {
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
             if (this.gameGlobals.ActivePlayerIdList.every(playerId => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
-                BJDebugMsg('Hero selection has finished!');
                 this.timerUtils.releaseTimer(t);
                 this.startGame();
             } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
-                CreateUnit(Player(randomizedPlayerIdArray[index++]), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
+                const playerId: number = randomizedPlayerIdArray[index++];
+                const heroSelector: unit = CreateUnit(Player(playerId), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
+                if (GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
+                    UnitAddAbility(heroSelector, FourCC('Aloc'));
+                    const availableHeroIndexes: number[] = [];
+                    for (let i: number = 0; i < this.gameGlobals.HeroList.length; i++) {
+                        if (!this.gameGlobals.HeroList[i].getIsHeroPicked()) {
+                            availableHeroIndexes.push(i);
+                        }
+                    }
+
+                    const selectedIndex: number = this.randomNumberGenerator.random(0, availableHeroIndexes.length - 1);
+                    IssuePointOrder(heroSelector, 'move',
+                                    this.gameGlobals.HeroSelectRegions[selectedIndex].getCenter().x,
+                                    this.gameGlobals.HeroSelectRegions[selectedIndex].getCenter().y);
+                }
             }
         });
     }
