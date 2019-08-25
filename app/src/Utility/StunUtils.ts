@@ -39,4 +39,8 @@ export class StunUtils {
             });
         }
     }
+
+    public clearAllStuns(): void {
+        this.stunnedUnits.forEach((value: StunnedUnit) => value.setDuration(0));
+    }
 }

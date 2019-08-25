@@ -18,4 +18,8 @@ export class StunnedUnit {
     public getDuration(): number {
         return this.duration;
     }
+
+    public setDuration(duration: number): void {
+        this.duration = duration;
+    }
 }

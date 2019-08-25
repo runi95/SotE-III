@@ -28,9 +28,11 @@ export class PlayerRespawn {
             MultiboardSetItemValueBJ(this.gameGlobals.Multiboard as multiboard, 2,
                                      2 + playerId, I2S(this.gameGlobals.PlayerLives[playerId]));
             TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(GetTriggerUnit())), 10.00));
-            ReviveHero(GetTriggerUnit(), GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                       GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]), true);
-            SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+            if (!this.gameGlobals.IsArenaBattleInProgress) {
+                ReviveHero(GetTriggerUnit(), GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                           GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]), true);
+                SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+            }
         } else {
             this.playerVictoryUtils.defeatPlayer(playerId, 'has been defeated!');
         }

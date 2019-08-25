@@ -16,6 +16,7 @@ import { BossController } from '../Boss/BossController';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 import { PlayerLeaves } from './PlayerLeaves';
+import { ArenaUtils } from '../Utility/ArenaUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -23,6 +24,7 @@ export class Game {
     private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
+    private readonly arenaUtils: ArenaUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
     private readonly damageEngine: DamageEngine;
     private readonly creepRespawn: CreepRespawn;
@@ -36,7 +38,6 @@ export class Game {
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
 
-    private readonly arenaGate: destructable;
     private readonly ancientOfWonders: unit;
     private readonly tombOfAncients: unit;
     private readonly arcaneVault: unit;
@@ -47,6 +48,7 @@ export class Game {
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.timerUtils);
+        this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
@@ -58,7 +60,6 @@ export class Game {
                                                                this.randomNumberGenerator, this.damageEngine);
         this.bossController = new BossController();
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
-        this.arenaGate = CreateDestructable(FourCC('ATg1'), 2944, 5632, 0, 1, 0);
         const ancientOfWondersX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
         const ancientOfWondersY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
         const tombOfAncientsX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
@@ -72,7 +73,6 @@ export class Game {
         this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'),
                                       arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
 
-        ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
         this.init();
 
         this.commands = new Commands(this.gameGlobals, this.playerVictoryUtils);
@@ -130,25 +130,8 @@ export class Game {
         }
 
         if (this.gameGlobals.GameIsSuddenDeathEnabled) {
-            this.initiateArenaFight();
+            this.arenaUtils.initiateFightCountdown();
         }
-    }
-
-    // TODO: Finish this setting
-    private initiateArenaFight(): void {
-        let ticks: number = this.gameGlobals.GameSuddenDeathTime;
-        const t: Timer = this.timerUtils.newTimer();
-        t.start(1, true, () => {
-            ticks--;
-
-            if (ticks === 60) {
-                DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `Arena battle will start in 1 minute`);
-            }
-
-            if (ticks <= 0) {
-                this.timerUtils.releaseTimer(t);
-            }
-        });
     }
 
     private beginHeroSelection(): void {
@@ -175,7 +158,7 @@ export class Game {
     }
 
     private initializeScoreboard(): void {
-        this.gameGlobals.Multiboard = CreateMultiboardBJ(3, 7, 'Spawn of the Enemy');
+        this.gameGlobals.Multiboard = CreateMultiboardBJ(3, 9, 'Spawn of the Enemy');
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 1, 'Player');
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 1, 'Lives');
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 3, 1, 'Level');
@@ -208,6 +191,21 @@ export class Game {
             MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 2 + i, true, false);
             MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 3, 2 + i, true, false);
         }
+
+        MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 9, 'Arena in...');
+        MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 9, this.gameGlobals.GameSuddenDeathTime.toString());
+
+        MultiboardSetItemIconBJ(this.gameGlobals.Multiboard, 1, 9, 'UI\\Widgets\\Console\\Human\\Human-Minimap-Ally-Off.blp');
+
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 9, 10.00);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 9, 4.00);
+
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 8, false, false);
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 8, false, false);
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 3, 8, false, false);
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 9, true, true);
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 9, true, false);
+        MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 3, 9, false, false);
 
         MultiboardDisplayBJ(true, this.gameGlobals.Multiboard);
     }

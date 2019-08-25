@@ -19,6 +19,11 @@ export class GameGlobals {
     public TeleportMovement: boolean = false;
 
     public TheArenaRegion: rect = Rect(864.00, 5600.00, 5024.00, 9760.00);
+    public IsArenaBattleInProgress: boolean = false;
+    public ArenaOneMinuteSound: sound = CreateSound('Sound\\Interface\\Hint.wav', false, false, false, 0, 0, 'DefaultEAXON');
+    public ArenaStartedSound: sound = CreateSound('Sound\\Interface\\NewTournament.wav', false, false, false, 0, 0, 'DefaultEAXON');
+    public ArenaCountdownSound: sound = CreateSound('Sound\\Interface\\BattleNetTick.wav', false, false, false, 0, 0, 'DefaultEAXON');
+    public ArenaFightSound: sound = CreateSound('Sound\\Interface\\Rescue.wav', false, false, false, 0, 0, 'DefaultEAXON');
     public PlayerColorCodes: string[] = ['|c00FF0303', '|c000042FF', '|c001CE6B9', '|c00540081', '|c00FFFC01', '|c00fEBA0E'];
 
     // ========================================
