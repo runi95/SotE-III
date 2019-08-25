@@ -121,10 +121,16 @@ export class Game {
                 if (i < 3) {
                     for (let j: number = 0; j < 3; j++) {
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, true);
                     }
                 } else {
                     for (let j: number = 3; j < 5; j++) {
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, true);
+                        SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, true);
                     }
                 }
             }
