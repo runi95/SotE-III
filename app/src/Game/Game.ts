@@ -15,6 +15,7 @@ import { Timer } from '../JassOverrides/Timer';
 import { BossController } from '../Boss/BossController';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
+import { PlayerLeaves } from './PlayerLeaves';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -26,6 +27,7 @@ export class Game {
     private readonly damageEngine: DamageEngine;
     private readonly creepRespawn: CreepRespawn;
     private readonly playerRespawn: PlayerRespawn;
+    private readonly playerLeaves: PlayerLeaves;
     private readonly spellController: SpellController;
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
@@ -49,6 +51,7 @@ export class Game {
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
         this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils);
+        this.playerLeaves = new PlayerLeaves(this.playerVictoryUtils);
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils, this.randomNumberGenerator);
         this.teleportController = new TeleportController();
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils,
