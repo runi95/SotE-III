@@ -240,6 +240,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
     const heroSelectionArea: rect = Rect(-15616, -11904, -13184, -9472);
     SetCameraBoundsToRect(heroSelectionArea);
     for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        gameGlobals.ClockworkPenguin[i] = false;
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.DivineShieldLife[i] = 0;
         gameGlobals.PlayerPhysicalBlock[i] = 0;

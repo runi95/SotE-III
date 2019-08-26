@@ -49,6 +49,8 @@ import { ReinforcedScalesPickup } from './Abilities/ReinforcedScalesPickup';
 import { LionsRing } from './Recipes/LionsRing';
 import { LionsRingDrop } from './Abilities/LionsRingDrop';
 import { LionsRingPickup } from './Abilities/LionsRingPickup';
+import { ClockworkPenguinDrop } from './Abilities/ClockworkPenguinDrop';
+import { ClockworkPenguinPickup } from './Abilities/ClockworkPenguinPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -81,6 +83,8 @@ export class ItemController {
             new ReinforcedScalesPickup(gameGlobals),
             new LionsRingDrop(gameGlobals),
             new LionsRingPickup(gameGlobals),
+            new ClockworkPenguinDrop(gameGlobals),
+            new ClockworkPenguinPickup(gameGlobals, timerUtils),
         ];
 
         this.itemRecipes = [
