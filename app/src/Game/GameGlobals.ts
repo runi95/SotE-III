@@ -4,10 +4,10 @@ import { Hero } from './Hero';
 
 export class GameGlobals {
     public CryostasisSummons: unit[] = [];
-    public RazorBladesOn: boolean[] = [false, false, false, false, false, false];
-    public DivineShieldLife: number[] = [0, 0, 0, 0, 0, 0];
-    public PlayerPhysicalBlock: number[] = [0, 0, 0, 0, 0, 0];
-    public PlayerSpellBlock: number[] = [0, 0, 0, 0, 0, 0];
+    public RazorBladesOn: boolean[] = [];
+    public DivineShieldLife: number[] = [];
+    public PlayerPhysicalBlock: number[] = [];
+    public PlayerSpellBlock: number[] = [];
     public PlayerHero: unit[] = [];
     public PlayerHeroId: number[] = [];
     public ActivePlayerIdList: number[] = [];
