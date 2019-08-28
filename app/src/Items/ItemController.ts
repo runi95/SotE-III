@@ -51,12 +51,17 @@ import { LionsRingDrop } from './Abilities/LionsRingDrop';
 import { LionsRingPickup } from './Abilities/LionsRingPickup';
 import { ClockworkPenguinDrop } from './Abilities/ClockworkPenguinDrop';
 import { ClockworkPenguinPickup } from './Abilities/ClockworkPenguinPickup';
+import { GoblinBatteryDrop } from './Abilities/GoblinBatteryDrop';
+import { GoblinBatteryPickup } from './Abilities/GoblinBatteryPickup';
+import { GoblinBatteryResetCharges } from './Abilities/GoblinBatteryResetCharges';
+import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class ItemController {
     private itemAbilities: any[];
     private itemRecipes: any[];
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, arcaneVault: unit) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator, arcaneVault: unit) {
         this.itemAbilities = [
             new ClarityPotionUse(),
             new ExecutionerAxe(),
@@ -85,6 +90,10 @@ export class ItemController {
             new LionsRingPickup(gameGlobals),
             new ClockworkPenguinDrop(gameGlobals),
             new ClockworkPenguinPickup(gameGlobals, timerUtils),
+            new GoblinBatteryDrop(gameGlobals),
+            new GoblinBatteryPickup(gameGlobals, timerUtils),
+            new GoblinBatteryResetCharges(),
+            new GoblinBatteryUse(randomNumberGenerator),
         ];
 
         this.itemRecipes = [

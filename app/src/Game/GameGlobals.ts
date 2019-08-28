@@ -4,6 +4,7 @@ import { Hero } from './Hero';
 
 export class GameGlobals {
     public CryostasisSummons: unit[] = [];
+    public GoblinBattery: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
     public RazorBladesOn: boolean[] = [];
     public DivineShieldLife: number[] = [];

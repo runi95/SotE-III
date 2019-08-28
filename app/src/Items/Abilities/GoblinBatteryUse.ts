@@ -1,0 +1,41 @@
+import { ItemUse } from '../ItemUse';
+import { TimerUtils } from '../../Utility/TimerUtils';
+import { Timer } from '../../JassOverrides/Timer';
+import { GameGlobals } from '../../Game/GameGlobals';
+import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
+import { GroupInRange } from '../../JassOverrides/GroupInRange';
+
+export class GoblinBatteryUse extends ItemUse {
+    protected readonly itemTypeId: number = FourCC('I01O');
+    private readonly randomNumberGenerator: RandomNumberGenerator;
+
+    constructor(randomNumberGenerator: RandomNumberGenerator) {
+        super();
+
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
+
+    protected action(): void {
+        const trig: unit = GetTriggerUnit();
+        const x: number = GetUnitX(trig);
+        const y: number = GetUnitY(trig);
+        DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl', x, y));
+        for (let i: number = 0; i < 6; i++) {
+            DestroyEffect(AddSpecialEffect('Abilities\\Weapons\\Bolt\\BoltImpact.mdl',
+                                           x + this.randomNumberGenerator.random(0, 400) - 200,
+                                           y + this.randomNumberGenerator.random(0, 400) - 200));
+        }
+
+        const charges: number = GetItemCharges(GetManipulatedItem());
+        const damage: number = Pow(0.94, -charges);
+        const loc: location = GetUnitLoc(trig);
+        const grp: GroupInRange = new GroupInRange(400, loc);
+        grp.for((u: unit) => {
+            if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            }
+        });
+
+        RemoveLocation(loc);
+    }
+}

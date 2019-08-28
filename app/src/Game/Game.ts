@@ -76,7 +76,7 @@ export class Game {
         this.init();
 
         this.commands = new Commands(this.gameGlobals, this.playerVictoryUtils);
-        this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.arcaneVault);
+        this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.randomNumberGenerator, this.arcaneVault);
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(240, true, () => {
