@@ -45,7 +45,9 @@ export class LightningBoltCast extends Spell {
                 const grp: GroupInRange = new GroupInRange(400, loc);
                 grp.for((u: unit) => {
                     if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
-                        UnitDamageTargetBJ(trig, u, 2200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        const dist: number = Math.sqrt(Pow(x - GetUnitX(u), 2) + Pow(y - GetUnitY(u), 2));
+                        const damage: number = 2200 * (1 - (dist / 800));
+                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 
