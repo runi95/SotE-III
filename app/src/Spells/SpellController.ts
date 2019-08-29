@@ -60,6 +60,7 @@ import { CommandoFlag } from './CommandoFlag';
 import { Challenge } from './Challenge';
 import { ChiMaster } from './ChiMaster';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { Regenerate } from './Regenerate';
 
 export class SpellController {
     private spells: any[];
@@ -124,6 +125,7 @@ export class SpellController {
             new CommandoFlag(),
             new Challenge(),
             new ChiMaster(timerUtils),
+            new Regenerate(gameGlobals, timerUtils),
         ];
     }
 }

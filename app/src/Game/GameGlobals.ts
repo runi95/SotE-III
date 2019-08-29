@@ -3,6 +3,7 @@ import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
 export class GameGlobals {
+    public Regenerate: boolean[] = [];
     public CryostasisSummons: unit[] = [];
     public GoblinBattery: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
