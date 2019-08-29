@@ -25,7 +25,7 @@ export class GoblinBatteryPickup extends ItemPickup {
         const batteryHandleId: number = GetHandleId(battery);
         this.gameGlobals.GoblinBattery[batteryHandleId] = true;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(0.1, true, () => {
+        t.start(1, true, () => {
             if (this.gameGlobals.GoblinBattery[batteryHandleId]) {
                 const charges: number = GetItemCharges(battery);
                 if (charges < 100) {
