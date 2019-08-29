@@ -16,26 +16,24 @@ export class CrushingWave extends Spell {
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
-        const trigX: number = GetUnitX(trig);
-        const trigY: number = GetUnitY(trig);
-        const x: number = GetSpellTargetX();
-        const y: number = GetSpellTargetY();
+        let x: number = GetUnitX(trig);
+        let y: number = GetUnitY(trig);
+        const targetX: number = GetSpellTargetX();
+        const targetY: number = GetSpellTargetY();
         const intelligence: number = GetHeroInt(trig, true);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const damage: number = 6.00 * abilityLevel + 0.10 * intelligence;
-        const distance: number = SquareRoot(Pow(trigX - x, 2.00) + Pow(trigY - y, 2.00));
-        const travelTime: number = distance / 15.00;
-        const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, trigX, trigY, GetUnitFacing(trig));
-
+        const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, GetUnitFacing(trig));
         SetUnitTimeScalePercent(dummy, 0.00);
-        IssuePointOrder(dummy, 'move', x, y);
 
-        let ticks: number = travelTime;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(0.05, true, () => {
-            ticks--;
+        t.start(0.03, true, () => {
+            const distance: number = Math.sqrt(Pow(x - targetX, 2.00) + Pow(y - targetY, 2.00));
+            x += 15 * ((targetX - x) / distance);
+            y += 15 * ((targetY - y) / distance);
 
-            const loc: location = GetUnitLoc(dummy);
+            SetUnitPosition(dummy, x, y);
+            const loc: location = Location(x, y);
             const grp: GroupInRange = new GroupInRange(75.00, loc);
 
             grp.for((u: unit) => {
@@ -47,8 +45,8 @@ export class CrushingWave extends Spell {
             RemoveLocation(loc);
             grp.destroy();
 
-            if (ticks <= 0) {
-                const detonationLoc: location = GetUnitLoc(dummy);
+            if (distance < 15) {
+                const detonationLoc: location = Location(x, y);
                 const detonationGroup: GroupInRange = new GroupInRange(150.00, detonationLoc);
 
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl',
