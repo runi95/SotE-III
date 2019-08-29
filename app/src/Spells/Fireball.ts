@@ -29,7 +29,7 @@ export class Fireball extends Spell {
         const distance: number = Math.sqrt(Pow(spawnX - x, 2) + Pow(spawnY - y, 2));
         const loc: location = GetSpellTargetLoc();
         if (distance < 150) {
-            DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Inferno\\DoomDeath.mdl'));
+            DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
             const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
             grp.for((u: unit) => {
@@ -48,7 +48,7 @@ export class Fireball extends Spell {
             const travelTime: number = distance / 500.00;
             const t: Timer = this.timerUtils.newTimer();
             t.start(0.25 + travelTime, false, () => {
-                DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Inferno\\DoomDeath.mdl'));
+                DestroyEffect(AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl'));
                 RemoveUnit(dummy);
                 const grp: GroupInRange = new GroupInRange(1000.00, loc);
 
