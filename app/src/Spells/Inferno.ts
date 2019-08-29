@@ -2,6 +2,7 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { Group } from '../JassOverrides/Group';
+import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Inferno extends Spell {
     protected readonly abilityId: number = FourCC('A012');
@@ -14,37 +15,40 @@ export class Inferno extends Spell {
     }
 
     protected action(): void {
-        const x: number = GetUnitX(GetTriggerUnit());
-        const y: number = GetUnitY(GetTriggerUnit());
-        const damage: number = 200 + 5 * GetHeroStr(GetTriggerUnit(), true);
+        const trig: unit = GetTriggerUnit();
+        const x: number = GetUnitX(trig);
+        const y: number = GetUnitY(trig);
+        const damage: number = 200 + 5 * GetHeroStr(trig, true);
 
-        UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(trig, trig, 200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
+        let rngX: number = x + GetRandomReal(0, 1000) - 500.0;
+        let rngY: number = y + GetRandomReal(0, 1000) - 500.0;
+        let eff: effect = AddSpecialEffect('Units\\Demon\\Infernal\\InfernalBirth.mdl', rngX, rngY);
         let ticks: number = 10;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.75, true, () => {
             ticks--;
 
-            const rngX: number = x + GetRandomReal(0, 1000) - 500.0;
-            const rngY: number = y + GetRandomReal(0, 1000) - 500.0;
-            const eff: effect = AddSpecialEffect('Units\\Demon\\Infernal\\InfernalBirth.mdl', rngX, rngY);
-
-            const r: rect = Rect(rngX - 175.0, rngY - 175.0, rngX + 175.0, rngY + 175.0);
-            const grp: Group = new Group(GetUnitsInRectAll(r));
-
+            DestroyEffect(eff);
+            const loc: location = Location(rngX, rngY);
+            const grp: GroupInRange = new GroupInRange(175, loc);
             grp.for((u: unit) => {
-                if (IsPlayerEnemy(GetOwningPlayer(GetTriggerUnit()), GetOwningPlayer(u))) {
-                    UnitDamageTargetBJ(GetTriggerUnit(), u,
+                if (IsPlayerEnemy(GetOwningPlayer(trig), GetOwningPlayer(u))) {
+                    UnitDamageTargetBJ(trig, u,
                                        damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 
-            RemoveRect(r);
+            RemoveLocation(loc);
             grp.destroy();
-            DestroyEffect(eff);
 
             if (ticks <= 0) {
                 this.timerUtils.releaseTimer(t);
+            } else {
+                rngX = x + GetRandomReal(0, 1000) - 500.0;
+                rngY = y + GetRandomReal(0, 1000) - 500.0;
+                eff = AddSpecialEffect('Units\\Demon\\Infernal\\InfernalBirth.mdl', rngX, rngY);
             }
         });
     }
