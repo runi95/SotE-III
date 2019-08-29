@@ -3,7 +3,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { Group } from '../JassOverrides/Group';
 
-export class Doom extends Spell {
+export class Inferno extends Spell {
     protected readonly abilityId: number = FourCC('A012');
     private readonly timerUtils: TimerUtils;
 

@@ -12,7 +12,7 @@ import { DeathGrasp } from './DeathGrasp';
 import { DefenseSystem } from './DefenseSystem';
 import { DemonicRitual } from './DemonicRitual';
 import { Devour } from './Devour';
-import { Doom } from './Doom';
+import { Inferno } from './Inferno';
 import { EnvenomCast } from './EnvenomCast';
 import { Fireball } from './Fireball';
 import { Frostfire } from './Frostfire';
@@ -82,7 +82,7 @@ export class SpellController {
             new DefenseSystem(gameGlobals, timerUtils),
             new DemonicRitual(),
             new Devour(),
-            new Doom(timerUtils),
+            new Inferno(timerUtils),
             new EnvenomCast(),
             new Fireball(timerUtils),
             new Frostfire(timerUtils),
