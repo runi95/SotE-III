@@ -12,7 +12,15 @@ export class ClockworkPenguinDrop extends ItemDrop {
     }
 
     protected action(): void {
-        if (!UnitHasItemOfTypeBJ(GetTriggerUnit(), this.itemTypeId)) {
+        let playerHasPenguin: boolean = false;
+        for (let i: number = 0; i < 6; i++) {
+            const itemInSlot: item = UnitItemInSlot(GetTriggerUnit(), i);
+            if (GetItemTypeId(itemInSlot) === this.itemTypeId && itemInSlot !== GetManipulatedItem()) {
+                playerHasPenguin = true;
+            }
+        }
+
+        if (!playerHasPenguin) {
             const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
             this.gameGlobals.ClockworkPenguin[playerId] = false;
         }
