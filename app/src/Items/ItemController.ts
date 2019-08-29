@@ -56,6 +56,8 @@ import { GoblinBatteryPickup } from './Abilities/GoblinBatteryPickup';
 import { GoblinBatteryResetCharges } from './Abilities/GoblinBatteryResetCharges';
 import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { LightningBolt } from './Recipes/LightningBolt';
+import { LightningBoltCast } from './Abilities/LightningBoltCast';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -94,6 +96,7 @@ export class ItemController {
             new GoblinBatteryPickup(gameGlobals, timerUtils),
             new GoblinBatteryResetCharges(),
             new GoblinBatteryUse(randomNumberGenerator),
+            new LightningBoltCast(timerUtils, randomNumberGenerator),
         ];
 
         this.itemRecipes = [
@@ -121,6 +124,7 @@ export class ItemController {
             new CloakOfShadowWalk(),
             new ReinforcedScales(),
             new LionsRing(),
+            new LightningBolt(),
         ];
     }
 }

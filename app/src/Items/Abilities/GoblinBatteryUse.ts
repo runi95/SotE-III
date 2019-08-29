@@ -20,13 +20,14 @@ export class GoblinBatteryUse extends ItemUse {
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl', x, y));
-        for (let i: number = 0; i < 6; i++) {
+        const charges: number = GetItemCharges(GetManipulatedItem());
+        const chargesDivided: number = charges / 10;
+        for (let i: number = 0; i < chargesDivided; i++) {
             DestroyEffect(AddSpecialEffect('Abilities\\Weapons\\Bolt\\BoltImpact.mdl',
                                            x + this.randomNumberGenerator.random(0, 400) - 200,
                                            y + this.randomNumberGenerator.random(0, 400) - 200));
         }
 
-        const charges: number = GetItemCharges(GetManipulatedItem());
         const damage: number = Pow(0.94, -charges);
         const loc: location = GetUnitLoc(trig);
         const grp: GroupInRange = new GroupInRange(400, loc);
