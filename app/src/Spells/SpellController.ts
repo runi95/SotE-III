@@ -63,6 +63,7 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Regenerate } from './Regenerate';
 import { BurningFlask } from './BurningFlask';
 import { PoisonFlask } from './PoisonFlask';
+import { FrozenFlask } from './FrozenFlask';
 
 export class SpellController {
     private spells: any[];
@@ -130,6 +131,7 @@ export class SpellController {
             new Regenerate(gameGlobals, timerUtils),
             new BurningFlask(timerUtils),
             new PoisonFlask(timerUtils),
+            new FrozenFlask(stunUtils),
         ];
     }
 }
