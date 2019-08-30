@@ -22,7 +22,7 @@ export class BurningFlask extends Spell {
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
         const damage: number = (200 * abilityLevel + 3 * intelligence) / 100;
-        const eff: effect = AddSpecialEffect('Abilities\\Weapons\\BrewmasterMissile\\BrewmasterMissile.mdl', x, y);
+        const eff: effect = AddSpecialEffect('Abilities\\Spells\\Other\\AcidBomb\\BottleMissile.mdl', x, y);
         BlzSetSpecialEffectZ(eff, 50);
 
         const fireEffects: effect[] = [];
