@@ -62,6 +62,7 @@ import { ChiMaster } from './ChiMaster';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Regenerate } from './Regenerate';
 import { BurningFlask } from './BurningFlask';
+import { PoisonFlask } from './PoisonFlask';
 
 export class SpellController {
     private spells: any[];
@@ -128,6 +129,7 @@ export class SpellController {
             new ChiMaster(timerUtils),
             new Regenerate(gameGlobals, timerUtils),
             new BurningFlask(timerUtils),
+            new PoisonFlask(timerUtils),
         ];
     }
 }
