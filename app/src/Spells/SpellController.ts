@@ -61,6 +61,7 @@ import { Challenge } from './Challenge';
 import { ChiMaster } from './ChiMaster';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Regenerate } from './Regenerate';
+import { BurningFlask } from './BurningFlask';
 
 export class SpellController {
     private spells: any[];
@@ -126,6 +127,7 @@ export class SpellController {
             new Challenge(),
             new ChiMaster(timerUtils),
             new Regenerate(gameGlobals, timerUtils),
+            new BurningFlask(timerUtils),
         ];
     }
 }
