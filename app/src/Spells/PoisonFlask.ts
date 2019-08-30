@@ -5,6 +5,7 @@ import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class PoisonFlask extends Spell {
     protected readonly abilityId: number = FourCC('A039');
+    private readonly chemicalSprayBuff: number = FourCC('B006');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -40,7 +41,11 @@ export class PoisonFlask extends Spell {
             ticks--;
 
             for (let i: number = 0; i < units.length; i++) {
-                UnitDamageTargetBJ(trig, units[i], damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                if (UnitHasBuffBJ(units[i], this.chemicalSprayBuff)) {
+                    UnitDamageTargetBJ(trig, units[i], 2 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                } else {
+                    UnitDamageTargetBJ(trig, units[i], damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                }
             }
 
             if (ticks <= 0) {

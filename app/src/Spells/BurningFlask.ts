@@ -5,6 +5,7 @@ import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class BurningFlask extends Spell {
     protected readonly abilityId: number = FourCC('A038');
+    private readonly chemicalSprayBuff: number = FourCC('B006');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -38,7 +39,11 @@ export class BurningFlask extends Spell {
                 const grp: GroupInRange = new GroupInRange(250, loc);
                 grp.for((u: unit) => {
                     if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
-                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        if (UnitHasBuffBJ(u, this.chemicalSprayBuff)) {
+                            UnitDamageTargetBJ(trig, u, 2 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        } else {
+                            UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        }
                     }
                 });
 
