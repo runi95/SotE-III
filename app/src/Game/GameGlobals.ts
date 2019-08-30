@@ -3,6 +3,8 @@ import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
 export class GameGlobals {
+    public Repetition: number[] = [];
+    public RepetitionCounter: number[] = [];
     public Regenerate: boolean[] = [];
     public CryostasisSummons: unit[] = [];
     public GoblinBattery: boolean[] = [];

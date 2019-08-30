@@ -17,6 +17,7 @@ import { Redemption } from './Redemption';
 import { RunedBracers } from './RunedBracers';
 import { LionsRing } from './LionsRing';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { Repetition } from './Repetition';
 
 export class DamageEventController {
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils,
@@ -37,6 +38,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new DivineShield(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
