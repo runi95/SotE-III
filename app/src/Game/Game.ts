@@ -17,6 +17,7 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 import { PlayerLeaves } from './PlayerLeaves';
 import { ArenaUtils } from '../Utility/ArenaUtils';
+import { FlyingMachineController } from '../FlyingMachine/FlyingMachineController';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -34,6 +35,7 @@ export class Game {
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
     private readonly damageEventController: DamageEventController;
+    private readonly flyingMachineController: FlyingMachineController;
     private readonly bossController: BossController;
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
@@ -58,6 +60,7 @@ export class Game {
         this.teleportController = new TeleportController();
         this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils,
                                                                this.randomNumberGenerator, this.damageEngine);
+        this.flyingMachineController = new FlyingMachineController();
         this.bossController = new BossController();
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         const ancientOfWondersX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
