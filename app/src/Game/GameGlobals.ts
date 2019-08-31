@@ -25,7 +25,7 @@ export class GameGlobals {
     public DebugMode: boolean = false;
     public TeleportMovement: boolean = false;
 
-    public TheArenaRegion: rect = Rect(864.00, 5600.00, 5024.00, 9760.00);
+    public TheArenaRegion: rect = Rect(1280.00, 6016.00, 4608.00, 9344.00);
     public IsArenaBattleInProgress: boolean = false;
     public ArenaOneMinuteSound: sound = CreateSound('Sound\\Interface\\Hint.wav', false, false, false, 0, 0, 'DefaultEAXON');
     public ArenaStartedSound: sound = CreateSound('Sound\\Interface\\NewTournament.wav', false, false, false, 0, 0, 'DefaultEAXON');
