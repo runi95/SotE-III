@@ -21,7 +21,7 @@ export class Avatar extends Spell {
         const bonusDamage: number = 10 * abilityLevel + 0.10 * intelligence;
         SetUnitScalePercent(trig, 150, 150, 150);
         BlzSetUnitMaxHP(trig, BlzGetUnitMaxHP(trig) + bonusHP);
-        SetUnitLifeBJ(trig, GetUnitStateSwap(UNIT_STATE_LIFE, trig) + bonusHP);
+        SetUnitLifeBJ(trig, GetUnitState(trig, UNIT_STATE_LIFE) + bonusHP);
         BlzSetUnitArmor(trig, BlzGetUnitArmor(trig) + bonusArmor);
         BlzSetUnitBaseDamage(trig, BlzGetUnitBaseDamage(trig, 1) + bonusDamage, 1);
 

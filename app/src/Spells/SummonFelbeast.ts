@@ -9,7 +9,7 @@ export class SummonFelbeast extends Spell {
     protected action(): void {
         const x: number = GetUnitX(GetTriggerUnit());
         const y: number = GetUnitY(GetTriggerUnit());
-        const abilityLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, GetTriggerUnit());
+        const abilityLevel: number = GetUnitAbilityLevel(GetTriggerUnit(), this.abilityId);
         const str: number = GetHeroStr(GetTriggerUnit(), true);
         const summon: unit = CreateUnit(GetOwningPlayer(GetTriggerUnit()), this.summonId, x, y, bj_UNIT_FACING);
 

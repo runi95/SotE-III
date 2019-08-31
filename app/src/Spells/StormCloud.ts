@@ -25,7 +25,7 @@ export class StormCloud extends Spell {
         const y: number = GetSpellTargetY();
         const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, 0);
         const loc: location = GetUnitLoc(dummy);
-        const abilityLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, trig);
+        const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 35.00 * abilityLevel + 0.20 * intelligence;
 

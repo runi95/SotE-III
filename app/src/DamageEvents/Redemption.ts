@@ -28,7 +28,7 @@ export class Redemption implements DamageEvent {
             DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\Heal\\HealTarget.mdl',
                                            GetUnitX(globals.DamageEventTarget as unit), GetUnitY(globals.DamageEventTarget as unit)));
             SetUnitLifeBJ(globals.DamageEventTarget as unit,
-                          GetUnitStateSwap(UNIT_STATE_LIFE, globals.DamageEventTarget as unit) + healing);
+                          GetUnitState(globals.DamageEventTarget as unit, UNIT_STATE_LIFE) + healing);
         }
     }
 }

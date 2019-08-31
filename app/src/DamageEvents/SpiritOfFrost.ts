@@ -20,7 +20,7 @@ export class SpiritOfFrost implements DamageEvent {
 
         if (abilityLevel > 0) {
             if (this.randomNumberGenerator.random(1, 100) < 10) {
-                const mana: number = GetUnitStateSwap(UNIT_STATE_MANA, globals.DamageEventTarget as unit);
+                const mana: number = GetUnitState(globals.DamageEventTarget as unit, UNIT_STATE_MANA);
                 if (mana > 25) {
                     const x: number = GetUnitX(globals.DamageEventTarget as unit) + GetRandomReal(0.00, 500.00) - 250.00;
                     const y: number = GetUnitY(globals.DamageEventTarget as unit) + GetRandomReal(0.00, 500.00) - 250.00;

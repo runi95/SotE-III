@@ -11,7 +11,7 @@ export class Immunity implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        if (GetUnitAbilityLevelSwapped(this.abilityId, globals.DamageEventTarget as unit) > 0) {
+        if (GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId) > 0) {
             const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
             const txt: texttag = CreateTextTagLocBJ('0', sourceLoc, 1, 10, 50.00, 50.00, 50.00, 0.00);
             globals.DamageEventAmount = 0;

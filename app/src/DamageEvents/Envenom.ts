@@ -12,7 +12,7 @@ export class Envenom implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        const abilityLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, globals.DamageEventSource as unit);
+        const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventSource as unit, this.abilityId);
 
         if (abilityLevel > 0) {
             globals.DamageEventAmount += GetHeroInt(globals.DamageEventSource as unit, true)

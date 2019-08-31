@@ -7,11 +7,11 @@ export class ManaShield implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (UnitHasBuffBJ(globals.DamageEventTarget as unit, this.buffId)) {
-            const shieldLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, globals.DamageEventTarget as unit);
+            const shieldLevel: number = GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId);
             const damageReductionPercentage: number = 0.50 + shieldLevel * 0.02;
             const damageReduction: number = globals.DamageEventAmount * damageReductionPercentage;
             const newDamageAmount: number = globals.DamageEventAmount - damageReduction;
-            const currentMana: number = GetUnitStateSwap(UNIT_STATE_MANA, globals.DamageEventTarget as unit);
+            const currentMana: number = GetUnitState(globals.DamageEventTarget as unit, UNIT_STATE_MANA);
             const newManaAmount: number = currentMana - damageReduction;
             globals.DamageEventAmount = newDamageAmount;
 

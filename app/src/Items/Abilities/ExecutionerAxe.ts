@@ -21,7 +21,7 @@ export class ExecutionerAxe {
 
         if (charges > 99) {
             RemoveItem(itm);
-            UnitAddItemByIdSwapped(this.bloodiedExecutionerAxeItemId, GetKillingUnit());
+            UnitAddItemById(GetKillingUnit(), this.bloodiedExecutionerAxeItemId);
         } else {
             SetItemCharges(itm, charges);
         }

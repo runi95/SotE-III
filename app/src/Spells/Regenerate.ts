@@ -38,7 +38,7 @@ export class Regenerate {
         t.start(1, true, () => {
             ticks--;
 
-            SetUnitLifeBJ(trig, GetUnitStateSwap(UNIT_STATE_LIFE, trig) + tickHealAmount);
+            SetUnitLifeBJ(trig, GetUnitState(trig, UNIT_STATE_LIFE) + tickHealAmount);
 
             if (ticks <= 0) {
                 this.gameGlobals.Regenerate[playerId] = false;

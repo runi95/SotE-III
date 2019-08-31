@@ -10,6 +10,6 @@ export class HolyLight extends Spell {
         const intelligence: number = GetHeroInt(trig, true);
         const healing: number = 50 * abilityLevel + intelligence;
 
-        SetUnitLifeBJ(targ, GetUnitStateSwap(UNIT_STATE_LIFE, targ) + healing);
+        SetUnitLifeBJ(targ, GetUnitState(targ, UNIT_STATE_LIFE) + healing);
     }
 }

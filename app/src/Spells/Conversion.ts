@@ -8,7 +8,7 @@ export class Conversion extends Spell {
         if (IsUnitEnemy(GetSpellTargetUnit(), GetOwningPlayer(GetTriggerUnit()))) {
             UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), intelligence, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
         } else {
-            SetUnitLifeBJ(GetSpellTargetUnit(), GetUnitStateSwap(UNIT_STATE_LIFE, GetSpellTargetUnit()) + intelligence);
+            SetUnitLifeBJ(GetSpellTargetUnit(), GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE) + intelligence);
         }
     }
 }

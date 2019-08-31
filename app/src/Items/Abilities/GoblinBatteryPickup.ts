@@ -29,7 +29,7 @@ export class GoblinBatteryPickup extends ItemPickup {
             if (this.gameGlobals.GoblinBattery[batteryHandleId]) {
                 const charges: number = GetItemCharges(battery);
                 if (charges < 100) {
-                    const mana: number = GetUnitStateSwap(UNIT_STATE_MANA, this.gameGlobals.PlayerHero[playerId]);
+                    const mana: number = GetUnitState(this.gameGlobals.PlayerHero[playerId], UNIT_STATE_MANA);
                     if (mana > 0) {
                         SetUnitManaBJ(this.gameGlobals.PlayerHero[playerId], mana - 1);
                         SetItemCharges(battery, charges + 1);

@@ -38,6 +38,6 @@ export abstract class ItemRecipe {
 
     protected action(): void {
         this.recipe.forEach(item => RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), item)));
-        UnitAddItemByIdSwapped(this.resultingItem, GetTriggerUnit());
+        UnitAddItemById(GetTriggerUnit(), this.resultingItem);
     }
 }

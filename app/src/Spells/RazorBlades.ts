@@ -25,7 +25,7 @@ export class RazorBlades {
     }
 
     private action(): void {
-        const mana: number = GetUnitStateSwap(UNIT_STATE_MANA, GetTriggerUnit());
+        const mana: number = GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA);
         let intelligence: number = GetHeroInt(GetTriggerUnit(), true);
 
         if (mana > intelligence) {
@@ -39,7 +39,7 @@ export class RazorBlades {
             const bladeTwo: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId,
                                               x + 150.00 * CosBJ(180.00), y + 150.00 * SinBJ(180.00), 0);
 
-            if (GetUnitAbilityLevelSwapped(this.defenseSystemAbilityId, trig) > 0) {
+            if (GetUnitAbilityLevel(trig, this.defenseSystemAbilityId) > 0) {
                 aoe = 100.00;
                 SetUnitScalePercent(bladeOne, 150, 150, 150);
                 SetUnitScalePercent(bladeTwo, 150, 150, 150);
@@ -65,8 +65,8 @@ export class RazorBlades {
                 if (ticker > 4) {
                     ticker = 0;
                     intelligence = GetHeroInt(trig, true);
-                    SetUnitManaBJ(trig, GetUnitStateSwap(UNIT_STATE_MANA, trig) - intelligence);
-                    if (GetUnitStateSwap(UNIT_STATE_MANA, trig) === 0) {
+                    SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence);
+                    if (GetUnitState(trig, UNIT_STATE_MANA) === 0) {
                         this.gameGlobals.RazorBladesOn[playerId] = false;
                     }
                 }

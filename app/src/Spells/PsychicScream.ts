@@ -6,7 +6,7 @@ export class PsychicScream extends Spell {
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
-        const abilityLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, trig);
+        const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const damage: number = 100 * abilityLevel + 2 * GetHeroInt(trig, true);
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);

@@ -14,7 +14,7 @@ export class Devour extends Spell {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl',
                                                GetUnitX(u), GetUnitY(u)));
                 UnitDamageTargetBJ(GetTriggerUnit(), u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                SetUnitLifeBJ(GetTriggerUnit(), GetUnitStateSwap(UNIT_STATE_LIFE, GetTriggerUnit()) + damage);
+                SetUnitLifeBJ(GetTriggerUnit(), GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + damage);
             }
         });
         RemoveLocation(loc);

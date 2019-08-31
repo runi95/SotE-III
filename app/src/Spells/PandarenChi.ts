@@ -38,7 +38,7 @@ export class PandarenChi extends Spell {
                     } else {
                         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\NightElf\\Tranquility\\TranquilityTarget.mdl',
                                                        GetUnitX(u), GetUnitY(u)));
-                        SetUnitLifeBJ(u, GetUnitStateSwap(UNIT_STATE_LIFE, u) + healingPerTick);
+                        SetUnitLifeBJ(u, GetUnitState(u, UNIT_STATE_LIFE) + healingPerTick);
                     }
                 }
             });

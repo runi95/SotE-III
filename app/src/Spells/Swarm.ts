@@ -15,7 +15,7 @@ export class Swarm extends Spell {
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
-        const abilityLevel: number = GetUnitAbilityLevelSwapped(this.abilityId, trig);
+        const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         let x: number = GetUnitX(trig);
         let y: number = GetUnitY(trig);
         const targetX: number = GetSpellTargetX();
