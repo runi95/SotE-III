@@ -14,11 +14,11 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
-        if (GetOwningPlayer(globals.DamageEventTarget as unit) === Player(PLAYER_NEUTRAL_AGGRESSIVE)) {
+        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
+        if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }
 
-        // tslint:disable-next-line:max-line-length
-        globals.DamageEventAmount = RMaxBJ(globals.DamageEventAmount - this.gameGlobals.PlayerSpellBlock[GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit))], 0.00);
+        globals.DamageEventAmount = RMaxBJ(globals.DamageEventAmount - this.gameGlobals.PlayerSpellBlock[playerId], 0.00);
     }
 }
