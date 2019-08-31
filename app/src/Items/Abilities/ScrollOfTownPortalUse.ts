@@ -18,18 +18,32 @@ export class ScrollOfTownPortalUse extends ItemUse {
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
+        const playerId: number = GetPlayerId(GetOwningPlayer(trig));
+        this.gameGlobals.ScrollOfTownPortal[playerId] = true;
+
+        BlzPauseUnitEx(trig, true);
         UnitAddAbility(trig, this.dummyAbilityId);
 
+        let ticks: number = 100;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(4.00, false, () => {
-            if (GetUnitAbilityLevel(trig, this.dummyAbilityId) > 0) {
+        t.start(0.1, true, () => {
+            ticks--;
+
+            if (!this.gameGlobals.ScrollOfTownPortal[playerId]) {
                 UnitRemoveAbility(trig, this.dummyAbilityId);
-                const playerId: number = GetPlayerId(GetOwningPlayer(trig));
-                SetUnitPosition(trig, GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                                GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]));
+                this.timerUtils.releaseTimer(t);
             }
 
-            this.timerUtils.releaseTimer(t);
+            if (ticks <= 0) {
+                if (this.gameGlobals.ScrollOfTownPortal[playerId]) {
+                    UnitRemoveAbility(trig, this.dummyAbilityId);
+                    BlzPauseUnitEx(trig, false);
+                    SetUnitPosition(trig, GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]));
+                }
+
+                this.timerUtils.releaseTimer(t);
+            }
         });
     }
 }

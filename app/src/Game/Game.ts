@@ -47,7 +47,7 @@ export class Game {
         this.randomNumberGenerator = randomNumberGenerator;
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
-        this.stunUtils = new StunUtils(this.timerUtils);
+        this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.damageEngineGlobals);

@@ -3,6 +3,7 @@ import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
 export class GameGlobals {
+    public ScrollOfTownPortal: boolean[] = [];
     public Repetition: number[] = [];
     public RepetitionCounter: number[] = [];
     public Regenerate: boolean[] = [];
