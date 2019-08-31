@@ -18,6 +18,8 @@ import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
 import { PlayerLeaves } from './PlayerLeaves';
 import { ArenaUtils } from '../Utility/ArenaUtils';
 import { FlyingMachineController } from '../FlyingMachine/FlyingMachineController';
+import { Trigger } from '../JassOverrides/Trigger';
+import { Group } from '../JassOverrides/Group';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -237,6 +239,132 @@ export class Game {
         MultiboardDisplayBJ(true, this.gameGlobals.Multiboard);
     }
 
+    private startDebugUI(): void {
+        BJDebugMsg('Launching debug UI');
+        const goldButton: framehandle = BlzCreateFrameByType('BUTTON', 'goldButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                             'StandardButtonTemplate', 0);
+        const goldBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'goldBackdrop', goldButton, 'ButtonBackdropTemplate', 0);
+        const lumberButton: framehandle = BlzCreateFrameByType('BUTTON', 'lumberButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                               'StandardButtonTemplate', 0);
+        const lumberBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'lumberBackdrop', lumberButton, 'ButtonBackdropTemplate', 0);
+        const teleportButton: framehandle = BlzCreateFrameByType('BUTTON', 'teleportButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                                 'StandardButtonTemplate', 0);
+        const teleportBackdrop: framehandle = BlzCreateFrameByType('BACKDROP',
+                                                                   'teleportBackdrop', teleportButton, 'ButtonBackdropTemplate', 0);
+        const healHitpointsButton: framehandle = BlzCreateFrameByType('BUTTON', 'healHitpointsButton',
+                                                                      BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                                      'StandardButtonTemplate', 0);
+        const healHitpointsBackdrop: framehandle = BlzCreateFrameByType('BACKDROP',
+                                                                        'healHitpointsBackdrop', healHitpointsButton,
+                                                                        'ButtonBackdropTemplate', 0);
+        const healManaButton: framehandle = BlzCreateFrameByType('BUTTON', 'healManaButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                                 'StandardButtonTemplate', 0);
+        const healManaBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'healManaBackdrop',
+                                                                   healManaButton, 'ButtonBackdropTemplate', 0);
+        const resetCooldownButton: framehandle = BlzCreateFrameByType('BUTTON', 'resetCooldownButton',
+                                                                      BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                                      'StandardButtonTemplate', 0);
+        const resetCooldownBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'resetCooldownBackdrop',
+                                                                        resetCooldownButton, 'ButtonBackdropTemplate', 0);
+        const levelUpButton: framehandle = BlzCreateFrameByType('BUTTON', 'levelUpButton',
+                                                                BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+                                                                'StandardButtonTemplate', 0);
+        const levelUpBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'levelUpBackdrop',
+                                                                  levelUpButton, 'ButtonBackdropTemplate', 0);
+        BlzFrameSetSize(goldButton, 0.02, 0.02);
+        BlzFrameSetSize(goldBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(lumberButton, 0.02, 0.02);
+        BlzFrameSetSize(lumberBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(teleportButton, 0.02, 0.02);
+        BlzFrameSetSize(teleportBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(healHitpointsButton, 0.02, 0.02);
+        BlzFrameSetSize(healHitpointsBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(healManaButton, 0.02, 0.02);
+        BlzFrameSetSize(healManaBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(resetCooldownButton, 0.02, 0.02);
+        BlzFrameSetSize(resetCooldownBackdrop, 0.02, 0.02);
+        BlzFrameSetSize(levelUpButton, 0.02, 0.02);
+        BlzFrameSetSize(levelUpBackdrop, 0.02, 0.02);
+        BlzFrameSetTexture(goldBackdrop, 'UI\\Feedback\\Resources\\ResourceGold.blp', 0, true);
+        BlzFrameSetTexture(lumberBackdrop, 'UI\\Feedback\\Resources\\ResourceLumber.blp', 0, true);
+        BlzFrameSetTexture(teleportBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNUnloadCrossed.blp', 0, true);
+        BlzFrameSetTexture(healHitpointsBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNPotionGreenNoBorder.blp', 0, true);
+        BlzFrameSetTexture(healManaBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNPotionBlueNoBorder.blp', 0, true);
+        BlzFrameSetTexture(resetCooldownBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNSelectUnitNoBorder.blp', 0, true);
+        BlzFrameSetTexture(levelUpBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNStatUpNoBorder.blp', 0, true);
+        BlzFrameSetAbsPoint(goldButton, FRAMEPOINT_CENTER, 0.215, 0.15);
+        BlzFrameSetAbsPoint(lumberButton, FRAMEPOINT_CENTER, 0.24, 0.15);
+        BlzFrameSetAbsPoint(teleportButton, FRAMEPOINT_CENTER, 0.265, 0.15);
+        BlzFrameSetAbsPoint(healHitpointsButton, FRAMEPOINT_CENTER, 0.505, 0.15);
+        BlzFrameSetAbsPoint(healManaButton, FRAMEPOINT_CENTER, 0.53, 0.15);
+        BlzFrameSetAbsPoint(resetCooldownButton, FRAMEPOINT_CENTER, 0.555, 0.15);
+        BlzFrameSetAbsPoint(levelUpButton, FRAMEPOINT_CENTER, 0.58, 0.15);
+        BlzFrameSetPoint(goldBackdrop, FRAMEPOINT_CENTER, goldButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(lumberBackdrop, FRAMEPOINT_CENTER, lumberButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(teleportBackdrop, FRAMEPOINT_CENTER, teleportButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(healHitpointsBackdrop, FRAMEPOINT_CENTER, healHitpointsButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(healManaBackdrop, FRAMEPOINT_CENTER, healManaButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(resetCooldownBackdrop, FRAMEPOINT_CENTER, resetCooldownButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+        BlzFrameSetPoint(levelUpBackdrop, FRAMEPOINT_CENTER, levelUpButton, FRAMEPOINT_CENTER, 0.0, 0.0);
+
+        const createButtonTrigger: (frame: framehandle, event: () => void) => void = (frame: framehandle, event: () => void) => {
+            const trig: Trigger = new Trigger();
+            trig.addAction(() => event());
+            trig.registerFrameEvent(frame, FRAMEEVENT_CONTROL_CLICK);
+        };
+        createButtonTrigger(goldButton, () => {
+            SetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD) + 1000);
+        });
+        createButtonTrigger(lumberButton, () => {
+            SetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER) + 1000);
+        });
+        createButtonTrigger(teleportButton, () => {
+            const teleportMovement: boolean = this.gameGlobals.TeleportMovement;
+
+            if (teleportMovement) {
+                this.gameGlobals.TeleportMovement = false;
+                BlzFrameSetTexture(teleportBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNUnloadCrossed.blp', 0, true);
+            } else {
+                this.gameGlobals.TeleportMovement = true;
+                BlzFrameSetTexture(teleportBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNUnloadNoBorder.blp', 0, true);
+            }
+        });
+        createButtonTrigger(healHitpointsButton, () => {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                SetUnitLifePercentBJ(u, 100);
+            });
+
+            grp.destroy();
+        });
+        createButtonTrigger(healManaButton, () => {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                SetUnitManaPercentBJ(u, 100);
+            });
+
+            grp.destroy();
+        });
+        createButtonTrigger(resetCooldownButton, () => {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                UnitResetCooldown(u);
+            });
+
+            grp.destroy();
+        });
+        createButtonTrigger(levelUpButton, () => {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                if (IsUnitType(u, UNIT_TYPE_HERO)) {
+                    SetHeroLevel(u, GetHeroLevel(u) + 1, true);
+                }
+            });
+
+            grp.destroy();
+        });
+    }
+
     private enableDebugMode(): void {
         let nonBotPlayerCount: number = 0;
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
@@ -246,13 +374,8 @@ export class Game {
         }
 
         if (nonBotPlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
-            // BJDebugMsg('Activating debug mode...');
             this.gameGlobals.DebugMode = true;
-            /*
-            for (let i: number = 0; i < this.gameGlobals.HeroArraySize; i++) {
-                CreateUnit(Player(0), FourCC(this.gameGlobals.HeroUnitTypeID[i]), 2810.00, 7680.00, bj_UNIT_FACING);
-            }
-            */
+            this.startDebugUI();
         }
     }
 }
