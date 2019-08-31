@@ -251,7 +251,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         if (gameGlobals.PlayerSpawnRegion[i] !== undefined) {
             FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, gameGlobals.PlayerSpawnRegion[i], true, false));
         }
-        SetPlayerStateBJ(Player(i), PLAYER_STATE_RESOURCE_GOLD, 500);
+        SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_GOLD, 500);
     }
 }
 
