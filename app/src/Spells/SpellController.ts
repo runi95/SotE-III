@@ -64,6 +64,7 @@ import { Regenerate } from './Regenerate';
 import { BurningFlask } from './BurningFlask';
 import { PoisonFlask } from './PoisonFlask';
 import { FrozenFlask } from './FrozenFlask';
+import { LifeDrain } from './LifeDrain';
 
 export class SpellController {
     private spells: any[];
@@ -132,6 +133,7 @@ export class SpellController {
             new BurningFlask(timerUtils),
             new PoisonFlask(timerUtils),
             new FrozenFlask(stunUtils),
+            new LifeDrain(timerUtils),
         ];
     }
 }
