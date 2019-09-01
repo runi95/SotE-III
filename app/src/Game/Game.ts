@@ -313,12 +313,17 @@ export class Game {
             trig.registerFrameEvent(frame, FRAMEEVENT_CONTROL_CLICK);
         };
         createButtonTrigger(goldButton, () => {
+            BlzFrameSetEnable(goldButton, false);
             SetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD) + 1000);
+            BlzFrameSetEnable(goldButton, true);
         });
         createButtonTrigger(lumberButton, () => {
+            BlzFrameSetEnable(lumberButton, false);
             SetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER) + 1000);
+            BlzFrameSetEnable(lumberButton, true);
         });
         createButtonTrigger(teleportButton, () => {
+            BlzFrameSetEnable(teleportButton, false);
             const teleportMovement: boolean = this.gameGlobals.TeleportMovement;
 
             if (teleportMovement) {
@@ -328,32 +333,40 @@ export class Game {
                 this.gameGlobals.TeleportMovement = true;
                 BlzFrameSetTexture(teleportBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNUnloadNoBorder.blp', 0, true);
             }
+            BlzFrameSetEnable(teleportButton, true);
         });
         createButtonTrigger(healHitpointsButton, () => {
+            BlzFrameSetEnable(healHitpointsButton, false);
             const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
             grp.for((u: unit) => {
                 SetUnitLifePercentBJ(u, 100);
             });
 
             grp.destroy();
+            BlzFrameSetEnable(healHitpointsButton, true);
         });
         createButtonTrigger(healManaButton, () => {
+            BlzFrameSetEnable(healManaButton, false);
             const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
             grp.for((u: unit) => {
                 SetUnitManaPercentBJ(u, 100);
             });
 
             grp.destroy();
+            BlzFrameSetEnable(healManaButton, true);
         });
         createButtonTrigger(resetCooldownButton, () => {
+            BlzFrameSetEnable(resetCooldownButton, false);
             const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
             grp.for((u: unit) => {
                 UnitResetCooldown(u);
             });
 
             grp.destroy();
+            BlzFrameSetEnable(resetCooldownButton, true);
         });
         createButtonTrigger(levelUpButton, () => {
+            BlzFrameSetEnable(levelUpButton, false);
             const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
             grp.for((u: unit) => {
                 if (IsUnitType(u, UNIT_TYPE_HERO)) {
@@ -362,6 +375,7 @@ export class Game {
             });
 
             grp.destroy();
+            BlzFrameSetEnable(levelUpButton, true);
         });
     }
 
