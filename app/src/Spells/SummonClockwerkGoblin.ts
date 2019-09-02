@@ -15,7 +15,7 @@ export class SummonClockwerkGoblin extends Spell {
         SetUnitUserData(summon, 50 * abilityLevel + intelligence);
         BlzSetUnitMaxHP(summon, 5 * intelligence);
         SetUnitLifePercentBJ(summon, 100);
-        BlzSetUnitBaseDamage(summon, intelligence, 1);
+        BlzSetUnitBaseDamage(summon, intelligence, 0);
         UnitApplyTimedLifeBJ(5, this.timedLifeBuffId, summon);
     }
 }

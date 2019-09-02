@@ -27,7 +27,7 @@ export class SpiritOfFrost implements DamageEvent {
                     const intelligence: number = GetHeroInt(globals.DamageEventTarget as unit, true);
                     const summon: unit = CreateUnit(GetOwningPlayer(globals.DamageEventTarget as unit),
                                                     this.dummyUnitTypeId, x, y, bj_UNIT_FACING);
-                    BlzSetUnitBaseDamage(summon, 2 * intelligence, 1);
+                    BlzSetUnitBaseDamage(summon, 2 * intelligence, 0);
                     UnitApplyTimedLifeBJ(abilityLevel, this.timedLifeBuffId, summon);
                     SetUnitManaBJ(globals.DamageEventTarget as unit, mana - 25.00);
                 }

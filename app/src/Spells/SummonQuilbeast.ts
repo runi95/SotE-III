@@ -33,7 +33,7 @@ export class SummonQuilbeast extends Spell {
         // BlzSetUnitAttackCooldown(summon, 2.00, 1)
         // BlzSetUnitDiceSides(summon, 1, 1)
         // BlzSetUnitDiceNumber(summon, 4, 1)
-        BlzSetUnitBaseDamage(summon, Math.ceil(0.90 * agi), 1);
+        BlzSetUnitBaseDamage(summon, Math.ceil(0.90 * agi), 0);
         // UnitApplyTimedLifeBJ(60, 'BTLF', summon)
 
         const maxDistance: number = 1200;

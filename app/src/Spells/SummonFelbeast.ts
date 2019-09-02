@@ -19,7 +19,7 @@ export class SummonFelbeast extends Spell {
         // BlzSetUnitAttackCooldown(summon, 2.00, 1)
         // BlzSetUnitDiceSides(summon, 1, 1)
         // BlzSetUnitDiceNumber(summon, 4, 1)
-        BlzSetUnitBaseDamage(summon, Math.ceil(str), 1);
+        BlzSetUnitBaseDamage(summon, Math.ceil(str), 0);
         UnitApplyTimedLifeBJ(60, this.timedLifeBuffId, summon);
 
         if (abilityLevel > 2) {
