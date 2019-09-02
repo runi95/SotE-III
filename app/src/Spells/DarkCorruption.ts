@@ -36,7 +36,6 @@ export class DarkCorruption {
             // BlzSetUnitDiceNumber(summon, 4, 1)
             if (darkSummoningLevel > 0) {
                 const damage: number = Math.ceil(2 * intelligence + 5 * darkSummoningLevel);
-                BJDebugMsg(`damage: ${damage}`);
                 BlzSetUnitBaseDamage(summon, damage, 0);
             } else {
                 BlzSetUnitBaseDamage(summon, Math.ceil(intelligence), 0);
