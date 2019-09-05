@@ -23,24 +23,20 @@ export class DarkCorruption {
             const y: number = GetUnitY(GetDyingUnit());
             const intelligence: number = GetHeroInt(GetKillingUnit(), true);
             const summon: unit = CreateUnit(GetOwningPlayer(GetKillingUnit()), this.summonId, x, y, bj_UNIT_FACING);
+            const maxHealth: number = darkSummoningLevel > 0 ? 4 * intelligence + 75 * darkSummoningLevel : 2 * intelligence;
+            const damage: number = darkSummoningLevel > 0 ? Math.ceil(2 * intelligence + 5 * darkSummoningLevel) : Math.ceil(intelligence);
 
-            if (darkSummoningLevel > 0) {
-                BlzSetUnitMaxHP(summon, 4 * intelligence + 75 * darkSummoningLevel);
-            } else {
-                BlzSetUnitMaxHP(summon, 2 * intelligence);
-            }
+            BlzSetUnitMaxHP(summon, maxHealth);
+            SetUnitState(summon, UNIT_STATE_LIFE, maxHealth);
             SetUnitLifePercentBJ(summon, 100);
+            BlzSetUnitRealField(summon, UNIT_RF_HIT_POINTS_REGENERATION_RATE, -0.5 * (maxHealth / 10));
+            BlzSetUnitBaseDamage(summon, damage, 0);
             // BlzSetUnitArmor( summon, 10.00 )
             // BlzSetUnitAttackCooldown(summon, 2.00, 1)
             // BlzSetUnitDiceSides(summon, 1, 1)
             // BlzSetUnitDiceNumber(summon, 4, 1)
-            if (darkSummoningLevel > 0) {
-                const damage: number = Math.ceil(2 * intelligence + 5 * darkSummoningLevel);
-                BlzSetUnitBaseDamage(summon, damage, 0);
-            } else {
-                BlzSetUnitBaseDamage(summon, Math.ceil(intelligence), 0);
-            }
-            UnitApplyTimedLifeBJ(10, this.timedLifeBuffId, summon);
+
+            // UnitApplyTimedLifeBJ(10, this.timedLifeBuffId, summon);
         }
     }
 }
