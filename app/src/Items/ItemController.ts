@@ -58,6 +58,7 @@ import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { LightningBolt } from './Recipes/LightningBolt';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
+import { WandOfShadowsight } from './Recipes/WandOfShadowsight';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -125,6 +126,7 @@ export class ItemController {
             new ReinforcedScales(),
             new LionsRing(),
             new LightningBolt(),
+            new WandOfShadowsight(),
         ];
     }
 }
