@@ -66,6 +66,7 @@ import { PoisonFlask } from './PoisonFlask';
 import { FrozenFlask } from './FrozenFlask';
 import { LifeDrain } from './LifeDrain';
 import { AbolishLight } from './AbolishLight';
+import { MarkForDeath } from './MarkForDeath';
 
 export class SpellController {
     private spells: any[];
@@ -136,6 +137,7 @@ export class SpellController {
             new FrozenFlask(stunUtils),
             new LifeDrain(timerUtils),
             new AbolishLight(),
+            new MarkForDeath(),
         ];
     }
 }
