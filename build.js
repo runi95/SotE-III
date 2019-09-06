@@ -20,7 +20,7 @@ class Builder {
         fs.copySync(`${settings.map.dir}/${settings.map.filename}`, `target/${settings.map.filename}`);
 
         console.log("Extracting war3map.lua...");
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["extract", `"target/${settings.map.filename}"`, '"war3map.lua"', `"${settings.map.dir}/lua"`]).run();
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["extract", `"target/${settings.map.filename}"`, '"war3map.lua"', `"${settings.map.dir}/map"`]).run();
 
         console.log("Transpiling project...");
         const { emitResult, diagnostics } = typescriptToLua.transpileProject('tsconfig.json');
