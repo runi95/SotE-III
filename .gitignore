@@ -6,6 +6,6 @@
 /node_modules
 /package-lock.json
 /app/src/Generated/*
-/maps/map/war3map.lua
+/maps/lua/war3map.lua
 /logs
 /backups
