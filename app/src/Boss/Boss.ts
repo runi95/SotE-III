@@ -1,10 +1,10 @@
 import { Trigger } from '../JassOverrides/Trigger';
 
 export abstract class Boss {
-    protected readonly abstract bossId: number;
-    protected readonly abstract x: number;
-    protected readonly abstract y: number;
-    protected readonly abstract angle: number;
+    protected abstract readonly bossId: number;
+    protected abstract readonly x: number;
+    protected abstract readonly y: number;
+    protected abstract readonly angle: number;
     protected readonly lootItemId: number | undefined = undefined;
     protected bossHandleId: number | undefined = undefined;
     protected readonly spawnTrig: Trigger = new Trigger();

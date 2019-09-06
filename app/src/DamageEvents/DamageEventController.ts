@@ -20,8 +20,12 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Repetition } from './Repetition';
 
 export class DamageEventController {
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils,
-                randomNumberGenerator: RandomNumberGenerator, damageEngine: DamageEngine) {
+    constructor(
+        gameGlobals: GameGlobals,
+        timerUtils: TimerUtils,
+        randomNumberGenerator: RandomNumberGenerator,
+        damageEngine: DamageEngine,
+    ) {
         // Initial damage events
         damageEngine.addInitialDamageEvent(new ManaBrilliance());
         damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals, randomNumberGenerator));

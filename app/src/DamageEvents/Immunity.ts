@@ -13,10 +13,10 @@ export class Immunity implements DamageEvent {
     public event(globals: DamageEngineGlobals): void {
         if (GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId) > 0) {
             const sourceLoc: location = GetUnitLoc(globals.DamageEventSource as unit);
-            const txt: texttag = CreateTextTagLocBJ('0', sourceLoc, 1, 10, 50.00, 50.00, 50.00, 0.00);
+            const txt: texttag = CreateTextTagLocBJ('0', sourceLoc, 1, 10, 50.0, 50.0, 50.0, 0.0);
             globals.DamageEventAmount = 0;
             SetTextTagPermanentBJ(txt, false);
-            SetTextTagLifespanBJ(txt, 2.00);
+            SetTextTagLifespanBJ(txt, 2.0);
             SetTextTagVelocityBJ(txt, 64, 90);
 
             RemoveLocation(sourceLoc);

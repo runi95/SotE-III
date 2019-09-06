@@ -22,14 +22,19 @@ export class SpiritOfFrost implements DamageEvent {
             if (this.randomNumberGenerator.random(1, 100) < 10) {
                 const mana: number = GetUnitState(globals.DamageEventTarget as unit, UNIT_STATE_MANA);
                 if (mana > 25) {
-                    const x: number = GetUnitX(globals.DamageEventTarget as unit) + GetRandomReal(0.00, 500.00) - 250.00;
-                    const y: number = GetUnitY(globals.DamageEventTarget as unit) + GetRandomReal(0.00, 500.00) - 250.00;
+                    const x: number = GetUnitX(globals.DamageEventTarget as unit) + GetRandomReal(0.0, 500.0) - 250.0;
+                    const y: number = GetUnitY(globals.DamageEventTarget as unit) + GetRandomReal(0.0, 500.0) - 250.0;
                     const intelligence: number = GetHeroInt(globals.DamageEventTarget as unit, true);
-                    const summon: unit = CreateUnit(GetOwningPlayer(globals.DamageEventTarget as unit),
-                                                    this.dummyUnitTypeId, x, y, bj_UNIT_FACING);
+                    const summon: unit = CreateUnit(
+                        GetOwningPlayer(globals.DamageEventTarget as unit),
+                        this.dummyUnitTypeId,
+                        x,
+                        y,
+                        bj_UNIT_FACING,
+                    );
                     BlzSetUnitBaseDamage(summon, 2 * intelligence, 0);
                     UnitApplyTimedLifeBJ(abilityLevel, this.timedLifeBuffId, summon);
-                    SetUnitManaBJ(globals.DamageEventTarget as unit, mana - 25.00);
+                    SetUnitManaBJ(globals.DamageEventTarget as unit, mana - 25.0);
                 }
             }
         }

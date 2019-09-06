@@ -27,9 +27,13 @@ export class ClockworkPenguinPickup extends ItemPickup {
         }
 
         this.gameGlobals.ClockworkPenguin[playerId] = true;
-        const summon: unit = CreateUnit(GetOwningPlayer(this.gameGlobals.PlayerHero[playerId]), this.summonId,
-                                        GetUnitX(this.gameGlobals.PlayerHero[playerId]),
-                                        GetUnitY(this.gameGlobals.PlayerHero[playerId]), bj_UNIT_FACING);
+        const summon: unit = CreateUnit(
+            GetOwningPlayer(this.gameGlobals.PlayerHero[playerId]),
+            this.summonId,
+            GetUnitX(this.gameGlobals.PlayerHero[playerId]),
+            GetUnitY(this.gameGlobals.PlayerHero[playerId]),
+            bj_UNIT_FACING,
+        );
         IssueTargetOrderBJ(summon, 'move', this.gameGlobals.PlayerHero[playerId]);
         const maxDistance: number = 600;
         const t: Timer = this.timerUtils.newTimer();
@@ -48,10 +52,10 @@ export class ClockworkPenguinPickup extends ItemPickup {
                 for (let i: number = 0; i < 6; i++) {
                     const itemInSlot: item = UnitItemInSlotBJ(summon, i);
                     if (itemInSlot) {
-                        SetItemCharges(CreateItem(GetItemTypeId(itemInSlot),
-                                                  GetUnitX(summon),
-                                                  GetUnitY(summon)),
-                                       GetItemCharges(itemInSlot));
+                        SetItemCharges(
+                            CreateItem(GetItemTypeId(itemInSlot), GetUnitX(summon), GetUnitY(summon)),
+                            GetItemCharges(itemInSlot),
+                        );
                     }
                 }
 

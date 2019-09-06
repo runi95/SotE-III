@@ -25,12 +25,20 @@ export class PlayerRespawn {
         this.gameGlobals.RazorBladesOn[playerId] = false;
         this.gameGlobals.PlayerLives[playerId] -= 1;
         if (this.gameGlobals.PlayerLives[playerId] > 0) {
-            MultiboardSetItemValueBJ(this.gameGlobals.Multiboard as multiboard, 2,
-                                     2 + playerId, I2S(this.gameGlobals.PlayerLives[playerId]));
-            TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(GetTriggerUnit())), 10.00));
+            MultiboardSetItemValueBJ(
+                this.gameGlobals.Multiboard as multiboard,
+                2,
+                2 + playerId,
+                I2S(this.gameGlobals.PlayerLives[playerId]),
+            );
+            TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(GetTriggerUnit())), 10.0));
             if (!this.gameGlobals.IsArenaBattleInProgress) {
-                ReviveHero(GetTriggerUnit(), GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                           GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]), true);
+                ReviveHero(
+                    GetTriggerUnit(),
+                    GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                    true,
+                );
                 SetUnitManaPercentBJ(GetTriggerUnit(), 100);
             }
         } else {

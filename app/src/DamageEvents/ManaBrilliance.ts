@@ -13,7 +13,9 @@ export class ManaBrilliance implements DamageEvent {
             return;
         }
 
-        SetUnitManaBJ(globals.DamageEventSource as unit,
-                      GetUnitState(globals.DamageEventSource as unit, UNIT_STATE_MANA) + 0.10 * globals.DamageEventAmount);
+        SetUnitManaBJ(
+            globals.DamageEventSource as unit,
+            GetUnitState(globals.DamageEventSource as unit, UNIT_STATE_MANA) + 0.1 * globals.DamageEventAmount,
+        );
     }
 }

@@ -20,12 +20,17 @@ export class LionsRing implements DamageEvent {
         let charges: number = 0;
 
         if (itm) {
-            charges = GetItemCharges(itm) + 0.10 * globals.DamageEventAmount;
+            charges = GetItemCharges(itm) + 0.1 * globals.DamageEventAmount;
 
             if (charges >= 100) {
                 SetItemCharges(itm, 0);
-                const dummy: unit = CreateUnit(GetOwningPlayer(globals.DamageEventTarget as unit), this.dummyUnitTypeId,
-                                               GetUnitX(globals.DamageEventSource as unit), GetUnitY(globals.DamageEventSource as unit), 0);
+                const dummy: unit = CreateUnit(
+                    GetOwningPlayer(globals.DamageEventTarget as unit),
+                    this.dummyUnitTypeId,
+                    GetUnitX(globals.DamageEventSource as unit),
+                    GetUnitY(globals.DamageEventSource as unit),
+                    0,
+                );
                 UnitAddAbilityBJ(this.dummyAbilityId, dummy);
                 UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
                 IssueTargetOrder(dummy, 'chainlightning', globals.DamageEventSource as unit);

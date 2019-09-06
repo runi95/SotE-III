@@ -34,11 +34,11 @@ export class DamageEngine {
     private trig: Trigger = new Trigger();
     private otrg: Trigger = new Trigger();
 
-    private previousAmount: number = 0.00;  // Added to track the original modified damage pre-spirit Link
-    private previousValue: number = 0.00;   // Added to track the original pure damage amount of Spirit Link
-    private previousType: number = 0;       // Track the type
-    private previousCode: boolean = false;  // Was it caused by a trigger/script?
-    private previousPierce: number = 0.00;
+    private previousAmount: number = 0.0; // Added to track the original modified damage pre-spirit Link
+    private previousValue: number = 0.0; // Added to track the original pure damage amount of Spirit Link
+    private previousType: number = 0; // Track the type
+    private previousCode: boolean = false; // Was it caused by a trigger/script?
+    private previousPierce: number = 0.0;
     private armorType: number = 0;
     private previousArmor: number = 0;
     private prevPreArmor: number = 0;
@@ -134,39 +134,39 @@ export class DamageEngine {
     }
 
     private initialDamageEvent(): void {
-        this.initialDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.initialDamageEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private zeroDamageEvent(): void {
-        this.zeroDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.zeroDamageEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private damageEventAOE(): void {
-        this.damageEventAOEEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.damageEventAOEEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private damageEventLethal(): void {
-        this.damageEventLethalEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.damageEventLethalEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private initialDamageModificationEvent(): void {
-        this.initialDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.initialDamageModificationEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private multiplicativeDamageModificationEvent(): void {
-        this.multiplicativeDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.multiplicativeDamageModificationEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private preFinalDamageModificationEvent(): void {
-        this.preFinalDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.preFinalDamageModificationEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private finalDamageModificationEvent(): void {
-        this.finalDamageModificationEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.finalDamageModificationEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private afterDamageEvent(): void {
-        this.afterDamageEvents.forEach(damageEvent => damageEvent.event(this.damageEngineGlobals));
+        this.afterDamageEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
     private Error(): void {
@@ -178,7 +178,7 @@ export class DamageEngine {
         s += 'Unit - Cause <Source> to damage <Target>, dealing <Amount> damage of attack type <Attack Type> and damage type Unknown';
 
         ClearTextMessages();
-        DisplayTimedTextToPlayer(GetLocalPlayer(), 0.00, 0.00, 999.00, s);
+        DisplayTimedTextToPlayer(GetLocalPlayer(), 0.0, 0.0, 999.0, s);
     }
 
     private OnAOEEnd(): void {
@@ -197,8 +197,10 @@ export class DamageEngine {
         let i: number = -1;
         if (this.finished) {
             this.finished = false;
-            if (this.damageEngineGlobals.DamageEventPrevAmt !== 0.00
-                && this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
+            if (
+                this.damageEngineGlobals.DamageEventPrevAmt !== 0.0 &&
+                this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN
+            ) {
                 this.recursive = true;
                 this.afterDamageEvent();
                 this.recursive = false;
@@ -206,7 +208,7 @@ export class DamageEngine {
 
             if (this.recursion > -1 && !this.holdClear && !this.purge) {
                 this.purge = true;
-                for (; i >= this.recursion;) {
+                for (; i >= this.recursion; ) {
                     i = i + 1;
 
                     this.damageEngineGlobals.NextDamageType = this.lastType[i];
@@ -214,8 +216,16 @@ export class DamageEngine {
                         DisableTrigger(this.lastTrig[i]);
                     }
 
-                    UnitDamageTarget(this.lastSource[i], this.lastTarget[i], this.lastAmount[i],
-                                     true, false, this.lastAttackT[i], this.lastDamageT[i], this.lastWeaponT[i]);
+                    UnitDamageTarget(
+                        this.lastSource[i],
+                        this.lastTarget[i],
+                        this.lastAmount[i],
+                        true,
+                        false,
+                        this.lastAttackT[i],
+                        this.lastDamageT[i],
+                        this.lastWeaponT[i],
+                    );
                     this.Finish();
                 }
                 for (; i <= -1; i--) {
@@ -240,12 +250,12 @@ export class DamageEngine {
         this.damageEngineGlobals.IsDamageMelee = false;
         this.damageEngineGlobals.IsDamageRanged = false;
         this.damageEngineGlobals.IsDamageSpell = this.damageEngineGlobals.DamageEventAttackT === 0;
-        if (this.damageEngineGlobals.DamageEventDamageT === settings.DAMAGE_TYPE_NORMAL &&
-            !this.damageEngineGlobals.IsDamageSpell) {
-            this.damageEngineGlobals.IsDamageMelee = IsUnitType(
-                <unit>this.damageEngineGlobals.DamageEventSource, UNIT_TYPE_MELEE_ATTACKER);
+        if (this.damageEngineGlobals.DamageEventDamageT === settings.DAMAGE_TYPE_NORMAL && !this.damageEngineGlobals.IsDamageSpell) {
+            this.damageEngineGlobals.IsDamageMelee = IsUnitType(<unit>this.damageEngineGlobals.DamageEventSource, UNIT_TYPE_MELEE_ATTACKER);
             this.damageEngineGlobals.IsDamageRanged = IsUnitType(
-                <unit>this.damageEngineGlobals.DamageEventSource, UNIT_TYPE_RANGED_ATTACKER);
+                <unit>this.damageEngineGlobals.DamageEventSource,
+                UNIT_TYPE_RANGED_ATTACKER,
+            );
             if (this.damageEngineGlobals.IsDamageMelee && this.damageEngineGlobals.IsDamageRanged) {
                 this.damageEngineGlobals.IsDamageMelee = this.damageEngineGlobals.DamageEventWeaponT > 0;
                 this.damageEngineGlobals.IsDamageRanged = !this.damageEngineGlobals.IsDamageMelee;
@@ -261,13 +271,15 @@ export class DamageEngine {
         const dt: damagetype = BlzGetEventDamageType();
         const wt: weapontype = BlzGetEventWeaponType();
         this.Finish();
-        if (this.damageEngineGlobals.NextDamageType === 0 &&
-            (this.damageEngineGlobals.DamageEventTrigger !== undefined || this.recursive)) {
+        if (
+            this.damageEngineGlobals.NextDamageType === 0 &&
+            (this.damageEngineGlobals.DamageEventTrigger !== undefined || this.recursive)
+        ) {
             this.damageEngineGlobals.NextDamageType = this.damageEngineGlobals.DamageTypeCode;
         }
 
         if (this.recursive) {
-            if (amt !== 0.00) {
+            if (amt !== 0.0) {
                 if (this.recursion < 512) {
                     this.recursion = this.recursion + 1;
 
@@ -285,7 +297,7 @@ export class DamageEngine {
             }
             this.damageEngineGlobals.NextDamageType = 0;
             this.damageEngineGlobals.DamageEventTrigger = undefined;
-            BlzSetEventDamage(0.00);
+            BlzSetEventDamage(0.0);
         } else {
             if (!this.purge) {
                 if (this.started) {
@@ -311,7 +323,7 @@ export class DamageEngine {
                         this.holdClear = true;
                     }
                 } else {
-                    TimerStart(this.ticker, 0.00, false, () => this.OnExpire());
+                    TimerStart(this.ticker, 0.0, false, () => this.OnExpire());
                     this.started = true;
                     this.damageEngineGlobals.AOEDamageSource = src;
                     this.damageEngineGlobals.EnhancedDamageTarget = tgt;
@@ -326,8 +338,10 @@ export class DamageEngine {
                 this.damageEngineGlobals.IsDamageCode = true;
                 this.damageEngineGlobals.DamageEventTrigger = undefined;
             }
-            this.damageEngineGlobals.DamageEventOverride = dt === undefined ||
-                amt === 0.00 || this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
+            this.damageEngineGlobals.DamageEventOverride =
+                dt === undefined ||
+                amt === 0.0 ||
+                this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
             this.damageEngineGlobals.DamageEventPrevAmt = amt;
             this.damageEngineGlobals.DamageEventSource = src;
             this.damageEngineGlobals.DamageEventTarget = tgt;
@@ -336,17 +350,22 @@ export class DamageEngine {
             this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
             this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
             this.CalibrateMR();
-            this.damageEngineGlobals.DamageEventArmorT = BlzGetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget,
-                                                                                UNIT_IF_ARMOR_TYPE);
-            this.damageEngineGlobals.DamageEventDefenseT = BlzGetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget,
-                                                                                  UNIT_IF_DEFENSE_TYPE);
+            this.damageEngineGlobals.DamageEventArmorT = BlzGetUnitIntegerField(
+                this.damageEngineGlobals.DamageEventTarget,
+                UNIT_IF_ARMOR_TYPE,
+            );
+            this.damageEngineGlobals.DamageEventDefenseT = BlzGetUnitIntegerField(
+                this.damageEngineGlobals.DamageEventTarget,
+                UNIT_IF_DEFENSE_TYPE,
+            );
             this.armorType = this.damageEngineGlobals.DamageEventArmorT;
             this.defenseType = this.damageEngineGlobals.DamageEventDefenseT;
-            this.damageEngineGlobals.DamageEventArmorPierced = 0.00;
+            this.damageEngineGlobals.DamageEventArmorPierced = 0.0;
             if (!this.damageEngineGlobals.DamageEventOverride) {
                 this.recursive = true;
                 this.initialDamageModificationEvent(); // DamageModifierEvent 1.00
-                this.damageEngineGlobals.DamageEventOverride = this.damageEngineGlobals.DamageEventOverride ||
+                this.damageEngineGlobals.DamageEventOverride =
+                    this.damageEngineGlobals.DamageEventOverride ||
                     this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
                 if (!this.damageEngineGlobals.DamageEventOverride) {
                     this.multiplicativeDamageModificationEvent();
@@ -357,18 +376,25 @@ export class DamageEngine {
                 BlzSetEventAttackType(ConvertAttackType(this.damageEngineGlobals.DamageEventAttackT));
                 BlzSetEventDamageType(ConvertDamageType(this.damageEngineGlobals.DamageEventDamageT));
                 BlzSetEventWeaponType(ConvertWeaponType(this.damageEngineGlobals.DamageEventWeaponT));
-                if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.00) {
-                    BlzSetUnitArmor(this.damageEngineGlobals.DamageEventTarget,
-                                    BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget) -
-                                        this.damageEngineGlobals.DamageEventArmorPierced);
+                if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.0) {
+                    BlzSetUnitArmor(
+                        this.damageEngineGlobals.DamageEventTarget,
+                        BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.DamageEventArmorPierced,
+                    );
                 }
                 if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
-                    BlzSetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget,
-                                           UNIT_IF_ARMOR_TYPE, this.damageEngineGlobals.DamageEventArmorT);
+                    BlzSetUnitIntegerField(
+                        this.damageEngineGlobals.DamageEventTarget,
+                        UNIT_IF_ARMOR_TYPE,
+                        this.damageEngineGlobals.DamageEventArmorT,
+                    );
                 }
                 if (this.defenseType !== this.damageEngineGlobals.DamageEventDefenseT) {
-                    BlzSetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget,
-                                           UNIT_IF_DEFENSE_TYPE, this.damageEngineGlobals.DamageEventDefenseT);
+                    BlzSetUnitIntegerField(
+                        this.damageEngineGlobals.DamageEventTarget,
+                        UNIT_IF_DEFENSE_TYPE,
+                        this.damageEngineGlobals.DamageEventDefenseT,
+                    );
                 }
 
                 BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
@@ -384,7 +410,6 @@ export class DamageEngine {
         if (this.recursive) {
             return false;
         }
-
 
         if (this.preDamage) {
             this.preDamage = false;
@@ -408,10 +433,11 @@ export class DamageEngine {
             this.CalibrateMR();
         }
 
-        if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.00) {
-            BlzSetUnitArmor(<unit>this.damageEngineGlobals.DamageEventTarget,
-                            BlzGetUnitArmor(<unit>this.damageEngineGlobals.DamageEventTarget) +
-                                this.damageEngineGlobals.DamageEventArmorPierced);
+        if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.0) {
+            BlzSetUnitArmor(
+                <unit>this.damageEngineGlobals.DamageEventTarget,
+                BlzGetUnitArmor(<unit>this.damageEngineGlobals.DamageEventTarget) + this.damageEngineGlobals.DamageEventArmorPierced,
+            );
         }
 
         if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
@@ -424,35 +450,36 @@ export class DamageEngine {
 
         let r: number = GetEventDamage();
         this.recursive = true;
-        if (this.damageEngineGlobals.DamageEventPrevAmt === 0.00) {
+        if (this.damageEngineGlobals.DamageEventPrevAmt === 0.0) {
             this.zeroDamageEvent();
         } else {
-            if (this.damageEngineGlobals.DamageEventAmount !== 0.00 && r !== 0.00) {
+            if (this.damageEngineGlobals.DamageEventAmount !== 0.0 && r !== 0.0) {
                 this.damageEngineGlobals.DamageScalingWC3 = r / this.damageEngineGlobals.DamageEventAmount;
-            } else if (this.damageEngineGlobals.DamageEventAmount > 0.00) {
-                this.damageEngineGlobals.DamageScalingWC3 = 0.00;
+            } else if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
+                this.damageEngineGlobals.DamageScalingWC3 = 0.0;
             } else {
-                this.damageEngineGlobals.DamageScalingWC3 = 1.00;
+                this.damageEngineGlobals.DamageScalingWC3 = 1.0;
             }
             r = this.damageEngineGlobals.DamageEventAmount;
             this.damageEngineGlobals.DamageScalingUser = r / this.damageEngineGlobals.DamageEventPrevAmt;
             this.damageEngineGlobals.DamageEventAmount = r * this.damageEngineGlobals.DamageScalingWC3;
 
-            if (this.damageEngineGlobals.DamageEventAmount > 0.00) {
+            if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
                 this.finalDamageModificationEvent(); // event 4.00
 
-                this.damageEngineGlobals.LethalDamageHP = GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) -
-                    this.damageEngineGlobals.DamageEventAmount;
+                this.damageEngineGlobals.LethalDamageHP =
+                    GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.DamageEventAmount;
                 if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
                     this.damageEventLethal();
 
-                    this.damageEngineGlobals.DamageEventAmount = GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) -
-                        this.damageEngineGlobals.LethalDamageHP;
+                    this.damageEngineGlobals.DamageEventAmount =
+                        GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.LethalDamageHP;
                     if (this.damageEngineGlobals.DamageEventType < 0 && this.damageEngineGlobals.LethalDamageHP <= 0.405) {
                         SetUnitExploded(<unit>this.damageEngineGlobals.DamageEventTarget, true);
                     }
                 }
-                this.damageEngineGlobals.DamageScalingUser = this.damageEngineGlobals.DamageEventAmount /
+                this.damageEngineGlobals.DamageScalingUser =
+                    this.damageEngineGlobals.DamageEventAmount /
                     (this.damageEngineGlobals.DamageEventPrevAmt * this.damageEngineGlobals.DamageScalingWC3);
             }
             BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
@@ -463,12 +490,9 @@ export class DamageEngine {
 
         this.recursive = false;
         this.finished = true;
-        if (this.damageEngineGlobals.DamageEventAmount <= 0.00) {
+        if (this.damageEngineGlobals.DamageEventAmount <= 0.0) {
             this.Finish();
         }
         return false;
     }
-
-
-
 }

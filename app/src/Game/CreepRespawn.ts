@@ -17,12 +17,16 @@ export class CreepRespawn {
             const userData: number = GetUnitUserData(GetTriggerUnit());
             const unitTypeId: number = GetUnitTypeId(GetTriggerUnit());
             RemoveUnit(GetTriggerUnit());
-            SetUnitUserData(CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),
-                                       unitTypeId,
-                                       gameGlobals.CreepSpawnPoint[userData].x,
-                                       gameGlobals.CreepSpawnPoint[userData].y,
-                                       gameGlobals.CreepSpawnAngle[userData]),
-                            userData);
+            SetUnitUserData(
+                CreateUnit(
+                    Player(PLAYER_NEUTRAL_AGGRESSIVE),
+                    unitTypeId,
+                    gameGlobals.CreepSpawnPoint[userData].x,
+                    gameGlobals.CreepSpawnPoint[userData].y,
+                    gameGlobals.CreepSpawnAngle[userData],
+                ),
+                userData,
+            );
         });
 
         this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);

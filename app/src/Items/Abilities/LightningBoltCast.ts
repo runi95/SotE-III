@@ -25,7 +25,7 @@ export class LightningBoltCast extends Spell {
 
         let ticks: number = 6;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(0.10, true, () => {
+        t.start(0.1, true, () => {
             ticks--;
 
             if (ticks === 2) {
@@ -36,9 +36,13 @@ export class LightningBoltCast extends Spell {
                 DestroyEffect(eff);
 
                 for (let i: number = 0; i < 15; i++) {
-                    DestroyEffect(AddSpecialEffect('Abilities\\Weapons\\Bolt\\BoltImpact.mdl',
-                                                   x + this.randomNumberGenerator.random(0, 400) - 200,
-                                                   y + this.randomNumberGenerator.random(0, 400) - 200));
+                    DestroyEffect(
+                        AddSpecialEffect(
+                            'Abilities\\Weapons\\Bolt\\BoltImpact.mdl',
+                            x + this.randomNumberGenerator.random(0, 400) - 200,
+                            y + this.randomNumberGenerator.random(0, 400) - 200,
+                        ),
+                    );
                 }
 
                 const loc: location = GetUnitLoc(trig);
@@ -46,7 +50,7 @@ export class LightningBoltCast extends Spell {
                 grp.for((u: unit) => {
                     if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
                         const dist: number = Math.sqrt(Pow(x - GetUnitX(u), 2) + Pow(y - GetUnitY(u), 2));
-                        const damage: number = 2200 * (1 - (dist / 800));
+                        const damage: number = 2200 * (1 - dist / 800);
                         UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });

@@ -1,9 +1,9 @@
 import { Trigger } from '../JassOverrides/Trigger';
 
 export abstract class Travel {
-    protected readonly abstract x: number;
-    protected readonly abstract y: number;
-    protected readonly abstract itemTypeId: number;
+    protected abstract readonly x: number;
+    protected abstract readonly y: number;
+    protected abstract readonly itemTypeId: number;
     protected readonly trig: Trigger = new Trigger();
 
     constructor() {

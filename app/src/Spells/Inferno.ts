@@ -51,8 +51,7 @@ export class Inferno extends Spell {
             const grp: GroupInRange = new GroupInRange(175, loc);
             grp.for((u: unit) => {
                 if (IsPlayerEnemy(GetOwningPlayer(trig), GetOwningPlayer(u))) {
-                    UnitDamageTargetBJ(trig, u,
-                                       damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
 

@@ -6,9 +6,6 @@ export class BossController {
     private readonly bosses: Boss[];
 
     constructor() {
-        this.bosses = [
-            new DruidOfTheClaw(),
-            new RedDragon(),
-        ];
+        this.bosses = [new DruidOfTheClaw(), new RedDragon()];
     }
 }

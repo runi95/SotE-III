@@ -28,8 +28,7 @@ export class TheAegis implements DamageEvent {
         }
 
         SetItemCharges(theAegis, 1);
-        const dummy: unit = CreateUnit(GetOwningPlayer(trig),
-                                       this.dummyUnitTypeId, GetUnitX(trig), GetUnitY(trig), bj_UNIT_FACING);
+        const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitTypeId, GetUnitX(trig), GetUnitY(trig), bj_UNIT_FACING);
         UnitAddAbility(dummy, this.dummyAbilityId);
         IssueTargetOrder(dummy, 'lightningshield', trig);
         UnitApplyTimedLifeBJ(3, this.timedLifeBuffId, dummy);

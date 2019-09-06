@@ -22,8 +22,7 @@ export class Hero {
         this.trig.addCondition(() => {
             return !this.isHeroPicked && GetUnitTypeId(GetEnteringUnit()) === FourCC('e001');
         });
-        const statueUnit: unit = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE),
-                                            this.heroId, this.dummyX, this.dummyY, this.facingAngle);
+        const statueUnit: unit = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), this.heroId, this.dummyX, this.dummyY, this.facingAngle);
         this.trig.addAction(() => {
             this.isHeroPicked = true;
             RemoveUnit(GetEnteringUnit());

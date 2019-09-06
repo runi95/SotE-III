@@ -60,8 +60,12 @@ export class Game {
         this.playerLeaves = new PlayerLeaves(this.playerVictoryUtils);
         this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils, this.randomNumberGenerator);
         this.teleportController = new TeleportController();
-        this.damageEventController = new DamageEventController(this.gameGlobals, this.timerUtils,
-                                                               this.randomNumberGenerator, this.damageEngine);
+        this.damageEventController = new DamageEventController(
+            this.gameGlobals,
+            this.timerUtils,
+            this.randomNumberGenerator,
+            this.damageEngine,
+        );
         this.flyingMachineController = new FlyingMachineController();
         this.bossController = new BossController();
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
@@ -71,12 +75,15 @@ export class Game {
         const tombOfAncientsY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
         const arcaneVaultX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
         const arcaneVaultY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
-        this.ancientOfWonders = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00R'),
-                                           ancientOfWondersX, ancientOfWondersY, bj_UNIT_FACING);
-        this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'),
-                                         tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
-        this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'),
-                                      arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
+        this.ancientOfWonders = CreateUnit(
+            Player(PLAYER_NEUTRAL_PASSIVE),
+            FourCC('n00R'),
+            ancientOfWondersX,
+            ancientOfWondersY,
+            bj_UNIT_FACING,
+        );
+        this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'), tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
+        this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
 
         this.init();
 
@@ -158,12 +165,12 @@ export class Game {
         let index: number = 0;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
-            if (this.gameGlobals.ActivePlayerIdList.every(playerId => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
+            if (this.gameGlobals.ActivePlayerIdList.every((playerId) => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
                 this.timerUtils.releaseTimer(t);
                 this.startGame();
             } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
                 const playerId: number = randomizedPlayerIdArray[index++];
-                const heroSelector: unit = CreateUnit(Player(playerId), heroSelectorId, -14400.00, -10700.00, bj_UNIT_FACING);
+                const heroSelector: unit = CreateUnit(Player(playerId), heroSelectorId, -14400.0, -10700.0, bj_UNIT_FACING);
                 if (this.gameGlobals.GameIsAllRandomEnabled || GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
                     UnitAddAbility(heroSelector, FourCC('Aloc'));
                     const availableHeroIndexes: number[] = [];
@@ -174,9 +181,12 @@ export class Game {
                     }
 
                     const selectedIndex: number = this.randomNumberGenerator.random(0, availableHeroIndexes.length - 1);
-                    IssuePointOrder(heroSelector, 'move',
-                                    this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().x,
-                                    this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().y);
+                    IssuePointOrder(
+                        heroSelector,
+                        'move',
+                        this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().x,
+                        this.gameGlobals.HeroSelectRegions[availableHeroIndexes[selectedIndex]].getCenter().y,
+                    );
                 }
             }
         });
@@ -188,9 +198,9 @@ export class Game {
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 1, 'Lives');
         MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 3, 1, 'Level');
 
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 1, 10.00);
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 1, 4.00);
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 3, 1, 4.00);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 1, 10.0);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 1, 4.0);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 3, 1, 4.0);
 
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 1, true, false);
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 1, true, false);
@@ -198,8 +208,12 @@ export class Game {
 
         for (let i: number = 0; i < 6; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
-                MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 1, 2 + i,
-                                         `${this.gameGlobals.PlayerColorCodes[i]}${GetPlayerName(Player(i))}|r`);
+                MultiboardSetItemValueBJ(
+                    this.gameGlobals.Multiboard,
+                    1,
+                    2 + i,
+                    `${this.gameGlobals.PlayerColorCodes[i]}${GetPlayerName(Player(i))}|r`,
+                );
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 2, 2 + i, this.gameGlobals.GameStartingLife.toString());
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 3, 2 + i, '1');
             } else {
@@ -208,9 +222,9 @@ export class Game {
                 MultiboardSetItemValueBJ(this.gameGlobals.Multiboard, 3, 2 + i, '-');
             }
 
-            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 2 + i, 10.00);
-            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 2 + i, 4.00);
-            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 3, 2 + i, 4.00);
+            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 2 + i, 10.0);
+            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 2 + i, 4.0);
+            MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 3, 2 + i, 4.0);
 
             MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 2 + i, true, false);
             MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 2 + i, true, false);
@@ -226,8 +240,8 @@ export class Game {
 
         MultiboardSetItemIconBJ(this.gameGlobals.Multiboard, 1, 9, 'UI\\Widgets\\Console\\Human\\Human-Minimap-Ally-Off.blp');
 
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 9, 10.00);
-        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 9, 8.00);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 1, 9, 10.0);
+        MultiboardSetItemWidthBJ(this.gameGlobals.Multiboard, 2, 9, 8.0);
 
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 1, 8, false, false);
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 8, false, false);
@@ -241,36 +255,92 @@ export class Game {
 
     private startDebugUI(): void {
         BJDebugMsg('Launching debug UI');
-        const goldButton: framehandle = BlzCreateFrameByType('BUTTON', 'goldButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                             'StandardButtonTemplate', 0);
+        const goldButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'goldButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
         const goldBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'goldBackdrop', goldButton, 'ButtonBackdropTemplate', 0);
-        const lumberButton: framehandle = BlzCreateFrameByType('BUTTON', 'lumberButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                               'StandardButtonTemplate', 0);
+        const lumberButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'lumberButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
         const lumberBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'lumberBackdrop', lumberButton, 'ButtonBackdropTemplate', 0);
-        const teleportButton: framehandle = BlzCreateFrameByType('BUTTON', 'teleportButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                                 'StandardButtonTemplate', 0);
-        const teleportBackdrop: framehandle = BlzCreateFrameByType('BACKDROP',
-                                                                   'teleportBackdrop', teleportButton, 'ButtonBackdropTemplate', 0);
-        const healHitpointsButton: framehandle = BlzCreateFrameByType('BUTTON', 'healHitpointsButton',
-                                                                      BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                                      'StandardButtonTemplate', 0);
-        const healHitpointsBackdrop: framehandle = BlzCreateFrameByType('BACKDROP',
-                                                                        'healHitpointsBackdrop', healHitpointsButton,
-                                                                        'ButtonBackdropTemplate', 0);
-        const healManaButton: framehandle = BlzCreateFrameByType('BUTTON', 'healManaButton', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                                 'StandardButtonTemplate', 0);
-        const healManaBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'healManaBackdrop',
-                                                                   healManaButton, 'ButtonBackdropTemplate', 0);
-        const resetCooldownButton: framehandle = BlzCreateFrameByType('BUTTON', 'resetCooldownButton',
-                                                                      BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                                      'StandardButtonTemplate', 0);
-        const resetCooldownBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'resetCooldownBackdrop',
-                                                                        resetCooldownButton, 'ButtonBackdropTemplate', 0);
-        const levelUpButton: framehandle = BlzCreateFrameByType('BUTTON', 'levelUpButton',
-                                                                BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-                                                                'StandardButtonTemplate', 0);
-        const levelUpBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'levelUpBackdrop',
-                                                                  levelUpButton, 'ButtonBackdropTemplate', 0);
+        const teleportButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'teleportButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
+        const teleportBackdrop: framehandle = BlzCreateFrameByType(
+            'BACKDROP',
+            'teleportBackdrop',
+            teleportButton,
+            'ButtonBackdropTemplate',
+            0,
+        );
+        const healHitpointsButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'healHitpointsButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
+        const healHitpointsBackdrop: framehandle = BlzCreateFrameByType(
+            'BACKDROP',
+            'healHitpointsBackdrop',
+            healHitpointsButton,
+            'ButtonBackdropTemplate',
+            0,
+        );
+        const healManaButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'healManaButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
+        const healManaBackdrop: framehandle = BlzCreateFrameByType(
+            'BACKDROP',
+            'healManaBackdrop',
+            healManaButton,
+            'ButtonBackdropTemplate',
+            0,
+        );
+        const resetCooldownButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'resetCooldownButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
+        const resetCooldownBackdrop: framehandle = BlzCreateFrameByType(
+            'BACKDROP',
+            'resetCooldownBackdrop',
+            resetCooldownButton,
+            'ButtonBackdropTemplate',
+            0,
+        );
+        const levelUpButton: framehandle = BlzCreateFrameByType(
+            'BUTTON',
+            'levelUpButton',
+            BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+            'StandardButtonTemplate',
+            0,
+        );
+        const levelUpBackdrop: framehandle = BlzCreateFrameByType(
+            'BACKDROP',
+            'levelUpBackdrop',
+            levelUpButton,
+            'ButtonBackdropTemplate',
+            0,
+        );
         BlzFrameSetSize(goldButton, 0.02, 0.02);
         BlzFrameSetSize(goldBackdrop, 0.02, 0.02);
         BlzFrameSetSize(lumberButton, 0.02, 0.02);

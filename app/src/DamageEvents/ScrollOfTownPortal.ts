@@ -13,9 +13,11 @@ export class ScrollOfTownPortal implements DamageEvent {
     public event(globals: DamageEngineGlobals): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
 
-        if (this.gameGlobals.ScrollOfTownPortal[playerId] &&
+        if (
+            this.gameGlobals.ScrollOfTownPortal[playerId] &&
             IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO) &&
-            IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
+            IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)
+        ) {
             this.gameGlobals.ScrollOfTownPortal[playerId] = false;
             UnitRemoveAbility(globals.DamageEventTarget as unit, this.dummyAbilityId);
             BlzPauseUnitEx(globals.DamageEventTarget as unit, false);
