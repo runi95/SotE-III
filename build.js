@@ -118,6 +118,14 @@ class CommandHandler {
                 try {
                     new Builder().build();
                 } catch (err) {
+                    if (err.stdout && err.stdout.toString) {
+                        console.log(err.stdout.toString());
+                    }
+
+                    if (err.stderr && err.stderr.toString) {
+                        console.error(err.stderr.toString());
+                    }
+
                     console.error(err);
                     process.exit(1);
                 }
