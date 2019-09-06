@@ -1,173 +1,50 @@
-const fs = require('fs-extra');
+const settings = require("./settings.json");
+const fs = require("fs-extra");
 const typescriptToLua = require('typescript-to-lua');
 const ts = require("typescript");
-const {execSync} = require('child_process');
+const { execSync } = require('child_process');
 
-class Build {
-    constructor(args) {
-        for (const arg of args) {
-            console.log(arg);
-        }
-        this.os = process.platform;
-        this.doTasks(args)
-
+class Builder {
+    constructor(buildSettings) {
+        this._buildSettings = { preCleanup: true, ...buildSettings };
     }
 
-    async doTasks(args) {
-        if (args.indexOf('build') >= 0) {
-            await this.build()
-        }
-        if (args.indexOf('test') >= 0) {
-            this.test()
-        }
-        if (args.indexOf('run') >= 0) {
-            this.run()
-        }
-    }
-
-    env() {
-        const dir = './config';
-
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-        if (!fs.existsSync(`${dir}/warcraft.json`)) {
-            console.log('missing file');
-            fs.writeFileSync(`${dir}/warcraft.json`, JSON.stringify({
-                path: '',
-            }))
-        }
-        this.settings = JSON.parse(fs.readFileSync(`${dir}/warcraft.json`));
-        if (!this.settings.path.length > 0) {
-            console.error('Path to wc3 is not setup, please set it in ./config/warcraft.json');
-            process.exit(1)
+    build() {
+        if (this.buildSettings.preCleanup) {
+            console.log("Running pre-cleanup...");
+            this.cleanup();
         }
 
-    }
-
-    async build() {
-        this.cleanup();
-
-        const map = 'map.w3x';
+        console.log("Copying map...");
         fs.mkdirSync('target');
+        fs.copySync(`${settings.map.dir}/${settings.map.filename}`, `target/${settings.map.filename}`);
 
-        fs.copySync(`maps/${map}`, `target/${map}`);
+        console.log("Extracting war3map.lua...");
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["extract", `"target/${settings.map.filename}"`, '"war3map.lua"', `"${settings.map.dir}/lua"`]).run();
 
-        let sharedArgs = `extract "target/${map}" "war3map.lua" "maps/map"`;
-        let mpqEditor = '';
-        if (this.os === "win32") {
-            mpqEditor = '"tools/MPQEditor/x64/MPQEditor.exe"';
-        } else {
-            mpqEditor = "WINEDEBUG=-all wine64 tools/MPQEditor/x64/MPQEditor.exe";
-        }
-
-        execSync(`${mpqEditor} ${sharedArgs}`, (err, stdout, stderr) => {
-            if (err) {
-                throw err;
+        console.log("Transpiling project...");
+        const { emitResult, diagnostics } = typescriptToLua.transpileProject('tsconfig.json');
+        diagnostics.forEach(diagnostic => {
+            console.log(diagnostic.messageText);
+            if (diagnostic.code !== 2306) {
+                console.error("FATAL: Error in typescript");
+                throw diagnostic;
             }
-            console.log('Extracted map files')
-
         });
-        // const parser = new jassToTs.JassParser();
-        // await parser.main(['', '', "app/src/lib/core/blizzard.j", "app/src/lib/core/blizzard.d.ts"]);
-        // await parser.main(['', '', "app/src/lib/core/common.j", "app/src/lib/core/common.d.ts"]);
-        // await parser.main(['', '', "app/src/lib/core/common.ai", "app/src/lib/core/commonai.d.ts"]);
-
-        const {emitResult, diagnostics} = typescriptToLua.transpileProject('tsconfig.json');
-        for (let diag of diagnostics) {
-            console.log(diag.messageText);
-            if (diag.code !== 2306) {
-                console.error('FATAL ERROR IN TYPESCRIPT');
-                console.error(diag);
-                // console.log(diag);
-                throw diag;
-
-            }
-
-        }
 
         emitResult.forEach(({name, text}) => ts.sys.writeFile(name, text));
+
+        console.log("Copying files...");
         fs.copySync(`src/app/src/main.lua`, `src/main.lua`);
+        
+        console.log("Building lua map...");
+        new Runner('"tools/ceres/ceres.exe"', ["build", "map"]).run();
 
-        sharedArgs = `build "map"`;
-        let ceres = '';
-        switch (this.os) {
-            case "win32":
-                ceres = '"tools/ceres/ceres.exe"';
-                break;
-            case "darwin":
-                ceres = "tools/ceres/ceres";
-                break;
-            default:
-                ceres = "tools/ceres/ceres-linux";
-                break;
-        }
-        //
-        execSync(`${ceres} ${sharedArgs}`, (err, stdout, stderr) => {
-            if (err) {
-                throw err;
-            }
-            console.log('Extracted map files')
+        console.log("Replacing local functions...");
+        new Runner('"tools/sed.exe"', ["-i", '"s/local function __module_/function __module_/g"', '"target/map/war3map.lua"']).run();
 
-        });
-        let sed = '';
-
-        switch (this.os) {
-            case "win32":
-                sed = '"tools/sed.exe"';
-                break;
-            default:
-                sed = "LC_ALL=C sed";
-                break;
-        }
-        execSync(`${sed} -i "s/local function __module_/function __module_/g" "target/map/war3map.lua"`, (err, stdout, stderr) => {
-            if (err) {
-                throw err;
-            }
-            console.log('Extracted map files')
-
-        });
-
-
-        sharedArgs = `add "target/map.w3x" "target/map/*" "/c" "/auto" "/r"`;
-        //
-        execSync(`${mpqEditor} ${sharedArgs}`, (err, stdout, stderr) => {
-            if (err) {
-                throw err;
-            }
-            console.log('Extracted map files')
-
-        });
-    }
-
-    run() {
-        this.env();
-        let suffix = '';
-        let sharedArgs = `-windowmode windowed -nowfpause -loadfile `;
-        let currentDir = String(__dirname);
-        switch (this.os) {
-            case "linux":
-                suffix = "WINEDEBUG=-all wine64 ";
-                currentDir = String(currentDir).replace('/', '\\');
-                sharedArgs += '"Z:' + currentDir + '\\target\\map.w3x"';
-                break;
-            case "win32":
-                sharedArgs += currentDir + '\\target\\map.w3x"';
-                break;
-            default:
-                suffix = "";
-                break;
-        }
-
-
-        console.log(`${suffix}"${this.settings.path}" ${sharedArgs}`);
-        execSync(`${suffix}"${this.settings.path}" ${sharedArgs}`, (err, stdout, stderr) => {
-            if (err) {
-                throw err;
-            }
-            console.log('Extracted map files')
-
-        });
+        console.log("Adding compiled lua files...");
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["add", '"target/map.w3x"', '"target/map/*"', '"/c"', '"/auto"', '"/r"']).run();
     }
 
     cleanup() {
@@ -178,6 +55,89 @@ class Build {
             fs.removeSync('./target');
         }
     }
+
+    get buildSettings() {
+        return this._buildSettings;
+    }
+
+    set buildSettings(buildSettings) {
+        this._buildSettings = buildSettings;
+    }
 }
 
-new Build(process.argv);
+class Runner {
+    constructor(file, args) {
+        this._file = file;
+        this._arguments = args;
+    }
+
+    run() {
+        execSync(`${this.file} ${this.arguments.join(" ")}`, (err, stdout, stderr) => {
+            stdout.pipe(process.stdout);
+            stderr.pipe(process.stderr);
+
+            if (err) {
+                console.error(err);
+                throw err;
+            }
+        });
+    }
+
+    get file() {
+        return this._file;
+    }
+
+    get arguments() {
+        return this._arguments;
+    }
+}
+
+class CommandHandler {
+    static get helpText(){
+        return `
+        Usage: build.js [options]
+            options:
+                -b, --build             Build the project
+                -r, --run               Run the map in Warcraft 3
+                -t, --test              Run the tests in busted (currently not implemented)
+                --buildnumber <number>  Set the ingame buildnumber for the map
+                --release <num.num.num> Set The full release version
+                -h, --help              Shows this help menu
+        `;
+    }
+
+    constructor(args) {
+        if (args.length === 1 && args[0] === "--help") {
+            console.log(this.helpText);
+            return process.exit(0);
+        }
+
+        args.forEach(argument => {
+            if (argument === "build") {
+                console.log("Building...");
+                try {
+                    new Builder().build();
+                } catch (err) {
+                    console.error(err);
+                    process.exit(1);
+                }
+            }
+
+            if (argument === "run") {
+                console.log("Starting Warcraft III...");
+                try {
+                    new Runner(`"${settings.game.path}"`, [...settings.game.arguments, "-loadfile", `"${process.cwd()}/target/map.w3x"`]).run();
+                } catch (err) {
+                    console.error(err);
+                    process.exit(1);
+                }
+            }
+        });
+    }
+
+    get helpText() {
+        return this._helpText;
+    }
+}
+
+new CommandHandler(process.argv.slice(2));

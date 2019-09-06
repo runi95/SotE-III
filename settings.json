@@ -1,0 +1,17 @@
+{
+    "map": {
+        "dir": "maps",
+        "filename": "map.w3x"
+    },
+    "build": {
+        "preCleanup": true
+    },
+    "game": {
+        "path": "C:\\Program Files\\Warcraft III\\x86_64\\Warcraft III.exe",
+        "arguments": [
+            "-windowmode",
+            "windowed",
+            "-nowfpause"
+        ]
+    }
+}
