@@ -12,6 +12,10 @@ export class Envenom implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.IsDamageSpell) {
+            return;
+        }
+
         const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventSource as unit, this.abilityId);
 
         if (abilityLevel > 0) {
