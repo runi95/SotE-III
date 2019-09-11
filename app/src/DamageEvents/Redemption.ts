@@ -33,7 +33,7 @@ export class Redemption implements DamageEvent {
         UnitDamageTargetBJ(
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
-            0.1 * abilityLevel * globals.DamageEventAmount,
+            abilityLevel + 0.1 * abilityLevel * globals.DamageEventAmount,
             ATTACK_TYPE_MAGIC,
             DAMAGE_TYPE_UNIVERSAL,
         );
