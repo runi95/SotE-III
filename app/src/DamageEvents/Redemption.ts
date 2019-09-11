@@ -1,37 +1,43 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
-    private readonly randomNumberGenerator: RandomNumberGenerator;
-
-    constructor(randomNumberGenerator: RandomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
-    }
+    private frozen: boolean = false;
 
     public event(globals: DamageEngineGlobals): void {
+        if (this.frozen) {
+            return;
+        }
+
+        this.frozen = true;
+
         if (globals.IsDamageSpell) {
+            this.frozen = false;
             return;
         }
 
         const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId);
-
-        if (abilityLevel < 1) {
+        if (abilityLevel === 0) {
+            this.frozen = false;
             return;
         }
 
-        if (this.randomNumberGenerator.random(0, 100) < 5 + 2 * abilityLevel) {
-            const intelligence: number = GetHeroInt(globals.DamageEventTarget as unit, true);
-            const healing: number = 75 * abilityLevel + 1.5 * intelligence;
-            DestroyEffect(
-                AddSpecialEffect(
-                    'Abilities\\Spells\\Human\\Heal\\HealTarget.mdl',
-                    GetUnitX(globals.DamageEventTarget as unit),
-                    GetUnitY(globals.DamageEventTarget as unit),
-                ),
-            );
-            SetUnitLifeBJ(globals.DamageEventTarget as unit, GetUnitState(globals.DamageEventTarget as unit, UNIT_STATE_LIFE) + healing);
-        }
+        DestroyEffect(
+            AddSpecialEffect(
+                'Abilities\\Spells\\Items\\AIfb\\AIfbSpecialArt.mdl',
+                GetUnitX(globals.DamageEventSource as unit),
+                GetUnitY(globals.DamageEventSource as unit),
+            ),
+        );
+        UnitDamageTargetBJ(
+            globals.DamageEventTarget as unit,
+            globals.DamageEventSource as unit,
+            0.1 * abilityLevel * globals.DamageEventAmount,
+            ATTACK_TYPE_MAGIC,
+            DAMAGE_TYPE_UNIVERSAL,
+        );
+
+        this.frozen = false;
     }
 }

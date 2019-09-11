@@ -2,6 +2,7 @@ import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
+import { Group } from '../JassOverrides/Group';
 
 export class Commands {
     private readonly playerVictoryUtils: PlayerVictoryUtils;
@@ -58,6 +59,20 @@ export class Commands {
             }
         } else if (this.gameGlobals.DebugMode && split[0] === 'defeat' && split.length === 2) {
             this.playerVictoryUtils.defeatPlayer(Number(split[1]), 'has been forcefully defeated!');
+        } else if (split[0] === 'a' && split.length === 1) {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                UnitAddAbility(u, FourCC('AIfl'));
+            });
+
+            grp.destroy();
+        } else if (split[0] === 'r' && split.length === 1) {
+            const grp: Group = new Group(GetUnitsSelectedAll(Player(0)));
+            grp.for((u: unit) => {
+                UnitRemoveAbility(u, FourCC('AIfl'));
+            });
+
+            grp.destroy();
         } else {
             BJDebugMsg('Unknown command!');
         }

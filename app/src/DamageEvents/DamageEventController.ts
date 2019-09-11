@@ -12,7 +12,6 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { BurnVictim } from './BurnVictim';
 import { TheAegis } from './TheAegis';
 import { ScrollOfTownPortal } from './ScrollOfTownPortal';
-import { DivineShield } from './DivineShield';
 import { Redemption } from './Redemption';
 import { RunedBracers } from './RunedBracers';
 import { LionsRing } from './LionsRing';
@@ -32,7 +31,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal(gameGlobals));
-        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator));
+        damageEngine.addInitialDamageEvent(new Redemption());
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
 
@@ -41,7 +40,6 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
-        damageEngine.addInitialDamageModificationEvent(new DivineShield(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
 
         // Final damage modification events

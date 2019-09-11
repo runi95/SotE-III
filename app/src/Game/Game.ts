@@ -54,7 +54,7 @@ export class Game {
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
-        this.damageEngine = new DamageEngine(this.damageEngineGlobals);
+        this.damageEngine = new DamageEngine(this.timerUtils, this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
         this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils);
         this.playerLeaves = new PlayerLeaves(this.playerVictoryUtils);

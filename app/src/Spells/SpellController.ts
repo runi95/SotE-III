@@ -49,7 +49,6 @@ import { Combust } from './Combust';
 import { Immolation } from './Immolation';
 import { ToArms } from './ToArms';
 import { HolyLight } from './HolyLight';
-import { DivineShield } from './DivineShield';
 import { HolyLance } from './HolyLance';
 import { DarkCorruption } from './DarkCorruption';
 import { Drink } from './Drink';
@@ -121,7 +120,6 @@ export class SpellController {
             new Immolation(timerUtils),
             new ToArms(timerUtils),
             new HolyLight(),
-            new DivineShield(gameGlobals),
             new HolyLance(timerUtils),
             new DarkCorruption(),
             new Drink(),
