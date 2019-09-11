@@ -2,11 +2,38 @@ import { Trigger } from '../JassOverrides/Trigger';
 import { DamageEngineGlobals } from './DamageEngineGlobals';
 import * as settings from '../Game/GameSettings';
 import { DamageEvent } from './DamageEvent';
+import { Timer } from '../JassOverrides/Timer';
+import { TimerUtils } from '../Utility/TimerUtils';
+
+interface Damage {
+    type: number;
+    source: unit;
+    target: unit;
+    amount: number;
+    attack: attacktype;
+    damage: damagetype;
+    weapon: weapontype;
+    trig: number;
+}
+
+interface Previous {
+    type: number;
+    amount: number;
+    preAmt: number;
+    pierce: number;
+    armor: number;
+    preArm: number;
+    defense: number;
+    preDef: number;
+    code: boolean;
+}
 
 /**
- * Damage Engine 5.3.0.1
+ * Damage Engine 5.4.2.3
  */
 export class DamageEngine {
+    private static inception: boolean = false;
+
     /**
      * Damage Event Arrays
      */
@@ -23,47 +50,41 @@ export class DamageEngine {
     /**
      * Damage Engine Variables
      */
-    private started: boolean = false;
-    private finished: boolean = false;
-    private recursion: number = -1;
-    private recursive: boolean = false;
-    private purge: boolean = false;
-    private preDamage: boolean = false;
-    private holdClear: boolean = false;
-    private ticker: timer = CreateTimer();
-    private trig: Trigger = new Trigger();
-    private otrg: Trigger = new Trigger();
-
-    private previousAmount: number = 0.0; // Added to track the original modified damage pre-spirit Link
-    private previousValue: number = 0.0; // Added to track the original pure damage amount of Spirit Link
-    private previousType: number = 0; // Track the type
-    private previousCode: boolean = false; // Was it caused by a trigger/script?
-    private previousPierce: number = 0.0;
+    private readonly alarm: Timer;
+    private alarmSet: boolean = false;
+    private canKick: boolean = true;
+    private totem: boolean = false;
     private armorType: number = 0;
-    private previousArmor: number = 0;
-    private prevPreArmor: number = 0;
     private defenseType: number = 0;
-    private previousDefense: number = 0;
-    private prevPreDefense: number = 0;
+    private eventsRun: boolean = false;
+    private kicking: boolean = false;
+    private eventTrig: number = 0;
+    private dreaming: boolean = false;
+    private sleepLevel: number = 0;
 
-    private lastSource: unit[] = [];
-    private lastTarget: unit[] = [];
-    private lastAmount: number[] = [];
-    private lastAttackT: attacktype[] = [];
-    private lastDamageT: damagetype[] = [];
-    private lastWeaponT: weapontype[] = [];
-    private lastTrig: trigger[] = [];
-    private lastType: number[] = [];
-
+    private readonly stack: Damage[] = [];
+    private readonly levelsDeep: number[] = [];
+    private readonly trigFrozen: boolean[] = [];
+    private readonly fischerMorrow: any = {}; // TODO: Should not be any!
+    private readonly inceptionTrig: boolean[] = [];
+    private readonly proclusGlobal: any = {}; // TODO: Should not be any!
+    private readonly prev: Previous = {} as Previous;
+    private readonly LIMBO: number = 16;
+    private readonly t1: Trigger = new Trigger();
+    private readonly t2: Trigger = new Trigger();
+    private readonly timerUtils: TimerUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
 
-    constructor(damageEngineGlobals: DamageEngineGlobals) {
+    constructor(timerUtils: TimerUtils, damageEngineGlobals: DamageEngineGlobals) {
+        this.timerUtils = timerUtils;
         this.damageEngineGlobals = damageEngineGlobals;
-        this.otrg.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGED);
-        this.otrg.addFilterFuncCondition(Filter(() => this.OnDamage()));
+        this.alarm = this.timerUtils.newTimer();
 
-        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGING);
-        this.trig.addFilterFuncCondition(Filter(() => this.OnPreDamage()));
+        this.t1.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGING);
+        this.t1.addCondition(() => this.t1Condition());
+
+        this.t2.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DAMAGED);
+        this.t2.addCondition(() => this.t2Condition());
     }
 
     /**
@@ -169,229 +190,235 @@ export class DamageEngine {
         this.afterDamageEvents.forEach((damageEvent) => damageEvent.event(this.damageEngineGlobals));
     }
 
-    private Error(): void {
-        let s: string = 'WARNING: Recursion error when dealing damage! ';
-        s += 'Prior to dealing damage from within a DamageEvent response trigger, do this:\n';
-        s += 'Set DamageEventTrigger = (This Trigger)\n';
-        s += 'Unit - Cause <Source> to damage <Target>...\n\n';
-        s += 'Alternatively, just use the UNKNOWN damage type. It will skip recursive damage on its own without needing the "Set" line:/n';
-        s += 'Unit - Cause <Source> to damage <Target>, dealing <Amount> damage of attack type <Attack Type> and damage type Unknown';
-
-        ClearTextMessages();
-        DisplayTimedTextToPlayer(GetLocalPlayer(), 0.0, 0.0, 999.0, s);
-    }
-
-    private OnAOEEnd(): void {
+    private onAOEEnd(): void {
         if (this.damageEngineGlobals.DamageEventAOE > 1) {
             this.damageEventAOE();
             this.damageEngineGlobals.DamageEventAOE = 1;
         }
-
         this.damageEngineGlobals.DamageEventLevel = 1;
         this.damageEngineGlobals.EnhancedDamageTarget = undefined;
         this.damageEngineGlobals.AOEDamageSource = undefined;
-        GroupClear(<group>this.damageEngineGlobals.DamageEventAOEGroup);
+        GroupClear(this.damageEngineGlobals.DamageEventAOEGroup as group);
     }
 
-    private Finish(): void {
-        let i: number = -1;
-        if (this.finished) {
-            this.finished = false;
-            if (
-                this.damageEngineGlobals.DamageEventPrevAmt !== 0.0 &&
-                this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN
-            ) {
-                this.recursive = true;
-                this.afterDamageEvent();
-                this.recursive = false;
-            }
+    private afterDamage(): void {
+        if (
+            this.damageEngineGlobals.DamageEventPrevAmt !== 0.0 &&
+            this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN
+        ) {
+            this.afterDamageEvent();
+        }
+    }
 
-            if (this.recursion > -1 && !this.holdClear && !this.purge) {
-                this.purge = true;
-                for (; i >= this.recursion; ) {
-                    i = i + 1;
+    private finish(): void {
+        if (this.eventsRun) {
+            this.eventsRun = false;
+            this.afterDamage();
+        }
 
-                    this.damageEngineGlobals.NextDamageType = this.lastType[i];
-                    if (this.lastTrig[i] !== undefined) {
-                        DisableTrigger(this.lastTrig[i]);
-                    }
+        if (this.canKick && !this.kicking) {
+            let n: number = this.stack.length;
+            if (n > 0) {
+                this.kicking = true;
+                let i: number = 0;
+                let open: any;
+                do {
+                    this.sleepLevel++;
+                    do {
+                        open = this.stack[i];
+                        this.damageEngineGlobals.NextDamageType = open.type;
+                        this.UnitDamageTarget(open.source, open.target, open.amount, true, false, open.attack, open.damage, open.weapon);
+                        this.afterDamage();
+                        i++;
+                    } while (i === n);
+                    n = this.stack.length;
+                } while (i === n);
 
-                    UnitDamageTarget(
-                        this.lastSource[i],
-                        this.lastTarget[i],
-                        this.lastAmount[i],
-                        true,
-                        false,
-                        this.lastAttackT[i],
-                        this.lastDamageT[i],
-                        this.lastWeaponT[i],
-                    );
-                    this.Finish();
-                }
-                for (; i <= -1; i--) {
-                    if (this.lastTrig[i] !== undefined) {
-                        EnableTrigger(this.lastTrig[i]);
-                    }
-                }
+                this.sleepLevel = 0;
 
-                this.recursion = -1;
-                this.purge = false;
+                do {
+                    i--;
+                    open = this.stack[i].trig;
+                    this.stack.splice(i, 1);
+                    this.proclusGlobal[open] = undefined;
+                    this.fischerMorrow[open] = undefined;
+                    this.trigFrozen[open] = false;
+                    this.levelsDeep[open] = 0;
+                } while (i === 0);
+                this.kicking = false;
             }
         }
     }
 
-    private OnExpire(): void {
-        this.started = false;
-        this.Finish();
-        this.OnAOEEnd();
-    }
-
-    private CalibrateMR(): void {
-        this.damageEngineGlobals.IsDamageMelee = false;
-        this.damageEngineGlobals.IsDamageRanged = false;
-        this.damageEngineGlobals.IsDamageSpell = this.damageEngineGlobals.DamageEventAttackT === 0;
-        if (this.damageEngineGlobals.DamageEventDamageT === settings.DAMAGE_TYPE_NORMAL && !this.damageEngineGlobals.IsDamageSpell) {
-            this.damageEngineGlobals.IsDamageMelee = IsUnitType(<unit>this.damageEngineGlobals.DamageEventSource, UNIT_TYPE_MELEE_ATTACKER);
-            this.damageEngineGlobals.IsDamageRanged = IsUnitType(
-                <unit>this.damageEngineGlobals.DamageEventSource,
-                UNIT_TYPE_RANGED_ATTACKER,
-            );
-            if (this.damageEngineGlobals.IsDamageMelee && this.damageEngineGlobals.IsDamageRanged) {
-                this.damageEngineGlobals.IsDamageMelee = this.damageEngineGlobals.DamageEventWeaponT > 0;
-                this.damageEngineGlobals.IsDamageRanged = !this.damageEngineGlobals.IsDamageMelee;
-            }
+    private UnitDamageTarget(
+        src: unit,
+        tgt: unit,
+        amt: number,
+        a: boolean,
+        r: boolean,
+        at: attacktype,
+        dt: damagetype,
+        wt: weapontype,
+    ): boolean {
+        if (this.damageEngineGlobals.NextDamageType === 0) {
+            this.damageEngineGlobals.NextDamageType = settings.DamageTypeCode;
         }
+        let b: boolean = false;
+        if (this.dreaming) {
+            if (amt !== 0.0) {
+                this.stack.push({
+                    type: this.damageEngineGlobals.NextDamageType,
+                    source: src,
+                    target: tgt,
+                    amount: amt,
+                    attack: at,
+                    damage: dt,
+                    weapon: wt,
+                    trig: this.eventTrig,
+                });
+
+                DamageEngine.inception = DamageEngine.inception || this.inceptionTrig[this.eventTrig];
+
+                let sg: any = this.proclusGlobal[this.eventTrig];
+                if (!sg) {
+                    sg = {};
+                    this.proclusGlobal[this.eventTrig] = sg;
+                }
+                sg[GetHandleId(this.damageEngineGlobals.DamageEventSource as unit)] = true;
+
+                let tg: any = this.fischerMorrow[this.eventTrig];
+                if (!tg) {
+                    tg = {};
+                    this.fischerMorrow[this.eventTrig] = tg;
+                }
+                tg[GetHandleId(this.damageEngineGlobals.DamageEventTarget as unit)] = true;
+
+                if (this.kicking && sg[GetHandleId(src)] && tg[GetHandleId(tgt)]) {
+                    if (DamageEngine.inception && !this.trigFrozen[this.eventTrig]) {
+                        this.inceptionTrig[this.eventTrig] = true;
+                        if (this.levelsDeep[this.eventTrig] < this.sleepLevel) {
+                            this.levelsDeep[this.eventTrig]++;
+                            if (this.levelsDeep[this.eventTrig] >= this.LIMBO) {
+                                this.trigFrozen[this.eventTrig] = true;
+                            }
+                        }
+                    } else {
+                        this.trigFrozen[this.eventTrig] = true;
+                    }
+                }
+            }
+        } else {
+            b = this.UnitDamageTarget(src, tgt, amt, a, r, at, dt, wt);
+        }
+
+        DamageEngine.inception = false;
+        this.damageEngineGlobals.NextDamageType = 0;
+        if (b && !this.dreaming) {
+            this.finish();
+        }
+
+        return b;
     }
 
-    private OnPreDamage(): boolean {
+    private t1Condition(): boolean {
         const src: unit = GetEventDamageSource();
         const tgt: unit = BlzGetEventDamageTarget();
         const amt: number = GetEventDamage();
         const at: attacktype = BlzGetEventAttackType();
         const dt: damagetype = BlzGetEventDamageType();
         const wt: weapontype = BlzGetEventWeaponType();
-        this.Finish();
-        if (
-            this.damageEngineGlobals.NextDamageType === 0 &&
-            (this.damageEngineGlobals.DamageEventTrigger !== undefined || this.recursive)
-        ) {
-            this.damageEngineGlobals.NextDamageType = this.damageEngineGlobals.DamageTypeCode;
+
+        if (!this.kicking) {
+            if (this.alarmSet) {
+                if (this.totem) {
+                    if (dt !== DAMAGE_TYPE_SPIRIT_LINK && dt !== DAMAGE_TYPE_DEFENSIVE && dt !== DAMAGE_TYPE_PLANT) {
+                        this.failsafeClear();
+                    } else {
+                        this.totem = false;
+                        this.canKick = false;
+                        this.prev.type = this.damageEngineGlobals.DamageEventType;
+                        this.prev.amount = this.damageEngineGlobals.DamageEventAmount;
+                        this.prev.preAmt = this.damageEngineGlobals.DamageEventPrevAmt;
+                        this.prev.pierce = this.damageEngineGlobals.DamageEventArmorPierced;
+                        this.prev.armor = this.damageEngineGlobals.DamageEventArmorT;
+                        this.prev.preArm = this.armorType;
+                        this.prev.defense = this.damageEngineGlobals.DamageEventDefenseT;
+                        this.prev.preDef = this.defenseType;
+                        this.prev.code = this.damageEngineGlobals.IsDamageCode;
+                    }
+                }
+                if (src !== this.damageEngineGlobals.AOEDamageSource) {
+                    this.onAOEEnd();
+                } else if (tgt === this.damageEngineGlobals.EnhancedDamageTarget) {
+                    this.damageEngineGlobals.DamageEventLevel++;
+                } else if (!IsUnitInGroup(tgt, this.damageEngineGlobals.DamageEventAOEGroup as group)) {
+                    this.damageEngineGlobals.DamageEventAOE++;
+                }
+            } else {
+                this.alarm.start(0.0, false, () => {
+                    this.alarmSet = false;
+                    this.finish();
+                    this.onAOEEnd();
+                });
+                this.alarmSet = true;
+                this.damageEngineGlobals.AOEDamageSource = src;
+                this.damageEngineGlobals.EnhancedDamageTarget = tgt;
+            }
+            GroupAddUnit(this.damageEngineGlobals.DamageEventAOEGroup as group, tgt);
         }
+        this.damageEngineGlobals.DamageEventType = this.damageEngineGlobals.NextDamageType;
+        this.damageEngineGlobals.IsDamageCode = this.damageEngineGlobals.NextDamageType !== 0;
+        this.damageEngineGlobals.DamageEventOverride = dt === undefined;
+        this.damageEngineGlobals.DamageEventPrevAmt = amt;
+        this.damageEngineGlobals.DamageEventSource = src;
+        this.damageEngineGlobals.DamageEventTarget = tgt;
+        this.damageEngineGlobals.DamageEventAmount = amt;
+        this.damageEngineGlobals.DamageEventAttackT = GetHandleId(at);
+        this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
+        this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
 
-        if (this.recursive) {
-            if (amt !== 0.0) {
-                if (this.recursion < 512) {
-                    this.recursion = this.recursion + 1;
+        this.calibrateMR();
 
-                    this.lastAmount[this.recursion] = amt;
-                    this.lastSource[this.recursion] = src;
-                    this.lastTarget[this.recursion] = tgt;
-                    this.lastAttackT[this.recursion] = at;
-                    this.lastDamageT[this.recursion] = dt;
-                    this.lastWeaponT[this.recursion] = wt;
-                    this.lastTrig[this.recursion] = <trigger>this.damageEngineGlobals.DamageEventTrigger;
-                    this.lastType[this.recursion] = this.damageEngineGlobals.NextDamageType;
-                } else {
-                    this.Error();
-                }
-            }
-            this.damageEngineGlobals.NextDamageType = 0;
-            this.damageEngineGlobals.DamageEventTrigger = undefined;
-            BlzSetEventDamage(0.0);
-        } else {
-            if (!this.purge) {
-                if (this.started) {
-                    if (src !== this.damageEngineGlobals.AOEDamageSource) {
-                        this.OnAOEEnd();
-                        this.damageEngineGlobals.AOEDamageSource = src;
-                    } else if (tgt === this.damageEngineGlobals.EnhancedDamageTarget) {
-                        this.damageEngineGlobals.DamageEventLevel = this.damageEngineGlobals.DamageEventLevel + 1;
-                    } else if (!IsUnitInGroup(tgt, <group>this.damageEngineGlobals.DamageEventAOEGroup)) {
-                        this.damageEngineGlobals.DamageEventAOE = this.damageEngineGlobals.DamageEventAOE + 1;
-                    }
+        this.damageEngineGlobals.DamageEventArmorT = BlzGetUnitIntegerField(
+            this.damageEngineGlobals.DamageEventTarget as unit,
+            UNIT_IF_ARMOR_TYPE,
+        );
+        this.damageEngineGlobals.DamageEventDefenseT = BlzGetUnitIntegerField(
+            this.damageEngineGlobals.DamageEventTarget as unit,
+            UNIT_IF_DEFENSE_TYPE,
+        );
+        this.armorType = this.damageEngineGlobals.DamageEventArmorT;
+        this.defenseType = this.damageEngineGlobals.DamageEventDefenseT;
+        this.damageEngineGlobals.DamageEventArmorPierced = 0.0;
+        this.damageEngineGlobals.DamageScalingUser = 1.0;
+        this.damageEngineGlobals.DamageScalingWC3 = 1.0;
 
-                    if (this.preDamage) {
-                        this.preDamage = false;
-                        this.previousAmount = this.damageEngineGlobals.DamageEventAmount;
-                        this.previousValue = this.damageEngineGlobals.DamageEventPrevAmt;
-                        this.previousType = this.damageEngineGlobals.DamageEventType;
-                        this.previousCode = this.damageEngineGlobals.IsDamageCode;
-                        this.previousArmor = this.armorType;
-                        this.previousDefense = this.damageEngineGlobals.DamageEventDefenseT;
-                        this.prevPreDefense = this.defenseType;
-                        this.previousPierce = this.damageEngineGlobals.DamageEventArmorPierced;
-                        this.holdClear = true;
-                    }
-                } else {
-                    TimerStart(this.ticker, 0.0, false, () => this.OnExpire());
-                    this.started = true;
-                    this.damageEngineGlobals.AOEDamageSource = src;
-                    this.damageEngineGlobals.EnhancedDamageTarget = tgt;
-                }
-
-                GroupAddUnit(<group>this.damageEngineGlobals.DamageEventAOEGroup, tgt);
-            }
-            this.damageEngineGlobals.DamageEventType = this.damageEngineGlobals.NextDamageType;
-            if (this.damageEngineGlobals.NextDamageType !== 0) {
-                this.damageEngineGlobals.DamageEventType = this.damageEngineGlobals.NextDamageType;
-                this.damageEngineGlobals.NextDamageType = 0;
-                this.damageEngineGlobals.IsDamageCode = true;
-                this.damageEngineGlobals.DamageEventTrigger = undefined;
-            }
-            this.damageEngineGlobals.DamageEventOverride =
-                dt === undefined ||
-                amt === 0.0 ||
-                this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
-            this.damageEngineGlobals.DamageEventPrevAmt = amt;
-            this.damageEngineGlobals.DamageEventSource = src;
-            this.damageEngineGlobals.DamageEventTarget = tgt;
-            this.damageEngineGlobals.DamageEventAmount = amt;
-            this.damageEngineGlobals.DamageEventAttackT = GetHandleId(at);
-            this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
-            this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
-            this.CalibrateMR();
-            this.damageEngineGlobals.DamageEventArmorT = BlzGetUnitIntegerField(
-                this.damageEngineGlobals.DamageEventTarget,
-                UNIT_IF_ARMOR_TYPE,
-            );
-            this.damageEngineGlobals.DamageEventDefenseT = BlzGetUnitIntegerField(
-                this.damageEngineGlobals.DamageEventTarget,
-                UNIT_IF_DEFENSE_TYPE,
-            );
-            this.armorType = this.damageEngineGlobals.DamageEventArmorT;
-            this.defenseType = this.damageEngineGlobals.DamageEventDefenseT;
-            this.damageEngineGlobals.DamageEventArmorPierced = 0.0;
+        if (amt !== 0.0) {
             if (!this.damageEngineGlobals.DamageEventOverride) {
-                this.recursive = true;
-                this.initialDamageModificationEvent(); // DamageModifierEvent 1.00
-                this.damageEngineGlobals.DamageEventOverride =
-                    this.damageEngineGlobals.DamageEventOverride ||
-                    this.damageEngineGlobals.DamageEventType * this.damageEngineGlobals.DamageEventType === 4;
-                if (!this.damageEngineGlobals.DamageEventOverride) {
-                    this.multiplicativeDamageModificationEvent();
-                    this.preFinalDamageModificationEvent();
-                }
-                this.recursive = false;
+                this.initialDamageModificationEvent();
+                this.multiplicativeDamageModificationEvent();
+                this.preFinalDamageModificationEvent();
 
                 BlzSetEventAttackType(ConvertAttackType(this.damageEngineGlobals.DamageEventAttackT));
                 BlzSetEventDamageType(ConvertDamageType(this.damageEngineGlobals.DamageEventDamageT));
                 BlzSetEventWeaponType(ConvertWeaponType(this.damageEngineGlobals.DamageEventWeaponT));
                 if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.0) {
                     BlzSetUnitArmor(
-                        this.damageEngineGlobals.DamageEventTarget,
-                        BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.DamageEventArmorPierced,
+                        this.damageEngineGlobals.DamageEventTarget as unit,
+                        BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget as unit) -
+                            this.damageEngineGlobals.DamageEventArmorPierced,
                     );
                 }
                 if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
                     BlzSetUnitIntegerField(
-                        this.damageEngineGlobals.DamageEventTarget,
+                        this.damageEngineGlobals.DamageEventTarget as unit,
                         UNIT_IF_ARMOR_TYPE,
                         this.damageEngineGlobals.DamageEventArmorT,
                     );
                 }
                 if (this.defenseType !== this.damageEngineGlobals.DamageEventDefenseT) {
                     BlzSetUnitIntegerField(
-                        this.damageEngineGlobals.DamageEventTarget,
+                        this.damageEngineGlobals.DamageEventTarget as unit,
                         UNIT_IF_DEFENSE_TYPE,
                         this.damageEngineGlobals.DamageEventDefenseT,
                     );
@@ -400,99 +427,132 @@ export class DamageEngine {
                 BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
             }
 
-            this.preDamage = true;
+            this.totem = true;
+        } else {
+            this.zeroDamageEvent();
+            this.canKick = true;
+            this.finish();
         }
 
         return false;
     }
 
-    private OnDamage(): boolean {
-        if (this.recursive) {
+    private t2Condition(): boolean {
+        if (this.damageEngineGlobals.DamageEventPrevAmt === 0.0) {
             return false;
         }
 
-        if (this.preDamage) {
-            this.preDamage = false;
+        if (this.totem) {
+            this.totem = false;
         } else {
-            this.Finish();
-            this.holdClear = false;
-            this.damageEngineGlobals.DamageEventAmount = this.previousAmount;
-            this.damageEngineGlobals.DamageEventPrevAmt = this.previousValue;
-            this.damageEngineGlobals.DamageEventType = this.previousType;
-            this.damageEngineGlobals.IsDamageCode = this.previousCode;
+            this.afterDamage();
+            this.canKick = true;
+
             this.damageEngineGlobals.DamageEventSource = GetEventDamageSource();
-            this.damageEngineGlobals.DamageEventTarget = BlzGetEventDamageTarget();
+            this.damageEngineGlobals.DamageEventTarget = GetTriggerUnit();
+            this.damageEngineGlobals.DamageEventAmount = this.prev.amount;
+            this.damageEngineGlobals.DamageEventPrevAmt = this.prev.preAmt;
             this.damageEngineGlobals.DamageEventAttackT = GetHandleId(BlzGetEventAttackType());
             this.damageEngineGlobals.DamageEventDamageT = GetHandleId(BlzGetEventDamageType());
             this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(BlzGetEventWeaponType());
-            this.damageEngineGlobals.DamageEventArmorT = this.previousArmor;
-            this.damageEngineGlobals.DamageEventDefenseT = this.previousDefense;
-            this.damageEngineGlobals.DamageEventArmorPierced = this.previousPierce;
-            this.armorType = this.prevPreArmor;
-            this.defenseType = this.prevPreDefense;
-            this.CalibrateMR();
+            this.damageEngineGlobals.DamageEventType = this.prev.type;
+            this.damageEngineGlobals.IsDamageCode = this.prev.code;
+            this.damageEngineGlobals.DamageEventArmorT = this.prev.armor;
+            this.damageEngineGlobals.DamageEventDefenseT = this.prev.defense;
+            this.damageEngineGlobals.DamageEventArmorPierced = this.prev.pierce;
+            this.armorType = this.prev.preArm;
+            this.defenseType = this.prev.preDef;
+            this.calibrateMR();
         }
-
-        if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.0) {
-            BlzSetUnitArmor(
-                <unit>this.damageEngineGlobals.DamageEventTarget,
-                BlzGetUnitArmor(<unit>this.damageEngineGlobals.DamageEventTarget) + this.damageEngineGlobals.DamageEventArmorPierced,
-            );
-        }
-
-        if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
-            BlzSetUnitIntegerField(<unit>this.damageEngineGlobals.DamageEventTarget, UNIT_IF_ARMOR_TYPE, this.armorType);
-        }
-
-        if (this.defenseType !== this.damageEngineGlobals.DamageEventDefenseT) {
-            BlzSetUnitIntegerField(<unit>this.damageEngineGlobals.DamageEventTarget, UNIT_IF_DEFENSE_TYPE, this.defenseType);
-        }
-
-        let r: number = GetEventDamage();
-        this.recursive = true;
-        if (this.damageEngineGlobals.DamageEventPrevAmt === 0.0) {
-            this.zeroDamageEvent();
+        this.resetArmor();
+        const r: number = GetEventDamage();
+        if (this.damageEngineGlobals.DamageEventAmount !== 0.0 && r !== 0.0) {
+            this.damageEngineGlobals.DamageScalingWC3 = r / this.damageEngineGlobals.DamageEventAmount;
         } else {
-            if (this.damageEngineGlobals.DamageEventAmount !== 0.0 && r !== 0.0) {
-                this.damageEngineGlobals.DamageScalingWC3 = r / this.damageEngineGlobals.DamageEventAmount;
-            } else if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
+            if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
                 this.damageEngineGlobals.DamageScalingWC3 = 0.0;
             } else {
                 this.damageEngineGlobals.DamageScalingWC3 = 1.0;
             }
-            r = this.damageEngineGlobals.DamageEventAmount;
-            this.damageEngineGlobals.DamageScalingUser = r / this.damageEngineGlobals.DamageEventPrevAmt;
-            this.damageEngineGlobals.DamageEventAmount = r * this.damageEngineGlobals.DamageScalingWC3;
-
-            if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
-                this.finalDamageModificationEvent(); // event 4.00
-
-                this.damageEngineGlobals.LethalDamageHP =
-                    GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.DamageEventAmount;
-                if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
-                    this.damageEventLethal();
-
-                    this.damageEngineGlobals.DamageEventAmount =
-                        GetWidgetLife(<unit>this.damageEngineGlobals.DamageEventTarget) - this.damageEngineGlobals.LethalDamageHP;
-                    if (this.damageEngineGlobals.DamageEventType < 0 && this.damageEngineGlobals.LethalDamageHP <= 0.405) {
-                        SetUnitExploded(<unit>this.damageEngineGlobals.DamageEventTarget, true);
-                    }
-                }
-                this.damageEngineGlobals.DamageScalingUser =
-                    this.damageEngineGlobals.DamageEventAmount /
-                    (this.damageEngineGlobals.DamageEventPrevAmt * this.damageEngineGlobals.DamageScalingWC3);
-            }
-            BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
-            if (this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
-                this.initialDamageEvent(); // event 1.00
-            }
+            this.damageEngineGlobals.DamageScalingUser =
+                this.damageEngineGlobals.DamageEventAmount / this.damageEngineGlobals.DamageEventPrevAmt;
         }
+        this.damageEngineGlobals.DamageEventAmount = this.damageEngineGlobals.DamageEventAmount * this.damageEngineGlobals.DamageScalingWC3;
 
-        this.recursive = false;
-        this.finished = true;
-        if (this.damageEngineGlobals.DamageEventAmount <= 0.0) {
-            this.Finish();
+        if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
+            this.finalDamageModificationEvent();
+            this.damageEngineGlobals.LethalDamageHP =
+                GetWidgetLife(this.damageEngineGlobals.DamageEventTarget as unit) - this.damageEngineGlobals.DamageEventAmount;
+            if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
+                this.damageEventLethal();
+
+                this.damageEngineGlobals.DamageEventAmount =
+                    GetWidgetLife(this.damageEngineGlobals.DamageEventTarget as unit) - this.damageEngineGlobals.LethalDamageHP;
+                if (this.damageEngineGlobals.DamageEventType < 0 && this.damageEngineGlobals.LethalDamageHP <= 0.405) {
+                    SetUnitExploded(this.damageEngineGlobals.DamageEventTarget as unit, true);
+                }
+            }
+            this.damageEngineGlobals.DamageScalingUser =
+                this.damageEngineGlobals.DamageEventAmount /
+                this.damageEngineGlobals.DamageEventPrevAmt /
+                this.damageEngineGlobals.DamageScalingWC3;
+        }
+        BlzSetEventDamage(this.damageEngineGlobals.DamageEventAmount);
+        if (this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
+            this.initialDamageEvent();
+        }
+        this.eventsRun = true;
+        if (this.damageEngineGlobals.DamageEventAmount === 0.0) {
+            this.finish();
         }
         return false;
+    }
+
+    private resetArmor(): void {
+        if (this.damageEngineGlobals.DamageEventArmorPierced !== 0.0) {
+            BlzSetUnitArmor(
+                this.damageEngineGlobals.DamageEventTarget as unit,
+                BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget as unit) + this.damageEngineGlobals.DamageEventArmorPierced,
+            );
+        }
+        if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
+            BlzSetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget as unit, UNIT_IF_ARMOR_TYPE, this.armorType);
+        }
+        if (this.defenseType !== this.damageEngineGlobals.DamageEventDefenseT) {
+            BlzSetUnitIntegerField(this.damageEngineGlobals.DamageEventTarget as unit, UNIT_IF_DEFENSE_TYPE, this.defenseType);
+        }
+    }
+
+    private failsafeClear(): void {
+        this.resetArmor();
+        this.canKick = true;
+        this.totem = false;
+        this.damageEngineGlobals.DamageEventAmount = 0.0;
+        this.damageEngineGlobals.DamageScalingWC3 = 0.0;
+        if (this.damageEngineGlobals.DamageEventDamageT !== settings.DAMAGE_TYPE_UNKNOWN) {
+            this.initialDamageEvent();
+            this.eventsRun = true;
+        }
+        this.finish();
+    }
+
+    private calibrateMR(): void {
+        this.damageEngineGlobals.IsDamageMelee = false;
+        this.damageEngineGlobals.IsDamageRanged = false;
+        this.damageEngineGlobals.IsDamageSpell = this.damageEngineGlobals.DamageEventAttackT === 0;
+        if (this.damageEngineGlobals.DamageEventDamageT === settings.DAMAGE_TYPE_NORMAL && !this.damageEngineGlobals.IsDamageSpell) {
+            this.damageEngineGlobals.IsDamageMelee = IsUnitType(
+                this.damageEngineGlobals.DamageEventSource as unit,
+                UNIT_TYPE_MELEE_ATTACKER,
+            );
+            this.damageEngineGlobals.IsDamageRanged = IsUnitType(
+                this.damageEngineGlobals.DamageEventSource as unit,
+                UNIT_TYPE_RANGED_ATTACKER,
+            );
+            if (this.damageEngineGlobals.IsDamageMelee && this.damageEngineGlobals.IsDamageRanged) {
+                this.damageEngineGlobals.IsDamageMelee = this.damageEngineGlobals.DamageEventWeaponT > 0;
+                this.damageEngineGlobals.IsDamageRanged = !this.damageEngineGlobals.IsDamageMelee;
+            }
+        }
     }
 }
