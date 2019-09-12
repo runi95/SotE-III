@@ -20,8 +20,8 @@ export class Envenom implements DamageEvent {
 
         if (abilityLevel > 0) {
             globals.DamageEventAmount +=
-                GetHeroInt(globals.DamageEventSource as unit, true) +
-                25 * GetUnitAbilityLevel(globals.DamageEventSource as unit, this.envenomAbilityId);
+                80 * GetUnitAbilityLevel(globals.DamageEventSource as unit, this.envenomAbilityId) +
+                GetHeroInt(globals.DamageEventSource as unit, true);
             if (abilityLevel > 1) {
                 DecUnitAbilityLevel(globals.DamageEventSource as unit, this.abilityId);
             } else {

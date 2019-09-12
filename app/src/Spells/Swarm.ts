@@ -23,7 +23,7 @@ export class Swarm extends Spell {
         const dist: number = Math.sqrt(Pow(x - targetX, 2) + Pow(y - targetY, 2));
         const multX: number = 100 * ((targetX - x) / dist);
         const multY: number = 100 * ((targetY - y) / dist);
-        const damage: number = 50 * abilityLevel + 2 * GetHeroInt(trig, true); // Will usually hit a unit 2 - 3 times
+        const damage: number = (250 * abilityLevel + 3 * GetHeroInt(trig, true)) / 3;
         const fog: fogmodifier = CreateFogModifierRadius(
             GetOwningPlayer(trig),
             FOG_OF_WAR_VISIBLE,

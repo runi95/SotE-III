@@ -22,7 +22,7 @@ export class DeathGrasp extends Spell {
         const str: number = GetHeroStr(trig, true);
         DestroyEffect(AddSpecialEffectTarget('war3mapImported\\Death Grip.mdx', targ, 'origin'));
         UnitDamageTargetBJ(targ, trig, 100, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-        UnitDamageTargetBJ(trig, targ, 75 * abilityLevel + str, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(trig, targ, 250 * abilityLevel + 3 * str, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
         this.stunUtils.stunUnit(targ, 1);
 

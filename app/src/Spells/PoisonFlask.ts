@@ -20,7 +20,7 @@ export class PoisonFlask extends Spell {
         const y: number = GetUnitY(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damage: number = (150 * abilityLevel + intelligence) / 10;
+        const damage: number = (135 * abilityLevel + 3 * intelligence) / 10;
         const units: unit[] = [];
         const unitEffects: effect[] = [];
         const loc: location = Location(x, y);

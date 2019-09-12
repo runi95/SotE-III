@@ -22,7 +22,7 @@ export class Slash extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damage: number = 100 * abilityLevel + 2 * intelligence;
+        const damage: number = 250 * abilityLevel + 3 * intelligence;
         PauseUnit(trig, true);
         UnitAddAbility(trig, this.dummyAbilityId);
         UnitRemoveAbility(trig, this.dummyAbilityId);
@@ -39,8 +39,8 @@ export class Slash extends Spell {
 
             if (ticks === 3) {
                 const facing: number = GetUnitFacing(targ);
-                const xDirection: number = Math.cos(facing * Math.PI / 180);
-                const yDirection: number = Math.sin(facing * Math.PI / 180);
+                const xDirection: number = Math.cos((facing * Math.PI) / 180);
+                const yDirection: number = Math.sin((facing * Math.PI) / 180);
                 const x: number = GetUnitX(targ) - 100 * xDirection;
                 const y: number = GetUnitY(targ) - 100 * yDirection;
                 SetUnitPosition(trig, x, y);

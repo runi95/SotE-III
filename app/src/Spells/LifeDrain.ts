@@ -17,7 +17,7 @@ export class LifeDrain extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damageAndHeal: number = (75 * abilityLevel + 3 * intelligence) / 200;
+        const damageAndHeal: number = (160 * abilityLevel + 2 * intelligence) / 200;
         const light: lightning = AddLightning('DRAL', true, GetUnitX(trig), GetUnitY(trig), GetUnitX(targ), GetUnitY(targ));
 
         let ticks: number = 200;

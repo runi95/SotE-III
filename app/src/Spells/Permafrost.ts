@@ -15,10 +15,10 @@ export class Permafrost extends Spell {
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const loc: location = GetUnitLoc(trig);
-        const grp: GroupInRange = new GroupInRange(1000.00, loc);
+        const grp: GroupInRange = new GroupInRange(600.0, loc);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damage: number = 50.00 * abilityLevel + intelligence;
+        const damage: number = 60.0 * abilityLevel + intelligence;
 
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, GetOwningPlayer(trig))) {

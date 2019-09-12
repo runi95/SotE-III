@@ -8,7 +8,7 @@ export class StormCloud extends Spell {
     protected readonly abilityId: number = FourCC('A003');
     private readonly dummyUnitId: number = FourCC('n004');
     private readonly timerUtils: TimerUtils;
-    private readonly randomNumberGenerator: RandomNumberGenerator
+    private readonly randomNumberGenerator: RandomNumberGenerator;
 
     constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
         super();
@@ -16,7 +16,6 @@ export class StormCloud extends Spell {
         this.timerUtils = timerUtils;
         this.randomNumberGenerator = randomNumberGenerator;
     }
-
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
@@ -27,18 +26,17 @@ export class StormCloud extends Spell {
         const loc: location = GetUnitLoc(dummy);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damage: number = 35.00 * abilityLevel + 0.20 * intelligence;
+        const damage: number = (140 * abilityLevel + 1.5 * intelligence) / 20;
 
         let ticks: number = 200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
 
-            const grp: GroupInRange = new GroupInRange(300.00, loc);
+            const grp: GroupInRange = new GroupInRange(300.0, loc);
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, trigOwner) && UnitAlive(u) && this.randomNumberGenerator.random(1, 10) === 1) {
-                    DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl',
-                                                   GetUnitX(u), GetUnitY(u)));
+                    DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl', GetUnitX(u), GetUnitY(u)));
                     UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });

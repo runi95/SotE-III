@@ -22,19 +22,19 @@ export class CrushingWave extends Spell {
         const targetY: number = GetSpellTargetY();
         const intelligence: number = GetHeroInt(trig, true);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const damage: number = 6.00 * abilityLevel + 0.10 * intelligence;
+        const damage: number = (275 * abilityLevel + 3.5 * intelligence) / 35;
         const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, GetUnitFacing(trig));
-        SetUnitTimeScalePercent(dummy, 0.00);
+        SetUnitTimeScalePercent(dummy, 0.0);
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.03, true, () => {
-            const distance: number = Math.sqrt(Pow(x - targetX, 2.00) + Pow(y - targetY, 2.00));
+            const distance: number = Math.sqrt(Pow(x - targetX, 2.0) + Pow(y - targetY, 2.0));
             x += 15 * ((targetX - x) / distance);
             y += 15 * ((targetY - y) / distance);
 
             SetUnitPosition(dummy, x, y);
             const loc: location = Location(x, y);
-            const grp: GroupInRange = new GroupInRange(75.00, loc);
+            const grp: GroupInRange = new GroupInRange(75.0, loc);
 
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
@@ -47,14 +47,15 @@ export class CrushingWave extends Spell {
 
             if (distance < 15) {
                 const detonationLoc: location = Location(x, y);
-                const detonationGroup: GroupInRange = new GroupInRange(150.00, detonationLoc);
+                const detonationGroup: GroupInRange = new GroupInRange(150.0, detonationLoc);
 
-                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl',
-                                               GetUnitX(dummy), GetUnitY(dummy)));
+                DestroyEffect(
+                    AddSpecialEffect('Abilities\\Spells\\Other\\CrushingWave\\CrushingWaveDamage.mdl', GetUnitX(dummy), GetUnitY(dummy)),
+                );
 
                 detonationGroup.for(() => {
                     if (IsUnitEnemy(GetEnumUnit(), GetOwningPlayer(trig)) && UnitAlive(GetEnumUnit())) {
-                        UnitDamageTargetBJ(trig, GetEnumUnit(), 30.00 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        UnitDamageTargetBJ(trig, GetEnumUnit(), 30.0 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
                 });
 

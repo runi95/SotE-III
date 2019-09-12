@@ -21,17 +21,17 @@ export class GoblinMine extends Spell {
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
         const summon: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitTypeId, x, y, bj_UNIT_FACING);
-        const damage: number = 100 * abilityLevel + 2 * intelligence;
+        const damage: number = 160 * abilityLevel + 2 * intelligence;
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(2, false, () => {
             const loc: location = GetUnitLoc(summon);
-            const grp: GroupInRange = new GroupInRange(300.00, loc);
+            const grp: GroupInRange = new GroupInRange(300.0, loc);
 
-            DestroyEffect(AddSpecialEffect('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl',
-                                           GetUnitX(summon), GetUnitY(summon)));
-            DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl',
-                                           GetUnitX(summon), GetUnitY(summon)));
+            DestroyEffect(
+                AddSpecialEffect('Objects\\Spawnmodels\\Human\\HCancelDeath\\HCancelDeath.mdl', GetUnitX(summon), GetUnitY(summon)),
+            );
+            DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl', GetUnitX(summon), GetUnitY(summon)));
 
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {

@@ -7,7 +7,7 @@ export class DemonicSacrifice extends Spell {
         const abilityLevel: number = GetUnitAbilityLevel(GetTriggerUnit(), this.abilityId);
 
         if (GetOwningPlayer(GetSpellTargetUnit()) === GetOwningPlayer(GetTriggerUnit())) {
-            const maxHeal: number = 50.0 * abilityLevel + 3 * GetHeroStr(GetTriggerUnit(), true);
+            const maxHeal: number = 250.0 * abilityLevel + 3 * GetHeroStr(GetTriggerUnit(), true);
             const heal: number = RMinBJ(GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE), maxHeal);
 
             SetUnitLifeBJ(GetTriggerUnit(), GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + heal);

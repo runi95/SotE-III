@@ -22,7 +22,7 @@ export class BurningFlask extends Spell {
         const targY: number = GetSpellTargetY();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damage: number = (200 * abilityLevel + 3 * intelligence) / 100;
+        const damage: number = (190 * abilityLevel + 2.5 * intelligence) / 100;
         const eff: effect = AddSpecialEffect('Abilities\\Spells\\Other\\AcidBomb\\BottleMissile.mdl', x, y);
         BlzSetSpecialEffectZ(eff, 50);
 
@@ -57,7 +57,7 @@ export class BurningFlask extends Spell {
                     this.timerUtils.releaseTimer(t);
                 }
             } else {
-                const dist: number = Math.sqrt(Pow(targX - x, 2.00) + Pow(targY - y, 2.00));
+                const dist: number = Math.sqrt(Pow(targX - x, 2.0) + Pow(targY - y, 2.0));
                 x += 15 * ((targX - x) / dist);
                 y += 15 * ((targY - y) / dist);
 

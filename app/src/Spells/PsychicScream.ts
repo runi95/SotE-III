@@ -7,12 +7,12 @@ export class PsychicScream extends Spell {
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const damage: number = 100 * abilityLevel + 2 * GetHeroInt(trig, true);
+        const damage: number = 75 * abilityLevel + GetHeroInt(trig, true);
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
         const loc: location = Location(x, y);
-        const grp: GroupInRange = new GroupInRange(1000, loc);
+        const grp: GroupInRange = new GroupInRange(500, loc);
 
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, Player(playerId)) && UnitAlive(u)) {
