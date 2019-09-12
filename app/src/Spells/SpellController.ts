@@ -10,7 +10,7 @@ import { Cryostasis } from './Cryostasis';
 import { CryostasisStop } from './CryostasisStop';
 import { DeathGrasp } from './DeathGrasp';
 import { DefenseSystem } from './DefenseSystem';
-import { DemonicRitual } from './DemonicRitual';
+import { DemonicSacrifice } from './DemonicSacrifice';
 import { Devour } from './Devour';
 import { Inferno } from './Inferno';
 import { EnvenomCast } from './EnvenomCast';
@@ -85,7 +85,7 @@ export class SpellController {
             new CryostasisStop(gameGlobals),
             new DeathGrasp(stunUtils, timerUtils),
             new DefenseSystem(gameGlobals, timerUtils),
-            new DemonicRitual(),
+            new DemonicSacrifice(),
             new Devour(),
             new Inferno(timerUtils),
             new EnvenomCast(),
