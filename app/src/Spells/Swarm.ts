@@ -23,10 +23,16 @@ export class Swarm extends Spell {
         const dist: number = Math.sqrt(Pow(x - targetX, 2) + Pow(y - targetY, 2));
         const multX: number = 100 * ((targetX - x) / dist);
         const multY: number = 100 * ((targetY - y) / dist);
-        const damage: number = 50 * abilityLevel + 2 * GetHeroInt(trig, true);
-        const fog: fogmodifier = CreateFogModifierRadius(GetOwningPlayer(trig), FOG_OF_WAR_VISIBLE,
-                                                         x + 2.50 * multX, y + 2.50 * multY,
-                                                         500.00, true, true);
+        const damage: number = 50 * abilityLevel + 2 * GetHeroInt(trig, true); // Will usually hit a unit 2 - 3 times
+        const fog: fogmodifier = CreateFogModifierRadius(
+            GetOwningPlayer(trig),
+            FOG_OF_WAR_VISIBLE,
+            x + 2.5 * multX,
+            y + 2.5 * multY,
+            500.0,
+            true,
+            true,
+        );
         FogModifierStart(fog);
 
         let ticks: number = 5;
