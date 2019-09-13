@@ -18,10 +18,6 @@ export class SummonFelbeast extends Spell {
 
         BlzSetUnitMaxHP(summon, 100 * abilityLevel + 10 * str);
         SetUnitLifePercentBJ(summon, 100);
-        // BlzSetUnitArmor( summon, 10.00 )
-        // BlzSetUnitAttackCooldown(summon, 2.00, 1)
-        // BlzSetUnitDiceSides(summon, 1, 1)
-        // BlzSetUnitDiceNumber(summon, 4, 1)
         BlzSetUnitBaseDamage(summon, Math.ceil(3 * abilityLevel + str), 0);
         UnitApplyTimedLifeBJ(60, this.timedLifeBuffId, summon);
         UnitAddAbility(summon, this.shadowMeldAbilityId);
@@ -30,11 +26,11 @@ export class SummonFelbeast extends Spell {
             UnitAddAbility(summon, this.cleavingAttackAbilityId);
         }
 
-        if (abilityLevel > 5) {
+        if (abilityLevel > 4) {
             UnitAddAbility(summon, this.bashAbilityId);
         }
 
-        if (abilityLevel > 8) {
+        if (abilityLevel > 7) {
             UnitAddAbility(summon, this.criticalStrikeAbilityId);
         }
 
