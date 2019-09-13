@@ -32,7 +32,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal(gameGlobals));
-        damageEngine.addInitialDamageEvent(new Redemption());
+        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator));
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
 

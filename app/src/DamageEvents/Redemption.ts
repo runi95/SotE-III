@@ -1,9 +1,15 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
     private frozen: boolean = false;
+    private readonly randomNumberGenerator: RandomNumberGenerator;
+
+    constructor(randomNumberGenerator: RandomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
 
     public event(globals: DamageEngineGlobals): void {
         if (this.frozen) {
@@ -23,6 +29,12 @@ export class Redemption implements DamageEvent {
             return;
         }
 
+        const rng: number = this.randomNumberGenerator.random(1, 10);
+        if (rng < 8) {
+            return;
+        }
+
+        const int: number = GetHeroInt(globals.DamageEventTarget as unit, true);
         DestroyEffect(
             AddSpecialEffect(
                 'Abilities\\Spells\\Items\\AIfb\\AIfbSpecialArt.mdl',
@@ -33,9 +45,9 @@ export class Redemption implements DamageEvent {
         UnitDamageTargetBJ(
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
-            abilityLevel + 0.1 * abilityLevel * globals.DamageEventAmount,
-            ATTACK_TYPE_MAGIC,
-            DAMAGE_TYPE_UNIVERSAL,
+            10 + 0.2 * abilityLevel * int,
+            ATTACK_TYPE_NORMAL,
+            DAMAGE_TYPE_NORMAL,
         );
 
         this.frozen = false;
