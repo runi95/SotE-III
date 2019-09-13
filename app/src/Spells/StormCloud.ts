@@ -26,16 +26,16 @@ export class StormCloud extends Spell {
         const loc: location = GetUnitLoc(dummy);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const damage: number = (140 * abilityLevel + 1.5 * intelligence) / 20;
+        const damage: number = (140 * abilityLevel + 1.5 * intelligence) / 5;
 
-        let ticks: number = 200;
+        let ticks: number = 25;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(0.05, true, () => {
+        t.start(0.4, true, () => {
             ticks--;
 
             const grp: GroupInRange = new GroupInRange(300.0, loc);
             grp.for((u: unit) => {
-                if (IsUnitEnemy(u, trigOwner) && UnitAlive(u) && this.randomNumberGenerator.random(1, 10) === 1) {
+                if (IsUnitEnemy(u, trigOwner) && UnitAlive(u) && this.randomNumberGenerator.random(1, 5) === 1) {
                     DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl', GetUnitX(u), GetUnitY(u)));
                     UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
