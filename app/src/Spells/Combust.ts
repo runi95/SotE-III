@@ -17,6 +17,13 @@ export class Combust {
 
     private action(): void {
         const trig: unit = GetKillingUnit();
+        const mana: number = GetUnitState(trig, UNIT_STATE_MANA);
+        if (mana < 10) {
+            return;
+        }
+
+        SetUnitState(trig, UNIT_STATE_MANA, mana - 10);
+
         const loc: location = GetUnitLoc(GetDyingUnit());
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 100 + intelligence;
