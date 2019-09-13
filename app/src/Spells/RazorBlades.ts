@@ -28,19 +28,24 @@ export class RazorBlades {
         const mana: number = GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA);
         let intelligence: number = GetHeroInt(GetTriggerUnit(), true);
 
-        if (mana > intelligence) {
+        if (mana > intelligence / 2) {
             const trig: unit = GetTriggerUnit();
+            SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence / 2);
             const playerId: number = GetPlayerId(GetOwningPlayer(trig));
             const x: number = GetUnitX(trig);
             const y: number = GetUnitY(trig);
-            let aoe: number = 50.00;
-            const bladeOne: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId,
-                                              x + 150.00 * CosBJ(0.00), y + 150.00 * SinBJ(0.00), 0);
-            const bladeTwo: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId,
-                                              x + 150.00 * CosBJ(180.00), y + 150.00 * SinBJ(180.00), 0);
+            let aoe: number = 50.0;
+            const bladeOne: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x + 150.0 * CosBJ(0.0), y + 150.0 * SinBJ(0.0), 0);
+            const bladeTwo: unit = CreateUnit(
+                GetOwningPlayer(trig),
+                this.dummyUnitId,
+                x + 150.0 * CosBJ(180.0),
+                y + 150.0 * SinBJ(180.0),
+                0,
+            );
 
             if (GetUnitAbilityLevel(trig, this.defenseSystemAbilityId) > 0) {
-                aoe = 100.00;
+                aoe = 100.0;
                 SetUnitScalePercent(bladeOne, 150, 150, 150);
                 SetUnitScalePercent(bladeTwo, 150, 150, 150);
             }
@@ -52,20 +57,22 @@ export class RazorBlades {
             let tickerTwo: number = 180;
             const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
-                SetUnitPosition(bladeOne, GetUnitX(trig) + 150.00 * CosBJ(tickerOne), GetUnitY(trig) + 150.00 * SinBJ(tickerOne));
-                SetUnitPosition(bladeTwo, GetUnitX(trig) + 150.00 * CosBJ(tickerTwo), GetUnitY(trig) + 150.00 * SinBJ(tickerTwo));
+                SetUnitPosition(bladeOne, GetUnitX(trig) + 150.0 * CosBJ(tickerOne), GetUnitY(trig) + 150.0 * SinBJ(tickerOne));
+                SetUnitPosition(bladeTwo, GetUnitX(trig) + 150.0 * CosBJ(tickerTwo), GetUnitY(trig) + 150.0 * SinBJ(tickerTwo));
 
-                ticker += 1;
+                ticker++;
                 tickerOne += 10;
                 tickerTwo += 10;
+                intelligence = GetHeroInt(trig, true);
 
-                this.dealBladeDamage(trig, bladeOne, aoe);
-                this.dealBladeDamage(trig, bladeTwo, aoe);
+                if (ticker % 3 === 0) {
+                    this.dealBladeDamage(trig, bladeOne, aoe, intelligence / 2);
+                    this.dealBladeDamage(trig, bladeTwo, aoe, intelligence / 2);
+                }
 
-                if (ticker > 4) {
+                if (ticker > 9) {
                     ticker = 0;
-                    intelligence = GetHeroInt(trig, true);
-                    SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence);
+                    SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence / 2);
                     if (GetUnitState(trig, UNIT_STATE_MANA) === 0) {
                         this.gameGlobals.RazorBladesOn[playerId] = false;
                     }
@@ -91,21 +98,20 @@ export class RazorBlades {
             SetTextTagPos(txt, GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), 1);
             SetTextTagColor(txt, 255, 0, 0, 255);
             SetTextTagPermanentBJ(txt, false);
-            SetTextTagLifespanBJ(txt, 2.00);
+            SetTextTagLifespanBJ(txt, 2.0);
             SetTextTagVelocityBJ(txt, 128, 90);
             SetTextTagTextBJ(txt, 'Insufficient mana', 10);
         }
     }
 
-    private dealBladeDamage(trig: unit, blade: unit, aoe: number): void {
+    private dealBladeDamage(trig: unit, blade: unit, aoe: number, damage: number): void {
         const loc: location = GetUnitLoc(blade);
         const grp: GroupInRange = new GroupInRange(aoe, loc);
 
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
-                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',
-                                               GetUnitX(u), GetUnitY(u)));
-                UnitDamageTargetBJ(trig, u, 20, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl', GetUnitX(u), GetUnitY(u)));
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
 
