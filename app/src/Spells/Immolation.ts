@@ -17,18 +17,19 @@ export class Immolation extends Spell {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damage: number = 100 * abilityLevel + 3 * intelligence;
+        const damage: number = 50 * abilityLevel + 1.5 * intelligence;
 
-        let ticks: number = 10;
+        let ticks: number = 20;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(1, true, () => {
+        t.start(0.5, true, () => {
             ticks--;
             const loc: location = GetUnitLoc(trig);
             const grp: GroupInRange = new GroupInRange(256, loc);
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
-                    DestroyEffect(AddSpecialEffect('Abilities\\Spells\\NightElf\\Immolation\\ImmolationDamage.mdl',
-                                                   GetUnitX(u), GetUnitY(u)));
+                    DestroyEffect(
+                        AddSpecialEffect('Abilities\\Spells\\NightElf\\Immolation\\ImmolationDamage.mdl', GetUnitX(u), GetUnitY(u)),
+                    );
                     UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });
