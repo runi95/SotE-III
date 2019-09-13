@@ -3,6 +3,7 @@ import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
 export class GameGlobals {
+    public SummonHawkInt: number[] = [];
     public ScrollOfTownPortal: boolean[] = [];
     public Repetition: number[] = [];
     public RepetitionCounter: number[] = [];

@@ -7,22 +7,23 @@ import { Hero } from './Game/Hero';
 import { RandomNumberGenerator } from './Utility/RandomNumberGenerator';
 
 ceres.addHook('main::after', () => {
-    Log.Init([
-        new StringSink(LogLevel.Error, SendMessage),
-    ]);
+    Log.Init([new StringSink(LogLevel.Error, SendMessage)]);
 
-    xpcall(() => {
-        const gameGlobals: GameGlobals = new GameGlobals();
-        const randomNumberGenerator: RandomNumberGenerator = new RandomNumberGenerator();
+    xpcall(
+        () => {
+            const gameGlobals: GameGlobals = new GameGlobals();
+            const randomNumberGenerator: RandomNumberGenerator = new RandomNumberGenerator();
 
-        seedRandomNumberGenerator(randomNumberGenerator);
-        spawnAllCreeps(gameGlobals);
-        initializeHeroSelection(gameGlobals);
-        setPlayerCameras(gameGlobals);
-        initializeGameOptionFrames(gameGlobals, randomNumberGenerator);
-    },     (err) => {
-        Log.Fatal(err);
-    });
+            seedRandomNumberGenerator(randomNumberGenerator);
+            spawnAllCreeps(gameGlobals);
+            initializeHeroSelection(gameGlobals);
+            setPlayerCameras(gameGlobals);
+            initializeGameOptionFrames(gameGlobals, randomNumberGenerator);
+        },
+        (err) => {
+            Log.Fatal(err);
+        },
+    );
 });
 
 /*
@@ -236,10 +237,11 @@ function createCheckboxTrigger(frame: framehandle, event: (state: boolean) => vo
 }
 
 function setPlayerCameras(gameGlobals: GameGlobals): void {
-    SetCameraPosition(-14400.00, -10700.00);
+    SetCameraPosition(-14400.0, -10700.0);
     const heroSelectionArea: rect = Rect(-15616, -11904, -13184, -9472);
     SetCameraBoundsToRect(heroSelectionArea);
     for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        gameGlobals.SummonHawkInt[i] = 0;
         gameGlobals.ScrollOfTownPortal[i] = false;
         gameGlobals.Regenerate[i] = false;
         gameGlobals.ClockworkPenguin[i] = false;
@@ -303,8 +305,14 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetPoint(suddenDeathText, FRAMEPOINT_LEFT, suddenDeathCheckbox, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(teamsText, FRAMEPOINT_LEFT, suddenDeathCheckbox, FRAMEPOINT_LEFT, 0.0, -0.025);
     threeVersusThreeRadioButton.setFramePoint(FRAMEPOINT_LEFT, teamsText, FRAMEPOINT_RIGHT, 0.01, 0.0);
-    BlzFrameSetPoint(threeVersusThreeText, FRAMEPOINT_LEFT,
-                     threeVersusThreeRadioButton.getHiddenButtonFrame(), FRAMEPOINT_RIGHT, 0.005, 0.0);
+    BlzFrameSetPoint(
+        threeVersusThreeText,
+        FRAMEPOINT_LEFT,
+        threeVersusThreeRadioButton.getHiddenButtonFrame(),
+        FRAMEPOINT_RIGHT,
+        0.005,
+        0.0,
+    );
     noTeamsRadioButton.setFramePoint(FRAMEPOINT_LEFT, threeVersusThreeText, FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(noTeamsText, FRAMEPOINT_LEFT, noTeamsRadioButton.getHiddenButtonFrame(), FRAMEPOINT_RIGHT, 0.005, 0.0);
     BlzFrameSetPoint(livesMinValueText, FRAMEPOINT_LEFT, teamsText, FRAMEPOINT_LEFT, 0.0, -0.04);
@@ -314,7 +322,7 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     BlzFrameSetPoint(livesCurrentValueText, FRAMEPOINT_CENTER, livesSlider, FRAMEPOINT_CENTER, 0.0, -0.015);
     BlzFrameSetPoint(startButton, FRAMEPOINT_CENTER, menu, FRAMEPOINT_CENTER, 0.0, -0.11);
 
-    BlzFrameSetValue(livesSlider, 0.10);
+    BlzFrameSetValue(livesSlider, 0.1);
 
     BlzFrameSetText(menuTitle, 'SotE Rules');
     BlzFrameSetText(fogOfWarText, 'Disable Fog of War');
@@ -332,23 +340,40 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
     const fakeMenuFogOfWarCheckbox: FakeCheckbox = new FakeCheckbox(menu);
     const fakeMenuFogOfWarText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuAllRandomCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
-    const fakeMenuAllRandomText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
-                                                              fakeMenuAllRandomCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuAllRandomText: framehandle = BlzCreateFrame(
+        'StandardValueTextTemplate',
+        fakeMenuAllRandomCheckbox.getBorderFrame(),
+        0,
+        0,
+    );
     const fakeMenuSuddenDeathCheckbox: FakeCheckbox = new FakeCheckbox(fakeMenuFogOfWarCheckbox.getBorderFrame());
-    const fakeMenuSuddenDeathText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
-                                                                fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuSuddenDeathText: framehandle = BlzCreateFrame(
+        'StandardValueTextTemplate',
+        fakeMenuFogOfWarCheckbox.getBorderFrame(),
+        0,
+        0,
+    );
     const fakeMenuTeamsText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuLivesText: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
     const fakeMenuLivesValue: framehandle = BlzCreateFrame('StandardValueTextTemplate', fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
-    const fakeMenuWaitingForHostText: framehandle = BlzCreateFrame('StandardValueTextTemplate',
-                                                                   fakeMenuFogOfWarCheckbox.getBorderFrame(), 0, 0);
+    const fakeMenuWaitingForHostText: framehandle = BlzCreateFrame(
+        'StandardValueTextTemplate',
+        fakeMenuFogOfWarCheckbox.getBorderFrame(),
+        0,
+        0,
+    );
 
     fakeMenuFogOfWarCheckbox.setFramePoint(FRAMEPOINT_CENTER, menuTitle, FRAMEPOINT_CENTER, -0.12, -0.03);
     BlzFrameSetPoint(fakeMenuFogOfWarText, FRAMEPOINT_LEFT, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
     fakeMenuAllRandomCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuFogOfWarCheckbox.getBorderFrame(), FRAMEPOINT_CENTER, 0.0, -0.025);
     BlzFrameSetPoint(fakeMenuAllRandomText, FRAMEPOINT_LEFT, fakeMenuAllRandomCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
-    fakeMenuSuddenDeathCheckbox.setFramePoint(FRAMEPOINT_CENTER, fakeMenuAllRandomCheckbox.getBorderFrame(),
-                                              FRAMEPOINT_CENTER, 0.0, -0.025);
+    fakeMenuSuddenDeathCheckbox.setFramePoint(
+        FRAMEPOINT_CENTER,
+        fakeMenuAllRandomCheckbox.getBorderFrame(),
+        FRAMEPOINT_CENTER,
+        0.0,
+        -0.025,
+    );
     BlzFrameSetPoint(fakeMenuSuddenDeathText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_RIGHT, 0.01, 0.0);
     BlzFrameSetPoint(fakeMenuTeamsText, FRAMEPOINT_LEFT, fakeMenuSuddenDeathCheckbox.getBorderFrame(), FRAMEPOINT_LEFT, 0.0, -0.025);
     BlzFrameSetPoint(fakeMenuLivesText, FRAMEPOINT_LEFT, fakeMenuTeamsText, FRAMEPOINT_LEFT, 0.0, -0.025);
@@ -432,26 +457,36 @@ function initializeGameOptionFrames(gameGlobals: GameGlobals, randomNumberGenera
 
 function spawnAllCreeps(gameGlobals: GameGlobals): void {
     for (let i: number = 0; i < gameGlobals.CreepUnitArraySize; i++) {
-        SetUnitUserData(CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),
-                                   FourCC(gameGlobals.CreepUnitTypeID[i]),
-                                   gameGlobals.CreepSpawnPoint[i].x,
-                                   gameGlobals.CreepSpawnPoint[i].y,
-                                   gameGlobals.CreepSpawnAngle[i]),
-                        i);
+        SetUnitUserData(
+            CreateUnit(
+                Player(PLAYER_NEUTRAL_AGGRESSIVE),
+                FourCC(gameGlobals.CreepUnitTypeID[i]),
+                gameGlobals.CreepSpawnPoint[i].x,
+                gameGlobals.CreepSpawnPoint[i].y,
+                gameGlobals.CreepSpawnAngle[i],
+            ),
+            i,
+        );
     }
 }
 
 function initializeHeroSelection(gameGlobals: GameGlobals): void {
     for (let i: number = 0; i < gameGlobals.HeroArraySize; i++) {
-        gameGlobals.HeroList.push(new Hero(gameGlobals,
-                                           Rect(gameGlobals.HeroSelectRegions[i].minX,
-                                                gameGlobals.HeroSelectRegions[i].minY,
-                                                gameGlobals.HeroSelectRegions[i].maxX,
-                                                gameGlobals.HeroSelectRegions[i].maxY),
-                                           FourCC(gameGlobals.HeroUnitTypeID[i]),
-                                           gameGlobals.HeroSelectPoints[i].x,
-                                           gameGlobals.HeroSelectPoints[i].y,
-                                           gameGlobals.HeroSelectAngles[i]));
+        gameGlobals.HeroList.push(
+            new Hero(
+                gameGlobals,
+                Rect(
+                    gameGlobals.HeroSelectRegions[i].minX,
+                    gameGlobals.HeroSelectRegions[i].minY,
+                    gameGlobals.HeroSelectRegions[i].maxX,
+                    gameGlobals.HeroSelectRegions[i].maxY,
+                ),
+                FourCC(gameGlobals.HeroUnitTypeID[i]),
+                gameGlobals.HeroSelectPoints[i].x,
+                gameGlobals.HeroSelectPoints[i].y,
+                gameGlobals.HeroSelectAngles[i],
+            ),
+        );
     }
 }
 

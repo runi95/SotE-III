@@ -17,6 +17,7 @@ import { RunedBracers } from './RunedBracers';
 import { LionsRing } from './LionsRing';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Repetition } from './Repetition';
+import { HawkSpellDamage } from './HawkSpellDamage';
 
 export class DamageEventController {
     constructor(
@@ -41,6 +42,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

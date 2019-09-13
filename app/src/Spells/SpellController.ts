@@ -114,7 +114,7 @@ export class SpellController {
             new SummonBear(timerUtils),
             new SummonClockwerkGoblin(),
             new SummonFelbeast(),
-            new SummonHawk(timerUtils),
+            new SummonHawk(gameGlobals, timerUtils),
             new SummonQuilbeast(timerUtils),
             new Swarm(timerUtils),
             new Immolation(timerUtils),

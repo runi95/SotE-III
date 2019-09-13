@@ -4,8 +4,11 @@ import { Timer } from '../JassOverrides/Timer';
 
 export class SummonQuilbeast extends Spell {
     protected readonly abilityId: number = FourCC('A00Q');
+    private readonly quillSprayAbilityId: number = FourCC('A04L');
+    private readonly howlOfTerrorAbilityId: number = FourCC('A04M');
+    private readonly enduranceAuraAbilityId: number = FourCC('SCae');
     private readonly summonId: number = FourCC('n00C');
-    private isSummonAlive: boolean = false;
+    private summonUnit: unit[] = [];
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -15,41 +18,53 @@ export class SummonQuilbeast extends Spell {
     }
 
     protected action(): void {
-        if (this.isSummonAlive) {
-            return;
+        const trig: unit = GetTriggerUnit();
+        const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
+        const facing: number = GetUnitFacing(trig);
+        const x: number = GetUnitX(trig) + 50 * Math.cos((facing * Math.PI) / 180);
+        const y: number = GetUnitY(trig) + 50 * Math.sin((facing * Math.PI) / 180);
+        const agi: number = GetHeroAgi(trig, true);
+        const playerId: number = GetPlayerId(GetOwningPlayer(trig));
+
+        if (this.summonUnit[playerId]) {
+            RemoveUnit(this.summonUnit[playerId]);
         }
 
-        this.isSummonAlive = true;
+        this.summonUnit[playerId] = CreateUnit(GetOwningPlayer(trig), this.summonId, x, y, bj_UNIT_FACING);
+        DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Orc\\FeralSpirit\\feralspiritdone.mdl', x, y));
 
-        const trig: unit = GetTriggerUnit();
-        const x: number = GetUnitX(trig);
-        const y: number = GetUnitY(trig);
-        const agi: number = GetHeroAgi(trig, true);
-        const summon: unit = CreateUnit(GetOwningPlayer(trig), this.summonId, x, y, bj_UNIT_FACING);
+        BlzSetUnitMaxHP(this.summonUnit[playerId], 100 * abilityLevel + 10 * agi);
+        SetUnitLifePercentBJ(this.summonUnit[playerId], 100);
+        BlzSetUnitBaseDamage(this.summonUnit[playerId], Math.ceil(2 * abilityLevel + 0.6 * agi), 0);
 
-        BlzSetUnitMaxHP(summon, 15 * agi);
-        SetUnitLifePercentBJ(summon, 100);
-        // BlzSetUnitArmor( summon, 10.00 )
-        // BlzSetUnitAttackCooldown(summon, 2.00, 1)
-        // BlzSetUnitDiceSides(summon, 1, 1)
-        // BlzSetUnitDiceNumber(summon, 4, 1)
-        BlzSetUnitBaseDamage(summon, Math.ceil(0.90 * agi), 0);
-        // UnitApplyTimedLifeBJ(60, 'BTLF', summon)
+        if (abilityLevel > 2) {
+            UnitAddAbility(this.summonUnit[playerId], this.quillSprayAbilityId);
+        }
+
+        if (abilityLevel > 4) {
+            UnitAddAbility(this.summonUnit[playerId], this.howlOfTerrorAbilityId);
+        }
+
+        if (abilityLevel > 7) {
+            UnitAddAbility(this.summonUnit[playerId], this.enduranceAuraAbilityId);
+        }
 
         const maxDistance: number = 1200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(trig);
             const newY: number = GetUnitY(trig);
-            const distance: number = Math.sqrt(Pow(GetUnitX(summon) - newX, 2) + Pow(GetUnitY(summon) - newY, 2));
+            const distance: number = Math.sqrt(
+                Pow(GetUnitX(this.summonUnit[playerId]) - newX, 2) + Pow(GetUnitY(this.summonUnit[playerId]) - newY, 2),
+            );
 
             if (distance > maxDistance) {
-                SetUnitPosition(summon, newX, newY);
-                IssueTargetOrderBJ(summon, 'move', trig);
+                SetUnitPosition(this.summonUnit[playerId], newX, newY);
+                IssueTargetOrderBJ(this.summonUnit[playerId], 'move', trig);
             }
 
-            if (!UnitAlive(summon)) {
-                this.isSummonAlive = false;
+            if (!UnitAlive(this.summonUnit[playerId])) {
+                this.summonUnit.splice(playerId, 1);
                 this.timerUtils.releaseTimer(t);
             }
         });
