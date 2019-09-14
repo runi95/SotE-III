@@ -329,6 +329,26 @@ export class GameGlobals {
         new Point(-5414.0, -5690.0),
         new Point(-5928.0, -7525.0),
         new Point(-8819.0, -7635.0),
+
+        // Murloc Plaguebearer
+        new Point(-8715, 9811),
+        new Point(-7263, 9670),
+        new Point(-8261, 8964),
+        new Point(-7025, 8254),
+        new Point(-8296, 7673),
+        new Point(-7640, 6674),
+        new Point(-8838, 5995),
+        new Point(-8062, 5110),
+
+        // Murloc Nightcrawler
+        new Point(-6846, 9918),
+        new Point(-6941, 7572),
+        new Point(-7622, 7269),
+        new Point(-8016, 5957),
+
+        // Murloc Flesheater
+        new Point(-9039, 10362),
+        new Point(-8783, 6720),
     ];
 
     // ========================================
@@ -571,6 +591,26 @@ export class GameGlobals {
         107.0,
         357.0,
         7.0,
+
+        // Murloc Plaguebearer
+        325,
+        238,
+        330,
+        138,
+        0,
+        90,
+        347,
+        11,
+
+        // Murloc Nightcrawler
+        182,
+        343,
+        288,
+        316,
+
+        // Murloc Flesheater
+        21,
+        320,
     ];
 
     // ========================================
@@ -854,6 +894,26 @@ export class GameGlobals {
         'n01V',
         'n01V',
         'n01V',
+
+        // Murloc Plaguebearer
+        'n012',
+        'n012',
+        'n012',
+        'n012',
+        'n012',
+        'n012',
+        'n012',
+        'n012',
+
+        // Murloc Nightcrawler
+        'n025',
+        'n025',
+        'n025',
+        'n025',
+
+        // Murloc Flesheater
+        'n024',
+        'n024',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
