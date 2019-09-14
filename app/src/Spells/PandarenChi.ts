@@ -19,8 +19,8 @@ export class PandarenChi extends Spell {
         const p: player = GetOwningPlayer(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damagePerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 10);
-        const healingPerTick: number = (50 * abilityLevel + 1.5 * intelligence) / 40;
+        const damagePerTick: number = Math.ceil((100 * abilityLevel + 1.5 * intelligence) / 10);
+        const healingPerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 40);
         const eff: effect = AddSpecialEffectLoc('Abilities\\Spells\\NightElf\\Tranquility\\Tranquility.mdl', loc);
 
         let ticks: number = 40;
