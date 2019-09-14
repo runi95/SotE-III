@@ -31,7 +31,7 @@ export class Regenerate {
 
         this.gameGlobals.Regenerate[playerId] = true;
 
-        const totalHealAmount: number = 50 * abilityLevel + 1.5 * GetHeroInt(trig, true);
+        const totalHealAmount: number = 100 * abilityLevel + 1.5 * GetHeroInt(trig, true);
         let ticks: number = 5;
         const tickHealAmount: number = totalHealAmount / ticks;
         const t: Timer = this.timerUtils.newTimer();
