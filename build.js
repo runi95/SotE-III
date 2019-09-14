@@ -1,7 +1,7 @@
-const settings = require("./settings.json");
-const fs = require("fs-extra");
+const settings = require('./settings.json');
+const fs = require('fs-extra');
 const typescriptToLua = require('typescript-to-lua');
-const ts = require("typescript");
+const ts = require('typescript');
 const { execSync } = require('child_process');
 
 class Builder {
@@ -11,40 +11,45 @@ class Builder {
 
     build() {
         if (this.buildSettings.preCleanup) {
-            console.log("Running pre-cleanup...");
+            console.log('Running pre-cleanup...');
             this.cleanup();
         }
 
-        console.log("Copying map...");
+        console.log('Copying map...');
         fs.mkdirSync('target');
         fs.copySync(`${settings.map.dir}/${settings.map.filename}`, `target/${settings.map.filename}`);
 
-        console.log("Extracting war3map.lua...");
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["extract", `"target/${settings.map.filename}"`, '"war3map.lua"', `"${settings.map.dir}/map"`]).run();
+        console.log('Extracting war3map.lua...');
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', [
+            'extract',
+            `"target/${settings.map.filename}"`,
+            '"war3map.lua"',
+            `"${settings.map.dir}/map"`,
+        ]).run();
 
-        console.log("Transpiling project...");
+        console.log('Transpiling project...');
         const { emitResult, diagnostics } = typescriptToLua.transpileProject('tsconfig.json');
-        diagnostics.forEach(diagnostic => {
+        diagnostics.forEach((diagnostic) => {
             console.log(diagnostic.messageText);
             if (diagnostic.code !== 2306) {
-                console.error("FATAL: Error in typescript");
+                console.error('FATAL: Error in typescript');
                 throw diagnostic;
             }
         });
 
-        emitResult.forEach(({name, text}) => ts.sys.writeFile(name, text));
+        emitResult.forEach(({ name, text }) => ts.sys.writeFile(name, text));
 
-        console.log("Copying files...");
+        console.log('Copying files...');
         fs.copySync(`src/app/src/main.lua`, `src/main.lua`);
-        
-        console.log("Building lua map...");
-        new Runner('"tools/ceres/ceres.exe"', ["build", "map"]).run();
 
-        console.log("Replacing local functions...");
-        new Runner('"tools/sed.exe"', ["-i", '"s/local function __module_/function __module_/g"', '"target/map/war3map.lua"']).run();
+        console.log('Building lua map...');
+        new Runner('"tools/ceres/ceres.exe"', ['build', 'map']).run();
 
-        console.log("Adding compiled lua files...");
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ["add", '"target/map.w3x"', '"target/map/*"', '"/c"', '"/auto"', '"/r"']).run();
+        console.log('Replacing local functions...');
+        new Runner('"tools/sed.exe"', ['-i', '"s/local function __module_/function __module_/g"', '"target/map/war3map.lua"']).run();
+
+        console.log('Adding compiled lua files...');
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ['add', '"target/map.w3x"', '"target/map/*"', '"/c"', '"/auto"', '"/r"']).run();
     }
 
     cleanup() {
@@ -72,15 +77,10 @@ class Runner {
     }
 
     run() {
-        execSync(`${this.file} ${this.arguments.join(" ")}`, (err, stdout, stderr) => {
-            stdout.pipe(process.stdout);
-            stderr.pipe(process.stderr);
-
-            if (err) {
-                console.error(err);
-                throw err;
-            }
-        });
+        const stdout = execSync(`${this.file} ${this.arguments.join(' ')}`).toString('utf8');
+        if (stdout) {
+            console.log(stdout);
+        }
     }
 
     get file() {
@@ -93,7 +93,7 @@ class Runner {
 }
 
 class CommandHandler {
-    static get helpText(){
+    static get helpText() {
         return `
         Usage: build.js [options]
             options:
@@ -107,14 +107,14 @@ class CommandHandler {
     }
 
     constructor(args) {
-        if (args.length === 1 && args[0] === "--help") {
+        if (args.length === 1 && args[0] === '--help') {
             console.log(this.helpText);
             return process.exit(0);
         }
 
-        args.forEach(argument => {
-            if (argument === "build") {
-                console.log("Building...");
+        args.forEach((argument) => {
+            if (argument === 'build') {
+                console.log('Building...');
                 try {
                     new Builder().build();
                 } catch (err) {
@@ -131,10 +131,14 @@ class CommandHandler {
                 }
             }
 
-            if (argument === "run") {
-                console.log("Starting Warcraft III...");
+            if (argument === 'run') {
+                console.log('Starting Warcraft III...');
                 try {
-                    new Runner(`"${settings.game.path}"`, [...settings.game.arguments, "-loadfile", `"${process.cwd()}/target/map.w3x"`]).run();
+                    new Runner(`"${settings.game.path}"`, [
+                        ...settings.game.arguments,
+                        '-loadfile',
+                        `"${process.cwd()}/target/map.w3x"`,
+                    ]).run();
                 } catch (err) {
                     console.error(err);
                     process.exit(1);
