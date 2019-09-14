@@ -19,6 +19,10 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
+        if (!IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
+            return;
+        }
+
         globals.DamageEventAmount = RMaxBJ(globals.DamageEventAmount - this.gameGlobals.PlayerSpellBlock[playerId], 0.0);
     }
 }

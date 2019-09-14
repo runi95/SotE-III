@@ -19,6 +19,10 @@ export class PhysicalBlockEvent implements DamageEvent {
             return;
         }
 
+        if (!IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
+            return;
+        }
+
         globals.DamageEventAmount = Math.max(globals.DamageEventAmount - this.gameGlobals.PlayerPhysicalBlock[playerId], 0.0);
     }
 }
