@@ -28,7 +28,7 @@ export class DoomGuard extends Boss {
 
         for (let i: number = 0; i < 8; i++) {
             const spiritTower: unit = CreateUnit(
-                Player(PLAYER_NEUTRAL_AGGRESSIVE),
+                Player(PLAYER_NEUTRAL_PASSIVE),
                 this.spiritTowerUnitId,
                 this.spiritTowerPosX[i],
                 this.spiritTowerPosY[i],
@@ -84,6 +84,7 @@ export class DoomGuard extends Boss {
         const grp: GroupInRange = new GroupInRange(1500, loc);
         grp.for((u: unit) => {
             if (GetUnitTypeId(u) === this.spiritTowerUnitId) {
+                SetUnitOwner(u, Player(PLAYER_NEUTRAL_AGGRESSIVE), true);
                 UnitRemoveAbility(u, this.invulnerableAbilityId);
                 BlzPauseUnitEx(u, false);
             }
@@ -133,7 +134,7 @@ export class DoomGuard extends Boss {
 
             const i: number = this.spiritTowers.findIndex((tower: number) => tower === dyingUnitHandleId);
             const spiritTower: unit = CreateUnit(
-                Player(PLAYER_NEUTRAL_AGGRESSIVE),
+                Player(PLAYER_NEUTRAL_PASSIVE),
                 this.spiritTowerUnitId,
                 this.spiritTowerPosX[i],
                 this.spiritTowerPosY[i],
