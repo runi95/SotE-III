@@ -331,24 +331,28 @@ export class GameGlobals {
         new Point(-8819.0, -7635.0),
 
         // Murloc Plaguebearer
-        new Point(-8715, 9811),
-        new Point(-7263, 9670),
-        new Point(-8261, 8964),
-        new Point(-7025, 8254),
-        new Point(-8296, 7673),
-        new Point(-7640, 6674),
-        new Point(-8838, 5995),
-        new Point(-8062, 5110),
+        new Point(-8715.0, 9811.0),
+        new Point(-7263.0, 9670.0),
+        new Point(-8261.0, 8964.0),
+        new Point(-7025.0, 8254.0),
+        new Point(-8296.0, 7673.0),
+        new Point(-7640.0, 6674.0),
+        new Point(-8838.0, 5995.0),
+        new Point(-8062.0, 5110.0),
 
         // Murloc Nightcrawler
-        new Point(-6846, 9918),
-        new Point(-6941, 7572),
-        new Point(-7622, 7269),
-        new Point(-8016, 5957),
+        new Point(-6846.0, 9918.0),
+        new Point(-6941.0, 7572.0),
+        new Point(-7622.0, 7269.0),
+        new Point(-8016.0, 5957.0),
 
         // Murloc Flesheater
-        new Point(-9039, 10362),
-        new Point(-8783, 6720),
+        new Point(-9039.0, 10362.0),
+        new Point(-8783.0, 6720.0),
+
+        // Necromancers
+        new Point(12156.0, -8342.0),
+        new Point(12293.0, -8188.0),
     ];
 
     // ========================================
@@ -593,24 +597,28 @@ export class GameGlobals {
         7.0,
 
         // Murloc Plaguebearer
-        325,
-        238,
-        330,
-        138,
-        0,
-        90,
-        347,
-        11,
+        325.0,
+        238.0,
+        330.0,
+        138.0,
+        0.0,
+        90.0,
+        347.0,
+        11.0,
 
         // Murloc Nightcrawler
-        182,
-        343,
-        288,
-        316,
+        182.0,
+        343.0,
+        288.0,
+        316.0,
 
         // Murloc Flesheater
-        21,
-        320,
+        21.0,
+        320.0,
+
+        // Necromances
+        0.0,
+        270.0,
     ];
 
     // ========================================
@@ -914,6 +922,10 @@ export class GameGlobals {
         // Murloc Flesheater
         'n024',
         'n024',
+
+        // Necromancers
+        'u004',
+        'u004',
     ];
 
     public CreepUnitArraySize: number = this.CreepUnitTypeID.length;
