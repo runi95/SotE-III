@@ -19,24 +19,26 @@ export class PandarenChi extends Spell {
         const p: player = GetOwningPlayer(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
-        const damagePerTick: number = (75 * abilityLevel + 1.5 * intelligence) / 20;
-        const healingPerTick: number = (50 * abilityLevel + 1.5 * intelligence) / 20;
+        const damagePerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 10);
+        const healingPerTick: number = (50 * abilityLevel + 1.5 * intelligence) / 40;
         const eff: effect = AddSpecialEffectLoc('Abilities\\Spells\\NightElf\\Tranquility\\Tranquility.mdl', loc);
 
-        let ticks: number = 20;
+        let ticks: number = 40;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(1, true, () => {
+        t.start(0.5, true, () => {
             ticks--;
 
             const grp: GroupInRange = new GroupInRange(450, loc);
             grp.for((u: unit) => {
                 if (UnitAlive(u)) {
-                    if (IsUnitEnemy(u, p)) {
+                    if (ticks % 4 === 0 && IsUnitEnemy(u, p)) {
                         DestroyEffect(
                             AddSpecialEffect('Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl', GetUnitX(u), GetUnitY(u)),
                         );
                         UnitDamageTargetBJ(trig, u, damagePerTick, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-                    } else {
+                    }
+
+                    if (IsUnitAlly(u, p)) {
                         DestroyEffect(
                             AddSpecialEffect('Abilities\\Spells\\NightElf\\Tranquility\\TranquilityTarget.mdl', GetUnitX(u), GetUnitY(u)),
                         );
