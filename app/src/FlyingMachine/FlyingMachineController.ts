@@ -8,6 +8,8 @@ import { FelBeasts } from './FelBeasts';
 import { Satyrs } from './Satyrs';
 import { Ghouls } from './Ghouls';
 import { CrystalArachnathids } from './CrystalArachnathids';
+import { Necromancers } from './Necromancers';
+import { CenterShop } from './CenterShop';
 
 export class FlyingMachineController {
     private readonly travelLocations: Travel[];
@@ -19,10 +21,12 @@ export class FlyingMachineController {
             new Centaurs(),
             new Murlocs(),
             new Revenants(),
+            new Necromancers(),
             new FelBeasts(),
             new Satyrs(),
             new Ghouls(),
             new CrystalArachnathids(),
+            new CenterShop(),
         ];
     }
 }
