@@ -67,7 +67,7 @@ export class Game {
             this.damageEngine,
         );
         this.flyingMachineController = new FlyingMachineController();
-        this.bossController = new BossController();
+        this.bossController = new BossController(this.timerUtils);
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
         const ancientOfWondersX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
         const ancientOfWondersY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
