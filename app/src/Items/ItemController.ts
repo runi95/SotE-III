@@ -64,6 +64,9 @@ import { DragonWhelpClaws } from './Recipes/DragonWhelpClaws';
 import { EnchantedShield } from './Recipes/EnchantedShield';
 import { EnchantedShieldDrop } from './Abilities/EnchantedShieldDrop';
 import { EnchantedShieldPickup } from './Abilities/EnchantedShieldPickup';
+import { BalancedShieldDrop } from './Abilities/BalancedShieldDrop';
+import { BalancedShieldPickup } from './Abilities/BalancedShieldPickup';
+import { BalancedShield } from './Recipes/BalancedShield';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -105,6 +108,8 @@ export class ItemController {
             new LightningBoltCast(timerUtils, randomNumberGenerator),
             new EnchantedShieldDrop(gameGlobals),
             new EnchantedShieldPickup(gameGlobals),
+            new BalancedShieldDrop(gameGlobals),
+            new BalancedShieldPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -137,6 +142,7 @@ export class ItemController {
             new CreatureClaws(),
             new DragonWhelpClaws(),
             new EnchantedShield(),
+            new BalancedShield(),
         ];
     }
 }
