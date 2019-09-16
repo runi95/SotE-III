@@ -61,6 +61,9 @@ import { LightningBoltCast } from './Abilities/LightningBoltCast';
 import { WandOfShadowsight } from './Recipes/WandOfShadowsight';
 import { CreatureClaws } from './Recipes/CreatureClaws';
 import { DragonWhelpClaws } from './Recipes/DragonWhelpClaws';
+import { EnchantedShield } from './Recipes/EnchantedShield';
+import { EnchantedShieldDrop } from './Abilities/EnchantedShieldDrop';
+import { EnchantedShieldPickup } from './Abilities/EnchantedShieldPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -100,6 +103,8 @@ export class ItemController {
             new GoblinBatteryResetCharges(),
             new GoblinBatteryUse(randomNumberGenerator),
             new LightningBoltCast(timerUtils, randomNumberGenerator),
+            new EnchantedShieldDrop(gameGlobals),
+            new EnchantedShieldPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -131,6 +136,7 @@ export class ItemController {
             new WandOfShadowsight(),
             new CreatureClaws(),
             new DragonWhelpClaws(),
+            new EnchantedShield(),
         ];
     }
 }
