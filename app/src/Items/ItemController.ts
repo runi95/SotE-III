@@ -59,6 +59,7 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { LightningBolt } from './Recipes/LightningBolt';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
 import { WandOfShadowsight } from './Recipes/WandOfShadowsight';
+import { CreatureClaws } from './Recipes/CreatureClaws';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -127,6 +128,7 @@ export class ItemController {
             new LionsRing(),
             new LightningBolt(),
             new WandOfShadowsight(),
+            new CreatureClaws(),
         ];
     }
 }
