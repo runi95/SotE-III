@@ -60,6 +60,7 @@ import { LightningBolt } from './Recipes/LightningBolt';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
 import { WandOfShadowsight } from './Recipes/WandOfShadowsight';
 import { CreatureClaws } from './Recipes/CreatureClaws';
+import { DragonWhelpClaws } from './Recipes/DragonWhelpClaws';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -129,6 +130,7 @@ export class ItemController {
             new LightningBolt(),
             new WandOfShadowsight(),
             new CreatureClaws(),
+            new DragonWhelpClaws(),
         ];
     }
 }
