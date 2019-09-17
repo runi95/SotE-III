@@ -67,6 +67,7 @@ import { EnchantedShieldPickup } from './Abilities/EnchantedShieldPickup';
 import { BalancedShieldDrop } from './Abilities/BalancedShieldDrop';
 import { BalancedShieldPickup } from './Abilities/BalancedShieldPickup';
 import { BalancedShield } from './Recipes/BalancedShield';
+import { MaskOfProficiency } from './Recipes/MaskOfProficiency';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -143,6 +144,7 @@ export class ItemController {
             new DragonWhelpClaws(),
             new EnchantedShield(),
             new BalancedShield(),
+            new MaskOfProficiency(),
         ];
     }
 }
