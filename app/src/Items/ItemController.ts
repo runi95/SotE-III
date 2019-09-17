@@ -68,6 +68,7 @@ import { BalancedShieldDrop } from './Abilities/BalancedShieldDrop';
 import { BalancedShieldPickup } from './Abilities/BalancedShieldPickup';
 import { BalancedShield } from './Recipes/BalancedShield';
 import { MaskOfProficiency } from './Recipes/MaskOfProficiency';
+import { ManaInfusedMask } from './Recipes/ManaInfusedMask';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -145,6 +146,7 @@ export class ItemController {
             new EnchantedShield(),
             new BalancedShield(),
             new MaskOfProficiency(),
+            new ManaInfusedMask(),
         ];
     }
 }
