@@ -70,6 +70,7 @@ import { BalancedShield } from './Recipes/BalancedShield';
 import { MaskOfProficiency } from './Recipes/MaskOfProficiency';
 import { ManaInfusedMask } from './Recipes/ManaInfusedMask';
 import { BerserkerAxes } from './Recipes/BerserkerAxes';
+import { EnhancedBerserkerAxes } from './Recipes/EnhancedBerserkerAxes';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -149,6 +150,7 @@ export class ItemController {
             new MaskOfProficiency(),
             new ManaInfusedMask(),
             new BerserkerAxes(),
+            new EnhancedBerserkerAxes(),
         ];
     }
 }
