@@ -10,6 +10,7 @@ export class GameGlobals {
     public Regenerate: boolean[] = [];
     public CryostasisSummons: unit[] = [];
     public GoblinBattery: boolean[] = [];
+    public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
     public RazorBladesOn: boolean[] = [];
     public DivineShieldLife: number[] = [];
