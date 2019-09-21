@@ -71,6 +71,9 @@ import { MaskOfProficiency } from './Recipes/MaskOfProficiency';
 import { ManaInfusedMask } from './Recipes/ManaInfusedMask';
 import { BerserkerAxes } from './Recipes/BerserkerAxes';
 import { EnhancedBerserkerAxes } from './Recipes/EnhancedBerserkerAxes';
+import { ImprovedBalancedShield } from './Recipes/ImprovedBalancedShield';
+import { ImprovedBalancedShieldPickup } from './Abilities/ImprovedBalancedShieldPickup';
+import { ImprovedBalancedShieldDrop } from './Abilities/ImprovedBalancedShieldDrop';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -114,6 +117,8 @@ export class ItemController {
             new EnchantedShieldPickup(gameGlobals),
             new BalancedShieldDrop(gameGlobals),
             new BalancedShieldPickup(gameGlobals),
+            new ImprovedBalancedShieldDrop(gameGlobals),
+            new ImprovedBalancedShieldPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -151,6 +156,7 @@ export class ItemController {
             new ManaInfusedMask(),
             new BerserkerAxes(),
             new EnhancedBerserkerAxes(),
+            new ImprovedBalancedShield(),
         ];
     }
 }
