@@ -31,6 +31,7 @@ export class Redemption implements DamageEvent {
 
         const rng: number = this.randomNumberGenerator.random(1, 10);
         if (rng < 8) {
+            this.frozen = false;
             return;
         }
 
