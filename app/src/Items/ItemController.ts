@@ -77,6 +77,9 @@ import { ImprovedBalancedShieldDrop } from './Abilities/ImprovedBalancedShieldDr
 import { SnowyOwl } from './Recipes/SnowyOwl';
 import { SnowyOwlDrop } from './Abilities/SnowyOwlDrop';
 import { SnowyOwlPickup } from './Abilities/SnowyOwlPickup';
+import { AdvancedReinforcedHidesDrop } from './Abilities/AdvancedReinforcedHidesDrop';
+import { AdvancedReinforcedHidesPickup } from './Abilities/AdvancedReinforcedHidesPickup';
+import { AdvancedReinforcedHides } from './Recipes/AdvancedReinforcedHides';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -124,6 +127,8 @@ export class ItemController {
             new ImprovedBalancedShieldPickup(gameGlobals),
             new SnowyOwlDrop(gameGlobals),
             new SnowyOwlPickup(gameGlobals, timerUtils),
+            new AdvancedReinforcedHidesDrop(gameGlobals),
+            new AdvancedReinforcedHidesPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -163,6 +168,7 @@ export class ItemController {
             new EnhancedBerserkerAxes(),
             new ImprovedBalancedShield(),
             new SnowyOwl(),
+            new AdvancedReinforcedHides(),
         ];
     }
 }
