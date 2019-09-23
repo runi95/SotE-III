@@ -10,7 +10,7 @@ export class Lifesteal implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        if (!globals.IsDamageSpell) {
+        if (globals.IsDamageSpell) {
             return;
         }
 
