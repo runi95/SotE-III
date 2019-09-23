@@ -80,6 +80,8 @@ import { SnowyOwlPickup } from './Abilities/SnowyOwlPickup';
 import { AdvancedReinforcedHidesDrop } from './Abilities/AdvancedReinforcedHidesDrop';
 import { AdvancedReinforcedHidesPickup } from './Abilities/AdvancedReinforcedHidesPickup';
 import { AdvancedReinforcedHides } from './Recipes/AdvancedReinforcedHides';
+import { VampireClawsDrop } from './Abilities/VampireClawsDrop';
+import { VampireClawsPickup } from './Abilities/VampireClawsPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -129,6 +131,8 @@ export class ItemController {
             new SnowyOwlPickup(gameGlobals, timerUtils),
             new AdvancedReinforcedHidesDrop(gameGlobals),
             new AdvancedReinforcedHidesPickup(gameGlobals),
+            new VampireClawsDrop(gameGlobals),
+            new VampireClawsPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
