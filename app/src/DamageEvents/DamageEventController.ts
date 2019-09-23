@@ -18,6 +18,7 @@ import { LionsRing } from './LionsRing';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Repetition } from './Repetition';
 import { HawkSpellDamage } from './HawkSpellDamage';
+import { Lifesteal } from './Lifesteal';
 
 export class DamageEventController {
     constructor(
@@ -47,5 +48,8 @@ export class DamageEventController {
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
         damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
+
+        // After damage events
+        damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
     }
 }
