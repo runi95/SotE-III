@@ -23,6 +23,13 @@ export class Lifesteal implements DamageEvent {
             return;
         }
 
+        DestroyEffect(
+            AddSpecialEffect(
+                'Abilities\\Spells\\Undead\\VampiricAura\\VampiricAuraTarget.mdl',
+                GetUnitX(globals.DamageEventSource as unit),
+                GetUnitY(globals.DamageEventSource as unit),
+            ),
+        );
         SetWidgetLife(
             globals.DamageEventSource as unit,
             GetWidgetLife(globals.DamageEventSource as unit) + globals.DamageEventAmount * this.gameGlobals.PlayerLifesteal[playerId],
