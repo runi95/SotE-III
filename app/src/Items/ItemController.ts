@@ -85,6 +85,7 @@ import { VampireClawsPickup } from './Abilities/VampireClawsPickup';
 import { SpellShield } from './Recipes/Spell Shield';
 import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
+import { SwordOfNaegling } from './Recipes/SwordOfNaegling';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -179,6 +180,7 @@ export class ItemController {
             new SnowyOwl(),
             new AdvancedReinforcedHides(),
             new SpellShield(),
+            new SwordOfNaegling(),
         ];
     }
 }
