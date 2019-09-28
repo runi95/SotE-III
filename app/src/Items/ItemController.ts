@@ -82,6 +82,9 @@ import { AdvancedReinforcedHidesPickup } from './Abilities/AdvancedReinforcedHid
 import { AdvancedReinforcedHides } from './Recipes/AdvancedReinforcedHides';
 import { VampireClawsDrop } from './Abilities/VampireClawsDrop';
 import { VampireClawsPickup } from './Abilities/VampireClawsPickup';
+import { SpellShield } from './Recipes/Spell Shield';
+import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
+import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -133,6 +136,8 @@ export class ItemController {
             new AdvancedReinforcedHidesPickup(gameGlobals),
             new VampireClawsDrop(gameGlobals),
             new VampireClawsPickup(gameGlobals),
+            new SpellShieldDrop(gameGlobals),
+            new SpellShieldPickup(gameGlobals),
         ];
 
         this.itemRecipes = [
@@ -173,6 +178,7 @@ export class ItemController {
             new ImprovedBalancedShield(),
             new SnowyOwl(),
             new AdvancedReinforcedHides(),
+            new SpellShield(),
         ];
     }
 }
