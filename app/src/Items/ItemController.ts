@@ -82,7 +82,7 @@ import { AdvancedReinforcedHidesPickup } from './Abilities/AdvancedReinforcedHid
 import { AdvancedReinforcedHides } from './Recipes/AdvancedReinforcedHides';
 import { VampireClawsDrop } from './Abilities/VampireClawsDrop';
 import { VampireClawsPickup } from './Abilities/VampireClawsPickup';
-import { SpellShield } from './Recipes/Spell Shield';
+import { SpellShield } from './Recipes/SpellShield';
 import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
 import { SwordOfNaegling } from './Recipes/SwordOfNaegling';
