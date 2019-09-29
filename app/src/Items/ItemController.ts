@@ -86,6 +86,7 @@ import { SpellShield } from './Recipes/SpellShield';
 import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
 import { SwordOfNaegling } from './Recipes/SwordOfNaegling';
+import { DragonScales } from './Recipes/DragonScales';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -181,6 +182,7 @@ export class ItemController {
             new AdvancedReinforcedHides(),
             new SpellShield(),
             new SwordOfNaegling(),
+            new DragonScales(),
         ];
     }
 }
