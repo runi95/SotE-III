@@ -87,6 +87,8 @@ import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
 import { SwordOfNaegling } from './Recipes/SwordOfNaegling';
 import { DragonScales } from './Recipes/DragonScales';
+import { SacrificialDaggerResetCharges } from './Abilities/SacrificialDaggerResetCharges';
+import { SacrificialDaggerUse } from './Abilities/SacrificialDaggerUse';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -140,6 +142,8 @@ export class ItemController {
             new VampireClawsPickup(gameGlobals),
             new SpellShieldDrop(gameGlobals),
             new SpellShieldPickup(gameGlobals),
+            new SacrificialDaggerUse(),
+            new SacrificialDaggerResetCharges(),
         ];
 
         this.itemRecipes = [
