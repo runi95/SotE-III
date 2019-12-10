@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class LightningBolt extends ItemRecipe {
@@ -6,3 +7,4 @@ export class LightningBolt extends ItemRecipe {
     protected readonly recipe: number[] = [this.goblinBattery, this.theAegis];
     protected readonly resultingItem: number = FourCC('I01Q');
 }
+*/

@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class BerserkerAxes extends ItemRecipe {
@@ -6,3 +7,4 @@ export class BerserkerAxes extends ItemRecipe {
     protected readonly recipe: number[] = [this.warAxe, this.warAxe];
     protected readonly resultingItem: number = FourCC('I023');
 }
+*/

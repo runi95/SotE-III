@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class LoadedCannon extends ItemRecipe {
@@ -6,3 +7,4 @@ export class LoadedCannon extends ItemRecipe {
     protected readonly recipe: number[] = [this.loadedRifle, this.ironSword];
     protected readonly resultingItem: number = FourCC('I00X');
 }
+*/

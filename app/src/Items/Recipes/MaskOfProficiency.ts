@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class MaskOfProficiency extends ItemRecipe {
@@ -6,3 +7,4 @@ export class MaskOfProficiency extends ItemRecipe {
     protected readonly recipe: number[] = [this.orbOfMagic, this.sobiMask];
     protected readonly resultingItem: number = FourCC('I026');
 }
+*/

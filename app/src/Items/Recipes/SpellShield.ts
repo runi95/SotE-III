@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class SpellShield extends ItemRecipe {
@@ -7,3 +8,4 @@ export class SpellShield extends ItemRecipe {
     protected readonly recipe: number[] = [this.vialOfMagic, this.enchantedShield, this.lionsRing];
     protected readonly resultingItem: number = FourCC('I02F');
 }
+*/

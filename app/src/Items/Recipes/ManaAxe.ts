@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class ManaAxe extends ItemRecipe {
@@ -6,3 +7,4 @@ export class ManaAxe extends ItemRecipe {
     protected readonly recipe: number[] = [this.warAxe, this.emptyVial];
     protected readonly resultingItem: number = FourCC('I00Q');
 }
+*/

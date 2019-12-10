@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class Caduceus extends ItemRecipe {
@@ -6,3 +7,4 @@ export class Caduceus extends ItemRecipe {
     protected readonly recipe: number[] = [this.branch, this.studdedLeatherArmor];
     protected readonly resultingItem: number = FourCC('I019');
 }
+*/

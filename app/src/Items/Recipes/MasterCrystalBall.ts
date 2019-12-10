@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class MasterCrystalBall extends ItemRecipe {
@@ -6,3 +7,4 @@ export class MasterCrystalBall extends ItemRecipe {
     protected readonly recipe: number[] = [this.adeptCrystalBall, this.vialOfMagic];
     protected readonly resultingItem: number = FourCC('I01G');
 }
+*/

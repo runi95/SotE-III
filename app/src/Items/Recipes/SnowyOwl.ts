@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class SnowyOwl extends ItemRecipe {
@@ -6,3 +7,4 @@ export class SnowyOwl extends ItemRecipe {
     protected readonly recipe: number[] = [this.clockworkPenguin, this.wandOfShadowsight];
     protected readonly resultingItem: number = FourCC('I02C');
 }
+*/

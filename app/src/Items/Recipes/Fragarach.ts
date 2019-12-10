@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class Fragarach extends ItemRecipe {
@@ -6,3 +7,4 @@ export class Fragarach extends ItemRecipe {
     protected readonly recipe: number[] = [this.manaBlade, this.ironClaws];
     protected readonly resultingItem: number = FourCC('I017');
 }
+*/

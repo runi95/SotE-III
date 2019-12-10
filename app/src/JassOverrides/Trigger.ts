@@ -10,12 +10,14 @@ export class Trigger {
     public static evaluateCondition(func: () => boolean): boolean {
         let answer: boolean = false;
 
-        xpcall(() => {
-            answer = func();
-        },
-               (err: any) => {
-                   this.printError(err);
-               });
+        xpcall(
+            () => {
+                answer = func();
+            },
+            (err: any) => {
+                this.printError(err);
+            },
+        );
 
         return answer;
     }
@@ -25,8 +27,12 @@ export class Trigger {
     }
 
     public addAction(actionFunc: () => void): triggeraction {
-        return TriggerAddAction(this.nativeTrigger, () => xpcall(() => actionFunc(), err => Trigger.printError(err)));
-
+        return TriggerAddAction(this.nativeTrigger, () =>
+            xpcall(
+                () => actionFunc(),
+                (err) => Trigger.printError(err),
+            ),
+        );
     }
 
     public registerTimerEvent(timeout: number, periodic: boolean): event {
@@ -61,8 +67,15 @@ export class Trigger {
         return TriggerRegisterEnterRectSimple(this.nativeTrigger, r);
     }
 
+    public registerLeaveRectSimple(r: rect): event {
+        return TriggerRegisterLeaveRectSimple(this.nativeTrigger, r);
+    }
+
     public addCondition(func: () => boolean): triggercondition {
-        return TriggerAddCondition(this.nativeTrigger, Condition(() => Trigger.evaluateCondition(func)));
+        return TriggerAddCondition(
+            this.nativeTrigger,
+            Condition(() => Trigger.evaluateCondition(func)),
+        );
     }
 
     public addFilterFuncCondition(filter: filterfunc): triggercondition {

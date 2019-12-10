@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class EnchantedShield extends ItemRecipe {
@@ -6,3 +7,4 @@ export class EnchantedShield extends ItemRecipe {
     protected readonly recipe: number[] = [this.orbOfMagic, this.moonArmor];
     protected readonly resultingItem: number = FourCC('I027');
 }
+*/

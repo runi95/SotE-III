@@ -1,8 +1,24 @@
 import { ItemRecipe } from '../ItemRecipe';
+import { IronShield } from '../IronShield';
+import { Item } from '../Item';
 
 export class SteelShield extends ItemRecipe {
-    private readonly ironShield: number = FourCC('I005');
-    protected readonly isRecipeUniquesOnly: boolean = false;
-    protected readonly recipe: number[] = [this.ironShield, this.ironShield];
-    protected readonly resultingItem: number = FourCC('I00J');
+    private readonly ironShield: IronShield;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I00J');
+    public readonly name: string = 'Steel Shield';
+    public readonly goldCost: number = 400;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpTwo.blp';
+    public readonly description: string = `A weak shield capable of blocking incoming physical damage.
+
+|cffffcc00Block:|r +7
+
+|cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
+
+    constructor(ironShield: IronShield) {
+        super();
+
+        this.ironShield = ironShield;
+        this.recipe = [this.ironShield, this.ironShield];
+    }
 }

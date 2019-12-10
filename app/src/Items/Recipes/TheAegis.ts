@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class TheAegis extends ItemRecipe {
@@ -6,3 +7,4 @@ export class TheAegis extends ItemRecipe {
     protected readonly recipe: number[] = [this.steelShield, this.scepter];
     protected readonly resultingItem: number = FourCC('I014');
 }
+*/

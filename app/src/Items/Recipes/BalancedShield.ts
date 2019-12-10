@@ -1,8 +1,28 @@
 import { ItemRecipe } from '../ItemRecipe';
+import { MoonArmor } from '../MoonArmor';
+import { Item } from '../Item';
+import { IronShield } from '../IronShield';
 
 export class BalancedShield extends ItemRecipe {
-    private readonly moonArmor: number = FourCC('I008');
-    private readonly ironShield: number = FourCC('I005');
-    protected readonly recipe: number[] = [this.moonArmor, this.ironShield];
-    protected readonly resultingItem: number = FourCC('I028');
+    private readonly moonArmor: MoonArmor;
+    private readonly ironShield: IronShield;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I028');
+    public readonly name: string = 'Balanced Shield';
+    public readonly goldCost: number = 500;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefendStop.blp';
+    public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.
+
+|cffffcc00Block:|r +5
+|cffffcc00Resistance:|r +5
+
+|cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
+
+    constructor(moonArmor: MoonArmor, ironShield: IronShield) {
+        super();
+
+        this.moonArmor = moonArmor;
+        this.ironShield = ironShield;
+        this.recipe = [this.moonArmor, this.ironShield];
+    }
 }

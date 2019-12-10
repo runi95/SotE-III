@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class DragonScales extends ItemRecipe {
@@ -6,3 +7,4 @@ export class DragonScales extends ItemRecipe {
     protected readonly recipe: number[] = [this.dragonWhelpClaws, this.coralScales];
     protected readonly resultingItem: number = FourCC('I02H');
 }
+*/

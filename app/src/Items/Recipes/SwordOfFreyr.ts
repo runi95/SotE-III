@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class SwordOfFreyr extends ItemRecipe {
@@ -6,3 +7,4 @@ export class SwordOfFreyr extends ItemRecipe {
     protected readonly recipe: number[] = [this.manaBlade, this.manaAxe];
     protected readonly resultingItem: number = FourCC('I018');
 }
+*/

@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class WandOfShadowsight extends ItemRecipe {
@@ -6,3 +7,4 @@ export class WandOfShadowsight extends ItemRecipe {
     protected readonly recipe: number[] = [this.goblinNightScope, this.flare];
     protected readonly resultingItem: number = FourCC('I020');
 }
+*/

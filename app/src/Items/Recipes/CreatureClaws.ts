@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class CreatureClaws extends ItemRecipe {
@@ -6,3 +7,4 @@ export class CreatureClaws extends ItemRecipe {
     protected readonly recipe: number[] = [this.claws, this.studdedLeatherArmor];
     protected readonly resultingItem: number = FourCC('I024');
 }
+*/

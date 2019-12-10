@@ -1,8 +1,25 @@
 import { ItemRecipe } from '../ItemRecipe';
+import { BalancedShield } from './BalancedShield';
+import { Item } from '../Item';
 
 export class ImprovedBalancedShield extends ItemRecipe {
-    private readonly balancedShield: number = FourCC('I028');
-    protected readonly isRecipeUniquesOnly: boolean = false;
-    protected readonly recipe: number[] = [this.balancedShield, this.balancedShield];
-    protected readonly resultingItem: number = FourCC('I02B');
+    private readonly balancedShield: BalancedShield;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I02B');
+    public readonly name: string = 'Improved Balanced Shield';
+    public readonly goldCost: number = 1000;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefend.blp';
+    public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.
+
+|cffffcc00Block:|r +12
+|cffffcc00Resistance:|r +12
+
+|cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
+
+    constructor(balancedShield: BalancedShield) {
+        super();
+
+        this.balancedShield = balancedShield;
+        this.recipe = [this.balancedShield, this.balancedShield];
+    }
 }

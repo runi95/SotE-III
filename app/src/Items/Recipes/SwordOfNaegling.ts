@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class SwordOfNaegling extends ItemRecipe {
@@ -6,3 +7,4 @@ export class SwordOfNaegling extends ItemRecipe {
     protected readonly recipe: number[] = [this.fragarach, this.swordOfFreyr];
     protected readonly resultingItem: number = FourCC('I02G');
 }
+*/

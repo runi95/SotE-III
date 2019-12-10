@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class CloakOfShadowWalk extends ItemRecipe {
@@ -6,3 +7,4 @@ export class CloakOfShadowWalk extends ItemRecipe {
     protected readonly recipe: number[] = [this.cloakOfShadows, this.scrollOfAgility];
     protected readonly resultingItem: number = FourCC('I01J');
 }
+*/

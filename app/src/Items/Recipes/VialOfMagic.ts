@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class VialOfMagic extends ItemRecipe {
@@ -6,3 +7,4 @@ export class VialOfMagic extends ItemRecipe {
     protected readonly recipe: number[] = [this.orbOfMagic, this.emptyVial];
     protected readonly resultingItem: number = FourCC('I001');
 }
+*/

@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class ScrollOfAgility extends ItemRecipe {
@@ -6,3 +7,4 @@ export class ScrollOfAgility extends ItemRecipe {
     protected readonly recipe: number[] = [this.agileSlippers, this.speedPotion];
     protected readonly resultingItem: number = FourCC('I01H');
 }
+*/

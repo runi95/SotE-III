@@ -1,3 +1,4 @@
+/*
 import { ItemRecipe } from '../ItemRecipe';
 
 export class Soulcage extends ItemRecipe {
@@ -8,3 +9,4 @@ export class Soulcage extends ItemRecipe {
     protected readonly recipe: number[] = [this.emptySoulcage, this.greenSoulstone, this.blueSoulstone, this.purpleSoulstone];
     protected readonly resultingItem: number = FourCC('I011');
 }
+*/
