@@ -1,10 +1,27 @@
-/*
 import { ItemRecipe } from '../ItemRecipe';
+import { Scepter } from '../Scepter';
+import { Item } from '../Item';
+import { BloodiedExecutionersAxe } from '../BloodiedExecutionersAxe';
 
+// tslint:disable: max-line-length
 export class ThrowableAxe extends ItemRecipe {
-    private readonly bloodiedExecutionersAxe: number = FourCC('I00Z');
-    private readonly scepter: number = FourCC('I010');
-    protected readonly recipe: number[] = [this.bloodiedExecutionersAxe, this.scepter];
-    protected readonly resultingItem: number = FourCC('I01E');
+    private readonly bloodiedExecutionersAxe: BloodiedExecutionersAxe;
+    private readonly scepter: Scepter;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I01E');
+    public readonly name: string = 'Throwable Axe';
+    public readonly goldCost: number = 800;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpThree.blp';
+    public readonly description: string = `You can't quite make out what the runes say.
+
+|cffffcc00Attack damage:|r +19
+|cffffcc00Effect:|r Throw an axe at the target unit dealing 300 initial damage, 20 damage per second afterwards and drastically slows down movement speed for 15 seconds`;
+
+    constructor(bloodiedExecutionersAxe: BloodiedExecutionersAxe, scepter: Scepter) {
+        super();
+
+        this.bloodiedExecutionersAxe = bloodiedExecutionersAxe;
+        this.scepter = scepter;
+        this.recipe = [this.bloodiedExecutionersAxe, this.scepter];
+    }
 }
-*/

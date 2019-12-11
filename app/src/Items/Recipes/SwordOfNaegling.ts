@@ -1,10 +1,27 @@
-/*
 import { ItemRecipe } from '../ItemRecipe';
+import { Fragarach } from './Fragarach';
+import { SwordOfFreyr } from './SwordOfFreyr';
+import { Item } from '../Item';
 
 export class SwordOfNaegling extends ItemRecipe {
-    private readonly fragarach: number = FourCC('I017');
-    private readonly swordOfFreyr: number = FourCC('I018');
-    protected readonly recipe: number[] = [this.fragarach, this.swordOfFreyr];
-    protected readonly resultingItem: number = FourCC('I02G');
+    private readonly fragarach: Fragarach;
+    private readonly swordOfFreyr: SwordOfFreyr;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I02G');
+    public readonly name: string = 'Sword of Naegling';
+    public readonly goldCost: number = 1850;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDarkSword.blp';
+    public readonly description: string = `The wind howls with anticipation as you raise the sword
+
+|cffffcc00Attack damage:|r +20
+|cffffcc00Strength:|r +10
+|cffffcc00Effect:|r Summons a tornado that damages and slows nearby enemies`;
+
+    constructor(fragarach: Fragarach, swordOfFreyr: SwordOfFreyr) {
+        super();
+
+        this.fragarach = fragarach;
+        this.swordOfFreyr = swordOfFreyr;
+        this.recipe = [this.fragarach, this.swordOfFreyr];
+    }
 }
-*/

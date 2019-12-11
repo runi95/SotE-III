@@ -1,10 +1,25 @@
-/*
 import { ItemRecipe } from '../ItemRecipe';
+import { Item } from '../Item';
+import { WandOfShadowsight } from './WandOfShadowsight';
+import { ClockworkPenguin } from '../ClockworkPenguin';
 
 export class SnowyOwl extends ItemRecipe {
-    private readonly clockworkPenguin: number = FourCC('I01N');
-    private readonly wandOfShadowsight: number = FourCC('I020');
-    protected readonly recipe: number[] = [this.clockworkPenguin, this.wandOfShadowsight];
-    protected readonly resultingItem: number = FourCC('I02C');
+    private readonly clockworkPenguin: ClockworkPenguin;
+    private readonly wandOfShadowsight: WandOfShadowsight;
+    public readonly recipe: Item[];
+    public readonly itemId: number = FourCC('I02C');
+    public readonly name: string = 'Snowy Owl';
+    public readonly goldCost: number = 600;
+    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
+    public readonly description: string = `It is said that these creatures can see the dead.
+
+|cffffcc00Effect:|r A clockwork penguin with 6 inventory spaces that will always stay by your side and follow you around.`;
+
+    constructor(clockworkPenguin: ClockworkPenguin, wandOfShadowsight: WandOfShadowsight) {
+        super();
+
+        this.clockworkPenguin = clockworkPenguin;
+        this.wandOfShadowsight = wandOfShadowsight;
+        this.recipe = [this.clockworkPenguin, this.wandOfShadowsight];
+    }
 }
-*/

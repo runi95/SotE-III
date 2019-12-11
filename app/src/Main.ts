@@ -25,6 +25,56 @@ import { BootsOfSpeed } from './Items/BootsOfSpeed';
 import { Ancile } from './Items/Recipes/Ancile';
 import { ManaEgg } from './Items/ManaEgg';
 import { ArmoredBoots } from './Items/Recipes/ArmoredBoots';
+import { BerserkerPotion } from './Items/BerserkerPotion';
+import { BloodiedExecutionersAxe } from './Items/BloodiedExecutionersAxe';
+import { BlueSoulstone } from './Items/BlueSoulstone';
+import { Branch } from './Items/Branch';
+import { Claws } from './Items/Claws';
+import { CloakOfShadows } from './Items/CloakOfShadows';
+import { ClockworkPenguin } from './Items/ClockworkPenguin';
+import { EmptySoulcage } from './Items/EmptySoulcage';
+import { EmptyVial } from './Items/EmptyVial';
+import { Flare } from './Items/Flare';
+import { GoblinBattery } from './Items/GoblinBattery';
+import { GreenSoulstone } from './Items/GreenSoulstone';
+import { IronSword } from './Items/IronSword';
+import { LoadedRifle } from './Items/LoadedRifle';
+import { OrbOfMagic } from './Items/OrbOfMagic';
+import { PurpleSoulstone } from './Items/PurpleSoulstone';
+import { Scepter } from './Items/Scepter';
+import { SpeedPotion } from './Items/SpeedPotion';
+import { WarAxe } from './Items/WarAxe';
+import { BerserkerAxes } from './Items/Recipes/BerserkerAxes';
+import { Caduceus } from './Items/Recipes/Caduceus';
+import { CircesStaff } from './Items/Recipes/CircesStaff';
+import { CloakOfShadowWalk } from './Items/Recipes/CloakOfShadowWalk';
+import { ScrollOfAgility } from './Items/Recipes/ScrollOfAgility';
+import { CreatureClaws } from './Items/Recipes/CreatureClaws';
+import { DragonScales } from './Items/Recipes/DragonScales';
+import { DragonWhelpClaws } from './Items/Recipes/DragonWhelpClaws';
+import { EnchantedShield } from './Items/Recipes/EnchantedShield';
+import { EnhancedBerserkerAxes } from './Items/Recipes/EnhancedBerserkerAxes';
+import { Fragarach } from './Items/Recipes/Fragarach';
+import { ManaBlade } from './Items/Recipes/ManaBlade';
+import { IronClaws } from './Items/Recipes/IronClaws';
+import { LightningBolt } from './Items/Recipes/LightningBolt';
+import { TheAegis } from './Items/Recipes/TheAegis';
+import { LionsRing } from './Items/Recipes/LionsRing';
+import { RunedBracers } from './Items/RunedBracers';
+import { LoadedCannon } from './Items/Recipes/LoadedCannon';
+import { ManaAxe } from './Items/Recipes/ManaAxe';
+import { ManaInfusedMask } from './Items/Recipes/ManaInfusedMask';
+import { MaskOfProficiency } from './Items/Recipes/MaskOfProficiency';
+import { VialOfMagic } from './Items/Recipes/VialOfMagic';
+import { MasterCrystalBall } from './Items/Recipes/MasterCrystalBall';
+import { SnowyOwl } from './Items/Recipes/SnowyOwl';
+import { WandOfShadowsight } from './Items/Recipes/WandOfShadowsight';
+import { GoblinNightScope } from './Items/GoblinNightScope';
+import { Soulcage } from './Items/Recipes/Soulcage';
+import { SpellShield } from './Items/Recipes/SpellShield';
+import { SwordOfFreyr } from './Items/Recipes/SwordOfFreyr';
+import { SwordOfNaegling } from './Items/Recipes/SwordOfNaegling';
+import { ThrowableAxe } from './Items/Recipes/ThrowableAxe';
 
 interface ItemInSlot {
     itemId: number;
@@ -285,12 +335,50 @@ function initializeItemUpgradeFrames(gameGlobals: GameGlobals): void {
     const studdedLeatherArmor: StuddedLeatherArmor = new StuddedLeatherArmor();
     const bootsOfSpeed: BootsOfSpeed = new BootsOfSpeed();
     const manaEgg: ManaEgg = new ManaEgg();
+    const berserkerPotion: BerserkerPotion = new BerserkerPotion();
+    const bloodiedExecutionersAxe: BloodiedExecutionersAxe = new BloodiedExecutionersAxe();
+    const blueSoulstone: BlueSoulstone = new BlueSoulstone();
+    const branch: Branch = new Branch();
+    const claws: Claws = new Claws();
+    const cloakOfShadows: CloakOfShadows = new CloakOfShadows();
+    const clockworkPenguin: ClockworkPenguin = new ClockworkPenguin();
+    const emptySoulcage: EmptySoulcage = new EmptySoulcage();
+    const emptyVial: EmptyVial = new EmptyVial();
+    const flare: Flare = new Flare();
+    const goblinBattery: GoblinBattery = new GoblinBattery();
+    const greenSoulstone: GreenSoulstone = new GreenSoulstone();
+    const ironSword: IronSword = new IronSword();
+    const loadedRifle: LoadedRifle = new LoadedRifle();
+    const orbOfMagic: OrbOfMagic = new OrbOfMagic();
+    const purpleSoulstone: PurpleSoulstone = new PurpleSoulstone();
+    const scepter: Scepter = new Scepter();
+    const speedPotion: SpeedPotion = new SpeedPotion();
+    const warAxe: WarAxe = new WarAxe();
+    const runedBracers: RunedBracers = new RunedBracers();
+    const goblinNightScope: GoblinNightScope = new GoblinNightScope();
     const balancedShield: BalancedShield = new BalancedShield(moonArmor, ironShield);
     const improvedMoonArmor: ImprovedMoonArmor = new ImprovedMoonArmor(moonArmor);
     const improvedBalancedShield: ImprovedBalancedShield = new ImprovedBalancedShield(balancedShield);
     const steelShield: SteelShield = new SteelShield(ironShield);
     const coralScales: CoralScales = new CoralScales(reinforcedHide, studdedLeatherArmor);
     const reinforcedScales: ReinforcedScales = new ReinforcedScales(steelShield, coralScales);
+    const agileSlippers: AgileSlippers = new AgileSlippers(bootsOfSpeed);
+    const scrollOfAgility: ScrollOfAgility = new ScrollOfAgility(agileSlippers, speedPotion);
+    const creatureClaws: CreatureClaws = new CreatureClaws(claws, studdedLeatherArmor);
+    const dragonWhelpClaws: DragonWhelpClaws = new DragonWhelpClaws(creatureClaws);
+    const berserkerAxes: BerserkerAxes = new BerserkerAxes(warAxe);
+    const manaBlade: ManaBlade = new ManaBlade(ironSword, emptyVial);
+    const ironClaws: IronClaws = new IronClaws(ironSword, claws);
+    const theAegis: TheAegis = new TheAegis(steelShield, scepter);
+    const vialOfMagic: VialOfMagic = new VialOfMagic(orbOfMagic, emptyVial);
+    const maskOfProficiency: MaskOfProficiency = new MaskOfProficiency(orbOfMagic, sobiMask);
+    const adeptCrystalBall: AdeptCrystalBall = new AdeptCrystalBall(crystalBall, sobiMask);
+    const wandOfShadowsight: WandOfShadowsight = new WandOfShadowsight(goblinNightScope, flare);
+    const enchantedShield: EnchantedShield = new EnchantedShield(orbOfMagic, moonArmor);
+    const lionsRing: LionsRing = new LionsRing(runedBracers, improvedMoonArmor);
+    const manaAxe: ManaAxe = new ManaAxe(warAxe, emptyVial);
+    const fragarach: Fragarach = new Fragarach(manaBlade, ironClaws);
+    const swordOfFreyr: SwordOfFreyr = new SwordOfFreyr(manaBlade, manaAxe);
     const items: ItemRecipe[] = [
         improvedMoonArmor,
         improvedBalancedShield,
@@ -298,11 +386,39 @@ function initializeItemUpgradeFrames(gameGlobals: GameGlobals): void {
         balancedShield,
         steelShield,
         coralScales,
-        new AdeptCrystalBall(crystalBall, sobiMask),
+        agileSlippers,
+        scrollOfAgility,
+        creatureClaws,
+        dragonWhelpClaws,
+        berserkerAxes,
+        manaBlade,
+        ironClaws,
+        theAegis,
+        vialOfMagic,
+        maskOfProficiency,
+        adeptCrystalBall,
+        wandOfShadowsight,
+        enchantedShield,
+        lionsRing,
+        manaAxe,
         new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
         new AgileSlippers(bootsOfSpeed),
         new Ancile(manaEgg, ironShield),
         new ArmoredBoots(bootsOfSpeed, steelShield),
+        new Caduceus(branch, studdedLeatherArmor),
+        new CircesStaff(branch, scepter),
+        new CloakOfShadowWalk(cloakOfShadows, scrollOfAgility),
+        new DragonScales(dragonWhelpClaws, coralScales),
+        new EnhancedBerserkerAxes(berserkerAxes, berserkerPotion),
+        new LightningBolt(goblinBattery, theAegis),
+        new LoadedCannon(loadedRifle, ironSword),
+        new ManaInfusedMask(maskOfProficiency, vialOfMagic),
+        new MasterCrystalBall(adeptCrystalBall, vialOfMagic),
+        new SnowyOwl(clockworkPenguin, wandOfShadowsight),
+        new Soulcage(emptySoulcage, greenSoulstone, blueSoulstone, purpleSoulstone),
+        new SpellShield(vialOfMagic, enchantedShield, lionsRing),
+        new SwordOfNaegling(fragarach, swordOfFreyr),
+        new ThrowableAxe(bloodiedExecutionersAxe, scepter),
     ];
 
     const itemWindowSize: number = Math.min(items.length, 11);
