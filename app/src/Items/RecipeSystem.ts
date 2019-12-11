@@ -12,6 +12,7 @@ interface ItemInSlot {
 export class RecipeSystem {
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
+    private mainButton: framehandle;
     private selectedItemFrameIndex: number | undefined;
     private selectedItemIndex: (number | undefined)[] = [];
     private itemRecipeResultDescriptionFrame: framehandle;
@@ -31,8 +32,8 @@ export class RecipeSystem {
         const menuBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', this.menu, 0, 0);
         const menuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', this.menu, 0, 0);
         const menuScrollbar: framehandle = BlzCreateFrame('EscMenuSliderTemplate', this.menu, 0, 0);
-        const mainButton: framehandle = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
-        const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', mainButton, '', 0);
+        this.mainButton = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
+        const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', this.mainButton, '', 0);
 
         BlzFrameSetSize(this.menu, 0.5, 0.38);
         BlzFrameSetSize(menuScrollbar, 0.48, 0.02);
@@ -41,33 +42,14 @@ export class RecipeSystem {
         BlzFrameSetPoint(menuScrollbar, FRAMEPOINT_BOTTOM, this.menu, FRAMEPOINT_BOTTOM, 0.0, 0.01);
         BlzFrameSetAllPoints(menuBackdrop, this.menu);
         BlzFrameSetVisible(this.menu, false);
-        BlzFrameSetSize(mainButton, 0.04, 0.04);
-        BlzFrameSetPoint(mainButton, FRAMEPOINT_BOTTOMLEFT, originFrameGameUi, FRAMEPOINT_BOTTOMLEFT, 0.005, 0.15);
-        BlzFrameSetAllPoints(mainButtonBackdrop, mainButton);
+        BlzFrameSetSize(this.mainButton, 0.04, 0.04);
+        BlzFrameSetPoint(this.mainButton, FRAMEPOINT_BOTTOMLEFT, originFrameGameUi, FRAMEPOINT_BOTTOMLEFT, 0.005, 0.15);
+        BlzFrameSetAllPoints(mainButtonBackdrop, this.mainButton);
         BlzFrameSetTexture(mainButtonBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNScroll.blp', 0, true);
         BlzFrameSetText(menuTitle, 'Recipes');
-        BlzFrameSetVisible(mainButton, false);
+        BlzFrameSetVisible(this.mainButton, false);
 
-        const showMainButton: boolean[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            showMainButton.push(false);
-            if (this.gameGlobals.PlayerSpawnRegion.length > i) {
-                const index: number = i;
-                const showMainButtonTrigger: Trigger = new Trigger();
-                showMainButtonTrigger.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
-                showMainButtonTrigger.addAction(() => {
-                    showMainButton[index] = true;
-                    BlzFrameSetVisible(mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
-                });
-
-                const hideMainButtonTrigger: Trigger = new Trigger();
-                hideMainButtonTrigger.registerLeaveRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
-                hideMainButtonTrigger.addAction(() => {
-                    showMainButton[index] = false;
-                    BlzFrameSetVisible(mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
-                });
-            }
-        }
+        this.createMainButtonTriggers();
 
         this.itemWindowSize = Math.min(items.length, 11);
         this.itemRecipeResultIconFrame = BlzCreateFrameByType('BACKDROP', 'itemRecipeResultIcon', this.menu, '', 0);
@@ -84,25 +66,11 @@ export class RecipeSystem {
         BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, false);
 
         for (let i: number = 1; i < 7; i++) {
-            const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
-            BlzFrameSetSize(itemIcon, 0.02, 0.02);
-            const x: number = 0.019 + ((i - 1) % 2) * 0.022;
-            const y: number = -0.085 - 0.02 * ((i % 2) + Math.floor(i / 2));
-            BlzFrameSetPoint(itemIcon, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, x, y);
-            BlzFrameSetTexture(itemIcon, 'war3mapImported\\BTNNoItem.blp', 0, true);
-
-            this.itemRecipeFrames.push(itemIcon);
+            this.itemRecipeFrames.push(this.createItemRecipeFrame(i));
         }
 
         for (let i: number = 1; i < 7; i++) {
-            const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
-            BlzFrameSetSize(itemIcon, 0.02, 0.02);
-            const x: number = 0.019 + ((i - 1) % 2) * 0.022;
-            const y: number = -0.085 - 0.02 * ((i % 2) + Math.floor(i / 2));
-            BlzFrameSetPoint(itemIcon, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, x, y);
-            BlzFrameSetTexture(itemIcon, 'war3mapImported\\BTNGreyedItem.blp', 0, true);
-
-            this.itemRecipeGreenBorderFrames.push(itemIcon);
+            this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
@@ -111,71 +79,8 @@ export class RecipeSystem {
 
         this.previousItemWindowMax = this.itemWindowSize - 1;
 
-        const showMainFrame: boolean[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            showMainFrame.push(false);
-            if (GetPlayerController(Player(i)) === MAP_CONTROL_USER && GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
-                const index: number = i;
-                const t: Trigger = new Trigger();
-                t.registerFrameEvent(mainButton, FRAMEEVENT_CONTROL_CLICK);
-                t.addAction(() => {
-                    showMainFrame[index] = !showMainFrame[index];
-                    BlzFrameSetVisible(this.menu, showMainFrame[GetPlayerId(GetLocalPlayer())]);
-
-                    if (showMainFrame[index]) {
-                        this.unselectItemEvent();
-                    }
-
-                    BlzFrameSetEnable(mainButton, false);
-                    BlzFrameSetEnable(mainButton, true);
-                });
-            }
-        }
-
-        const upgradeButtonTrigger: Trigger = new Trigger();
-        upgradeButtonTrigger.registerFrameEvent(this.itemRecipeResultUpgradeButton, FRAMEEVENT_CONTROL_CLICK);
-        upgradeButtonTrigger.addAction(() => {
-            const triggerPlayerId: number = GetPlayerId(GetTriggerPlayer());
-            const selectedItemForPlayerIndex: number | undefined = this.selectedItemIndex[triggerPlayerId];
-            if (selectedItemForPlayerIndex !== undefined) {
-                const itemsInSlots: ItemInSlot[] = [];
-                for (let i: number = 1; i < 7; i++) {
-                    itemsInSlots.push({
-                        itemId: GetItemTypeId(UnitItemInSlotBJ(gameGlobals.PlayerHero[triggerPlayerId], i)),
-                        includedInRecipe: false,
-                    });
-                }
-
-                let hasAllItems: boolean = true;
-                for (let i: number = 0; i < items[selectedItemForPlayerIndex].recipe.length; i++) {
-                    const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(
-                        itemsInSlots,
-                        items[selectedItemForPlayerIndex].recipe[i].itemId,
-                    );
-
-                    if (foundSlotItem === undefined) {
-                        hasAllItems = false;
-                    }
-                }
-
-                const upgradeGoldCost: number = items[selectedItemForPlayerIndex].goldCost;
-                const playerCurrentGold: number = GetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD);
-                if (hasAllItems && playerCurrentGold >= upgradeGoldCost) {
-                    SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, playerCurrentGold - upgradeGoldCost);
-
-                    for (let i: number = 0; i < items[selectedItemForPlayerIndex].recipe.length; i++) {
-                        RemoveItem(
-                            GetItemOfTypeFromUnitBJ(
-                                gameGlobals.PlayerHero[triggerPlayerId],
-                                items[selectedItemForPlayerIndex].recipe[i].itemId,
-                            ),
-                        );
-                    }
-                    UnitAddItemById(gameGlobals.PlayerHero[triggerPlayerId], items[selectedItemForPlayerIndex].itemId);
-                    this.selectItemEvent(this.selectedItemFrameIndex as number, triggerPlayerId);
-                }
-            }
-        });
+        this.createMainFrameTriggers();
+        this.createUpgradeButtonTrigger();
 
         const itemFrames: framehandle[] = [];
         for (let i: number = 0; i < this.itemWindowSize && i < items.length; i++) {
@@ -331,5 +236,120 @@ export class RecipeSystem {
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, 'war3mapImported\\BTNNoItem.blp', 0, true);
         BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
         this.selectedItemFrameIndex = undefined;
+    }
+
+    private createItemRecipeFrame(index: number): framehandle {
+        const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
+        BlzFrameSetSize(itemIcon, 0.02, 0.02);
+        const x: number = 0.019 + ((index - 1) % 2) * 0.022;
+        const y: number = -0.085 - 0.02 * ((index % 2) + Math.floor(index / 2));
+        BlzFrameSetPoint(itemIcon, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, x, y);
+        BlzFrameSetTexture(itemIcon, 'war3mapImported\\BTNNoItem.blp', 0, true);
+
+        return itemIcon;
+    }
+
+    private createItemRecipeGreenBorderFrame(index: number): framehandle {
+        const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
+        BlzFrameSetSize(itemIcon, 0.02, 0.02);
+        const x: number = 0.019 + ((index - 1) % 2) * 0.022;
+        const y: number = -0.085 - 0.02 * ((index % 2) + Math.floor(index / 2));
+        BlzFrameSetPoint(itemIcon, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, x, y);
+        BlzFrameSetTexture(itemIcon, 'war3mapImported\\BTNGreyedItem.blp', 0, true);
+
+        return itemIcon;
+    }
+
+    private createMainButtonTriggers(): void {
+        const showMainButton: boolean[] = [];
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            showMainButton.push(false);
+            if (this.gameGlobals.PlayerSpawnRegion.length > i) {
+                const index: number = i;
+                const showMainButtonTrigger: Trigger = new Trigger();
+                showMainButtonTrigger.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
+                showMainButtonTrigger.addAction(() => {
+                    showMainButton[index] = true;
+                    BlzFrameSetVisible(this.mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
+                });
+
+                const hideMainButtonTrigger: Trigger = new Trigger();
+                hideMainButtonTrigger.registerLeaveRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
+                hideMainButtonTrigger.addAction(() => {
+                    showMainButton[index] = false;
+                    BlzFrameSetVisible(this.mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
+                });
+            }
+        }
+    }
+
+    private createMainFrameTriggers(): void {
+        const showMainFrame: boolean[] = [];
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            showMainFrame.push(false);
+            if (GetPlayerController(Player(i)) === MAP_CONTROL_USER && GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
+                const index: number = i;
+                const t: Trigger = new Trigger();
+                t.registerFrameEvent(this.mainButton, FRAMEEVENT_CONTROL_CLICK);
+                t.addAction(() => {
+                    showMainFrame[index] = !showMainFrame[index];
+                    BlzFrameSetVisible(this.menu, showMainFrame[GetPlayerId(GetLocalPlayer())]);
+
+                    if (showMainFrame[index]) {
+                        this.unselectItemEvent();
+                    }
+
+                    BlzFrameSetEnable(this.mainButton, false);
+                    BlzFrameSetEnable(this.mainButton, true);
+                });
+            }
+        }
+    }
+
+    private createUpgradeButtonTrigger(): void {
+        const upgradeButtonTrigger: Trigger = new Trigger();
+        upgradeButtonTrigger.registerFrameEvent(this.itemRecipeResultUpgradeButton, FRAMEEVENT_CONTROL_CLICK);
+        upgradeButtonTrigger.addAction(() => {
+            const triggerPlayerId: number = GetPlayerId(GetTriggerPlayer());
+            const selectedItemForPlayerIndex: number | undefined = this.selectedItemIndex[triggerPlayerId];
+            if (selectedItemForPlayerIndex !== undefined) {
+                const itemsInSlots: ItemInSlot[] = [];
+                for (let i: number = 1; i < 7; i++) {
+                    itemsInSlots.push({
+                        itemId: GetItemTypeId(UnitItemInSlotBJ(this.gameGlobals.PlayerHero[triggerPlayerId], i)),
+                        includedInRecipe: false,
+                    });
+                }
+
+                let hasAllItems: boolean = true;
+                for (let i: number = 0; i < items[selectedItemForPlayerIndex].recipe.length; i++) {
+                    const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(
+                        itemsInSlots,
+                        items[selectedItemForPlayerIndex].recipe[i].itemId,
+                    );
+
+                    if (foundSlotItem === undefined) {
+                        hasAllItems = false;
+                    }
+                }
+
+                const upgradeGoldCost: number = items[selectedItemForPlayerIndex].goldCost;
+                const playerCurrentGold: number = GetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD);
+                if (hasAllItems && playerCurrentGold >= upgradeGoldCost) {
+                    SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, playerCurrentGold - upgradeGoldCost);
+
+                    for (let i: number = 0; i < items[selectedItemForPlayerIndex].recipe.length; i++) {
+                        RemoveItem(
+                            GetItemOfTypeFromUnitBJ(
+                                this.gameGlobals.PlayerHero[triggerPlayerId],
+                                items[selectedItemForPlayerIndex].recipe[i].itemId,
+                            ),
+                        );
+                    }
+                    UnitAddItemById(this.gameGlobals.PlayerHero[triggerPlayerId], items[selectedItemForPlayerIndex].itemId);
+                    this.selectItemEvent(this.selectedItemFrameIndex as number, triggerPlayerId);
+                }
+            }
+        });
     }
 }
