@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { TheAegis } from './TheAegis';
 import { Item } from '../Item';
-import { GoblinBattery } from '../GoblinBattery';
+import { GoblinBattery } from '../BasicItems/GoblinBattery';
 
 // tslint:disable: max-line-length
 export class LightningBolt extends ItemRecipe {

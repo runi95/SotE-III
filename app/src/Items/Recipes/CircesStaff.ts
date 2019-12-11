@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Branch } from '../Branch';
+import { Branch } from '../BasicItems/Branch';
 import { Item } from '../Item';
-import { Scepter } from '../Scepter';
+import { Scepter } from '../BasicItems/Scepter';
 
 export class CircesStaff extends ItemRecipe {
     private readonly branch: Branch;

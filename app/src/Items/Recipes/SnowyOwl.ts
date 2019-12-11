@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
 import { WandOfShadowsight } from './WandOfShadowsight';
-import { ClockworkPenguin } from '../ClockworkPenguin';
+import { ClockworkPenguin } from '../BasicItems/ClockworkPenguin';
 
 export class SnowyOwl extends ItemRecipe {
     private readonly clockworkPenguin: ClockworkPenguin;

@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
-import { CrystalBall } from '../CrystalBall';
-import { SobiMask } from '../SobiMask';
+import { CrystalBall } from '../BasicItems/CrystalBall';
+import { SobiMask } from '../BasicItems/SobiMask';
 
 export class AdeptCrystalBall extends ItemRecipe {
     private readonly crystalBall: CrystalBall;

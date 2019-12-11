@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { WarAxe } from '../WarAxe';
+import { WarAxe } from '../BasicItems/WarAxe';
 import { Item } from '../Item';
 
 export class BerserkerAxes extends ItemRecipe {

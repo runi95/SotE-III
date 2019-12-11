@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { AgileSlippers } from './AgileSlippers';
 import { Item } from '../Item';
-import { SpeedPotion } from '../SpeedPotion';
+import { SpeedPotion } from '../BasicItems/SpeedPotion';
 
 export class ScrollOfAgility extends ItemRecipe {
     private readonly agileSlippers: AgileSlippers;

@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
-import { IronSword } from '../IronSword';
-import { EmptyVial } from '../EmptyVial';
+import { IronSword } from '../BasicItems/IronSword';
+import { EmptyVial } from '../BasicItems/EmptyVial';
 
 export class ManaBlade extends ItemRecipe {
     private readonly ironSword: IronSword;

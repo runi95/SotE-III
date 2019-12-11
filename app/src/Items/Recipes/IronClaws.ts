@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { IronSword } from '../IronSword';
-import { Claws } from '../Claws';
+import { IronSword } from '../BasicItems/IronSword';
+import { Claws } from '../BasicItems/Claws';
 import { Item } from '../Item';
 
 export class IronClaws extends ItemRecipe {

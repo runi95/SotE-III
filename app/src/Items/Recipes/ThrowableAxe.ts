@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Scepter } from '../Scepter';
+import { Scepter } from '../BasicItems/Scepter';
 import { Item } from '../Item';
-import { BloodiedExecutionersAxe } from '../BloodiedExecutionersAxe';
+import { BloodiedExecutionersAxe } from '../BasicItems/BloodiedExecutionersAxe';
 
 // tslint:disable: max-line-length
 export class ThrowableAxe extends ItemRecipe {

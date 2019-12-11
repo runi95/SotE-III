@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { BootsOfSpeed } from '../BootsOfSpeed';
+import { BootsOfSpeed } from '../BasicItems/BootsOfSpeed';
 import { Item } from '../Item';
 
 export class AgileSlippers extends ItemRecipe {

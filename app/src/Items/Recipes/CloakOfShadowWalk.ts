@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ScrollOfAgility } from './ScrollOfAgility';
 import { Item } from '../Item';
-import { CloakOfShadows } from '../CloakOfShadows';
+import { CloakOfShadows } from '../BasicItems/CloakOfShadows';
 
 export class CloakOfShadowWalk extends ItemRecipe {
     private readonly cloakOfShadows: CloakOfShadows;

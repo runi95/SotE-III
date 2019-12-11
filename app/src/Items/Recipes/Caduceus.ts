@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Branch } from '../Branch';
-import { StuddedLeatherArmor } from '../StuddedLeatherArmor';
+import { Branch } from '../BasicItems/Branch';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 import { Item } from '../Item';
 
 export class Caduceus extends ItemRecipe {

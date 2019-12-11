@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { MoonArmor } from '../MoonArmor';
+import { MoonArmor } from '../BasicItems/MoonArmor';
 import { Item } from '../Item';
-import { OrbOfMagic } from '../OrbOfMagic';
+import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
 
 export class EnchantedShield extends ItemRecipe {
     private readonly orbOfMagic: OrbOfMagic;

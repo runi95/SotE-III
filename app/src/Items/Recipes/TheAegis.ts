@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { SteelShield } from './SteelShield';
-import { Scepter } from '../Scepter';
+import { Scepter } from '../BasicItems/Scepter';
 import { Item } from '../Item';
 
 export class TheAegis extends ItemRecipe {

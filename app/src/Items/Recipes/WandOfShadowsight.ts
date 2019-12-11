@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
-import { Flare } from '../Flare';
-import { GoblinNightScope } from '../GoblinNightScope';
+import { Flare } from '../BasicItems/Flare';
+import { GoblinNightScope } from '../BasicItems/GoblinNightScope';
 
 export class WandOfShadowsight extends ItemRecipe {
     private readonly goblinNightScope: GoblinNightScope;

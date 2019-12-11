@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { StuddedLeatherArmor } from '../StuddedLeatherArmor';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 import { Item } from '../Item';
-import { Claws } from '../Claws';
+import { Claws } from '../BasicItems/Claws';
 
 export class CreatureClaws extends ItemRecipe {
     private readonly claws: Claws;

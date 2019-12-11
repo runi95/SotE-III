@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { BerserkerAxes } from './BerserkerAxes';
 import { Item } from '../Item';
-import { BerserkerPotion } from '../BerserkerPotion';
+import { BerserkerPotion } from '../BasicItems/BerserkerPotion';
 
 export class EnhancedBerserkerAxes extends ItemRecipe {
     private readonly berserkerAxes: BerserkerAxes;

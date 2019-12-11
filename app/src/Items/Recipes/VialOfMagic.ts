@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { OrbOfMagic } from '../OrbOfMagic';
-import { EmptyVial } from '../EmptyVial';
+import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
+import { EmptyVial } from '../BasicItems/EmptyVial';
 import { Item } from '../Item';
 
 export class VialOfMagic extends ItemRecipe {

@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { OrbOfMagic } from '../OrbOfMagic';
-import { SobiMask } from '../SobiMask';
+import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
+import { SobiMask } from '../BasicItems/SobiMask';
 import { Item } from '../Item';
 
 export class MaskOfProficiency extends ItemRecipe {

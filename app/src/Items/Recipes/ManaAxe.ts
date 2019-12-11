@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { WarAxe } from '../WarAxe';
-import { EmptyVial } from '../EmptyVial';
+import { WarAxe } from '../BasicItems/WarAxe';
+import { EmptyVial } from '../BasicItems/EmptyVial';
 import { Item } from '../Item';
 
 export class ManaAxe extends ItemRecipe {

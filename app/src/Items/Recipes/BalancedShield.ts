@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { MoonArmor } from '../MoonArmor';
+import { MoonArmor } from '../BasicItems/MoonArmor';
 import { Item } from '../Item';
-import { IronShield } from '../IronShield';
+import { IronShield } from '../BasicItems/IronShield';
 
 export class BalancedShield extends ItemRecipe {
     private readonly moonArmor: MoonArmor;

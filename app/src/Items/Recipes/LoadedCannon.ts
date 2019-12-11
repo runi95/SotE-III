@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { IronSword } from '../IronSword';
+import { IronSword } from '../BasicItems/IronSword';
 import { Item } from '../Item';
-import { LoadedRifle } from '../LoadedRifle';
+import { LoadedRifle } from '../BasicItems/LoadedRifle';
 
 export class LoadedCannon extends ItemRecipe {
     private readonly loadedRifle: LoadedRifle;

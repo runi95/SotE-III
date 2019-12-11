@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { ReinforcedHide } from '../ReinforcedHide';
+import { ReinforcedHide } from '../BasicItems/ReinforcedHide';
 import { Item } from '../Item';
-import { StuddedLeatherArmor } from '../StuddedLeatherArmor';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 
 export class CoralScales extends ItemRecipe {
     private readonly reinforcedHide: ReinforcedHide;

@@ -1,4 +1,4 @@
-import { Item } from './Item';
+import { Item } from '../Item';
 
 export class SpeedPotion extends Item {
     public readonly itemId: number = FourCC('I00F');

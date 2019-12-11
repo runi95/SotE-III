@@ -1,9 +1,9 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
-import { EmptySoulcage } from '../EmptySoulcage';
-import { GreenSoulstone } from '../GreenSoulstone';
-import { BlueSoulstone } from '../BlueSoulstone';
-import { PurpleSoulstone } from '../PurpleSoulstone';
+import { EmptySoulcage } from '../BasicItems/EmptySoulcage';
+import { GreenSoulstone } from '../BasicItems/GreenSoulstone';
+import { BlueSoulstone } from '../BasicItems/BlueSoulstone';
+import { PurpleSoulstone } from '../BasicItems/PurpleSoulstone';
 
 export class Soulcage extends ItemRecipe {
     private readonly emptySoulcage: EmptySoulcage;

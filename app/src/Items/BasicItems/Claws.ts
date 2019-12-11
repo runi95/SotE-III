@@ -1,4 +1,4 @@
-import { Item } from './Item';
+import { Item } from '../Item';
 
 export class Claws extends Item {
     public readonly itemId: number = FourCC('I00M');

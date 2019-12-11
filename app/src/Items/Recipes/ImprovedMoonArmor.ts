@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { MoonArmor } from '../MoonArmor';
+import { MoonArmor } from '../BasicItems/MoonArmor';
 import { Item } from '../Item';
 
 export class ImprovedMoonArmor extends ItemRecipe {

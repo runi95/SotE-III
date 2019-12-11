@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { RunedBracers } from '../RunedBracers';
+import { RunedBracers } from '../BasicItems/RunedBracers';
 import { ImprovedMoonArmor } from './ImprovedMoonArmor';
 import { Item } from '../Item';
 
