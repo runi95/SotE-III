@@ -171,7 +171,21 @@ export class RecipeSystem {
     private selectItemEvent(index: number, triggerPlayerId: number): void {
         this.selectedItemFrameIndex = index;
         this.selectedItemIndex[triggerPlayerId] = this.selectedItemFrameIndex + this.previousItemWindowMax + 1 - this.itemWindowSize;
-        const item: ItemRecipe = items[this.selectedItemIndex[triggerPlayerId] as number];
+        this.selectItem(this.selectedItemIndex[triggerPlayerId] as number);
+
+        BlzFrameSetPoint(
+            this.selectedItemFrame as framehandle,
+            FRAMEPOINT_BOTTOMLEFT,
+            this.menu,
+            FRAMEPOINT_BOTTOMLEFT,
+            0.0175 + 0.0425 * this.selectedItemFrameIndex,
+            0.03,
+        );
+        BlzFrameSetVisible(this.selectedItemFrame as framehandle, true);
+    }
+
+    private selectItem(index: number): void {
+        const item: ItemRecipe = items[index];
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item.description);
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
@@ -185,10 +199,7 @@ export class RecipeSystem {
 
         for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
             if (i < item.recipe.length) {
-                const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(
-                    itemsInSlots,
-                    items[this.selectedItemIndex[triggerPlayerId] as number].recipe[i].itemId,
-                );
+                const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(itemsInSlots, item.recipe[i].itemId);
                 if (foundSlotItem !== undefined) {
                     foundSlotItem.includedInRecipe = true;
                     BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreenBorder.blp', 0, true);
@@ -213,29 +224,6 @@ export class RecipeSystem {
         }
 
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, item.iconPath, 0, true);
-        BlzFrameSetPoint(
-            this.selectedItemFrame as framehandle,
-            FRAMEPOINT_BOTTOMLEFT,
-            this.menu,
-            FRAMEPOINT_BOTTOMLEFT,
-            0.0175 + 0.0425 * this.selectedItemFrameIndex,
-            0.03,
-        );
-        BlzFrameSetVisible(this.selectedItemFrame as framehandle, true);
-    }
-
-    private unselectItemEvent(): void {
-        for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
-            BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreyedItem.blp', 0, true);
-            BlzFrameSetTexture(this.itemRecipeFrames[i], 'war3mapImported\\BTNNoItem.blp', 0, true);
-            BlzFrameSetText(this.itemRecipeResultUpgradeButton, '');
-            BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, false);
-        }
-
-        BlzFrameSetText(this.itemRecipeResultDescriptionFrame, '');
-        BlzFrameSetTexture(this.itemRecipeResultIconFrame, 'war3mapImported\\BTNNoItem.blp', 0, true);
-        BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
-        this.selectedItemFrameIndex = undefined;
     }
 
     private createItemRecipeFrame(index: number): framehandle {
@@ -296,7 +284,9 @@ export class RecipeSystem {
                     BlzFrameSetVisible(this.menu, showMainFrame[GetPlayerId(GetLocalPlayer())]);
 
                     if (showMainFrame[index]) {
-                        this.unselectItemEvent();
+                        if (this.selectedItemIndex[index] !== undefined) {
+                            this.selectItem(this.selectedItemIndex[index] as number);
+                        }
                     }
 
                     BlzFrameSetEnable(this.mainButton, false);
