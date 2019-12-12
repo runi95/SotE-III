@@ -9,6 +9,15 @@ interface ItemInSlot {
     includedInRecipe: boolean;
 }
 
+interface PlayerInterface {
+    heroItems: number[];
+
+    isMainWindowVisible: boolean;
+    isMainButtonVisible: boolean;
+
+    selectedItemRecipeIndex: number | undefined;
+}
+
 export class RecipeSystem {
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
@@ -23,6 +32,7 @@ export class RecipeSystem {
     private itemRecipeGreenBorderFrames: framehandle[] = [];
     private itemRecipeResultUpgradeButton: framehandle;
     private itemRecipeResultIconFrame: framehandle;
+    private playerInterface: PlayerInterface[] = [];
 
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
@@ -133,6 +143,8 @@ export class RecipeSystem {
                 BlzFrameSetTexture(itemFrames[i], items[itemWindowMin + i].iconPath, 0, true);
             }
         });
+
+        this.createHeroDropAndPickupItemEvents();
     }
 
     private createItemFrame(parent: framehandle, texture: string, index: number): framehandle {
@@ -175,7 +187,8 @@ export class RecipeSystem {
     private selectItemEvent(index: number, triggerPlayerId: number): void {
         this.selectedItemFrameIndex = index;
         this.selectedItemIndex[triggerPlayerId] = this.selectedItemFrameIndex + this.previousItemWindowMax + 1 - this.itemWindowSize;
-        this.selectItem(this.selectedItemIndex[triggerPlayerId] as number);
+        this.playerInterface[triggerPlayerId].selectedItemRecipeIndex = this.selectedItemIndex[triggerPlayerId] as number;
+        this.selectItem();
 
         BlzFrameSetPoint(
             this.selectedItemFrame as framehandle,
@@ -188,15 +201,15 @@ export class RecipeSystem {
         BlzFrameSetVisible(this.selectedItemFrame as framehandle, true);
     }
 
-    private selectItem(index: number): void {
-        const item: ItemRecipe = items[index];
-        BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item.description);
+    private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
         const playerId: number = GetPlayerId(GetLocalPlayer());
-        for (let i: number = 1; i < 7; i++) {
+        const item: ItemRecipe = items[this.playerInterface[playerId].selectedItemRecipeIndex as number];
+        BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item.description);
+        for (let i: number = 0; i < this.playerInterface[playerId].heroItems.length; i++) {
             itemsInSlots.push({
-                itemId: GetItemTypeId(UnitItemInSlotBJ(this.gameGlobals.PlayerHero[playerId], i)),
+                itemId: this.playerInterface[playerId].heroItems[i],
                 includedInRecipe: false,
             });
         }
@@ -255,6 +268,12 @@ export class RecipeSystem {
     private createMainButtonTriggers(): void {
         const showMainButton: boolean[] = [];
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            this.playerInterface.push({
+                heroItems: [],
+                isMainWindowVisible: false,
+                isMainButtonVisible: false,
+                selectedItemRecipeIndex: undefined,
+            });
             showMainButton.push(false);
             if (this.gameGlobals.PlayerSpawnRegion.length > i) {
                 const index: number = i;
@@ -289,7 +308,7 @@ export class RecipeSystem {
 
                     if (showMainFrame[index]) {
                         if (this.selectedItemIndex[index] !== undefined) {
-                            this.selectItem(this.selectedItemIndex[index] as number);
+                            this.selectItem();
                         }
                     }
 
@@ -347,5 +366,30 @@ export class RecipeSystem {
                 }
             }
         });
+    }
+
+    private createHeroDropAndPickupItemEvents(): void {
+        const dropItemTrigger: Trigger = new Trigger();
+        dropItemTrigger.addAction(() => {
+            const triggerPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+            this.playerInterface[triggerPlayerId].heroItems.splice(
+                this.playerInterface[triggerPlayerId].heroItems.indexOf(GetItemTypeId(GetManipulatedItem())),
+                1,
+            );
+
+            this.selectItem();
+        });
+        dropItemTrigger.addCondition(() => IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO));
+        dropItemTrigger.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DROP_ITEM);
+
+        const pickupItemTrigger: Trigger = new Trigger();
+        pickupItemTrigger.addAction(() => {
+            const triggerPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+            this.playerInterface[triggerPlayerId].heroItems.push(GetItemTypeId(GetManipulatedItem()));
+
+            this.selectItem();
+        });
+        pickupItemTrigger.addCondition(() => IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO));
+        pickupItemTrigger.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_PICKUP_ITEM);
     }
 }
