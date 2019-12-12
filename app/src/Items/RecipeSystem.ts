@@ -324,6 +324,8 @@ export class RecipeSystem {
 
                     if (foundSlotItem === undefined) {
                         hasAllItems = false;
+                    } else {
+                        foundSlotItem.includedInRecipe = true;
                     }
                 }
 
