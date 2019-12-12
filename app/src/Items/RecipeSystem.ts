@@ -145,7 +145,11 @@ export class RecipeSystem {
 
         const t: Trigger = new Trigger();
         t.registerFrameEvent(itemClickFrame, FRAMEEVENT_CONTROL_CLICK);
-        t.addAction(() => this.selectItemEvent(index, GetPlayerId(GetTriggerPlayer())));
+        t.addAction(() => {
+            BlzFrameSetEnable(itemClickFrame, false);
+            BlzFrameSetEnable(itemClickFrame, true);
+            this.selectItemEvent(index, GetPlayerId(GetTriggerPlayer()));
+        });
 
         return itemIcon;
     }
