@@ -108,6 +108,7 @@ export class RecipeSystem {
         scrollTrigger.addAction(() => {
             const value: number = BlzFrameGetValue(menuScrollbar);
             const itemWindowMax: number = this.itemWindowSize + Math.round(value * (items.length - this.itemWindowSize)) - 1;
+            // FIXME: This will break in multiplayer if filtering is added
             if (itemWindowMax === this.previousItemWindowMax) {
                 return;
             }
