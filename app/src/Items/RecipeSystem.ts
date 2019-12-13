@@ -144,6 +144,7 @@ export class RecipeSystem {
 
             for (let i: number = 0; i < itemFrames.length && itemWindowMin + i < items.length; i++) {
                 BlzFrameSetTexture(itemFrames[i], items[itemWindowMin + i].iconPath, 0, true);
+                BlzFrameSetText(itemGoldCost[i], `|cFFFFCC00${items[itemWindowMin + i].goldCost}|r`);
             }
         });
 
