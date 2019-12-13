@@ -16,14 +16,13 @@ interface PlayerInterface {
     isMainButtonVisible: boolean;
 
     selectedItemRecipeIndex: number | undefined;
+    selectedItemFrameIndex: number | undefined;
 }
 
 export class RecipeSystem {
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
     private mainButton: framehandle;
-    private selectedItemFrameIndex: number | undefined;
-    private selectedItemIndex: (number | undefined)[] = [];
     private itemRecipeResultDescriptionFrame: framehandle;
     private previousItemWindowMax: number;
     private itemWindowSize: number;
@@ -83,10 +82,6 @@ export class RecipeSystem {
             this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            this.selectedItemIndex[i] = undefined;
-        }
-
         this.previousItemWindowMax = this.itemWindowSize - 1;
 
         this.createMainFrameTriggers();
@@ -120,24 +115,32 @@ export class RecipeSystem {
             const itemWindowMaxDifference: number = this.previousItemWindowMax - itemWindowMax;
             this.previousItemWindowMax = itemWindowMax;
             const itemWindowMin: number = itemWindowMax + 1 - this.itemWindowSize;
-            if (this.selectedItemFrameIndex === undefined) {
-                BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
-            } else {
-                this.selectedItemFrameIndex += itemWindowMaxDifference;
-                if (this.selectedItemFrameIndex < 0 || this.selectedItemFrameIndex > this.itemWindowSize - 1) {
-                    BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
-                } else {
-                    BlzFrameSetPoint(
-                        this.selectedItemFrame as framehandle,
-                        FRAMEPOINT_BOTTOMLEFT,
-                        this.menu,
-                        FRAMEPOINT_BOTTOMLEFT,
-                        0.0175 + 0.0425 * this.selectedItemFrameIndex,
-                        0.03,
-                    );
-                    BlzFrameSetVisible(this.selectedItemFrame as framehandle, true);
-                }
+
+            const localPlayerId: number = GetPlayerId(GetLocalPlayer());
+            if (this.playerInterface[localPlayerId].selectedItemFrameIndex !== undefined) {
+                this.playerInterface[localPlayerId].selectedItemFrameIndex =
+                    (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) + itemWindowMaxDifference;
             }
+
+            const shouldSelectedItemFrameBeVisible: boolean = !(
+                this.playerInterface[localPlayerId].selectedItemFrameIndex === undefined ||
+                (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) < 0 ||
+                (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) > this.itemWindowSize - 1
+            );
+
+            BlzFrameSetVisible(this.selectedItemFrame as framehandle, shouldSelectedItemFrameBeVisible);
+            BlzFrameSetPoint(
+                this.selectedItemFrame as framehandle,
+                FRAMEPOINT_BOTTOMLEFT,
+                this.menu,
+                FRAMEPOINT_BOTTOMLEFT,
+                0.0175 +
+                    0.0425 *
+                        (this.playerInterface[localPlayerId].selectedItemFrameIndex
+                            ? (this.playerInterface[localPlayerId].selectedItemFrameIndex as number)
+                            : 0),
+                0.03,
+            );
 
             for (let i: number = 0; i < itemFrames.length && itemWindowMin + i < items.length; i++) {
                 BlzFrameSetTexture(itemFrames[i], items[itemWindowMin + i].iconPath, 0, true);
@@ -185,28 +188,30 @@ export class RecipeSystem {
     }
 
     private selectItemEvent(index: number, triggerPlayerId: number): void {
-        this.selectedItemFrameIndex = index;
-        this.selectedItemIndex[triggerPlayerId] = this.selectedItemFrameIndex + this.previousItemWindowMax + 1 - this.itemWindowSize;
-        this.playerInterface[triggerPlayerId].selectedItemRecipeIndex = this.selectedItemIndex[triggerPlayerId] as number;
+        this.playerInterface[triggerPlayerId].selectedItemFrameIndex = index;
+        this.playerInterface[triggerPlayerId].selectedItemRecipeIndex =
+            (this.playerInterface[triggerPlayerId].selectedItemFrameIndex as number) + this.previousItemWindowMax + 1 - this.itemWindowSize;
         this.selectItem();
 
+        const selectedItemFrameIndex: number | undefined = this.playerInterface[GetPlayerId(GetLocalPlayer())].selectedItemFrameIndex;
         BlzFrameSetPoint(
             this.selectedItemFrame as framehandle,
             FRAMEPOINT_BOTTOMLEFT,
             this.menu,
             FRAMEPOINT_BOTTOMLEFT,
-            0.0175 + 0.0425 * this.selectedItemFrameIndex,
+            0.0175 + 0.0425 * (selectedItemFrameIndex ? selectedItemFrameIndex : 0),
             0.03,
         );
-        BlzFrameSetVisible(this.selectedItemFrame as framehandle, true);
+        BlzFrameSetVisible(this.selectedItemFrame as framehandle, selectedItemFrameIndex !== undefined);
     }
 
     private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
         const playerId: number = GetPlayerId(GetLocalPlayer());
-        const item: ItemRecipe = items[this.playerInterface[playerId].selectedItemRecipeIndex as number];
-        BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item.description);
+        const selectedItemRecipeIndex: number | undefined = this.playerInterface[playerId].selectedItemRecipeIndex;
+        const item: ItemRecipe | undefined = selectedItemRecipeIndex ? items[selectedItemRecipeIndex] : undefined;
+        BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         for (let i: number = 0; i < this.playerInterface[playerId].heroItems.length; i++) {
             itemsInSlots.push({
                 itemId: this.playerInterface[playerId].heroItems[i],
@@ -215,32 +220,29 @@ export class RecipeSystem {
         }
 
         for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
-            if (i < item.recipe.length) {
-                const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(itemsInSlots, item.recipe[i].itemId);
-                if (foundSlotItem !== undefined) {
-                    foundSlotItem.includedInRecipe = true;
-                    BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreenBorder.blp', 0, true);
-                } else {
-                    hasAllItems = false;
-                    BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreyedItem.blp', 0, true);
-                }
-
-                BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], true);
-                BlzFrameSetTexture(this.itemRecipeFrames[i], item.recipe[i].iconPath, 0, true);
-            } else {
-                BlzFrameSetTexture(this.itemRecipeFrames[i], 'war3mapImported\\BTNNoItem.blp', 0, true);
+            const foundSlotItem: ItemInSlot | undefined =
+                item && item.recipe.length > i ? this.findSlotItem(itemsInSlots, item.recipe[i].itemId) : undefined;
+            if (foundSlotItem) {
+                foundSlotItem.includedInRecipe = true;
+            } else if (item === undefined) {
+                hasAllItems = false;
+            } else if (i < item.recipe.length) {
+                hasAllItems = false;
             }
+
+            const itemRecipeGreenBorderFramesTexture: string = foundSlotItem
+                ? 'war3mapImported\\BTNGreenBorder.blp'
+                : 'war3mapImported\\BTNGreyedItem.blp';
+            BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], itemRecipeGreenBorderFramesTexture, 0, true);
+            BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], true);
+            const itemRecipeFramesTexture: string =
+                item && item.recipe.length > i ? item.recipe[i].iconPath : 'war3mapImported\\BTNNoItem.blp';
+            BlzFrameSetTexture(this.itemRecipeFrames[i], itemRecipeFramesTexture, 0, true);
         }
 
-        if (hasAllItems) {
-            BlzFrameSetText(this.itemRecipeResultUpgradeButton, item.goldCost.toString());
-            BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, true);
-        } else {
-            BlzFrameSetText(this.itemRecipeResultUpgradeButton, '');
-            BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, false);
-        }
-
-        BlzFrameSetTexture(this.itemRecipeResultIconFrame, item.iconPath, 0, true);
+        BlzFrameSetText(this.itemRecipeResultUpgradeButton, item ? item.goldCost.toString() : '');
+        BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, hasAllItems);
+        BlzFrameSetTexture(this.itemRecipeResultIconFrame, item ? item.iconPath : 'war3mapImported\\BTNNoItem.blp', 0, true);
     }
 
     private createItemRecipeFrame(index: number): framehandle {
@@ -266,57 +268,45 @@ export class RecipeSystem {
     }
 
     private createMainButtonTriggers(): void {
-        const showMainButton: boolean[] = [];
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             this.playerInterface.push({
                 heroItems: [],
                 isMainWindowVisible: false,
                 isMainButtonVisible: false,
                 selectedItemRecipeIndex: undefined,
+                selectedItemFrameIndex: undefined,
             });
-            showMainButton.push(false);
             if (this.gameGlobals.PlayerSpawnRegion.length > i) {
                 const index: number = i;
                 const showMainButtonTrigger: Trigger = new Trigger();
                 showMainButtonTrigger.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
                 showMainButtonTrigger.addAction(() => {
-                    showMainButton[index] = true;
-                    BlzFrameSetVisible(this.mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
+                    this.playerInterface[index].isMainButtonVisible = true;
+                    BlzFrameSetVisible(this.mainButton, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainButtonVisible);
                 });
 
                 const hideMainButtonTrigger: Trigger = new Trigger();
                 hideMainButtonTrigger.registerLeaveRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
                 hideMainButtonTrigger.addAction(() => {
-                    showMainButton[index] = false;
-                    BlzFrameSetVisible(this.mainButton, showMainButton[GetPlayerId(GetLocalPlayer())]);
+                    this.playerInterface[index].isMainButtonVisible = false;
+                    BlzFrameSetVisible(this.mainButton, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainButtonVisible);
                 });
             }
         }
     }
 
     private createMainFrameTriggers(): void {
-        const showMainFrame: boolean[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            showMainFrame.push(false);
-            if (GetPlayerController(Player(i)) === MAP_CONTROL_USER && GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
-                const index: number = i;
-                const t: Trigger = new Trigger();
-                t.registerFrameEvent(this.mainButton, FRAMEEVENT_CONTROL_CLICK);
-                t.addAction(() => {
-                    showMainFrame[index] = !showMainFrame[index];
-                    BlzFrameSetVisible(this.menu, showMainFrame[GetPlayerId(GetLocalPlayer())]);
+        const t: Trigger = new Trigger();
+        t.registerFrameEvent(this.mainButton, FRAMEEVENT_CONTROL_CLICK);
+        t.addAction(() => {
+            const triggerPlayerId: number = GetPlayerId(GetTriggerPlayer());
+            this.playerInterface[triggerPlayerId].isMainWindowVisible = !this.playerInterface[triggerPlayerId].isMainWindowVisible;
+            BlzFrameSetVisible(this.menu, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainWindowVisible);
+            this.selectItem();
 
-                    if (showMainFrame[index]) {
-                        if (this.selectedItemIndex[index] !== undefined) {
-                            this.selectItem();
-                        }
-                    }
-
-                    BlzFrameSetEnable(this.mainButton, false);
-                    BlzFrameSetEnable(this.mainButton, true);
-                });
-            }
-        }
+            BlzFrameSetEnable(this.mainButton, false);
+            BlzFrameSetEnable(this.mainButton, true);
+        });
     }
 
     private createUpgradeButtonTrigger(): void {
@@ -324,7 +314,7 @@ export class RecipeSystem {
         upgradeButtonTrigger.registerFrameEvent(this.itemRecipeResultUpgradeButton, FRAMEEVENT_CONTROL_CLICK);
         upgradeButtonTrigger.addAction(() => {
             const triggerPlayerId: number = GetPlayerId(GetTriggerPlayer());
-            const selectedItemForPlayerIndex: number | undefined = this.selectedItemIndex[triggerPlayerId];
+            const selectedItemForPlayerIndex: number | undefined = this.playerInterface[triggerPlayerId].selectedItemRecipeIndex;
             if (selectedItemForPlayerIndex !== undefined) {
                 const itemsInSlots: ItemInSlot[] = [];
                 for (let i: number = 1; i < 7; i++) {
@@ -341,10 +331,10 @@ export class RecipeSystem {
                         items[selectedItemForPlayerIndex].recipe[i].itemId,
                     );
 
-                    if (foundSlotItem === undefined) {
-                        hasAllItems = false;
-                    } else {
+                    if (foundSlotItem) {
                         foundSlotItem.includedInRecipe = true;
+                    } else if (i < items[selectedItemForPlayerIndex].recipe.length) {
+                        hasAllItems = false;
                     }
                 }
 
@@ -362,7 +352,7 @@ export class RecipeSystem {
                         );
                     }
                     UnitAddItemById(this.gameGlobals.PlayerHero[triggerPlayerId], items[selectedItemForPlayerIndex].itemId);
-                    this.selectItemEvent(this.selectedItemFrameIndex as number, triggerPlayerId);
+                    this.selectItemEvent(this.playerInterface[triggerPlayerId].selectedItemFrameIndex as number, triggerPlayerId);
                 }
             }
         });
