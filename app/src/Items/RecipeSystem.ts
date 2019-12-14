@@ -282,6 +282,9 @@ export class RecipeSystem {
                 const index: number = i;
                 const showMainButtonTrigger: Trigger = new Trigger();
                 showMainButtonTrigger.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
+                showMainButtonTrigger.addCondition(
+                    () => GetHandleId(GetEnteringUnit()) === GetHandleId(this.gameGlobals.PlayerHero[index]),
+                );
                 showMainButtonTrigger.addAction(() => {
                     this.playerInterface[index].isMainButtonVisible = true;
                     BlzFrameSetVisible(this.mainButton, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainButtonVisible);
@@ -289,9 +292,12 @@ export class RecipeSystem {
 
                 const hideMainButtonTrigger: Trigger = new Trigger();
                 hideMainButtonTrigger.registerLeaveRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
+                hideMainButtonTrigger.addCondition(() => GetHandleId(GetLeavingUnit()) === GetHandleId(this.gameGlobals.PlayerHero[index]));
                 hideMainButtonTrigger.addAction(() => {
                     this.playerInterface[index].isMainButtonVisible = false;
+                    this.playerInterface[index].isMainWindowVisible = false;
                     BlzFrameSetVisible(this.mainButton, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainButtonVisible);
+                    BlzFrameSetVisible(this.menu, this.playerInterface[GetPlayerId(GetLocalPlayer())].isMainWindowVisible);
                 });
             }
         }
