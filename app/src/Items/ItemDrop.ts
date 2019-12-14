@@ -1,7 +1,7 @@
 import { Trigger } from '../JassOverrides/Trigger';
 
 export abstract class ItemDrop {
-    protected readonly abstract itemTypeId: number;
+    protected abstract readonly itemTypeId: number;
     protected readonly trig: Trigger = new Trigger();
 
     protected constructor() {
@@ -11,6 +11,10 @@ export abstract class ItemDrop {
     }
 
     protected condition(): boolean {
+        if (!IsUnitType(GetManipulatingUnit(), UNIT_TYPE_HERO)) {
+            return false;
+        }
+
         return GetItemTypeId(GetManipulatedItem()) === this.itemTypeId;
     }
 
