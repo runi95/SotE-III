@@ -14,7 +14,9 @@ export class IronClaws extends ItemRecipe {
     public readonly description: string = `Sharp claws combined with speed and precision is a deadly combination.
 
 |cffffcc00Agility:|r +5
-|cffffcc00Attack damage:|r +7`;
+|cffffcc00Attack damage:|r +7
+
+|cFF808080Agility increases your attack and movement speed.|r`;
 
     constructor(ironSword: IronSword, claws: Claws) {
         super();

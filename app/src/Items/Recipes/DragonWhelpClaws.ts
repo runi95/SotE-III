@@ -13,7 +13,9 @@ export class DragonWhelpClaws extends ItemRecipe {
     public readonly description: string = `Do you really think these came from a dragon?
 
 |cffffcc00Agility:|r +12
-|cffffcc00Max health:|r +150`;
+|cffffcc00Max health:|r +150
+
+|cFF808080Agility increases your attack and movement speed.|r`;
 
     constructor(creatureClaws: CreatureClaws) {
         super();

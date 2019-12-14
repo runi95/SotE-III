@@ -13,7 +13,9 @@ export class CircesStaff extends ItemRecipe {
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
     public readonly description: string = `An ancient staff forged by the elves.
 
-|cffffcc00Effect:|r Turns enemies into harmless critters for a short duration.`;
+|cffffcc00Effect:|r Turns enemies into harmless critters for a short duration.
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(branch: Branch, scepter: Scepter) {
         super();

@@ -13,7 +13,9 @@ export class SnowyOwl extends ItemRecipe {
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
     public readonly description: string = `It is said that these creatures can see the dead.
 
-|cffffcc00Effect:|r A clockwork penguin with 6 inventory spaces that will always stay by your side and follow you around.`;
+|cffffcc00Effect:|r A clockwork penguin with 6 inventory spaces that will always stay by your side and follow you around.
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(clockworkPenguin: ClockworkPenguin, wandOfShadowsight: WandOfShadowsight) {
         super();

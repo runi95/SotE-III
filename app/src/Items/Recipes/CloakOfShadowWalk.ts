@@ -15,7 +15,9 @@ export class CloakOfShadowWalk extends ItemRecipe {
 
 |cffffcc00Movement Speed:|r +200
 |cffffcc00Effect:|r Turns the wearer invisible if they're standing perfectly still.
-|cffffcc00Effect (2):|r Turns the wearer invisible even while moving for a short duration.`;
+|cffffcc00Effect (2):|r Turns the wearer invisible even while moving for a short duration.
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(cloakOfShadows: CloakOfShadows, scrollOfAgility: ScrollOfAgility) {
         super();

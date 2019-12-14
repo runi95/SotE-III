@@ -13,7 +13,9 @@ export class ManaBlade extends ItemRecipe {
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNThoriumMelee.blp';
     public readonly description: string = `A steel sword coated in mana, capable of boosting your physical and magical abilities.
 
-    |cffffcc00Attack damage:|r +7`;
+|cffffcc00Attack damage:|r +7
+
+|cFF808080Your attack damage determines how much damage your physical attacks do.|r`;
 
     constructor(ironSword: IronSword, emptyVial: EmptyVial) {
         super();

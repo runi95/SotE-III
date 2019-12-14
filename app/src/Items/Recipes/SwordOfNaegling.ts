@@ -15,7 +15,9 @@ export class SwordOfNaegling extends ItemRecipe {
 
 |cffffcc00Attack damage:|r +20
 |cffffcc00Strength:|r +10
-|cffffcc00Effect:|r Summons a tornado that damages and slows nearby enemies`;
+|cffffcc00Effect:|r Summons a tornado that damages and slows nearby enemies
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(fragarach: Fragarach, swordOfFreyr: SwordOfFreyr) {
         super();

@@ -14,7 +14,9 @@ export class DragonScales extends ItemRecipe {
     public readonly description: string = `These scales are deadly sharp
 
 |cffffcc00Max health:|r +345
-|cffffcc00Agility:|r +15`;
+|cffffcc00Agility:|r +15
+
+|cFF808080Agility increases your attack and movement speed.|r`;
 
     constructor(dragonWhelpClaws: DragonWhelpClaws, coralScales: CoralScales) {
         super();

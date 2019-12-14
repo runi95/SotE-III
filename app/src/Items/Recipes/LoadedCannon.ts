@@ -14,7 +14,9 @@ export class LoadedCannon extends ItemRecipe {
     public readonly description: string = `Make your enemies tremble!
 
 |cffffcc00Attack damage:|r +12
-|cffffcc00Effect:|r Your physical attacks now deal 10% of the initial damage as splash damage in an area of 200 around the target.`;
+|cffffcc00Effect:|r Your physical attacks now deal 10% of the initial damage as splash damage in an area of 200 around the target.
+
+|cFF808080Agility increases your attack and movement speed.|r`;
 
     constructor(loadedRifle: LoadedRifle, ironSword: IronSword) {
         super();

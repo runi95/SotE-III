@@ -14,7 +14,9 @@ export class VialOfMagic extends ItemRecipe {
     public readonly description: string = `An orb full of potencial magic if you know how to extract it.
 
 |cffffcc00Intelligence:|r +5
-|cffffcc00Max Mana:|r +60`;
+|cffffcc00Max Mana:|r +60
+
+|cFF808080Intelligence increases the damage done by your spells.|r`;
 
     constructor(orbOfMagic: OrbOfMagic, emptyVial: EmptyVial) {
         super();

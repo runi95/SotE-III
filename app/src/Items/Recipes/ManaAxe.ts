@@ -14,7 +14,9 @@ export class ManaAxe extends ItemRecipe {
     public readonly description: string = `A war axe infused with magic.
 
 |cffffcc00Strength:|r +5
-|cffffcc00Max Mana:|r +60`;
+|cffffcc00Max Mana:|r +60
+
+|cFF808080Strength increases your max health and health regen.|r`;
 
     constructor(warAxe: WarAxe, emptyVial: EmptyVial) {
         super();

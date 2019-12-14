@@ -15,7 +15,9 @@ export class WandOfShadowsight extends ItemRecipe {
 
 |cffffcc00Effect:|r Provides an increase to the Hero's line of sight radius at night when carried.
 |cffffcc00Effect(2):|r Reveals invisible units
-|cffffcc00Effect(3):|r Gives the player vision of a target unit until that unit is dispelled.`;
+|cffffcc00Effect(3):|r Gives the player vision of a target unit until that unit is dispelled.
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(goblinNightScope: GoblinNightScope, flare: Flare) {
         super();

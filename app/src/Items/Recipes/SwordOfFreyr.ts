@@ -14,7 +14,9 @@ export class SwordOfFreyr extends ItemRecipe {
     public readonly description: string = `A sword that somehow dances in front of your very eyes.
 
 |cffffcc00Strength:|r +7
-|cffffcc00Effect:|r Summons a sword that fights by your side`;
+|cffffcc00Effect:|r Summons a sword that fights by your side
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(manaBlade: ManaBlade, manaAxe: ManaAxe) {
         super();

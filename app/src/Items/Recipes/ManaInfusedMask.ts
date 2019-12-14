@@ -15,7 +15,9 @@ export class ManaInfusedMask extends ItemRecipe {
 
 |cffffcc00Intelligence:|r +12
 |cffffcc00Max Mana:|r +100
-|cffffcc00Mana regen:|r +30%`;
+|cffffcc00Mana regen:|r +30%
+
+|cFF808080Mana is required when casting most spells.|r`;
 
     constructor(maskOfProficiency: MaskOfProficiency, vialOfMagic: VialOfMagic) {
         super();

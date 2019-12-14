@@ -14,7 +14,9 @@ export class Fragarach extends ItemRecipe {
     public readonly description: string = `A sword so sharp it can cut whispers in half.
 
 |cffffcc00Attack damage:|r +18
-|cffffcc00Effect:|r Slows the movement speed of nearby enemy units by 20%`;
+|cffffcc00Effect:|r Slows the movement speed of nearby enemy units by 20%
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(manaBlade: ManaBlade, ironClaws: IronClaws) {
         super();

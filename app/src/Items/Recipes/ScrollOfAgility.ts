@@ -12,7 +12,9 @@ export class ScrollOfAgility extends ItemRecipe {
     public readonly description: string = `A mystical scroll written in an ancient language.
 
 |cffffcc00Movement Speed:|r +200
-|cffffcc00Effect:|r Increases movement speed by 50% for 60 seconds.`;
+|cffffcc00Effect:|r Increases movement speed by 50% for 60 seconds.
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(agileSlippers: AgileSlippers) {
         super();

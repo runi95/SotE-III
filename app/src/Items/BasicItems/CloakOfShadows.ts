@@ -8,5 +8,6 @@ export class CloakOfShadows extends Item {
     public readonly description: string = `A cheap cloak that lets you blend in with the shadows.
 
 |cffffcc00Effect:|r Turns the wearer invisible if they're standing perfectly still.
-`;
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 }

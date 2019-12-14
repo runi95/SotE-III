@@ -15,7 +15,9 @@ export class ThrowableAxe extends ItemRecipe {
     public readonly description: string = `You can't quite make out what the runes say.
 
 |cffffcc00Attack damage:|r +19
-|cffffcc00Effect:|r Throw an axe at the target unit dealing 300 initial damage, 20 damage per second afterwards and drastically slows down movement speed for 15 seconds`;
+|cffffcc00Effect:|r Throw an axe at the target unit dealing 300 initial damage, 20 damage per second afterwards and drastically slows down movement speed for 15 seconds
+
+|cFF808080Effects are special properties that usually trigger on an event.|r`;
 
     constructor(bloodiedExecutionersAxe: BloodiedExecutionersAxe, scepter: Scepter) {
         super();
