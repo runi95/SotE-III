@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { IronShield } from '../BasicItems/IronShield';
 import { Item } from '../Item';
-import { ManaEgg } from '../BasicItems/ManaEgg';
+import { ManaEgg } from './ManaEgg';
 
 export class Ancile extends ItemRecipe {
     private readonly manaEgg: ManaEgg;

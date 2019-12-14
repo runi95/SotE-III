@@ -16,7 +16,7 @@ import { StuddedLeatherArmor } from './BasicItems/StuddedLeatherArmor';
 import { AgileSlippers } from './Recipes/AgileSlippers';
 import { BootsOfSpeed } from './BasicItems/BootsOfSpeed';
 import { Ancile } from './Recipes/Ancile';
-import { ManaEgg } from './BasicItems/ManaEgg';
+import { ManaEgg } from './Recipes/ManaEgg';
 import { ArmoredBoots } from './Recipes/ArmoredBoots';
 import { BerserkerPotion } from './BasicItems/BerserkerPotion';
 import { BloodiedExecutionersAxe } from './BasicItems/BloodiedExecutionersAxe';
@@ -76,7 +76,6 @@ const ironShield: IronShield = new IronShield();
 const reinforcedHide: ReinforcedHide = new ReinforcedHide();
 const studdedLeatherArmor: StuddedLeatherArmor = new StuddedLeatherArmor();
 const bootsOfSpeed: BootsOfSpeed = new BootsOfSpeed();
-const manaEgg: ManaEgg = new ManaEgg();
 const berserkerPotion: BerserkerPotion = new BerserkerPotion();
 const bloodiedExecutionersAxe: BloodiedExecutionersAxe = new BloodiedExecutionersAxe();
 const blueSoulstone: BlueSoulstone = new BlueSoulstone();
@@ -98,6 +97,7 @@ const speedPotion: SpeedPotion = new SpeedPotion();
 const warAxe: WarAxe = new WarAxe();
 const runedBracers: RunedBracers = new RunedBracers();
 const goblinNightScope: GoblinNightScope = new GoblinNightScope();
+const manaEgg: ManaEgg = new ManaEgg(emptyVial);
 const balancedShield: BalancedShield = new BalancedShield(moonArmor, ironShield);
 const improvedMoonArmor: ImprovedMoonArmor = new ImprovedMoonArmor(moonArmor);
 const improvedBalancedShield: ImprovedBalancedShield = new ImprovedBalancedShield(balancedShield);
@@ -143,6 +143,7 @@ export default [
     enchantedShield,
     lionsRing,
     manaAxe,
+    manaEgg,
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),
