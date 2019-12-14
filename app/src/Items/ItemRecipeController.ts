@@ -141,6 +141,7 @@ export default [
     manaEgg,
     loadedRifle,
     swordOfFreyr,
+    fragarach,
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),
