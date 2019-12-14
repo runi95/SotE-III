@@ -3,7 +3,7 @@ import { Item } from '../Item';
 export class WarAxe extends Item {
     public readonly itemId: number = FourCC('I00L');
     public readonly name: string = 'War Axe';
-    public readonly goldCost: number = 500;
+    public readonly goldCost: number = 480;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpOne.blp';
     public readonly description: string = `Just another war axe to carry, one amongst many.
 

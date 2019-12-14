@@ -3,7 +3,7 @@ import { Item } from '../Item';
 export class SobiMask extends Item {
     public readonly itemId: number = FourCC('I00T');
     public readonly name: string = 'Sobi Mask';
-    public readonly goldCost: number = 140;
+    public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSobiMask.blp';
     public readonly description: string = `An odd looking mask.
 
