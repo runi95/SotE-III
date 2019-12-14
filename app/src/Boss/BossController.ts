@@ -1,8 +1,8 @@
 import { Boss } from './Boss';
-import { DruidOfTheClaw } from './DruidOfTheClaw';
-import { RedDragon } from './RedDragon';
+import { DruidOfTheClaw } from './Easy/DruidOfTheClaw';
+import { RedDragon } from './Medium/RedDragon';
 import { TimerUtils } from '../Utility/TimerUtils';
-import { DoomGuard } from './DoomGuard';
+import { DoomGuard } from './Medium/DoomGuard';
 
 export class BossController {
     private readonly bosses: Boss[];

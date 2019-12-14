@@ -1,7 +1,7 @@
-import { Boss } from './Boss';
-import { TimerUtils } from '../Utility/TimerUtils';
-import { Timer } from '../JassOverrides/Timer';
-import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { Boss } from '../Boss';
+import { TimerUtils } from '../../Utility/TimerUtils';
+import { Timer } from '../../JassOverrides/Timer';
+import { GroupInRange } from '../../JassOverrides/GroupInRange';
 
 export class DoomGuard extends Boss {
     protected readonly bossId: number = FourCC('n026');

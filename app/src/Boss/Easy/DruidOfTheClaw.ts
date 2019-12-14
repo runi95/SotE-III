@@ -1,5 +1,5 @@
-import { Boss } from './Boss';
-import { Trigger } from '../JassOverrides/Trigger';
+import { Boss } from '../Boss';
+import { Trigger } from '../../JassOverrides/Trigger';
 
 export class DruidOfTheClaw extends Boss {
     private readonly huntressUnitId: number = FourCC('e002');

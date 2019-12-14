@@ -1,4 +1,4 @@
-import { Boss } from './Boss';
+import { Boss } from '../Boss';
 
 export class RedDragon extends Boss {
     protected readonly bossId: number = FourCC('n01Q');
