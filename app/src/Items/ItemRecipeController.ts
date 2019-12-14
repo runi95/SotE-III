@@ -31,7 +31,7 @@ import { Flare } from './BasicItems/Flare';
 import { GoblinBattery } from './BasicItems/GoblinBattery';
 import { GreenSoulstone } from './BasicItems/GreenSoulstone';
 import { IronSword } from './BasicItems/IronSword';
-import { LoadedRifle } from './BasicItems/LoadedRifle';
+import { LoadedRifle } from './Recipes/LoadedRifle';
 import { OrbOfMagic } from './BasicItems/OrbOfMagic';
 import { PurpleSoulstone } from './BasicItems/PurpleSoulstone';
 import { Scepter } from './BasicItems/Scepter';
@@ -89,7 +89,7 @@ const flare: Flare = new Flare();
 const goblinBattery: GoblinBattery = new GoblinBattery();
 const greenSoulstone: GreenSoulstone = new GreenSoulstone();
 const ironSword: IronSword = new IronSword();
-const loadedRifle: LoadedRifle = new LoadedRifle();
+const loadedRifle: LoadedRifle = new LoadedRifle(ironSword);
 const orbOfMagic: OrbOfMagic = new OrbOfMagic();
 const purpleSoulstone: PurpleSoulstone = new PurpleSoulstone();
 const scepter: Scepter = new Scepter();
@@ -144,6 +144,7 @@ export default [
     lionsRing,
     manaAxe,
     manaEgg,
+    loadedRifle,
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),
