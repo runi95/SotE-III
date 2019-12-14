@@ -9,7 +9,7 @@ export class CloakOfShadowWalk extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01J');
     public readonly name: string = 'Cloak of Shadow Walk';
-    public readonly goldCost: number = 650;
+    public readonly goldCost: number = 200;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAcolyteCloak.blp';
     public readonly description: string = `A cloak that lets you blend in with the shadows while moving.
 
