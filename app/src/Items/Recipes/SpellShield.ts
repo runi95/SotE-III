@@ -11,7 +11,7 @@ export class SpellShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02F');
     public readonly name: string = 'Spell Shield';
-    public readonly goldCost: number = 2400;
+    public readonly goldCost: number = 780;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
     public readonly description: string = `A shield that glows with magical potency.
 

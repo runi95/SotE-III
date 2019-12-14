@@ -9,7 +9,7 @@ export class SwordOfNaegling extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02G');
     public readonly name: string = 'Sword of Naegling';
-    public readonly goldCost: number = 1850;
+    public readonly goldCost: number = 60;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDarkSword.blp';
     public readonly description: string = `The wind howls with anticipation as you raise the sword
 

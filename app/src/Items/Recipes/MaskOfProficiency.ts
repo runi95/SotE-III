@@ -9,7 +9,7 @@ export class MaskOfProficiency extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I026');
     public readonly name: string = 'Mask of Proficiency';
-    public readonly goldCost: number = 540;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
     public readonly description: string = `A mask that is said to be worn by a master necromancer.
 

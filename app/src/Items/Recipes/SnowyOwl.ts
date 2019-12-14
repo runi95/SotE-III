@@ -9,7 +9,7 @@ export class SnowyOwl extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02C');
     public readonly name: string = 'Snowy Owl';
-    public readonly goldCost: number = 600;
+    public readonly goldCost: number = 100;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
     public readonly description: string = `It is said that these creatures can see the dead.
 

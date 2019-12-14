@@ -9,7 +9,7 @@ export class AdeptCrystalBall extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01F');
     public readonly name: string = 'Adept Crystal Ball';
-    public readonly goldCost: number = 290;
+    public readonly goldCost: number = 100;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallAdept.blp';
     public readonly description: string = `Can you see the future in this thing?
 

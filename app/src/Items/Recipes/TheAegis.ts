@@ -9,7 +9,7 @@ export class TheAegis extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I014');
     public readonly name: string = 'The Aegis';
-    public readonly goldCost: number = 800;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLightningShield.blp';
     public readonly description: string = `A shield said to be forged by gods.
 

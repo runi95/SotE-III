@@ -9,7 +9,7 @@ export class MasterCrystalBall extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01G');
     public readonly name: string = 'Master Crystal Ball';
-    public readonly goldCost: number = 790;
+    public readonly goldCost: number = 120;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallMaster.blp';
     public readonly description: string = `Can you see the future in this thing?
 

@@ -9,7 +9,7 @@ export class CircesStaff extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I013');
     public readonly name: string = 'Caduceus';
-    public readonly goldCost: number = 1400;
+    public readonly goldCost: number = 200;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
     public readonly description: string = `An ancient staff forged by the elves.
 

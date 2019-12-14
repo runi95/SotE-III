@@ -17,7 +17,6 @@ import { BootsOfSpeed } from './BasicItems/BootsOfSpeed';
 import { Ancile } from './Recipes/Ancile';
 import { ManaEgg } from './Recipes/ManaEgg';
 import { ArmoredBoots } from './Recipes/ArmoredBoots';
-import { BerserkerPotion } from './BasicItems/BerserkerPotion';
 import { BloodiedExecutionersAxe } from './BasicItems/BloodiedExecutionersAxe';
 import { BlueSoulstone } from './BasicItems/BlueSoulstone';
 import { Branch } from './BasicItems/Branch';
@@ -74,7 +73,6 @@ const ironShield: IronShield = new IronShield();
 const reinforcedHide: ReinforcedHide = new ReinforcedHide();
 const studdedLeatherArmor: StuddedLeatherArmor = new StuddedLeatherArmor();
 const bootsOfSpeed: BootsOfSpeed = new BootsOfSpeed();
-const berserkerPotion: BerserkerPotion = new BerserkerPotion();
 const bloodiedExecutionersAxe: BloodiedExecutionersAxe = new BloodiedExecutionersAxe();
 const blueSoulstone: BlueSoulstone = new BlueSoulstone();
 const branch: Branch = new Branch();
@@ -150,7 +148,7 @@ export default [
     new CircesStaff(branch, scepter),
     new CloakOfShadowWalk(cloakOfShadows, scrollOfAgility),
     new DragonScales(dragonWhelpClaws, coralScales),
-    new EnhancedBerserkerAxes(berserkerAxes, berserkerPotion),
+    new EnhancedBerserkerAxes(berserkerAxes),
     new LightningBolt(goblinBattery, theAegis),
     new LoadedCannon(loadedRifle, ironSword),
     new ManaInfusedMask(maskOfProficiency, vialOfMagic),

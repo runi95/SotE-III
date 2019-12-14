@@ -9,7 +9,7 @@ export class ManaInfusedMask extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I029');
     public readonly name: string = 'Mana Infused Mask';
-    public readonly goldCost: number = 1040;
+    public readonly goldCost: number = 320;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkullBlue.blp';
     public readonly description: string = `A mask infused with pure magic.
 

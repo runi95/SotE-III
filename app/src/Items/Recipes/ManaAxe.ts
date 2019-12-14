@@ -9,7 +9,7 @@ export class ManaAxe extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00Q');
     public readonly name: string = 'Mana Axe';
-    public readonly goldCost: number = 600;
+    public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpTwo.blp';
     public readonly description: string = `A war axe infused with magic.
 

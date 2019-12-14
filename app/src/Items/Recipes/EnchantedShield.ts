@@ -9,7 +9,7 @@ export class EnchantedShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I027');
     public readonly name: string = 'Enchanted Shield';
-    public readonly goldCost: number = 700;
+    public readonly goldCost: number = 160;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNThoriumArmor.blp';
     public readonly description: string = `A shield that glows with magical potency.
 

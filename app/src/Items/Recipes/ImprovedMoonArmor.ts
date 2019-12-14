@@ -7,7 +7,7 @@ export class ImprovedMoonArmor extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00O');
     public readonly name: string = 'Improved Moon Armor';
-    public readonly goldCost: number = 600;
+    public readonly goldCost: number = 540;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedMoonArmor.blp';
     public readonly description: string = `A special armor capable of resisting spell damage.
 
@@ -19,6 +19,6 @@ export class ImprovedMoonArmor extends ItemRecipe {
         super();
 
         this.moonArmor = moonArmor;
-        this.recipe = [this.moonArmor, this.moonArmor];
+        this.recipe = [this.moonArmor];
     }
 }

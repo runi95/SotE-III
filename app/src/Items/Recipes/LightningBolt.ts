@@ -10,7 +10,7 @@ export class LightningBolt extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01Q');
     public readonly name: string = 'Lightning Bolt';
-    public readonly goldCost: number = 1500;
+    public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPurge.blp';
     public readonly description: string = `A lightning bolt capable of devastating damage.
 

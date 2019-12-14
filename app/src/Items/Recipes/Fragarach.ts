@@ -9,7 +9,7 @@ export class Fragarach extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I017');
     public readonly name: string = 'Fragarach';
-    public readonly goldCost: number = 900;
+    public readonly goldCost: number = 220;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAirBender.blp';
     public readonly description: string = `A sword so sharp it can cut whispers in half.
 

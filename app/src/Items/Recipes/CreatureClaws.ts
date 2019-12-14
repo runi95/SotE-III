@@ -9,7 +9,7 @@ export class CreatureClaws extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I024');
     public readonly name: string = 'Creature Claws';
-    public readonly goldCost: number = 500;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCreatureAttack.blp';
     public readonly description: string = `Some very large claws.
 

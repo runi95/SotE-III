@@ -9,7 +9,7 @@ export class VialOfMagic extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I001');
     public readonly name: string = 'Vial of Magic';
-    public readonly goldCost: number = 500;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNVialFull.blp';
     public readonly description: string = `An orb full of potencial magic if you know how to extract it.
 

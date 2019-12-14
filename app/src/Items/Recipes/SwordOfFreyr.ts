@@ -9,7 +9,7 @@ export class SwordOfFreyr extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I018');
     public readonly name: string = 'Sword of Freyr';
-    public readonly goldCost: number = 950;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRitualDagger.blp';
     public readonly description: string = `A sword that somehow dances in front of your very eyes.
 

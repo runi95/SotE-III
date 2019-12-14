@@ -9,7 +9,7 @@ export class WandOfShadowsight extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I020');
     public readonly name: string = 'Wand of Shadowsight';
-    public readonly goldCost: number = 400;
+    public readonly goldCost: number = 200;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
     public readonly description: string = `An incredible scope with built in night vision.
 

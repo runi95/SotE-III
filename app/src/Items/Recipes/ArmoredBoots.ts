@@ -9,7 +9,7 @@ export class ArmoredBoots extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01C');
     public readonly name: string = 'Armored Boots';
-    public readonly goldCost: number = 550;
+    public readonly goldCost: number = 205;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
     public readonly description: string = `Increases movement rate while keeping your feet safe.
 

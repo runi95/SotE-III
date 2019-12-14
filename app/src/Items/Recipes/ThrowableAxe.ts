@@ -10,7 +10,7 @@ export class ThrowableAxe extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01E');
     public readonly name: string = 'Throwable Axe';
-    public readonly goldCost: number = 800;
+    public readonly goldCost: number = 400;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpThree.blp';
     public readonly description: string = `You can't quite make out what the runes say.
 

@@ -9,7 +9,7 @@ export class LoadedCannon extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00X');
     public readonly name: string = 'Loaded Cannon';
-    public readonly goldCost: number = 850;
+    public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpTwo.blp';
     public readonly description: string = `Make your enemies tremble!
 

@@ -11,7 +11,7 @@ export class AdvancedReinforcedHides extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02D');
     public readonly name: string = 'Advanced Reinforced Hides';
-    public readonly goldCost: number = 3700;
+    public readonly goldCost: number = 1725;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedReinforcedHides.blp';
     public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.
 

@@ -9,7 +9,7 @@ export class CoralScales extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00N');
     public readonly name: string = 'Coral Scales';
-    public readonly goldCost: number = 550;
+    public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp1.blp';
     public readonly description: string = `Very strong, defensive scales.
 

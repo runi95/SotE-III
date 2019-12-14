@@ -7,7 +7,7 @@ export class BerserkerAxes extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I023');
     public readonly name: string = 'Berserker Axes';
-    public readonly goldCost: number = 1000;
+    public readonly goldCost: number = 720;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBerserkerAxes.blp';
     public readonly description: string = `Dual axes most commonly wielded by the berserkers.
 
@@ -19,6 +19,6 @@ export class BerserkerAxes extends ItemRecipe {
         super();
 
         this.warAxe = warAxe;
-        this.recipe = [this.warAxe, this.warAxe];
+        this.recipe = [this.warAxe];
     }
 }

@@ -9,7 +9,7 @@ export class Caduceus extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I019');
     public readonly name: string = 'Caduceus';
-    public readonly goldCost: number = 1200;
+    public readonly goldCost: number = 800;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaSteal.blp';
     public readonly description: string = `Caduceus the protector of merchants and travellers.
 

@@ -7,7 +7,7 @@ export class ImprovedBalancedShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02B');
     public readonly name: string = 'Improved Balanced Shield';
-    public readonly goldCost: number = 1000;
+    public readonly goldCost: number = 885;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefend.blp';
     public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.
 
@@ -20,6 +20,6 @@ export class ImprovedBalancedShield extends ItemRecipe {
         super();
 
         this.balancedShield = balancedShield;
-        this.recipe = [this.balancedShield, this.balancedShield];
+        this.recipe = [this.balancedShield];
     }
 }

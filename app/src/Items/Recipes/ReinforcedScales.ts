@@ -9,7 +9,7 @@ export class ReinforcedScales extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01K');
     public readonly name: string = 'Reinforced Scales';
-    public readonly goldCost: number = 1500;
+    public readonly goldCost: number = 1120;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp3.blp';
     public readonly description: string = `Highly reinforced scales, sure to defend against the strongest of opponents.
 

@@ -7,7 +7,7 @@ export class SteelShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00J');
     public readonly name: string = 'Steel Shield';
-    public readonly goldCost: number = 400;
+    public readonly goldCost: number = 270;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpTwo.blp';
     public readonly description: string = `A weak shield capable of blocking incoming physical damage.
 
@@ -19,6 +19,6 @@ export class SteelShield extends ItemRecipe {
         super();
 
         this.ironShield = ironShield;
-        this.recipe = [this.ironShield, this.ironShield];
+        this.recipe = [this.ironShield];
     }
 }

@@ -9,7 +9,7 @@ export class ManaBlade extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00K');
     public readonly name: string = 'Mana Blade';
-    public readonly goldCost: number = 350;
+    public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNThoriumMelee.blp';
     public readonly description: string = `A steel sword coated in mana, capable of boosting your physical and magical abilities.
 
