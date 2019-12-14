@@ -11,7 +11,7 @@ export class AgileSlippers extends ItemRecipe {
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSlippersOfAgility.blp';
     public readonly description: string = `The most comfortable slippers you'll ever wear.
 
-|cffffcc00Movement Speed:|r +125
+|cffffcc00Movement Speed:|r +200
 
 |cFF808080Movement speed determines how fast you're able to move.|r`;
 
