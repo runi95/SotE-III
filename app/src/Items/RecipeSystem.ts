@@ -11,21 +11,30 @@ interface ItemInSlot {
 
 interface PlayerInterface {
     heroItems: number[];
+    filterItems: ItemRecipe[];
 
     isMainWindowVisible: boolean;
     isMainButtonVisible: boolean;
+    isItemListFiltered: boolean;
 
     selectedItemRecipeIndex: number | undefined;
     selectedItemFrameIndex: number | undefined;
+    currentScrollValue: number;
+    itemWindowMin: number;
+    itemWindowMax: number;
+    itemWindowSize: number;
+    previousItemWindowMax: number;
 }
 
+// TODO: Refactor
 export class RecipeSystem {
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
+    private readonly itemFrames: framehandle[] = [];
+    private readonly itemGoldCost: framehandle[] = [];
+    private isLeftClick: boolean = false;
     private mainButton: framehandle;
     private itemRecipeResultDescriptionFrame: framehandle;
-    private previousItemWindowMax: number;
-    private itemWindowSize: number;
     private selectedItemFrame: framehandle | undefined;
     private itemRecipeFrames: framehandle[] = [];
     private itemRecipeGreenBorderFrames: framehandle[] = [];
@@ -58,9 +67,6 @@ export class RecipeSystem {
         BlzFrameSetText(menuTitle, 'Recipes');
         BlzFrameSetVisible(this.mainButton, false);
 
-        this.createMainButtonTriggers();
-
-        this.itemWindowSize = Math.min(items.length, 11);
         this.itemRecipeResultIconFrame = BlzCreateFrameByType('BACKDROP', 'itemRecipeResultIcon', this.menu, '', 0);
         this.itemRecipeResultDescriptionFrame = BlzCreateFrame('StandardValueTextTemplate', this.menu, 0, 0);
         this.itemRecipeResultUpgradeButton = BlzCreateFrame('ScriptDialogButton', this.menu, 0, 0);
@@ -82,20 +88,15 @@ export class RecipeSystem {
             this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
-        this.previousItemWindowMax = this.itemWindowSize - 1;
+        // FIXME: This will crash if items.length ever becomes less than 11
+        for (let i: number = 0; i < 11; i++) {
+            this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
+            this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
+        }
 
+        this.createMainButtonTriggers();
         this.createMainFrameTriggers();
         this.createUpgradeButtonTrigger();
-
-        const itemFrames: framehandle[] = [];
-        for (let i: number = 0; i < this.itemWindowSize && i < items.length; i++) {
-            itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
-        }
-
-        const itemGoldCost: framehandle[] = [];
-        for (let i: number = 0; i < this.itemWindowSize && i < items.length; i++) {
-            itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
-        }
 
         this.selectedItemFrame = BlzCreateFrameByType('SPRITE', 'selectedItemFrame', this.menu, '', 0);
         BlzFrameSetVisible(this.selectedItemFrame, false);
@@ -107,49 +108,106 @@ export class RecipeSystem {
         scrollTrigger.registerFrameEvent(menuScrollbar, FRAMEEVENT_SLIDER_VALUE_CHANGED);
         scrollTrigger.addAction(() => {
             const value: number = BlzFrameGetValue(menuScrollbar);
-            const itemWindowMax: number = this.itemWindowSize + Math.round(value * (items.length - this.itemWindowSize)) - 1;
-            // FIXME: This will break in multiplayer if filtering is added
-            if (itemWindowMax === this.previousItemWindowMax) {
-                return;
-            }
-
-            const itemWindowMaxDifference: number = this.previousItemWindowMax - itemWindowMax;
-            this.previousItemWindowMax = itemWindowMax;
-            const itemWindowMin: number = itemWindowMax + 1 - this.itemWindowSize;
-
-            const localPlayerId: number = GetPlayerId(GetLocalPlayer());
-            if (this.playerInterface[localPlayerId].selectedItemFrameIndex !== undefined) {
-                this.playerInterface[localPlayerId].selectedItemFrameIndex =
-                    (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) + itemWindowMaxDifference;
-            }
-
-            const shouldSelectedItemFrameBeVisible: boolean = !(
-                this.playerInterface[localPlayerId].selectedItemFrameIndex === undefined ||
-                (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) < 0 ||
-                (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) > this.itemWindowSize - 1
-            );
-
-            BlzFrameSetVisible(this.selectedItemFrame as framehandle, shouldSelectedItemFrameBeVisible);
-            BlzFrameSetPoint(
-                this.selectedItemFrame as framehandle,
-                FRAMEPOINT_BOTTOMLEFT,
-                this.menu,
-                FRAMEPOINT_BOTTOMLEFT,
-                0.0175 +
-                    0.0425 *
-                        (this.playerInterface[localPlayerId].selectedItemFrameIndex
-                            ? (this.playerInterface[localPlayerId].selectedItemFrameIndex as number)
-                            : 0),
-                0.03,
-            );
-
-            for (let i: number = 0; i < itemFrames.length && itemWindowMin + i < items.length; i++) {
-                BlzFrameSetTexture(itemFrames[i], items[itemWindowMin + i].iconPath, 0, true);
-                BlzFrameSetText(itemGoldCost[i], `|cFFFFCC00${items[itemWindowMin + i].goldCost}|r`);
-            }
+            this.playerInterface[GetPlayerId(GetTriggerPlayer())].currentScrollValue = value;
+            this.scrollEvent();
         });
 
         this.createHeroDropAndPickupItemEvents();
+    }
+
+    private scrollEvent(): void {
+        const localPlayerId: number = GetPlayerId(GetLocalPlayer());
+        const itemArrayLength: number = this.playerInterface[localPlayerId].isItemListFiltered
+            ? this.playerInterface[localPlayerId].filterItems.length + 1
+            : items.length;
+        const itemWindowMaxDifference: number =
+            this.playerInterface[localPlayerId].previousItemWindowMax - this.playerInterface[localPlayerId].itemWindowMax;
+        this.playerInterface[localPlayerId].itemWindowSize = Math.min(itemArrayLength, this.itemFrames.length);
+        this.playerInterface[localPlayerId].itemWindowMax =
+            this.playerInterface[localPlayerId].itemWindowSize +
+            Math.round(
+                this.playerInterface[localPlayerId].currentScrollValue *
+                    (itemArrayLength - this.playerInterface[localPlayerId].itemWindowSize),
+            ) -
+            1;
+        this.playerInterface[localPlayerId].previousItemWindowMax = this.playerInterface[localPlayerId].itemWindowMax;
+        this.playerInterface[localPlayerId].itemWindowMin =
+            this.playerInterface[localPlayerId].itemWindowMax + 1 - this.playerInterface[localPlayerId].itemWindowSize;
+
+        if (this.playerInterface[localPlayerId].selectedItemFrameIndex !== undefined) {
+            this.playerInterface[localPlayerId].selectedItemFrameIndex =
+                (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) + itemWindowMaxDifference;
+        }
+
+        const shouldSelectedItemFrameBeVisible: boolean = !(
+            this.playerInterface[localPlayerId].selectedItemFrameIndex === undefined ||
+            (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) < 0 ||
+            (this.playerInterface[localPlayerId].selectedItemFrameIndex as number) > this.playerInterface[localPlayerId].itemWindowSize - 1
+        );
+
+        BlzFrameSetVisible(this.selectedItemFrame as framehandle, shouldSelectedItemFrameBeVisible);
+        BlzFrameSetPoint(
+            this.selectedItemFrame as framehandle,
+            FRAMEPOINT_BOTTOMLEFT,
+            this.menu,
+            FRAMEPOINT_BOTTOMLEFT,
+            0.0175 +
+                0.0425 *
+                    (this.playerInterface[localPlayerId].selectedItemFrameIndex
+                        ? (this.playerInterface[localPlayerId].selectedItemFrameIndex as number)
+                        : 0),
+            0.03,
+        );
+
+        this.updateItemFrames(localPlayerId);
+    }
+
+    private getItemFrameTextureString(isOutsideItemArray: boolean, indexedItemWindowMin: number, localPlayerId: number): string {
+        if (isOutsideItemArray) {
+            return 'war3mapImported\\BTNNoItem.blp';
+        }
+
+        if (this.playerInterface[localPlayerId].isItemListFiltered) {
+            if (indexedItemWindowMin === 0) {
+                return 'war3mapImported\\X.blp';
+            }
+
+            return this.playerInterface[localPlayerId].filterItems[indexedItemWindowMin - 1].iconPath;
+        }
+
+        return items[indexedItemWindowMin].iconPath;
+    }
+
+    private getItemFrameTextString(isOutsideItemArray: boolean, indexedItemWindowMin: number, localPlayerId: number): string {
+        if (isOutsideItemArray) {
+            return '';
+        }
+
+        if (this.playerInterface[localPlayerId].isItemListFiltered) {
+            if (indexedItemWindowMin === 0) {
+                return '';
+            }
+            return `|cFFFFCC00${this.playerInterface[localPlayerId].filterItems[indexedItemWindowMin - 1].goldCost}|r`;
+        }
+
+        return `|cFFFFCC00${items[indexedItemWindowMin].goldCost}|r`;
+    }
+
+    private updateItemFrames(localPlayerId: number): void {
+        const itemArrayLength: number = this.playerInterface[localPlayerId].isItemListFiltered
+            ? this.playerInterface[localPlayerId].filterItems.length + 1
+            : items.length;
+
+        for (let i: number = 0; i < this.itemFrames.length; i++) {
+            const indexedItemWindowMin: number = this.playerInterface[localPlayerId].itemWindowMin + i;
+            const isOutsideItemArray: boolean = !(indexedItemWindowMin < itemArrayLength);
+            const texture: string = this.getItemFrameTextureString(isOutsideItemArray, indexedItemWindowMin, localPlayerId);
+            const text: string = this.getItemFrameTextString(isOutsideItemArray, indexedItemWindowMin, localPlayerId);
+
+            BlzFrameSetTexture(this.itemFrames[i], texture, 0, true);
+            BlzFrameSetText(this.itemGoldCost[i], text);
+            BlzFrameSetVisible(this.itemFrames[i], !isOutsideItemArray);
+        }
     }
 
     private createItemFrame(parent: framehandle, texture: string, index: number): framehandle {
@@ -160,15 +218,69 @@ export class RecipeSystem {
         BlzFrameSetAllPoints(itemClickFrame, itemIcon);
         BlzFrameSetTexture(itemIcon, texture, 0, true);
 
-        const t: Trigger = new Trigger();
-        t.registerFrameEvent(itemClickFrame, FRAMEEVENT_CONTROL_CLICK);
-        t.addAction(() => {
+        const leftClickTrigger: Trigger = new Trigger();
+        leftClickTrigger.registerFrameEvent(itemClickFrame, FRAMEEVENT_CONTROL_CLICK);
+        leftClickTrigger.addAction(() => {
+            this.isLeftClick = true;
+        });
+
+        const clickTrigger: Trigger = new Trigger();
+        clickTrigger.registerFrameEvent(itemClickFrame, FRAMEEVENT_MOUSE_UP);
+        clickTrigger.addAction(() => {
             BlzFrameSetEnable(itemClickFrame, false);
             BlzFrameSetEnable(itemClickFrame, true);
-            this.selectItemEvent(index, GetPlayerId(GetTriggerPlayer()));
+            if (this.isLeftClick) {
+                this.isLeftClick = false;
+                this.selectItemEvent(index, GetPlayerId(GetTriggerPlayer()));
+            } else {
+                this.showRecipesUsingItem(index, GetPlayerId(GetTriggerPlayer()));
+            }
         });
 
         return itemIcon;
+    }
+
+    private findRecipeUses(item: ItemRecipe): ItemRecipe[] {
+        const result: ItemRecipe[] = [];
+
+        for (let i: number = 0; i < items.length; i++) {
+            let hasItem: boolean = false;
+
+            for (let j: number = 0; !hasItem && j < items[i].recipe.length; j++) {
+                if (items[i].recipe[j].itemId === item.itemId) {
+                    hasItem = true;
+                }
+            }
+
+            if (hasItem) {
+                result.push(items[i]);
+            }
+        }
+
+        return result;
+    }
+
+    private showRecipesUsingItem(index: number, triggerPlayerId: number): void {
+        if (!(this.playerInterface[triggerPlayerId].isItemListFiltered && index === 0)) {
+            const itemIndex: number =
+                index +
+                this.playerInterface[triggerPlayerId].previousItemWindowMax +
+                1 -
+                this.playerInterface[triggerPlayerId].itemWindowSize;
+            const itemRecipe: ItemRecipe = this.playerInterface[triggerPlayerId].isItemListFiltered
+                ? this.playerInterface[triggerPlayerId].filterItems[itemIndex - 1]
+                : items[itemIndex];
+            this.playerInterface[triggerPlayerId].isItemListFiltered = true;
+            this.playerInterface[triggerPlayerId].filterItems = this.findRecipeUses(itemRecipe);
+            this.playerInterface[triggerPlayerId].selectedItemFrameIndex = undefined;
+            const localPlayerId: number = GetPlayerId(GetLocalPlayer());
+            BlzFrameSetVisible(
+                this.selectedItemFrame as framehandle,
+                this.playerInterface[localPlayerId].selectedItemFrameIndex !== undefined,
+            );
+            this.scrollEvent();
+            this.updateItemFrames(localPlayerId);
+        }
     }
 
     private createItemGoldCostFrame(parent: framehandle, goldCost: number, index: number): framehandle {
@@ -190,12 +302,24 @@ export class RecipeSystem {
     }
 
     private selectItemEvent(index: number, triggerPlayerId: number): void {
-        this.playerInterface[triggerPlayerId].selectedItemFrameIndex = index;
-        this.playerInterface[triggerPlayerId].selectedItemRecipeIndex =
-            (this.playerInterface[triggerPlayerId].selectedItemFrameIndex as number) + this.previousItemWindowMax + 1 - this.itemWindowSize;
+        const localPlayerId: number = GetPlayerId(GetLocalPlayer());
+        if (index === 0 && this.playerInterface[triggerPlayerId].isItemListFiltered) {
+            this.playerInterface[triggerPlayerId].isItemListFiltered = false;
+            this.playerInterface[triggerPlayerId].selectedItemFrameIndex = undefined;
+            this.scrollEvent();
+            this.updateItemFrames(localPlayerId);
+        } else {
+            this.playerInterface[triggerPlayerId].selectedItemFrameIndex = index;
+            this.playerInterface[triggerPlayerId].selectedItemRecipeIndex =
+                (this.playerInterface[triggerPlayerId].selectedItemFrameIndex as number) +
+                this.playerInterface[triggerPlayerId].previousItemWindowMax +
+                1 -
+                this.playerInterface[triggerPlayerId].itemWindowSize;
+        }
+
         this.selectItem();
 
-        const selectedItemFrameIndex: number | undefined = this.playerInterface[GetPlayerId(GetLocalPlayer())].selectedItemFrameIndex;
+        const selectedItemFrameIndex: number | undefined = this.playerInterface[localPlayerId].selectedItemFrameIndex;
         BlzFrameSetPoint(
             this.selectedItemFrame as framehandle,
             FRAMEPOINT_BOTTOMLEFT,
@@ -207,16 +331,30 @@ export class RecipeSystem {
         BlzFrameSetVisible(this.selectedItemFrame as framehandle, selectedItemFrameIndex !== undefined);
     }
 
+    private findSelectedItem(selectedItemRecipeIndex: number | undefined, localPlayerId: number): ItemRecipe | undefined {
+        if (selectedItemRecipeIndex === undefined) {
+            return undefined;
+        }
+
+        if (this.playerInterface[localPlayerId].isItemListFiltered) {
+            return this.playerInterface[localPlayerId].filterItems[selectedItemRecipeIndex - 1];
+        }
+
+        return items[selectedItemRecipeIndex];
+    }
+
     private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-        const playerId: number = GetPlayerId(GetLocalPlayer());
-        const selectedItemRecipeIndex: number | undefined = this.playerInterface[playerId].selectedItemRecipeIndex;
-        const item: ItemRecipe | undefined = selectedItemRecipeIndex ? items[selectedItemRecipeIndex] : undefined;
+        const localPlayerId: number = GetPlayerId(GetLocalPlayer());
+        const item: ItemRecipe | undefined = this.findSelectedItem(
+            this.playerInterface[localPlayerId].selectedItemRecipeIndex,
+            localPlayerId,
+        );
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
-        for (let i: number = 0; i < this.playerInterface[playerId].heroItems.length; i++) {
+        for (let i: number = 0; i < this.playerInterface[localPlayerId].heroItems.length; i++) {
             itemsInSlots.push({
-                itemId: this.playerInterface[playerId].heroItems[i],
+                itemId: this.playerInterface[localPlayerId].heroItems[i],
                 includedInRecipe: false,
             });
         }
@@ -273,10 +411,17 @@ export class RecipeSystem {
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             this.playerInterface.push({
                 heroItems: [],
+                filterItems: [],
                 isMainWindowVisible: false,
                 isMainButtonVisible: false,
+                isItemListFiltered: false,
+                currentScrollValue: 0,
                 selectedItemRecipeIndex: undefined,
                 selectedItemFrameIndex: undefined,
+                itemWindowMin: 0,
+                itemWindowMax: this.itemFrames.length - 1,
+                itemWindowSize: this.itemFrames.length,
+                previousItemWindowMax: this.itemFrames.length - 1,
             });
             if (this.gameGlobals.PlayerSpawnRegion.length > i) {
                 const index: number = i;
