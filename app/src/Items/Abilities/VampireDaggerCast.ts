@@ -1,7 +1,7 @@
 import { Spell } from '../../Spells/Spell';
 
-export class BloodiedSacrificialDaggerCast extends Spell {
-    protected readonly abilityId: number = FourCC('A056');
+export class VampireDaggerCast extends Spell {
+    protected readonly abilityId: number = FourCC('A05C');
 
     protected action(): void {
         UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), 1000, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
@@ -12,5 +12,6 @@ export class BloodiedSacrificialDaggerCast extends Spell {
                 GetUnitY(GetSpellTargetUnit()),
             ),
         );
+        SetUnitLifeBJ(GetTriggerUnit(), GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + 666);
     }
 }

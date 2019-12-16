@@ -65,6 +65,9 @@ import { SpellShield } from './Recipes/SpellShield';
 import { SwordOfFreyr } from './Recipes/SwordOfFreyr';
 import { SwordOfNaegling } from './Recipes/SwordOfNaegling';
 import { ThrowableAxe } from './Recipes/ThrowableAxe';
+import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
+import { VampireClaws } from './BasicItems/VampireClaws';
+import { VampireDagger } from './Recipes/VampireDagger';
 
 const crystalBall: CrystalBall = new CrystalBall();
 const sobiMask: SobiMask = new SobiMask();
@@ -92,6 +95,8 @@ const scepter: Scepter = new Scepter();
 const warAxe: WarAxe = new WarAxe();
 const runedBracers: RunedBracers = new RunedBracers();
 const goblinNightScope: GoblinNightScope = new GoblinNightScope();
+const bloodiedSacrificialDagger: BloodiedSacrificialDagger = new BloodiedSacrificialDagger();
+const vampireClaws: VampireClaws = new VampireClaws();
 const manaEgg: ManaEgg = new ManaEgg(emptyVial);
 const balancedShield: BalancedShield = new BalancedShield(moonArmor, ironShield);
 const improvedMoonArmor: ImprovedMoonArmor = new ImprovedMoonArmor(moonArmor);
@@ -116,6 +121,7 @@ const lionsRing: LionsRing = new LionsRing(runedBracers, improvedMoonArmor);
 const manaAxe: ManaAxe = new ManaAxe(warAxe, emptyVial);
 const fragarach: Fragarach = new Fragarach(manaBlade, ironClaws);
 const swordOfFreyr: SwordOfFreyr = new SwordOfFreyr(manaBlade, manaAxe);
+const vampireDagger: VampireDagger = new VampireDagger(bloodiedSacrificialDagger, vampireClaws);
 export default [
     improvedMoonArmor,
     improvedBalancedShield,
@@ -142,6 +148,7 @@ export default [
     loadedRifle,
     swordOfFreyr,
     fragarach,
+    vampireDagger,
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),

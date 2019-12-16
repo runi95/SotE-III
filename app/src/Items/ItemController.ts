@@ -49,6 +49,8 @@ import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
 import { SacrificialDaggerResetCharges } from './Abilities/SacrificialDaggerResetCharges';
 import { SacrificialDaggerUse } from './Abilities/SacrificialDaggerUse';
+import { BloodiedSacrificialDaggerCast } from './Abilities/BloodiedSacrificialDaggerCast';
+import { VampireDaggerCast } from './Abilities/VampireDaggerCast';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -104,6 +106,8 @@ export class ItemController {
             new SpellShieldPickup(gameGlobals),
             new SacrificialDaggerUse(),
             new SacrificialDaggerResetCharges(),
+            new BloodiedSacrificialDaggerCast(),
+            new VampireDaggerCast(),
         ];
     }
 }
