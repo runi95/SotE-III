@@ -505,7 +505,7 @@ export class RecipeSystem {
                         );
                     }
                     UnitAddItemById(this.gameGlobals.PlayerHero[triggerPlayerId], items[selectedItemForPlayerIndex].itemId);
-                    this.selectItemEvent(this.playerInterface[triggerPlayerId].selectedItemFrameIndex as number, triggerPlayerId);
+                    this.selectItem();
                 }
             }
         });
