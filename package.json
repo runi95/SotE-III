@@ -1,20 +1,21 @@
 {
-  "name": "wc3-app",
+  "name": "sote-iii",
   "version": "1.0.0",
-  "description": "A demo for TypeScript in WC3",
+  "description": "A warcraft III hero arena map",
   "directories": {
     "lib": "app/src/lib"
   },
   "main": "app/src/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "build-test.bat"
+    "build": "node build build",
+    "runbuild": "node build build run"
   },
-  "author": "Nikolaj \"William\" Mariager",
+  "author": "runi95",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^12.6.2",
-    "busted-tstl": "0.1.0",
+    "busted-tstl": "^0.1.0",
     "codelyzer": "^5.1.0",
     "convertjasstots": "^1.0.10",
     "fs-extra": "^8.1.0",
@@ -22,8 +23,8 @@
     "luamin": "^1.0.4",
     "rimraf": "^2.6.3",
     "sync-rpc": "^1.3.4",
-    "typescript": "3.5.3",
-    "typescript-to-lua": "0.27.0"
+    "typescript": "^3.5.3",
+    "typescript-to-lua": "^0.27.0"
   },
   "devDependencies": {
     "tslint": "^5.18.0",
