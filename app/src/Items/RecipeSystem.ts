@@ -343,10 +343,16 @@ export class RecipeSystem {
             this.updateItemFrames();
         } else {
             this.localPlayerInterface.selectedItemFrameIndex = index;
-            this.localPlayerInterface.selectedItemRecipeIndex = (this.localPlayerInterface.selectedItemFrameIndex as number) +
-                this.localPlayerInterface.itemWindowMax +
-                1 -
-                this.localPlayerInterface.itemWindowSize;
+            if (this.localPlayerInterface.isItemListFiltered) {
+                this.localPlayerInterface.selectedItemRecipeIndex = this.localPlayerInterface.filterItems[(this.localPlayerInterface.selectedItemFrameIndex as number) +
+                    this.localPlayerInterface.itemWindowMax -
+                    this.localPlayerInterface.itemWindowSize];
+            } else {
+                this.localPlayerInterface.selectedItemRecipeIndex = (this.localPlayerInterface.selectedItemFrameIndex as number) +
+                    this.localPlayerInterface.itemWindowMax +
+                    1 -
+                    this.localPlayerInterface.itemWindowSize;
+            }
         }
 
         this.selectItem();
@@ -363,24 +369,10 @@ export class RecipeSystem {
         BlzFrameSetVisible(this.selectedItemFrame as framehandle, selectedItemFrameIndex !== undefined);
     }
 
-    private findSelectedItem(selectedItemRecipeIndex: number | undefined): ItemRecipe | undefined {
-        if (selectedItemRecipeIndex === undefined) {
-            return undefined;
-        }
-
-        if (this.localPlayerInterface.isItemListFiltered) {
-            return items[this.localPlayerInterface.filterItems[selectedItemRecipeIndex - 1]];
-        }
-
-        return items[selectedItemRecipeIndex];
-    }
-
     private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-        const item: ItemRecipe | undefined = this.findSelectedItem(
-            this.localPlayerInterface.selectedItemRecipeIndex
-        );
+        const item: ItemRecipe | undefined = this.localPlayerInterface.selectedItemRecipeIndex !== undefined ? items[this.localPlayerInterface.selectedItemRecipeIndex] : undefined;
 
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         for (let i: number = 0; i < this.localPlayerInterface.heroItems.length; i++) {
