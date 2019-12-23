@@ -13,11 +13,15 @@ export class Soulcage extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I011');
     public readonly name: string = 'Soulcage';
-    public readonly goldCost: number = 800;
+    public readonly goldCost: number = 3800;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTN3M3.blp';
     public readonly description: string = `A soulcage harnessing the powers of three soulstones.
 
-|cffffcc00Health Regen:|r +100`;
+|cffffcc00Agility:|r +30
+|cffffcc00Strength:|r +30
+|cffffcc00Intelligence:|r +30
+    
+|cFF808080Agility increases your attack and movement speed.|r`;
 
     constructor(
         emptySoulcage: EmptySoulcage,
