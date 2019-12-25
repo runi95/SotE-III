@@ -30,7 +30,7 @@ export class Commands {
         if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
             const gold: number = Number(split[1]);
             if (!gold) {
-                BJDebugMsg('Invalid gold amount!');
+                DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Invalid gold amount!');
                 return;
             }
 
@@ -38,7 +38,7 @@ export class Commands {
         } else if (this.gameGlobals.DebugMode && split[0] === 'lumber' && split.length === 2) {
             const lumber: number = Number(split[1]);
             if (!lumber) {
-                BJDebugMsg('Invalid lumber amount!');
+                DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Invalid lumber amount!');
                 return;
             }
 
@@ -46,9 +46,9 @@ export class Commands {
         } else if (this.gameGlobals.DebugMode && split[0] === 'tp' && split.length === 1) {
             this.gameGlobals.TeleportMovement = !this.gameGlobals.TeleportMovement;
             if (this.gameGlobals.TeleportMovement) {
-                BJDebugMsg('Teleport movement has been |c0020C000activated|r!');
+                DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Teleport movement has been |c0020C000activated|r!');
             } else {
-                BJDebugMsg('Teleport movement has been |c00FF0303deactivated|r!');
+                DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Teleport movement has been |c00FF0303deactivated|r!');
             }
         } else if (this.gameGlobals.DebugMode && split[0] === 'anim' && split.length === 2) {
             const playerId: number = GetPlayerId(GetTriggerPlayer());
@@ -58,7 +58,7 @@ export class Commands {
         } else if (this.gameGlobals.DebugMode && split[0] === 'defeat' && split.length === 2) {
             this.playerVictoryUtils.defeatPlayer(Number(split[1]), 'has been forcefully defeated!');
         } else {
-            BJDebugMsg('Unknown command!');
+            DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Unknown command!');
         }
     }
 }
