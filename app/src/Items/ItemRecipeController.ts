@@ -68,6 +68,7 @@ import { ThrowableAxe } from './Recipes/ThrowableAxe';
 import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
 import { VampireDagger } from './Recipes/VampireDagger';
+import { AssassinsBlade } from './Recipes/AssassinsBlade';
 
 const crystalBall: CrystalBall = new CrystalBall();
 const sobiMask: SobiMask = new SobiMask();
@@ -149,6 +150,7 @@ export default [
     swordOfFreyr,
     fragarach,
     vampireDagger,
+    new AssassinsBlade(ironSword),
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),

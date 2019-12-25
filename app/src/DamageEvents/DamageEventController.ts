@@ -19,6 +19,7 @@ import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Repetition } from './Repetition';
 import { HawkSpellDamage } from './HawkSpellDamage';
 import { Lifesteal } from './Lifesteal';
+import { AssassinsBladeEvent } from './AssassinsBladeEvent';
 
 export class DamageEventController {
     constructor(
@@ -38,6 +39,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new LionsRing());
 
         // Initial damage modification events
+        damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals, timerUtils));
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());

@@ -51,6 +51,8 @@ import { SacrificialDaggerResetCharges } from './Abilities/SacrificialDaggerRese
 import { SacrificialDaggerUse } from './Abilities/SacrificialDaggerUse';
 import { BloodiedSacrificialDaggerCast } from './Abilities/BloodiedSacrificialDaggerCast';
 import { VampireDaggerCast } from './Abilities/VampireDaggerCast';
+import { AssassinsBladeDrop } from './Abilities/AssassinsBladeDrop';
+import { AssassinsBladePickup } from './Abilities/AssassinsBladePickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -108,6 +110,8 @@ export class ItemController {
             new SacrificialDaggerResetCharges(),
             new BloodiedSacrificialDaggerCast(),
             new VampireDaggerCast(),
+            new AssassinsBladeDrop(gameGlobals),
+            new AssassinsBladePickup(gameGlobals)
         ];
     }
 }

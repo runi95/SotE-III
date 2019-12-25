@@ -60,6 +60,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.Regenerate[i] = false;
         gameGlobals.SnowyOwl[i] = false;
         gameGlobals.ClockworkPenguin[i] = false;
+        gameGlobals.AssassinsBlade[i] = false;
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.DivineShieldLife[i] = 0;
         gameGlobals.PlayerLifesteal[i] = 0;

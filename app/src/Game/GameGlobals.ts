@@ -12,6 +12,7 @@ export class GameGlobals {
     public GoblinBattery: boolean[] = [];
     public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
+    public AssassinsBlade: boolean[] = [];
     public RazorBladesOn: boolean[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
