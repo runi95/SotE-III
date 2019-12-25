@@ -145,10 +145,10 @@ export class RecipeSystem {
             : items.length;
         const itemWindowSize: number = Math.min(itemArrayLength, this.itemFrames.length);
         const itemWindowMax: number =
-            this.localPlayerInterface.itemWindowSize +
+            itemWindowSize +
             Math.round(
                 this.localPlayerInterface.currentScrollValue *
-                (itemArrayLength - this.localPlayerInterface.itemWindowSize),
+                (itemArrayLength - itemWindowSize),
             ) -
             1;
 
