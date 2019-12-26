@@ -69,6 +69,7 @@ import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
 import { VampireDagger } from './Recipes/VampireDagger';
 import { AssassinsBlade } from './Recipes/AssassinsBlade';
+import { AssassinsCloak } from './Recipes/AssassinsCloak';
 
 const crystalBall: CrystalBall = new CrystalBall();
 const sobiMask: SobiMask = new SobiMask();
@@ -123,6 +124,8 @@ const manaAxe: ManaAxe = new ManaAxe(warAxe, emptyVial);
 const fragarach: Fragarach = new Fragarach(manaBlade, ironClaws);
 const swordOfFreyr: SwordOfFreyr = new SwordOfFreyr(manaBlade, manaAxe);
 const vampireDagger: VampireDagger = new VampireDagger(bloodiedSacrificialDagger, vampireClaws);
+const assassinsBlade: AssassinsBlade = new AssassinsBlade(ironSword);
+const cloakOfShadowWalk: CloakOfShadowWalk = new CloakOfShadowWalk(cloakOfShadows, scrollOfAgility);
 export default [
     improvedMoonArmor,
     improvedBalancedShield,
@@ -150,14 +153,14 @@ export default [
     swordOfFreyr,
     fragarach,
     vampireDagger,
-    new AssassinsBlade(ironSword),
+    assassinsBlade,
+    new AssassinsCloak(assassinsBlade, cloakOfShadowWalk),
     new AdvancedReinforcedHides(improvedMoonArmor, improvedBalancedShield, reinforcedScales),
     new AgileSlippers(bootsOfSpeed),
     new Ancile(manaEgg, ironShield),
     new ArmoredBoots(bootsOfSpeed, steelShield),
     new Caduceus(branch, studdedLeatherArmor),
     new CircesStaff(branch, scepter),
-    new CloakOfShadowWalk(cloakOfShadows, scrollOfAgility),
     new DragonScales(dragonWhelpClaws, coralScales),
     new EnhancedBerserkerAxes(berserkerAxes),
     new LightningBolt(goblinBattery, theAegis),
