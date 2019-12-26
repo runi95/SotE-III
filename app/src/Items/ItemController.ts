@@ -53,6 +53,8 @@ import { BloodiedSacrificialDaggerCast } from './Abilities/BloodiedSacrificialDa
 import { VampireDaggerCast } from './Abilities/VampireDaggerCast';
 import { AssassinsBladeDrop } from './Abilities/AssassinsBladeDrop';
 import { AssassinsBladePickup } from './Abilities/AssassinsBladePickup';
+import { AssassinsMapDrop } from './Abilities/AssassinsMapDrop';
+import { AssassinsMapPickup } from './Abilities/AssassinsMapPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -111,7 +113,9 @@ export class ItemController {
             new BloodiedSacrificialDaggerCast(),
             new VampireDaggerCast(),
             new AssassinsBladeDrop(gameGlobals),
-            new AssassinsBladePickup(gameGlobals)
+            new AssassinsBladePickup(gameGlobals),
+            new AssassinsMapDrop(),
+            new AssassinsMapPickup()
         ];
     }
 }
