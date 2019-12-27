@@ -26,6 +26,7 @@ ceres.addHook('main::after', () => {
             seedRandomNumberGenerator(randomNumberGenerator);
             spawnAllCreeps(gameGlobals);
             initializeHeroSelection(gameGlobals);
+            createQuests();
             setPlayerCameras(gameGlobals);
             // tslint:disable-next-line: no-unused-expression
             new GameOptionSystem(gameGlobals, randomNumberGenerator);
@@ -107,6 +108,12 @@ function initializeHeroSelection(gameGlobals: GameGlobals): void {
             ),
         );
     }
+}
+
+function createQuests(): void {
+    CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, 'Introduction', `A new Warcraft III hero arena map |cFFCCCC00(by runi95)|r|n|n|cFF888800Win conditions|r|n|nDefeat the opposing team by killing their heroes until they run out of lives and can no longer respawn.|n|n|cFF888800Resources|r|n|nGain gold by slaying creeps found scattered all across the map. Higher level creeps tend to give more gold when defeated.|nGold can be spent at the various shops found in spawn and out on the battlefield.|nGold is also necessary when upgrading items through the recipe system.|n|n|cFF888800Recipe system|r|n|nThe recipe system is used when upgrading items to a stronger version of themselves.|nTo upgrade an item your hero HAS TO BE standing in spawn so you can click the recipe button icon which can be found right above your minimap.|nLeft clicking an item will show the recipe for that item like in the image above.|nRight clicking an item will filter the item list to only show item recipes where the clicked item is used.|nOnce your hero is holding all the required recipe items and you have enough gold to purchase the recipe you'll be able to click the upgrade button.`, 'ReplaceableTextures\\CommandButtons\\BTNBlueQuestion.blp');
+    CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, 'Commands', `There are currently no commands available`, 'ReplaceableTextures\\CommandButtons\\BTNExclamation.blp');
+    CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, 'Bosses', `Bosses are spawned when a hero steps inside a Circle of Power. The size of the circle indicates the strength of the boss.|nThe rewards for slaying a boss is always greater when defeating a harder boss spawned from a larger circle.`, 'ReplaceableTextures\\CommandButtons\\BTNBossQuest.blp');
 }
 
 function SendMessage(this: void, msg: any): void {
