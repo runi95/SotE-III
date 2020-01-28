@@ -41,28 +41,38 @@ export class ArenaUtils {
 
         let allAlivePlayersAreAllies: boolean = true;
         for (let i: number = 0; i < alivePlayers.length; i++) {
-            if (!alivePlayers.every(alivePlayer => alivePlayer === i || (IsPlayerAlly(Player(alivePlayers[i]),
-                                                                                      Player(alivePlayer))
-                && IsPlayerAlly(Player(alivePlayer), Player(alivePlayers[i]))))) {
+            if (
+                !alivePlayers.every(
+                    (alivePlayer) =>
+                        alivePlayer === i ||
+                        (IsPlayerAlly(Player(alivePlayers[i]), Player(alivePlayer)) &&
+                            IsPlayerAlly(Player(alivePlayer), Player(alivePlayers[i]))),
+                )
+            ) {
                 allAlivePlayersAreAllies = false;
             }
         }
 
         if (allAlivePlayersAreAllies) {
+            BlzChangeMinimapTerrainTex('war3mapMap.blp');
             SetCameraBoundsToRect(GetPlayableMapRect());
             ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
 
             for (let i: number = 0; i < alivePlayers.length; i++) {
-                DisplayTextToForce(GetPlayersAll(),
-                                   // tslint:disable-next-line:max-line-length
-                                   `${this.gameGlobals.PlayerColorCodes[alivePlayers[i]]}${GetPlayerName(Player(alivePlayers[i]))}|r has won the arena!`);
+                DisplayTextToForce(
+                    GetPlayersAll(),
+                    // tslint:disable-next-line:max-line-length
+                    `${this.gameGlobals.PlayerColorCodes[alivePlayers[i]]}${GetPlayerName(Player(alivePlayers[i]))}|r has won the arena!`,
+                );
             }
 
             for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-                if (this.gameGlobals.PlayerLives[i] !== undefined
-                    && this.gameGlobals.PlayerLives[i] > 0
-                    && this.gameGlobals.PlayerHero[i] !== undefined
-                    && !UnitAlive(this.gameGlobals.PlayerHero[i])) {
+                if (
+                    this.gameGlobals.PlayerLives[i] !== undefined &&
+                    this.gameGlobals.PlayerLives[i] > 0 &&
+                    this.gameGlobals.PlayerHero[i] !== undefined &&
+                    !UnitAlive(this.gameGlobals.PlayerHero[i])
+                ) {
                     const x: number = GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]);
                     const y: number = GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]);
                     ReviveHero(this.gameGlobals.PlayerHero[i], x, y, true);
@@ -83,10 +93,17 @@ export class ArenaUtils {
 
         // Respawn all dead heroes
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
-            if (this.gameGlobals.PlayerHero[i] !== undefined && !UnitAlive(this.gameGlobals.PlayerHero[i])
-                && this.gameGlobals.PlayerLives[i] > 0) {
-                ReviveHero(this.gameGlobals.PlayerHero[i], GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]),
-                           GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]), false);
+            if (
+                this.gameGlobals.PlayerHero[i] !== undefined &&
+                !UnitAlive(this.gameGlobals.PlayerHero[i]) &&
+                this.gameGlobals.PlayerLives[i] > 0
+            ) {
+                ReviveHero(
+                    this.gameGlobals.PlayerHero[i],
+                    GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]),
+                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]),
+                    false,
+                );
             }
         }
 
@@ -101,8 +118,13 @@ export class ArenaUtils {
                 UnitRemoveBuffs(this.gameGlobals.PlayerHero[i], true, true);
                 SetUnitLifePercentBJ(this.gameGlobals.PlayerHero[i], 100);
                 SetUnitManaPercentBJ(this.gameGlobals.PlayerHero[i], 100);
-                teleportEffects.push(AddSpecialEffect('Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl',
-                                                      GetUnitX(this.gameGlobals.PlayerHero[i]), GetUnitY(this.gameGlobals.PlayerHero[i])));
+                teleportEffects.push(
+                    AddSpecialEffect(
+                        'Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTo.mdl',
+                        GetUnitX(this.gameGlobals.PlayerHero[i]),
+                        GetUnitY(this.gameGlobals.PlayerHero[i]),
+                    ),
+                );
             }
         }
 
@@ -118,16 +140,21 @@ export class ArenaUtils {
 
                 for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
                     if (this.gameGlobals.PlayerHero[i] !== undefined && this.gameGlobals.PlayerLives[i] > 0) {
-                        const x: number = this.randomNumberGenerator.random(GetRectMinX(this.gameGlobals.TheArenaRegion),
-                                                                            GetRectMaxX(this.gameGlobals.TheArenaRegion));
-                        const y: number = this.randomNumberGenerator.random(GetRectMinY(this.gameGlobals.TheArenaRegion),
-                                                                            GetRectMaxY(this.gameGlobals.TheArenaRegion));
+                        const x: number = this.randomNumberGenerator.random(
+                            GetRectMinX(this.gameGlobals.TheArenaRegion),
+                            GetRectMaxX(this.gameGlobals.TheArenaRegion),
+                        );
+                        const y: number = this.randomNumberGenerator.random(
+                            GetRectMinY(this.gameGlobals.TheArenaRegion),
+                            GetRectMaxY(this.gameGlobals.TheArenaRegion),
+                        );
                         SetUnitPosition(this.gameGlobals.PlayerHero[i], x, y);
                         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\MassTeleport\\MassTeleportCaster.mdl', x, y));
                         SetCameraPositionForPlayer(Player(i), x, y);
                     }
                 }
 
+                BlzChangeMinimapTerrainTex('war3mapImported\\minimapLogo.blp');
                 SetCameraBoundsToRect(this.gameGlobals.TheArenaRegion);
             }
 
