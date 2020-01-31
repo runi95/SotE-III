@@ -458,7 +458,7 @@ export class Game {
             }
         }
 
-        if (nonBotPlayerCount === 1 && GetPlayerName(Player(0)) === 'WorldEdit') {
+        if (nonBotPlayerCount === 1 && GetPlayerName(Player(0)) === 'Local Player') {
             this.gameGlobals.DebugMode = true;
             this.startDebugUI();
         }
