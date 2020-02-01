@@ -3,6 +3,8 @@ import { Trigger } from '../JassOverrides/Trigger';
 // tslint:disable-next-line: import-name
 import items from './ItemRecipeController';
 import { ItemRecipe } from './ItemRecipe';
+import { ItemLabel } from './ItemLabel';
+import { Item } from './Item';
 
 interface ItemInSlot {
     itemId: number;
@@ -51,6 +53,64 @@ export class RecipeSystem {
         const menuScrollbar: framehandle = BlzCreateFrame('EscMenuSliderTemplate', this.menu, 0, 0);
         this.mainButton = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
         const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', this.mainButton, '', 0);
+
+        const sidebar: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', this.menu, 0, 0);
+        const sidebarBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', sidebar, 0, 0);
+        const sidebarTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', sidebar, 0, 0);
+
+        BlzFrameSetSize(sidebar, 0.08, 0.135);
+        BlzFrameSetPoint(sidebar, FRAMEPOINT_CENTER, this.menu, FRAMEPOINT_CENTER, -0.29, 0.065);
+        BlzFrameSetAllPoints(sidebarBackdrop, sidebar);
+        BlzFrameSetPoint(sidebarTitle, FRAMEPOINT_TOP, sidebar, FRAMEPOINT_TOP, 0.0, -0.01);
+        BlzFrameSetText(sidebarTitle, 'Filters');
+
+        const createFilterIcon: any = (index: number, texture: string, filteredLabels: ItemLabel[]) => {
+            const filterIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'filterIcon', sidebar, '', 0);
+            const filterClickFrame: framehandle = BlzCreateFrameByType('BUTTON', 'filterClickFrame', filterIcon, '', 0);
+            const x: number = 0.01 + 0.03125 * (index % 2);
+            const y: number = -0.03 + Math.floor(index / 2) * -0.03375;
+            BlzFrameSetSize(filterIcon, 0.03375, 0.03375);
+            BlzFrameSetPoint(filterIcon, FRAMEPOINT_TOPLEFT, sidebar, FRAMEPOINT_TOPLEFT, x, y);
+            BlzFrameSetAllPoints(filterClickFrame, filterIcon);
+            BlzFrameSetTexture(filterIcon, texture, 0, true);
+
+            const clickTrigger: Trigger = new Trigger();
+            clickTrigger.registerFrameEvent(filterClickFrame, FRAMEEVENT_MOUSE_UP);
+            clickTrigger.addAction(() => {
+                if (GetTriggerPlayer() === GetLocalPlayer()) {
+                    this.localPlayerInterface.filterItems = [];
+                    for (let i: number = 0; i < items.length; i++) {
+                        const hasLabel: boolean = items[i].labels.some((label: ItemLabel) =>
+                            filteredLabels.some((filterLabel: ItemLabel) => label === filterLabel),
+                        );
+                        if (hasLabel) {
+                            this.localPlayerInterface.filterItems.push(i);
+                        }
+                    }
+
+                    this.localPlayerInterface.isItemListFiltered = true;
+                    this.localPlayerInterface.selectedItemFrameIndex = undefined;
+                    BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
+                    this.scrollEvent();
+                    this.updateItemFrames();
+                }
+            });
+        };
+
+        createFilterIcon(0, 'UI\\Widgets\\Console\\Human\\infocard-neutral-attack-melee.blp', [
+            ItemLabel.ATTACK_DAMAGE,
+            ItemLabel.LIFESTEAL,
+        ]);
+        createFilterIcon(1, 'UI\\Widgets\\Console\\Human\\infocard-neutral-armor-medium.blp', [
+            ItemLabel.BLOCK,
+            ItemLabel.RESISTANCE,
+            ItemLabel.MAX_HEALTH,
+            ItemLabel.HEALTH_REGEN,
+        ]);
+        createFilterIcon(2, 'UI\\Widgets\\Console\\Human\\infocard-neutral-attack-magic.blp', [ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN]);
+        createFilterIcon(3, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-agi.blp', [ItemLabel.AGILITY]);
+        createFilterIcon(4, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-int.blp', [ItemLabel.INTELLIGENCE]);
+        createFilterIcon(5, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-str.blp', [ItemLabel.STRENGTH]);
 
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             const escButtonTrigger: Trigger = new Trigger();
@@ -251,7 +311,7 @@ export class RecipeSystem {
     }
 
     private createItemFrame(parent: framehandle, texture: string, index: number): framehandle {
-        const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', parent, '', 0);
+        const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'itemIcon', parent, '', 0);
         const itemClickFrame: framehandle = BlzCreateFrameByType('BUTTON', 'itemClickFrame', itemIcon, '', 0);
         BlzFrameSetSize(itemIcon, 0.04, 0.04);
         BlzFrameSetPoint(itemIcon, FRAMEPOINT_BOTTOMLEFT, parent, FRAMEPOINT_BOTTOMLEFT, 0.0175 + 0.0425 * index, 0.03);
@@ -542,7 +602,6 @@ export class RecipeSystem {
     private createHeroDropAndPickupItemEvents(): void {
         const dropItemTrigger: Trigger = new Trigger();
         dropItemTrigger.addAction(() => {
-            const triggerPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
             this.localPlayerInterface.heroItems.splice(this.localPlayerInterface.heroItems.indexOf(GetItemTypeId(GetManipulatedItem())), 1);
 
             this.selectItem();
@@ -552,7 +611,6 @@ export class RecipeSystem {
 
         const pickupItemTrigger: Trigger = new Trigger();
         pickupItemTrigger.addAction(() => {
-            const triggerPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
             this.localPlayerInterface.heroItems.push(GetItemTypeId(GetManipulatedItem()));
 
             this.selectItem();

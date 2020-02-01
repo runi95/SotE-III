@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class GreenSoulstone extends Item {
     public readonly itemId: number = FourCC('I00A');
     public readonly name: string = 'Green Soulstone';
+    public readonly labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.MAX_HEALTH];
     public readonly goldCost: number = 2000;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGem.blp';
     public readonly description: string = `A soulstone can be powerful in the right hands, maybe you could find a proper container for it.

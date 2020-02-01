@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
 import { Flare } from '../BasicItems/Flare';
 import { GoblinNightScope } from '../BasicItems/GoblinNightScope';
+import { ItemLabel } from '../ItemLabel';
 
 export class WandOfShadowsight extends ItemRecipe {
     private readonly goblinNightScope: GoblinNightScope;
@@ -9,6 +10,7 @@ export class WandOfShadowsight extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I020');
     public readonly name: string = 'Wand of Shadowsight';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 200;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
     public readonly description: string = `An incredible scope with built in night vision.

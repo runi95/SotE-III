@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class GoblinBattery extends Item {
     public readonly itemId: number = FourCC('I01O');
     public readonly name: string = 'Goblin Battery';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 700;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMoonStone.blp';
     public readonly description: string = `You can't quite make out what the runes say.

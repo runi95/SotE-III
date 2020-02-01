@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Branch } from '../BasicItems/Branch';
 import { Item } from '../Item';
 import { Scepter } from '../BasicItems/Scepter';
+import { ItemLabel } from '../ItemLabel';
 
 export class CircesStaff extends ItemRecipe {
     private readonly branch: Branch;
@@ -9,6 +10,7 @@ export class CircesStaff extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I013');
     public readonly name: string = 'Caduceus';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 200;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
     public readonly description: string = `An ancient staff forged by the elves.

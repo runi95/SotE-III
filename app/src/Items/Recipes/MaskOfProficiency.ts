@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
 import { SobiMask } from '../BasicItems/SobiMask';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class MaskOfProficiency extends ItemRecipe {
     private readonly orbOfMagic: OrbOfMagic;
@@ -9,6 +10,7 @@ export class MaskOfProficiency extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I026');
     public readonly name: string = 'Mask of Proficiency';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MANA_REGEN];
     public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
     public readonly description: string = `A mask that is said to be worn by a master necromancer.

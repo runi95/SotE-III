@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { IronSword } from '../BasicItems/IronSword';
 import { Claws } from '../BasicItems/Claws';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class IronClaws extends ItemRecipe {
     private readonly ironSword: IronSword;
@@ -9,6 +10,7 @@ export class IronClaws extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00P');
     public readonly name: string = 'Iron Claws';
+    public readonly labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.ATTACK_DAMAGE];
     public readonly goldCost: number = 190;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp';
     public readonly description: string = `Sharp claws combined with speed and precision is a deadly combination.

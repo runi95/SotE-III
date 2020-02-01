@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
 import { MaskOfProficiency } from './MaskOfProficiency';
 import { VialOfMagic } from './VialOfMagic';
+import { ItemLabel } from '../ItemLabel';
 
 export class ManaInfusedMask extends ItemRecipe {
     private readonly maskOfProficiency: MaskOfProficiency;
@@ -9,6 +10,7 @@ export class ManaInfusedMask extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I029');
     public readonly name: string = 'Mana Infused Mask';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
     public readonly goldCost: number = 320;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkullBlue.blp';
     public readonly description: string = `A mask infused with pure magic.

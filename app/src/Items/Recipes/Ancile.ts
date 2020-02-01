@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { IronShield } from '../BasicItems/IronShield';
 import { Item } from '../Item';
 import { ManaEgg } from './ManaEgg';
+import { ItemLabel } from '../ItemLabel';
 
 export class Ancile extends ItemRecipe {
     private readonly manaEgg: ManaEgg;
@@ -9,6 +10,7 @@ export class Ancile extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I016');
     public readonly name: string = 'Ancile';
+    public readonly labels: ItemLabel[] = [ItemLabel.MAX_MANA, ItemLabel.BLOCK];
     public readonly goldCost: number = 370;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGrimWard.blp';
     public readonly description: string = `A shield worn by the great mage Ancile.

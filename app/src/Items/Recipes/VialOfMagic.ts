@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
 import { EmptyVial } from '../BasicItems/EmptyVial';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class VialOfMagic extends ItemRecipe {
     private readonly orbOfMagic: OrbOfMagic;
@@ -9,6 +10,7 @@ export class VialOfMagic extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I001');
     public readonly name: string = 'Vial of Magic';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
     public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNVialFull.blp';
     public readonly description: string = `An orb full of potencial magic if you know how to extract it.

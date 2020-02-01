@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { RunedBracers } from '../BasicItems/RunedBracers';
 import { ImprovedMoonArmor } from './ImprovedMoonArmor';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class LionsRing extends ItemRecipe {
     private readonly runedBracers: RunedBracers;
@@ -9,6 +10,7 @@ export class LionsRing extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01L');
     public readonly name: string = 'Lions Ring';
+    public readonly labels: ItemLabel[] = [ItemLabel.RESISTANCE];
     public readonly goldCost: number = 240;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRingLionHead.blp';
     public readonly description: string = `Lion's ring is known to protect it's wearers from magic attacks.

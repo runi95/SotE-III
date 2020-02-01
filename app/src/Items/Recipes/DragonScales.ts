@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { CoralScales } from './CoralScales';
 import { Item } from '../Item';
 import { DragonWhelpClaws } from './DragonWhelpClaws';
+import { ItemLabel } from '../ItemLabel';
 
 export class DragonScales extends ItemRecipe {
     private readonly dragonWhelpClaws: DragonWhelpClaws;
@@ -9,6 +10,7 @@ export class DragonScales extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02H');
     public readonly name: string = 'Dragon Scales';
+    public readonly labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.MAX_HEALTH];
     public readonly goldCost: number = 350;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCreatureCarapace.tga';
     public readonly description: string = `These scales are deadly sharp

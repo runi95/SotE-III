@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { BootsOfSpeed } from '../BasicItems/BootsOfSpeed';
 import { SteelShield } from './SteelShield';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class ArmoredBoots extends ItemRecipe {
     private readonly bootsOfSpeed: BootsOfSpeed;
@@ -9,6 +10,7 @@ export class ArmoredBoots extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01C');
     public readonly name: string = 'Armored Boots';
+    public readonly labels: ItemLabel[] = [ItemLabel.BLOCK];
     public readonly goldCost: number = 205;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
     public readonly description: string = `Increases movement rate while keeping your feet safe.

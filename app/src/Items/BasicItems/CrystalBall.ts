@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class CrystalBall extends Item {
     public readonly itemId: number = FourCC('I00V');
     public readonly name: string = 'Crystal Ball';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBall.blp';
     public readonly description: string = `Can you see the future in this thing?

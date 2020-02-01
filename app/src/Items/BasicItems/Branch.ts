@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class Branch extends Item {
     public readonly itemId: number = FourCC('I012');
     public readonly name: string = 'Branch';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 1000;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNatureTouchGrow.blp';
     public readonly description: string = `A simple ingredient used in several ancient elf recipes.

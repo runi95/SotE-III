@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { MoonArmor } from '../BasicItems/MoonArmor';
 import { Item } from '../Item';
 import { IronShield } from '../BasicItems/IronShield';
+import { ItemLabel } from '../ItemLabel';
 
 export class BalancedShield extends ItemRecipe {
     private readonly moonArmor: MoonArmor;
@@ -9,6 +10,7 @@ export class BalancedShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I028');
     public readonly name: string = 'Balanced Shield';
+    public readonly labels: ItemLabel[] = [ItemLabel.BLOCK, ItemLabel.RESISTANCE];
     public readonly goldCost: number = 135;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefendStop.blp';
     public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.

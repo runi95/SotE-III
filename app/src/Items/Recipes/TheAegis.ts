@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { SteelShield } from './SteelShield';
 import { Scepter } from '../BasicItems/Scepter';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class TheAegis extends ItemRecipe {
     private readonly steelShield: SteelShield;
@@ -9,6 +10,7 @@ export class TheAegis extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I014');
     public readonly name: string = 'The Aegis';
+    public readonly labels: ItemLabel[] = [ItemLabel.BLOCK];
     public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLightningShield.blp';
     public readonly description: string = `A shield said to be forged by gods.

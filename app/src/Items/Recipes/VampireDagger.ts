@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
 import { BloodiedSacrificialDagger } from '../BasicItems/SacrificialDagger';
 import { VampireClaws } from '../BasicItems/VampireClaws';
+import { ItemLabel } from '../ItemLabel';
 
 export class VampireDagger extends ItemRecipe {
     private readonly bloodiedSacrificialDagger: BloodiedSacrificialDagger;
@@ -9,6 +10,7 @@ export class VampireDagger extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02L');
     public readonly name: string = 'Vampire Dagger';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 2000;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSacrificialDagger.blp';
     public readonly description: string = `A dagger often used by acolytes in sacrificial rituals

@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { SteelShield } from './SteelShield';
 import { CoralScales } from './CoralScales';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class ReinforcedScales extends ItemRecipe {
     private readonly coralScales: CoralScales;
@@ -9,6 +10,7 @@ export class ReinforcedScales extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01K');
     public readonly name: string = 'Reinforced Scales';
+    public readonly labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH, ItemLabel.BLOCK];
     public readonly goldCost: number = 1120;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp3.blp';
     public readonly description: string = `Highly reinforced scales, sure to defend against the strongest of opponents.

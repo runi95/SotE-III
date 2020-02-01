@@ -1,12 +1,14 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { BootsOfSpeed } from '../BasicItems/BootsOfSpeed';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class AgileSlippers extends ItemRecipe {
     private readonly bootsOfSpeed: BootsOfSpeed;
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01D');
     public readonly name: string = 'Agile Slippers';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 300;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSlippersOfAgility.blp';
     public readonly description: string = `The most comfortable slippers you'll ever wear.

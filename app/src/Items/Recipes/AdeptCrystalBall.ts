@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Item } from '../Item';
 import { CrystalBall } from '../BasicItems/CrystalBall';
 import { SobiMask } from '../BasicItems/SobiMask';
+import { ItemLabel } from '../ItemLabel';
 
 export class AdeptCrystalBall extends ItemRecipe {
     private readonly crystalBall: CrystalBall;
@@ -9,6 +10,7 @@ export class AdeptCrystalBall extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01F');
     public readonly name: string = 'Adept Crystal Ball';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 100;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallAdept.blp';
     public readonly description: string = `Can you see the future in this thing?

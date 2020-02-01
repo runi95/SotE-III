@@ -3,6 +3,7 @@ import { ImprovedMoonArmor } from './ImprovedMoonArmor';
 import { Item } from '../Item';
 import { ImprovedBalancedShield } from './ImprovedBalancedShield';
 import { ReinforcedScales } from './ReinforcedScales';
+import { ItemLabel } from '../ItemLabel';
 
 export class AdvancedReinforcedHides extends ItemRecipe {
     private readonly improvedMoonArmor: ImprovedMoonArmor;
@@ -11,6 +12,7 @@ export class AdvancedReinforcedHides extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02D');
     public readonly name: string = 'Advanced Reinforced Hides';
+    public readonly labels: ItemLabel[] = [ItemLabel.MAX_HEALTH, ItemLabel.HEALTH_REGEN, ItemLabel.BLOCK, ItemLabel.RESISTANCE];
     public readonly goldCost: number = 1725;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedReinforcedHides.blp';
     public readonly description: string = `No matter how you hold this shield it stays perfectly balanced.

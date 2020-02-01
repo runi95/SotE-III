@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class OrbOfMagic extends Item {
     public readonly itemId: number = FourCC('I00I');
     public readonly name: string = 'Orb of Magic';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE];
     public readonly goldCost: number = 400;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfMagic.blp';
     public readonly description: string = `An orb full of potencial magic if you know how to extract it.

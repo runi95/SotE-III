@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class RunedBracers extends Item {
     public readonly itemId: number = FourCC('I00S');
     public readonly name: string = 'Runed Bracers';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 600;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRunedBracers.blp';
     public readonly description: string = `You can't quite make out what the runes say.

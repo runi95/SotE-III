@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { ManaBlade } from './ManaBlade';
 import { ManaAxe } from './ManaAxe';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class SwordOfFreyr extends ItemRecipe {
     private readonly manaBlade: ManaBlade;
@@ -9,6 +10,7 @@ export class SwordOfFreyr extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I018');
     public readonly name: string = 'Sword of Freyr';
+    public readonly labels: ItemLabel[] = [ItemLabel.STRENGTH];
     public readonly goldCost: number = 130;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRitualDagger.blp';
     public readonly description: string = `A sword that somehow dances in front of your very eyes.

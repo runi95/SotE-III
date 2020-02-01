@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { IronSword } from '../BasicItems/IronSword';
 import { Item } from '../Item';
 import { LoadedRifle } from './LoadedRifle';
+import { ItemLabel } from '../ItemLabel';
 
 export class LoadedCannon extends ItemRecipe {
     private readonly loadedRifle: LoadedRifle;
@@ -9,6 +10,7 @@ export class LoadedCannon extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I00X');
     public readonly name: string = 'Loaded Cannon';
+    public readonly labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
     public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpTwo.blp';
     public readonly description: string = `Make your enemies tremble!

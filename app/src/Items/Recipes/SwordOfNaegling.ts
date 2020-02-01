@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Fragarach } from './Fragarach';
 import { SwordOfFreyr } from './SwordOfFreyr';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class SwordOfNaegling extends ItemRecipe {
     private readonly fragarach: Fragarach;
@@ -9,6 +10,7 @@ export class SwordOfNaegling extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02G');
     public readonly name: string = 'Sword of Naegling';
+    public readonly labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.STRENGTH];
     public readonly goldCost: number = 60;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDarkSword.blp';
     public readonly description: string = `The wind howls with anticipation as you raise the sword

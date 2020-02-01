@@ -3,6 +3,7 @@ import { VialOfMagic } from './VialOfMagic';
 import { EnchantedShield } from './EnchantedShield';
 import { Item } from '../Item';
 import { LionsRing } from './LionsRing';
+import { ItemLabel } from '../ItemLabel';
 
 export class SpellShield extends ItemRecipe {
     private readonly vialOfMagic: VialOfMagic;
@@ -11,6 +12,7 @@ export class SpellShield extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I02F');
     public readonly name: string = 'Spell Shield';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.RESISTANCE];
     public readonly goldCost: number = 780;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
     public readonly description: string = `A shield that glows with magical potency.

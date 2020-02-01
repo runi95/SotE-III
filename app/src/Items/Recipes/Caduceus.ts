@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { Branch } from '../BasicItems/Branch';
 import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class Caduceus extends ItemRecipe {
     private readonly branch: Branch;
@@ -9,6 +10,7 @@ export class Caduceus extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I019');
     public readonly name: string = 'Caduceus';
+    public readonly labels: ItemLabel[] = [ItemLabel.MAX_HEALTH];
     public readonly goldCost: number = 800;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaSteal.blp';
     public readonly description: string = `Caduceus the protector of merchants and travellers.

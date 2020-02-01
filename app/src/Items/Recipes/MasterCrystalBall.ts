@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { AdeptCrystalBall } from './AdeptCrystalBall';
 import { VialOfMagic } from './VialOfMagic';
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class MasterCrystalBall extends ItemRecipe {
     private readonly adeptCrystalBall: AdeptCrystalBall;
@@ -9,6 +10,7 @@ export class MasterCrystalBall extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01G');
     public readonly name: string = 'Master Crystal Ball';
+    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
     public readonly goldCost: number = 120;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallMaster.blp';
     public readonly description: string = `Can you see the future in this thing?

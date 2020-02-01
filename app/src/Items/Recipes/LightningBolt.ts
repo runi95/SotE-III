@@ -2,6 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { TheAegis } from './TheAegis';
 import { Item } from '../Item';
 import { GoblinBattery } from '../BasicItems/GoblinBattery';
+import { ItemLabel } from '../ItemLabel';
 
 // tslint:disable: max-line-length
 export class LightningBolt extends ItemRecipe {
@@ -10,6 +11,7 @@ export class LightningBolt extends ItemRecipe {
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I01Q');
     public readonly name: string = 'Lightning Bolt';
+    public readonly labels: ItemLabel[] = [];
     public readonly goldCost: number = 150;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPurge.blp';
     public readonly description: string = `A lightning bolt capable of devastating damage.

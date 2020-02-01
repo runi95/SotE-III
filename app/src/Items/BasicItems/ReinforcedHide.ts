@@ -1,8 +1,10 @@
 import { Item } from '../Item';
+import { ItemLabel } from '../ItemLabel';
 
 export class ReinforcedHide extends Item {
     public readonly itemId: number = FourCC('I006');
     public readonly name: string = 'Reinforced Hide';
+    public readonly labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
     public readonly goldCost: number = 350;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNReinforcedHides.blp';
     public readonly description: string = `A protective layer of regenerative hide.
