@@ -2,6 +2,7 @@ import { Boss } from '../Boss';
 import { TimerUtils } from '../../Utility/TimerUtils';
 import { Timer } from '../../JassOverrides/Timer';
 import { GroupInRange } from '../../JassOverrides/GroupInRange';
+import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class DoomGuard extends Boss {
     protected readonly bossId: number = FourCC('n026');
@@ -21,8 +22,8 @@ export class DoomGuard extends Boss {
     private aliveAcolytes: number = 0;
     private readonly timerUtils: TimerUtils;
 
-    constructor(timerUtils: TimerUtils) {
-        super(Rect(13600, -7008, 13728, -6880));
+    constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
+        super(Rect(13600, -7008, 13728, -6880), randomNumberGenerator);
 
         this.timerUtils = timerUtils;
 
@@ -120,13 +121,7 @@ export class DoomGuard extends Boss {
     protected deathAction(): void {
         const dyingUnitHandleId: number = GetHandleId(GetTriggerUnit());
         if (dyingUnitHandleId === this.bossHandleId) {
-            this.bossHandleId = undefined;
-
-            if (this.lootItemId === undefined) {
-                return;
-            }
-
-            CreateItem(this.lootItemId, GetUnitX(GetDyingUnit()), GetUnitY(GetDyingUnit()));
+            super.deathAction();
         } else if (this.arrayIncludes(this.acolytes, dyingUnitHandleId)) {
             this.aliveAcolytes--;
         } else if (this.arrayIncludes(this.spiritTowers, dyingUnitHandleId)) {

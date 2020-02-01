@@ -16,16 +16,16 @@ export class BossController {
     constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
         this.bosses = [
             // Easy
-            new CentaurLeader(),
-            new DruidOfTheClaw(),
+            new CentaurLeader(randomNumberGenerator),
+            new DruidOfTheClaw(randomNumberGenerator),
             new IceSpider(timerUtils, randomNumberGenerator),
-            new Necromancer(),
+            new Necromancer(randomNumberGenerator),
             // Medium
-            new DoomGuard(timerUtils),
-            new RedDragon(),
-            new Banshee(),
+            new DoomGuard(timerUtils, randomNumberGenerator),
+            new RedDragon(randomNumberGenerator),
+            new Banshee(randomNumberGenerator),
             // Hard
-            new Hydra(),
+            new Hydra(randomNumberGenerator),
         ];
     }
 }

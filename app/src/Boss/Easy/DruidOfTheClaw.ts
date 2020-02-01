@@ -1,5 +1,6 @@
 import { Boss } from '../Boss';
 import { Trigger } from '../../JassOverrides/Trigger';
+import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class DruidOfTheClaw extends Boss {
     private readonly huntressUnitId: number = FourCC('e002');
@@ -8,10 +9,10 @@ export class DruidOfTheClaw extends Boss {
     protected readonly x: number = -578.0;
     protected readonly y: number = 14020.0;
     protected readonly angle: number = 265.0;
-    protected readonly lootItemId: number = FourCC('I00A'); // Green Soulstone
+    protected readonly dropTable: number[] = [FourCC('I00A')]; // Green Soulstone
 
-    constructor() {
-        super(Rect(-608, 13984, -544, 14048));
+    constructor(randomNumberGenerator: RandomNumberGenerator) {
+        super(Rect(-608, 13984, -544, 14048), randomNumberGenerator);
 
         const huntressDeathTrigger: Trigger = new Trigger();
         huntressDeathTrigger.addCondition(() => GetUnitTypeId(GetDyingUnit()) === this.huntressUnitId);

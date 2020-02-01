@@ -1,4 +1,5 @@
 import { Boss } from '../Boss';
+import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class Hydra extends Boss {
     private hydralingCounter: number = 0;
@@ -7,10 +8,10 @@ export class Hydra extends Boss {
     protected readonly x: number = 15071.0;
     protected readonly y: number = 10418.0;
     protected readonly angle: number = 210.0;
-    protected readonly lootItemId: number = FourCC('I02K'); // Envenomed Trident
+    protected readonly dropTable: number[] = [FourCC('I02K')]; // Envenomed Trident
 
-    constructor() {
-        super(Rect(14816, 10272, 15008, 10464));
+    constructor(randomNumberGenerator: RandomNumberGenerator) {
+        super(Rect(14816, 10272, 15008, 10464), randomNumberGenerator);
     }
 
     protected spawnCondition(): boolean {
@@ -38,7 +39,7 @@ export class Hydra extends Boss {
             this.hydralingCounter--;
 
             if (this.hydralingCounter < 1) {
-                CreateItem(this.lootItemId, GetUnitX(GetDyingUnit()), GetUnitY(GetDyingUnit()));
+                CreateItem(this.dropTable[0], GetUnitX(GetDyingUnit()), GetUnitY(GetDyingUnit()));
             }
         }
     }

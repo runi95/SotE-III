@@ -8,9 +8,8 @@ export class IceSpider extends Boss {
     protected readonly x: number = 14169.0;
     protected readonly y: number = 579.0;
     protected readonly angle: number = 280.0;
-    protected readonly lootItemId: number = FourCC('I00C'); // Purple Soulstone
+    protected readonly dropTable: number[] = [FourCC('I00C')]; // Purple Soulstone
     private readonly timerUtils: TimerUtils;
-    private readonly randomNumberGenerator: RandomNumberGenerator;
     private timer: Timer | undefined;
     private iceSpider: unit | undefined;
     private readonly eggSackId: number = FourCC('e003');
@@ -18,10 +17,9 @@ export class IceSpider extends Boss {
     private readonly spiderlingId: number = FourCC('u006');
 
     constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
-        super(Rect(14208, 384, 14336, 512));
+        super(Rect(14208, 384, 14336, 512), randomNumberGenerator);
 
         this.timerUtils = timerUtils;
-        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     protected spawnCondition(): boolean {
@@ -43,10 +41,15 @@ export class IceSpider extends Boss {
         this.timer.start(1, true, () => {
             if (this.iceSpider && GetUnitManaPercent(this.iceSpider) === 100) {
                 SetUnitManaPercentBJ(this.iceSpider, 0);
-                this.eggSacks.push(CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), this.eggSackId,
-                    GetUnitX(this.iceSpider) + this.randomNumberGenerator.random(0, 200) - 100,
-                    GetUnitY(this.iceSpider) + this.randomNumberGenerator.random(0, 200) - 100,
-                    0));
+                this.eggSacks.push(
+                    CreateUnit(
+                        Player(PLAYER_NEUTRAL_AGGRESSIVE),
+                        this.eggSackId,
+                        GetUnitX(this.iceSpider) + this.randomNumberGenerator.random(0, 200) - 100,
+                        GetUnitY(this.iceSpider) + this.randomNumberGenerator.random(0, 200) - 100,
+                        0,
+                    ),
+                );
             }
 
             for (let i: number = 0; i < this.eggSacks.length; i++) {
@@ -73,12 +76,7 @@ export class IceSpider extends Boss {
     protected deathAction(): void {
         if (GetTriggerUnit() === this.iceSpider) {
             this.iceSpider = undefined;
-
-            if (this.lootItemId === undefined) {
-                return;
-            }
-
-            CreateItem(this.lootItemId, GetUnitX(GetDyingUnit()), GetUnitY(GetDyingUnit()));
+            super.deathAction();
         }
 
         if (this.iceSpider === undefined && this.eggSacks.length === 0) {

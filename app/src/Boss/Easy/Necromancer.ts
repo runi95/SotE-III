@@ -1,5 +1,6 @@
 import { Boss } from '../Boss';
 import { Trigger } from '../../JassOverrides/Trigger';
+import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class Necromancer extends Boss {
     private readonly araeUnitId: number = FourCC('u005');
@@ -10,10 +11,10 @@ export class Necromancer extends Boss {
     protected readonly x: number = -8390.0;
     protected readonly y: number = -13294.0;
     protected readonly angle: number = 0.0;
-    protected readonly lootItemId: number = FourCC('I00B'); // Blue Soulstone
+    protected readonly dropTable: number[] = [FourCC('I00B')]; // Blue Soulstone
 
-    constructor() {
-        super(Rect(-8384, -13248, -8256, -13120));
+    constructor(randomNumberGenerator: RandomNumberGenerator) {
+        super(Rect(-8384, -13248, -8256, -13120), randomNumberGenerator);
 
         const araeDeathTrigger: Trigger = new Trigger();
         araeDeathTrigger.addCondition(() => GetUnitTypeId(GetDyingUnit()) === this.araeUnitId);
