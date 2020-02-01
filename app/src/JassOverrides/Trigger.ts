@@ -105,4 +105,8 @@ export class Trigger {
     public registerPlayerEventLeave(whichPlayer: player): event {
         return TriggerRegisterPlayerEventLeave(this.nativeTrigger, whichPlayer);
     }
+
+    public registerPlayerKeyEvent(whichPlayer: player, key: oskeytype, metaKey: number, keyDown: boolean): void {
+        BlzTriggerRegisterPlayerKeyEvent(this.nativeTrigger, whichPlayer, key, metaKey, keyDown);
+    }
 }

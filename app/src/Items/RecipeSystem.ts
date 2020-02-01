@@ -52,6 +52,26 @@ export class RecipeSystem {
         this.mainButton = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
         const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', this.mainButton, '', 0);
 
+        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            const escButtonTrigger: Trigger = new Trigger();
+            escButtonTrigger.registerPlayerKeyEvent(Player(i), OSKEY_ESCAPE, 0, true);
+            escButtonTrigger.addAction(() => {
+                if (GetTriggerPlayer() === GetLocalPlayer()) {
+                    this.localPlayerInterface.isMainWindowVisible = false;
+                    BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
+                }
+            });
+
+            const tButtonTrigger: Trigger = new Trigger();
+            tButtonTrigger.registerPlayerKeyEvent(Player(i), OSKEY_T, 0, true);
+            tButtonTrigger.addAction(() => {
+                if (GetTriggerPlayer() === GetLocalPlayer() && this.localPlayerInterface.isMainButtonVisible) {
+                    this.localPlayerInterface.isMainWindowVisible = true;
+                    BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
+                }
+            });
+        }
+
         BlzFrameSetSize(this.menu, 0.5, 0.38);
         BlzFrameSetSize(menuScrollbar, 0.48, 0.02);
         BlzFrameSetPoint(this.menu, FRAMEPOINT_CENTER, originFrameGameUi, FRAMEPOINT_CENTER, 0.0, 0.06);
