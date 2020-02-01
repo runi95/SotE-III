@@ -55,7 +55,7 @@ export class ArenaUtils {
 
         if (allAlivePlayersAreAllies) {
             BlzChangeMinimapTerrainTex('war3mapMap.blp');
-            SetCameraBoundsToRect(GetPlayableMapRect());
+            SetCameraBoundsToRect(GetCameraBoundsMapRect());
             ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
 
             for (let i: number = 0; i < alivePlayers.length; i++) {

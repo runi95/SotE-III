@@ -116,7 +116,7 @@ export class Game {
 
     private startGame(): void {
         BlzChangeMinimapTerrainTex('war3mapMap.blp');
-        SetCameraBoundsToRect(GetPlayableMapRect());
+        SetCameraBoundsToRect(GetCameraBoundsMapRect());
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerHeroId[i] !== undefined) {
                 const x: number = GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]);
