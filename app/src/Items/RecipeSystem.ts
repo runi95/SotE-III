@@ -4,7 +4,6 @@ import { Trigger } from '../JassOverrides/Trigger';
 import items from './ItemRecipeController';
 import { ItemRecipe } from './ItemRecipe';
 import { ItemLabel } from './ItemLabel';
-import { Item } from './Item';
 
 interface ItemInSlot {
     itemId: number;
