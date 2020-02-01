@@ -96,8 +96,7 @@ export class RecipeSystem {
             this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
-        // FIXME: This will crash if items.length ever becomes less than 11
-        for (let i: number = 0; i < 11; i++) {
+        for (let i: number = 0; i < 11 || i < items.length; i++) {
             this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
             this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
         }
@@ -119,7 +118,7 @@ export class RecipeSystem {
             itemWindowMin: 0,
             itemWindowMax: this.itemFrames.length - 1,
             itemWindowSize: this.itemFrames.length,
-        }
+        };
 
         this.selectedItemFrame = BlzCreateFrameByType('SPRITE', 'selectedItemFrame', this.menu, '', 0);
         BlzFrameSetVisible(this.selectedItemFrame, false);
@@ -145,25 +144,18 @@ export class RecipeSystem {
             : items.length;
         const itemWindowSize: number = Math.min(itemArrayLength, this.itemFrames.length);
         const itemWindowMax: number =
-            itemWindowSize +
-            Math.round(
-                this.localPlayerInterface.currentScrollValue *
-                (itemArrayLength - itemWindowSize),
-            ) -
-            1;
+            itemWindowSize + Math.round(this.localPlayerInterface.currentScrollValue * (itemArrayLength - itemWindowSize)) - 1;
 
         if (itemWindowMax === this.localPlayerInterface.itemWindowMax) {
             return;
         }
 
-        const itemWindowMaxDifference: number =
-            this.localPlayerInterface.itemWindowMax - itemWindowMax;
+        const itemWindowMaxDifference: number = this.localPlayerInterface.itemWindowMax - itemWindowMax;
 
         this.localPlayerInterface.itemWindowSize = itemWindowSize;
         this.localPlayerInterface.itemWindowMax = itemWindowMax;
 
-        this.localPlayerInterface.itemWindowMin =
-            this.localPlayerInterface.itemWindowMax + 1 - this.localPlayerInterface.itemWindowSize;
+        this.localPlayerInterface.itemWindowMin = this.localPlayerInterface.itemWindowMax + 1 - this.localPlayerInterface.itemWindowSize;
 
         if (this.localPlayerInterface.selectedItemFrameIndex !== undefined) {
             this.localPlayerInterface.selectedItemFrameIndex =
@@ -183,10 +175,8 @@ export class RecipeSystem {
             this.menu,
             FRAMEPOINT_BOTTOMLEFT,
             0.0175 +
-            0.0425 *
-            (this.localPlayerInterface.selectedItemFrameIndex
-                ? (this.localPlayerInterface.selectedItemFrameIndex as number)
-                : 0),
+                0.0425 *
+                    (this.localPlayerInterface.selectedItemFrameIndex ? (this.localPlayerInterface.selectedItemFrameIndex as number) : 0),
             0.03,
         );
 
@@ -297,21 +287,14 @@ export class RecipeSystem {
 
     private showRecipesUsingItem(index: number): void {
         if (!(this.localPlayerInterface.isItemListFiltered && index === 0)) {
-            const itemIndex: number =
-                index +
-                this.localPlayerInterface.itemWindowMax +
-                1 -
-                this.localPlayerInterface.itemWindowSize;
+            const itemIndex: number = index + this.localPlayerInterface.itemWindowMax + 1 - this.localPlayerInterface.itemWindowSize;
             const itemRecipe: ItemRecipe = this.localPlayerInterface.isItemListFiltered
                 ? items[this.localPlayerInterface.filterItems[itemIndex - 1]]
                 : items[itemIndex];
             this.localPlayerInterface.isItemListFiltered = true;
             this.localPlayerInterface.filterItems = this.findRecipeUses(itemRecipe);
             this.localPlayerInterface.selectedItemFrameIndex = undefined;
-            BlzFrameSetVisible(
-                this.selectedItemFrame as framehandle,
-                this.localPlayerInterface.selectedItemFrameIndex !== undefined,
-            );
+            BlzFrameSetVisible(this.selectedItemFrame as framehandle, this.localPlayerInterface.selectedItemFrameIndex !== undefined);
             this.scrollEvent();
             this.updateItemFrames();
         }
@@ -344,11 +327,14 @@ export class RecipeSystem {
         } else {
             this.localPlayerInterface.selectedItemFrameIndex = index;
             if (this.localPlayerInterface.isItemListFiltered) {
-                this.localPlayerInterface.selectedItemRecipeIndex = this.localPlayerInterface.filterItems[(this.localPlayerInterface.selectedItemFrameIndex as number) +
-                    this.localPlayerInterface.itemWindowMax -
-                    this.localPlayerInterface.itemWindowSize];
+                this.localPlayerInterface.selectedItemRecipeIndex = this.localPlayerInterface.filterItems[
+                    (this.localPlayerInterface.selectedItemFrameIndex as number) +
+                        this.localPlayerInterface.itemWindowMax -
+                        this.localPlayerInterface.itemWindowSize
+                ];
             } else {
-                this.localPlayerInterface.selectedItemRecipeIndex = (this.localPlayerInterface.selectedItemFrameIndex as number) +
+                this.localPlayerInterface.selectedItemRecipeIndex =
+                    (this.localPlayerInterface.selectedItemFrameIndex as number) +
                     this.localPlayerInterface.itemWindowMax +
                     1 -
                     this.localPlayerInterface.itemWindowSize;
@@ -372,7 +358,10 @@ export class RecipeSystem {
     private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-        const item: ItemRecipe | undefined = this.localPlayerInterface.selectedItemRecipeIndex !== undefined ? items[this.localPlayerInterface.selectedItemRecipeIndex] : undefined;
+        const item: ItemRecipe | undefined =
+            this.localPlayerInterface.selectedItemRecipeIndex !== undefined
+                ? items[this.localPlayerInterface.selectedItemRecipeIndex]
+                : undefined;
 
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         for (let i: number = 0; i < this.localPlayerInterface.heroItems.length; i++) {
@@ -534,10 +523,7 @@ export class RecipeSystem {
         const dropItemTrigger: Trigger = new Trigger();
         dropItemTrigger.addAction(() => {
             const triggerPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-            this.localPlayerInterface.heroItems.splice(
-                this.localPlayerInterface.heroItems.indexOf(GetItemTypeId(GetManipulatedItem())),
-                1,
-            );
+            this.localPlayerInterface.heroItems.splice(this.localPlayerInterface.heroItems.indexOf(GetItemTypeId(GetManipulatedItem())), 1);
 
             this.selectItem();
         });
