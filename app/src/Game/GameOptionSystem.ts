@@ -51,6 +51,15 @@ class RadioButton {
         return this.hiddenButton;
     }
 
+    public disable(): void {
+        BlzFrameSetEnable(this.hiddenButton, false);
+        BlzFrameSetEnable(this.border, false);
+        BlzFrameSetEnable(this.check, false);
+
+        BlzFrameSetTexture(this.border, 'UI\\Widgets\\EscMenu\\Human\\Radiobutton-Background-Disabled.blp', 0, true);
+        BlzFrameSetTexture(this.check, 'UI\\Widgets\\EscMenu\\Human\\Radiobutton-ButtonDisabled.blp', 0, true);
+    }
+
     public setClickEvent(event: () => void): void {
         const trig: Trigger = new Trigger();
         trig.addAction(() => event());
@@ -105,6 +114,21 @@ export class GameOptionSystem {
         this.gameGlobals = gameGlobals;
         this.randomNumberGenerator = randomNumberGenerator;
 
+        let teamOnePlayerCount: number = 0;
+        for (let i: number = 0; i < 3; i++) {
+            if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
+                teamOnePlayerCount++;
+            }
+        }
+
+        let teamTwoPlayerCount: number = 0;
+        for (let i: number = 3; i < 6; i++) {
+            if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
+                teamTwoPlayerCount++;
+            }
+        }
+
+        const disableTeams: boolean = teamOnePlayerCount === 0 || teamTwoPlayerCount === 0;
         const menu: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
         const menuBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', menu, 0, 0);
         const menuTitle: framehandle = BlzCreateFrame('StandardTitleTextTemplate', menu, 0, 0);
@@ -115,9 +139,9 @@ export class GameOptionSystem {
         const suddenDeathCheckbox: framehandle = BlzCreateFrame('QuestCheckBox', fogOfWarCheckbox, 0, 0);
         const suddenDeathText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
         const teamsText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
-        const threeVersusThreeRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, true);
+        const threeVersusThreeRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, !disableTeams);
         const threeVersusThreeText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
-        const noTeamsRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, false);
+        const noTeamsRadioButton: RadioButton = new RadioButton(fogOfWarCheckbox, disableTeams);
         const noTeamsText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
         const livesLabel: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
         const livesMinValueText: framehandle = BlzCreateFrame('StandardInfoTextTemplate', fogOfWarCheckbox, 0, 0);
@@ -255,6 +279,11 @@ export class GameOptionSystem {
         BlzFrameSetText(fakeMenuLivesValue, '10');
         BlzFrameSetText(fakeMenuWaitingForHostText, 'Waiting for host...');
 
+        if (disableTeams) {
+            threeVersusThreeRadioButton.disable();
+            BlzFrameSetEnable(threeVersusThreeText, false);
+        }
+
         let isFogOfWarEnabled: boolean = true;
         this.createCheckboxTrigger(fogOfWarCheckbox, (state: boolean) => {
             isFogOfWarEnabled = !state;
@@ -267,7 +296,7 @@ export class GameOptionSystem {
             fakeMenuAllRandomCheckbox.setChecked(state);
         });
 
-        let isTeamsEnabled: boolean = true;
+        let isTeamsEnabled: boolean = !disableTeams;
         threeVersusThreeRadioButton.setClickEvent(() => {
             isTeamsEnabled = true;
             noTeamsRadioButton.setChecked(false);
