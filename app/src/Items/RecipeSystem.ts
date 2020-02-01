@@ -95,7 +95,7 @@ export class RecipeSystem {
             this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
-        for (let i: number = 0; i < 11 || i < items.length; i++) {
+        for (let i: number = 0; i < 11 && i < items.length; i++) {
             this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
             this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
         }
