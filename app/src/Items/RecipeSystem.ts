@@ -82,7 +82,6 @@ export class RecipeSystem {
         const syncTrigger: Trigger = new Trigger();
         syncTrigger.addAction(() => {
             this.buyItemRecipe(Number(BlzGetTriggerSyncData()));
-            // this.selectedItemRecipeIndex[GetPlayerId(GetTriggerPlayer())] = Number(BlzGetTriggerSyncData());
         });
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             syncTrigger.registerPlayerSyncEvent(Player(i), 'buyItem', false);
