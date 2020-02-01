@@ -83,6 +83,7 @@ export class ArenaUtils {
             }
 
             this.gameGlobals.IsArenaBattleInProgress = false;
+            this.initiateFightCountdown();
         }
     }
 
