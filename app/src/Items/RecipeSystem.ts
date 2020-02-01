@@ -391,8 +391,9 @@ export class RecipeSystem {
             BlzFrameSetTexture(this.itemRecipeFrames[i], itemRecipeFramesTexture, 0, true);
         }
 
+        const hasEnoughGold: boolean = item !== undefined && GetPlayerState(GetLocalPlayer(), PLAYER_STATE_RESOURCE_GOLD) >= item.goldCost;
         BlzFrameSetText(this.itemRecipeResultUpgradeButton, item ? item.goldCost.toString() : '');
-        BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, hasAllItems);
+        BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, hasAllItems && hasEnoughGold);
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, item ? item.iconPath : 'war3mapImported\\BTNNoItem.blp', 0, true);
     }
 
