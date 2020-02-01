@@ -1,8 +1,9 @@
 import { GameGlobals } from '../Game/GameGlobals';
 import { Trigger } from '../JassOverrides/Trigger';
 // tslint:disable-next-line: import-name
-import items from './ItemRecipeController';
+import items, { basicItems } from './ItemRecipeController';
 import { ItemRecipe } from './ItemRecipe';
+import { Item } from './Item';
 import { ItemLabel } from './ItemLabel';
 
 interface ItemInSlot {
@@ -12,6 +13,7 @@ interface ItemInSlot {
 
 interface LocalPlayerInterface {
     heroItems: number[];
+    heroRecipeItems: Item[];
     filterItems: number[];
 
     isMainWindowVisible: boolean;
@@ -27,8 +29,13 @@ interface LocalPlayerInterface {
     itemWindowSize: number;
 }
 
+interface ItemMap {
+    [key: number]: Item;
+}
+
 // TODO: Refactor
 export class RecipeSystem {
+    private readonly itemMap: ItemMap = {};
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
     private readonly itemFrames: framehandle[] = [];
@@ -44,6 +51,14 @@ export class RecipeSystem {
 
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
+
+        for (let i: number = 0; i < items.length; i++) {
+            this.itemMap[items[i].itemId] = items[i];
+        }
+
+        for (let i: number = 0; i < basicItems.length; i++) {
+            this.itemMap[basicItems[i].itemId] = basicItems[i];
+        }
 
         const originFrameGameUi: framehandle = BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0);
         this.menu = BlzCreateFrame('EscMenuPopupMenuTemplate', originFrameGameUi, 0, 0);
@@ -185,6 +200,7 @@ export class RecipeSystem {
 
         this.localPlayerInterface = {
             heroItems: [],
+            heroRecipeItems: [],
             filterItems: [],
             isMainWindowVisible: false,
             isMainButtonVisible: false,
@@ -219,7 +235,7 @@ export class RecipeSystem {
     private scrollEvent(): void {
         const itemArrayLength: number = this.localPlayerInterface.isItemListFiltered
             ? this.localPlayerInterface.filterItems.length + 1
-            : items.length;
+            : this.localPlayerInterface.heroRecipeItems.length + items.length;
         const itemWindowSize: number = Math.min(itemArrayLength, this.itemFrames.length);
         const itemWindowMax: number =
             itemWindowSize + Math.round(this.localPlayerInterface.currentScrollValue * (itemArrayLength - itemWindowSize)) - 1;
@@ -274,7 +290,11 @@ export class RecipeSystem {
             return items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].iconPath;
         }
 
-        return items[indexedItemWindowMin].iconPath;
+        if (indexedItemWindowMin < this.localPlayerInterface.heroRecipeItems.length) {
+            return this.localPlayerInterface.heroRecipeItems[indexedItemWindowMin].iconPath;
+        }
+
+        return items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].iconPath;
     }
 
     private getItemFrameTextString(isOutsideItemArray: boolean, indexedItemWindowMin: number): string {
@@ -289,13 +309,17 @@ export class RecipeSystem {
             return `|cFFFFCC00${items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].goldCost}|r`;
         }
 
-        return `|cFFFFCC00${items[indexedItemWindowMin].goldCost}|r`;
+        if (indexedItemWindowMin < this.localPlayerInterface.heroRecipeItems.length) {
+            return `|cFFFFCC00${this.localPlayerInterface.heroRecipeItems[indexedItemWindowMin].goldCost}|r`;
+        }
+
+        return `|cFFFFCC00${items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].goldCost}|r`;
     }
 
     private updateItemFrames(): void {
         const itemArrayLength: number = this.localPlayerInterface.isItemListFiltered
             ? this.localPlayerInterface.filterItems.length + 1
-            : items.length;
+            : this.localPlayerInterface.heroRecipeItems.length + items.length;
 
         for (let i: number = 0; i < this.itemFrames.length; i++) {
             const indexedItemWindowMin: number = this.localPlayerInterface.itemWindowMin + i;
@@ -343,7 +367,7 @@ export class RecipeSystem {
         return itemIcon;
     }
 
-    private findRecipeUses(item: ItemRecipe): number[] {
+    private findRecipeUses(item: Item): number[] {
         const result: number[] = [];
 
         for (let i: number = 0; i < items.length; i++) {
@@ -366,11 +390,19 @@ export class RecipeSystem {
     private showRecipesUsingItem(index: number): void {
         if (!(this.localPlayerInterface.isItemListFiltered && index === 0)) {
             const itemIndex: number = index + this.localPlayerInterface.itemWindowMax + 1 - this.localPlayerInterface.itemWindowSize;
-            const itemRecipe: ItemRecipe = this.localPlayerInterface.isItemListFiltered
-                ? items[this.localPlayerInterface.filterItems[itemIndex - 1]]
-                : items[itemIndex];
+            let item: Item;
+            if (this.localPlayerInterface.isItemListFiltered) {
+                item = items[this.localPlayerInterface.filterItems[itemIndex - 1]];
+            } else {
+                if (itemIndex < this.localPlayerInterface.heroRecipeItems.length) {
+                    item = this.localPlayerInterface.heroRecipeItems[itemIndex];
+                } else {
+                    item = items[itemIndex - this.localPlayerInterface.heroRecipeItems.length];
+                }
+            }
+
             this.localPlayerInterface.isItemListFiltered = true;
-            this.localPlayerInterface.filterItems = this.findRecipeUses(itemRecipe);
+            this.localPlayerInterface.filterItems = this.findRecipeUses(item);
             this.localPlayerInterface.selectedItemFrameIndex = undefined;
             BlzFrameSetVisible(this.selectedItemFrame as framehandle, this.localPlayerInterface.selectedItemFrameIndex !== undefined);
             this.scrollEvent();
@@ -436,10 +468,18 @@ export class RecipeSystem {
     private selectItem(): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-        const item: ItemRecipe | undefined =
-            this.localPlayerInterface.selectedItemRecipeIndex !== undefined
-                ? items[this.localPlayerInterface.selectedItemRecipeIndex]
-                : undefined;
+        let item: Item | undefined;
+        if (this.localPlayerInterface.selectedItemRecipeIndex !== undefined) {
+            if (this.localPlayerInterface.isItemListFiltered) {
+                item = items[this.localPlayerInterface.selectedItemRecipeIndex];
+            } else {
+                if (this.localPlayerInterface.selectedItemRecipeIndex < this.localPlayerInterface.heroRecipeItems.length) {
+                    item = this.localPlayerInterface.heroRecipeItems[this.localPlayerInterface.selectedItemRecipeIndex];
+                } else {
+                    item = items[this.localPlayerInterface.selectedItemRecipeIndex - this.localPlayerInterface.heroRecipeItems.length];
+                }
+            }
+        }
 
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         for (let i: number = 0; i < this.localPlayerInterface.heroItems.length; i++) {
@@ -450,13 +490,17 @@ export class RecipeSystem {
         }
 
         for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
-            const foundSlotItem: ItemInSlot | undefined =
-                item && item.recipe.length > i ? this.findSlotItem(itemsInSlots, item.recipe[i].itemId) : undefined;
-            if (foundSlotItem) {
-                foundSlotItem.includedInRecipe = true;
-            } else if (item === undefined) {
-                hasAllItems = false;
-            } else if (i < item.recipe.length) {
+            let foundSlotItem: ItemInSlot | undefined;
+            if (item instanceof ItemRecipe) {
+                foundSlotItem = item && item.recipe.length > i ? this.findSlotItem(itemsInSlots, item.recipe[i].itemId) : undefined;
+                if (foundSlotItem) {
+                    foundSlotItem.includedInRecipe = true;
+                } else if (item === undefined) {
+                    hasAllItems = false;
+                } else if (i < item.recipe.length) {
+                    hasAllItems = false;
+                }
+            } else {
                 hasAllItems = false;
             }
 
@@ -466,7 +510,7 @@ export class RecipeSystem {
             BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], itemRecipeGreenBorderFramesTexture, 0, true);
             BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], true);
             const itemRecipeFramesTexture: string =
-                item && item.recipe.length > i ? item.recipe[i].iconPath : 'war3mapImported\\BTNNoItem.blp';
+                item && item instanceof ItemRecipe && item.recipe.length > i ? item.recipe[i].iconPath : 'war3mapImported\\BTNNoItem.blp';
             BlzFrameSetTexture(this.itemRecipeFrames[i], itemRecipeFramesTexture, 0, true);
         }
 
@@ -601,7 +645,14 @@ export class RecipeSystem {
     private createHeroDropAndPickupItemEvents(): void {
         const dropItemTrigger: Trigger = new Trigger();
         dropItemTrigger.addAction(() => {
-            this.localPlayerInterface.heroItems.splice(this.localPlayerInterface.heroItems.indexOf(GetItemTypeId(GetManipulatedItem())), 1);
+            const itemTypeId: number = GetItemTypeId(GetManipulatedItem());
+            this.localPlayerInterface.heroItems.splice(this.localPlayerInterface.heroItems.indexOf(itemTypeId), 1);
+            const foundItem: Item | undefined = this.itemMap[itemTypeId];
+            if (foundItem !== undefined) {
+                this.localPlayerInterface.heroRecipeItems.splice(this.localPlayerInterface.heroRecipeItems.indexOf(foundItem), 1);
+                this.updateItemFrames();
+                // this.scrollEvent();
+            }
 
             this.selectItem();
         });
@@ -610,7 +661,14 @@ export class RecipeSystem {
 
         const pickupItemTrigger: Trigger = new Trigger();
         pickupItemTrigger.addAction(() => {
-            this.localPlayerInterface.heroItems.push(GetItemTypeId(GetManipulatedItem()));
+            const itemTypeId: number = GetItemTypeId(GetManipulatedItem());
+            this.localPlayerInterface.heroItems.push(itemTypeId);
+            const foundItem: Item | undefined = this.itemMap[itemTypeId];
+            if (foundItem !== undefined) {
+                this.localPlayerInterface.heroRecipeItems.push(foundItem);
+                this.updateItemFrames();
+                // this.scrollEvent();
+            }
 
             this.selectItem();
         });

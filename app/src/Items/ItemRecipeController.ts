@@ -1,3 +1,4 @@
+import { Item } from './Item';
 import { AdeptCrystalBall } from './Recipes/AdeptCrystalBall';
 import { CrystalBall } from './BasicItems/CrystalBall';
 import { SobiMask } from './BasicItems/SobiMask';
@@ -172,4 +173,33 @@ export default [
     new SpellShield(vialOfMagic, enchantedShield, lionsRing),
     new SwordOfNaegling(fragarach, swordOfFreyr),
     new ThrowableAxe(bloodiedExecutionersAxe, scepter),
+];
+
+export const basicItems: Item[] = [
+    bloodiedExecutionersAxe,
+    blueSoulstone,
+    bootsOfSpeed,
+    branch,
+    claws,
+    cloakOfShadows,
+    clockworkPenguin,
+    crystalBall,
+    emptySoulcage,
+    emptyVial,
+    flare,
+    goblinBattery,
+    goblinNightScope,
+    greenSoulstone,
+    ironShield,
+    ironSword,
+    moonArmor,
+    orbOfMagic,
+    purpleSoulstone,
+    reinforcedHide,
+    runedBracers,
+    scepter,
+    sobiMask,
+    studdedLeatherArmor,
+    vampireClaws,
+    warAxe,
 ];
