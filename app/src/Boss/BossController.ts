@@ -11,6 +11,7 @@ import { SpiritWindRider } from './Hard/SpiritWindRider';
 import { IceSpider } from './Easy/IceSpider';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Chaplain } from './Hard/Chaplain';
+import { InfernalJuggernaut } from './Hard/InfernalJuggernaut';
 
 export class BossController {
     private readonly bosses: Boss[];
@@ -30,6 +31,7 @@ export class BossController {
             new Hydra(randomNumberGenerator),
             new SpiritWindRider(randomNumberGenerator),
             new Chaplain(randomNumberGenerator),
+            new InfernalJuggernaut(timerUtils, randomNumberGenerator),
         ];
     }
 }
