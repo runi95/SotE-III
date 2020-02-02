@@ -10,6 +10,7 @@ import { Hydra } from './Hard/Hydra';
 import { SpiritWindRider } from './Hard/SpiritWindRider';
 import { IceSpider } from './Easy/IceSpider';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { Chaplain } from './Hard/Chaplain';
 
 export class BossController {
     private readonly bosses: Boss[];
@@ -28,6 +29,7 @@ export class BossController {
             // Hard
             new Hydra(randomNumberGenerator),
             new SpiritWindRider(randomNumberGenerator),
+            new Chaplain(randomNumberGenerator),
         ];
     }
 }
