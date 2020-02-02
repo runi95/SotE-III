@@ -7,6 +7,7 @@ import { DoomGuard } from './Medium/DoomGuard';
 import { Banshee } from './Medium/Banshee';
 import { Necromancer } from './Easy/Necromancer';
 import { Hydra } from './Hard/Hydra';
+import { SpiritWindRider } from './Hard/SpiritWindRider';
 import { IceSpider } from './Easy/IceSpider';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
@@ -26,6 +27,7 @@ export class BossController {
             new Banshee(randomNumberGenerator),
             // Hard
             new Hydra(randomNumberGenerator),
+            new SpiritWindRider(randomNumberGenerator),
         ];
     }
 }
