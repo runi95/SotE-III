@@ -27,7 +27,12 @@ export class InfernalJuggernaut extends Boss {
             const dummy: unit = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE), this.dummyUnitTypeId, this.x, this.y, 0);
             UnitAddAbilityBJ(this.dummyAbilityId, dummy);
             UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
-            IssuePointOrder(dummy, 'inferno', this.x, this.y);
+            IssuePointOrder(
+                dummy,
+                'inferno',
+                14975 - this.randomNumberGenerator.random(0, 640),
+                -15484 + this.randomNumberGenerator.random(0, 640),
+            );
 
             if (ticks <= 0) {
                 this.timerUtils.releaseTimer(t);
