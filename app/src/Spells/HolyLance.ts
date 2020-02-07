@@ -5,7 +5,6 @@ import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class HolyLance extends Spell {
     protected readonly abilityId: number = FourCC('A035');
-    private readonly dummyUnitId: number = FourCC('n01R');
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -19,16 +18,21 @@ export class HolyLance extends Spell {
         const facing: number = GetUnitFacing(trig);
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
-        const lance: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, facing + 180);
-        const directionX: number = Math.cos(facing * Math.PI / 180);
-        const directionY: number = Math.sin(facing * Math.PI / 180);
+        const z: number = BlzGetUnitZ(trig);
+        const lance: effect = AddSpecialEffect('Abilities\\Spells\\Human\\Resurrect\\ResurrectTarget.mdl', x, y);
+        BlzSetSpecialEffectScale(lance, 0.6);
+        BlzSetSpecialEffectYaw(lance, ((90 + facing) * Math.PI) / 180);
+        BlzSetSpecialEffectRoll(lance, (270 * Math.PI) / 180);
+        BlzSetSpecialEffectZ(lance, z + 60);
+        const directionX: number = Math.cos((facing * Math.PI) / 180);
+        const directionY: number = Math.sin((facing * Math.PI) / 180);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
         const damage: number = 250 * abilityLevel + 3 * intelligence;
 
         let tick: number = 8;
         const t: Timer = this.timerUtils.newTimer();
-        t.start(0.20, true, () => {
+        t.start(0.2, true, () => {
             tick--;
             const multiplier: number = 4 - tick;
             const loc: location = Location(x + multiplier * 100 * directionX, y + multiplier * 100 * directionY);
@@ -44,7 +48,7 @@ export class HolyLance extends Spell {
             grp.destroy();
 
             if (tick <= 0) {
-                RemoveUnit(lance);
+                DestroyEffect(lance);
                 this.timerUtils.releaseTimer(t);
             }
         });
