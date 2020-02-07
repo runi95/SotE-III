@@ -8,7 +8,7 @@ export class HolyLight extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = GetHeroInt(trig, true);
-        const healing: number = 250 * abilityLevel + 3 * intelligence;
+        const healing: number = 175 * abilityLevel + 3 * intelligence;
 
         SetUnitLifeBJ(targ, GetUnitState(targ, UNIT_STATE_LIFE) + healing);
     }
