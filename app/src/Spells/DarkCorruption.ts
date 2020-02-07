@@ -4,7 +4,6 @@ export class DarkCorruption {
     private readonly abilityId: number = FourCC('A036');
     private readonly summonId: number = FourCC('u001');
     private readonly darkSummoningId: number = FourCC('A04A');
-    private readonly timedLifeBuffId: number = FourCC('BTLF');
     private summonCount: number = 0;
     private readonly trig: Trigger = new Trigger();
 
@@ -16,8 +15,11 @@ export class DarkCorruption {
     private action(): void {
         if (GetUnitTypeId(GetDyingUnit()) === this.summonId) {
             this.summonCount--;
-        } else if (this.summonCount < 5 && GetUnitAbilityLevel(GetKillingUnit(), this.abilityId) > 0
-            && IsUnitEnemy(GetDyingUnit(), GetOwningPlayer(GetKillingUnit()))) {
+        } else if (
+            this.summonCount < 5 &&
+            GetUnitAbilityLevel(GetKillingUnit(), this.abilityId) > 0 &&
+            IsUnitEnemy(GetDyingUnit(), GetOwningPlayer(GetKillingUnit()))
+        ) {
             const darkSummoningLevel: number = GetUnitAbilityLevel(GetKillingUnit(), this.darkSummoningId);
             const x: number = GetUnitX(GetDyingUnit());
             const y: number = GetUnitY(GetDyingUnit());
