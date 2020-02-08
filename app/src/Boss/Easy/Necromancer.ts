@@ -11,7 +11,7 @@ export class Necromancer extends Boss {
     protected readonly x: number = -8390.0;
     protected readonly y: number = -13294.0;
     protected readonly angle: number = 0.0;
-    protected readonly dropTable: number[] = [FourCC('I00B')]; // Blue Soulstone
+    protected readonly dropTable: number[] = [FourCC('I00B')]; // Blue Soulstone (1800)
 
     constructor(randomNumberGenerator: RandomNumberGenerator) {
         super(Rect(-8384, -13248, -8256, -13120), randomNumberGenerator);

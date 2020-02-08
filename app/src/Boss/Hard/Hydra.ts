@@ -8,7 +8,7 @@ export class Hydra extends Boss {
     protected readonly x: number = 15071.0;
     protected readonly y: number = 10418.0;
     protected readonly angle: number = 210.0;
-    protected readonly dropTable: number[] = [FourCC('I02K')]; // Envenomed Trident
+    protected readonly dropTable: number[] = [FourCC('I02K')]; // Envenomed Trident (7260)
 
     constructor(randomNumberGenerator: RandomNumberGenerator) {
         super(Rect(14816, 10272, 15008, 10464), randomNumberGenerator);
