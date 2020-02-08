@@ -1,5 +1,4 @@
 import { Spell } from './Spell';
-import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class MarkForDeath extends Spell {
     protected readonly abilityId: number = FourCC('A04B');
