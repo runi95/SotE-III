@@ -704,7 +704,6 @@ export class RecipeSystem {
             if (foundItem !== undefined) {
                 this.localPlayerInterface.heroRecipeItems.push(foundItem);
                 this.updateItemFrames();
-                // this.scrollEvent();
             }
 
             this.selectItem();
