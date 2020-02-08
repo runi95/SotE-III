@@ -32,8 +32,6 @@ interface LocalPlayerInterface {
 interface ItemMap {
     [key: number]: Item;
 }
-
-// TODO: Refactor
 export class RecipeSystem {
     private readonly itemMap: ItemMap = {};
     private readonly gameGlobals: GameGlobals;
