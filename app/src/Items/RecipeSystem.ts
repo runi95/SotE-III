@@ -649,7 +649,6 @@ export class RecipeSystem {
             if (foundItem !== undefined) {
                 this.localPlayerInterface.heroRecipeItems.splice(this.localPlayerInterface.heroRecipeItems.indexOf(foundItem), 1);
                 this.updateItemFrames();
-                // this.scrollEvent();
             }
 
             this.selectItem();
