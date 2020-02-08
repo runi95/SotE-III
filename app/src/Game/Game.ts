@@ -20,9 +20,11 @@ import { ArenaUtils } from '../Utility/ArenaUtils';
 import { FlyingMachineController } from '../FlyingMachine/FlyingMachineController';
 import { Trigger } from '../JassOverrides/Trigger';
 import { Group } from '../JassOverrides/Group';
+import { RecipeSystem } from '../Items/RecipeSystem';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
+    private readonly recipeSystem: RecipeSystem;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly timerUtils: TimerUtils;
@@ -46,8 +48,9 @@ export class Game {
     private readonly tombOfAncients: unit;
     private readonly arcaneVault: unit;
 
-    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.recipeSystem = recipeSystem;
         this.randomNumberGenerator = randomNumberGenerator;
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
@@ -117,6 +120,12 @@ export class Game {
     private startGame(): void {
         BlzChangeMinimapTerrainTex('war3mapMap.blp');
         SetCameraBoundsToRect(GetCameraBoundsMapRect());
+        const t: Timer = this.timerUtils.newTimer();
+        t.start(2, false, () => {
+            BlzFrameSetSpriteAnimate(this.recipeSystem.animatedFrame, 2, 0);
+            this.timerUtils.releaseTimer(t);
+        });
+
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerHeroId[i] !== undefined) {
                 const x: number = GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]);

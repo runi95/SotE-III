@@ -33,6 +33,7 @@ interface ItemMap {
     [key: number]: Item;
 }
 export class RecipeSystem {
+    public readonly animatedFrame: framehandle;
     private readonly itemMap: ItemMap = {};
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
@@ -45,6 +46,7 @@ export class RecipeSystem {
     private readonly itemRecipeResultUpgradeButton: framehandle;
     private readonly itemRecipeResultIconFrame: framehandle;
     private readonly itemRecipeResultDescriptionFrame: framehandle;
+    private animatedFrameIsVisible: boolean = true;
     private selectedItemFrame: framehandle | undefined;
 
     constructor(gameGlobals: GameGlobals) {
@@ -65,6 +67,7 @@ export class RecipeSystem {
         const menuScrollbar: framehandle = BlzCreateFrame('EscMenuSliderTemplate', this.menu, 0, 0);
         this.mainButton = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
         const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', this.mainButton, '', 0);
+        this.animatedFrame = BlzCreateFrameByType('SPRITE', 'animatedFrame', this.mainButton, '', 0);
 
         const sidebar: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', this.menu, 0, 0);
         const sidebarBackdrop: framehandle = BlzCreateFrame('EscMenuButtonBackdropTemplate', sidebar, 0, 0);
@@ -138,6 +141,11 @@ export class RecipeSystem {
             tButtonTrigger.registerPlayerKeyEvent(Player(i), OSKEY_T, 0, true);
             tButtonTrigger.addAction(() => {
                 if (GetTriggerPlayer() === GetLocalPlayer() && this.localPlayerInterface.isMainButtonVisible) {
+                    if (this.animatedFrameIsVisible) {
+                        this.animatedFrameIsVisible = false;
+                        BlzFrameSetVisible(this.animatedFrame, false);
+                    }
+
                     this.localPlayerInterface.isMainWindowVisible = true;
                     BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
                 }
@@ -157,6 +165,28 @@ export class RecipeSystem {
         BlzFrameSetTexture(mainButtonBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNScroll.blp', 0, true);
         BlzFrameSetText(menuTitle, 'Recipes');
         BlzFrameSetVisible(this.mainButton, false);
+        BlzFrameSetVisible(this.animatedFrame, true);
+        BlzFrameSetSize(this.animatedFrame, 0.02, 0.02);
+        BlzFrameSetPoint(this.animatedFrame, FRAMEPOINT_TOPRIGHT, this.mainButton, FRAMEPOINT_TOPRIGHT, 0.0, 0.0);
+        BlzFrameSetModel(this.animatedFrame, 'ui\\minimap\\minimap-ping.mdx', 0);
+
+        const commandTrig: Trigger = new Trigger();
+        commandTrig.addAction(() => {
+            const chatstring: string = GetEventPlayerChatString();
+            if (!chatstring.startsWith('-')) {
+                return;
+            }
+
+            const split: string[] = chatstring.substr(1).split(' ');
+            if (split[0] === 'model' && (split.length === 2 || split.length === 3)) {
+                BJDebugMsg(`BlzFrameSetModel(animatedFrame, ${split[1]}, ${split.length === 3 ? Number(split[2]) : 0});`);
+                BlzFrameSetModel(this.animatedFrame, split[1], 0);
+                if (split.length === 3) {
+                    BlzFrameSetSpriteAnimate(this.animatedFrame, Number(split[2]), 0);
+                }
+            }
+        });
+        commandTrig.registerPlayerChatEvent(Player(0), '-', false);
 
         this.itemRecipeResultIconFrame = BlzCreateFrameByType('BACKDROP', 'itemRecipeResultIcon', this.menu, '', 0);
         this.itemRecipeResultDescriptionFrame = BlzCreateFrame('StandardValueTextTemplate', this.menu, 0, 0);
@@ -561,6 +591,11 @@ export class RecipeSystem {
                 hideMainButtonTrigger.addCondition(() => GetHandleId(GetLeavingUnit()) === GetHandleId(this.gameGlobals.PlayerHero[index]));
                 hideMainButtonTrigger.addAction(() => {
                     if (GetOwningPlayer(GetLeavingUnit()) === GetLocalPlayer()) {
+                        if (this.animatedFrameIsVisible) {
+                            this.animatedFrameIsVisible = false;
+                            BlzFrameSetVisible(this.animatedFrame, false);
+                        }
+
                         this.localPlayerInterface.isMainButtonVisible = false;
                         this.localPlayerInterface.isMainWindowVisible = false;
                         BlzFrameSetVisible(this.mainButton, this.localPlayerInterface.isMainButtonVisible);
@@ -576,6 +611,11 @@ export class RecipeSystem {
         t.registerFrameEvent(this.mainButton, FRAMEEVENT_CONTROL_CLICK);
         t.addAction(() => {
             if (GetTriggerPlayer() === GetLocalPlayer()) {
+                if (this.animatedFrameIsVisible) {
+                    this.animatedFrameIsVisible = false;
+                    BlzFrameSetVisible(this.animatedFrame, false);
+                }
+
                 this.localPlayerInterface.isMainWindowVisible = !this.localPlayerInterface.isMainWindowVisible;
                 BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
                 this.selectItem();

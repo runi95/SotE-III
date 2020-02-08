@@ -28,10 +28,10 @@ ceres.addHook('main::after', () => {
             initializeHeroSelection(gameGlobals);
             createQuests();
             setPlayerCameras(gameGlobals);
+            const recipeSystem: RecipeSystem = new RecipeSystem(gameGlobals);
             // tslint:disable-next-line: no-unused-expression
-            new GameOptionSystem(gameGlobals, randomNumberGenerator);
+            new GameOptionSystem(gameGlobals, recipeSystem, randomNumberGenerator);
             // tslint:disable-next-line: no-unused-expression
-            new RecipeSystem(gameGlobals);
         },
         (err) => {
             Log.Fatal(err);

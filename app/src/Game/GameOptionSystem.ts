@@ -2,6 +2,7 @@ import { GameGlobals } from './GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { Trigger } from '../JassOverrides/Trigger';
 import { Game } from './Game';
+import { RecipeSystem } from '../Items/RecipeSystem';
 
 class RadioButton {
     private readonly hiddenButton: framehandle;
@@ -108,10 +109,12 @@ class FakeCheckbox {
 
 export class GameOptionSystem {
     private readonly gameGlobals: GameGlobals;
+    private readonly recipeSystem: RecipeSystem;
     private readonly randomNumberGenerator: RandomNumberGenerator;
 
-    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.recipeSystem = recipeSystem;
         this.randomNumberGenerator = randomNumberGenerator;
 
         let teamOnePlayerCount: number = 0;
@@ -334,7 +337,7 @@ export class GameOptionSystem {
             this.gameGlobals.GameIsSuddenDeathEnabled = isSuddenDeathEnabled;
             this.gameGlobals.GameStartingLife = lives;
 
-            const game: Game = new Game(this.gameGlobals, this.randomNumberGenerator);
+            const game: Game = new Game(this.gameGlobals, this.recipeSystem, this.randomNumberGenerator);
         });
         startButtonTrigger.registerFrameEvent(startButton, FRAMEEVENT_CONTROL_CLICK);
 
