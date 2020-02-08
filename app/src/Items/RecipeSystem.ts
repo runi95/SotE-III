@@ -32,9 +32,15 @@ interface LocalPlayerInterface {
 interface ItemMap {
     [key: number]: Item;
 }
+
+interface ItemRecipeIndexMap {
+    [key: number]: number;
+}
+
 export class RecipeSystem {
     public readonly animatedFrame: framehandle;
     private readonly itemMap: ItemMap = {};
+    private readonly itemRecipeIndexMap: ItemRecipeIndexMap = {};
     private readonly gameGlobals: GameGlobals;
     private readonly menu: framehandle;
     private readonly itemFrames: framehandle[] = [];
@@ -54,6 +60,7 @@ export class RecipeSystem {
 
         for (let i: number = 0; i < items.length; i++) {
             this.itemMap[items[i].itemId] = items[i];
+            this.itemRecipeIndexMap[items[i].itemId] = i;
         }
 
         for (let i: number = 0; i < basicItems.length; i++) {
@@ -415,6 +422,15 @@ export class RecipeSystem {
         return result;
     }
 
+    private showRecipesUsingItemHandle(item: Item): void {
+        this.localPlayerInterface.isItemListFiltered = true;
+        this.localPlayerInterface.filterItems = this.findRecipeUses(item);
+        this.localPlayerInterface.selectedItemFrameIndex = undefined;
+        BlzFrameSetVisible(this.selectedItemFrame as framehandle, this.localPlayerInterface.selectedItemFrameIndex !== undefined);
+        this.scrollEvent();
+        this.updateItemFrames();
+    }
+
     private showRecipesUsingItem(index: number): void {
         if (!(this.localPlayerInterface.isItemListFiltered && index === 0)) {
             const itemIndex: number = index + this.localPlayerInterface.itemWindowMax + 1 - this.localPlayerInterface.itemWindowSize;
@@ -429,12 +445,7 @@ export class RecipeSystem {
                 }
             }
 
-            this.localPlayerInterface.isItemListFiltered = true;
-            this.localPlayerInterface.filterItems = this.findRecipeUses(item);
-            this.localPlayerInterface.selectedItemFrameIndex = undefined;
-            BlzFrameSetVisible(this.selectedItemFrame as framehandle, this.localPlayerInterface.selectedItemFrameIndex !== undefined);
-            this.scrollEvent();
-            this.updateItemFrames();
+            return this.showRecipesUsingItemHandle(item);
         }
     }
 
@@ -493,21 +504,9 @@ export class RecipeSystem {
         BlzFrameSetVisible(this.selectedItemFrame as framehandle, selectedItemFrameIndex !== undefined);
     }
 
-    private selectItem(): void {
+    private selectItemFromHandle(item: Item | undefined): void {
         let hasAllItems: boolean = true;
         const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-        let item: Item | undefined;
-        if (this.localPlayerInterface.selectedItemRecipeIndex !== undefined) {
-            if (this.localPlayerInterface.isItemListFiltered) {
-                item = items[this.localPlayerInterface.selectedItemRecipeIndex];
-            } else {
-                if (this.localPlayerInterface.selectedItemRecipeIndex < this.localPlayerInterface.heroRecipeItems.length) {
-                    item = this.localPlayerInterface.heroRecipeItems[this.localPlayerInterface.selectedItemRecipeIndex];
-                } else {
-                    item = items[this.localPlayerInterface.selectedItemRecipeIndex - this.localPlayerInterface.heroRecipeItems.length];
-                }
-            }
-        }
 
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         for (let i: number = 0; i < this.localPlayerInterface.heroItems.length; i++) {
@@ -548,13 +547,69 @@ export class RecipeSystem {
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, item ? item.iconPath : 'war3mapImported\\BTNNoItem.blp', 0, true);
     }
 
+    private selectItem(): void {
+        let item: Item | undefined;
+        if (this.localPlayerInterface.selectedItemRecipeIndex !== undefined) {
+            if (this.localPlayerInterface.isItemListFiltered) {
+                item = items[this.localPlayerInterface.selectedItemRecipeIndex];
+            } else {
+                if (this.localPlayerInterface.selectedItemRecipeIndex < this.localPlayerInterface.heroRecipeItems.length) {
+                    item = this.localPlayerInterface.heroRecipeItems[this.localPlayerInterface.selectedItemRecipeIndex];
+                } else {
+                    item = items[this.localPlayerInterface.selectedItemRecipeIndex - this.localPlayerInterface.heroRecipeItems.length];
+                }
+            }
+        }
+
+        return this.selectItemFromHandle(item);
+    }
+
     private createItemRecipeFrame(index: number): framehandle {
+        // this.localPlayerInterface.selectedItemRecipeIndex
         const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
+        const itemClickFrame: framehandle = BlzCreateFrameByType('BUTTON', 'itemClickFrame', itemIcon, '', 0);
         BlzFrameSetSize(itemIcon, 0.02, 0.02);
         const x: number = 0.019 + ((index - 1) % 2) * 0.022;
         const y: number = -0.085 - 0.02 * ((index % 2) + Math.floor(index / 2));
         BlzFrameSetPoint(itemIcon, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, x, y);
+        BlzFrameSetAllPoints(itemClickFrame, itemIcon);
         BlzFrameSetTexture(itemIcon, 'war3mapImported\\BTNNoItem.blp', 0, true);
+
+        const leftClickTrigger: Trigger = new Trigger();
+        leftClickTrigger.registerFrameEvent(itemClickFrame, FRAMEEVENT_CONTROL_CLICK);
+        leftClickTrigger.addAction(() => {
+            if (GetTriggerPlayer() === GetLocalPlayer()) {
+                this.localPlayerInterface.isLeftClick = true;
+            }
+        });
+
+        const clickTrigger: Trigger = new Trigger();
+        clickTrigger.registerFrameEvent(itemClickFrame, FRAMEEVENT_MOUSE_UP);
+        clickTrigger.addAction(() => {
+            if (GetTriggerPlayer() === GetLocalPlayer()) {
+                if (this.localPlayerInterface.selectedItemRecipeIndex !== undefined) {
+                    if (items[this.localPlayerInterface.selectedItemRecipeIndex].recipe.length > index - 1) {
+                        const clickedItem: Item = items[this.localPlayerInterface.selectedItemRecipeIndex].recipe[index - 1];
+
+                        if (this.localPlayerInterface.isLeftClick) {
+                            this.localPlayerInterface.isLeftClick = false;
+                            this.localPlayerInterface.selectedItemFrameIndex = undefined;
+                            BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
+
+                            if (!(clickedItem instanceof ItemRecipe)) {
+                                this.selectItemFromHandle(clickedItem);
+                                this.localPlayerInterface.selectedItemRecipeIndex = undefined;
+                            } else {
+                                this.localPlayerInterface.selectedItemRecipeIndex = this.itemRecipeIndexMap[clickedItem.itemId];
+                                this.selectItem();
+                            }
+                        } else {
+                            this.showRecipesUsingItemHandle(clickedItem);
+                        }
+                    }
+                }
+            }
+        });
 
         return itemIcon;
     }
