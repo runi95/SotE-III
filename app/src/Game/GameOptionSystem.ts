@@ -328,7 +328,13 @@ export class GameOptionSystem {
         });
 
         const startButtonTrigger: Trigger = new Trigger();
+        let startButtonClicked: boolean = false;
         startButtonTrigger.addAction(() => {
+            if (startButtonClicked) {
+                return;
+            }
+
+            startButtonClicked = true;
             BlzFrameSetVisible(menu, false);
 
             this.gameGlobals.GameIsFogOfWarEnabled = isFogOfWarEnabled;
