@@ -9,6 +9,9 @@ export class Chaplain extends Boss {
     protected readonly angle: number = 0.0;
     private aliveDragonCounter: number = 0;
     private dragonUnitId: number = FourCC('n02H');
+    protected readonly dropTable: number[] = [
+        FourCC('I02Y'), // Enhanced Gemstone (9894)
+    ];
 
     constructor(randomNumberGenerator: RandomNumberGenerator) {
         super(Rect(-8000, 13952, -7872, 14080), randomNumberGenerator);

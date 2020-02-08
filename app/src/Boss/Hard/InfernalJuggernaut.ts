@@ -8,6 +8,9 @@ export class InfernalJuggernaut extends Boss {
     protected readonly x: number = 14654.0;
     protected readonly y: number = -15160.0;
     protected readonly angle: number = 150.0;
+    protected readonly dropTable: number[] = [
+        FourCC('I02W'), // Juggernaut Armor (9834)
+    ];
     private readonly timerUtils: TimerUtils;
     private readonly dummyUnitTypeId: number = FourCC('n001');
     private readonly dummyAbilityId: number = FourCC('A05Q');
