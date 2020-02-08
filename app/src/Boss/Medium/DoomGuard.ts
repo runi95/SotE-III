@@ -9,6 +9,10 @@ export class DoomGuard extends Boss {
     protected readonly x: number = 13660.0;
     protected readonly y: number = -6942.0;
     protected readonly angle: number = 270.0;
+    protected readonly dropTable: number[] = [
+        FourCC('I02U'), // Rain of Fire (1100)
+        FourCC('I02V'), // Cripple (1100)
+    ];
     private readonly invulnerableAbilityId: number = FourCC('Avul');
     private readonly spiritTowerPosX: number[] = [13030.0, 13180.0, 13670.0, 14145.0, 14310.0, 14145.0, 13670.0, 13180.0];
     private readonly spiritTowerPosY: number[] = [-6930.0, -6480.0, -6290.0, -6480.0, -6930.0, -7380.0, -7580.0, -7380.0];
