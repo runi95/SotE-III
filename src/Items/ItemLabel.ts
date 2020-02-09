@@ -1,0 +1,13 @@
+export enum ItemLabel {
+    AGILITY,
+    INTELLIGENCE,
+    STRENGTH,
+    MAX_MANA,
+    MANA_REGEN,
+    MAX_HEALTH,
+    HEALTH_REGEN,
+    BLOCK,
+    RESISTANCE,
+    ATTACK_DAMAGE,
+    LIFESTEAL,
+}

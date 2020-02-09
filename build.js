@@ -38,23 +38,28 @@ class Builder {
         });
 
         emitResult.forEach(({ name, text }) => ts.sys.writeFile(name, text));
-
-        console.log('Copying files...');
-        fs.copySync(`src/app/src/main.lua`, `src/main.lua`);
+        fs.copySync(`tools/extras/`, `lua/`);
 
         console.log('Building lua map...');
-        new Runner('"tools/ceres/ceres.exe"', ['build', 'map']).run();
+        new Runner('"tools/ceres/ceres.exe"', ["build", "--", "--map", "map", "--output", "dir"]).run();
 
         console.log('Replacing local functions...');
-        new Runner('"tools/sed.exe"', ['-i', '"s/local function __module_/function __module_/g"', '"target/map/war3map.lua"']).run();
+        fs.removeSync('./target/map.dir/war3map.w3a');
+        fs.removeSync('./target/map.dir/war3map.w3b');
+        fs.removeSync('./target/map.dir/war3map.w3d');
+        fs.removeSync('./target/map.dir/war3map.w3h');
+        fs.removeSync('./target/map.dir/war3map.w3q');
+        fs.removeSync('./target/map.dir/war3map.w3t');
+        fs.removeSync('./target/map.dir/war3map.w3u');
+        // new Runner('"tools/sed.exe"', ['-i', '"s/local function __module_/function __module_/g"', '"target/map.dir/war3map.lua"']).run();
 
         console.log('Adding compiled lua files...');
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ['add', '"target/map.w3x"', '"target/map/*"', '"/c"', '"/auto"', '"/r"']).run();
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ['add', '"target/map.w3x"', '"target/map.dir/*"', '"/c"', '"/auto"', '"/r"']).run();
     }
 
     cleanup() {
-        if (fs.existsSync(`./src`)) {
-            fs.removeSync('./src');
+        if (fs.existsSync(`./lua`)) {
+            fs.removeSync('./lua');
         }
         if (fs.existsSync(`./target`)) {
             fs.removeSync('./target');
