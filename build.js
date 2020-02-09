@@ -38,10 +38,9 @@ class Builder {
         });
 
         emitResult.forEach(({ name, text }) => ts.sys.writeFile(name, text));
-        fs.copySync(`tools/extras/`, `lua/`);
 
         console.log('Building lua map...');
-        new Runner('"tools/ceres/ceres.exe"', ["build", "--", "--map", "map", "--output", "dir"]).run();
+        new Runner('"tools/ceres/ceres.exe"', ['build', '--', '--map', 'map', '--output', 'dir']).run();
 
         console.log('Replacing local functions...');
         fs.removeSync('./target/map.dir/war3map.w3a');
@@ -54,7 +53,14 @@ class Builder {
         // new Runner('"tools/sed.exe"', ['-i', '"s/local function __module_/function __module_/g"', '"target/map.dir/war3map.lua"']).run();
 
         console.log('Adding compiled lua files...');
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', ['add', '"target/map.w3x"', '"target/map.dir/*"', '"/c"', '"/auto"', '"/r"']).run();
+        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', [
+            'add',
+            '"target/map.w3x"',
+            '"target/map.dir/*"',
+            '"/c"',
+            '"/auto"',
+            '"/r"',
+        ]).run();
     }
 
     cleanup() {
