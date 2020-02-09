@@ -71,6 +71,7 @@ import { VampireClaws } from './BasicItems/VampireClaws';
 import { VampireDagger } from './Recipes/VampireDagger';
 import { AssassinsBlade } from './Recipes/AssassinsBlade';
 import { AssassinsCloak } from './Recipes/AssassinsCloak';
+import { NaturesBlessing } from './Recipes/NaturesBlessing';
 
 const crystalBall: CrystalBall = new CrystalBall();
 const sobiMask: SobiMask = new SobiMask();
@@ -173,6 +174,7 @@ export default [
     new SpellShield(vialOfMagic, enchantedShield, lionsRing),
     new SwordOfNaegling(fragarach, swordOfFreyr),
     new ThrowableAxe(bloodiedExecutionersAxe, scepter),
+    new NaturesBlessing(reinforcedHide, branch),
 ];
 
 export const basicItems: Item[] = [

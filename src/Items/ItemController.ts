@@ -55,6 +55,7 @@ import { AssassinsBladeDrop } from './Abilities/AssassinsBladeDrop';
 import { AssassinsBladePickup } from './Abilities/AssassinsBladePickup';
 import { AssassinsMapDrop } from './Abilities/AssassinsMapDrop';
 import { AssassinsMapPickup } from './Abilities/AssassinsMapPickup';
+import { NaturesBlessingUse } from './Abilities/NaturesBlessingUse';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -115,7 +116,8 @@ export class ItemController {
             new AssassinsBladeDrop(gameGlobals),
             new AssassinsBladePickup(gameGlobals),
             new AssassinsMapDrop(),
-            new AssassinsMapPickup()
+            new AssassinsMapPickup(),
+            new NaturesBlessingUse(),
         ];
     }
 }
