@@ -116,28 +116,35 @@ function createQuests(): void {
         bj_QUESTTYPE_REQ_DISCOVERED,
         'Introduction',
         // tslint:disable-next-line: max-line-length
-        `A new Warcraft III hero arena map |cFFCCCC00(by runi95)|r|n|n|cFF888800Win conditions|r|n|nDefeat the opposing team by killing their heroes until they run out of lives and can no longer respawn.|n|n|cFF888800Resources|r|n|nGain gold by slaying creeps found scattered all across the map. Higher level creeps tend to give more gold when defeated.|nGold can be spent at the various shops found in spawn and out on the battlefield.|nGold is also necessary when upgrading items through the recipe system.|n|n|cFF888800Recipe system|r|n|nThe recipe system is used when upgrading items to a stronger version of themselves.|nTo upgrade an item your hero HAS TO BE standing in spawn so you can click the recipe button icon which can be found right above your minimap.|nLeft clicking an item will show the recipe for that item like in the image above.|nRight clicking an item will filter the item list to only show item recipes where the clicked item is used.|nOnce your hero is holding all the required recipe items and you have enough gold to purchase the recipe you'll be able to click the upgrade button.`,
+        `A new Warcraft III hero arena map |cFFCCCC00(by Runi95#2202)|r|n|n|cFF888800Win conditions|r|n|nDefeat the opposing team by killing their heroes until they run out of lives and can no longer respawn.|n|n|cFF888800Resources|r|n|nGain gold by slaying creeps found scattered all across the map. Higher level creeps tend to give more gold when defeated.|nGold can be spent at the various shops found in spawn and out on the battlefield.|nGold is also necessary when upgrading items through the recipe system.|n|n|cFF888800Recipe system|r|n|nThe recipe system is used when upgrading items to a stronger version of themselves.|nTo upgrade an item your hero HAS TO BE standing in spawn so you can click the recipe button icon which can be found right above your minimap.|nLeft clicking an item will show the recipe for that item.|nRight clicking an item will filter the item list to only show item recipes where the clicked item is used.|nOnce your hero is holding all the required recipe items and you have enough gold to purchase the recipe you'll be able to click the upgrade button.`,
         'ReplaceableTextures\\CommandButtons\\BTNBlueQuestion.blp',
     );
     CreateQuestBJ(
         bj_QUESTTYPE_REQ_DISCOVERED,
         'Commands',
         // tslint:disable-next-line: max-line-length
-        `There are currently no commands available`,
+        `|cFF888800Command list|r|n|nThere are currently no commands available`,
         'ReplaceableTextures\\CommandButtons\\BTNExclamation.blp',
     );
     CreateQuestBJ(
         bj_QUESTTYPE_REQ_DISCOVERED,
         'Bosses',
         // tslint:disable-next-line: max-line-length
-        `Bosses are spawned when a hero steps inside a Circle of Power. The size of the circle indicates the strength of the boss.|nThe rewards for slaying a boss is always greater when defeating a harder boss spawned from a larger circle.`,
+        `|cFF888800Spawning a boss|r|n|nBosses are spawned when a hero steps inside a Circle of Power.|nThe size of the circle indicates the strength of the boss.|n|n|cFF888800Rewards|r|n|nThe rewards for slaying a boss is always greater when defeating a harder boss spawned from a greater circle.|nSome bosses drop unique items that can only be obtained through killing bosses.`,
         'ReplaceableTextures\\CommandButtons\\BTNBossQuest.blp',
+    );
+    CreateQuestBJ(
+        bj_QUESTTYPE_REQ_DISCOVERED,
+        'FAQ',
+        // tslint:disable-next-line: max-line-length
+        `|cFF888800Frequently asked questions|r|n|nHow do I play?|n- Read the Introduction quest|n|nHow can I contribute to the map?|n- Add me on BNet (Runi95#2202) so we can discuss contributions`,
+        'ReplaceableTextures\\CommandButtons\\BTNBlueQuestion.blp',
     );
     CreateQuestBJ(
         bj_QUESTTYPE_REQ_DISCOVERED,
         'Changelog',
         // tslint:disable-next-line: max-line-length
-        `Changelogs will be released once the beta has started.`,
+        `|cFF888800Changes|r|n|nThis map is still in its early stages so changes are frequent.|nFeedback and or questions can be sent to |cFFCCCC00Runi95#2202|r`,
         'ReplaceableTextures\\CommandButtons\\BTNChangelog.blp',
     );
 }
