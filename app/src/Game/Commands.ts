@@ -27,7 +27,9 @@ export class Commands {
         }
 
         const split: string[] = chatstring.substr(1).split(' ');
-        if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
+        if (split[0] === 'help') {
+            DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'If you need help check out the quests menu');
+        } else if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
             const gold: number = Number(split[1]);
             if (!gold) {
                 DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Invalid gold amount!');
