@@ -1,7 +1,8 @@
 import { GameGlobals } from '../Game/GameGlobals';
 import { Trigger } from '../JassOverrides/Trigger';
 // tslint:disable-next-line: import-name
-import items, { basicItems } from './ItemRecipeController';
+import items from './ItemRecipeController';
+import { basicItems } from './BasicItemController';
 import { ItemRecipe } from './ItemRecipe';
 import { Item } from './Item';
 import { ItemLabel } from './ItemLabel';
