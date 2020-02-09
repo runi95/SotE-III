@@ -1,7 +1,6 @@
 import { Trigger } from './JassOverrides/Trigger';
 import { Log, LogLevel } from './lib/Serilog/Serilog';
 import { StringSink } from './lib/Serilog/Sinks/StringSink';
-import { Game } from './Game/Game';
 import { GameGlobals } from './Game/GameGlobals';
 import { Hero } from './Game/Hero';
 import { RandomNumberGenerator } from './Utility/RandomNumberGenerator';
