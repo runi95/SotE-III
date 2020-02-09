@@ -39,9 +39,10 @@ export class Initialiser {
             },
         );
     }
-
 }
 
+// @ts-ignore
+ceres.oldMain();
 Initialiser.run();
 
 function seedRandomNumberGenerator(randomNumberGenerator: RandomNumberGenerator): void {
@@ -157,4 +158,3 @@ function createQuests(): void {
 function SendMessage(this: void, msg: any): void {
     DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `${msg}`);
 }
-
