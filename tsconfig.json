@@ -2,7 +2,8 @@
 	"compilerOptions": {
 		"strict": true,
 		"target": "esnext",
-		"outDir": "src",
+		"outDir": "lua",
+		"rootDir": "src",
 		"lib": ["esnext"],
 		"types": [
 			"lua-types/core/coroutine",
@@ -15,12 +16,10 @@
 			"lua-types/core/debug",
 			"lua-types/core/io",
 			"lua-types/core/os",
-			"lua-types/special/5.3",
-			"busted-tstl"
+			"lua-types/special/5.3"
 		]
 	},
 	"tstl": {
-		"luaTarget": "5.3",
-		"luaLibImport": "require"
+		"luaTarget": "5.3"
 	}
 }

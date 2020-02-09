@@ -1,11 +1,10 @@
 .DS_Store
 .vscode
 .idea
-/src
+/lua
 /target
 /node_modules
 /package-lock.json
-/app/src/Generated/*
 maps/map/war3map.lua
 /logs
 /backups
