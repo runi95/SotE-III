@@ -27,6 +27,7 @@ import { RunedBracers } from './BasicItems/RunedBracers';
 import { GoblinNightScope } from './BasicItems/GoblinNightScope';
 import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
+import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -57,6 +58,7 @@ itemMap.set('runedBracers', new RunedBracers());
 itemMap.set('goblinNightScope', new GoblinNightScope());
 itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
 itemMap.set('vampireClaws', new VampireClaws());
+itemMap.set('maskOfDeath', new MaskOfDeath());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -85,4 +87,5 @@ export const basicItems: Item[] = [
     itemMap.get('studdedLeatherArmor') as Item,
     itemMap.get('vampireClaws') as Item,
     itemMap.get('warAxe') as Item,
+    itemMap.get('maskOfDeath') as Item,
 ];
