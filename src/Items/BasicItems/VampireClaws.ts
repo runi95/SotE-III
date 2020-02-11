@@ -5,7 +5,7 @@ export class VampireClaws extends Item {
     public readonly itemId: number = FourCC('I02E');
     public readonly name: string = 'Vampire Claws';
     public readonly labels: ItemLabel[] = [ItemLabel.LIFESTEAL];
-    public readonly goldCost: number = 300;
+    public readonly goldCost: number = 608;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGhoulFrenzy.blp';
     public readonly description: string = `Practicing with these will surely make you super fast.
 
