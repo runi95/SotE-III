@@ -28,6 +28,8 @@ import { GoblinNightScope } from './BasicItems/GoblinNightScope';
 import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
 import { MaskOfDeath } from './BasicItems/MaskOfDeath';
+import { JuggernautArmor } from './BasicItems/JuggernautArmor';
+import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -59,6 +61,9 @@ itemMap.set('goblinNightScope', new GoblinNightScope());
 itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
 itemMap.set('vampireClaws', new VampireClaws());
 itemMap.set('maskOfDeath', new MaskOfDeath());
+itemMap.set('spiritTalisman', new MaskOfDeath());
+itemMap.set('juggernautArmor', new JuggernautArmor());
+itemMap.set('enchantedGemstone', new EnchantedGemstone());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -88,4 +93,7 @@ export const basicItems: Item[] = [
     itemMap.get('vampireClaws') as Item,
     itemMap.get('warAxe') as Item,
     itemMap.get('maskOfDeath') as Item,
+    itemMap.get('spiritTalisman') as Item,
+    itemMap.get('juggernautArmor') as Item,
+    itemMap.get('enchantedGemstone') as Item,
 ];
