@@ -1,30 +1,30 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { IronShield } from '../BasicItems/IronShield';
 import { Item } from '../Item';
-import { ManaEgg } from './ManaEgg';
 import { ItemLabel } from '../ItemLabel';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 
 export class Ancile extends ItemRecipe {
-    private readonly manaEgg: ManaEgg;
+    private readonly studdedLeatherArmor: StuddedLeatherArmor;
     private readonly ironShield: IronShield;
     public readonly recipe: Item[];
     public readonly itemId: number = FourCC('I016');
     public readonly name: string = 'Ancile';
-    public readonly labels: ItemLabel[] = [ItemLabel.MAX_MANA, ItemLabel.BLOCK];
-    public readonly goldCost: number = 370;
+    public readonly labels: ItemLabel[] = [ItemLabel.MAX_HEALTH, ItemLabel.BLOCK];
+    public readonly goldCost: number = 1136;
     public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGrimWard.blp';
     public readonly description: string = `A shield worn by the great mage Ancile.
 
-|cffffcc00Max Mana:|r +450
-|cffffcc00Block:|r +4
+|cffffcc00Max health:|r +250
+|cffffcc00Block:|r +8
 
-|cFF808080Mana is required when casting most spells.|r`;
+|cFF808080Health determines how much damage you can take before dying.|r`;
 
-    constructor(manaEgg: ManaEgg, ironShield: IronShield) {
+    constructor(studdedLeatherArmor: StuddedLeatherArmor, ironShield: IronShield) {
         super();
 
-        this.manaEgg = manaEgg;
+        this.studdedLeatherArmor = studdedLeatherArmor;
         this.ironShield = ironShield;
-        this.recipe = [this.manaEgg, this.ironShield];
+        this.recipe = [this.studdedLeatherArmor, this.ironShield];
     }
 }

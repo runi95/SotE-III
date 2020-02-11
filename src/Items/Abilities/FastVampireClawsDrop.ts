@@ -1,8 +1,8 @@
-import { ItemDrop } from '../ItemDrop';
 import { GameGlobals } from '../../Game/GameGlobals';
+import { ItemDrop } from '../ItemDrop';
 
-export class AncileDrop extends ItemDrop {
-    protected readonly itemTypeId: number = FourCC('I016');
+export class FastVampireClawsDrop extends ItemDrop {
+    protected readonly itemTypeId: number = FourCC('I032');
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -13,6 +13,6 @@ export class AncileDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 8;
+        this.gameGlobals.PlayerLifesteal[playerId] -= 0.2;
     }
 }

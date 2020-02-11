@@ -49,6 +49,8 @@ import { VampireDagger } from './Recipes/VampireDagger';
 import { AssassinsBlade } from './Recipes/AssassinsBlade';
 import { AssassinsCloak } from './Recipes/AssassinsCloak';
 import { NaturesBlessing } from './Recipes/NaturesBlessing';
+import { ImprovedReinforcedHide } from './Recipes/ImprovedReinforcedHide';
+import { FastVampireClaws } from './Recipes/FastVampireClaws';
 
 export const itemMap: Map<string, Item> = new Map(basicItemController.itemMap.entries());
 
@@ -108,6 +110,10 @@ itemMap.set('vampireDagger', new VampireDagger(itemMap.get('bloodiedSacrificialD
 itemMap.set('assassinsBlade', new AssassinsBlade(itemMap.get('ironSword')));
 // @ts-ignore
 itemMap.set('cloakOfShadowWalk', new CloakOfShadowWalk(itemMap.get('cloakOfShadows'), itemMap.get('scrollOfAgility')));
+// @ts-ignore
+itemMap.set('improvedReinforcedHide', new ImprovedReinforcedHide(itemMap.get('reinforcedHide')));
+// @ts-ignore
+itemMap.set('fastVampireClaws', new FastVampireClaws(itemMap.get('claws'), itemMap.get('vampireClaws')));
 export default [
     itemMap.get('improvedMoonArmor'),
     itemMap.get('improvedBalancedShield'),
@@ -136,6 +142,8 @@ export default [
     itemMap.get('fragarach'),
     itemMap.get('vampireDagger'),
     itemMap.get('assassinsBlade'),
+    itemMap.get('improvedReinforcedHide'),
+    itemMap.get('fastVampireClaws'),
     // @ts-ignore
     new AssassinsCloak(itemMap.get('assassinsBlade'), itemMap.get('cloakOfShadowWalk')) as ItemRecipe,
     new AdvancedReinforcedHides(
@@ -149,7 +157,7 @@ export default [
     // @ts-ignore
     new AgileSlippers(itemMap.get('bootsOfSpeed')) as ItemRecipe,
     // @ts-ignore
-    new Ancile(itemMap.get('manaEgg'), itemMap.get('ironShield')) as ItemRecipe,
+    new Ancile(itemMap.get('studdedLeatherArmor'), itemMap.get('ironShield')) as ItemRecipe,
     // @ts-ignore
     new ArmoredBoots(itemMap.get('bootsOfSpeed'), itemMap.get('steelShield')) as ItemRecipe,
     // @ts-ignore

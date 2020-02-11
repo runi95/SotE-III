@@ -13,6 +13,6 @@ export class AncilePickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 4;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 8;
     }
 }

@@ -58,10 +58,11 @@ import { AssassinsMapPickup } from './Abilities/AssassinsMapPickup';
 import { NaturesBlessingUse } from './Abilities/NaturesBlessingUse';
 import { MaskOfDeathDrop } from './Abilities/MaskOfDeathDrop';
 import { MaskOfDeathPickup } from './Abilities/MaskOfDeathPickup';
+import { FastVampireClawsPickup } from './Abilities/FastVampireClawsPickup';
+import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
 
 export class ItemController {
     private itemAbilities: any[];
-    // private itemRecipes: any[];
 
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator, arcaneVault: unit) {
         this.itemAbilities = [
@@ -122,6 +123,8 @@ export class ItemController {
             new NaturesBlessingUse(),
             new MaskOfDeathDrop(gameGlobals),
             new MaskOfDeathPickup(gameGlobals),
+            new FastVampireClawsPickup(gameGlobals),
+            new FastVampireClawsDrop(gameGlobals),
         ];
     }
 }
