@@ -1,21 +1,15 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { VialOfMagic } from './VialOfMagic';
 import { EnchantedShield } from './EnchantedShield';
-import { Item } from '../Item';
 import { LionsRing } from './LionsRing';
 import { ItemLabel } from '../ItemLabel';
 
-export class SpellShield extends ItemRecipe {
-    private readonly vialOfMagic: VialOfMagic;
-    private readonly enchantedShield: EnchantedShield;
-    private readonly lionsRing: LionsRing;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I02F');
-    public readonly name: string = 'Spell Shield';
-    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.RESISTANCE];
-    public readonly goldCost: number = 780;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
-    public readonly description: string = `A shield that glows with magical potency.
+const itemId: number = FourCC('I02F');
+const name: string = 'Spell Shield';
+const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.RESISTANCE];
+const goldCost: number = 4000;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
+const description: string = `A shield that glows with magical potency.
 
 |cffffcc00Intelligence:|r +18
 |cffffcc00Resistance:|r +30
@@ -23,12 +17,8 @@ export class SpellShield extends ItemRecipe {
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 
+export class SpellShield extends ItemRecipe {
     constructor(vialOfMagic: VialOfMagic, enchantedShield: EnchantedShield, lionsRing: LionsRing) {
-        super();
-
-        this.vialOfMagic = vialOfMagic;
-        this.enchantedShield = enchantedShield;
-        this.lionsRing = lionsRing;
-        this.recipe = [this.vialOfMagic, this.enchantedShield, this.lionsRing];
+        super(itemId, name, labels, goldCost, iconPath, description, [vialOfMagic, enchantedShield, lionsRing]);
     }
 }

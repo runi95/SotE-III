@@ -1,19 +1,14 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Item } from '../Item';
 import { MaskOfProficiency } from './MaskOfProficiency';
 import { VialOfMagic } from './VialOfMagic';
 import { ItemLabel } from '../ItemLabel';
 
-export class ManaInfusedMask extends ItemRecipe {
-    private readonly maskOfProficiency: MaskOfProficiency;
-    private readonly vialOfMagic: VialOfMagic;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I029');
-    public readonly name: string = 'Mana Infused Mask';
-    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-    public readonly goldCost: number = 320;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkullBlue.blp';
-    public readonly description: string = `A mask infused with pure magic.
+const itemId: number = FourCC('I029');
+const name: string = 'Mana Infused Mask';
+const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
+const goldCost: number = 1680;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkullBlue.blp';
+const description: string = `A mask infused with pure magic.
 
 |cffffcc00Intelligence:|r +12
 |cffffcc00Max Mana:|r +100
@@ -21,11 +16,8 @@ export class ManaInfusedMask extends ItemRecipe {
 
 |cFF808080Mana is required when casting most spells.|r`;
 
+export class ManaInfusedMask extends ItemRecipe {
     constructor(maskOfProficiency: MaskOfProficiency, vialOfMagic: VialOfMagic) {
-        super();
-
-        this.maskOfProficiency = maskOfProficiency;
-        this.vialOfMagic = vialOfMagic;
-        this.recipe = [this.maskOfProficiency, this.vialOfMagic];
+        super(itemId, name, labels, goldCost, iconPath, description, [maskOfProficiency, vialOfMagic]);
     }
 }

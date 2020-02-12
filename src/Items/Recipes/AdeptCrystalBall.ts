@@ -1,19 +1,14 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Item } from '../Item';
 import { CrystalBall } from '../BasicItems/CrystalBall';
 import { SobiMask } from '../BasicItems/SobiMask';
 import { ItemLabel } from '../ItemLabel';
 
-export class AdeptCrystalBall extends ItemRecipe {
-    private readonly crystalBall: CrystalBall;
-    private readonly sobiMask: SobiMask;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I01F');
-    public readonly name: string = 'Adept Crystal Ball';
-    public readonly labels: ItemLabel[] = [];
-    public readonly goldCost: number = 100;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallAdept.blp';
-    public readonly description: string = `Can you see the future in this thing?
+const itemId: number = FourCC('I01F');
+const name: string = 'Adept Crystal Ball';
+const labels: ItemLabel[] = [];
+const goldCost: number = 400;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallAdept.blp';
+const description: string = `Can you see the future in this thing?
 
 |cffffcc00Effect:|r Reveals the area of the map that it is cast upon. Also reveals invisible units.
 |cffffcc00Area of Effect:|r 750
@@ -22,11 +17,8 @@ export class AdeptCrystalBall extends ItemRecipe {
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
+export class AdeptCrystalBall extends ItemRecipe {
     constructor(crystalBall: CrystalBall, sobiMask: SobiMask) {
-        super();
-
-        this.crystalBall = crystalBall;
-        this.sobiMask = sobiMask;
-        this.recipe = [this.crystalBall, this.sobiMask];
+        super(itemId, name, labels, goldCost, iconPath, description, [crystalBall, sobiMask]);
     }
 }

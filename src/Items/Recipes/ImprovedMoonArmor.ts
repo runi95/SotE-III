@@ -1,26 +1,20 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { MoonArmor } from '../BasicItems/MoonArmor';
-import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class ImprovedMoonArmor extends ItemRecipe {
-    private readonly moonArmor: MoonArmor;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I00O');
-    public readonly name: string = 'Improved Moon Armor';
-    public readonly labels: ItemLabel[] = [ItemLabel.RESISTANCE];
-    public readonly goldCost: number = 540;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedMoonArmor.blp';
-    public readonly description: string = `A special armor capable of resisting spell damage.
+const itemId: number = FourCC('I00O');
+const name: string = 'Improved Moon Armor';
+const labels: ItemLabel[] = [ItemLabel.RESISTANCE];
+const goldCost: number = 840;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedMoonArmor.blp';
+const description: string = `A special armor capable of resisting spell damage.
 
 |cffffcc00Resistance:|r +14
 
 |cFF808080Incoming spell damage is reduced by the amount of resistance you have.|r`;
 
+export class ImprovedMoonArmor extends ItemRecipe {
     constructor(moonArmor: MoonArmor) {
-        super();
-
-        this.moonArmor = moonArmor;
-        this.recipe = [this.moonArmor];
+        super(itemId, name, labels, goldCost, iconPath, description, [moonArmor]);
     }
 }

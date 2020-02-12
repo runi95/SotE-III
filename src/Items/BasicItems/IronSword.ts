@@ -1,15 +1,19 @@
 import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class IronSword extends Item {
-    public readonly itemId: number = FourCC('I00H');
-    public readonly name: string = 'Iron Sword';
-    public readonly labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-    public readonly goldCost: number = 250;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSteelMelee.blp';
-    public readonly description: string = `A dull sword capable of damaging enemy units through physical contact.
+const itemId: number = FourCC('I00H');
+const name: string = 'Iron Sword';
+const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
+const goldCost: number = 250;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSteelMelee.blp';
+const description: string = `A dull sword capable of damaging enemy units through physical contact.
 
 |cffffcc00Attack damage:|r +5
 
 |cFF808080Your attack damage determines how much damage your physical attacks do.|r`;
+
+export class IronSword extends Item {
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description);
+    }
 }

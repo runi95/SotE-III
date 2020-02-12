@@ -1,19 +1,14 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Item } from '../Item';
 import { Flare } from '../BasicItems/Flare';
 import { GoblinNightScope } from '../BasicItems/GoblinNightScope';
 import { ItemLabel } from '../ItemLabel';
 
-export class WandOfShadowsight extends ItemRecipe {
-    private readonly goblinNightScope: GoblinNightScope;
-    private readonly flare: Flare;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I020');
-    public readonly name: string = 'Wand of Shadowsight';
-    public readonly labels: ItemLabel[] = [];
-    public readonly goldCost: number = 200;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
-    public readonly description: string = `An incredible scope with built in night vision.
+const itemId: number = FourCC('I020');
+const name: string = 'Wand of Shadowsight';
+const labels: ItemLabel[] = [];
+const goldCost: number = 200;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
+const description: string = `An incredible scope with built in night vision.
 
 |cffffcc00Effect:|r Provides an increase to the Hero's line of sight radius at night when carried.
 |cffffcc00Effect(2):|r Reveals invisible units
@@ -21,11 +16,8 @@ export class WandOfShadowsight extends ItemRecipe {
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
+export class WandOfShadowsight extends ItemRecipe {
     constructor(goblinNightScope: GoblinNightScope, flare: Flare) {
-        super();
-
-        this.goblinNightScope = goblinNightScope;
-        this.flare = flare;
-        this.recipe = [this.goblinNightScope, this.flare];
+        super(itemId, name, labels, goldCost, iconPath, description, [goblinNightScope, flare]);
     }
 }

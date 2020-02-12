@@ -227,7 +227,7 @@ export class RecipeSystem {
 
         for (let i: number = 0; i < 11 && i < items.length; i++) {
             this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
-            this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
+            this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].recipeCost, i));
         }
 
         this.createMainButtonTriggers();
@@ -342,14 +342,14 @@ export class RecipeSystem {
             if (indexedItemWindowMin === 0) {
                 return '';
             }
-            return `|cFFFFCC00${items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].goldCost}|r`;
+            return `|cFFFFCC00${items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].recipeCost}|r`;
         }
 
         if (indexedItemWindowMin < this.localPlayerInterface.heroRecipeItems.length) {
             return `|cFFFFCC00${this.localPlayerInterface.heroRecipeItems[indexedItemWindowMin].goldCost}|r`;
         }
 
-        return `|cFFFFCC00${items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].goldCost}|r`;
+        return `|cFFFFCC00${items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].recipeCost}|r`;
     }
 
     private updateItemFrames(): void {
@@ -542,7 +542,11 @@ export class RecipeSystem {
             BlzFrameSetTexture(this.itemRecipeFrames[i], itemRecipeFramesTexture, 0, true);
         }
 
-        const hasEnoughGold: boolean = item !== undefined && GetPlayerState(GetLocalPlayer(), PLAYER_STATE_RESOURCE_GOLD) >= item.goldCost;
+        let itemCost: number = 0;
+        if (item !== undefined) {
+            itemCost = item instanceof ItemRecipe ? item.recipeCost : item.goldCost;
+        }
+        const hasEnoughGold: boolean = item !== undefined && GetPlayerState(GetLocalPlayer(), PLAYER_STATE_RESOURCE_GOLD) >= itemCost;
         BlzFrameSetText(this.itemRecipeResultUpgradeButton, item ? item.goldCost.toString() : '');
         BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, hasAllItems && hasEnoughGold);
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, item ? item.iconPath : 'war3mapImported\\BTNNoItem.blp', 0, true);
@@ -706,7 +710,7 @@ export class RecipeSystem {
             }
         }
 
-        const upgradeGoldCost: number = items[selectedItemForPlayerIndex].goldCost;
+        const upgradeGoldCost: number = items[selectedItemForPlayerIndex].recipeCost;
         const playerCurrentGold: number = GetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD);
         if (hasAllItems && playerCurrentGold >= upgradeGoldCost) {
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, playerCurrentGold - upgradeGoldCost);

@@ -1,13 +1,12 @@
 import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class RunedBracers extends Item {
-    public readonly itemId: number = FourCC('I00S');
-    public readonly name: string = 'Runed Bracers';
-    public readonly labels: ItemLabel[] = [];
-    public readonly goldCost: number = 600;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRunedBracers.blp';
-    public readonly description: string = `You can't quite make out what the runes say.
+const itemId: number = FourCC('I00S');
+const name: string = 'Runed Bracers';
+const labels: ItemLabel[] = [];
+const goldCost: number = 600;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRunedBracers.blp';
+const description: string = `You can't quite make out what the runes say.
 
 |cffffcc00Effect (1):|r Increases item charges whenever you take spell damage.
 |cffffcc00Effect (2):|r Releases a chain lightning whenever you reach over 100 charges
@@ -15,4 +14,9 @@ export class RunedBracers extends Item {
 |cffffcc00Chain Lightning Max Bounce:|r 5
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
+
+export class RunedBracers extends Item {
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description);
+    }
 }

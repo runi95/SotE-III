@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Item } from './Item';
 import { ItemRecipe } from './ItemRecipe';
 import * as basicItemController from './BasicItemController';

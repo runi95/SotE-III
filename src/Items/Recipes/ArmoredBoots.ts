@@ -1,30 +1,22 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { BootsOfSpeed } from '../BasicItems/BootsOfSpeed';
 import { SteelShield } from './SteelShield';
-import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class ArmoredBoots extends ItemRecipe {
-    private readonly bootsOfSpeed: BootsOfSpeed;
-    private readonly steelShield: SteelShield;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I01C');
-    public readonly name: string = 'Armored Boots';
-    public readonly labels: ItemLabel[] = [ItemLabel.BLOCK];
-    public readonly goldCost: number = 205;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
-    public readonly description: string = `Increases movement rate while keeping your feet safe.
+const itemId: number = FourCC('I01C');
+const name: string = 'Armored Boots';
+const labels: ItemLabel[] = [ItemLabel.BLOCK];
+const goldCost: number = 825;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
+const description: string = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +75
 |cffffcc00Block:|r +9
 
 |cFF808080Movement speed determines how fast you're able to move.|r`;
 
+export class ArmoredBoots extends ItemRecipe {
     constructor(bootsOfSpeed: BootsOfSpeed, steelShield: SteelShield) {
-        super();
-
-        this.bootsOfSpeed = bootsOfSpeed;
-        this.steelShield = steelShield;
-        this.recipe = [this.bootsOfSpeed, this.steelShield];
+        super(itemId, name, labels, goldCost, iconPath, description, [bootsOfSpeed, steelShield]);
     }
 }

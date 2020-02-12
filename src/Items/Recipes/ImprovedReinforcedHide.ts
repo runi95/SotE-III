@@ -1,26 +1,20 @@
-import { Item } from '../Item';
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { ReinforcedHide } from '../BasicItems/ReinforcedHide';
 
-export class ImprovedReinforcedHide extends ItemRecipe {
-    private readonly reinforcedHide: ReinforcedHide;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I031');
-    public readonly name: string = 'Improved Reinforced Hide';
-    public readonly labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
-    public readonly goldCost: number = 1400;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedReinforcedHides.blp';
-    public readonly description: string = `A stronger protective layer of regenerative hide.
+const itemId: number = FourCC('I031');
+const name: string = 'Improved Reinforced Hide';
+const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
+const goldCost: number = 1750;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedReinforcedHides.blp';
+const description: string = `A stronger protective layer of regenerative hide.
 
 |cffffcc00Health regen:|r +25
 
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
 
+export class ImprovedReinforcedHide extends ItemRecipe {
     constructor(reinforcedHide: ReinforcedHide) {
-        super();
-
-        this.reinforcedHide = reinforcedHide;
-        this.recipe = [this.reinforcedHide];
+        super(itemId, name, labels, goldCost, iconPath, description, [reinforcedHide]);
     }
 }

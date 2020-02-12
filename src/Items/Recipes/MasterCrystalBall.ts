@@ -1,19 +1,14 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { AdeptCrystalBall } from './AdeptCrystalBall';
 import { VialOfMagic } from './VialOfMagic';
-import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class MasterCrystalBall extends ItemRecipe {
-    private readonly adeptCrystalBall: AdeptCrystalBall;
-    private readonly vialOfMagic: VialOfMagic;
-    public readonly recipe: Item[];
-    public readonly itemId: number = FourCC('I01G');
-    public readonly name: string = 'Master Crystal Ball';
-    public readonly labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
-    public readonly goldCost: number = 120;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallMaster.blp';
-    public readonly description: string = `Can you see the future in this thing?
+const itemId: number = FourCC('I01G');
+const name: string = 'Master Crystal Ball';
+const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
+const goldCost: number = 1200;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallMaster.blp';
+const description: string = `Can you see the future in this thing?
 
 |cffffcc00Intelligence:|r +6
 |cffffcc00Max Mana:|r +100
@@ -24,11 +19,8 @@ export class MasterCrystalBall extends ItemRecipe {
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
+export class MasterCrystalBall extends ItemRecipe {
     constructor(adeptCrystalBall: AdeptCrystalBall, vialOfMagic: VialOfMagic) {
-        super();
-
-        this.adeptCrystalBall = adeptCrystalBall;
-        this.vialOfMagic = vialOfMagic;
-        this.recipe = [this.adeptCrystalBall, this.vialOfMagic];
+        super(itemId, name, labels, goldCost, iconPath, description, [adeptCrystalBall, vialOfMagic]);
     }
 }

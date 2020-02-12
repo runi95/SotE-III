@@ -1,15 +1,19 @@
 import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
-export class ReinforcedHide extends Item {
-    public readonly itemId: number = FourCC('I006');
-    public readonly name: string = 'Reinforced Hide';
-    public readonly labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
-    public readonly goldCost: number = 350;
-    public readonly iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNReinforcedHides.blp';
-    public readonly description: string = `A protective layer of regenerative hide.
+const itemId: number = FourCC('I006');
+const name: string = 'Reinforced Hide';
+const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
+const goldCost: number = 350;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNReinforcedHides.blp';
+const description: string = `A protective layer of regenerative hide.
 
 |cffffcc00Health regen:|r +5
 
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
+
+export class ReinforcedHide extends Item {
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description);
+    }
 }
