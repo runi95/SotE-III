@@ -451,7 +451,6 @@ export class RecipeSystem {
     }
 
     private selectItemEvent(index: number): void {
-        BJDebugMsg(`this.localPlayerInterface.selectedItemRecipeIndex: ${this.localPlayerInterface.selectedItemRecipeIndex}`);
         if (index === 0 && this.localPlayerInterface.isItemListFiltered) {
             this.localPlayerInterface.isItemListFiltered = false;
             this.localPlayerInterface.selectedItemFrameIndex = undefined;
@@ -466,11 +465,19 @@ export class RecipeSystem {
                         this.localPlayerInterface.itemWindowSize
                 ];
             } else {
-                this.localPlayerInterface.selectedItemRecipeIndex =
+                const selectedItemFrame: number =
                     (this.localPlayerInterface.selectedItemFrameIndex as number) +
                     this.localPlayerInterface.itemWindowMax +
                     1 -
                     this.localPlayerInterface.itemWindowSize;
+                if (selectedItemFrame < this.localPlayerInterface.heroRecipeItems.length) {
+                    this.localPlayerInterface.selectedItemRecipeIndex = this.itemRecipeIndexMap[
+                        this.localPlayerInterface.heroRecipeItems[selectedItemFrame].itemId
+                    ];
+                } else {
+                    this.localPlayerInterface.selectedItemRecipeIndex =
+                        selectedItemFrame - this.localPlayerInterface.heroRecipeItems.length;
+                }
             }
         }
 
@@ -541,11 +548,7 @@ export class RecipeSystem {
             if (this.localPlayerInterface.isItemListFiltered) {
                 item = items[this.localPlayerInterface.selectedItemRecipeIndex];
             } else {
-                if (this.localPlayerInterface.selectedItemRecipeIndex < this.localPlayerInterface.heroRecipeItems.length) {
-                    item = this.localPlayerInterface.heroRecipeItems[this.localPlayerInterface.selectedItemRecipeIndex];
-                } else {
-                    item = items[this.localPlayerInterface.selectedItemRecipeIndex - this.localPlayerInterface.heroRecipeItems.length];
-                }
+                item = items[this.localPlayerInterface.selectedItemRecipeIndex];
             }
         }
 
@@ -588,7 +591,6 @@ export class RecipeSystem {
                                 this.selectItemFromHandle(clickedItem);
                                 this.localPlayerInterface.selectedItemRecipeIndex = undefined;
                             } else {
-                                this.localPlayerInterface.selectedItemRecipeIndex = this.itemRecipeIndexMap[clickedItem.itemId];
                                 this.selectItem();
                             }
                         } else {
