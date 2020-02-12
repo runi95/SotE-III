@@ -178,24 +178,6 @@ export class RecipeSystem {
         BlzFrameSetPoint(this.animatedFrame, FRAMEPOINT_TOPRIGHT, this.mainButton, FRAMEPOINT_TOPRIGHT, 0.0, 0.0);
         BlzFrameSetModel(this.animatedFrame, 'ui\\minimap\\minimap-ping.mdx', 0);
 
-        const commandTrig: Trigger = new Trigger();
-        commandTrig.addAction(() => {
-            const chatstring: string = GetEventPlayerChatString();
-            if (!chatstring.startsWith('-')) {
-                return;
-            }
-
-            const split: string[] = chatstring.substr(1).split(' ');
-            if (split[0] === 'model' && (split.length === 2 || split.length === 3)) {
-                BJDebugMsg(`BlzFrameSetModel(animatedFrame, ${split[1]}, ${split.length === 3 ? Number(split[2]) : 0});`);
-                BlzFrameSetModel(this.animatedFrame, split[1], 0);
-                if (split.length === 3) {
-                    BlzFrameSetSpriteAnimate(this.animatedFrame, Number(split[2]), 0);
-                }
-            }
-        });
-        commandTrig.registerPlayerChatEvent(Player(0), '-', false);
-
         this.itemRecipeResultIconFrame = BlzCreateFrameByType('BACKDROP', 'itemRecipeResultIcon', this.menu, '', 0);
         this.itemRecipeResultDescriptionFrame = BlzCreateFrame('StandardValueTextTemplate', this.menu, 0, 0);
         this.itemRecipeResultUpgradeButton = BlzCreateFrame('ScriptDialogButton', this.menu, 0, 0);
@@ -469,6 +451,7 @@ export class RecipeSystem {
     }
 
     private selectItemEvent(index: number): void {
+        BJDebugMsg(`this.localPlayerInterface.selectedItemRecipeIndex: ${this.localPlayerInterface.selectedItemRecipeIndex}`);
         if (index === 0 && this.localPlayerInterface.isItemListFiltered) {
             this.localPlayerInterface.isItemListFiltered = false;
             this.localPlayerInterface.selectedItemFrameIndex = undefined;
