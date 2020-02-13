@@ -6,12 +6,12 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00P');
 const name: string = 'Iron Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 550;
+const goldCost: number = 1040;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp';
 const description: string = `Sharp claws combined with speed and precision is a deadly combination.
 
-|cffffcc00Agility:|r +5
-|cffffcc00Attack damage:|r +7
+|cffffcc00Agility:|r +6
+|cffffcc00Attack damage:|r +10
 
 |cFF808080Agility increases your attack and movement speed.|r`;
 

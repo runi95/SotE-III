@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00M');
 const name: string = 'Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY];
-const goldCost: number = 300;
+const goldCost: number = 360;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNUnholyStrength.blp';
 const description: string = `Practicing with these will surely make you super fast.
 

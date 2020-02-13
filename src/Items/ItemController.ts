@@ -60,6 +60,7 @@ import { MaskOfDeathDrop } from './Abilities/MaskOfDeathDrop';
 import { MaskOfDeathPickup } from './Abilities/MaskOfDeathPickup';
 import { FastVampireClawsPickup } from './Abilities/FastVampireClawsPickup';
 import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
+import { SlowChainsCast } from './Abilities/SlowChainsCast';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -125,6 +126,7 @@ export class ItemController {
             new MaskOfDeathPickup(gameGlobals),
             new FastVampireClawsPickup(gameGlobals),
             new FastVampireClawsDrop(gameGlobals),
+            new SlowChainsCast(),
         ];
     }
 }

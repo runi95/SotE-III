@@ -25,7 +25,7 @@ import { DragonWhelpClaws } from './Recipes/DragonWhelpClaws';
 import { EnchantedShield } from './Recipes/EnchantedShield';
 import { EnhancedBerserkerAxes } from './Recipes/EnhancedBerserkerAxes';
 import { Fragarach } from './Recipes/Fragarach';
-import { ManaBlade } from './Recipes/ManaBlade';
+import { IceBlade } from './Recipes/IceBlade';
 import { IronClaws } from './Recipes/IronClaws';
 import { LightningBolt } from './Recipes/LightningBolt';
 import { TheAegis } from './Recipes/TheAegis';
@@ -79,7 +79,7 @@ itemMap.set('coralScales', new CoralScales(itemMap.get('reinforcedHide'), itemMa
 // @ts-ignore
 itemMap.set('reinforcedScales', new ReinforcedScales(itemMap.get('steelShield'), itemMap.get('coralScales')));
 // @ts-ignore
-itemMap.set('manaBlade', new ManaBlade(itemMap.get('ironSword'), itemMap.get('emptyVial')));
+itemMap.set('iceBlade', new IceBlade(itemMap.get('ironSword'), itemMap.get('slowChains')));
 // @ts-ignore
 itemMap.set('ironClaws', new IronClaws(itemMap.get('ironSword'), itemMap.get('claws')));
 // @ts-ignore
@@ -99,9 +99,9 @@ itemMap.set('lionsRing', new LionsRing(itemMap.get('runedBracers'), itemMap.get(
 // @ts-ignore
 itemMap.set('manaAxe', new ManaAxe(itemMap.get('warAxe'), itemMap.get('emptyVial')));
 // @ts-ignore
-itemMap.set('fragarach', new Fragarach(itemMap.get('manaBlade'), itemMap.get('ironClaws')));
+itemMap.set('fragarach', new Fragarach(itemMap.get('iceBlade'), itemMap.get('ironClaws')));
 // @ts-ignore
-itemMap.set('swordOfFreyr', new SwordOfFreyr(itemMap.get('manaBlade'), itemMap.get('manaAxe')));
+itemMap.set('swordOfFreyr', new SwordOfFreyr(itemMap.get('manaAxe')));
 // @ts-ignore
 itemMap.set('vampireDagger', new VampireDagger(itemMap.get('bloodiedSacrificialDagger'), itemMap.get('vampireClaws')));
 // @ts-ignore
@@ -124,7 +124,7 @@ export default [
     itemMap.get('creatureClaws'),
     itemMap.get('dragonWhelpClaws'),
     itemMap.get('berserkerAxes'),
-    itemMap.get('manaBlade'),
+    itemMap.get('iceBlade'),
     itemMap.get('ironClaws'),
     itemMap.get('theAegis'),
     itemMap.get('vialOfMagic'),

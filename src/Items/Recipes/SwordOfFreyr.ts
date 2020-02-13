@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { ManaBlade } from './ManaBlade';
 import { ManaAxe } from './ManaAxe';
 import { ItemLabel } from '../ItemLabel';
 
@@ -16,7 +15,7 @@ const description: string = `A sword that somehow dances in front of your very e
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
 export class SwordOfFreyr extends ItemRecipe {
-    constructor(manaBlade: ManaBlade, manaAxe: ManaAxe) {
-        super(itemId, name, labels, goldCost, iconPath, description, [manaBlade, manaAxe]);
+    constructor(manaAxe: ManaAxe) {
+        super(itemId, name, labels, goldCost, iconPath, description, [manaAxe]);
     }
 }

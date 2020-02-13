@@ -30,6 +30,7 @@ import { VampireClaws } from './BasicItems/VampireClaws';
 import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 import { JuggernautArmor } from './BasicItems/JuggernautArmor';
 import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
+import { SlowChains } from './BasicItems/SlowChains';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -64,6 +65,7 @@ itemMap.set('maskOfDeath', new MaskOfDeath());
 itemMap.set('spiritTalisman', new MaskOfDeath());
 itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
+itemMap.set('slowChains', new SlowChains());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,

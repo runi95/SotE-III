@@ -6,12 +6,12 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I024');
 const name: string = 'Creature Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.MAX_HEALTH];
-const goldCost: number = 690;
+const goldCost: number = 830;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCreatureAttack.blp';
 const description: string = `Some very large claws.
 
-|cffffcc00Agility:|r +5
-|cffffcc00Max health:|r +60
+|cffffcc00Agility:|r +7
+|cffffcc00Max health:|r +50
 
 |cFF808080Agility increases your attack and movement speed.|r`;
 
