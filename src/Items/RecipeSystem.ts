@@ -586,11 +586,9 @@ export class RecipeSystem {
                             this.localPlayerInterface.selectedItemFrameIndex = undefined;
                             BlzFrameSetVisible(this.selectedItemFrame as framehandle, false);
 
+                            this.selectItemFromHandle(clickedItem);
                             if (!(clickedItem instanceof ItemRecipe)) {
-                                this.selectItemFromHandle(clickedItem);
                                 this.localPlayerInterface.selectedItemRecipeIndex = undefined;
-                            } else {
-                                this.selectItem();
                             }
                         } else {
                             this.showRecipesUsingItemHandle(clickedItem);
