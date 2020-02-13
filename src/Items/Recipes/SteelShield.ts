@@ -5,11 +5,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00J');
 const name: string = 'Steel Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 470;
+const goldCost: number = 536;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpTwo.blp';
 const description: string = `A weak shield capable of blocking incoming physical damage.
 
-|cffffcc00Block:|r +7
+|cffffcc00Block:|r +8
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 

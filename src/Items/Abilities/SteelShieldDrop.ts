@@ -13,6 +13,6 @@ export class SteelShieldDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 7;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 8;
     }
 }

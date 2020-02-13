@@ -13,6 +13,6 @@ export class SteelShieldPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 7;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 8;
     }
 }
