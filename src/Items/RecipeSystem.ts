@@ -556,7 +556,6 @@ export class RecipeSystem {
     }
 
     private createItemRecipeFrame(index: number): framehandle {
-        // this.localPlayerInterface.selectedItemRecipeIndex
         const itemIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'ItemIcon', this.menu, '', 0);
         const itemClickFrame: framehandle = BlzCreateFrameByType('BUTTON', 'itemClickFrame', itemIcon, '', 0);
         BlzFrameSetSize(itemIcon, 0.02, 0.02);
