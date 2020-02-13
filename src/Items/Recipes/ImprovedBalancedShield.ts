@@ -5,7 +5,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I02B');
 const name: string = 'Improved Balanced Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK, ItemLabel.RESISTANCE];
-const goldCost: number = 1520;
+const goldCost: number = 1524;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefend.blp';
 const description: string = `No matter how you hold this shield it stays perfectly balanced.
 

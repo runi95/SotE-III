@@ -13,7 +13,7 @@ export class BalancedShieldPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 5;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 5;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 8;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 8;
     }
 }
