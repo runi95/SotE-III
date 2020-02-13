@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { CoralScales } from './CoralScales';
 import { DragonWhelpClaws } from './DragonWhelpClaws';
 import { ItemLabel } from '../ItemLabel';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 
 const itemId: number = FourCC('I02H');
 const name: string = 'Dragon Scales';
@@ -16,7 +16,7 @@ const description: string = `These scales are deadly sharp
 |cFF808080Agility increases your attack and movement speed.|r`;
 
 export class DragonScales extends ItemRecipe {
-    constructor(dragonWhelpClaws: DragonWhelpClaws, coralScales: CoralScales) {
-        super(itemId, name, labels, goldCost, iconPath, description, [dragonWhelpClaws, coralScales]);
+    constructor(dragonWhelpClaws: DragonWhelpClaws, studdedLeatherArmor: StuddedLeatherArmor) {
+        super(itemId, name, labels, goldCost, iconPath, description, [dragonWhelpClaws, studdedLeatherArmor]);
     }
 }

@@ -163,7 +163,7 @@ export default [
     // @ts-ignore
     new CircesStaff(itemMap.get('branch'), itemMap.get('scepter')) as ItemRecipe,
     // @ts-ignore
-    new DragonScales(itemMap.get('dragonWhelpClaws'), itemMap.get('coralScales')) as ItemRecipe,
+    new DragonScales(itemMap.get('dragonWhelpClaws'), itemMap.get('studdedLeatherArmor')) as ItemRecipe,
     // @ts-ignore
     new EnhancedBerserkerAxes(itemMap.get('berserkerAxes')) as ItemRecipe,
     // @ts-ignore

@@ -6,12 +6,12 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00N');
 const name: string = 'Coral Scales';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH];
-const goldCost: number = 700;
+const goldCost: number = 1100;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp1.blp';
 const description: string = `Very strong, defensive scales.
 
-|cffffcc00Health regen:|r +6
-|cffffcc00Max health:|r +70
+|cffffcc00Health regen:|r +10
+|cffffcc00Max health:|r +100
 
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
 
