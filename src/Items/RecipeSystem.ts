@@ -464,6 +464,7 @@ export class RecipeSystem {
                         this.localPlayerInterface.itemWindowMax -
                         this.localPlayerInterface.itemWindowSize
                 ];
+                this.selectItem();
             } else {
                 const selectedItemFrame: number =
                     (this.localPlayerInterface.selectedItemFrameIndex as number) +
@@ -471,17 +472,14 @@ export class RecipeSystem {
                     1 -
                     this.localPlayerInterface.itemWindowSize;
                 if (selectedItemFrame < this.localPlayerInterface.heroRecipeItems.length) {
-                    this.localPlayerInterface.selectedItemRecipeIndex = this.itemRecipeIndexMap[
-                        this.localPlayerInterface.heroRecipeItems[selectedItemFrame].itemId
-                    ];
+                    this.selectItemFromHandle(this.localPlayerInterface.heroRecipeItems[selectedItemFrame]);
                 } else {
                     this.localPlayerInterface.selectedItemRecipeIndex =
                         selectedItemFrame - this.localPlayerInterface.heroRecipeItems.length;
+                    this.selectItem();
                 }
             }
         }
-
-        this.selectItem();
 
         const selectedItemFrameIndex: number | undefined = this.localPlayerInterface.selectedItemFrameIndex;
         BlzFrameSetPoint(
