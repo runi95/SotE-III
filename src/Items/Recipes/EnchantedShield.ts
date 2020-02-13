@@ -1,22 +1,22 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { MoonArmor } from '../BasicItems/MoonArmor';
-import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
 import { ItemLabel } from '../ItemLabel';
+import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 
 const itemId: number = FourCC('I027');
 const name: string = 'Enchanted Shield';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.RESISTANCE];
-const goldCost: number = 860;
+const goldCost: number = 1480;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNThoriumArmor.blp';
 const description: string = `A shield that glows with magical potency.
 
-|cffffcc00Intelligence:|r +5
-|cffffcc00Resistance:|r +6
+|cffffcc00Max health:|r +250
+|cffffcc00Resistance:|r +8
 
-|cFF808080Intelligence increases the damage done by your spells.|r`;
+|cFF808080Health determines how much damage you can take before dying.|r`;
 
 export class EnchantedShield extends ItemRecipe {
-    constructor(orbOfMagic: OrbOfMagic, moonArmor: MoonArmor) {
-        super(itemId, name, labels, goldCost, iconPath, description, [orbOfMagic, moonArmor]);
+    constructor(studdedLeatherArmor: StuddedLeatherArmor, moonArmor: MoonArmor) {
+        super(itemId, name, labels, goldCost, iconPath, description, [studdedLeatherArmor, moonArmor]);
     }
 }

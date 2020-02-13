@@ -93,7 +93,7 @@ itemMap.set('adeptCrystalBall', new AdeptCrystalBall(itemMap.get('crystalBall'),
 // @ts-ignore
 itemMap.set('wandOfShadowsight', new WandOfShadowsight(itemMap.get('goblinNightScope'), itemMap.get('flare')));
 // @ts-ignore
-itemMap.set('enchantedShield', new EnchantedShield(itemMap.get('orbOfMagic'), itemMap.get('moonArmor')));
+itemMap.set('enchantedShield', new EnchantedShield(itemMap.get('studdedLeatherArmor'), itemMap.get('moonArmor')));
 // @ts-ignore
 itemMap.set('lionsRing', new LionsRing(itemMap.get('runedBracers'), itemMap.get('improvedMoonArmor')));
 // @ts-ignore

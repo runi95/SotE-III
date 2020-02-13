@@ -13,6 +13,6 @@ export class EnchantedShieldPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 6;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 8;
     }
 }
