@@ -3,17 +3,17 @@ import { WarAxe } from '../BasicItems/WarAxe';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I023');
-const name: string = 'Berserker Axes';
+const name: string = 'Maul of Strength';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH];
-const goldCost: number = 1200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBerserkerAxes.blp';
-const description: string = `Dual axes most commonly wielded by the berserkers.
+const goldCost: number = 1920;
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHammer.blp';
+const description: string = `A heavy maul only wielded by the strongest of heroes.
 
-|cffffcc00Strength:|r +10
+|cffffcc00Strength:|r +16
 
 |cFF808080Strength increases your max health and health regen.|r`;
 
-export class BerserkerAxes extends ItemRecipe {
+export class MaulOfStrength extends ItemRecipe {
     constructor(warAxe: WarAxe) {
         super(itemId, name, labels, goldCost, iconPath, description, [warAxe, warAxe]);
     }

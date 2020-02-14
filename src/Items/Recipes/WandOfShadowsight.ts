@@ -6,7 +6,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I020');
 const name: string = 'Wand of Shadowsight';
 const labels: ItemLabel[] = [];
-const goldCost: number = 200;
+const goldCost: number = 500;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
 const description: string = `An incredible scope with built in night vision.
 

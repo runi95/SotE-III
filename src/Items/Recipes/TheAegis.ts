@@ -6,12 +6,12 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I014');
 const name: string = 'The Aegis';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 1000;
+const goldCost: number = 1402;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLightningShield.blp';
 const description: string = `A shield said to be forged by gods.
 
 |cffffcc00Effect:|r Forms a shield of electricity around the wearer, dealing damage each second to surrounding units
-|cffffcc00Block:|r +9
+|cffffcc00Block:|r +15
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 

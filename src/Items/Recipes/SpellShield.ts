@@ -1,8 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { VialOfMagic } from './VialOfMagic';
-import { EnchantedShield } from './EnchantedShield';
 import { LionsRing } from './LionsRing';
 import { ItemLabel } from '../ItemLabel';
+import { OrbOfMagic } from '../BasicItems/OrbOfMagic';
 
 const itemId: number = FourCC('I02F');
 const name: string = 'Spell Shield';
@@ -18,7 +17,7 @@ const description: string = `A shield that glows with magical potency.
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 
 export class SpellShield extends ItemRecipe {
-    constructor(vialOfMagic: VialOfMagic, enchantedShield: EnchantedShield, lionsRing: LionsRing) {
-        super(itemId, name, labels, goldCost, iconPath, description, [vialOfMagic, enchantedShield, lionsRing]);
+    constructor(orbOfMagic: OrbOfMagic, lionsRing: LionsRing) {
+        super(itemId, name, labels, goldCost, iconPath, description, [orbOfMagic, lionsRing]);
     }
 }

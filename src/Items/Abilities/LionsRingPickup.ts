@@ -13,6 +13,6 @@ export class LionsRingPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 18;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 24;
     }
 }

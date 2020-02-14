@@ -13,6 +13,6 @@ export class TheAegisDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 9;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 15;
     }
 }

@@ -1,6 +1,6 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { GameGlobals } from '../Game/GameGlobals';
+import { GameGlobals, AssassinsBladeStates } from '../Game/GameGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
@@ -24,7 +24,7 @@ export class AssassinsBladeEvent implements DamageEvent {
             return;
         }
 
-        if (!this.gameGlobals.AssassinsBlade[playerId]) {
+        if (this.gameGlobals.AssassinsBlade[playerId] !== AssassinsBladeStates.READY) {
             return;
         }
 
@@ -32,15 +32,18 @@ export class AssassinsBladeEvent implements DamageEvent {
             return;
         }
 
-        this.gameGlobals.AssassinsBlade[playerId] = false;
+        this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.COOLDOWN;
 
         globals.DamageEventAmount = globals.DamageEventAmount + 450;
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(30, false, () => {
             if (UnitHasItemOfTypeBJ(this.gameGlobals.PlayerHero[playerId], this.itemId)) {
-                this.gameGlobals.AssassinsBlade[playerId] = true;
+                this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.READY;
+            } else {
+                this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.UNEQUIPPED;
             }
+
             this.timerUtils.releaseTimer(t);
         });
     }

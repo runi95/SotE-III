@@ -2,6 +2,12 @@ import { Point } from '../Utility/Point';
 import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
+export enum AssassinsBladeStates {
+    UNEQUIPPED,
+    READY,
+    COOLDOWN,
+}
+
 export class GameGlobals {
     public SummonHawkInt: number[] = [];
     public ScrollOfTownPortal: boolean[] = [];
@@ -12,7 +18,7 @@ export class GameGlobals {
     public GoblinBattery: boolean[] = [];
     public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
-    public AssassinsBlade: boolean[] = [];
+    public AssassinsBlade: AssassinsBladeStates[] = [];
     public RazorBladesOn: boolean[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];

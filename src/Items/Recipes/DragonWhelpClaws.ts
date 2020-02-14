@@ -1,6 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { CreatureClaws } from './CreatureClaws';
 import { ItemLabel } from '../ItemLabel';
+import { Claws } from '../BasicItems/Claws';
 
 const itemId: number = FourCC('I025');
 const name: string = 'Dragon Whelp Claws';
@@ -15,7 +16,7 @@ const description: string = `Do you really think these came from a dragon?
 |cFF808080Agility increases your attack and movement speed.|r`;
 
 export class DragonWhelpClaws extends ItemRecipe {
-    constructor(creatureClaws: CreatureClaws) {
-        super(itemId, name, labels, goldCost, iconPath, description, [creatureClaws]);
+    constructor(creatureClaws: CreatureClaws, claws: Claws) {
+        super(itemId, name, labels, goldCost, iconPath, description, [creatureClaws, claws]);
     }
 }

@@ -6,12 +6,12 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I01G');
 const name: string = 'Master Crystal Ball';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
-const goldCost: number = 1200;
+const goldCost: number = 2250;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBallMaster.blp';
 const description: string = `Can you see the future in this thing?
 
-|cffffcc00Intelligence:|r +6
-|cffffcc00Max Mana:|r +100
+|cffffcc00Intelligence:|r +12
+|cffffcc00Max Mana:|r +250
 |cffffcc00Effect:|r Reveals the area of the map that it is cast upon. Also reveals invisible units.
 |cffffcc00Area of Effect:|r 1000
 |cffffcc00Duration:|r 15

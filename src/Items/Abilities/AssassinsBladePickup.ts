@@ -1,5 +1,5 @@
 import { ItemPickup } from '../ItemPickup';
-import { GameGlobals } from '../../Game/GameGlobals';
+import { GameGlobals, AssassinsBladeStates } from '../../Game/GameGlobals';
 
 export class AssassinsBladePickup extends ItemPickup {
     protected readonly itemTypeId: number = FourCC('I02M');
@@ -13,6 +13,8 @@ export class AssassinsBladePickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.AssassinsBlade[playerId] = true;
+        if (this.gameGlobals.AssassinsBlade[playerId] === AssassinsBladeStates.UNEQUIPPED) {
+            this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.READY;
+        }
     }
 }
