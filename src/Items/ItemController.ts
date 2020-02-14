@@ -63,6 +63,10 @@ import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
 import { SlowChainsCast } from './Abilities/SlowChainsCast';
 import { LightningBoltDrop } from './Abilities/LightningBoltDrop';
 import { LightningBoltPickup } from './Abilities/LightningBoltPickup';
+import { AdvancedStrengthOfTheWildDrop } from './Abilities/AdvancedStrengthOfTheWildDrop';
+import { AdvancedStrengthOfTheWildPickup } from './Abilities/AdvancedStrengthOfTheWildPickup';
+import { AdvancedCreatureClawsDrop } from './Abilities/AdvancedCreatureClawsDrop';
+import { AdvancedCreatureClawsPickup } from './Abilities/AdvancedCreatureClawsPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -131,6 +135,10 @@ export class ItemController {
             new SlowChainsCast(),
             new LightningBoltDrop(gameGlobals),
             new LightningBoltPickup(gameGlobals),
+            new AdvancedStrengthOfTheWildDrop(gameGlobals),
+            new AdvancedStrengthOfTheWildPickup(gameGlobals),
+            new AdvancedCreatureClawsDrop(gameGlobals),
+            new AdvancedCreatureClawsPickup(gameGlobals),
         ];
     }
 }

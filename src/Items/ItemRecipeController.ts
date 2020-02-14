@@ -21,7 +21,7 @@ import { CloakOfShadowWalk } from './Recipes/CloakOfShadowWalk';
 import { ScrollOfAgility } from './Recipes/ScrollOfAgility';
 import { CreatureClaws } from './Recipes/CreatureClaws';
 import { DragonScales } from './Recipes/DragonScales';
-import { DragonWhelpClaws } from './Recipes/DragonWhelpClaws';
+import { ImprovedCreatureClaws } from './Recipes/ImprovedCreatureClaws';
 import { EnchantedShield } from './Recipes/EnchantedShield';
 import { StrengthOfTheWild } from './Recipes/StrengthOfTheWild';
 import { Fragarach } from './Recipes/Fragarach';
@@ -52,6 +52,9 @@ import { FastVampireClaws } from './Recipes/FastVampireClaws';
 import { BookOfKnowledge } from './Recipes/BookOfKnowledge';
 import { BookOfMagic } from './Recipes/BookOfMagic';
 import { AncientBookOfMagic } from './Recipes/AncientBookOfMagic';
+import { ImprovedStrengthOfTheWild } from './Recipes/ImprovedStrengthOfTheWild';
+import { AdvancedStrengthOfTheWild } from './Recipes/AdvancedStrengthOfTheWild';
+import { AdvancedCreatureClaws } from './Recipes/AdvancedCreatureClaws';
 
 export const itemMap: Map<string, Item> = new Map(basicItemController.itemMap.entries());
 
@@ -73,9 +76,9 @@ itemMap.set('agileSlippers', new AgileSlippers(itemMap.get('bootsOfSpeed')));
 // @ts-ignore
 itemMap.set('scrollOfAgility', new ScrollOfAgility(itemMap.get('agileSlippers')));
 // @ts-ignore
-itemMap.set('creatureClaws', new CreatureClaws(itemMap.get('claws'), itemMap.get('studdedLeatherArmor')));
+itemMap.set('creatureClaws', new CreatureClaws(itemMap.get('claws')));
 // @ts-ignore
-itemMap.set('dragonWhelpClaws', new DragonWhelpClaws(itemMap.get('creatureClaws'), itemMap.get('claws')));
+itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(itemMap.get('creatureClaws'), itemMap.get('claws')));
 // @ts-ignore
 itemMap.set('maulOfStrength', new MaulOfStrength(itemMap.get('warAxe')));
 // @ts-ignore
@@ -124,6 +127,77 @@ itemMap.set('bookOfKnowledge', new BookOfKnowledge(itemMap.get('orbOfMagic')));
 itemMap.set('bookOfMagic', new BookOfMagic(itemMap.get('bookOfKnowledge'), itemMap.get('vialOfMagic')));
 // @ts-ignore
 itemMap.set('ancientBookOfMagic', new AncientBookOfMagic(itemMap.get('bookOfMagic'), itemMap.get('blueSoulstone')));
+// @ts-ignore
+itemMap.set('ancile', new Ancile(itemMap.get('studdedLeatherArmor'), itemMap.get('ironShield')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('assassinsCloak', new AssassinsCloak(itemMap.get('assassinsBlade'), itemMap.get('cloakOfShadowWalk')) as ItemRecipe);
+itemMap.set(
+    'advancedReinforcedHides',
+    new AdvancedReinforcedHides(
+        // @ts-ignore
+        itemMap.get('improvedMoonArmor'),
+        // @ts-ignore
+        itemMap.get('improvedBalancedShield'),
+        // @ts-ignore
+        itemMap.get('reinforcedScales'),
+    ) as ItemRecipe,
+);
+// @ts-ignore
+itemMap.set('agileSlippers', new AgileSlippers(itemMap.get('bootsOfSpeed')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('armoredBoots', new ArmoredBoots(itemMap.get('bootsOfSpeed'), itemMap.get('steelShield')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('caduceus', new Caduceus(itemMap.get('branch'), itemMap.get('studdedLeatherArmor')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('circesStaff', new CircesStaff(itemMap.get('branch'), itemMap.get('scepter')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('dragonScales', new DragonScales(itemMap.get('improvedCreatureClaws'), itemMap.get('studdedLeatherArmor')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('lightningBolt', new LightningBolt(itemMap.get('goblinBattery'), itemMap.get('theAegis')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('loadedCannon', new LoadedCannon(itemMap.get('loadedRifle'), itemMap.get('ironSword')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('manaInfusedMask', new ManaInfusedMask(itemMap.get('maskOfProficiency'), itemMap.get('vialOfMagic')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('masterCrystalBall', new MasterCrystalBall(itemMap.get('adeptCrystalBall'), itemMap.get('vialOfMagic')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('snowyOwl', new SnowyOwl(itemMap.get('clockworkPenguin'), itemMap.get('wandOfShadowsight')) as ItemRecipe);
+// @ts-ignore
+itemMap.set(
+    'soulcage',
+    new Soulcage(
+        // @ts-ignore
+        itemMap.get('emptySoulcage'),
+        // @ts-ignore
+        itemMap.get('greenSoulstone'),
+        // @ts-ignore
+        itemMap.get('blueSoulstone'),
+        // @ts-ignore
+        itemMap.get('purpleSoulstone'),
+    ) as ItemRecipe,
+);
+// @ts-ignore
+itemMap.set('spellShield', new SpellShield(itemMap.get('orbOfMagic'), itemMap.get('lionsRing')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('swordOfNaegling', new SwordOfNaegling(itemMap.get('fragarach'), itemMap.get('swordOfFreyr')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('throwableAxe', new ThrowableAxe(itemMap.get('bloodiedExecutionersAxe'), itemMap.get('scepter')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('naturesBlessing', new NaturesBlessing(itemMap.get('reinforcedHide'), itemMap.get('branch')));
+// @ts-ignore
+itemMap.set('strengthOfTheWild', new StrengthOfTheWild(itemMap.get('maulOfStrength'), itemMap.get('warAxe')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(itemMap.get('strengthOfTheWild')));
+itemMap.set(
+    'advancedStrengthOfTheWild',
+    // @ts-ignore
+    new AdvancedStrengthOfTheWild(itemMap.get('improvedStrengthOfTheWild'), itemMap.get('ancile'), itemMap.get('greenSoulstone')),
+);
+itemMap.set(
+    'advancedCreatureClaws',
+    // @ts-ignore
+    new AdvancedCreatureClaws(itemMap.get('improvedCreatureClaws'), itemMap.get('fastVampireClaws'), itemMap.get('purpleSoulstone')),
+);
 export default [
     itemMap.get('improvedMoonArmor'),
     itemMap.get('improvedBalancedShield'),
@@ -134,7 +208,7 @@ export default [
     itemMap.get('agileSlippers'),
     itemMap.get('scrollOfAgility'),
     itemMap.get('creatureClaws'),
-    itemMap.get('dragonWhelpClaws'),
+    itemMap.get('improvedCreatureClaws'),
     itemMap.get('maulOfStrength'),
     itemMap.get('iceBlade'),
     itemMap.get('ironClaws'),
@@ -157,57 +231,26 @@ export default [
     itemMap.get('bookOfKnowledge'),
     itemMap.get('bookOfMagic'),
     itemMap.get('ancientBookOfMagic'),
-    // @ts-ignore
-    new AssassinsCloak(itemMap.get('assassinsBlade'), itemMap.get('cloakOfShadowWalk')) as ItemRecipe,
-    new AdvancedReinforcedHides(
-        // @ts-ignore
-        itemMap.get('improvedMoonArmor'),
-        // @ts-ignore
-        itemMap.get('improvedBalancedShield'),
-        // @ts-ignore
-        itemMap.get('reinforcedScales'),
-    ) as ItemRecipe,
-    // @ts-ignore
-    new AgileSlippers(itemMap.get('bootsOfSpeed')) as ItemRecipe,
-    // @ts-ignore
-    new Ancile(itemMap.get('studdedLeatherArmor'), itemMap.get('ironShield')) as ItemRecipe,
-    // @ts-ignore
-    new ArmoredBoots(itemMap.get('bootsOfSpeed'), itemMap.get('steelShield')) as ItemRecipe,
-    // @ts-ignore
-    new Caduceus(itemMap.get('branch'), itemMap.get('studdedLeatherArmor')) as ItemRecipe,
-    // @ts-ignore
-    new CircesStaff(itemMap.get('branch'), itemMap.get('scepter')) as ItemRecipe,
-    // @ts-ignore
-    new DragonScales(itemMap.get('dragonWhelpClaws'), itemMap.get('studdedLeatherArmor')) as ItemRecipe,
-    // @ts-ignore
-    new StrengthOfTheWild(itemMap.get('maulOfStrength'), itemMap.get('warAxe')) as ItemRecipe,
-    // @ts-ignore
-    new LightningBolt(itemMap.get('goblinBattery'), itemMap.get('theAegis')) as ItemRecipe,
-    // @ts-ignore
-    new LoadedCannon(itemMap.get('loadedRifle'), itemMap.get('ironSword')) as ItemRecipe,
-    // @ts-ignore
-    new ManaInfusedMask(itemMap.get('maskOfProficiency'), itemMap.get('vialOfMagic')) as ItemRecipe,
-    // @ts-ignore
-    new MasterCrystalBall(itemMap.get('adeptCrystalBall'), itemMap.get('vialOfMagic')) as ItemRecipe,
-    // @ts-ignore
-    new SnowyOwl(itemMap.get('clockworkPenguin'), itemMap.get('wandOfShadowsight')) as ItemRecipe,
-    // @ts-ignore
-    new Soulcage(
-        // @ts-ignore
-        itemMap.get('emptySoulcage'),
-        // @ts-ignore
-        itemMap.get('greenSoulstone'),
-        // @ts-ignore
-        itemMap.get('blueSoulstone'),
-        // @ts-ignore
-        itemMap.get('purpleSoulstone'),
-    ) as ItemRecipe,
-    // @ts-ignore
-    new SpellShield(itemMap.get('orbOfMagic'), itemMap.get('lionsRing')) as ItemRecipe,
-    // @ts-ignore
-    new SwordOfNaegling(itemMap.get('fragarach'), itemMap.get('swordOfFreyr')) as ItemRecipe,
-    // @ts-ignore
-    new ThrowableAxe(itemMap.get('bloodiedExecutionersAxe'), itemMap.get('scepter')) as ItemRecipe,
-    // @ts-ignore
-    new NaturesBlessing(itemMap.get('reinforcedHide'), itemMap.get('branch')),
+    itemMap.get('ancile'),
+    itemMap.get('assassinsCloak'),
+    itemMap.get('advancedReinforcedHides'),
+    itemMap.get('agileSlippers'),
+    itemMap.get('armoredBoots'),
+    itemMap.get('caduceus'),
+    itemMap.get('circesStaff'),
+    itemMap.get('dragonScales'),
+    itemMap.get('lightningBolt'),
+    itemMap.get('loadedCannon'),
+    itemMap.get('manaInfusedMask'),
+    itemMap.get('masterCrystalBall'),
+    itemMap.get('snowyOwl'),
+    itemMap.get('soulcage'),
+    itemMap.get('spellShield'),
+    itemMap.get('swordOfNaegling'),
+    itemMap.get('throwableAxe'),
+    itemMap.get('naturesBlessing'),
+    itemMap.get('strengthOfTheWild'),
+    itemMap.get('improvedStrengthOfTheWild'),
+    itemMap.get('advancedStrengthOfTheWild'),
+    itemMap.get('advancedCreatureClaws'),
 ] as ItemRecipe[];
