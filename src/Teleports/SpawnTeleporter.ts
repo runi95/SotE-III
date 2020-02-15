@@ -15,8 +15,5 @@ export abstract class SpawnTeleporter extends Teleporter {
 
     protected action(): void {
         super.action();
-
-        SetUnitLifePercentBJ(GetTriggerUnit(), 100);
-        SetUnitManaPercentBJ(GetTriggerUnit(), 100);
     }
 }

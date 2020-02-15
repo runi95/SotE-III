@@ -105,6 +105,7 @@ export class Game {
         this.initializePlayers();
         this.beginHeroSelection();
         this.initializeScoreboard();
+        this.createSpawnHealTriggers();
         this.enableDebugMode();
     }
 
@@ -457,6 +458,19 @@ export class Game {
             grp.destroy();
             BlzFrameSetEnable(levelUpButton, true);
         });
+    }
+
+    private createSpawnHealTriggers(): void {
+        for (let i: number = 0; i < this.gameGlobals.PlayerSpawnRegion.length; i++) {
+            const index: number = i;
+            const trig: Trigger = new Trigger();
+            trig.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
+            trig.addCondition(() => GetOwningPlayer(GetTriggerUnit()) === Player(index));
+            trig.addAction(() => {
+                SetUnitLifePercentBJ(GetTriggerUnit(), 100);
+                SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+            });
+        }
     }
 
     private enableDebugMode(): void {
