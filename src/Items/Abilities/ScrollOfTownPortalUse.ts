@@ -16,6 +16,14 @@ export class ScrollOfTownPortalUse extends ItemUse {
         this.timerUtils = timerUtils;
     }
 
+    protected condition(): boolean {
+        if (!super.condition()) {
+            return false;
+        }
+
+        return !this.gameGlobals.IsArenaBattleInProgress;
+    }
+
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
@@ -38,8 +46,11 @@ export class ScrollOfTownPortalUse extends ItemUse {
                 if (this.gameGlobals.ScrollOfTownPortal[playerId]) {
                     UnitRemoveAbility(trig, this.dummyAbilityId);
                     BlzPauseUnitEx(trig, false);
-                    SetUnitPosition(trig, GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]));
+                    SetUnitPosition(
+                        trig,
+                        GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                        GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                    );
                 }
 
                 this.timerUtils.releaseTimer(t);
