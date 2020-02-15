@@ -155,7 +155,7 @@ export class ArenaUtils {
                     }
                 }
 
-                BlzChangeMinimapTerrainTex('war3mapImported\\minimapLogo.blp');
+                BlzChangeMinimapTerrainTex('war3mapImported\\war3mapPreviewSmall.dds');
                 SetCameraBoundsToRect(this.gameGlobals.TheArenaRegion);
             }
 

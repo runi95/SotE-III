@@ -59,7 +59,7 @@ function seedRandomNumberGenerator(randomNumberGenerator: RandomNumberGenerator)
 function setPlayerCameras(gameGlobals: GameGlobals): void {
     SetCameraPosition(-14400.0, -10700.0);
     const heroSelectionArea: rect = Rect(-15616, -11904, -13184, -9472);
-    BlzChangeMinimapTerrainTex('war3mapImported\\minimapLogo.blp');
+    BlzChangeMinimapTerrainTex('war3mapImported\\war3mapPreviewSmall.dds');
     SetCameraBoundsToRect(heroSelectionArea);
     for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
         gameGlobals.SummonHawkInt[i] = 0;
