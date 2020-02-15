@@ -180,7 +180,6 @@ export class RecipeSystem {
         BlzFrameSetText(escText, '(|cffffcc00ESC|r)');
         BlzFrameSetSize(mainButtonTooltip, 0.09283672, 0.009375);
         BlzFrameSetVisible(this.mainButton, false);
-        BlzFrameSetVisible(this.mainButton, true);
         BlzFrameSetVisible(this.animatedFrame, true);
         BlzFrameSetSize(this.animatedFrame, 0.02, 0.02);
         BlzFrameSetPoint(this.animatedFrame, FRAMEPOINT_TOPRIGHT, this.mainButton, FRAMEPOINT_TOPRIGHT, 0.0, 0.0);
