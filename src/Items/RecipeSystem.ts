@@ -18,7 +18,6 @@ interface LocalPlayerInterface {
     filterItems: number[];
 
     isMainWindowVisible: boolean;
-    isMainButtonVisible: boolean;
     isItemListFiltered: boolean;
     isLeftClick: boolean;
 
@@ -75,6 +74,8 @@ export class RecipeSystem {
         const menuScrollbar: framehandle = BlzCreateFrame('EscMenuSliderTemplate', this.menu, 0, 0);
         this.mainButton = BlzCreateFrame('ScoreScreenTabButtonTemplate', originFrameGameUi, 0, 0);
         const mainButtonBackdrop: framehandle = BlzCreateFrameByType('BACKDROP', 'mainButtonBackdrop', this.mainButton, '', 0);
+        const mainButtonTooltip: framehandle = BlzCreateFrameByType('TEXT', 'mainButtonTooltip', this.mainButton, '', 0);
+        const escText: framehandle = BlzCreateFrameByType('TEXT', 'escText', this.menu, '', 0);
         this.animatedFrame = BlzCreateFrameByType('SPRITE', 'animatedFrame', this.mainButton, '', 0);
 
         const sidebar: framehandle = BlzCreateFrame('EscMenuPopupMenuTemplate', this.menu, 0, 0);
@@ -148,7 +149,7 @@ export class RecipeSystem {
             const tButtonTrigger: Trigger = new Trigger();
             tButtonTrigger.registerPlayerKeyEvent(Player(i), OSKEY_T, 0, true);
             tButtonTrigger.addAction(() => {
-                if (GetTriggerPlayer() === GetLocalPlayer() && this.localPlayerInterface.isMainButtonVisible) {
+                if (GetTriggerPlayer() === GetLocalPlayer()) {
                     if (this.animatedFrameIsVisible) {
                         this.animatedFrameIsVisible = false;
                         BlzFrameSetVisible(this.animatedFrame, false);
@@ -164,6 +165,7 @@ export class RecipeSystem {
         BlzFrameSetSize(menuScrollbar, 0.48, 0.02);
         BlzFrameSetPoint(this.menu, FRAMEPOINT_CENTER, originFrameGameUi, FRAMEPOINT_CENTER, 0.0, 0.06);
         BlzFrameSetPoint(menuTitle, FRAMEPOINT_TOP, this.menu, FRAMEPOINT_TOP, 0.0, -0.02);
+        BlzFrameSetPoint(escText, FRAMEPOINT_TOPRIGHT, this.menu, FRAMEPOINT_TOPRIGHT, -0.01, -0.01);
         BlzFrameSetPoint(menuScrollbar, FRAMEPOINT_BOTTOM, this.menu, FRAMEPOINT_BOTTOM, 0.0, 0.01);
         BlzFrameSetAllPoints(menuBackdrop, this.menu);
         BlzFrameSetVisible(this.menu, false);
@@ -171,8 +173,14 @@ export class RecipeSystem {
         BlzFrameSetPoint(this.mainButton, FRAMEPOINT_BOTTOMLEFT, originFrameGameUi, FRAMEPOINT_BOTTOMLEFT, 0.005, 0.15);
         BlzFrameSetAllPoints(mainButtonBackdrop, this.mainButton);
         BlzFrameSetTexture(mainButtonBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNScroll.blp', 0, true);
+        BlzFrameSetTooltip(this.mainButton, mainButtonTooltip);
+        BlzFrameSetPoint(mainButtonTooltip, FRAMEPOINT_BOTTOM, this.mainButton, FRAMEPOINT_TOP, 0.0, 0.01);
+        BlzFrameSetText(mainButtonTooltip, 'Recipe Menu (|cffffcc00T|r)');
         BlzFrameSetText(menuTitle, 'Recipes');
+        BlzFrameSetText(escText, '(|cffffcc00ESC|r)');
+        BlzFrameSetSize(mainButtonTooltip, 0.09283672, 0.009375);
         BlzFrameSetVisible(this.mainButton, false);
+        BlzFrameSetVisible(this.mainButton, true);
         BlzFrameSetVisible(this.animatedFrame, true);
         BlzFrameSetSize(this.animatedFrame, 0.02, 0.02);
         BlzFrameSetPoint(this.animatedFrame, FRAMEPOINT_TOPRIGHT, this.mainButton, FRAMEPOINT_TOPRIGHT, 0.0, 0.0);
@@ -221,7 +229,6 @@ export class RecipeSystem {
             heroRecipeItems: [],
             filterItems: [],
             isMainWindowVisible: false,
-            isMainButtonVisible: false,
             isItemListFiltered: false,
             isLeftClick: false,
             currentScrollValue: 0,
@@ -248,6 +255,10 @@ export class RecipeSystem {
         });
 
         this.createHeroDropAndPickupItemEvents();
+    }
+
+    public showMainButton(): void {
+        BlzFrameSetVisible(this.mainButton, true);
     }
 
     private updateSelectedItemFrame(): void {
@@ -619,17 +630,6 @@ export class RecipeSystem {
         for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerSpawnRegion.length > i) {
                 const index: number = i;
-                const showMainButtonTrigger: Trigger = new Trigger();
-                showMainButtonTrigger.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
-                showMainButtonTrigger.addCondition(
-                    () => GetHandleId(GetEnteringUnit()) === GetHandleId(this.gameGlobals.PlayerHero[index]),
-                );
-                showMainButtonTrigger.addAction(() => {
-                    if (GetOwningPlayer(GetEnteringUnit()) === GetLocalPlayer()) {
-                        this.localPlayerInterface.isMainButtonVisible = true;
-                        BlzFrameSetVisible(this.mainButton, this.localPlayerInterface.isMainButtonVisible);
-                    }
-                });
 
                 const hideMainButtonTrigger: Trigger = new Trigger();
                 hideMainButtonTrigger.registerLeaveRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
@@ -640,11 +640,6 @@ export class RecipeSystem {
                             this.animatedFrameIsVisible = false;
                             BlzFrameSetVisible(this.animatedFrame, false);
                         }
-
-                        this.localPlayerInterface.isMainButtonVisible = false;
-                        this.localPlayerInterface.isMainWindowVisible = false;
-                        BlzFrameSetVisible(this.mainButton, this.localPlayerInterface.isMainButtonVisible);
-                        BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
                     }
                 });
             }

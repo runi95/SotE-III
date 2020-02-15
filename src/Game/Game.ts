@@ -121,6 +121,8 @@ export class Game {
     private startGame(): void {
         BlzChangeMinimapTerrainTex('war3mapMap.blp');
         SetCameraBoundsToRect(GetCameraBoundsMapRect());
+        this.recipeSystem.showMainButton();
+
         const t: Timer = this.timerUtils.newTimer();
         t.start(2, false, () => {
             BlzFrameSetSpriteAnimate(this.recipeSystem.animatedFrame, 2, 0);
