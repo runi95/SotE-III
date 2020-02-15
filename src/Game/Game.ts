@@ -106,6 +106,7 @@ export class Game {
         this.beginHeroSelection();
         this.initializeScoreboard();
         this.createSpawnHealTriggers();
+        this.initializeCenterPortalTrigger();
         this.enableDebugMode();
     }
 
@@ -473,6 +474,31 @@ export class Game {
                 SetUnitManaPercentBJ(GetTriggerUnit(), 100);
             });
         }
+    }
+
+    private initializeCenterPortalTrigger(): void {
+        const trig: Trigger = new Trigger();
+        trig.addCondition(() => {
+            const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
+            if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
+                return false;
+            }
+
+            if (!IsUnitType(GetEnteringUnit(), UNIT_TYPE_HERO)) {
+                return false;
+            }
+
+            return true;
+        });
+        trig.addAction(() => {
+            const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
+            SetUnitPosition(
+                GetEnteringUnit(),
+                GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
+            );
+        });
+        trig.registerEnterRectSimple(this.gameGlobals.CenterPortalRegion);
     }
 
     private enableDebugMode(): void {
