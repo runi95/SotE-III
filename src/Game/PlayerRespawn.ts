@@ -22,6 +22,11 @@ export class PlayerRespawn {
 
     private action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+        DisplayTextToForce(
+            GetPlayersAll(),
+            // tslint:disable-next-line:max-line-length
+            `${this.gameGlobals.PlayerColorCodes[playerId]}${GetPlayerName(Player(playerId))}|r has died!`,
+        );
         this.gameGlobals.RazorBladesOn[playerId] = false;
         this.gameGlobals.PlayerLives[playerId] -= 1;
         if (this.gameGlobals.PlayerLives[playerId] > 0) {
