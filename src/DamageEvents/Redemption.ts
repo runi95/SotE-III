@@ -16,22 +16,17 @@ export class Redemption implements DamageEvent {
             return;
         }
 
-        this.frozen = true;
-
         if (globals.IsDamageSpell) {
-            this.frozen = false;
             return;
         }
 
         const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId);
         if (abilityLevel === 0) {
-            this.frozen = false;
             return;
         }
 
         const rng: number = this.randomNumberGenerator.random(1, 10);
         if (rng < 8) {
-            this.frozen = false;
             return;
         }
 
@@ -43,6 +38,8 @@ export class Redemption implements DamageEvent {
                 GetUnitY(globals.DamageEventSource as unit),
             ),
         );
+
+        this.frozen = true;
         UnitDamageTargetBJ(
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
@@ -50,7 +47,6 @@ export class Redemption implements DamageEvent {
             ATTACK_TYPE_NORMAL,
             DAMAGE_TYPE_NORMAL,
         );
-
         this.frozen = false;
     }
 }
