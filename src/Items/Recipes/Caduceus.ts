@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Branch } from '../BasicItems/Branch';
+import { DruidicSalve } from '../BasicItems/DruidicSalve';
 import { StuddedLeatherArmor } from '../BasicItems/StuddedLeatherArmor';
 import { ItemLabel } from '../ItemLabel';
 
@@ -16,7 +16,7 @@ const description: string = `Caduceus the protector of merchants and travellers.
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
 export class Caduceus extends ItemRecipe {
-    constructor(branch: Branch, studdedLeatherArmor: StuddedLeatherArmor) {
-        super(itemId, name, labels, goldCost, iconPath, description, [branch, studdedLeatherArmor]);
+    constructor(druidicSalve: DruidicSalve, studdedLeatherArmor: StuddedLeatherArmor) {
+        super(itemId, name, labels, goldCost, iconPath, description, [druidicSalve, studdedLeatherArmor]);
     }
 }

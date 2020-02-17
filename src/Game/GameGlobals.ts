@@ -22,6 +22,7 @@ export class GameGlobals {
     public RazorBladesOn: boolean[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
+    public PlayerThorns: number[] = [];
     public PlayerPhysicalBlock: number[] = [];
     public PlayerSpellBlock: number[] = [];
     public PlayerHero: unit[] = [];

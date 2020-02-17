@@ -8,7 +8,7 @@ import { StuddedLeatherArmor } from './BasicItems/StuddedLeatherArmor';
 import { BootsOfSpeed } from './BasicItems/BootsOfSpeed';
 import { BloodiedExecutionersAxe } from './BasicItems/BloodiedExecutionersAxe';
 import { BlueSoulstone } from './BasicItems/BlueSoulstone';
-import { Branch } from './BasicItems/Branch';
+import { DruidicSalve } from './BasicItems/DruidicSalve';
 import { Claws } from './BasicItems/Claws';
 import { CloakOfShadows } from './BasicItems/CloakOfShadows';
 import { ClockworkPenguin } from './BasicItems/ClockworkPenguin';
@@ -31,6 +31,7 @@ import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 import { JuggernautArmor } from './BasicItems/JuggernautArmor';
 import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
 import { SlowChains } from './BasicItems/SlowChains';
+import { IronwoodBranch } from './BasicItems/IronwoodBranch';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -43,7 +44,7 @@ itemMap.set('studdedLeatherArmor', new StuddedLeatherArmor());
 itemMap.set('bootsOfSpeed', new BootsOfSpeed());
 itemMap.set('bloodiedExecutionersAxe', new BloodiedExecutionersAxe());
 itemMap.set('blueSoulstone', new BlueSoulstone());
-itemMap.set('branch', new Branch());
+itemMap.set('druidicSalve', new DruidicSalve());
 itemMap.set('claws', new Claws());
 itemMap.set('cloakOfShadows', new CloakOfShadows());
 itemMap.set('clockworkPenguin', new ClockworkPenguin());
@@ -66,12 +67,13 @@ itemMap.set('spiritTalisman', new MaskOfDeath());
 itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
 itemMap.set('slowChains', new SlowChains());
+itemMap.set('ironwoodBranch', new IronwoodBranch());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
     itemMap.get('blueSoulstone') as Item,
     itemMap.get('bootsOfSpeed') as Item,
-    itemMap.get('branch') as Item,
+    itemMap.get('druidicSalve') as Item,
     itemMap.get('claws') as Item,
     itemMap.get('cloakOfShadows') as Item,
     itemMap.get('clockworkPenguin') as Item,
@@ -98,4 +100,5 @@ export const basicItems: Item[] = [
     itemMap.get('spiritTalisman') as Item,
     itemMap.get('juggernautArmor') as Item,
     itemMap.get('enchantedGemstone') as Item,
+    itemMap.get('ironwoodBranch') as Item,
 ];

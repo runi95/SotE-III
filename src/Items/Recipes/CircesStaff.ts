@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { Branch } from '../BasicItems/Branch';
+import { DruidicSalve } from '../BasicItems/DruidicSalve';
 import { Scepter } from '../BasicItems/Scepter';
 import { ItemLabel } from '../ItemLabel';
 
@@ -15,7 +15,7 @@ const description: string = `An ancient staff forged by the elves.
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
 export class CircesStaff extends ItemRecipe {
-    constructor(branch: Branch, scepter: Scepter) {
-        super(itemId, name, labels, goldCost, iconPath, description, [branch, scepter]);
+    constructor(druidicSalve: DruidicSalve, scepter: Scepter) {
+        super(itemId, name, labels, goldCost, iconPath, description, [druidicSalve, scepter]);
     }
 }

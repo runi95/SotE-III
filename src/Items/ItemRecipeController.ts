@@ -147,9 +147,9 @@ itemMap.set('agileSlippers', new AgileSlippers(itemMap.get('bootsOfSpeed')) as I
 // @ts-ignore
 itemMap.set('armoredBoots', new ArmoredBoots(itemMap.get('bootsOfSpeed'), itemMap.get('steelShield')) as ItemRecipe);
 // @ts-ignore
-itemMap.set('caduceus', new Caduceus(itemMap.get('branch'), itemMap.get('studdedLeatherArmor')) as ItemRecipe);
+itemMap.set('caduceus', new Caduceus(itemMap.get('druidicSalve'), itemMap.get('studdedLeatherArmor')) as ItemRecipe);
 // @ts-ignore
-itemMap.set('circesStaff', new CircesStaff(itemMap.get('branch'), itemMap.get('scepter')) as ItemRecipe);
+itemMap.set('circesStaff', new CircesStaff(itemMap.get('druidicSalve'), itemMap.get('scepter')) as ItemRecipe);
 // @ts-ignore
 itemMap.set('dragonScales', new DragonScales(itemMap.get('improvedCreatureClaws'), itemMap.get('studdedLeatherArmor')) as ItemRecipe);
 // @ts-ignore
@@ -183,7 +183,7 @@ itemMap.set('swordOfNaegling', new SwordOfNaegling(itemMap.get('fragarach'), ite
 // @ts-ignore
 itemMap.set('throwableAxe', new ThrowableAxe(itemMap.get('bloodiedExecutionersAxe'), itemMap.get('scepter')) as ItemRecipe);
 // @ts-ignore
-itemMap.set('naturesBlessing', new NaturesBlessing(itemMap.get('reinforcedHide'), itemMap.get('branch')));
+itemMap.set('naturesBlessing', new NaturesBlessing(itemMap.get('reinforcedHide'), itemMap.get('druidicSalve')));
 // @ts-ignore
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(itemMap.get('maulOfStrength'), itemMap.get('warAxe')) as ItemRecipe);
 // @ts-ignore

@@ -20,6 +20,7 @@ import { Repetition } from './Repetition';
 import { HawkSpellDamage } from './HawkSpellDamage';
 import { Lifesteal } from './Lifesteal';
 import { AssassinsBladeEvent } from './AssassinsBladeEvent';
+import { Thorns } from './Thorns';
 
 export class DamageEventController {
     constructor(
@@ -46,6 +47,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

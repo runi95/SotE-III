@@ -67,6 +67,8 @@ import { AdvancedStrengthOfTheWildDrop } from './Abilities/AdvancedStrengthOfThe
 import { AdvancedStrengthOfTheWildPickup } from './Abilities/AdvancedStrengthOfTheWildPickup';
 import { AdvancedCreatureClawsDrop } from './Abilities/AdvancedCreatureClawsDrop';
 import { AdvancedCreatureClawsPickup } from './Abilities/AdvancedCreatureClawsPickup';
+import { IronwoodBranchDrop } from './Abilities/IronwoodBranchDrop';
+import { IronwoodBranchPickup } from './Abilities/IronwoodBranchPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -139,6 +141,8 @@ export class ItemController {
             new AdvancedStrengthOfTheWildPickup(gameGlobals),
             new AdvancedCreatureClawsDrop(gameGlobals),
             new AdvancedCreatureClawsPickup(gameGlobals),
+            new IronwoodBranchDrop(gameGlobals),
+            new IronwoodBranchPickup(gameGlobals),
         ];
     }
 }

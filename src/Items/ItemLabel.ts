@@ -10,4 +10,5 @@ export enum ItemLabel {
     RESISTANCE,
     ATTACK_DAMAGE,
     LIFESTEAL,
+    THORNS,
 }

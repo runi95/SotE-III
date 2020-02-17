@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
-import { Branch } from '../BasicItems/Branch';
+import { DruidicSalve } from '../BasicItems/DruidicSalve';
 import { ReinforcedHide } from '../BasicItems/ReinforcedHide';
 
 const itemId: number = FourCC('I02Z');
@@ -15,7 +15,7 @@ const description: string = `A branch blessed by mother nature herself.
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
 export class NaturesBlessing extends ItemRecipe {
-    constructor(reinforcedHide: ReinforcedHide, branch: Branch) {
-        super(itemId, name, labels, goldCost, iconPath, description, [reinforcedHide, branch]);
+    constructor(reinforcedHide: ReinforcedHide, druidicSalve: DruidicSalve) {
+        super(itemId, name, labels, goldCost, iconPath, description, [reinforcedHide, druidicSalve]);
     }
 }
