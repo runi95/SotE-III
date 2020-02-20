@@ -69,6 +69,8 @@ import { AdvancedCreatureClawsDrop } from './Abilities/AdvancedCreatureClawsDrop
 import { AdvancedCreatureClawsPickup } from './Abilities/AdvancedCreatureClawsPickup';
 import { IronwoodBranchDrop } from './Abilities/IronwoodBranchDrop';
 import { IronwoodBranchPickup } from './Abilities/IronwoodBranchPickup';
+import { AmuletOfSpellReflectionDrop } from './Abilities/AmuletOfSpellReflectionDrop';
+import { AmuletOfSpellReflectionPickup } from './Abilities/AmuletOfSpellReflectionPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -143,6 +145,8 @@ export class ItemController {
             new AdvancedCreatureClawsPickup(gameGlobals),
             new IronwoodBranchDrop(gameGlobals),
             new IronwoodBranchPickup(gameGlobals),
+            new AmuletOfSpellReflectionDrop(gameGlobals),
+            new AmuletOfSpellReflectionPickup(gameGlobals),
         ];
     }
 }

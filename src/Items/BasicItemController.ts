@@ -32,6 +32,7 @@ import { JuggernautArmor } from './BasicItems/JuggernautArmor';
 import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
 import { SlowChains } from './BasicItems/SlowChains';
 import { IronwoodBranch } from './BasicItems/IronwoodBranch';
+import { AmuletOfSpellReflection } from './BasicItems/AmuletOfSpellReflection';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -68,6 +69,7 @@ itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
 itemMap.set('slowChains', new SlowChains());
 itemMap.set('ironwoodBranch', new IronwoodBranch());
+itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -101,4 +103,5 @@ export const basicItems: Item[] = [
     itemMap.get('juggernautArmor') as Item,
     itemMap.get('enchantedGemstone') as Item,
     itemMap.get('ironwoodBranch') as Item,
+    itemMap.get('amuletOfSpellReflection') as Item,
 ];

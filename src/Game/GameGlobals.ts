@@ -23,6 +23,7 @@ export class GameGlobals {
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerThorns: number[] = [];
+    public PlayerReflect: number[] = [];
     public PlayerPhysicalBlock: number[] = [];
     public PlayerSpellBlock: number[] = [];
     public PlayerHero: unit[] = [];
