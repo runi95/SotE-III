@@ -13,4 +13,6 @@ export enum ItemLabel {
     THORNS,
     REFLECT,
     EXECUTE,
+    RESTORATION,
+    PIERCING,
 }

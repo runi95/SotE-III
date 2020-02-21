@@ -75,6 +75,10 @@ import { ExecutionersAxeDrop } from './Abilities/ExecutionersAxeDrop';
 import { ExecutionersAxePickup } from './Abilities/ExecutionersAxePickup';
 import { BloodiedExecutionersAxeDrop } from './Abilities/BloodiedExecutionersAxeDrop';
 import { BloodiedExecutionersAxePickup } from './Abilities/BloodiedExecutionersAxePickup';
+import { LifeStoneDrop } from './Abilities/LifeStoneDrop';
+import { LifeStonePickup } from './Abilities/LifeStonePickup';
+import { SteelSpearDrop } from './Abilities/SteelSpearDrop';
+import { SteelSpearPickup } from './Abilities/SteelSpearPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -155,6 +159,10 @@ export class ItemController {
             new ExecutionersAxePickup(gameGlobals),
             new BloodiedExecutionersAxeDrop(gameGlobals),
             new BloodiedExecutionersAxePickup(gameGlobals),
+            new LifeStoneDrop(gameGlobals),
+            new LifeStonePickup(gameGlobals),
+            new SteelSpearDrop(gameGlobals),
+            new SteelSpearPickup(gameGlobals),
         ];
     }
 }

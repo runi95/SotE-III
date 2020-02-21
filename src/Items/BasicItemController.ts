@@ -34,6 +34,8 @@ import { SlowChains } from './BasicItems/SlowChains';
 import { IronwoodBranch } from './BasicItems/IronwoodBranch';
 import { AmuletOfSpellReflection } from './BasicItems/AmuletOfSpellReflection';
 import { AssassinsMap } from './BasicItems/AssassinsMap';
+import { LifeStone } from './BasicItems/LifeStone';
+import { SteelSpear } from './BasicItems/SteelSpear';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -72,7 +74,8 @@ itemMap.set('slowChains', new SlowChains());
 itemMap.set('ironwoodBranch', new IronwoodBranch());
 itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
 itemMap.set('assassinsMap', new AssassinsMap());
-itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
+itemMap.set('lifeStone', new LifeStone());
+itemMap.set('steelSpear', new SteelSpear());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -109,4 +112,6 @@ export const basicItems: Item[] = [
     itemMap.get('amuletOfSpellReflection') as Item,
     itemMap.get('assassinsMap') as Item,
     itemMap.get('bloodiedSacrificialDagger') as Item,
+    itemMap.get('lifeStone') as Item,
+    itemMap.get('steelSpear') as Item,
 ];

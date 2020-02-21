@@ -124,14 +124,22 @@ export class RecipeSystem {
         createFilterIcon(0, 'UI\\Widgets\\Console\\Human\\infocard-neutral-attack-melee.blp', [
             ItemLabel.ATTACK_DAMAGE,
             ItemLabel.LIFESTEAL,
+            ItemLabel.EXECUTE,
+            ItemLabel.PIERCING,
         ]);
         createFilterIcon(1, 'UI\\Widgets\\Console\\Human\\infocard-neutral-armor-medium.blp', [
             ItemLabel.BLOCK,
             ItemLabel.RESISTANCE,
             ItemLabel.MAX_HEALTH,
             ItemLabel.HEALTH_REGEN,
+            ItemLabel.THORNS,
+            ItemLabel.REFLECT,
         ]);
-        createFilterIcon(2, 'UI\\Widgets\\Console\\Human\\infocard-neutral-attack-magic.blp', [ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN]);
+        createFilterIcon(2, 'UI\\Widgets\\Console\\Human\\infocard-neutral-attack-magic.blp', [
+            ItemLabel.MAX_MANA,
+            ItemLabel.MANA_REGEN,
+            ItemLabel.RESTORATION,
+        ]);
         createFilterIcon(3, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-agi.blp', [ItemLabel.AGILITY]);
         createFilterIcon(4, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-int.blp', [ItemLabel.INTELLIGENCE]);
         createFilterIcon(5, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-str.blp', [ItemLabel.STRENGTH]);

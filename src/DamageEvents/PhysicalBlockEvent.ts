@@ -23,6 +23,18 @@ export class PhysicalBlockEvent implements DamageEvent {
             return;
         }
 
-        globals.DamageEventAmount = Math.max(globals.DamageEventAmount - this.gameGlobals.PlayerPhysicalBlock[playerId], 0.0);
+        let piercing: number = 0;
+        const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
+        if (damageSourcePlayerId > 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
+            if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
+                piercing = this.gameGlobals.PlayerPiercing[damageSourcePlayerId];
+            }
+        }
+
+        if (this.gameGlobals.PlayerPhysicalBlock[playerId] - piercing <= 0.405) {
+            return;
+        }
+
+        globals.DamageEventAmount = Math.max(globals.DamageEventAmount - (this.gameGlobals.PlayerPhysicalBlock[playerId] - piercing), 0.0);
     }
 }
