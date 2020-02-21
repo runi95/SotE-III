@@ -5,7 +5,7 @@ const itemId: number = FourCC('I03C');
 const name: string = 'Amulet of Spell Reflection';
 const labels: ItemLabel[] = [ItemLabel.REFLECT];
 const goldCost: number = 1500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAmulet.blp';
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPeriapt.blp';
 const description: string = `A seemingly simple amulet.
 
 |cffffcc00Reflect:|r +20
