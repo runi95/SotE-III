@@ -10,9 +10,13 @@ const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfHaste.
 const description: string = `A mystical scroll written in an ancient language.
 
 |cffffcc00Movement Speed:|r +200
-|cffffcc00Effect:|r Increases movement speed by 50% for 60 seconds.
+|cffffcc00Use:|r Increases movement speed by 50%
+|cffffcc00Mana Cost:|r 0
+|cffffcc00Area of Effect:|r 600
+|cffffcc00Duration:|r 60
+|cffffcc00Cooldown:|r 60
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class ScrollOfAgility extends ItemRecipe {
     constructor(agileSlippers: AgileSlippers) {

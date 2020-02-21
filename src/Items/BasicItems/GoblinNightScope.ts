@@ -8,9 +8,9 @@ const goldCost: number = 200;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNTelescope.blp';
 const description: string = `An incredible scope with built in night vision.
 
-|cffffcc00Effect:|r Provides an increase to the Hero's line of sight radius at night when carried.
+|cffffcc00Passive:|r Provides an increased line of sight radius at night
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Passives are effects that are always active.|r`;
 
 export class GoblinNightScope extends Item {
     constructor() {

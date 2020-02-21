@@ -8,11 +8,16 @@ const goldCost: number = 200;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNFlare.blp';
 const description: string = `A flare that lights up the area around you.
 
-|cffffcc00Effect:|r Reveals invisible units
+|cffffcc00Use:|r Reveals the target area
+|cffffcc00Mana Cost:|r 0
+|cffffcc00Range:|r 99999
+|cffffcc00Area of Effect:|r 1800
+|cffffcc00Duration:|r 45
+|cffffcc00Cooldown:|r 180
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
-export class Flare extends Item {
+export class FlareGun extends Item {
     constructor() {
         super(itemId, name, labels, goldCost, iconPath, description);
     }

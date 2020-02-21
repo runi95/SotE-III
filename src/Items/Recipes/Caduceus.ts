@@ -11,9 +11,11 @@ const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaStea
 const description: string = `Caduceus the protector of merchants and travellers.
 
 |cffffcc00Max health:|r +400
-|cffffcc00Effect:|r Teleport to the Arcane Vault
+|cffffcc00Use:|r Teleport to the Arcane Vault
+|cffffcc00Mana Cost:|r 0
+|cffffcc00Cooldown:|r 240
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class Caduceus extends ItemRecipe {
     constructor(druidicSalve: DruidicSalve, studdedLeatherArmor: StuddedLeatherArmor) {

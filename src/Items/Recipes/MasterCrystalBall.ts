@@ -12,12 +12,14 @@ const description: string = `Can you see the future in this thing?
 
 |cffffcc00Intelligence:|r +12
 |cffffcc00Max Mana:|r +250
-|cffffcc00Effect:|r Reveals the area of the map that it is cast upon. Also reveals invisible units.
+|cffffcc00Use:|r Reveals the area of the map that it is cast upon. Also reveals invisible units
+|cffffcc00Mana Cost:|r 0
+|cffffcc00Range:|r 99999
 |cffffcc00Area of Effect:|r 1000
 |cffffcc00Duration:|r 15
 |cffffcc00Cooldown:|r 15
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class MasterCrystalBall extends ItemRecipe {
     constructor(adeptCrystalBall: AdeptCrystalBall, vialOfMagic: VialOfMagic) {

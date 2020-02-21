@@ -100,7 +100,7 @@ itemMap.set('maskOfProficiency', new MaskOfProficiency(itemMap.get('orbOfMagic')
 // @ts-ignore
 itemMap.set('adeptCrystalBall', new AdeptCrystalBall(itemMap.get('crystalBall')));
 // @ts-ignore
-itemMap.set('wandOfShadowsight', new WandOfShadowsight(itemMap.get('goblinNightScope'), itemMap.get('flare')));
+itemMap.set('wandOfShadowsight', new WandOfShadowsight(itemMap.get('goblinNightScope'), itemMap.get('flareGun')));
 // @ts-ignore
 itemMap.set('enchantedShield', new EnchantedShield(itemMap.get('studdedLeatherArmor'), itemMap.get('moonArmor')));
 // @ts-ignore

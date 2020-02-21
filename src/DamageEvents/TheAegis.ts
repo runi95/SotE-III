@@ -22,7 +22,6 @@ export class TheAegis implements DamageEvent {
         }
 
         const theAegis: item = GetItemOfTypeFromUnitBJ(trig, this.itemId);
-
         if (GetItemCharges(theAegis) < 100) {
             return;
         }

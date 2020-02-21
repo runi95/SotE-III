@@ -14,7 +14,7 @@ import { CloakOfShadows } from './BasicItems/CloakOfShadows';
 import { ClockworkPenguin } from './BasicItems/ClockworkPenguin';
 import { EmptySoulcage } from './BasicItems/EmptySoulcage';
 import { EmptyVial } from './BasicItems/EmptyVial';
-import { Flare } from './BasicItems/Flare';
+import { FlareGun } from './BasicItems/FlareGun';
 import { GoblinBattery } from './BasicItems/GoblinBattery';
 import { GreenSoulstone } from './BasicItems/GreenSoulstone';
 import { IronSword } from './BasicItems/IronSword';
@@ -33,6 +33,7 @@ import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
 import { SlowChains } from './BasicItems/SlowChains';
 import { IronwoodBranch } from './BasicItems/IronwoodBranch';
 import { AmuletOfSpellReflection } from './BasicItems/AmuletOfSpellReflection';
+import { AssassinsMap } from './BasicItems/AssassinsMap';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -51,7 +52,7 @@ itemMap.set('cloakOfShadows', new CloakOfShadows());
 itemMap.set('clockworkPenguin', new ClockworkPenguin());
 itemMap.set('emptySoulcage', new EmptySoulcage());
 itemMap.set('emptyVial', new EmptyVial());
-itemMap.set('flare', new Flare());
+itemMap.set('flareGun', new FlareGun());
 itemMap.set('goblinBattery', new GoblinBattery());
 itemMap.set('greenSoulstone', new GreenSoulstone());
 itemMap.set('ironSword', new IronSword());
@@ -70,6 +71,8 @@ itemMap.set('enchantedGemstone', new EnchantedGemstone());
 itemMap.set('slowChains', new SlowChains());
 itemMap.set('ironwoodBranch', new IronwoodBranch());
 itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
+itemMap.set('assassinsMap', new AssassinsMap());
+itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -82,7 +85,7 @@ export const basicItems: Item[] = [
     itemMap.get('crystalBall') as Item,
     itemMap.get('emptySoulcage') as Item,
     itemMap.get('emptyVial') as Item,
-    itemMap.get('flare') as Item,
+    itemMap.get('flareGun') as Item,
     itemMap.get('goblinBattery') as Item,
     itemMap.get('goblinNightScope') as Item,
     itemMap.get('greenSoulstone') as Item,
@@ -104,4 +107,6 @@ export const basicItems: Item[] = [
     itemMap.get('enchantedGemstone') as Item,
     itemMap.get('ironwoodBranch') as Item,
     itemMap.get('amuletOfSpellReflection') as Item,
+    itemMap.get('assassinsMap') as Item,
+    itemMap.get('bloodiedSacrificialDagger') as Item,
 ];

@@ -8,9 +8,12 @@ const goldCost: number = 400;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description: string = `A magical scepter showing high status and wealth.
 
-|cffffcc00Effect:|r Spawn 3 Footmen to fight for you.
+|cffffcc00Use:|r Spawn 3 Footmen to fight for you
+|cffffcc00Mana Cost:|r 50
+|cffffcc00Duration:|r 20
+|cffffcc00Cooldown:|r 60
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class Scepter extends Item {
     constructor() {

@@ -8,14 +8,14 @@ const goldCost: number = 3000;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBloodiedSacrifice.blp';
 const description: string = `A dagger often used by acolytes in sacrificial rituals
 
-|cffffcc00Effect:|r Reaching 100 charges permanently upgrades this item
-|cffffcc00Use:|r Increases item charges by 10 and then deals 100 damage to you
-|cffffcc00Life Cost:|r 100
+|cffffcc00Use:|r Deals 1000 damage to target enemy unit
+|cffffcc00Mana Cost:|r 0
+|cffffcc00Range:|r 500
 |cffffcc00Cooldown:|r 60
 
-|cFF808080Effects are special properties that usually trigger on an event.|r`;
+|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
-export class BloodiedSacrificialDagger extends Item {
+export class BloodiedSacrificialKnife extends Item {
     constructor() {
         super(itemId, name, labels, goldCost, iconPath, description);
     }
