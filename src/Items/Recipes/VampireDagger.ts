@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { BloodiedSacrificialDagger } from '../BasicItems/SacrificialDagger';
+import { BloodiedSacrificialDagger } from '../BasicItems/BloodiedSacrificialDagger';
 import { VampireClaws } from '../BasicItems/VampireClaws';
 import { ItemLabel } from '../ItemLabel';
 

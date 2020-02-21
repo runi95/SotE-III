@@ -25,7 +25,7 @@ import { Scepter } from './BasicItems/Scepter';
 import { WarAxe } from './BasicItems/WarAxe';
 import { RunedBracers } from './BasicItems/RunedBracers';
 import { GoblinNightScope } from './BasicItems/GoblinNightScope';
-import { BloodiedSacrificialDagger } from './BasicItems/SacrificialDagger';
+import { BloodiedSacrificialDagger } from './BasicItems/BloodiedSacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
 import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 import { JuggernautArmor } from './BasicItems/JuggernautArmor';
