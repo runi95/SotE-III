@@ -25,7 +25,7 @@ export class PhysicalBlockEvent implements DamageEvent {
 
         let piercing: number = 0;
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
-        if (damageSourcePlayerId > 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
+        if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
             if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
                 piercing = this.gameGlobals.PlayerPiercing[damageSourcePlayerId];
             }
