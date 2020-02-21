@@ -43,9 +43,6 @@ export class Game {
     private readonly bossController: BossController;
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
-
-    private readonly ancientOfWonders: unit;
-    private readonly tombOfAncients: unit;
     private readonly arcaneVault: unit;
 
     constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
@@ -72,20 +69,8 @@ export class Game {
         this.flyingMachineController = new FlyingMachineController();
         this.bossController = new BossController(this.timerUtils, this.randomNumberGenerator);
         this.teleportMovement = new TeleportMovement(this.gameGlobals);
-        const ancientOfWondersX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
-        const ancientOfWondersY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
-        const tombOfAncientsX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
-        const tombOfAncientsY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
         const arcaneVaultX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
         const arcaneVaultY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
-        this.ancientOfWonders = CreateUnit(
-            Player(PLAYER_NEUTRAL_PASSIVE),
-            FourCC('n00R'),
-            ancientOfWondersX,
-            ancientOfWondersY,
-            bj_UNIT_FACING,
-        );
-        this.tombOfAncients = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'), tombOfAncientsX, tombOfAncientsY, bj_UNIT_FACING);
         this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
 
         this.init();
