@@ -35,4 +35,7 @@ export class DamageEngineGlobals {
     public DamageEventWeaponT: number = 0;
     public DamageEventArmorT: number = 0;
     public DamageEventDefenseT: number = 0;
+
+    // Custom SotE variables
+    public ExecuteDamage: number = 0;
 }

@@ -482,7 +482,9 @@ export class DamageEngine {
         if (this.damageEngineGlobals.DamageEventAmount > 0.0) {
             this.finalDamageModificationEvent();
             this.damageEngineGlobals.LethalDamageHP =
-                GetWidgetLife(this.damageEngineGlobals.DamageEventTarget as unit) - this.damageEngineGlobals.DamageEventAmount;
+                GetWidgetLife(this.damageEngineGlobals.DamageEventTarget as unit) -
+                this.damageEngineGlobals.DamageEventAmount -
+                this.damageEngineGlobals.ExecuteDamage; // <--- This is custom SotE code!
             if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
                 this.damageEventLethal();
 

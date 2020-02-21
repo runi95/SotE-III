@@ -71,6 +71,10 @@ import { IronwoodBranchDrop } from './Abilities/IronwoodBranchDrop';
 import { IronwoodBranchPickup } from './Abilities/IronwoodBranchPickup';
 import { AmuletOfSpellReflectionDrop } from './Abilities/AmuletOfSpellReflectionDrop';
 import { AmuletOfSpellReflectionPickup } from './Abilities/AmuletOfSpellReflectionPickup';
+import { ExecutionersAxeDrop } from './Abilities/ExecutionersAxeDrop';
+import { ExecutionersAxePickup } from './Abilities/ExecutionersAxePickup';
+import { BloodiedExecutionersAxeDrop } from './Abilities/BloodiedExecutionersAxeDrop';
+import { BloodiedExecutionersAxePickup } from './Abilities/BloodiedExecutionersAxePickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -147,6 +151,10 @@ export class ItemController {
             new IronwoodBranchPickup(gameGlobals),
             new AmuletOfSpellReflectionDrop(gameGlobals),
             new AmuletOfSpellReflectionPickup(gameGlobals),
+            new ExecutionersAxeDrop(gameGlobals),
+            new ExecutionersAxePickup(gameGlobals),
+            new BloodiedExecutionersAxeDrop(gameGlobals),
+            new BloodiedExecutionersAxePickup(gameGlobals),
         ];
     }
 }

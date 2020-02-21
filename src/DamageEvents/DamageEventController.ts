@@ -22,6 +22,7 @@ import { Lifesteal } from './Lifesteal';
 import { AssassinsBladeEvent } from './AssassinsBladeEvent';
 import { Thorns } from './Thorns';
 import { Reflect } from './Reflect';
+import { Execute } from './Execute';
 
 export class DamageEventController {
     constructor(
@@ -54,6 +55,7 @@ export class DamageEventController {
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
         damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
+        damageEngine.addFinalDamageModificationEvent(new Execute(gameGlobals));
 
         // After damage events
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));

@@ -73,6 +73,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.PlayerLifesteal[i] = 0;
         gameGlobals.PlayerThorns[i] = 0;
         gameGlobals.PlayerReflect[i] = 0;
+        gameGlobals.PlayerExecute[i] = 0;
         gameGlobals.PlayerPhysicalBlock[i] = 0;
         gameGlobals.PlayerSpellBlock[i] = 0;
         FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, heroSelectionArea, false, false));
