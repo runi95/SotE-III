@@ -1,137 +1,401 @@
 /** @noSelfInFile **/
 
-declare interface agent extends handle { __agent: never; }
-declare interface event extends agent { __event: never; }
-declare interface player extends agent { __player: never; }
-declare interface widget extends agent { __widget: never; }
-declare interface unit extends widget { __unit: never; }
-declare interface destructable extends widget { __destructable: never; }
-declare interface item extends widget { __item: never; }
-declare interface ability extends agent { __ability: never; }
-declare interface buff extends ability { __buff: never; }
-declare interface force extends agent { __force: never; }
-declare interface group extends agent { __group: never; }
-declare interface trigger extends agent { __trigger: never; }
-declare interface triggercondition extends agent { __triggercondition: never; }
-declare interface triggeraction extends handle { __triggeraction: never; }
-declare interface timer extends agent { __timer: never; }
-declare interface location extends agent { __location: never; }
-declare interface region extends agent { __region: never; }
-declare interface rect extends agent { __rect: never; }
-declare interface boolexpr extends agent { __boolexpr: never; }
-declare interface sound extends agent { __sound: never; }
-declare interface conditionfunc extends boolexpr { __conditionfunc: never; }
-declare interface filterfunc extends boolexpr { __filterfunc: never; }
-declare interface unitpool extends handle { __unitpool: never; }
-declare interface itempool extends handle { __itempool: never; }
-declare interface race extends handle { __race: never; }
-declare interface alliancetype extends handle { __alliancetype: never; }
-declare interface racepreference extends handle { __racepreference: never; }
-declare interface gamestate extends handle { __gamestate: never; }
-declare interface igamestate extends gamestate { __igamestate: never; }
-declare interface fgamestate extends gamestate { __fgamestate: never; }
-declare interface playerstate extends handle { __playerstate: never; }
-declare interface playerscore extends handle { __playerscore: never; }
-declare interface playergameresult extends handle { __playergameresult: never; }
-declare interface unitstate extends handle { __unitstate: never; }
-declare interface aidifficulty extends handle { __aidifficulty: never; }
-declare interface eventid extends handle { __eventid: never; }
-declare interface gameevent extends eventid { __gameevent: never; }
-declare interface playerevent extends eventid { __playerevent: never; }
-declare interface playerunitevent extends eventid { __playerunitevent: never; }
-declare interface unitevent extends eventid { __unitevent: never; }
-declare interface limitop extends eventid { __limitop: never; }
-declare interface widgetevent extends eventid { __widgetevent: never; }
-declare interface dialogevent extends eventid { __dialogevent: never; }
-declare interface unittype extends handle { __unittype: never; }
-declare interface gamespeed extends handle { __gamespeed: never; }
-declare interface gamedifficulty extends handle { __gamedifficulty: never; }
-declare interface gametype extends handle { __gametype: never; }
-declare interface mapflag extends handle { __mapflag: never; }
-declare interface mapvisibility extends handle { __mapvisibility: never; }
-declare interface mapsetting extends handle { __mapsetting: never; }
-declare interface mapdensity extends handle { __mapdensity: never; }
-declare interface mapcontrol extends handle { __mapcontrol: never; }
-declare interface playerslotstate extends handle { __playerslotstate: never; }
-declare interface volumegroup extends handle { __volumegroup: never; }
-declare interface camerafield extends handle { __camerafield: never; }
-declare interface camerasetup extends handle { __camerasetup: never; }
-declare interface playercolor extends handle { __playercolor: never; }
-declare interface placement extends handle { __placement: never; }
-declare interface startlocprio extends handle { __startlocprio: never; }
-declare interface raritycontrol extends handle { __raritycontrol: never; }
-declare interface blendmode extends handle { __blendmode: never; }
-declare interface texmapflags extends handle { __texmapflags: never; }
-declare interface effect extends agent { __effect: never; }
-declare interface effecttype extends handle { __effecttype: never; }
-declare interface weathereffect extends handle { __weathereffect: never; }
-declare interface terraindeformation extends handle { __terraindeformation: never; }
-declare interface fogstate extends handle { __fogstate: never; }
-declare interface fogmodifier extends agent { __fogmodifier: never; }
-declare interface dialog extends agent { __dialog: never; }
-declare interface button extends agent { __button: never; }
-declare interface quest extends agent { __quest: never; }
-declare interface questitem extends agent { __questitem: never; }
-declare interface defeatcondition extends agent { __defeatcondition: never; }
-declare interface timerdialog extends agent { __timerdialog: never; }
-declare interface leaderboard extends agent { __leaderboard: never; }
-declare interface multiboard extends agent { __multiboard: never; }
-declare interface multiboarditem extends agent { __multiboarditem: never; }
-declare interface trackable extends agent { __trackable: never; }
-declare interface gamecache extends agent { __gamecache: never; }
-declare interface version extends handle { __version: never; }
-declare interface itemtype extends handle { __itemtype: never; }
-declare interface texttag extends handle { __texttag: never; }
-declare interface attacktype extends handle { __attacktype: never; }
-declare interface damagetype extends handle { __damagetype: never; }
-declare interface weapontype extends handle { __weapontype: never; }
-declare interface soundtype extends handle { __soundtype: never; }
-declare interface lightning extends handle { __lightning: never; }
-declare interface pathingtype extends handle { __pathingtype: never; }
-declare interface mousebuttontype extends handle { __mousebuttontype: never; }
-declare interface animtype extends handle { __animtype: never; }
-declare interface subanimtype extends handle { __subanimtype: never; }
-declare interface image extends handle { __image: never; }
-declare interface ubersplat extends handle { __ubersplat: never; }
-declare interface hashtable extends agent { __hashtable: never; }
-declare interface framehandle extends handle { __framehandle: never; }
-declare interface originframetype extends handle { __originframetype: never; }
-declare interface framepointtype extends handle { __framepointtype: never; }
-declare interface textaligntype extends handle { __textaligntype: never; }
-declare interface frameeventtype extends handle { __frameeventtype: never; }
-declare interface oskeytype extends handle { __oskeytype: never; }
-declare interface abilityintegerfield extends handle { __abilityintegerfield: never; }
-declare interface abilityrealfield extends handle { __abilityrealfield: never; }
-declare interface abilitybooleanfield extends handle { __abilitybooleanfield: never; }
-declare interface abilitystringfield extends handle { __abilitystringfield: never; }
-declare interface abilityintegerlevelfield extends handle { __abilityintegerlevelfield: never; }
-declare interface abilityreallevelfield extends handle { __abilityreallevelfield: never; }
-declare interface abilitybooleanlevelfield extends handle { __abilitybooleanlevelfield: never; }
-declare interface abilitystringlevelfield extends handle { __abilitystringlevelfield: never; }
-declare interface abilityintegerlevelarrayfield extends handle { __abilityintegerlevelarrayfield: never; }
-declare interface abilityreallevelarrayfield extends handle { __abilityreallevelarrayfield: never; }
-declare interface abilitybooleanlevelarrayfield extends handle { __abilitybooleanlevelarrayfield: never; }
-declare interface abilitystringlevelarrayfield extends handle { __abilitystringlevelarrayfield: never; }
-declare interface unitintegerfield extends handle { __unitintegerfield: never; }
-declare interface unitrealfield extends handle { __unitrealfield: never; }
-declare interface unitbooleanfield extends handle { __unitbooleanfield: never; }
-declare interface unitstringfield extends handle { __unitstringfield: never; }
-declare interface unitweaponintegerfield extends handle { __unitweaponintegerfield: never; }
-declare interface unitweaponrealfield extends handle { __unitweaponrealfield: never; }
-declare interface unitweaponbooleanfield extends handle { __unitweaponbooleanfield: never; }
-declare interface unitweaponstringfield extends handle { __unitweaponstringfield: never; }
-declare interface itemintegerfield extends handle { __itemintegerfield: never; }
-declare interface itemrealfield extends handle { __itemrealfield: never; }
-declare interface itembooleanfield extends handle { __itembooleanfield: never; }
-declare interface itemstringfield extends handle { __itemstringfield: never; }
-declare interface movetype extends handle { __movetype: never; }
-declare interface targetflag extends handle { __targetflag: never; }
-declare interface armortype extends handle { __armortype: never; }
-declare interface heroattribute extends handle { __heroattribute: never; }
-declare interface defensetype extends handle { __defensetype: never; }
-declare interface regentype extends handle { __regentype: never; }
-declare interface unitcategory extends handle { __unitcategory: never; }
-declare interface pathingflag extends handle { __pathingflag: never; }
+declare interface agent extends handle {
+    __agent: never;
+}
+declare interface event extends agent {
+    __event: never;
+}
+declare interface player extends agent {
+    __player: never;
+}
+declare interface widget extends agent {
+    __widget: never;
+}
+declare interface unit extends widget {
+    __unit: never;
+}
+declare interface destructable extends widget {
+    __destructable: never;
+}
+declare interface item extends widget {
+    __item: never;
+}
+declare interface ability extends agent {
+    __ability: never;
+}
+declare interface buff extends ability {
+    __buff: never;
+}
+declare interface force extends agent {
+    __force: never;
+}
+declare interface group extends agent {
+    __group: never;
+}
+declare interface trigger extends agent {
+    __trigger: never;
+}
+declare interface triggercondition extends agent {
+    __triggercondition: never;
+}
+declare interface triggeraction extends handle {
+    __triggeraction: never;
+}
+declare interface timer extends agent {
+    __timer: never;
+}
+declare interface location extends agent {
+    __location: never;
+}
+declare interface region extends agent {
+    __region: never;
+}
+declare interface rect extends agent {
+    __rect: never;
+}
+declare interface boolexpr extends agent {
+    __boolexpr: never;
+}
+declare interface sound extends agent {
+    __sound: never;
+}
+declare interface conditionfunc extends boolexpr {
+    __conditionfunc: never;
+}
+declare interface filterfunc extends boolexpr {
+    __filterfunc: never;
+}
+declare interface unitpool extends handle {
+    __unitpool: never;
+}
+declare interface itempool extends handle {
+    __itempool: never;
+}
+declare interface race extends handle {
+    __race: never;
+}
+declare interface alliancetype extends handle {
+    __alliancetype: never;
+}
+declare interface racepreference extends handle {
+    __racepreference: never;
+}
+declare interface gamestate extends handle {
+    __gamestate: never;
+}
+declare interface igamestate extends gamestate {
+    __igamestate: never;
+}
+declare interface fgamestate extends gamestate {
+    __fgamestate: never;
+}
+declare interface playerstate extends handle {
+    __playerstate: never;
+}
+declare interface playerscore extends handle {
+    __playerscore: never;
+}
+declare interface playergameresult extends handle {
+    __playergameresult: never;
+}
+declare interface unitstate extends handle {
+    __unitstate: never;
+}
+declare interface aidifficulty extends handle {
+    __aidifficulty: never;
+}
+declare interface eventid extends handle {
+    __eventid: never;
+}
+declare interface gameevent extends eventid {
+    __gameevent: never;
+}
+declare interface playerevent extends eventid {
+    __playerevent: never;
+}
+declare interface playerunitevent extends eventid {
+    __playerunitevent: never;
+}
+declare interface unitevent extends eventid {
+    __unitevent: never;
+}
+declare interface limitop extends eventid {
+    __limitop: never;
+}
+declare interface widgetevent extends eventid {
+    __widgetevent: never;
+}
+declare interface dialogevent extends eventid {
+    __dialogevent: never;
+}
+declare interface unittype extends handle {
+    __unittype: never;
+}
+declare interface gamespeed extends handle {
+    __gamespeed: never;
+}
+declare interface gamedifficulty extends handle {
+    __gamedifficulty: never;
+}
+declare interface gametype extends handle {
+    __gametype: never;
+}
+declare interface mapflag extends handle {
+    __mapflag: never;
+}
+declare interface mapvisibility extends handle {
+    __mapvisibility: never;
+}
+declare interface mapsetting extends handle {
+    __mapsetting: never;
+}
+declare interface mapdensity extends handle {
+    __mapdensity: never;
+}
+declare interface mapcontrol extends handle {
+    __mapcontrol: never;
+}
+declare interface playerslotstate extends handle {
+    __playerslotstate: never;
+}
+declare interface volumegroup extends handle {
+    __volumegroup: never;
+}
+declare interface camerafield extends handle {
+    __camerafield: never;
+}
+declare interface camerasetup extends handle {
+    __camerasetup: never;
+}
+declare interface playercolor extends handle {
+    __playercolor: never;
+}
+declare interface placement extends handle {
+    __placement: never;
+}
+declare interface startlocprio extends handle {
+    __startlocprio: never;
+}
+declare interface raritycontrol extends handle {
+    __raritycontrol: never;
+}
+declare interface blendmode extends handle {
+    __blendmode: never;
+}
+declare interface texmapflags extends handle {
+    __texmapflags: never;
+}
+declare interface effect extends agent {
+    __effect: never;
+}
+declare interface effecttype extends handle {
+    __effecttype: never;
+}
+declare interface weathereffect extends handle {
+    __weathereffect: never;
+}
+declare interface terraindeformation extends handle {
+    __terraindeformation: never;
+}
+declare interface fogstate extends handle {
+    __fogstate: never;
+}
+declare interface fogmodifier extends agent {
+    __fogmodifier: never;
+}
+declare interface dialog extends agent {
+    __dialog: never;
+}
+declare interface button extends agent {
+    __button: never;
+}
+declare interface quest extends agent {
+    __quest: never;
+}
+declare interface questitem extends agent {
+    __questitem: never;
+}
+declare interface defeatcondition extends agent {
+    __defeatcondition: never;
+}
+declare interface timerdialog extends agent {
+    __timerdialog: never;
+}
+declare interface leaderboard extends agent {
+    __leaderboard: never;
+}
+declare interface multiboard extends agent {
+    __multiboard: never;
+}
+declare interface multiboarditem extends agent {
+    __multiboarditem: never;
+}
+declare interface trackable extends agent {
+    __trackable: never;
+}
+declare interface gamecache extends agent {
+    __gamecache: never;
+}
+declare interface version extends handle {
+    __version: never;
+}
+declare interface itemtype extends handle {
+    __itemtype: never;
+}
+declare interface texttag extends handle {
+    __texttag: never;
+}
+declare interface attacktype extends handle {
+    __attacktype: never;
+}
+declare interface damagetype extends handle {
+    __damagetype: never;
+}
+declare interface weapontype extends handle {
+    __weapontype: never;
+}
+declare interface soundtype extends handle {
+    __soundtype: never;
+}
+declare interface lightning extends handle {
+    __lightning: never;
+}
+declare interface pathingtype extends handle {
+    __pathingtype: never;
+}
+declare interface mousebuttontype extends handle {
+    __mousebuttontype: never;
+}
+declare interface animtype extends handle {
+    __animtype: never;
+}
+declare interface subanimtype extends handle {
+    __subanimtype: never;
+}
+declare interface image extends handle {
+    __image: never;
+}
+declare interface ubersplat extends handle {
+    __ubersplat: never;
+}
+declare interface hashtable extends agent {
+    __hashtable: never;
+}
+declare interface framehandle extends handle {
+    __framehandle: never;
+}
+declare interface originframetype extends handle {
+    __originframetype: never;
+}
+declare interface framepointtype extends handle {
+    __framepointtype: never;
+}
+declare interface textaligntype extends handle {
+    __textaligntype: never;
+}
+declare interface frameeventtype extends handle {
+    __frameeventtype: never;
+}
+declare interface oskeytype extends handle {
+    __oskeytype: never;
+}
+declare interface abilityintegerfield extends handle {
+    __abilityintegerfield: never;
+}
+declare interface abilityrealfield extends handle {
+    __abilityrealfield: never;
+}
+declare interface abilitybooleanfield extends handle {
+    __abilitybooleanfield: never;
+}
+declare interface abilitystringfield extends handle {
+    __abilitystringfield: never;
+}
+declare interface abilityintegerlevelfield extends handle {
+    __abilityintegerlevelfield: never;
+}
+declare interface abilityreallevelfield extends handle {
+    __abilityreallevelfield: never;
+}
+declare interface abilitybooleanlevelfield extends handle {
+    __abilitybooleanlevelfield: never;
+}
+declare interface abilitystringlevelfield extends handle {
+    __abilitystringlevelfield: never;
+}
+declare interface abilityintegerlevelarrayfield extends handle {
+    __abilityintegerlevelarrayfield: never;
+}
+declare interface abilityreallevelarrayfield extends handle {
+    __abilityreallevelarrayfield: never;
+}
+declare interface abilitybooleanlevelarrayfield extends handle {
+    __abilitybooleanlevelarrayfield: never;
+}
+declare interface abilitystringlevelarrayfield extends handle {
+    __abilitystringlevelarrayfield: never;
+}
+declare interface unitintegerfield extends handle {
+    __unitintegerfield: never;
+}
+declare interface unitrealfield extends handle {
+    __unitrealfield: never;
+}
+declare interface unitbooleanfield extends handle {
+    __unitbooleanfield: never;
+}
+declare interface unitstringfield extends handle {
+    __unitstringfield: never;
+}
+declare interface unitweaponintegerfield extends handle {
+    __unitweaponintegerfield: never;
+}
+declare interface unitweaponrealfield extends handle {
+    __unitweaponrealfield: never;
+}
+declare interface unitweaponbooleanfield extends handle {
+    __unitweaponbooleanfield: never;
+}
+declare interface unitweaponstringfield extends handle {
+    __unitweaponstringfield: never;
+}
+declare interface itemintegerfield extends handle {
+    __itemintegerfield: never;
+}
+declare interface itemrealfield extends handle {
+    __itemrealfield: never;
+}
+declare interface itembooleanfield extends handle {
+    __itembooleanfield: never;
+}
+declare interface itemstringfield extends handle {
+    __itemstringfield: never;
+}
+declare interface movetype extends handle {
+    __movetype: never;
+}
+declare interface targetflag extends handle {
+    __targetflag: never;
+}
+declare interface armortype extends handle {
+    __armortype: never;
+}
+declare interface heroattribute extends handle {
+    __heroattribute: never;
+}
+declare interface defensetype extends handle {
+    __defensetype: never;
+}
+declare interface regentype extends handle {
+    __regentype: never;
+}
+declare interface unitcategory extends handle {
+    __unitcategory: never;
+}
+declare interface pathingflag extends handle {
+    __pathingflag: never;
+}
 
 declare function ConvertRace(i: number): race;
 declare function ConvertAllianceType(i: number): alliancetype;
@@ -307,7 +571,7 @@ declare function IsPlayerRacePrefSet(whichPlayer: player, pref: racepreference):
 declare function GetPlayerName(whichPlayer: player): string;
 declare function CreateTimer(): timer;
 declare function DestroyTimer(whichTimer: timer): void;
-declare function TimerStart(whichTimer: timer, timeout: number, periodic: boolean, handlerFunc: () => void): void;
+declare function TimerStart(whichTimer: timer, timeout: number, periodic: boolean, handlerFunc: (() => void) | null): void;
 declare function TimerGetElapsed(whichTimer: timer): number;
 declare function TimerGetRemaining(whichTimer: timer): number;
 declare function TimerGetTimeout(whichTimer: timer): number;
@@ -330,8 +594,21 @@ declare function GroupEnumUnitsInRect(whichGroup: group, r: rect, filter: boolex
 declare function GroupEnumUnitsInRectCounted(whichGroup: group, r: rect, filter: boolexpr | null, countLimit: number): void;
 declare function GroupEnumUnitsInRange(whichGroup: group, x: number, y: number, radius: number, filter: boolexpr | null): void;
 declare function GroupEnumUnitsInRangeOfLoc(whichGroup: group, whichLocation: location, radius: number, filter: boolexpr | null): void;
-declare function GroupEnumUnitsInRangeCounted(whichGroup: group, x: number, y: number, radius: number, filter: boolexpr | null, countLimit: number): void;
-declare function GroupEnumUnitsInRangeOfLocCounted(whichGroup: group, whichLocation: location, radius: number, filter: boolexpr | null, countLimit: number): void;
+declare function GroupEnumUnitsInRangeCounted(
+    whichGroup: group,
+    x: number,
+    y: number,
+    radius: number,
+    filter: boolexpr | null,
+    countLimit: number,
+): void;
+declare function GroupEnumUnitsInRangeOfLocCounted(
+    whichGroup: group,
+    whichLocation: location,
+    radius: number,
+    filter: boolexpr | null,
+    countLimit: number,
+): void;
 declare function GroupEnumUnitsSelected(whichGroup: group, whichPlayer: player, filter: boolexpr | null): void;
 declare function GroupImmediateOrder(whichGroup: group, order: string): boolean;
 declare function GroupImmediateOrderById(whichGroup: group, order: number): boolean;
@@ -406,14 +683,14 @@ declare function GetTriggerEventId(): eventid;
 declare function GetTriggerEvalCount(whichTrigger: trigger): number;
 declare function GetTriggerExecCount(whichTrigger: trigger): number;
 declare function ExecuteFunc(funcName: string): void;
-declare function And(operandA: boolexpr | null, operandB: boolexpr | null): boolexpr;
-declare function Or(operandA: boolexpr | null, operandB: boolexpr | null): boolexpr;
-declare function Not(operand: boolexpr | null): boolexpr;
+declare function And(operandA: boolexpr, operandB: boolexpr): boolexpr;
+declare function Or(operandA: boolexpr, operandB: boolexpr): boolexpr;
+declare function Not(operand: boolexpr): boolexpr;
 declare function Condition(func: () => boolean): conditionfunc;
 declare function DestroyCondition(c: conditionfunc): void;
 declare function Filter(func: () => boolean): filterfunc;
 declare function DestroyFilter(f: filterfunc): void;
-declare function DestroyBoolExpr(e: boolexpr | null): void;
+declare function DestroyBoolExpr(e: boolexpr): void;
 declare function TriggerRegisterVariableEvent(whichTrigger: trigger, varName: string, opcode: limitop, limitval: number): event;
 declare function TriggerRegisterTimerEvent(whichTrigger: trigger, timeout: number, periodic: boolean): event;
 declare function TriggerRegisterTimerExpireEvent(whichTrigger: trigger, t: timer): event;
@@ -440,7 +717,12 @@ declare function GetTournamentScore(whichPlayer: player): number;
 declare function GetSaveBasicFilename(): string;
 declare function TriggerRegisterPlayerEvent(whichTrigger: trigger, whichPlayer: player, whichPlayerEvent: playerevent): event;
 declare function GetTriggerPlayer(): player;
-declare function TriggerRegisterPlayerUnitEvent(whichTrigger: trigger, whichPlayer: player, whichPlayerUnitEvent: playerunitevent, filter: boolexpr | null): event;
+declare function TriggerRegisterPlayerUnitEvent(
+    whichTrigger: trigger,
+    whichPlayer: player,
+    whichPlayerUnitEvent: playerunitevent,
+    filter: boolexpr | null,
+): event;
 declare function GetLevelingUnit(): unit;
 declare function GetLearningUnit(): unit;
 declare function GetLearnedSkill(): number;
@@ -491,23 +773,45 @@ declare function GetSpellTargetDestructable(): destructable;
 declare function GetSpellTargetItem(): item;
 declare function GetSpellTargetUnit(): unit;
 declare function TriggerRegisterPlayerAllianceChange(whichTrigger: trigger, whichPlayer: player, whichAlliance: alliancetype): event;
-declare function TriggerRegisterPlayerStateEvent(whichTrigger: trigger, whichPlayer: player, whichState: playerstate, opcode: limitop, limitval: number): event;
+declare function TriggerRegisterPlayerStateEvent(
+    whichTrigger: trigger,
+    whichPlayer: player,
+    whichState: playerstate,
+    opcode: limitop,
+    limitval: number,
+): event;
 declare function GetEventPlayerState(): playerstate;
-declare function TriggerRegisterPlayerChatEvent(whichTrigger: trigger, whichPlayer: player, chatMessageToDetect: string, exactMatchOnly: boolean): event;
+declare function TriggerRegisterPlayerChatEvent(
+    whichTrigger: trigger,
+    whichPlayer: player,
+    chatMessageToDetect: string,
+    exactMatchOnly: boolean,
+): event;
 declare function GetEventPlayerChatString(): string;
 declare function GetEventPlayerChatStringMatched(): string;
 declare function TriggerRegisterDeathEvent(whichTrigger: trigger, whichWidget: widget): event;
 declare function GetTriggerUnit(): unit;
-declare function TriggerRegisterUnitStateEvent(whichTrigger: trigger, whichUnit: unit, whichState: unitstate, opcode: limitop, limitval: number): event;
+declare function TriggerRegisterUnitStateEvent(
+    whichTrigger: trigger,
+    whichUnit: unit,
+    whichState: unitstate,
+    opcode: limitop,
+    limitval: number,
+): event;
 declare function GetEventUnitState(): unitstate;
 declare function TriggerRegisterUnitEvent(whichTrigger: trigger, whichUnit: unit, whichEvent: unitevent): event;
 declare function GetEventDamage(): number;
 declare function GetEventDamageSource(): unit;
 declare function GetEventDetectingPlayer(): player;
-declare function TriggerRegisterFilterUnitEvent(whichTrigger: trigger, whichUnit: unit, whichEvent: unitevent, filter: boolexpr | null): event;
+declare function TriggerRegisterFilterUnitEvent(
+    whichTrigger: trigger,
+    whichUnit: unit,
+    whichEvent: unitevent,
+    filter: boolexpr | null,
+): event;
 declare function GetEventTargetUnit(): unit;
 declare function TriggerRegisterUnitInRange(whichTrigger: trigger, whichUnit: unit, range: number, filter: boolexpr | null): event;
-declare function TriggerAddCondition(whichTrigger: trigger, condition: boolexpr | null): triggercondition;
+declare function TriggerAddCondition(whichTrigger: trigger, condition: boolexpr): triggercondition;
 declare function TriggerRemoveCondition(whichTrigger: trigger, whichCondition: triggercondition): void;
 declare function TriggerClearConditions(whichTrigger: trigger): void;
 declare function TriggerAddAction(whichTrigger: trigger, actionFunc: () => void): triggeraction;
@@ -526,9 +830,32 @@ declare function GetWidgetX(whichWidget: widget): number;
 declare function GetWidgetY(whichWidget: widget): number;
 declare function GetTriggerWidget(): widget;
 declare function CreateDestructable(objectid: number, x: number, y: number, face: number, scale: number, variation: number): destructable;
-declare function CreateDestructableZ(objectid: number, x: number, y: number, z: number, face: number, scale: number, variation: number): destructable;
-declare function CreateDeadDestructable(objectid: number, x: number, y: number, face: number, scale: number, variation: number): destructable;
-declare function CreateDeadDestructableZ(objectid: number, x: number, y: number, z: number, face: number, scale: number, variation: number): destructable;
+declare function CreateDestructableZ(
+    objectid: number,
+    x: number,
+    y: number,
+    z: number,
+    face: number,
+    scale: number,
+    variation: number,
+): destructable;
+declare function CreateDeadDestructable(
+    objectid: number,
+    x: number,
+    y: number,
+    face: number,
+    scale: number,
+    variation: number,
+): destructable;
+declare function CreateDeadDestructableZ(
+    objectid: number,
+    x: number,
+    y: number,
+    z: number,
+    face: number,
+    scale: number,
+    variation: number,
+): destructable;
 declare function RemoveDestructable(d: destructable): void;
 declare function KillDestructable(d: destructable): void;
 declare function SetDestructableInvulnerable(d: destructable, flag: boolean): void;
@@ -621,7 +948,14 @@ declare function SetUnitAnimation(whichUnit: unit, whichAnimation: string): void
 declare function SetUnitAnimationByIndex(whichUnit: unit, whichAnimation: number): void;
 declare function SetUnitAnimationWithRarity(whichUnit: unit, whichAnimation: string, rarity: raritycontrol): void;
 declare function AddUnitAnimationProperties(whichUnit: unit, animProperties: string, add: boolean): void;
-declare function SetUnitLookAt(whichUnit: unit, whichBone: string, lookAtTarget: unit, offsetX: number, offsetY: number, offsetZ: number): void;
+declare function SetUnitLookAt(
+    whichUnit: unit,
+    whichBone: string,
+    lookAtTarget: unit,
+    offsetX: number,
+    offsetY: number,
+    offsetZ: number,
+): void;
 declare function ResetUnitLookAt(whichUnit: unit): void;
 declare function SetUnitRescuable(whichUnit: unit, byWhichPlayer: player, flag: boolean): void;
 declare function SetUnitRescueRange(whichUnit: unit, range: number): void;
@@ -723,9 +1057,36 @@ declare function UnitAddAbility(whichUnit: unit, abilityId: number): boolean;
 declare function UnitRemoveAbility(whichUnit: unit, abilityId: number): boolean;
 declare function UnitMakeAbilityPermanent(whichUnit: unit, permanent: boolean, abilityId: number): boolean;
 declare function UnitRemoveBuffs(whichUnit: unit, removePositive: boolean, removeNegative: boolean): void;
-declare function UnitRemoveBuffsEx(whichUnit: unit, removePositive: boolean, removeNegative: boolean, magic: boolean, physical: boolean, timedLife: boolean, aura: boolean, autoDispel: boolean): void;
-declare function UnitHasBuffsEx(whichUnit: unit, removePositive: boolean, removeNegative: boolean, magic: boolean, physical: boolean, timedLife: boolean, aura: boolean, autoDispel: boolean): boolean;
-declare function UnitCountBuffsEx(whichUnit: unit, removePositive: boolean, removeNegative: boolean, magic: boolean, physical: boolean, timedLife: boolean, aura: boolean, autoDispel: boolean): number;
+declare function UnitRemoveBuffsEx(
+    whichUnit: unit,
+    removePositive: boolean,
+    removeNegative: boolean,
+    magic: boolean,
+    physical: boolean,
+    timedLife: boolean,
+    aura: boolean,
+    autoDispel: boolean,
+): void;
+declare function UnitHasBuffsEx(
+    whichUnit: unit,
+    removePositive: boolean,
+    removeNegative: boolean,
+    magic: boolean,
+    physical: boolean,
+    timedLife: boolean,
+    aura: boolean,
+    autoDispel: boolean,
+): boolean;
+declare function UnitCountBuffsEx(
+    whichUnit: unit,
+    removePositive: boolean,
+    removeNegative: boolean,
+    magic: boolean,
+    physical: boolean,
+    timedLife: boolean,
+    aura: boolean,
+    autoDispel: boolean,
+): number;
 declare function UnitAddSleep(whichUnit: unit, add: boolean): void;
 declare function UnitCanSleep(whichUnit: unit): boolean;
 declare function UnitAddSleepPerm(whichUnit: unit, add: boolean): void;
@@ -740,8 +1101,29 @@ declare function UnitSetConstructionProgress(whichUnit: unit, constructionPercen
 declare function UnitSetUpgradeProgress(whichUnit: unit, upgradePercentage: number): void;
 declare function UnitPauseTimedLife(whichUnit: unit, flag: boolean): void;
 declare function UnitSetUsesAltIcon(whichUnit: unit, flag: boolean): void;
-declare function UnitDamagePoint(whichUnit: unit, delay: number, radius: number, x: number, y: number, amount: number, attack: boolean, ranged: boolean, attackType: attacktype, damageType: damagetype, weaponType: weapontype): boolean;
-declare function UnitDamageTarget(whichUnit: unit, target: widget, amount: number, attack: boolean, ranged: boolean, attackType: attacktype, damageType: damagetype, weaponType: weapontype): boolean;
+declare function UnitDamagePoint(
+    whichUnit: unit,
+    delay: number,
+    radius: number,
+    x: number,
+    y: number,
+    amount: number,
+    attack: boolean,
+    ranged: boolean,
+    attackType: attacktype,
+    damageType: damagetype,
+    weaponType: weapontype,
+): boolean;
+declare function UnitDamageTarget(
+    whichUnit: unit,
+    target: widget,
+    amount: number,
+    attack: boolean,
+    ranged: boolean,
+    attackType: attacktype,
+    damageType: damagetype,
+    weaponType: weapontype,
+): boolean;
 declare function IssueImmediateOrder(whichUnit: unit, order: string): boolean;
 declare function IssueImmediateOrderById(whichUnit: unit, order: number): boolean;
 declare function IssuePointOrder(whichUnit: unit, order: string, x: number, y: number): boolean;
@@ -800,7 +1182,12 @@ declare function IsLocationMaskedToPlayer(whichLocation: location, whichPlayer: 
 declare function GetPlayerRace(whichPlayer: player): race;
 declare function GetPlayerId(whichPlayer: player): number;
 declare function GetPlayerUnitCount(whichPlayer: player, includeIncomplete: boolean): number;
-declare function GetPlayerTypedUnitCount(whichPlayer: player, unitName: string, includeIncomplete: boolean, includeUpgrades: boolean): number;
+declare function GetPlayerTypedUnitCount(
+    whichPlayer: player,
+    unitName: string,
+    includeIncomplete: boolean,
+    includeUpgrades: boolean,
+): number;
 declare function GetPlayerStructureCount(whichPlayer: player, includeIncomplete: boolean): number;
 declare function GetPlayerState(whichPlayer: player, whichPlayerState: playerstate): number;
 declare function GetPlayerScore(whichPlayer: player, whichPlayerScore: playerscore): number;
@@ -822,15 +1209,49 @@ declare function SetPlayerState(whichPlayer: player, whichPlayerState: playersta
 declare function RemovePlayer(whichPlayer: player, gameResult: playergameresult): void;
 declare function CachePlayerHeroData(whichPlayer: player): void;
 declare function SetFogStateRect(forWhichPlayer: player, whichState: fogstate, where: rect, useSharedVision: boolean): void;
-declare function SetFogStateRadius(forWhichPlayer: player, whichState: fogstate, centerx: number, centerY: number, radius: number, useSharedVision: boolean): void;
-declare function SetFogStateRadiusLoc(forWhichPlayer: player, whichState: fogstate, center: location, radius: number, useSharedVision: boolean): void;
+declare function SetFogStateRadius(
+    forWhichPlayer: player,
+    whichState: fogstate,
+    centerx: number,
+    centerY: number,
+    radius: number,
+    useSharedVision: boolean,
+): void;
+declare function SetFogStateRadiusLoc(
+    forWhichPlayer: player,
+    whichState: fogstate,
+    center: location,
+    radius: number,
+    useSharedVision: boolean,
+): void;
 declare function FogMaskEnable(enable: boolean): void;
 declare function IsFogMaskEnabled(): boolean;
 declare function FogEnable(enable: boolean): void;
 declare function IsFogEnabled(): boolean;
-declare function CreateFogModifierRect(forWhichPlayer: player, whichState: fogstate, where: rect, useSharedVision: boolean, afterUnits: boolean): fogmodifier;
-declare function CreateFogModifierRadius(forWhichPlayer: player, whichState: fogstate, centerx: number, centerY: number, radius: number, useSharedVision: boolean, afterUnits: boolean): fogmodifier;
-declare function CreateFogModifierRadiusLoc(forWhichPlayer: player, whichState: fogstate, center: location, radius: number, useSharedVision: boolean, afterUnits: boolean): fogmodifier;
+declare function CreateFogModifierRect(
+    forWhichPlayer: player,
+    whichState: fogstate,
+    where: rect,
+    useSharedVision: boolean,
+    afterUnits: boolean,
+): fogmodifier;
+declare function CreateFogModifierRadius(
+    forWhichPlayer: player,
+    whichState: fogstate,
+    centerx: number,
+    centerY: number,
+    radius: number,
+    useSharedVision: boolean,
+    afterUnits: boolean,
+): fogmodifier;
+declare function CreateFogModifierRadiusLoc(
+    forWhichPlayer: player,
+    whichState: fogstate,
+    center: location,
+    radius: number,
+    useSharedVision: boolean,
+    afterUnits: boolean,
+): fogmodifier;
 declare function DestroyFogModifier(whichFogModifier: fogmodifier): void;
 declare function FogModifierStart(whichFogModifier: fogmodifier): void;
 declare function FogModifierStop(whichFogModifier: fogmodifier): void;
@@ -901,7 +1322,15 @@ declare function GetStoredInteger(cache: gamecache, missionKey: string, key: str
 declare function GetStoredReal(cache: gamecache, missionKey: string, key: string): number;
 declare function GetStoredBoolean(cache: gamecache, missionKey: string, key: string): boolean;
 declare function GetStoredString(cache: gamecache, missionKey: string, key: string): string;
-declare function RestoreUnit(cache: gamecache, missionKey: string, key: string, forWhichPlayer: player, x: number, y: number, facing: number): unit;
+declare function RestoreUnit(
+    cache: gamecache,
+    missionKey: string,
+    key: string,
+    forWhichPlayer: player,
+    x: number,
+    y: number,
+    facing: number,
+): unit;
 declare function InitHashtable(): hashtable;
 declare function SaveInteger(table: hashtable, parentKey: number, childKey: number, value: number): void;
 declare function SaveReal(table: hashtable, parentKey: number, childKey: number, value: number): void;
@@ -915,25 +1344,40 @@ declare function SaveUnitHandle(table: hashtable, parentKey: number, childKey: n
 declare function SaveAbilityHandle(table: hashtable, parentKey: number, childKey: number, whichAbility: ability): boolean;
 declare function SaveTimerHandle(table: hashtable, parentKey: number, childKey: number, whichTimer: timer): boolean;
 declare function SaveTriggerHandle(table: hashtable, parentKey: number, childKey: number, whichTrigger: trigger): boolean;
-declare function SaveTriggerConditionHandle(table: hashtable, parentKey: number, childKey: number, whichTriggercondition: triggercondition): boolean;
+declare function SaveTriggerConditionHandle(
+    table: hashtable,
+    parentKey: number,
+    childKey: number,
+    whichTriggercondition: triggercondition,
+): boolean;
 declare function SaveTriggerActionHandle(table: hashtable, parentKey: number, childKey: number, whichTriggeraction: triggeraction): boolean;
 declare function SaveTriggerEventHandle(table: hashtable, parentKey: number, childKey: number, whichEvent: event): boolean;
 declare function SaveForceHandle(table: hashtable, parentKey: number, childKey: number, whichForce: force): boolean;
 declare function SaveGroupHandle(table: hashtable, parentKey: number, childKey: number, whichGroup: group): boolean;
 declare function SaveLocationHandle(table: hashtable, parentKey: number, childKey: number, whichLocation: location): boolean;
 declare function SaveRectHandle(table: hashtable, parentKey: number, childKey: number, whichRect: rect): boolean;
-declare function SaveBooleanExprHandle(table: hashtable, parentKey: number, childKey: number, whichBoolexpr: boolexpr | null): boolean;
+declare function SaveBooleanExprHandle(table: hashtable, parentKey: number, childKey: number, whichBoolexpr: boolexpr): boolean;
 declare function SaveSoundHandle(table: hashtable, parentKey: number, childKey: number, whichSound: sound): boolean;
 declare function SaveEffectHandle(table: hashtable, parentKey: number, childKey: number, whichEffect: effect): boolean;
 declare function SaveUnitPoolHandle(table: hashtable, parentKey: number, childKey: number, whichUnitpool: unitpool): boolean;
 declare function SaveItemPoolHandle(table: hashtable, parentKey: number, childKey: number, whichItempool: itempool): boolean;
 declare function SaveQuestHandle(table: hashtable, parentKey: number, childKey: number, whichQuest: quest): boolean;
 declare function SaveQuestItemHandle(table: hashtable, parentKey: number, childKey: number, whichQuestitem: questitem): boolean;
-declare function SaveDefeatConditionHandle(table: hashtable, parentKey: number, childKey: number, whichDefeatcondition: defeatcondition): boolean;
+declare function SaveDefeatConditionHandle(
+    table: hashtable,
+    parentKey: number,
+    childKey: number,
+    whichDefeatcondition: defeatcondition,
+): boolean;
 declare function SaveTimerDialogHandle(table: hashtable, parentKey: number, childKey: number, whichTimerdialog: timerdialog): boolean;
 declare function SaveLeaderboardHandle(table: hashtable, parentKey: number, childKey: number, whichLeaderboard: leaderboard): boolean;
 declare function SaveMultiboardHandle(table: hashtable, parentKey: number, childKey: number, whichMultiboard: multiboard): boolean;
-declare function SaveMultiboardItemHandle(table: hashtable, parentKey: number, childKey: number, whichMultiboarditem: multiboarditem): boolean;
+declare function SaveMultiboardItemHandle(
+    table: hashtable,
+    parentKey: number,
+    childKey: number,
+    whichMultiboarditem: multiboarditem,
+): boolean;
 declare function SaveTrackableHandle(table: hashtable, parentKey: number, childKey: number, whichTrackable: trackable): boolean;
 declare function SaveDialogHandle(table: hashtable, parentKey: number, childKey: number, whichDialog: dialog): boolean;
 declare function SaveButtonHandle(table: hashtable, parentKey: number, childKey: number, whichButton: button): boolean;
@@ -1022,7 +1466,15 @@ declare function SetRandomSeed(seed: number): void;
 declare function SetTerrainFog(a: number, b: number, c: number, d: number, e: number): void;
 declare function ResetTerrainFog(): void;
 declare function SetUnitFog(a: number, b: number, c: number, d: number, e: number): void;
-declare function SetTerrainFogEx(style: number, zstart: number, zend: number, density: number, red: number, green: number, blue: number): void;
+declare function SetTerrainFogEx(
+    style: number,
+    zstart: number,
+    zend: number,
+    density: number,
+    red: number,
+    green: number,
+    blue: number,
+): void;
 declare function DisplayTextToPlayer(toPlayer: player, x: number, y: number, message: string): void;
 declare function DisplayTimedTextToPlayer(toPlayer: player, x: number, y: number, duration: number, message: string): void;
 declare function DisplayTimedTextFromPlayer(toPlayer: player, x: number, y: number, duration: number, message: string): void;
@@ -1039,7 +1491,15 @@ declare function PauseGame(flag: boolean): void;
 declare function UnitAddIndicator(whichUnit: unit, red: number, green: number, blue: number, alpha: number): void;
 declare function AddIndicator(whichWidget: widget, red: number, green: number, blue: number, alpha: number): void;
 declare function PingMinimap(x: number, y: number, duration: number): void;
-declare function PingMinimapEx(x: number, y: number, duration: number, red: number, green: number, blue: number, extraEffects: boolean): void;
+declare function PingMinimapEx(
+    x: number,
+    y: number,
+    duration: number,
+    red: number,
+    green: number,
+    blue: number,
+    extraEffects: boolean,
+): void;
 declare function EnableOcclusion(flag: boolean): void;
 declare function SetIntroShotText(introText: string): void;
 declare function SetIntroShotModel(introModelPath: string): void;
@@ -1128,12 +1588,38 @@ declare function PlayerSetLeaderboard(toPlayer: player, lb: leaderboard): void;
 declare function PlayerGetLeaderboard(toPlayer: player): leaderboard;
 declare function LeaderboardSetLabelColor(lb: leaderboard, red: number, green: number, blue: number, alpha: number): void;
 declare function LeaderboardSetValueColor(lb: leaderboard, red: number, green: number, blue: number, alpha: number): void;
-declare function LeaderboardSetStyle(lb: leaderboard, showLabel: boolean, showNames: boolean, showValues: boolean, showIcons: boolean): void;
+declare function LeaderboardSetStyle(
+    lb: leaderboard,
+    showLabel: boolean,
+    showNames: boolean,
+    showValues: boolean,
+    showIcons: boolean,
+): void;
 declare function LeaderboardSetItemValue(lb: leaderboard, whichItem: number, val: number): void;
 declare function LeaderboardSetItemLabel(lb: leaderboard, whichItem: number, val: string): void;
-declare function LeaderboardSetItemStyle(lb: leaderboard, whichItem: number, showLabel: boolean, showValue: boolean, showIcon: boolean): void;
-declare function LeaderboardSetItemLabelColor(lb: leaderboard, whichItem: number, red: number, green: number, blue: number, alpha: number): void;
-declare function LeaderboardSetItemValueColor(lb: leaderboard, whichItem: number, red: number, green: number, blue: number, alpha: number): void;
+declare function LeaderboardSetItemStyle(
+    lb: leaderboard,
+    whichItem: number,
+    showLabel: boolean,
+    showValue: boolean,
+    showIcon: boolean,
+): void;
+declare function LeaderboardSetItemLabelColor(
+    lb: leaderboard,
+    whichItem: number,
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number,
+): void;
+declare function LeaderboardSetItemValueColor(
+    lb: leaderboard,
+    whichItem: number,
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number,
+): void;
 declare function CreateMultiboard(): multiboard;
 declare function DestroyMultiboard(lb: multiboard): void;
 declare function MultiboardDisplay(lb: multiboard, show: boolean): void;
@@ -1202,7 +1688,14 @@ declare function SetCineFilterEndColor(red: number, green: number, blue: number,
 declare function SetCineFilterDuration(duration: number): void;
 declare function DisplayCineFilter(flag: boolean): void;
 declare function IsCineFilterDisplayed(): boolean;
-declare function SetCinematicScene(portraitUnitId: number, color: playercolor, speakerTitle: string, text: string, sceneDuration: number, voiceoverDuration: number): void;
+declare function SetCinematicScene(
+    portraitUnitId: number,
+    color: playercolor,
+    speakerTitle: string,
+    text: string,
+    sceneDuration: number,
+    voiceoverDuration: number,
+): void;
 declare function EndCinematicScene(): void;
 declare function ForceCinematicSubtitles(flag: boolean): void;
 declare function GetCameraMargin(whichMargin: number): number;
@@ -1220,9 +1713,32 @@ declare function GetCameraEyePositionY(): number;
 declare function GetCameraEyePositionZ(): number;
 declare function GetCameraEyePositionLoc(): location;
 declare function NewSoundEnvironment(environmentName: string): void;
-declare function CreateSound(fileName: string, looping: boolean, is3D: boolean, stopwhenoutofrange: boolean, fadeInRate: number, fadeOutRate: number, eaxSetting: string): sound;
-declare function CreateSoundFilenameWithLabel(fileName: string, looping: boolean, is3D: boolean, stopwhenoutofrange: boolean, fadeInRate: number, fadeOutRate: number, SLKEntryName: string): sound;
-declare function CreateSoundFromLabel(soundLabel: string, looping: boolean, is3D: boolean, stopwhenoutofrange: boolean, fadeInRate: number, fadeOutRate: number): sound;
+declare function CreateSound(
+    fileName: string,
+    looping: boolean,
+    is3D: boolean,
+    stopwhenoutofrange: boolean,
+    fadeInRate: number,
+    fadeOutRate: number,
+    eaxSetting: string,
+): sound;
+declare function CreateSoundFilenameWithLabel(
+    fileName: string,
+    looping: boolean,
+    is3D: boolean,
+    stopwhenoutofrange: boolean,
+    fadeInRate: number,
+    fadeOutRate: number,
+    SLKEntryName: string,
+): sound;
+declare function CreateSoundFromLabel(
+    soundLabel: string,
+    looping: boolean,
+    is3D: boolean,
+    stopwhenoutofrange: boolean,
+    fadeInRate: number,
+    fadeOutRate: number,
+): sound;
 declare function CreateMIDISound(soundLabel: string, fadeInRate: number, fadeOutRate: number): sound;
 declare function SetSoundParamsFromLabel(soundHandle: sound, soundLabel: string): void;
 declare function SetSoundDistanceCutoff(soundHandle: sound, cutoff: number): void;
@@ -1263,10 +1779,47 @@ declare function UnregisterStackedSound(soundHandle: sound, byPosition: boolean,
 declare function AddWeatherEffect(where: rect, effectID: number): weathereffect;
 declare function RemoveWeatherEffect(whichEffect: weathereffect): void;
 declare function EnableWeatherEffect(whichEffect: weathereffect, enable: boolean): void;
-declare function TerrainDeformCrater(x: number, y: number, radius: number, depth: number, duration: number, permanent: boolean): terraindeformation;
-declare function TerrainDeformRipple(x: number, y: number, radius: number, depth: number, duration: number, count: number, spaceWaves: number, timeWaves: number, radiusStartPct: number, limitNeg: boolean): terraindeformation;
-declare function TerrainDeformWave(x: number, y: number, dirX: number, dirY: number, distance: number, speed: number, radius: number, depth: number, trailTime: number, count: number): terraindeformation;
-declare function TerrainDeformRandom(x: number, y: number, radius: number, minDelta: number, maxDelta: number, duration: number, updateInterval: number): terraindeformation;
+declare function TerrainDeformCrater(
+    x: number,
+    y: number,
+    radius: number,
+    depth: number,
+    duration: number,
+    permanent: boolean,
+): terraindeformation;
+declare function TerrainDeformRipple(
+    x: number,
+    y: number,
+    radius: number,
+    depth: number,
+    duration: number,
+    count: number,
+    spaceWaves: number,
+    timeWaves: number,
+    radiusStartPct: number,
+    limitNeg: boolean,
+): terraindeformation;
+declare function TerrainDeformWave(
+    x: number,
+    y: number,
+    dirX: number,
+    dirY: number,
+    distance: number,
+    speed: number,
+    radius: number,
+    depth: number,
+    trailTime: number,
+    count: number,
+): terraindeformation;
+declare function TerrainDeformRandom(
+    x: number,
+    y: number,
+    radius: number,
+    minDelta: number,
+    maxDelta: number,
+    duration: number,
+    updateInterval: number,
+): terraindeformation;
 declare function TerrainDeformStop(deformation: terraindeformation, duration: number): void;
 declare function TerrainDeformStopAll(): void;
 declare function AddSpecialEffect(modelName: string, x: number, y: number): effect;
@@ -1280,10 +1833,28 @@ declare function AddSpellEffectByIdLoc(abilityId: number, t: effecttype, where: 
 declare function AddSpellEffectTarget(modelName: string, t: effecttype, targetWidget: widget, attachPoint: string): effect;
 declare function AddSpellEffectTargetById(abilityId: number, t: effecttype, targetWidget: widget, attachPoint: string): effect;
 declare function AddLightning(codeName: string, checkVisibility: boolean, x1: number, y1: number, x2: number, y2: number): lightning;
-declare function AddLightningEx(codeName: string, checkVisibility: boolean, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): lightning;
+declare function AddLightningEx(
+    codeName: string,
+    checkVisibility: boolean,
+    x1: number,
+    y1: number,
+    z1: number,
+    x2: number,
+    y2: number,
+    z2: number,
+): lightning;
 declare function DestroyLightning(whichBolt: lightning): boolean;
 declare function MoveLightning(whichBolt: lightning, checkVisibility: boolean, x1: number, y1: number, x2: number, y2: number): boolean;
-declare function MoveLightningEx(whichBolt: lightning, checkVisibility: boolean, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): boolean;
+declare function MoveLightningEx(
+    whichBolt: lightning,
+    checkVisibility: boolean,
+    x1: number,
+    y1: number,
+    z1: number,
+    x2: number,
+    y2: number,
+    z2: number,
+): boolean;
 declare function GetLightningColorA(whichBolt: lightning): number;
 declare function GetLightningColorR(whichBolt: lightning): number;
 declare function GetLightningColorG(whichBolt: lightning): number;
@@ -1301,7 +1872,19 @@ declare function GetTerrainVariance(x: number, y: number): number;
 declare function SetTerrainType(x: number, y: number, terrainType: number, variation: number, area: number, shape: number): void;
 declare function IsTerrainPathable(x: number, y: number, t: pathingtype): boolean;
 declare function SetTerrainPathable(x: number, y: number, t: pathingtype, flag: boolean): void;
-declare function CreateImage(file: string, sizeX: number, sizeY: number, sizeZ: number, posX: number, posY: number, posZ: number, originX: number, originY: number, originZ: number, imageType: number): image;
+declare function CreateImage(
+    file: string,
+    sizeX: number,
+    sizeY: number,
+    sizeZ: number,
+    posX: number,
+    posY: number,
+    posZ: number,
+    originX: number,
+    originY: number,
+    originZ: number,
+    imageType: number,
+): image;
 declare function DestroyImage(whichImage: image): void;
 declare function ShowImage(whichImage: image, flag: boolean): void;
 declare function SetImageConstantHeight(whichImage: image, flag: boolean, height: number): void;
@@ -1311,7 +1894,17 @@ declare function SetImageRender(whichImage: image, flag: boolean): void;
 declare function SetImageRenderAlways(whichImage: image, flag: boolean): void;
 declare function SetImageAboveWater(whichImage: image, flag: boolean, useWaterAlpha: boolean): void;
 declare function SetImageType(whichImage: image, imageType: number): void;
-declare function CreateUbersplat(x: number, y: number, name: string, red: number, green: number, blue: number, alpha: number, forcePaused: boolean, noBirthTime: boolean): ubersplat;
+declare function CreateUbersplat(
+    x: number,
+    y: number,
+    name: string,
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number,
+    forcePaused: boolean,
+    noBirthTime: boolean,
+): ubersplat;
 declare function DestroyUbersplat(whichSplat: ubersplat): void;
 declare function ResetUbersplat(whichSplat: ubersplat): void;
 declare function FinishUbersplat(whichSplat: ubersplat): void;
@@ -1324,7 +1917,15 @@ declare function SetBlightPoint(whichPlayer: player, x: number, y: number, addBl
 declare function SetBlightLoc(whichPlayer: player, whichLocation: location, radius: number, addBlight: boolean): void;
 declare function CreateBlightedGoldmine(id: player, x: number, y: number, face: number): unit;
 declare function IsPointBlighted(x: number, y: number): boolean;
-declare function SetDoodadAnimation(x: number, y: number, radius: number, doodadID: number, nearestOnly: boolean, animName: string, animRandom: boolean): void;
+declare function SetDoodadAnimation(
+    x: number,
+    y: number,
+    radius: number,
+    doodadID: number,
+    nearestOnly: boolean,
+    animName: string,
+    animRandom: boolean,
+): void;
 declare function SetDoodadAnimationRect(r: rect, doodadID: number, animName: string, animRandom: boolean): void;
 declare function StartMeleeAI(num: player, script: string): void;
 declare function StartCampaignAI(num: player, script: string): void;
@@ -1453,15 +2054,58 @@ declare function BlzGetEventWeaponType(): weapontype;
 declare function BlzSetEventAttackType(attackType: attacktype): boolean;
 declare function BlzSetEventDamageType(damageType: damagetype): boolean;
 declare function BlzSetEventWeaponType(weaponType: weapontype): boolean;
-declare function RequestExtraIntegerData(dataType: number, whichPlayer: player, param1: string, param2: string, param3: boolean, param4: number, param5: number, param6: number): number;
-declare function RequestExtraBooleanData(dataType: number, whichPlayer: player, param1: string, param2: string, param3: boolean, param4: number, param5: number, param6: number): boolean;
-declare function RequestExtraStringData(dataType: number, whichPlayer: player, param1: string, param2: string, param3: boolean, param4: number, param5: number, param6: number): string;
-declare function RequestExtraRealData(dataType: number, whichPlayer: player, param1: string, param2: string, param3: boolean, param4: number, param5: number, param6: number): number;
+declare function RequestExtraIntegerData(
+    dataType: number,
+    whichPlayer: player,
+    param1: string,
+    param2: string,
+    param3: boolean,
+    param4: number,
+    param5: number,
+    param6: number,
+): number;
+declare function RequestExtraBooleanData(
+    dataType: number,
+    whichPlayer: player,
+    param1: string,
+    param2: string,
+    param3: boolean,
+    param4: number,
+    param5: number,
+    param6: number,
+): boolean;
+declare function RequestExtraStringData(
+    dataType: number,
+    whichPlayer: player,
+    param1: string,
+    param2: string,
+    param3: boolean,
+    param4: number,
+    param5: number,
+    param6: number,
+): string;
+declare function RequestExtraRealData(
+    dataType: number,
+    whichPlayer: player,
+    param1: string,
+    param2: string,
+    param3: boolean,
+    param4: number,
+    param5: number,
+    param6: number,
+): number;
 declare function BlzGetUnitZ(whichUnit: unit): number;
 declare function BlzEnableSelections(enableSelection: boolean, enableSelectionCircle: boolean): void;
 declare function BlzIsSelectionEnabled(): boolean;
 declare function BlzIsSelectionCircleEnabled(): boolean;
-declare function BlzCameraSetupApplyForceDurationSmooth(whichSetup: camerasetup, doPan: boolean, forcedDuration: number, easeInDuration: number, easeOutDuration: number, smoothFactor: number): void;
+declare function BlzCameraSetupApplyForceDurationSmooth(
+    whichSetup: camerasetup,
+    doPan: boolean,
+    forcedDuration: number,
+    easeInDuration: number,
+    easeOutDuration: number,
+    smoothFactor: number,
+): void;
 declare function BlzEnableTargetIndicator(enable: boolean): void;
 declare function BlzIsTargetIndicatorEnabled(): boolean;
 declare function BlzGetOriginFrame(frameType: originframetype, index: number): framehandle;
@@ -1471,9 +2115,22 @@ declare function BlzConvertColor(a: number, r: number, g: number, b: number): nu
 declare function BlzLoadTOCFile(TOCFile: string): boolean;
 declare function BlzCreateFrame(name: string, owner: framehandle, priority: number, createContext: number): framehandle;
 declare function BlzCreateSimpleFrame(name: string, owner: framehandle, createContext: number): framehandle;
-declare function BlzCreateFrameByType(typeName: string, name: string, owner: framehandle, inherits: string, createContext: number): framehandle;
+declare function BlzCreateFrameByType(
+    typeName: string,
+    name: string,
+    owner: framehandle,
+    inherits: string,
+    createContext: number,
+): framehandle;
 declare function BlzDestroyFrame(frame: framehandle): void;
-declare function BlzFrameSetPoint(frame: framehandle, point: framepointtype, relative: framehandle, relativePoint: framepointtype, x: number, y: number): void;
+declare function BlzFrameSetPoint(
+    frame: framehandle,
+    point: framepointtype,
+    relative: framehandle,
+    relativePoint: framepointtype,
+    x: number,
+    y: number,
+): void;
 declare function BlzFrameSetAbsPoint(frame: framehandle, point: framepointtype, x: number, y: number): void;
 declare function BlzFrameClearAllPoints(frame: framehandle): void;
 declare function BlzFrameSetAllPoints(frame: framehandle, relative: framehandle): void;
@@ -1518,7 +2175,13 @@ declare function BlzTriggerRegisterPlayerSyncEvent(whichTrigger: trigger, whichP
 declare function BlzSendSyncData(prefix: string, data: string): boolean;
 declare function BlzGetTriggerSyncPrefix(): string;
 declare function BlzGetTriggerSyncData(): string;
-declare function BlzTriggerRegisterPlayerKeyEvent(whichTrigger: trigger, whichPlayer: player, key: oskeytype, metaKey: number, keyDown: boolean): event;
+declare function BlzTriggerRegisterPlayerKeyEvent(
+    whichTrigger: trigger,
+    whichPlayer: player,
+    key: oskeytype,
+    metaKey: number,
+    keyDown: boolean,
+): event;
 declare function BlzGetTriggerPlayerKey(): oskeytype;
 declare function BlzGetTriggerPlayerMetaKey(): number;
 declare function BlzGetTriggerPlayerIsKeyDown(): boolean;
@@ -1548,30 +2211,134 @@ declare function BlzGetAbilityBooleanLevelField(whichAbility: ability, whichFiel
 declare function BlzGetAbilityIntegerLevelField(whichAbility: ability, whichField: abilityintegerlevelfield, level: number): number;
 declare function BlzGetAbilityRealLevelField(whichAbility: ability, whichField: abilityreallevelfield, level: number): number;
 declare function BlzGetAbilityStringLevelField(whichAbility: ability, whichField: abilitystringlevelfield, level: number): string;
-declare function BlzGetAbilityBooleanLevelArrayField(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, index: number): boolean;
-declare function BlzGetAbilityIntegerLevelArrayField(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, index: number): number;
-declare function BlzGetAbilityRealLevelArrayField(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, index: number): number;
-declare function BlzGetAbilityStringLevelArrayField(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, index: number): string;
+declare function BlzGetAbilityBooleanLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    index: number,
+): boolean;
+declare function BlzGetAbilityIntegerLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    index: number,
+): number;
+declare function BlzGetAbilityRealLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    index: number,
+): number;
+declare function BlzGetAbilityStringLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    index: number,
+): string;
 declare function BlzSetAbilityBooleanField(whichAbility: ability, whichField: abilitybooleanfield, value: boolean): boolean;
 declare function BlzSetAbilityIntegerField(whichAbility: ability, whichField: abilityintegerfield, value: number): boolean;
 declare function BlzSetAbilityRealField(whichAbility: ability, whichField: abilityrealfield, value: number): boolean;
 declare function BlzSetAbilityStringField(whichAbility: ability, whichField: abilitystringfield, value: string): boolean;
-declare function BlzSetAbilityBooleanLevelField(whichAbility: ability, whichField: abilitybooleanlevelfield, level: number, value: boolean): boolean;
-declare function BlzSetAbilityIntegerLevelField(whichAbility: ability, whichField: abilityintegerlevelfield, level: number, value: number): boolean;
-declare function BlzSetAbilityRealLevelField(whichAbility: ability, whichField: abilityreallevelfield, level: number, value: number): boolean;
-declare function BlzSetAbilityStringLevelField(whichAbility: ability, whichField: abilitystringlevelfield, level: number, value: string): boolean;
-declare function BlzSetAbilityBooleanLevelArrayField(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, index: number, value: boolean): boolean;
-declare function BlzSetAbilityIntegerLevelArrayField(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, index: number, value: number): boolean;
-declare function BlzSetAbilityRealLevelArrayField(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, index: number, value: number): boolean;
-declare function BlzSetAbilityStringLevelArrayField(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, index: number, value: string): boolean;
-declare function BlzAddAbilityBooleanLevelArrayField(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, value: boolean): boolean;
-declare function BlzAddAbilityIntegerLevelArrayField(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, value: number): boolean;
-declare function BlzAddAbilityRealLevelArrayField(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, value: number): boolean;
-declare function BlzAddAbilityStringLevelArrayField(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, value: string): boolean;
-declare function BlzRemoveAbilityBooleanLevelArrayField(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, value: boolean): boolean;
-declare function BlzRemoveAbilityIntegerLevelArrayField(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, value: number): boolean;
-declare function BlzRemoveAbilityRealLevelArrayField(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, value: number): boolean;
-declare function BlzRemoveAbilityStringLevelArrayField(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, value: string): boolean;
+declare function BlzSetAbilityBooleanLevelField(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelfield,
+    level: number,
+    value: boolean,
+): boolean;
+declare function BlzSetAbilityIntegerLevelField(
+    whichAbility: ability,
+    whichField: abilityintegerlevelfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzSetAbilityRealLevelField(
+    whichAbility: ability,
+    whichField: abilityreallevelfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzSetAbilityStringLevelField(
+    whichAbility: ability,
+    whichField: abilitystringlevelfield,
+    level: number,
+    value: string,
+): boolean;
+declare function BlzSetAbilityBooleanLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    index: number,
+    value: boolean,
+): boolean;
+declare function BlzSetAbilityIntegerLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    index: number,
+    value: number,
+): boolean;
+declare function BlzSetAbilityRealLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    index: number,
+    value: number,
+): boolean;
+declare function BlzSetAbilityStringLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    index: number,
+    value: string,
+): boolean;
+declare function BlzAddAbilityBooleanLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    value: boolean,
+): boolean;
+declare function BlzAddAbilityIntegerLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzAddAbilityRealLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzAddAbilityStringLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    value: string,
+): boolean;
+declare function BlzRemoveAbilityBooleanLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    value: boolean,
+): boolean;
+declare function BlzRemoveAbilityIntegerLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzRemoveAbilityRealLevelArrayField(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    value: number,
+): boolean;
+declare function BlzRemoveAbilityStringLevelArrayField(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    value: string,
+): boolean;
 declare function BlzGetItemAbilityByIndex(whichItem: item, index: number): ability;
 declare function BlzGetItemAbility(whichItem: item, abilCode: number): ability;
 declare function BlzItemAddAbility(whichItem: item, abilCode: number): boolean;

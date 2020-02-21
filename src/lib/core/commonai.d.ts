@@ -1,6 +1,5 @@
 /** @noSelfInFile **/
 
-
 declare function DebugS(str: string): void;
 declare function DebugFI(str: string, val: number): void;
 declare function DebugUnitID(str: string, val: number): void;
@@ -659,7 +658,20 @@ declare function PlayGame(): void;
 declare function ConvertNeeds(unitid: number): void;
 declare function Conversions(desire: number, unitid: number): void;
 declare function SetAssaultGroup(qty: number, max: number, unitid: number): void;
-declare function Interleave3(e1: number, m1: number, h1: number, u1: number, e2: number, m2: number, h2: number, u2: number, e3: number, m3: number, h3: number, u3: number): void;
+declare function Interleave3(
+    e1: number,
+    m1: number,
+    h1: number,
+    u1: number,
+    e2: number,
+    m2: number,
+    h2: number,
+    u2: number,
+    e3: number,
+    m3: number,
+    h3: number,
+    u3: number,
+): void;
 declare function SetMeleeGroup(unitid: number): void;
 declare function CampaignDefender(level: number, qty: number, unitid: number): void;
 declare function CampaignDefenderEx(easy: number, med: number, hard: number, unitid: number): void;
@@ -681,8 +693,31 @@ declare function SuicideUntilSignal(seconds: number, p: player): void;
 declare function SuicideOnce(easy: number, med: number, hard: number, unitid: number): void;
 declare function SuicideUnitA(unitid: number): void;
 declare function SuicideUnitB(unitid: number, playerid: number): void;
-declare function SuicideUnits(u1: number, u2: number, u3: number, u4: number, u5: number, u6: number, u7: number, u8: number, u9: number, uA: number): void;
-declare function SuicideUnitsEx(playerid: number, u1: number, u2: number, u3: number, u4: number, u5: number, u6: number, u7: number, u8: number, u9: number, uA: number): void;
+declare function SuicideUnits(
+    u1: number,
+    u2: number,
+    u3: number,
+    u4: number,
+    u5: number,
+    u6: number,
+    u7: number,
+    u8: number,
+    u9: number,
+    uA: number,
+): void;
+declare function SuicideUnitsEx(
+    playerid: number,
+    u1: number,
+    u2: number,
+    u3: number,
+    u4: number,
+    u5: number,
+    u6: number,
+    u7: number,
+    u8: number,
+    u9: number,
+    uA: number,
+): void;
 declare function SuicideOnPlayerEx(easy: number, med: number, hard: number, p: player): void;
 declare function SuicideOnUnitsEx(easy: number, med: number, hard: number, p: player): void;
 declare function SuicideOnPointEx(easy: number, med: number, hard: number, p: player, x: number, y: number): void;

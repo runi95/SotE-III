@@ -1,7 +1,5 @@
 /** @noSelfInFile **/
 
-
-
 declare const bj_PI: number;
 declare const bj_E: number;
 declare const bj_CELLWIDTH: number;
@@ -313,7 +311,7 @@ declare const bj_ELEVATOR_WALL_TYPE_NORTH: number;
 declare const bj_ELEVATOR_WALL_TYPE_SOUTH: number;
 declare const bj_ELEVATOR_WALL_TYPE_WEST: number;
 declare var bj_FORCE_ALL_PLAYERS: force;
-declare var bj_FORCE_PLAYER: force[];
+declare var bj_FORCE_PLAYER: force;
 declare var bj_MELEE_MAX_TWINKED_HEROES: number;
 declare var bj_mapInitialPlayableArea: rect;
 declare var bj_mapInitialCameraBounds: rect;
@@ -322,8 +320,8 @@ declare var bj_forLoopBIndex: number;
 declare var bj_forLoopAIndexEnd: number;
 declare var bj_forLoopBIndexEnd: number;
 declare var bj_slotControlReady: boolean;
-declare var bj_slotControlUsed: boolean[];
-declare var bj_slotControl: mapcontrol[];
+declare var bj_slotControlUsed: boolean;
+declare var bj_slotControl: mapcontrol;
 declare var bj_gameStartedTimer: timer;
 declare var bj_gameStarted: boolean;
 declare var bj_volumeGroupsTimer: timer;
@@ -351,9 +349,9 @@ declare var bj_victoryDialogSound: sound;
 declare var bj_defeatDialogSound: sound;
 declare var bj_stockItemPurchased: trigger;
 declare var bj_stockUpdateTimer: timer;
-declare var bj_stockAllowedPermanent: boolean[];
-declare var bj_stockAllowedCharged: boolean[];
-declare var bj_stockAllowedArtifact: boolean[];
+declare var bj_stockAllowedPermanent: boolean;
+declare var bj_stockAllowedCharged: boolean;
+declare var bj_stockAllowedArtifact: boolean;
 declare var bj_stockPickedItemLevel: number;
 declare var bj_stockPickedItemType: itemtype;
 declare var bj_meleeVisibilityTrained: trigger;
@@ -363,16 +361,16 @@ declare var bj_meleeNearestMineToLoc: location;
 declare var bj_meleeNearestMine: unit;
 declare var bj_meleeNearestMineDist: number;
 declare var bj_meleeGameOver: boolean;
-declare var bj_meleeDefeated: boolean[];
-declare var bj_meleeVictoried: boolean[];
-declare var bj_ghoul: unit[];
-declare var bj_crippledTimer: timer[];
-declare var bj_crippledTimerWindows: timerdialog[];
-declare var bj_playerIsCrippled: boolean[];
-declare var bj_playerIsExposed: boolean[];
+declare var bj_meleeDefeated: boolean;
+declare var bj_meleeVictoried: boolean;
+declare var bj_ghoul: unit;
+declare var bj_crippledTimer: timer;
+declare var bj_crippledTimerWindows: timerdialog;
+declare var bj_playerIsCrippled: boolean;
+declare var bj_playerIsExposed: boolean;
 declare var bj_finishSoonAllExposed: boolean;
 declare var bj_finishSoonTimerDialog: timerdialog;
-declare var bj_meleeTwinkedHeroes: number[];
+declare var bj_meleeTwinkedHeroes: number;
 declare var bj_rescueUnitBehavior: trigger;
 declare var bj_rescueChangeColorUnit: boolean;
 declare var bj_rescueChangeColorBldg: boolean;
@@ -394,8 +392,8 @@ declare var bj_cineFadeContinueTrans: number;
 declare var bj_cineFadeContinueDuration: number;
 declare var bj_cineFadeContinueTex: string;
 declare var bj_queuedExecTotal: number;
-declare var bj_queuedExecTriggers: trigger[];
-declare var bj_queuedExecUseConds: boolean[];
+declare var bj_queuedExecTriggers: trigger;
+declare var bj_queuedExecUseConds: boolean;
 declare var bj_queuedExecTimeoutTimer: timer;
 declare var bj_queuedExecTimeout: trigger;
 declare var bj_destInRegionDiesCount: number;
@@ -440,8 +438,8 @@ declare var bj_delayedSuspendDecayTrig: trigger;
 declare var bj_livingPlayerUnitsTypeId: number;
 declare var bj_lastDyingWidget: widget;
 declare var bj_randDistCount: number;
-declare var bj_randDistID: number[];
-declare var bj_randDistChance: number[];
+declare var bj_randDistID: number;
+declare var bj_randDistChance: number;
 declare var bj_lastCreatedUnit: unit;
 declare var bj_lastCreatedItem: item;
 declare var bj_lastRemovedItem: item;
@@ -471,13 +469,13 @@ declare var bj_lastCreatedTextTag: texttag;
 declare var bj_lastCreatedLightning: lightning;
 declare var bj_lastCreatedImage: image;
 declare var bj_lastCreatedUbersplat: ubersplat;
-declare var filterIssueHauntOrderAtLocBJ: boolexpr | null;
-declare var filterEnumDestructablesInCircleBJ: boolexpr | null;
-declare var filterGetUnitsInRectOfPlayer: boolexpr | null;
-declare var filterGetUnitsOfTypeIdAll: boolexpr | null;
-declare var filterGetUnitsOfPlayerAndTypeId: boolexpr | null;
-declare var filterMeleeTrainedUnitIsHeroBJ: boolexpr | null;
-declare var filterLivingPlayerUnitsOfTypeId: boolexpr | null;
+declare var filterIssueHauntOrderAtLocBJ: boolexpr;
+declare var filterEnumDestructablesInCircleBJ: boolexpr;
+declare var filterGetUnitsInRectOfPlayer: boolexpr;
+declare var filterGetUnitsOfTypeIdAll: boolexpr;
+declare var filterGetUnitsOfPlayerAndTypeId: boolexpr;
+declare var filterMeleeTrainedUnitIsHeroBJ: boolexpr;
+declare var filterLivingPlayerUnitsOfTypeId: boolexpr;
 declare var bj_wantDestroyGroup: boolean;
 declare var bj_lastInstObjFuncSuccessful: boolean;
 
@@ -552,7 +550,13 @@ declare function GetCurrentCameraSetup(): camerasetup;
 declare function CameraSetupApplyForPlayer(doPan: boolean, whichSetup: camerasetup, whichPlayer: player, duration: number): void;
 declare function CameraSetupGetFieldSwap(whichField: camerafield, whichSetup: camerasetup): number;
 declare function SetCameraFieldForPlayer(whichPlayer: player, whichField: camerafield, value: number, duration: number): void;
-declare function SetCameraTargetControllerNoZForPlayer(whichPlayer: player, whichUnit: unit, xoffset: number, yoffset: number, inheritOrientation: boolean): void;
+declare function SetCameraTargetControllerNoZForPlayer(
+    whichPlayer: player,
+    whichUnit: unit,
+    xoffset: number,
+    yoffset: number,
+    inheritOrientation: boolean,
+): void;
 declare function SetCameraPositionForPlayer(whichPlayer: player, x: number, y: number): void;
 declare function SetCameraPositionLocForPlayer(whichPlayer: player, loc: location): void;
 declare function RotateCameraAroundLocBJ(degrees: number, loc: location, whichPlayer: player, duration: number): void;
@@ -575,7 +579,14 @@ declare function GetEntireMapRect(): rect;
 declare function SetCameraBoundsToRect(r: rect): void;
 declare function SetCameraBoundsToRectForPlayerBJ(whichPlayer: player, r: rect): void;
 declare function AdjustCameraBoundsBJ(adjustMethod: number, dxWest: number, dxEast: number, dyNorth: number, dySouth: number): void;
-declare function AdjustCameraBoundsForPlayerBJ(adjustMethod: number, whichPlayer: player, dxWest: number, dxEast: number, dyNorth: number, dySouth: number): void;
+declare function AdjustCameraBoundsForPlayerBJ(
+    adjustMethod: number,
+    whichPlayer: player,
+    dxWest: number,
+    dxEast: number,
+    dyNorth: number,
+    dySouth: number,
+): void;
 declare function SetCameraQuickPositionForPlayer(whichPlayer: player, x: number, y: number): void;
 declare function SetCameraQuickPositionLocForPlayer(whichPlayer: player, loc: location): void;
 declare function SetCameraQuickPositionLoc(loc: location): void;
@@ -607,7 +618,7 @@ declare function TriggerRegisterEnterRegionSimple(trig: trigger, whichRegion: re
 declare function TriggerRegisterLeaveRegionSimple(trig: trigger, whichRegion: region): event;
 declare function TriggerRegisterEnterRectSimple(trig: trigger, r: rect): event;
 declare function TriggerRegisterLeaveRectSimple(trig: trigger, r: rect): event;
-declare function TriggerRegisterDistanceBetweenUnits(trig: trigger, whichUnit: unit, condition: boolexpr | null, range: number): event;
+declare function TriggerRegisterDistanceBetweenUnits(trig: trigger, whichUnit: unit, condition: boolexpr, range: number): event;
 declare function TriggerRegisterUnitInRangeSimple(trig: trigger, range: number, whichUnit: unit): event;
 declare function TriggerRegisterUnitLifeEvent(trig: trigger, whichUnit: unit, opcode: limitop, limitval: number): event;
 declare function TriggerRegisterUnitManaEvent(trig: trigger, whichUnit: unit, opcode: limitop, limitval: number): event;
@@ -621,10 +632,39 @@ declare function TriggerRegisterDestDeathInRegionEvent(trig: trigger, r: rect): 
 declare function AddWeatherEffectSaveLast(where: rect, effectID: number): weathereffect;
 declare function GetLastCreatedWeatherEffect(): weathereffect;
 declare function RemoveWeatherEffectBJ(whichWeatherEffect: weathereffect): void;
-declare function TerrainDeformationCraterBJ(duration: number, permanent: boolean, where: location, radius: number, depth: number): terraindeformation;
-declare function TerrainDeformationRippleBJ(duration: number, limitNeg: boolean, where: location, startRadius: number, endRadius: number, depth: number, wavePeriod: number, waveWidth: number): terraindeformation;
-declare function TerrainDeformationWaveBJ(duration: number, source: location, target: location, radius: number, depth: number, trailDelay: number): terraindeformation;
-declare function TerrainDeformationRandomBJ(duration: number, where: location, radius: number, minDelta: number, maxDelta: number, updateInterval: number): terraindeformation;
+declare function TerrainDeformationCraterBJ(
+    duration: number,
+    permanent: boolean,
+    where: location,
+    radius: number,
+    depth: number,
+): terraindeformation;
+declare function TerrainDeformationRippleBJ(
+    duration: number,
+    limitNeg: boolean,
+    where: location,
+    startRadius: number,
+    endRadius: number,
+    depth: number,
+    wavePeriod: number,
+    waveWidth: number,
+): terraindeformation;
+declare function TerrainDeformationWaveBJ(
+    duration: number,
+    source: location,
+    target: location,
+    radius: number,
+    depth: number,
+    trailDelay: number,
+): terraindeformation;
+declare function TerrainDeformationRandomBJ(
+    duration: number,
+    where: location,
+    radius: number,
+    minDelta: number,
+    maxDelta: number,
+    updateInterval: number,
+): terraindeformation;
 declare function TerrainDeformationStopBJ(deformation: terraindeformation, duration: number): void;
 declare function GetLastCreatedTerrainDeformation(): terraindeformation;
 declare function AddLightningLoc(codeName: string, where1: location, where2: location): lightning;
@@ -646,16 +686,36 @@ declare function IsTerrainPathableBJ(where: location, t: pathingtype): boolean;
 declare function SetTerrainPathableBJ(where: location, t: pathingtype, flag: boolean): void;
 declare function SetWaterBaseColorBJ(red: number, green: number, blue: number, transparency: number): void;
 declare function CreateFogModifierRectSimple(whichPlayer: player, whichFogState: fogstate, r: rect, afterUnits: boolean): fogmodifier;
-declare function CreateFogModifierRadiusLocSimple(whichPlayer: player, whichFogState: fogstate, center: location, radius: number, afterUnits: boolean): fogmodifier;
+declare function CreateFogModifierRadiusLocSimple(
+    whichPlayer: player,
+    whichFogState: fogstate,
+    center: location,
+    radius: number,
+    afterUnits: boolean,
+): fogmodifier;
 declare function CreateFogModifierRectBJ(enabled: boolean, whichPlayer: player, whichFogState: fogstate, r: rect): fogmodifier;
-declare function CreateFogModifierRadiusLocBJ(enabled: boolean, whichPlayer: player, whichFogState: fogstate, center: location, radius: number): fogmodifier;
+declare function CreateFogModifierRadiusLocBJ(
+    enabled: boolean,
+    whichPlayer: player,
+    whichFogState: fogstate,
+    center: location,
+    radius: number,
+): fogmodifier;
 declare function GetLastCreatedFogModifier(): fogmodifier;
 declare function FogEnableOn(): void;
 declare function FogEnableOff(): void;
 declare function FogMaskEnableOn(): void;
 declare function FogMaskEnableOff(): void;
 declare function UseTimeOfDayBJ(flag: boolean): void;
-declare function SetTerrainFogExBJ(style: number, zstart: number, zend: number, density: number, red: number, green: number, blue: number): void;
+declare function SetTerrainFogExBJ(
+    style: number,
+    zstart: number,
+    zend: number,
+    density: number,
+    red: number,
+    green: number,
+    blue: number,
+): void;
 declare function ResetTerrainFogBJ(): void;
 declare function SetDoodadAnimationBJ(animName: string, doodadID: number, radius: number, center: location): void;
 declare function SetDoodadAnimationRectBJ(animName: string, doodadID: number, r: rect): void;
@@ -665,7 +725,16 @@ declare function ShowImageBJ(flag: boolean, whichImage: image): void;
 declare function SetImagePositionBJ(whichImage: image, where: location, zOffset: number): void;
 declare function SetImageColorBJ(whichImage: image, red: number, green: number, blue: number, alpha: number): void;
 declare function GetLastCreatedImage(): image;
-declare function CreateUbersplatBJ(where: location, name: string, red: number, green: number, blue: number, alpha: number, forcePaused: boolean, noBirthTime: boolean): ubersplat;
+declare function CreateUbersplatBJ(
+    where: location,
+    name: string,
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number,
+    forcePaused: boolean,
+    noBirthTime: boolean,
+): ubersplat;
 declare function ShowUbersplatBJ(flag: boolean, whichSplat: ubersplat): void;
 declare function GetLastCreatedUbersplat(): ubersplat;
 declare function PlaySoundBJ(soundHandle: sound): void;
@@ -771,7 +840,7 @@ declare function ChooseRandomNPBuildingBJ(): number;
 declare function ChooseRandomCreepBJ(level: number): number;
 declare function EnumItemsInRectBJ(r: rect, actionFunc: () => void): void;
 declare function RandomItemInRectBJEnum(): void;
-declare function RandomItemInRectBJ(r: rect, filter: boolexpr | null): item;
+declare function RandomItemInRectBJ(r: rect, filter: boolexpr): item;
 declare function RandomItemInRectSimpleBJ(r: rect): item;
 declare function CheckItemStatus(whichItem: item, status: number): boolean;
 declare function CheckItemcodeStatus(itemId: number, status: number): boolean;
@@ -879,10 +948,30 @@ declare function AddUnitToStockBJ(unitId: number, whichUnit: unit, currentStock:
 declare function RemoveItemFromStockBJ(itemId: number, whichUnit: unit): void;
 declare function RemoveUnitFromStockBJ(unitId: number, whichUnit: unit): void;
 declare function SetUnitUseFoodBJ(enable: boolean, whichUnit: unit): void;
-declare function UnitDamagePointLoc(whichUnit: unit, delay: number, radius: number, loc: location, amount: number, whichAttack: attacktype, whichDamage: damagetype): boolean;
-declare function UnitDamageTargetBJ(whichUnit: unit, target: unit, amount: number, whichAttack: attacktype, whichDamage: damagetype): boolean;
+declare function UnitDamagePointLoc(
+    whichUnit: unit,
+    delay: number,
+    radius: number,
+    loc: location,
+    amount: number,
+    whichAttack: attacktype,
+    whichDamage: damagetype,
+): boolean;
+declare function UnitDamageTargetBJ(
+    whichUnit: unit,
+    target: unit,
+    amount: number,
+    whichAttack: attacktype,
+    whichDamage: damagetype,
+): boolean;
 declare function CreateDestructableLoc(objectid: number, loc: location, facing: number, scale: number, variation: number): destructable;
-declare function CreateDeadDestructableLocBJ(objectid: number, loc: location, facing: number, scale: number, variation: number): destructable;
+declare function CreateDeadDestructableLocBJ(
+    objectid: number,
+    loc: location,
+    facing: number,
+    scale: number,
+    variation: number,
+): destructable;
 declare function GetLastCreatedDestructable(): destructable;
 declare function ShowDestructableBJ(flag: boolean, d: destructable): void;
 declare function SetDestructableInvulnerableBJ(d: destructable, flag: boolean): void;
@@ -893,7 +982,7 @@ declare function EnumDestructablesInCircleBJFilter(): boolean;
 declare function IsDestructableDeadBJ(d: destructable): boolean;
 declare function IsDestructableAliveBJ(d: destructable): boolean;
 declare function RandomDestructableInRectBJEnum(): void;
-declare function RandomDestructableInRectBJ(r: rect, filter: boolexpr | null): destructable;
+declare function RandomDestructableInRectBJ(r: rect, filter: boolexpr): destructable;
 declare function RandomDestructableInRectSimpleBJ(r: rect): destructable;
 declare function EnumDestructablesInCircleBJ(radius: number, loc: location, actionFunc: () => void): void;
 declare function SetDestructableLifePercentBJ(d: destructable, percent: number): void;
@@ -929,16 +1018,16 @@ declare function GroupPickRandomUnitEnum(): void;
 declare function GroupPickRandomUnit(whichGroup: group): unit;
 declare function ForcePickRandomPlayerEnum(): void;
 declare function ForcePickRandomPlayer(whichForce: force): player;
-declare function EnumUnitsSelected(whichPlayer: player, enumFilter: boolexpr | null, enumAction: () => void): void;
-declare function GetUnitsInRectMatching(r: rect, filter: boolexpr | null): group;
+declare function EnumUnitsSelected(whichPlayer: player, enumFilter: boolexpr, enumAction: () => void): void;
+declare function GetUnitsInRectMatching(r: rect, filter: boolexpr): group;
 declare function GetUnitsInRectAll(r: rect): group;
 declare function GetUnitsInRectOfPlayerFilter(): boolean;
 declare function GetUnitsInRectOfPlayer(r: rect, whichPlayer: player): group;
-declare function GetUnitsInRangeOfLocMatching(radius: number, whichLocation: location, filter: boolexpr | null): group;
+declare function GetUnitsInRangeOfLocMatching(radius: number, whichLocation: location, filter: boolexpr): group;
 declare function GetUnitsInRangeOfLocAll(radius: number, whichLocation: location): group;
 declare function GetUnitsOfTypeIdAllFilter(): boolean;
 declare function GetUnitsOfTypeIdAll(unitid: number): group;
-declare function GetUnitsOfPlayerMatching(whichPlayer: player, filter: boolexpr | null): group;
+declare function GetUnitsOfPlayerMatching(whichPlayer: player, filter: boolexpr): group;
 declare function GetUnitsOfPlayerAll(whichPlayer: player): group;
 declare function GetUnitsOfPlayerAndTypeIdFilter(): boolean;
 declare function GetUnitsOfPlayerAndTypeId(whichPlayer: player, unitid: number): group;
@@ -948,7 +1037,7 @@ declare function GetPlayersAll(): force;
 declare function GetPlayersByMapControl(whichControl: mapcontrol): force;
 declare function GetPlayersAllies(whichPlayer: player): force;
 declare function GetPlayersEnemies(whichPlayer: player): force;
-declare function GetPlayersMatching(filter: boolexpr | null): force;
+declare function GetPlayersMatching(filter: boolexpr): force;
 declare function CountUnitsInGroupEnum(): void;
 declare function CountUnitsInGroup(g: group): number;
 declare function CountPlayersInForceEnum(): void;
@@ -962,7 +1051,13 @@ declare function SetUnitTimeScalePercent(whichUnit: unit, percentScale: number):
 declare function SetUnitScalePercent(whichUnit: unit, percentScaleX: number, percentScaleY: number, percentScaleZ: number): void;
 declare function SetUnitVertexColorBJ(whichUnit: unit, red: number, green: number, blue: number, transparency: number): void;
 declare function UnitAddIndicatorBJ(whichUnit: unit, red: number, green: number, blue: number, transparency: number): void;
-declare function DestructableAddIndicatorBJ(whichDestructable: destructable, red: number, green: number, blue: number, transparency: number): void;
+declare function DestructableAddIndicatorBJ(
+    whichDestructable: destructable,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): void;
 declare function ItemAddIndicatorBJ(whichItem: item, red: number, green: number, blue: number, transparency: number): void;
 declare function SetUnitFacingToFaceLocTimed(whichUnit: unit, target: location, duration: number): void;
 declare function SetUnitFacingToFaceUnitTimed(whichUnit: unit, target: unit, duration: number): void;
@@ -1047,13 +1142,39 @@ declare function GetLastCreatedTimerDialogBJ(): timerdialog;
 declare function LeaderboardResizeBJ(lb: leaderboard): void;
 declare function LeaderboardSetPlayerItemValueBJ(whichPlayer: player, lb: leaderboard, val: number): void;
 declare function LeaderboardSetPlayerItemLabelBJ(whichPlayer: player, lb: leaderboard, val: string): void;
-declare function LeaderboardSetPlayerItemStyleBJ(whichPlayer: player, lb: leaderboard, showLabel: boolean, showValue: boolean, showIcon: boolean): void;
-declare function LeaderboardSetPlayerItemLabelColorBJ(whichPlayer: player, lb: leaderboard, red: number, green: number, blue: number, transparency: number): void;
-declare function LeaderboardSetPlayerItemValueColorBJ(whichPlayer: player, lb: leaderboard, red: number, green: number, blue: number, transparency: number): void;
+declare function LeaderboardSetPlayerItemStyleBJ(
+    whichPlayer: player,
+    lb: leaderboard,
+    showLabel: boolean,
+    showValue: boolean,
+    showIcon: boolean,
+): void;
+declare function LeaderboardSetPlayerItemLabelColorBJ(
+    whichPlayer: player,
+    lb: leaderboard,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): void;
+declare function LeaderboardSetPlayerItemValueColorBJ(
+    whichPlayer: player,
+    lb: leaderboard,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): void;
 declare function LeaderboardSetLabelColorBJ(lb: leaderboard, red: number, green: number, blue: number, transparency: number): void;
 declare function LeaderboardSetValueColorBJ(lb: leaderboard, red: number, green: number, blue: number, transparency: number): void;
 declare function LeaderboardSetLabelBJ(lb: leaderboard, label: string): void;
-declare function LeaderboardSetStyleBJ(lb: leaderboard, showLabel: boolean, showNames: boolean, showValues: boolean, showIcons: boolean): void;
+declare function LeaderboardSetStyleBJ(
+    lb: leaderboard,
+    showLabel: boolean,
+    showNames: boolean,
+    showValues: boolean,
+    showIcons: boolean,
+): void;
 declare function LeaderboardGetItemCountBJ(lb: leaderboard): number;
 declare function LeaderboardHasPlayerItemBJ(lb: leaderboard, whichPlayer: player): boolean;
 declare function ForceSetLeaderboardBJ(lb: leaderboard, toForce: force): void;
@@ -1078,7 +1199,15 @@ declare function MultiboardSetTitleTextColorBJ(mb: multiboard, red: number, gree
 declare function MultiboardAllowDisplayBJ(flag: boolean): void;
 declare function MultiboardSetItemStyleBJ(mb: multiboard, col: number, row: number, showValue: boolean, showIcon: boolean): void;
 declare function MultiboardSetItemValueBJ(mb: multiboard, col: number, row: number, val: string): void;
-declare function MultiboardSetItemColorBJ(mb: multiboard, col: number, row: number, red: number, green: number, blue: number, transparency: number): void;
+declare function MultiboardSetItemColorBJ(
+    mb: multiboard,
+    col: number,
+    row: number,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): void;
 declare function MultiboardSetItemWidthBJ(mb: multiboard, col: number, row: number, width: number): void;
 declare function MultiboardSetItemIconBJ(mb: multiboard, col: number, row: number, iconFileName: string): void;
 declare function TextTagSize2Height(size: number): number;
@@ -1093,8 +1222,26 @@ declare function SetTextTagPermanentBJ(tt: texttag, flag: boolean): void;
 declare function SetTextTagAgeBJ(tt: texttag, age: number): void;
 declare function SetTextTagLifespanBJ(tt: texttag, lifespan: number): void;
 declare function SetTextTagFadepointBJ(tt: texttag, fadepoint: number): void;
-declare function CreateTextTagLocBJ(s: string, loc: location, zOffset: number, size: number, red: number, green: number, blue: number, transparency: number): texttag;
-declare function CreateTextTagUnitBJ(s: string, whichUnit: unit, zOffset: number, size: number, red: number, green: number, blue: number, transparency: number): texttag;
+declare function CreateTextTagLocBJ(
+    s: string,
+    loc: location,
+    zOffset: number,
+    size: number,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): texttag;
+declare function CreateTextTagUnitBJ(
+    s: string,
+    whichUnit: unit,
+    zOffset: number,
+    size: number,
+    red: number,
+    green: number,
+    blue: number,
+    transparency: number,
+): texttag;
 declare function DestroyTextTagBJ(tt: texttag): void;
 declare function ShowTextTagForceBJ(show: boolean, tt: texttag, whichForce: force): void;
 declare function GetLastCreatedTextTag(): texttag;
@@ -1108,31 +1255,113 @@ declare function PingMinimapForForce(whichForce: force, x: number, y: number, du
 declare function PingMinimapLocForForce(whichForce: force, loc: location, duration: number): void;
 declare function PingMinimapForPlayer(whichPlayer: player, x: number, y: number, duration: number): void;
 declare function PingMinimapLocForPlayer(whichPlayer: player, loc: location, duration: number): void;
-declare function PingMinimapForForceEx(whichForce: force, x: number, y: number, duration: number, style: number, red: number, green: number, blue: number): void;
-declare function PingMinimapLocForForceEx(whichForce: force, loc: location, duration: number, style: number, red: number, green: number, blue: number): void;
+declare function PingMinimapForForceEx(
+    whichForce: force,
+    x: number,
+    y: number,
+    duration: number,
+    style: number,
+    red: number,
+    green: number,
+    blue: number,
+): void;
+declare function PingMinimapLocForForceEx(
+    whichForce: force,
+    loc: location,
+    duration: number,
+    style: number,
+    red: number,
+    green: number,
+    blue: number,
+): void;
 declare function EnableWorldFogBoundaryBJ(enable: boolean, f: force): void;
 declare function EnableOcclusionBJ(enable: boolean, f: force): void;
 declare function CancelCineSceneBJ(): void;
 declare function TryInitCinematicBehaviorBJ(): void;
-declare function SetCinematicSceneBJ(soundHandle: sound, portraitUnitId: number, color: playercolor, speakerTitle: string, text: string, sceneDuration: number, voiceoverDuration: number): void;
+declare function SetCinematicSceneBJ(
+    soundHandle: sound,
+    portraitUnitId: number,
+    color: playercolor,
+    speakerTitle: string,
+    text: string,
+    sceneDuration: number,
+    voiceoverDuration: number,
+): void;
 declare function GetTransmissionDuration(soundHandle: sound, timeType: number, timeVal: number): number;
 declare function WaitTransmissionDuration(soundHandle: sound, timeType: number, timeVal: number): void;
-declare function DoTransmissionBasicsXYBJ(unitId: number, color: playercolor, x: number, y: number, soundHandle: sound, unitName: string, message: string, duration: number): void;
-declare function TransmissionFromUnitWithNameBJ(toForce: force, whichUnit: unit, unitName: string, soundHandle: sound, message: string, timeType: number, timeVal: number, wait: boolean): void;
-declare function TransmissionFromUnitTypeWithNameBJ(toForce: force, fromPlayer: player, unitId: number, unitName: string, loc: location, soundHandle: sound, message: string, timeType: number, timeVal: number, wait: boolean): void;
+declare function DoTransmissionBasicsXYBJ(
+    unitId: number,
+    color: playercolor,
+    x: number,
+    y: number,
+    soundHandle: sound,
+    unitName: string,
+    message: string,
+    duration: number,
+): void;
+declare function TransmissionFromUnitWithNameBJ(
+    toForce: force,
+    whichUnit: unit,
+    unitName: string,
+    soundHandle: sound,
+    message: string,
+    timeType: number,
+    timeVal: number,
+    wait: boolean,
+): void;
+declare function TransmissionFromUnitTypeWithNameBJ(
+    toForce: force,
+    fromPlayer: player,
+    unitId: number,
+    unitName: string,
+    loc: location,
+    soundHandle: sound,
+    message: string,
+    timeType: number,
+    timeVal: number,
+    wait: boolean,
+): void;
 declare function GetLastTransmissionDurationBJ(): number;
 declare function ForceCinematicSubtitlesBJ(flag: boolean): void;
 declare function CinematicModeExBJ(cineMode: boolean, forForce: force, interfaceFadeTime: number): void;
 declare function CinematicModeBJ(cineMode: boolean, forForce: force): void;
 declare function DisplayCineFilterBJ(flag: boolean): void;
-declare function CinematicFadeCommonBJ(red: number, green: number, blue: number, duration: number, tex: string, startTrans: number, endTrans: number): void;
+declare function CinematicFadeCommonBJ(
+    red: number,
+    green: number,
+    blue: number,
+    duration: number,
+    tex: string,
+    startTrans: number,
+    endTrans: number,
+): void;
 declare function FinishCinematicFadeBJ(): void;
 declare function FinishCinematicFadeAfterBJ(duration: number): void;
 declare function ContinueCinematicFadeBJ(): void;
 declare function ContinueCinematicFadeAfterBJ(duration: number, red: number, green: number, blue: number, trans: number, tex: string): void;
 declare function AbortCinematicFadeBJ(): void;
-declare function CinematicFadeBJ(fadetype: number, duration: number, tex: string, red: number, green: number, blue: number, trans: number): void;
-declare function CinematicFilterGenericBJ(duration: number, bmode: blendmode, tex: string, red0: number, green0: number, blue0: number, trans0: number, red1: number, green1: number, blue1: number, trans1: number): void;
+declare function CinematicFadeBJ(
+    fadetype: number,
+    duration: number,
+    tex: string,
+    red: number,
+    green: number,
+    blue: number,
+    trans: number,
+): void;
+declare function CinematicFilterGenericBJ(
+    duration: number,
+    bmode: blendmode,
+    tex: string,
+    red0: number,
+    green0: number,
+    blue0: number,
+    trans0: number,
+    red1: number,
+    green1: number,
+    blue1: number,
+    trans1: number,
+): void;
 declare function RescueUnitBJ(whichUnit: unit, rescuer: player, changeColor: boolean): void;
 declare function TriggerActionUnitRescuedBJ(): void;
 declare function TryInitRescuableTriggersBJ(): void;
@@ -1173,25 +1402,40 @@ declare function SaveUnitHandleBJ(whichUnit: unit, key: number, missionKey: numb
 declare function SaveAbilityHandleBJ(whichAbility: ability, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveTimerHandleBJ(whichTimer: timer, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveTriggerHandleBJ(whichTrigger: trigger, key: number, missionKey: number, table: hashtable): boolean;
-declare function SaveTriggerConditionHandleBJ(whichTriggercondition: triggercondition, key: number, missionKey: number, table: hashtable): boolean;
+declare function SaveTriggerConditionHandleBJ(
+    whichTriggercondition: triggercondition,
+    key: number,
+    missionKey: number,
+    table: hashtable,
+): boolean;
 declare function SaveTriggerActionHandleBJ(whichTriggeraction: triggeraction, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveTriggerEventHandleBJ(whichEvent: event, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveForceHandleBJ(whichForce: force, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveGroupHandleBJ(whichGroup: group, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveLocationHandleBJ(whichLocation: location, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveRectHandleBJ(whichRect: rect, key: number, missionKey: number, table: hashtable): boolean;
-declare function SaveBooleanExprHandleBJ(whichBoolexpr: boolexpr | null, key: number, missionKey: number, table: hashtable): boolean;
+declare function SaveBooleanExprHandleBJ(whichBoolexpr: boolexpr, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveSoundHandleBJ(whichSound: sound, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveEffectHandleBJ(whichEffect: effect, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveUnitPoolHandleBJ(whichUnitpool: unitpool, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveItemPoolHandleBJ(whichItempool: itempool, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveQuestHandleBJ(whichQuest: quest, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveQuestItemHandleBJ(whichQuestitem: questitem, key: number, missionKey: number, table: hashtable): boolean;
-declare function SaveDefeatConditionHandleBJ(whichDefeatcondition: defeatcondition, key: number, missionKey: number, table: hashtable): boolean;
+declare function SaveDefeatConditionHandleBJ(
+    whichDefeatcondition: defeatcondition,
+    key: number,
+    missionKey: number,
+    table: hashtable,
+): boolean;
 declare function SaveTimerDialogHandleBJ(whichTimerdialog: timerdialog, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveLeaderboardHandleBJ(whichLeaderboard: leaderboard, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveMultiboardHandleBJ(whichMultiboard: multiboard, key: number, missionKey: number, table: hashtable): boolean;
-declare function SaveMultiboardItemHandleBJ(whichMultiboarditem: multiboarditem, key: number, missionKey: number, table: hashtable): boolean;
+declare function SaveMultiboardItemHandleBJ(
+    whichMultiboarditem: multiboarditem,
+    key: number,
+    missionKey: number,
+    table: hashtable,
+): boolean;
 declare function SaveTrackableHandleBJ(whichTrackable: trackable, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveDialogHandleBJ(whichDialog: dialog, key: number, missionKey: number, table: hashtable): boolean;
 declare function SaveButtonHandleBJ(whichButton: button, key: number, missionKey: number, table: hashtable): boolean;
@@ -1250,8 +1494,22 @@ declare function LoadRegionHandleBJ(key: number, missionKey: number, table: hash
 declare function LoadFogStateHandleBJ(key: number, missionKey: number, table: hashtable): fogstate;
 declare function LoadFogModifierHandleBJ(key: number, missionKey: number, table: hashtable): fogmodifier;
 declare function LoadHashtableHandleBJ(key: number, missionKey: number, table: hashtable): hashtable;
-declare function RestoreUnitLocFacingAngleBJ(key: string, missionKey: string, cache: gamecache, forWhichPlayer: player, loc: location, facing: number): unit;
-declare function RestoreUnitLocFacingPointBJ(key: string, missionKey: string, cache: gamecache, forWhichPlayer: player, loc: location, lookAt: location): unit;
+declare function RestoreUnitLocFacingAngleBJ(
+    key: string,
+    missionKey: string,
+    cache: gamecache,
+    forWhichPlayer: player,
+    loc: location,
+    facing: number,
+): unit;
+declare function RestoreUnitLocFacingPointBJ(
+    key: string,
+    missionKey: string,
+    cache: gamecache,
+    forWhichPlayer: player,
+    loc: location,
+    lookAt: location,
+): unit;
 declare function GetLastRestoredUnitBJ(): unit;
 declare function FlushGameCacheBJ(cache: gamecache): void;
 declare function FlushStoredMissionBJ(missionKey: string, cache: gamecache): void;
@@ -1331,11 +1589,41 @@ declare function MeleeRandomHeroLoc(p: player, id1: number, id2: number, id3: nu
 declare function MeleeGetProjectedLoc(src: location, targ: location, distance: number, deltaAngle: number): location;
 declare function MeleeGetNearestValueWithin(val: number, minVal: number, maxVal: number): number;
 declare function MeleeGetLocWithinRect(src: location, r: rect): location;
-declare function MeleeStartingUnitsHuman(whichPlayer: player, startLoc: location, doHeroes: boolean, doCamera: boolean, doPreload: boolean): void;
-declare function MeleeStartingUnitsOrc(whichPlayer: player, startLoc: location, doHeroes: boolean, doCamera: boolean, doPreload: boolean): void;
-declare function MeleeStartingUnitsUndead(whichPlayer: player, startLoc: location, doHeroes: boolean, doCamera: boolean, doPreload: boolean): void;
-declare function MeleeStartingUnitsNightElf(whichPlayer: player, startLoc: location, doHeroes: boolean, doCamera: boolean, doPreload: boolean): void;
-declare function MeleeStartingUnitsUnknownRace(whichPlayer: player, startLoc: location, doHeroes: boolean, doCamera: boolean, doPreload: boolean): void;
+declare function MeleeStartingUnitsHuman(
+    whichPlayer: player,
+    startLoc: location,
+    doHeroes: boolean,
+    doCamera: boolean,
+    doPreload: boolean,
+): void;
+declare function MeleeStartingUnitsOrc(
+    whichPlayer: player,
+    startLoc: location,
+    doHeroes: boolean,
+    doCamera: boolean,
+    doPreload: boolean,
+): void;
+declare function MeleeStartingUnitsUndead(
+    whichPlayer: player,
+    startLoc: location,
+    doHeroes: boolean,
+    doCamera: boolean,
+    doPreload: boolean,
+): void;
+declare function MeleeStartingUnitsNightElf(
+    whichPlayer: player,
+    startLoc: location,
+    doHeroes: boolean,
+    doCamera: boolean,
+    doPreload: boolean,
+): void;
+declare function MeleeStartingUnitsUnknownRace(
+    whichPlayer: player,
+    startLoc: location,
+    doHeroes: boolean,
+    doCamera: boolean,
+    doPreload: boolean,
+): void;
 declare function MeleeStartingUnits(): void;
 declare function MeleeStartingUnitsForPlayer(whichRace: race, whichPlayer: player, loc: location, doHeroes: boolean): void;
 declare function PickMeleeAI(num: player, s1: string, s2: string, s3: string): void;
@@ -1410,22 +1698,106 @@ declare function BlzSetAbilityBooleanFieldBJ(whichAbility: ability, whichField: 
 declare function BlzSetAbilityIntegerFieldBJ(whichAbility: ability, whichField: abilityintegerfield, value: number): void;
 declare function BlzSetAbilityRealFieldBJ(whichAbility: ability, whichField: abilityrealfield, value: number): void;
 declare function BlzSetAbilityStringFieldBJ(whichAbility: ability, whichField: abilitystringfield, value: string): void;
-declare function BlzSetAbilityBooleanLevelFieldBJ(whichAbility: ability, whichField: abilitybooleanlevelfield, level: number, value: boolean): void;
-declare function BlzSetAbilityIntegerLevelFieldBJ(whichAbility: ability, whichField: abilityintegerlevelfield, level: number, value: number): void;
-declare function BlzSetAbilityRealLevelFieldBJ(whichAbility: ability, whichField: abilityreallevelfield, level: number, value: number): void;
-declare function BlzSetAbilityStringLevelFieldBJ(whichAbility: ability, whichField: abilitystringlevelfield, level: number, value: string): void;
-declare function BlzSetAbilityBooleanLevelArrayFieldBJ(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, index: number, value: boolean): void;
-declare function BlzSetAbilityIntegerLevelArrayFieldBJ(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, index: number, value: number): void;
-declare function BlzSetAbilityRealLevelArrayFieldBJ(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, index: number, value: number): void;
-declare function BlzSetAbilityStringLevelArrayFieldBJ(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, index: number, value: string): void;
-declare function BlzAddAbilityBooleanLevelArrayFieldBJ(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, value: boolean): void;
-declare function BlzAddAbilityIntegerLevelArrayFieldBJ(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, value: number): void;
-declare function BlzAddAbilityRealLevelArrayFieldBJ(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, value: number): void;
-declare function BlzAddAbilityStringLevelArrayFieldBJ(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, value: string): void;
-declare function BlzRemoveAbilityBooleanLevelArrayFieldBJ(whichAbility: ability, whichField: abilitybooleanlevelarrayfield, level: number, value: boolean): void;
-declare function BlzRemoveAbilityIntegerLevelArrayFieldBJ(whichAbility: ability, whichField: abilityintegerlevelarrayfield, level: number, value: number): void;
-declare function BlzRemoveAbilityRealLevelArrayFieldBJ(whichAbility: ability, whichField: abilityreallevelarrayfield, level: number, value: number): void;
-declare function BlzRemoveAbilityStringLevelArrayFieldBJ(whichAbility: ability, whichField: abilitystringlevelarrayfield, level: number, value: string): void;
+declare function BlzSetAbilityBooleanLevelFieldBJ(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelfield,
+    level: number,
+    value: boolean,
+): void;
+declare function BlzSetAbilityIntegerLevelFieldBJ(
+    whichAbility: ability,
+    whichField: abilityintegerlevelfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzSetAbilityRealLevelFieldBJ(
+    whichAbility: ability,
+    whichField: abilityreallevelfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzSetAbilityStringLevelFieldBJ(
+    whichAbility: ability,
+    whichField: abilitystringlevelfield,
+    level: number,
+    value: string,
+): void;
+declare function BlzSetAbilityBooleanLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    index: number,
+    value: boolean,
+): void;
+declare function BlzSetAbilityIntegerLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    index: number,
+    value: number,
+): void;
+declare function BlzSetAbilityRealLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    index: number,
+    value: number,
+): void;
+declare function BlzSetAbilityStringLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    index: number,
+    value: string,
+): void;
+declare function BlzAddAbilityBooleanLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    value: boolean,
+): void;
+declare function BlzAddAbilityIntegerLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzAddAbilityRealLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzAddAbilityStringLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    value: string,
+): void;
+declare function BlzRemoveAbilityBooleanLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitybooleanlevelarrayfield,
+    level: number,
+    value: boolean,
+): void;
+declare function BlzRemoveAbilityIntegerLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityintegerlevelarrayfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzRemoveAbilityRealLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilityreallevelarrayfield,
+    level: number,
+    value: number,
+): void;
+declare function BlzRemoveAbilityStringLevelArrayFieldBJ(
+    whichAbility: ability,
+    whichField: abilitystringlevelarrayfield,
+    level: number,
+    value: string,
+): void;
 declare function BlzItemAddAbilityBJ(whichItem: item, abilCode: number): void;
 declare function BlzItemRemoveAbilityBJ(whichItem: item, abilCode: number): void;
 declare function BlzSetItemBooleanFieldBJ(whichItem: item, whichField: itembooleanfield, value: boolean): void;
