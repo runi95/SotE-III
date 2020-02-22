@@ -1,8 +1,8 @@
-import { ItemPickup } from '../ItemPickup';
 import { GameGlobals } from '../../Game/GameGlobals';
+import { ItemDrop } from '../ItemDrop';
 
-export class EnchantedShieldPickup extends ItemPickup {
-    protected readonly itemTypeId: number = FourCC('I027');
+export class OrbOfFireDrop extends ItemDrop {
+    protected readonly itemTypeId: number = FourCC('I03G');
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -13,6 +13,6 @@ export class EnchantedShieldPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 8;
+        this.gameGlobals.PlayerSplash[playerId] -= 0.1;
     }
 }

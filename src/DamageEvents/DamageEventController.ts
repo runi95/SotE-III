@@ -24,6 +24,7 @@ import { Thorns } from './Thorns';
 import { Reflect } from './Reflect';
 import { Execute } from './Execute';
 import { CriticalCast } from './CriticalCast';
+import { Splash } from './Splash';
 
 export class DamageEventController {
     constructor(
@@ -58,6 +59,7 @@ export class DamageEventController {
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
         damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
         damageEngine.addFinalDamageModificationEvent(new Execute(gameGlobals));
+        damageEngine.addAfterDamageEvent(new Splash(gameGlobals));
 
         // After damage events
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));

@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { SharpSteelAxe } from './SharpSteelAxe';
 import { ItemLabel } from '../ItemLabel';
-import { IronSword } from '../BasicItems/IronSword';
+import { Scepter } from '../BasicItems/Scepter';
 
 const itemId: number = FourCC('I018');
 const name: string = 'Sword of Freyr';
@@ -17,7 +17,7 @@ const description: string = `A sword that somehow dances in front of your very e
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
 export class SwordOfFreyr extends ItemRecipe {
-    constructor(sharpSteelAxe: SharpSteelAxe, ironSword: IronSword) {
-        super(itemId, name, labels, goldCost, iconPath, description, [sharpSteelAxe, ironSword]);
+    constructor(sharpSteelAxe: SharpSteelAxe, scepter: Scepter) {
+        super(itemId, name, labels, goldCost, iconPath, description, [sharpSteelAxe, scepter]);
     }
 }

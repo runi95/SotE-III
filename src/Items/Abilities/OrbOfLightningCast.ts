@@ -1,6 +1,6 @@
 import { Spell } from '../../Spells/Spell';
 
-export class SlowChainsCast extends Spell {
+export class OrbOfLightningCast extends Spell {
     protected readonly abilityId: number = FourCC('A062');
     private readonly dummyUnitTypeId: number = FourCC('n001');
     private readonly dummyAbilityId: number = FourCC('A064');

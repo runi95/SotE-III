@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { AssassinsBlade } from './AssassinsBlade';
+import { AssassinsBlade } from '../BasicItems/AssassinsBlade';
 import { CloakOfShadowWalk } from './CloakOfShadowWalk';
 import { ItemLabel } from '../ItemLabel';
 

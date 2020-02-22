@@ -1,8 +1,8 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { ImprovedStrengthOfTheWild } from './ImprovedStrengthOfTheWild';
-import { Ancile } from './Ancile';
 import { GreenSoulstone } from '../BasicItems/GreenSoulstone';
+import { SteelShield } from './SteelShield';
 
 const itemId: number = FourCC('I038');
 const name: string = 'Advanced Strength of the Wild';
@@ -18,7 +18,7 @@ const description: string = `The strength of the wild can be truly impressive.
 |cFF808080Strength increases your max health and health regen.|r`;
 
 export class AdvancedStrengthOfTheWild extends ItemRecipe {
-    constructor(improvedStrengthOfTheWild: ImprovedStrengthOfTheWild, ancile: Ancile, greenSoulstone: GreenSoulstone) {
-        super(itemId, name, labels, goldCost, iconPath, description, [improvedStrengthOfTheWild, ancile, greenSoulstone]);
+    constructor(improvedStrengthOfTheWild: ImprovedStrengthOfTheWild, steelShield: SteelShield, greenSoulstone: GreenSoulstone) {
+        super(itemId, name, labels, goldCost, iconPath, description, [improvedStrengthOfTheWild, steelShield, greenSoulstone]);
     }
 }

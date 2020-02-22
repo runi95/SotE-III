@@ -1,12 +1,12 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { IronSword } from '../BasicItems/IronSword';
 import { LoadedRifle } from './LoadedRifle';
 import { ItemLabel } from '../ItemLabel';
+import { OrbOfFire } from '../BasicItems/OrbOfFire';
 
 const itemId: number = FourCC('I00X');
 const name: string = 'Loaded Cannon';
-const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 1400;
+const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.SPLASH];
+const goldCost: number = 1600;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpTwo.blp';
 const description: string = `Make your enemies tremble!
 
@@ -16,7 +16,7 @@ const description: string = `Make your enemies tremble!
 |cFF808080Agility increases your attack and movement speed.|r`;
 
 export class LoadedCannon extends ItemRecipe {
-    constructor(loadedRifle: LoadedRifle, ironSword: IronSword) {
-        super(itemId, name, labels, goldCost, iconPath, description, [loadedRifle, ironSword]);
+    constructor(loadedRifle: LoadedRifle, orbOfFire: OrbOfFire) {
+        super(itemId, name, labels, goldCost, iconPath, description, [loadedRifle, orbOfFire]);
     }
 }

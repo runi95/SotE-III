@@ -1,6 +1,5 @@
-import { ItemRecipe } from '../ItemRecipe';
-import { IronSword } from '../BasicItems/IronSword';
 import { ItemLabel } from '../ItemLabel';
+import { Item } from '../Item';
 
 const itemId: number = FourCC('I02M');
 const name: string = `Assassin's Blade`;
@@ -13,8 +12,8 @@ const description: string = `The assassin's preferred weapon of choice.
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
 
-export class AssassinsBlade extends ItemRecipe {
-    constructor(ironSword: IronSword) {
-        super(itemId, name, labels, goldCost, iconPath, description, [ironSword]);
+export class AssassinsBlade extends Item {
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description);
     }
 }

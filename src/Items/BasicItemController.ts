@@ -18,7 +18,6 @@ import { FlareGun } from './BasicItems/FlareGun';
 import { GoblinBattery } from './BasicItems/GoblinBattery';
 import { GreenSoulstone } from './BasicItems/GreenSoulstone';
 import { IronSword } from './BasicItems/IronSword';
-import { LoadedRifle } from './Recipes/LoadedRifle';
 import { OrbOfMagic } from './BasicItems/OrbOfMagic';
 import { PurpleSoulstone } from './BasicItems/PurpleSoulstone';
 import { Scepter } from './BasicItems/Scepter';
@@ -30,7 +29,7 @@ import { VampireClaws } from './BasicItems/VampireClaws';
 import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 import { JuggernautArmor } from './BasicItems/JuggernautArmor';
 import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
-import { SlowChains } from './BasicItems/SlowChains';
+import { OrbOfLightning } from './BasicItems/OrbOfLightning';
 import { IronwoodBranch } from './BasicItems/IronwoodBranch';
 import { AmuletOfSpellReflection } from './BasicItems/AmuletOfSpellReflection';
 import { AssassinsMap } from './BasicItems/AssassinsMap';
@@ -38,6 +37,8 @@ import { LifeStone } from './BasicItems/LifeStone';
 import { SteelSpear } from './BasicItems/SteelSpear';
 import { PipeOfInsight } from './BasicItems/PipeOfInsight';
 import { FairyWand } from './BasicItems/FairyWand';
+import { OrbOfFire } from './BasicItems/OrbOfFire';
+import { AssassinsBlade } from './BasicItems/AssassinsBlade';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -72,7 +73,7 @@ itemMap.set('maskOfDeath', new MaskOfDeath());
 itemMap.set('spiritTalisman', new MaskOfDeath());
 itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
-itemMap.set('slowChains', new SlowChains());
+itemMap.set('orbOfLightning', new OrbOfLightning());
 itemMap.set('ironwoodBranch', new IronwoodBranch());
 itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
 itemMap.set('assassinsMap', new AssassinsMap());
@@ -80,6 +81,8 @@ itemMap.set('lifeStone', new LifeStone());
 itemMap.set('steelSpear', new SteelSpear());
 itemMap.set('pipeOfInsight', new PipeOfInsight());
 itemMap.set('fairyWand', new FairyWand());
+itemMap.set('orbOfFire', new OrbOfFire());
+itemMap.set('assassinsBlade', new AssassinsBlade());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -120,4 +123,7 @@ export const basicItems: Item[] = [
     itemMap.get('steelSpear') as Item,
     itemMap.get('pipeOfInsight') as Item,
     itemMap.get('fairyWand') as Item,
+    itemMap.get('orbOfFire') as Item,
+    itemMap.get('orbOfLightning') as Item,
+    itemMap.get('assassinsBlade') as Item,
 ];

@@ -1,8 +1,8 @@
-import { ItemDrop } from '../ItemDrop';
+import { ItemPickup } from '../ItemPickup';
 import { GameGlobals } from '../../Game/GameGlobals';
 
-export class AncileDrop extends ItemDrop {
-    protected readonly itemTypeId: number = FourCC('I016');
+export class OrbOfFirePickup extends ItemPickup {
+    protected readonly itemTypeId: number = FourCC('I03G');
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -13,6 +13,6 @@ export class AncileDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 8;
+        this.gameGlobals.PlayerSplash[playerId] += 0.1;
     }
 }

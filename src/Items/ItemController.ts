@@ -3,7 +3,6 @@ import { ExecutionerAxe } from './Abilities/ExecutionerAxe';
 import { ExecutionerAxeResetCharges } from './Abilities/ExecutionerAxeResetCharges';
 import { IronShieldDrop } from './Abilities/IronShieldDrop';
 import { IronShieldPickup } from './Abilities/IronShieldPickup';
-import { LoadedCannonUse } from './Abilities/LoadedCannonUse';
 import { MoonArmorDrop } from './Abilities/MoonArmorDrop';
 import { ImprovedMoonArmorDrop } from './Abilities/ImprovedMoonArmorDrop';
 import { ImrpovedMoonArmorPickup } from './Abilities/ImprovedMoonArmorPickup';
@@ -14,8 +13,6 @@ import { TheAegisPickup } from './Abilities/TheAegisPickup';
 import { SteelShieldPickup } from './Abilities/SteelShieldPickup';
 import { GameGlobals } from '../Game/GameGlobals';
 import { TheAegisResetCharges } from './Abilities/TheAegisResetCharges';
-import { AncileDrop } from './Abilities/AncileDrop';
-import { AncilePickup } from './Abilities/AncilePickup';
 import { CaduceusUse } from './Abilities/CaduceusUse';
 import { ScrollOfTownPortalUse } from './Abilities/ScrollOfTownPortalUse';
 import { TimerUtils } from '../Utility/TimerUtils';
@@ -33,8 +30,6 @@ import { GoblinBatteryResetCharges } from './Abilities/GoblinBatteryResetCharges
 import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
-import { EnchantedShieldDrop } from './Abilities/EnchantedShieldDrop';
-import { EnchantedShieldPickup } from './Abilities/EnchantedShieldPickup';
 import { BalancedShieldDrop } from './Abilities/BalancedShieldDrop';
 import { BalancedShieldPickup } from './Abilities/BalancedShieldPickup';
 import { ImprovedBalancedShieldPickup } from './Abilities/ImprovedBalancedShieldPickup';
@@ -60,7 +55,7 @@ import { MaskOfDeathDrop } from './Abilities/MaskOfDeathDrop';
 import { MaskOfDeathPickup } from './Abilities/MaskOfDeathPickup';
 import { FastVampireClawsPickup } from './Abilities/FastVampireClawsPickup';
 import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
-import { SlowChainsCast } from './Abilities/SlowChainsCast';
+import { OrbOfLightningCast } from './Abilities/OrbOfLightningCast';
 import { LightningBoltDrop } from './Abilities/LightningBoltDrop';
 import { LightningBoltPickup } from './Abilities/LightningBoltPickup';
 import { AdvancedStrengthOfTheWildDrop } from './Abilities/AdvancedStrengthOfTheWildDrop';
@@ -94,7 +89,6 @@ export class ItemController {
             new ImrpovedMoonArmorPickup(gameGlobals),
             new IronShieldDrop(gameGlobals),
             new IronShieldPickup(gameGlobals),
-            new LoadedCannonUse(),
             new MoonArmorDrop(gameGlobals),
             new MoonArmorPickup(gameGlobals),
             new SteelShieldDrop(gameGlobals),
@@ -102,8 +96,6 @@ export class ItemController {
             new TheAegisResetCharges(),
             new TheAegisDrop(gameGlobals),
             new TheAegisPickup(gameGlobals),
-            new AncileDrop(gameGlobals),
-            new AncilePickup(gameGlobals),
             new CaduceusUse(arcaneVault),
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
             new ArmoredBootsDrop(gameGlobals),
@@ -119,8 +111,6 @@ export class ItemController {
             new GoblinBatteryResetCharges(),
             new GoblinBatteryUse(randomNumberGenerator),
             new LightningBoltCast(timerUtils, randomNumberGenerator),
-            new EnchantedShieldDrop(gameGlobals),
-            new EnchantedShieldPickup(gameGlobals),
             new BalancedShieldDrop(gameGlobals),
             new BalancedShieldPickup(gameGlobals),
             new ImprovedBalancedShieldDrop(gameGlobals),
@@ -146,7 +136,7 @@ export class ItemController {
             new MaskOfDeathPickup(gameGlobals),
             new FastVampireClawsPickup(gameGlobals),
             new FastVampireClawsDrop(gameGlobals),
-            new SlowChainsCast(),
+            new OrbOfLightningCast(),
             new LightningBoltDrop(gameGlobals),
             new LightningBoltPickup(gameGlobals),
             new AdvancedStrengthOfTheWildDrop(gameGlobals),

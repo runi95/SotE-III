@@ -1,7 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { CreatureClaws } from './CreatureClaws';
 import { ItemLabel } from '../ItemLabel';
-import { Claws } from '../BasicItems/Claws';
 
 const itemId: number = FourCC('I025');
 const name: string = 'Improved Creature Claws';
@@ -15,7 +14,7 @@ const description: string = `These claws seem to cut through things better than 
 |cFF808080Agility increases your attack and movement speed.|r`;
 
 export class ImprovedCreatureClaws extends ItemRecipe {
-    constructor(creatureClaws: CreatureClaws, claws: Claws) {
-        super(itemId, name, labels, goldCost, iconPath, description, [creatureClaws, claws]);
+    constructor(creatureClaws: CreatureClaws) {
+        super(itemId, name, labels, goldCost, iconPath, description, [creatureClaws]);
     }
 }
