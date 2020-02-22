@@ -21,7 +21,29 @@ export class PlayerRespawn {
     }
 
     private action(): void {
-        const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+        const trig: unit = GetTriggerUnit();
+        const playerId: number = GetPlayerId(GetOwningPlayer(trig));
+        const killingPlayerId: number = GetPlayerId(GetOwningPlayer(GetKillingUnit()));
+        if (killingPlayerId >= 0 && killingPlayerId < bj_MAX_PLAYERS && IsPlayerEnemy(Player(playerId), Player(killingPlayerId))) {
+            const dyingHeroLevel: number = GetHeroLevel(trig);
+            // Min gold reward (level 1): 190
+            // Max gold reward (level 30): 2400
+            const goldReward: number = Math.floor((4000 * (dyingHeroLevel * 0.05)) / (1 + 0.05 * dyingHeroLevel));
+            SetPlayerState(
+                Player(killingPlayerId),
+                PLAYER_STATE_RESOURCE_GOLD,
+                GetPlayerState(Player(killingPlayerId), PLAYER_STATE_RESOURCE_GOLD) + goldReward,
+            );
+
+            const txt: texttag = CreateTextTag();
+            SetTextTagText(txt, `${goldReward.toString()} gold`, 0.02);
+            SetTextTagPos(txt, GetUnitX(trig), GetUnitY(trig), BlzGetUnitZ(trig));
+            SetTextTagColor(txt, 255.0, 255.0, 0.0, 255.0);
+            SetTextTagPermanent(txt, false);
+            SetTextTagLifespan(txt, 2.0);
+            SetTextTagVelocityBJ(txt, 64, 90);
+        }
+
         DisplayTextToForce(
             GetPlayersAll(),
             // tslint:disable-next-line:max-line-length
@@ -36,15 +58,15 @@ export class PlayerRespawn {
                 2 + playerId,
                 I2S(this.gameGlobals.PlayerLives[playerId]),
             );
-            TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(GetTriggerUnit())), 10.0));
+            TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(trig)), 10.0));
             if (!this.gameGlobals.IsArenaBattleInProgress) {
                 ReviveHero(
-                    GetTriggerUnit(),
+                    trig,
                     GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
                     GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
                     true,
                 );
-                SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+                SetUnitManaPercentBJ(trig, 100);
             }
         } else {
             this.playerVictoryUtils.defeatPlayer(playerId, 'has been defeated!');
