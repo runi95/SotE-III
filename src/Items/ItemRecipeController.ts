@@ -253,4 +253,5 @@ export default [
     itemMap.get('improvedStrengthOfTheWild'),
     itemMap.get('advancedStrengthOfTheWild'),
     itemMap.get('advancedCreatureClaws'),
+    itemMap.get('cloakOfShadowWalk'),
 ] as ItemRecipe[];
