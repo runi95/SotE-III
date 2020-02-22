@@ -23,6 +23,7 @@ import { AssassinsBladeEvent } from './AssassinsBladeEvent';
 import { Thorns } from './Thorns';
 import { Reflect } from './Reflect';
 import { Execute } from './Execute';
+import { CriticalCast } from './CriticalCast';
 
 export class DamageEventController {
     constructor(
@@ -51,6 +52,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Reflect(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new CriticalCast(gameGlobals, randomNumberGenerator));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

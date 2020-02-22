@@ -37,6 +37,7 @@ import { AssassinsMap } from './BasicItems/AssassinsMap';
 import { LifeStone } from './BasicItems/LifeStone';
 import { SteelSpear } from './BasicItems/SteelSpear';
 import { PipeOfInsight } from './BasicItems/PipeOfInsight';
+import { FairyWand } from './BasicItems/FairyWand';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -78,6 +79,7 @@ itemMap.set('assassinsMap', new AssassinsMap());
 itemMap.set('lifeStone', new LifeStone());
 itemMap.set('steelSpear', new SteelSpear());
 itemMap.set('pipeOfInsight', new PipeOfInsight());
+itemMap.set('fairyWand', new FairyWand());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -117,4 +119,5 @@ export const basicItems: Item[] = [
     itemMap.get('lifeStone') as Item,
     itemMap.get('steelSpear') as Item,
     itemMap.get('pipeOfInsight') as Item,
+    itemMap.get('fairyWand') as Item,
 ];

@@ -16,4 +16,5 @@ export enum ItemLabel {
     RESTORATION,
     PIERCING,
     PERSEVERANCE,
+    CRITICAL_CAST,
 }
