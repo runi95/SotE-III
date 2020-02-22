@@ -32,7 +32,7 @@ export class PhysicalBlockEvent implements DamageEvent {
             // Min creep block (level 1): 0
             // Max creep block (level 100): 169
             const creepLevel: number = GetUnitLevel(globals.DamageEventTarget as unit);
-            block = Math.pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
+            block = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
             block = this.gameGlobals.PlayerPhysicalBlock[playerId];
         }

@@ -32,7 +32,7 @@ export class SpellBlockEvent implements DamageEvent {
             // Min creep resistance (level 1): 0
             // Max creep resistance (level 100): 169
             const creepLevel: number = GetUnitLevel(globals.DamageEventTarget as unit);
-            resistance = Math.pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
+            resistance = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
             resistance = this.gameGlobals.PlayerSpellBlock[playerId];
         }
