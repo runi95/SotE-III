@@ -80,6 +80,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.PlayerPerseverance[i] = 0;
         gameGlobals.PlayerPhysicalBlock[i] = 0;
         gameGlobals.PlayerSpellBlock[i] = 0;
+        SetPlayerAbilityAvailable(Player(i), FourCC('A06L'), false);
         FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, heroSelectionArea, false, false));
         if (gameGlobals.PlayerSpawnRegion[i] !== undefined) {
             FogModifierStart(CreateFogModifierRect(Player(i), FOG_OF_WAR_VISIBLE, gameGlobals.PlayerSpawnRegion[i], true, false));
