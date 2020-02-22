@@ -79,6 +79,8 @@ import { LifeStoneDrop } from './Abilities/LifeStoneDrop';
 import { LifeStonePickup } from './Abilities/LifeStonePickup';
 import { SteelSpearDrop } from './Abilities/SteelSpearDrop';
 import { SteelSpearPickup } from './Abilities/SteelSpearPickup';
+import { PipeOfInsightDrop } from './Abilities/PipeOfInsightDrop';
+import { PipeOfInsightPickup } from './Abilities/PipeOfInsightPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -163,6 +165,8 @@ export class ItemController {
             new LifeStonePickup(gameGlobals),
             new SteelSpearDrop(gameGlobals),
             new SteelSpearPickup(gameGlobals),
+            new PipeOfInsightDrop(gameGlobals),
+            new PipeOfInsightPickup(gameGlobals),
         ];
     }
 }
