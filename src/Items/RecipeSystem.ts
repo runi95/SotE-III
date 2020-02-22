@@ -558,7 +558,8 @@ export class RecipeSystem {
             BlzFrameSetTexture(this.itemRecipeResultIconFrame, item.iconPath, 0, true);
         } else {
             for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
-                BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], false);
+                BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreyedItem.blp', 0, true);
+                BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], true);
                 BlzFrameSetTexture(this.itemRecipeFrames[i], 'war3mapImported\\BTNNoItem.blp', 0, true);
             }
 
