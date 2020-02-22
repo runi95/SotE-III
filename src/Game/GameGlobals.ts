@@ -27,6 +27,7 @@ export class GameGlobals {
     public PlayerReflect: number[] = [];
     public PlayerExecute: number[] = [];
     public PlayerPiercing: number[] = [];
+    public PlayerPerseverance: number[] = [];
     public PlayerPhysicalBlock: number[] = [];
     public PlayerSpellBlock: number[] = [];
     public PlayerHero: unit[] = [];

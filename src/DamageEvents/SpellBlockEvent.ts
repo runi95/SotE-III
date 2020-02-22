@@ -23,6 +23,18 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
-        globals.DamageEventAmount = RMaxBJ(globals.DamageEventAmount - this.gameGlobals.PlayerSpellBlock[playerId], 0.0);
+        let perseverance: number = 0;
+        const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
+        if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
+            if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
+                perseverance = this.gameGlobals.PlayerPerseverance[damageSourcePlayerId];
+            }
+        }
+
+        if (this.gameGlobals.PlayerSpellBlock[playerId] - perseverance <= 0.405) {
+            return;
+        }
+
+        globals.DamageEventAmount = RMaxBJ(globals.DamageEventAmount - (this.gameGlobals.PlayerSpellBlock[playerId] - perseverance), 0.0);
     }
 }

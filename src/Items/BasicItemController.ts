@@ -36,6 +36,7 @@ import { AmuletOfSpellReflection } from './BasicItems/AmuletOfSpellReflection';
 import { AssassinsMap } from './BasicItems/AssassinsMap';
 import { LifeStone } from './BasicItems/LifeStone';
 import { SteelSpear } from './BasicItems/SteelSpear';
+import { PipeOfInsight } from './BasicItems/PipeOfInsight';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -76,6 +77,7 @@ itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
 itemMap.set('assassinsMap', new AssassinsMap());
 itemMap.set('lifeStone', new LifeStone());
 itemMap.set('steelSpear', new SteelSpear());
+itemMap.set('pipeOfInsight', new PipeOfInsight());
 
 export const basicItems: Item[] = [
     itemMap.get('bloodiedExecutionersAxe') as Item,
@@ -114,4 +116,5 @@ export const basicItems: Item[] = [
     itemMap.get('bloodiedSacrificialDagger') as Item,
     itemMap.get('lifeStone') as Item,
     itemMap.get('steelSpear') as Item,
+    itemMap.get('pipeOfInsight') as Item,
 ];

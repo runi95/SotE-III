@@ -15,4 +15,5 @@ export enum ItemLabel {
     EXECUTE,
     RESTORATION,
     PIERCING,
+    PERSEVERANCE,
 }
