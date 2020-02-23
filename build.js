@@ -15,17 +15,15 @@ class Builder {
             this.cleanup();
         }
 
-        console.log('Copying map...');
+        console.log('Creating directories...');
         fs.mkdirSync('target');
-        fs.copySync(`${settings.map.dir}/${settings.map.filename}`, `target/${settings.map.filename}`);
+        fs.mkdirSync('target/map.dir');
 
         console.log('Extracting war3map.lua...');
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', [
-            'extract',
-            `"target/${settings.map.filename}"`,
-            '"war3map.lua"',
-            `"${settings.map.dir}/map"`,
-        ]).run();
+        new Runner('"tools/mpqtool.exe"', ['extract', '--output', 'target/map.dir2', `${settings.map.dir}/${settings.map.filename}`]).run();
+
+        fs.copySync(`target/map.dir2`, `target/map.dir`);
+        fs.copySync(`target/map.dir/war3map.lua`, `${settings.map.dir}/map/war3map.lua`);
 
         console.log('Transpiling project...');
         const { emitResult, diagnostics } = typescriptToLua.transpileProject('tsconfig.json');
@@ -42,25 +40,20 @@ class Builder {
         console.log('Building lua map...');
         new Runner('"tools/ceres/ceres.exe"', ['build', '--', '--map', 'map', '--output', 'dir']).run();
 
-        console.log('Replacing local functions...');
-        fs.removeSync('./target/map.dir/war3map.w3a');
-        fs.removeSync('./target/map.dir/war3map.w3b');
-        fs.removeSync('./target/map.dir/war3map.w3d');
-        fs.removeSync('./target/map.dir/war3map.w3h');
-        fs.removeSync('./target/map.dir/war3map.w3q');
-        fs.removeSync('./target/map.dir/war3map.w3t');
-        fs.removeSync('./target/map.dir/war3map.w3u');
-        // new Runner('"tools/sed.exe"', ['-i', '"s/local function __module_/function __module_/g"', '"target/map.dir/war3map.lua"']).run();
+        console.log('Copying war3map files...');
+        const regex = new RegExp(`.+war3map\.w3.`);
+        fs.copySync(`target/map.dir2`, `target/map.dir`, {
+            filter: (src, dest) => {
+                if (src === 'target\\map.dir2' || src === 'target/map.dir2') {
+                    return true;
+                }
 
-        console.log('Adding compiled lua files...');
-        new Runner('"tools/MPQEditor/x64/MPQEditor.exe"', [
-            'add',
-            '"target/map.w3x"',
-            '"target/map.dir/*"',
-            '"/c"',
-            '"/auto"',
-            '"/r"',
-        ]).run();
+                return src.match(regex);
+            },
+        });
+
+        console.log('Adding compiled files...');
+        new Runner('"tools/mpqtool.exe"', ['new', 'target/map.dir', 'target/map.w3x']).run();
     }
 
     cleanup() {
