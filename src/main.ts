@@ -41,6 +41,8 @@ export class Initialiser {
 }
 
 // @ts-ignore
+ceres.suppressDefaultMain();
+// @ts-ignore
 ceres.oldMain();
 Initialiser.run();
 

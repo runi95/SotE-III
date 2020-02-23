@@ -1,6 +1,5 @@
 ceres.layout = {
     mapsDirectory = "maps/",
-    srcDirectory = "lua/",
-    libDirectory = "lib/",
+    srcDirectories = {"lua/", "lib/"},
     targetDirectory = "target/"
 }
