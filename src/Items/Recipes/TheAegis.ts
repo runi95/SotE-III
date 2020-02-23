@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { SteelShield } from './SteelShield';
-import { Scepter } from '../BasicItems/Scepter';
 import { ItemLabel } from '../ItemLabel';
+import { GoblinBattery } from '../BasicItems/GoblinBattery';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I014');
@@ -18,7 +18,7 @@ const description: string = `A shield said to be forged by gods.
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 
 export class TheAegis extends ItemRecipe {
-    constructor(steelShield: SteelShield, scepter: Scepter) {
-        super(itemId, name, labels, goldCost, iconPath, description, [steelShield, scepter]);
+    constructor(steelShield: SteelShield, goblinBattery: GoblinBattery) {
+        super(itemId, name, labels, goldCost, iconPath, description, [steelShield, goblinBattery]);
     }
 }

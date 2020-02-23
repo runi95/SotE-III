@@ -10,7 +10,7 @@ const description: string = `Your wish has been granted.
 
 |cffffcc00Critical Cast:|r +20%
 
-|cFF808080Spell damage will persevere and break through opponent's resistance.|r`;
+|cFF808080Critical cast gives a chance for spells to deal double damage.|r`;
 
 export class FairyWand extends Item {
     constructor() {

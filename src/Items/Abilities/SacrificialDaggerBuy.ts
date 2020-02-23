@@ -1,7 +1,7 @@
 import { Trigger } from '../../JassOverrides/Trigger';
 
-export class ExecutionerAxeResetCharges {
-    private readonly itemTypeId: number = FourCC('I00Y');
+export class SacrificialDaggerBuy {
+    private readonly itemTypeId: number = FourCC('I02I');
     private readonly trig: Trigger = new Trigger();
 
     constructor() {

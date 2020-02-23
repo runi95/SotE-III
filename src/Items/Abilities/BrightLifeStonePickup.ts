@@ -1,8 +1,8 @@
-import { ItemDrop } from '../ItemDrop';
+import { ItemPickup } from '../ItemPickup';
 import { GameGlobals } from '../../Game/GameGlobals';
 
-export class LightningBoltDrop extends ItemDrop {
-    protected readonly itemTypeId: number = FourCC('I01Q');
+export class BrightLifeStonePickup extends ItemPickup {
+    protected readonly itemTypeId: number = FourCC('I03K');
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -13,6 +13,6 @@ export class LightningBoltDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 20;
+        this.gameGlobals.PlayerRestoration[playerId] += 2.5;
     }
 }

@@ -1,6 +1,6 @@
 import { Trigger } from '../../JassOverrides/Trigger';
 
-export class GoblinBatteryResetCharges {
+export class GoblinBatteryBuy {
     private readonly itemTypeId: number = FourCC('I01O');
     private readonly trig: Trigger = new Trigger();
 

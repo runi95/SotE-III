@@ -1,13 +1,13 @@
 import { Trigger } from '../../JassOverrides/Trigger';
 
-export class SacrificialDaggerResetCharges {
-    private readonly itemTypeId: number = FourCC('I02I');
+export class ExecutionerAxeSell {
+    private readonly itemTypeId: number = FourCC('I00Y');
     private readonly trig: Trigger = new Trigger();
 
     constructor() {
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
-        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_SELL_ITEM);
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_PAWN_ITEM);
     }
 
     private condition(): boolean {
@@ -15,6 +15,6 @@ export class SacrificialDaggerResetCharges {
     }
 
     private action(): void {
-        SetItemCharges(GetSoldItem(), 1);
+        SetItemCharges(GetSoldItem(), 100);
     }
 }

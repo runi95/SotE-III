@@ -8,7 +8,7 @@ const goldCost: number = 1600;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNatureTouchGrow.blp';
 const description: string = `A pouch full of druidic ingredients.
 
-|cffffcc00Thorns:|r 20
+|cffffcc00Thorns:|r +20
 
 |cFF808080Thorns makes melee attackers take thorn damage when attacking.|r`;
 

@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { AdeptCrystalBall } from './AdeptCrystalBall';
 import { VialOfMagic } from './VialOfMagic';
 import { ItemLabel } from '../ItemLabel';
+import { CrystalBall } from '../BasicItems/CrystalBall';
 
 const itemId: number = FourCC('I01G');
 const name: string = 'Master Crystal Ball';
@@ -22,7 +22,7 @@ const description: string = `Can you see the future in this thing?
 |cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class MasterCrystalBall extends ItemRecipe {
-    constructor(adeptCrystalBall: AdeptCrystalBall, vialOfMagic: VialOfMagic) {
-        super(itemId, name, labels, goldCost, iconPath, description, [adeptCrystalBall, vialOfMagic]);
+    constructor(crystalBall: CrystalBall, vialOfMagic: VialOfMagic) {
+        super(itemId, name, labels, goldCost, iconPath, description, [crystalBall, vialOfMagic]);
     }
 }

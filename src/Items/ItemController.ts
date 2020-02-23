@@ -1,6 +1,7 @@
 import { ClarityPotionUse } from './Abilities/ClarityPotionUse';
 import { ExecutionerAxe } from './Abilities/ExecutionerAxe';
-import { ExecutionerAxeResetCharges } from './Abilities/ExecutionerAxeResetCharges';
+import { ExecutionerAxeBuy } from './Abilities/ExecutionerAxeBuy';
+import { ExecutionerAxeSell } from './Abilities/ExecutionerAxeSell';
 import { IronShieldDrop } from './Abilities/IronShieldDrop';
 import { IronShieldPickup } from './Abilities/IronShieldPickup';
 import { MoonArmorDrop } from './Abilities/MoonArmorDrop';
@@ -26,7 +27,8 @@ import { ClockworkPenguinDrop } from './Abilities/ClockworkPenguinDrop';
 import { ClockworkPenguinPickup } from './Abilities/ClockworkPenguinPickup';
 import { GoblinBatteryDrop } from './Abilities/GoblinBatteryDrop';
 import { GoblinBatteryPickup } from './Abilities/GoblinBatteryPickup';
-import { GoblinBatteryResetCharges } from './Abilities/GoblinBatteryResetCharges';
+import { GoblinBatteryBuy } from './Abilities/GoblinBatteryBuy';
+import { GoblinBatterySell } from './Abilities/GoblinBatterySell';
 import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
@@ -42,7 +44,8 @@ import { VampireClawsDrop } from './Abilities/VampireClawsDrop';
 import { VampireClawsPickup } from './Abilities/VampireClawsPickup';
 import { SpellShieldDrop } from './Abilities/SpellShieldDrop';
 import { SpellShieldPickup } from './Abilities/SpellShieldPickup';
-import { SacrificialDaggerResetCharges } from './Abilities/SacrificialDaggerResetCharges';
+import { SacrificialDaggerBuy } from './Abilities/SacrificialDaggerBuy';
+import { SacrificialDaggerSell } from './Abilities/SacrificialDaggerSell';
 import { SacrificialDaggerUse } from './Abilities/SacrificialDaggerUse';
 import { BloodiedSacrificialDaggerCast } from './Abilities/BloodiedSacrificialDaggerCast';
 import { VampireDaggerCast } from './Abilities/VampireDaggerCast';
@@ -56,8 +59,6 @@ import { MaskOfDeathPickup } from './Abilities/MaskOfDeathPickup';
 import { FastVampireClawsPickup } from './Abilities/FastVampireClawsPickup';
 import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
 import { OrbOfLightningCast } from './Abilities/OrbOfLightningCast';
-import { LightningBoltDrop } from './Abilities/LightningBoltDrop';
-import { LightningBoltPickup } from './Abilities/LightningBoltPickup';
 import { AdvancedStrengthOfTheWildDrop } from './Abilities/AdvancedStrengthOfTheWildDrop';
 import { AdvancedStrengthOfTheWildPickup } from './Abilities/AdvancedStrengthOfTheWildPickup';
 import { AdvancedCreatureClawsDrop } from './Abilities/AdvancedCreatureClawsDrop';
@@ -76,6 +77,20 @@ import { SteelSpearDrop } from './Abilities/SteelSpearDrop';
 import { SteelSpearPickup } from './Abilities/SteelSpearPickup';
 import { PipeOfInsightDrop } from './Abilities/PipeOfInsightDrop';
 import { PipeOfInsightPickup } from './Abilities/PipeOfInsightPickup';
+import { ThoriumSpearDrop } from './Abilities/ThoriumSpearDrop';
+import { ThoriumSpearPickup } from './Abilities/ThoriumSpearPickup';
+import { LongRifleDrop } from './Abilities/LongRifleDrop';
+import { LongRiflePickup } from './Abilities/LongRiflePickup';
+import { SpikedCarapaceDrop } from './Abilities/SpikedCarapaceDrop';
+import { SpikedCarapacePickup } from './Abilities/SpikedCarapacePickup';
+import { ChargedStoneDrop } from './Abilities/ChargedStoneDrop';
+import { ChargedStonePickup } from './Abilities/ChargedStonePickup';
+import { BrightLifeStoneDrop } from './Abilities/BrightLifeStoneDrop';
+import { BrightLifeStonePickup } from './Abilities/BrightLifeStonePickup';
+import { AdeptStaffDrop } from './Abilities/AdeptStaffDrop';
+import { AdeptStaffPickup } from './Abilities/AdeptStaffPickup';
+import { MasterStaffDrop } from './Abilities/MasterStaffDrop';
+import { MasterStaffPickup } from './Abilities/MasterStaffPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -84,7 +99,8 @@ export class ItemController {
         this.itemAbilities = [
             new ClarityPotionUse(),
             new ExecutionerAxe(),
-            new ExecutionerAxeResetCharges(),
+            new ExecutionerAxeBuy(),
+            new ExecutionerAxeSell(),
             new ImprovedMoonArmorDrop(gameGlobals),
             new ImrpovedMoonArmorPickup(gameGlobals),
             new IronShieldDrop(gameGlobals),
@@ -108,7 +124,8 @@ export class ItemController {
             new ClockworkPenguinPickup(gameGlobals, timerUtils),
             new GoblinBatteryDrop(gameGlobals),
             new GoblinBatteryPickup(gameGlobals, timerUtils),
-            new GoblinBatteryResetCharges(),
+            new GoblinBatteryBuy(),
+            new GoblinBatterySell(),
             new GoblinBatteryUse(randomNumberGenerator),
             new LightningBoltCast(timerUtils, randomNumberGenerator),
             new BalancedShieldDrop(gameGlobals),
@@ -124,7 +141,8 @@ export class ItemController {
             new SpellShieldDrop(gameGlobals),
             new SpellShieldPickup(gameGlobals),
             new SacrificialDaggerUse(),
-            new SacrificialDaggerResetCharges(),
+            new SacrificialDaggerBuy(),
+            new SacrificialDaggerSell(),
             new BloodiedSacrificialDaggerCast(),
             new VampireDaggerCast(),
             new AssassinsBladeDrop(gameGlobals),
@@ -137,8 +155,6 @@ export class ItemController {
             new FastVampireClawsPickup(gameGlobals),
             new FastVampireClawsDrop(gameGlobals),
             new OrbOfLightningCast(),
-            new LightningBoltDrop(gameGlobals),
-            new LightningBoltPickup(gameGlobals),
             new AdvancedStrengthOfTheWildDrop(gameGlobals),
             new AdvancedStrengthOfTheWildPickup(gameGlobals),
             new AdvancedCreatureClawsDrop(gameGlobals),
@@ -157,6 +173,20 @@ export class ItemController {
             new SteelSpearPickup(gameGlobals),
             new PipeOfInsightDrop(gameGlobals),
             new PipeOfInsightPickup(gameGlobals),
+            new ThoriumSpearDrop(gameGlobals),
+            new ThoriumSpearPickup(gameGlobals),
+            new LongRifleDrop(gameGlobals),
+            new LongRiflePickup(gameGlobals),
+            new SpikedCarapaceDrop(gameGlobals),
+            new SpikedCarapacePickup(gameGlobals),
+            new ChargedStoneDrop(gameGlobals),
+            new ChargedStonePickup(gameGlobals),
+            new BrightLifeStoneDrop(gameGlobals),
+            new BrightLifeStonePickup(gameGlobals),
+            new AdeptStaffDrop(gameGlobals),
+            new AdeptStaffPickup(gameGlobals),
+            new MasterStaffDrop(gameGlobals),
+            new MasterStaffPickup(gameGlobals),
         ];
     }
 }
