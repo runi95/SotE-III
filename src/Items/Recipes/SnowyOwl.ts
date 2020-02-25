@@ -6,7 +6,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I02C');
 const name: string = 'Snowy Owl';
 const labels: ItemLabel[] = [];
-const goldCost: number = 700;
+const goldCost: number = 800;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
 const description: string = `It is said that these creatures can see the dead.
 
