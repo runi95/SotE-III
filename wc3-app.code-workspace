@@ -7,7 +7,6 @@
     "settings": {
         "files.exclude": {
             ".vscode": true,
-            "maps": true,
             "node_modules": true,
             "target": true,
             "tools": true,
