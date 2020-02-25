@@ -60,6 +60,7 @@ import { ChargedStone } from './Recipes/ChargedStone';
 import { AdeptStaff } from './Recipes/AdeptStaff';
 import { MasterStaff } from './Recipes/MasterStaff';
 import { BrightLifeStone } from './Recipes/BrightLifeStone';
+import { VampireFangs } from './Recipes/VampireFangs';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
@@ -214,5 +215,7 @@ itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone')
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand')));
 // @ts-ignore
 itemMap.set('masterStaff', new MasterStaff(itemMap.get('adeptStaff')));
+// @ts-ignore
+itemMap.set('vampireFangs', new VampireFangs(basicItemMap.get('vampireClaws')));
 
 export default [...itemMap.values()] as ItemRecipe[];

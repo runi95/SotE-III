@@ -7,7 +7,7 @@ const itemId: number = FourCC('I032');
 const name: string = 'Fast Vampire Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.LIFESTEAL];
 const goldCost: number = 2110;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedUnholyStrength.blp';
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGreaterVampireClaws.dds';
 const description: string = `Lightweight vampire claws for faster attack speed.
 
 |cffffcc00Agility:|r +15
