@@ -182,7 +182,7 @@ export class RecipeSystem {
         BlzFrameSetSize(this.mainButton, 0.04, 0.04);
         BlzFrameSetPoint(this.mainButton, FRAMEPOINT_BOTTOMLEFT, originFrameGameUi, FRAMEPOINT_BOTTOMLEFT, 0.005, 0.15);
         BlzFrameSetAllPoints(mainButtonBackdrop, this.mainButton);
-        BlzFrameSetTexture(mainButtonBackdrop, 'ReplaceableTextures\\CommandButtons\\BTNScroll.blp', 0, true);
+        BlzFrameSetTexture(mainButtonBackdrop, 'ReplaceableTextures\\PassiveButtons\\PASGlyph.dds', 0, true);
         BlzFrameSetTooltip(this.mainButton, mainButtonTooltip);
         BlzFrameSetPoint(mainButtonTooltip, FRAMEPOINT_BOTTOM, this.mainButton, FRAMEPOINT_TOP, 0.0, 0.01);
         BlzFrameSetText(mainButtonTooltip, 'Recipe Menu (|cffffcc00T|r)');
