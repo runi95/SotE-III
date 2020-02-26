@@ -61,6 +61,7 @@ import { AdeptStaff } from './Recipes/AdeptStaff';
 import { MasterStaff } from './Recipes/MasterStaff';
 import { BrightLifeStone } from './Recipes/BrightLifeStone';
 import { VampireFangs } from './Recipes/VampireFangs';
+import { ReinforcedLeatherArmor } from './Recipes/ReinforcedLeatherArmor';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
@@ -150,7 +151,9 @@ itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter')) as ItemRecipe)
 // @ts-ignore
 itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter')) as ItemRecipe);
 // @ts-ignore
-itemMap.set('dragonScales', new DragonScales(itemMap.get('improvedCreatureClaws'), basicItemMap.get('studdedLeatherArmor')) as ItemRecipe);
+itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor')) as ItemRecipe);
+// @ts-ignore
+itemMap.set('dragonScales', new DragonScales(itemMap.get('improvedCreatureClaws'), itemMap.get('reinforcedLeatherArmor')) as ItemRecipe);
 // @ts-ignore
 itemMap.set('lightningBolt', new LightningBolt(basicItemMap.get('goblinBattery'), basicItemMap.get('orbOfLightning')) as ItemRecipe);
 // @ts-ignore
