@@ -9,8 +9,6 @@ import { ImprovedMoonArmorDrop } from './Abilities/ImprovedMoonArmorDrop';
 import { ImrpovedMoonArmorPickup } from './Abilities/ImprovedMoonArmorPickup';
 import { MoonArmorPickup } from './Abilities/MoonArmorPickup';
 import { SteelShieldDrop } from './Abilities/SteelShieldDrop';
-import { TheAegisDrop } from './Abilities/TheAegisDrop';
-import { TheAegisPickup } from './Abilities/TheAegisPickup';
 import { SteelShieldPickup } from './Abilities/SteelShieldPickup';
 import { GameGlobals } from '../Game/GameGlobals';
 import { TheAegisResetCharges } from './Abilities/TheAegisResetCharges';
@@ -112,8 +110,6 @@ export class ItemController {
             new SteelShieldDrop(gameGlobals),
             new SteelShieldPickup(gameGlobals),
             new TheAegisResetCharges(),
-            new TheAegisDrop(gameGlobals),
-            new TheAegisPickup(gameGlobals),
             new CaduceusUse(arcaneVault),
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
             new ArmoredBootsDrop(gameGlobals),

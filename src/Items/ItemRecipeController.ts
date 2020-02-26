@@ -99,7 +99,7 @@ itemMap.set('iceBlade', new IceBlade(itemMap.get('loadedRifle'), basicItemMap.ge
 // @ts-ignore
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword'), basicItemMap.get('claws')));
 // @ts-ignore
-itemMap.set('theAegis', new TheAegis(itemMap.get('steelShield'), basicItemMap.get('goblinBattery')));
+itemMap.set('theAegis', new TheAegis(basicItemMap.get('goblinBattery')));
 // @ts-ignore
 itemMap.set('fullVial', new FullVial(basicItemMap.get('emptyVial'), basicItemMap.get('sobiMask')));
 // @ts-ignore
