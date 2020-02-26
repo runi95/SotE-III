@@ -73,13 +73,13 @@ itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial')));
 itemMap.set('improvedMoonArmor', new ImprovedMoonArmor(basicItemMap.get('moonArmor')));
 // @ts-ignore
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor'), basicItemMap.get('ironShield')));
+// @ts-ignore
+itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield')));
 itemMap.set(
     'improvedBalancedShield',
     // @ts-ignore
-    new ImprovedBalancedShield(itemMap.get('balancedShield'), basicItemMap.get('steelShield'), basicItemMap.get('improvedMoonArmor')),
+    new ImprovedBalancedShield(itemMap.get('balancedShield'), itemMap.get('steelShield'), itemMap.get('improvedMoonArmor')),
 );
-// @ts-ignore
-itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield')));
 // @ts-ignore
 itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed')));
 // @ts-ignore
