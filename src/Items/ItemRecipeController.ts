@@ -93,7 +93,7 @@ itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe')));
 // @ts-ignore
 itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide'), basicItemMap.get('studdedLeatherArmor')));
 // @ts-ignore
-itemMap.set('reinforcedScales', new ReinforcedScales(itemMap.get('steelShield'), itemMap.get('coralScales')));
+itemMap.set('reinforcedScales', new ReinforcedScales(itemMap.get('coralScales')));
 // @ts-ignore
 itemMap.set('iceBlade', new IceBlade(itemMap.get('loadedRifle'), basicItemMap.get('orbOfLightning')));
 // @ts-ignore

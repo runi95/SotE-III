@@ -17,8 +17,6 @@ import { ScrollOfTownPortalUse } from './Abilities/ScrollOfTownPortalUse';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { ArmoredBootsDrop } from './Abilities/ArmoredBootsDrop';
 import { ArmoredBootsPickup } from './Abilities/ArmoredBootsPickup';
-import { ReinforcedScalesDrop } from './Abilities/ReinforcedScalesDrop';
-import { ReinforcedScalesPickup } from './Abilities/ReinforcedScalesPickup';
 import { LionsRingDrop } from './Abilities/LionsRingDrop';
 import { LionsRingPickup } from './Abilities/LionsRingPickup';
 import { ClockworkPenguinDrop } from './Abilities/ClockworkPenguinDrop';
@@ -112,8 +110,6 @@ export class ItemController {
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
             new ArmoredBootsDrop(gameGlobals),
             new ArmoredBootsPickup(gameGlobals),
-            new ReinforcedScalesDrop(gameGlobals),
-            new ReinforcedScalesPickup(gameGlobals),
             new LionsRingDrop(gameGlobals),
             new LionsRingPickup(gameGlobals),
             new ClockworkPenguinDrop(gameGlobals),
