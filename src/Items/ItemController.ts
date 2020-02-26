@@ -57,8 +57,6 @@ import { MaskOfDeathPickup } from './Abilities/MaskOfDeathPickup';
 import { FastVampireClawsPickup } from './Abilities/FastVampireClawsPickup';
 import { FastVampireClawsDrop } from './Abilities/FastVampireClawsDrop';
 import { OrbOfLightningCast } from './Abilities/OrbOfLightningCast';
-import { AdvancedStrengthOfTheWildDrop } from './Abilities/AdvancedStrengthOfTheWildDrop';
-import { AdvancedStrengthOfTheWildPickup } from './Abilities/AdvancedStrengthOfTheWildPickup';
 import { AdvancedCreatureClawsDrop } from './Abilities/AdvancedCreatureClawsDrop';
 import { AdvancedCreatureClawsPickup } from './Abilities/AdvancedCreatureClawsPickup';
 import { IronwoodBranchDrop } from './Abilities/IronwoodBranchDrop';
@@ -153,8 +151,6 @@ export class ItemController {
             new FastVampireClawsPickup(gameGlobals),
             new FastVampireClawsDrop(gameGlobals),
             new OrbOfLightningCast(),
-            new AdvancedStrengthOfTheWildDrop(gameGlobals),
-            new AdvancedStrengthOfTheWildPickup(gameGlobals),
             new AdvancedCreatureClawsDrop(gameGlobals),
             new AdvancedCreatureClawsPickup(gameGlobals),
             new IronwoodBranchDrop(gameGlobals),

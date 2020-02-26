@@ -192,7 +192,7 @@ itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(itemMap.g
 itemMap.set(
     'advancedStrengthOfTheWild',
     // @ts-ignore
-    new AdvancedStrengthOfTheWild(itemMap.get('improvedStrengthOfTheWild'), itemMap.get('steelShield'), basicItemMap.get('greenSoulstone')),
+    new AdvancedStrengthOfTheWild(itemMap.get('improvedStrengthOfTheWild'), basicItemMap.get('greenSoulstone')),
 );
 itemMap.set(
     'advancedCreatureClaws',
