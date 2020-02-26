@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { ImprovedMoonArmor } from './ImprovedMoonArmor';
 import { ImprovedBalancedShield } from './ImprovedBalancedShield';
 import { ReinforcedScales } from './ReinforcedScales';
 import { ItemLabel } from '../ItemLabel';
@@ -19,7 +18,7 @@ const description: string = `No matter how you hold this shield it stays perfect
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 
 export class AdvancedReinforcedHides extends ItemRecipe {
-    constructor(improvedMoonArmor: ImprovedMoonArmor, improvedBalancedShield: ImprovedBalancedShield, reinforcedScales: ReinforcedScales) {
-        super(itemId, name, labels, goldCost, iconPath, description, [improvedMoonArmor, improvedBalancedShield, reinforcedScales]);
+    constructor(improvedBalancedShield: ImprovedBalancedShield, reinforcedScales: ReinforcedScales) {
+        super(itemId, name, labels, goldCost, iconPath, description, [improvedBalancedShield, reinforcedScales]);
     }
 }

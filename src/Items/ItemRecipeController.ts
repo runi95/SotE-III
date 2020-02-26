@@ -136,8 +136,6 @@ itemMap.set(
     'advancedReinforcedHides',
     new AdvancedReinforcedHides(
         // @ts-ignore
-        itemMap.get('improvedMoonArmor'),
-        // @ts-ignore
         itemMap.get('improvedBalancedShield'),
         // @ts-ignore
         itemMap.get('reinforcedScales'),
