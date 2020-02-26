@@ -150,7 +150,7 @@ itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed'), i
 // @ts-ignore
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter')) as ItemRecipe);
 // @ts-ignore
-itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('druidicSalve'), basicItemMap.get('scepter')) as ItemRecipe);
+itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter')) as ItemRecipe);
 // @ts-ignore
 itemMap.set('dragonScales', new DragonScales(itemMap.get('improvedCreatureClaws'), basicItemMap.get('studdedLeatherArmor')) as ItemRecipe);
 // @ts-ignore

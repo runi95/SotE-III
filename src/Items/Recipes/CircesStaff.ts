@@ -20,7 +20,7 @@ const description: string = `An ancient staff forged by the elves.
 |cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
 
 export class CircesStaff extends ItemRecipe {
-    constructor(druidicSalve: DruidicSalve, scepter: Scepter) {
-        super(itemId, name, labels, goldCost, iconPath, description, [druidicSalve, scepter]);
+    constructor(scepter: Scepter) {
+        super(itemId, name, labels, goldCost, iconPath, description, [scepter]);
     }
 }
