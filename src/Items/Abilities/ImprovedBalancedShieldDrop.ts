@@ -13,7 +13,7 @@ export class ImprovedBalancedShieldDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] -= 20;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 20;
+        this.gameGlobals.PlayerSpellBlock[playerId] -= 30;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 30;
     }
 }

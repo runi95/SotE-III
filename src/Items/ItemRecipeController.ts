@@ -76,7 +76,7 @@ itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor'), 
 itemMap.set(
     'improvedBalancedShield',
     // @ts-ignore
-    new ImprovedBalancedShield(itemMap.get('balancedShield'), basicItemMap.get('ironShield'), basicItemMap.get('moonArmor')),
+    new ImprovedBalancedShield(itemMap.get('balancedShield'), basicItemMap.get('steelShield'), basicItemMap.get('improvedMoonArmor')),
 );
 // @ts-ignore
 itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield')));
