@@ -187,7 +187,7 @@ itemMap.set('throwableAxe', new ThrowableAxe(basicItemMap.get('bloodiedExecution
 // @ts-ignore
 itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedHide'), basicItemMap.get('druidicSalve')));
 // @ts-ignore
-itemMap.set('strengthOfTheWild', new StrengthOfTheWild(itemMap.get('maulOfStrength'), basicItemMap.get('warAxe')) as ItemRecipe);
+itemMap.set('strengthOfTheWild', new StrengthOfTheWild(itemMap.get('maulOfStrength')) as ItemRecipe);
 // @ts-ignore
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(itemMap.get('strengthOfTheWild')));
 itemMap.set(

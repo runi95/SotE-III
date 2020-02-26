@@ -1,7 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { MaulOfStrength } from './MaulOfStrength';
 import { ItemLabel } from '../ItemLabel';
-import { WarAxe } from '../BasicItems/WarAxe';
 
 const itemId: number = FourCC('I02A');
 const name: string = 'Strength of the Wild';
@@ -15,7 +14,7 @@ const description: string = `Only the strong can survive in the wild.
 |cFF808080Strength increases your max health and health regen.|r`;
 
 export class StrengthOfTheWild extends ItemRecipe {
-    constructor(maulOfStrength: MaulOfStrength, warAxe: WarAxe) {
-        super(itemId, name, labels, goldCost, iconPath, description, [maulOfStrength, warAxe]);
+    constructor(maulOfStrength: MaulOfStrength) {
+        super(itemId, name, labels, goldCost, iconPath, description, [maulOfStrength]);
     }
 }
