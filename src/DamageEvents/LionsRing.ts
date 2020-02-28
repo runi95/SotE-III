@@ -17,13 +17,11 @@ export class LionsRing implements DamageEvent {
         }
 
         const itm: item = GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemTypeId);
-        let charges: number = 0;
-
         if (itm) {
-            charges = GetItemCharges(itm) + 0.1 * globals.DamageEventAmount;
+            const charges: number = Math.round(GetItemCharges(itm) + 0.1 * globals.DamageEventAmount);
 
             if (charges >= 100) {
-                SetItemCharges(itm, 0);
+                SetItemCharges(itm, 1);
                 const dummy: unit = CreateUnit(
                     GetOwningPlayer(globals.DamageEventTarget as unit),
                     this.dummyUnitTypeId,
