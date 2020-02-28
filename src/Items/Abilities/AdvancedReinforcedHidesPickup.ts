@@ -13,7 +13,7 @@ export class AdvancedReinforcedHidesPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 45;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 45;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 50;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 50;
     }
 }

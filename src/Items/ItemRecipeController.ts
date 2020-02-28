@@ -94,8 +94,6 @@ itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe')));
 // @ts-ignore
 itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide'), basicItemMap.get('studdedLeatherArmor')));
 // @ts-ignore
-itemMap.set('reinforcedScales', new ReinforcedScales(itemMap.get('coralScales')));
-// @ts-ignore
 itemMap.set('iceBlade', new IceBlade(itemMap.get('loadedRifle'), basicItemMap.get('orbOfLightning')));
 // @ts-ignore
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword'), basicItemMap.get('claws')));
@@ -133,15 +131,6 @@ itemMap.set('bookOfMagic', new BookOfMagic(itemMap.get('bookOfKnowledge'), itemM
 itemMap.set('ancientBookOfMagic', new AncientBookOfMagic(itemMap.get('bookOfMagic'), basicItemMap.get('blueSoulstone')));
 // @ts-ignore
 itemMap.set('assassinsCloak', new AssassinsCloak(basicItemMap.get('assassinsBlade'), itemMap.get('cloakOfShadowWalk')) as ItemRecipe);
-itemMap.set(
-    'advancedReinforcedHides',
-    new AdvancedReinforcedHides(
-        // @ts-ignore
-        itemMap.get('improvedBalancedShield'),
-        // @ts-ignore
-        itemMap.get('reinforcedScales'),
-    ) as ItemRecipe,
-);
 // @ts-ignore
 itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed')) as ItemRecipe);
 // @ts-ignore
@@ -218,5 +207,19 @@ itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand')));
 itemMap.set('masterStaff', new MasterStaff(itemMap.get('adeptStaff')));
 // @ts-ignore
 itemMap.set('vampireFangs', new VampireFangs(basicItemMap.get('vampireClaws')));
+itemMap.set(
+    'reinforcedScales',
+    // @ts-ignore
+    new ReinforcedScales(itemMap.get('coralScales'), itemMap.get('improvedReinforcedHide'), itemMap.get('reinforcedLeatherArmor')),
+);
+itemMap.set(
+    'advancedReinforcedHides',
+    new AdvancedReinforcedHides(
+        // @ts-ignore
+        itemMap.get('improvedBalancedShield'),
+        // @ts-ignore
+        itemMap.get('reinforcedScales'),
+    ) as ItemRecipe,
+);
 
 export default [...itemMap.values()] as ItemRecipe[];
