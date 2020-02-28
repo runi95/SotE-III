@@ -26,7 +26,6 @@ import { RunedBracers } from './BasicItems/RunedBracers';
 import { GoblinNightScope } from './BasicItems/GoblinNightScope';
 import { BloodiedSacrificialDagger } from './BasicItems/BloodiedSacrificialDagger';
 import { VampireClaws } from './BasicItems/VampireClaws';
-import { MaskOfDeath } from './BasicItems/MaskOfDeath';
 import { JuggernautArmor } from './BasicItems/JuggernautArmor';
 import { EnchantedGemstone } from './BasicItems/EnchantedGemstone';
 import { OrbOfLightning } from './BasicItems/OrbOfLightning';
@@ -39,6 +38,7 @@ import { PipeOfInsight } from './BasicItems/PipeOfInsight';
 import { FairyWand } from './BasicItems/FairyWand';
 import { OrbOfFire } from './BasicItems/OrbOfFire';
 import { AssassinsBlade } from './BasicItems/AssassinsBlade';
+import { SpiritTalisman } from './BasicItems/SpiritTalisman';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -69,8 +69,7 @@ itemMap.set('runedBracers', new RunedBracers());
 itemMap.set('goblinNightScope', new GoblinNightScope());
 itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
 itemMap.set('vampireClaws', new VampireClaws());
-itemMap.set('maskOfDeath', new MaskOfDeath());
-itemMap.set('spiritTalisman', new MaskOfDeath());
+itemMap.set('spiritTalisman', new SpiritTalisman());
 itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
 itemMap.set('orbOfLightning', new OrbOfLightning());

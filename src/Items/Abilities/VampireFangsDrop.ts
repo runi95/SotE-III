@@ -13,6 +13,6 @@ export class VampireFangsDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] -= 0.35;
+        this.gameGlobals.PlayerLifesteal[playerId] -= 60;
     }
 }

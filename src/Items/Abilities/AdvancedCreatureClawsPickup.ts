@@ -13,6 +13,6 @@ export class AdvancedCreatureClawsPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] += 1.2;
+        this.gameGlobals.PlayerLifesteal[playerId] += 200;
     }
 }

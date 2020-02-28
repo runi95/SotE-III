@@ -23,7 +23,7 @@ export class Lifesteal implements DamageEvent {
             return;
         }
 
-        const healthGained: number = globals.DamageEventAmount * this.gameGlobals.PlayerLifesteal[playerId];
+        const healthGained: number = Math.min(globals.DamageEventAmount, this.gameGlobals.PlayerLifesteal[playerId]);
         if (healthGained > 0) {
             DestroyEffect(
                 AddSpecialEffect(
