@@ -45,7 +45,7 @@ export class DamageEventController {
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals, timerUtils));
-        damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));

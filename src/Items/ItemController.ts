@@ -89,6 +89,8 @@ import { FairyWandDrop } from './Abilities/FairyWandDrop';
 import { FairyWandPickup } from './Abilities/FairyWandPickup';
 import { OrbOfFireDrop } from './Abilities/OrbOfFireDrop';
 import { OrbOfFirePickup } from './Abilities/OrbOfFirePickup';
+import { ArcaniteSpearDrop } from './Abilities/ArcaniteSpearDrop';
+import { ArcaniteSpearPickup } from './Abilities/ArcaniteSpearPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -183,6 +185,8 @@ export class ItemController {
             new FairyWandPickup(gameGlobals),
             new OrbOfFireDrop(gameGlobals),
             new OrbOfFirePickup(gameGlobals),
+            new ArcaniteSpearDrop(gameGlobals),
+            new ArcaniteSpearPickup(gameGlobals),
         ];
     }
 }

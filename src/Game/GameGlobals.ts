@@ -20,6 +20,7 @@ export class GameGlobals {
     public ClockworkPenguin: boolean[] = [];
     public AssassinsBlade: AssassinsBladeStates[] = [];
     public RazorBladesOn: boolean[] = [];
+    public ArcaniteSpearCount: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];

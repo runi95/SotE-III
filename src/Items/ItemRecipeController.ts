@@ -63,6 +63,7 @@ import { BrightLifeStone } from './Recipes/BrightLifeStone';
 import { VampireFangs } from './Recipes/VampireFangs';
 import { ReinforcedLeatherArmor } from './Recipes/ReinforcedLeatherArmor';
 import { MaskOfDeath } from './Recipes/MaskOfDeath';
+import { ArcaniteSpear } from './Recipes/ArcaniteSpear';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
@@ -224,5 +225,7 @@ itemMap.set(
 );
 // @ts-ignore
 itemMap.set('maskOfDeath', new MaskOfDeath(itemMap.get('vampireFangs'), itemMap.get('loadedRifle')));
+// @ts-ignore
+itemMap.set('arcaniteSpear', new ArcaniteSpear(itemMap.get('thoriumSpear'), itemMap.get('longRifle')));
 
 export default [...itemMap.values()] as ItemRecipe[];
