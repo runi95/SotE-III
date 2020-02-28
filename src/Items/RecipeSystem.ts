@@ -710,7 +710,16 @@ export class RecipeSystem {
             for (let i: number = 0; i < selectedItem.recipe.length; i++) {
                 RemoveItem(GetItemOfTypeFromUnitBJ(this.gameGlobals.PlayerHero[triggerPlayerId], selectedItem.recipe[i].itemId));
             }
-            UnitAddItemById(this.gameGlobals.PlayerHero[triggerPlayerId], selectedItem.itemId);
+
+            if (UnitAlive(this.gameGlobals.PlayerHero[triggerPlayerId])) {
+                UnitAddItemById(this.gameGlobals.PlayerHero[triggerPlayerId], selectedItem.itemId);
+            } else {
+                CreateItem(
+                    selectedItem.itemId,
+                    GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[triggerPlayerId]),
+                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[triggerPlayerId]),
+                );
+            }
             this.selectItem();
         }
     }
