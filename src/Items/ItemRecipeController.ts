@@ -62,6 +62,7 @@ import { MasterStaff } from './Recipes/MasterStaff';
 import { BrightLifeStone } from './Recipes/BrightLifeStone';
 import { VampireFangs } from './Recipes/VampireFangs';
 import { ReinforcedLeatherArmor } from './Recipes/ReinforcedLeatherArmor';
+import { MaskOfDeath } from './Recipes/MaskOfDeath';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
@@ -221,5 +222,7 @@ itemMap.set(
         itemMap.get('reinforcedScales'),
     ) as ItemRecipe,
 );
+// @ts-ignore
+itemMap.set('maskOfDeath', new MaskOfDeath(itemMap.get('vampireFangs'), itemMap.get('loadedRifle')));
 
 export default [...itemMap.values()] as ItemRecipe[];
