@@ -33,7 +33,7 @@ export class Splash implements DamageEvent {
         const damage: number = this.gameGlobals.PlayerSplash[playerId] * globals.DamageEventAmount;
 
         grp.for((u: unit) => {
-            if (UnitAlive(u) && IsUnitEnemy(u, Player(playerId))) {
+            if (globals.DamageEventTarget !== u && UnitAlive(u) && IsUnitEnemy(u, Player(playerId))) {
                 UnitDamageTargetBJ(globals.DamageEventSource as unit, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
