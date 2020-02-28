@@ -18,7 +18,7 @@ export class GoblinBatteryUse extends ItemUse {
         const y: number = GetUnitY(trig);
         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl', x, y));
         const charges: number = GetItemCharges(GetManipulatedItem());
-        SetItemCharges(GetManipulatedItem(), 0);
+        SetItemCharges(GetManipulatedItem(), 1);
         const chargesDivided: number = charges / 10;
         for (let i: number = 0; i < chargesDivided; i++) {
             DestroyEffect(
