@@ -85,6 +85,8 @@ import { MasterStaffDrop } from './Abilities/MasterStaffDrop';
 import { MasterStaffPickup } from './Abilities/MasterStaffPickup';
 import { VampireFangsDrop } from './Abilities/VampireFangsDrop';
 import { VampireFangsPickup } from './Abilities/VampireFangsPickup';
+import { FairyWandDrop } from './Abilities/FairyWandDrop';
+import { FairyWandPickup } from './Abilities/FairyWandPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -175,6 +177,8 @@ export class ItemController {
             new MasterStaffPickup(gameGlobals),
             new VampireFangsDrop(gameGlobals),
             new VampireFangsPickup(gameGlobals),
+            new FairyWandDrop(gameGlobals),
+            new FairyWandPickup(gameGlobals),
         ];
     }
 }
