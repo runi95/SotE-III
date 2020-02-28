@@ -20,7 +20,7 @@ export class Splash implements DamageEvent {
             return;
         }
 
-        if (this.gameGlobals.PlayerSplash[playerId] < 1) {
+        if (!(this.gameGlobals.PlayerSplash[playerId] > 0)) {
             return;
         }
 
