@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { SteelShield } from './SteelShield';
 import { ItemLabel } from '../ItemLabel';
 import { GoblinBattery } from '../BasicItems/GoblinBattery';
 

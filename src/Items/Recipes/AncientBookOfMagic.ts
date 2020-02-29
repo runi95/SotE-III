@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { CrystalBall } from '../BasicItems/CrystalBall';
 import { ItemLabel } from '../ItemLabel';
 import { BookOfMagic } from './BookOfMagic';
 import { BlueSoulstone } from '../BasicItems/BlueSoulstone';

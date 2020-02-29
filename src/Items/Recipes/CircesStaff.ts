@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { DruidicSalve } from '../BasicItems/DruidicSalve';
 import { Scepter } from '../BasicItems/Scepter';
 import { ItemLabel } from '../ItemLabel';
 
