@@ -1,8 +1,8 @@
 import { GameGlobals } from '../Game/GameGlobals';
 import { Trigger } from '../JassOverrides/Trigger';
 // tslint:disable-next-line: import-name
-import itemRecipeController from './ItemRecipeController';
-import { basicItems } from './BasicItemController';
+import ItemRecipeController from './ItemRecipeController';
+import { basicItems } from './BaseItemController';
 import { ItemRecipe } from './ItemRecipe';
 import { Item } from './Item';
 import { ItemLabel } from './ItemLabel';
@@ -37,7 +37,7 @@ interface ItemRecipeIndexMap {
     [key: number]: number;
 }
 
-const items: ItemRecipe[] = itemRecipeController.sort((a, b) => a.goldCost - b.goldCost);
+const items: ItemRecipe[] = ItemRecipeController.sort((a, b) => a.goldCost - b.goldCost);
 
 export class RecipeSystem {
     public readonly animatedFrame: framehandle;
