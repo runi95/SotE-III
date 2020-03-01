@@ -42,6 +42,7 @@ import { LoadedCannon } from './Tier1Items/LoadedCannon';
 import { SnowyOwl } from './Tier1Items/SnowyOwl';
 import { MasterCrystalBall } from './Tier1Items/MasterCrystalBall';
 import { KhadgarsAmulet } from './Tier1Items/KhadgarsAmulet';
+import { AmuletOfProtection } from './Tier1Items/AmuletOfProtection';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -57,6 +58,10 @@ export const itemMap: Map<string, ItemRecipe> = new Map();
 
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item));
 itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
+itemMap.set(
+    'amuletOfProtection',
+    new AmuletOfProtection(basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('studdedLeatherArmor') as Item),
+);
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('bookOfKnowledge', new BookOfKnowledge(basicItemMap.get('orbOfMagic') as Item));
