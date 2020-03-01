@@ -41,6 +41,7 @@ import { LightningBolt } from './Tier1Items/LightningBolt';
 import { LoadedCannon } from './Tier1Items/LoadedCannon';
 import { SnowyOwl } from './Tier1Items/SnowyOwl';
 import { MasterCrystalBall } from './Tier1Items/MasterCrystalBall';
+import { KhadgarsAmulet } from './Tier1Items/KhadgarsAmulet';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -71,6 +72,10 @@ itemMap.set('iceBlade', new IceBlade(basicItemMap.get('orbOfLightning') as Item)
 itemMap.set('improvedMoonArmor', new ImprovedMoonArmor(basicItemMap.get('moonArmor') as Item));
 itemMap.set('improvedReinforcedHide', new ImprovedReinforcedHide(basicItemMap.get('reinforcedHide') as Item));
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword') as Item, basicItemMap.get('claws') as Item));
+itemMap.set(
+    'khadgarsAmulet',
+    new KhadgarsAmulet(basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('moonArmor') as Item),
+);
 itemMap.set('lightningBolt', new LightningBolt(basicItemMap.get('goblinBattery') as Item, basicItemMap.get('orbOfLightning') as Item));
 itemMap.set('lionsRing', new LionsRing(basicItemMap.get('runedBracers') as Item, basicItemMap.get('moonArmor') as Item));
 itemMap.set('loadedCannon', new LoadedCannon(basicItemMap.get('orbOfFire') as Item));

@@ -91,6 +91,8 @@ import { OrbOfFireDrop } from './Abilities/OrbOfFireDrop';
 import { OrbOfFirePickup } from './Abilities/OrbOfFirePickup';
 import { ArcaniteSpearDrop } from './Abilities/ArcaniteSpearDrop';
 import { ArcaniteSpearPickup } from './Abilities/ArcaniteSpearPickup';
+import { KhadgarsAmuletDrop } from './Abilities/KhadgarsAmuletDrop';
+import { KhadgarsAmuletPickup } from './Abilities/KhadgarsAmuletPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -187,6 +189,8 @@ export class ItemController {
             new OrbOfFirePickup(gameGlobals),
             new ArcaniteSpearDrop(gameGlobals),
             new ArcaniteSpearPickup(gameGlobals),
+            new KhadgarsAmuletDrop(gameGlobals),
+            new KhadgarsAmuletPickup(gameGlobals),
         ];
     }
 }
