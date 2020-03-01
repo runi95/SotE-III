@@ -11,7 +11,7 @@ export class Reflect implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        if (globals.IsDamageSpell) {
+        if (!globals.IsDamageSpell) {
             return;
         }
 
