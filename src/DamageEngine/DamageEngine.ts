@@ -376,6 +376,7 @@ export class DamageEngine {
         this.damageEngineGlobals.DamageEventAttackT = GetHandleId(at);
         this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
         this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
+        this.damageEngineGlobals.ExecuteDamage = 0; // <--- This is custom SotE code!
 
         this.calibrateMR();
 
