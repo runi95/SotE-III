@@ -15,7 +15,7 @@ const description: string = `A flare that lights up the area around you.
 |cffffcc00Duration:|r 45
 |cffffcc00Cooldown:|r 180
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class FlareGun extends Item {
     constructor() {

@@ -19,7 +19,7 @@ const description: string = `Can you see the future in this thing?
 |cffffcc00Duration:|r 15
 |cffffcc00Cooldown:|r 15
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class MasterCrystalBall extends ItemRecipe {
     constructor(crystalBall: CrystalBall, orbOfMagic: OrbOfMagic) {

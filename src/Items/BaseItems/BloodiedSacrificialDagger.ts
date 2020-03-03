@@ -13,7 +13,7 @@ const description: string = `A dagger often used by acolytes in sacrificial ritu
 |cffffcc00Range:|r 500
 |cffffcc00Cooldown:|r 60
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class BloodiedSacrificialDagger extends Item {
     constructor() {

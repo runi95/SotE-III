@@ -17,7 +17,7 @@ const description: string = `An incredible scope with built in night vision.
 |cffffcc00Duration:|r Until dispelled
 |cffffcc00Cooldown:|r 30
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class WandOfShadowsight extends ItemRecipe {
     constructor(goblinNightScope: GoblinNightScope, flareGun: FlareGun) {

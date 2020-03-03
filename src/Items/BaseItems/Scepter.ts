@@ -13,7 +13,7 @@ const description: string = `A magical scepter showing high status and wealth.
 |cffffcc00Duration:|r 20
 |cffffcc00Cooldown:|r 60
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class Scepter extends Item {
     constructor() {

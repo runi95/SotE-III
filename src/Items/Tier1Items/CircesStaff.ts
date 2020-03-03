@@ -16,7 +16,7 @@ const description: string = `An ancient staff forged by the elves.
 |cffffcc00Duration (creep):|r 12
 |cffffcc00Cooldown:|r 120
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class CircesStaff extends ItemRecipe {
     constructor(scepter: Scepter) {

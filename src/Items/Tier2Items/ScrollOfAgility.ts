@@ -16,7 +16,7 @@ const description: string = `A mystical scroll written in an ancient language.
 |cffffcc00Duration:|r 60
 |cffffcc00Cooldown:|r 60
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class ScrollOfAgility extends ItemRecipe {
     constructor(agileSlippers: AgileSlippers) {

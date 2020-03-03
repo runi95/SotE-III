@@ -18,7 +18,7 @@ const description: string = `You can't quite make out what the runes say.
 |cffffcc00Duration:|r 15
 |cffffcc00Cooldown:|r 20
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class ThrowableAxe extends ItemRecipe {
     constructor(bloodiedExecutionersAxe: BloodiedExecutionersAxe, scepter: Scepter) {

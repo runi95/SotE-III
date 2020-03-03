@@ -15,7 +15,7 @@ const description: string = `A branch blessed by mother nature herself.
 |cffffcc00Duration:|r 10
 |cffffcc00Cooldown:|r 20
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class NaturesBlessing extends ItemRecipe {
     constructor(reinforcedHide: ReinforcedHide, druidicSalve: DruidicSalve) {

@@ -17,7 +17,7 @@ const description: string = `A lightning bolt capable of devastating damage.
 |cffffcc00Area of Effect:|r 400
 |cffffcc00Cooldown:|r 30
 
-|cFF808080Use is an effects that occurs when an item is used by clicking on it.|r`;
+|cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;
 
 export class LightningBolt extends ItemRecipe {
     constructor(goblinBattery: GoblinBattery, orbOfLightning: OrbOfLightning) {
