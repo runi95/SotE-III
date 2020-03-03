@@ -44,6 +44,7 @@ import { KhadgarsAmulet } from './Tier1Items/KhadgarsAmulet';
 import { AmuletOfProtection } from './Tier1Items/AmuletOfProtection';
 import { MasterExecutionerAxe } from './Tier1Items/MasterExecutionerAxe';
 import { BloomingFlowers } from './Tier1Items/BloomingFlowers';
+import { MantleOfIntelligence } from './Tier1Items/MantleOfIntelligence';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -88,6 +89,10 @@ itemMap.set('loadedCannon', new LoadedCannon(basicItemMap.get('orbOfFire') as It
 itemMap.set('loadedRifle', new LoadedRifle(basicItemMap.get('ironSword') as Item));
 itemMap.set('longRifle', new LongRifle(basicItemMap.get('steelSpear') as Item, basicItemMap.get('ironSword') as Item));
 itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial') as Item));
+itemMap.set(
+    'mantleOfIntelligence',
+    new MantleOfIntelligence(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('pipeOfInsight') as Item),
+);
 itemMap.set('maskOfProficiency', new MaskOfProficiency(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('sobiMask') as Item));
 itemMap.set('masterCrystalBall', new MasterCrystalBall(basicItemMap.get('crystalBall') as Item, itemMap.get('orbOfMagic') as Item));
 itemMap.set('masterExecutionerAxe', new MasterExecutionerAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item));

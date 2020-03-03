@@ -99,6 +99,8 @@ import { MasterExecutionerAxeDrop } from './Abilities/MasterExecutionerAxeDrop';
 import { MasterExecutionerAxePickup } from './Abilities/MasterExecutionerAxePickup';
 import { BloomingFlowersDrop } from './Abilities/BloomingFlowersDrop';
 import { BloomingFlowersPickup } from './Abilities/BloomingFlowersPickup';
+import { MantleOfIntelligenceDrop } from './Abilities/MantleOfIntelligenceDrop';
+import { MantleOfIntelligencePickup } from './Abilities/MantleOfIntelligencePickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -203,6 +205,8 @@ export class ItemController {
             new MasterExecutionerAxePickup(gameGlobals),
             new BloomingFlowersDrop(gameGlobals),
             new BloomingFlowersPickup(gameGlobals),
+            new MantleOfIntelligenceDrop(gameGlobals),
+            new MantleOfIntelligencePickup(gameGlobals),
         ];
     }
 }
