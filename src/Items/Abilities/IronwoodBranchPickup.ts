@@ -13,6 +13,6 @@ export class IronwoodBranchPickup extends ItemPickup {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerThorns[playerId] += 20;
+        this.gameGlobals.PlayerThorns[playerId] += 18;
     }
 }
