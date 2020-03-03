@@ -1,6 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { ImprovedBalancedShield } from '../Tier2Items/ImprovedBalancedShield';
-import { ReinforcedScales } from '../Tier2Items/ReinforcedScales';
+import { ReinforcedScales } from '../Tier3Items/ReinforcedScales';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02D');
@@ -18,7 +17,7 @@ const description: string = `No matter how you hold this shield it stays perfect
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 
 export class AdvancedReinforcedHides extends ItemRecipe {
-    constructor(improvedBalancedShield: ImprovedBalancedShield, reinforcedScales: ReinforcedScales) {
-        super(itemId, name, labels, goldCost, iconPath, description, [improvedBalancedShield, reinforcedScales]);
+    constructor(reinforcedScales: ReinforcedScales) {
+        super(itemId, name, labels, goldCost, iconPath, description, [reinforcedScales]);
     }
 }

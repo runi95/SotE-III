@@ -3,6 +3,7 @@ import { ItemRecipe } from './ItemRecipe';
 import * as unclassedItemController from './UnclassedItemController';
 import * as tier3ItemController from './Tier3ItemController';
 import { AdvancedStrengthOfTheWild } from './Tier4Items/AdvancedStrengthOfTheWild';
+import { AdvancedReinforcedHides } from './Tier4Items/AdvancedReinforcedHides';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier3ItemMap: Map<string, ItemRecipe> = tier3ItemController.itemMap;
@@ -18,6 +19,7 @@ const tier3ItemMap: Map<string, ItemRecipe> = tier3ItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
+itemMap.set('advancedReinforcedHides', new AdvancedReinforcedHides(tier3ItemMap.get('reinforcedScales') as ItemRecipe));
 itemMap.set(
     'advancedStrengthOfTheWild',
     new AdvancedStrengthOfTheWild(

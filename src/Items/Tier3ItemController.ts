@@ -6,9 +6,9 @@ import { ImprovedStrengthOfTheWild } from './Tier3Items/ImprovedStrengthOfTheWil
 import { AncientBookOfMagic } from './Tier3Items/AncientBookOfMagic';
 import { DragonScales } from './Tier3Items/DragonScales';
 import { AdvancedCreatureClaws } from './Tier3Items/AdvancedCreatureClaws';
-import { AdvancedReinforcedHides } from './Tier3Items/AdvancedReinforcedHides';
 import { Soulcage } from './Tier3Items/Soulcage';
 import { SwordOfNaegling } from './Tier3Items/SwordOfNaegling';
+import { ReinforcedScales } from './Tier3Items/ReinforcedScales';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -32,21 +32,12 @@ itemMap.set(
     ),
 );
 itemMap.set(
-    'advancedReinforcedHides',
-    new AdvancedReinforcedHides(
-        tier2ItemMap.get('improvedBalancedShield') as ItemRecipe,
-        tier2ItemMap.get('reinforcedScales') as ItemRecipe,
-    ),
-);
-itemMap.set(
     'ancientBookOfMagic',
     new AncientBookOfMagic(tier2ItemMap.get('bookOfMagic') as ItemRecipe, unclassedItemMap.get('blueSoulstone') as ItemRecipe),
 );
-itemMap.set(
-    'dragonScales',
-    new DragonScales(tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe, tier2ItemMap.get('reinforcedScales') as ItemRecipe),
-);
+itemMap.set('dragonScales', new DragonScales(tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
+itemMap.set('reinforcedScales', new ReinforcedScales(tier2ItemMap.get('coralScales') as ItemRecipe));
 itemMap.set(
     'soulcage',
     new Soulcage(

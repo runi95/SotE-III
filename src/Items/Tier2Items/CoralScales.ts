@@ -1,7 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { ReinforcedHide } from '../BaseItems/ReinforcedHide';
-import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 import { ItemLabel } from '../ItemLabel';
+import { ImprovedReinforcedHide } from '../Tier1Items/ImprovedReinforcedHide';
+import { ReinforcedLeatherArmor } from '../Tier1Items/ReinforcedLeatherArmor';
 
 const itemId: number = FourCC('I00N');
 const name: string = 'Coral Scales';
@@ -16,7 +16,7 @@ const description: string = `Very strong, defensive scales.
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
 
 export class CoralScales extends ItemRecipe {
-    constructor(reinforcedHide: ReinforcedHide, studdedLeatherArmor: StuddedLeatherArmor) {
-        super(itemId, name, labels, goldCost, iconPath, description, [reinforcedHide, studdedLeatherArmor]);
+    constructor(improvedReinforcedHide: ImprovedReinforcedHide, reinforcedLeatherArmor: ReinforcedLeatherArmor) {
+        super(itemId, name, labels, goldCost, iconPath, description, [improvedReinforcedHide, reinforcedLeatherArmor]);
     }
 }

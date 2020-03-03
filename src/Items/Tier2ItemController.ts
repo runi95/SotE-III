@@ -11,11 +11,11 @@ import { SpellShield } from './Tier2Items/SpellShield';
 import { StrengthOfTheWild } from './Tier2Items/StrengthOfTheWild';
 import { ChargedStone } from './Tier2Items/ChargedStone';
 import { MasterStaff } from './Tier2Items/MasterStaff';
-import { ReinforcedScales } from './Tier2Items/ReinforcedScales';
 import { BookOfMagic } from './Tier2Items/BookOfMagic';
 import { ManaInfusedMask } from './Tier2Items/ManaInfusedMask';
 import { AssassinsCloak } from './Tier2Items/AssassinsCloak';
 import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
+import { CoralScales } from './Tier2Items/CoralScales';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -28,7 +28,6 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
  * - has a total cost between 6750 to 13500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
-
 itemMap.set(
     'arcaniteSpear',
     new ArcaniteSpear(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe),
@@ -38,6 +37,10 @@ itemMap.set('bookOfMagic', new BookOfMagic(tier1ItemMap.get('bookOfKnowledge') a
 itemMap.set(
     'chargedStone',
     new ChargedStone(tier1ItemMap.get('manaStone') as ItemRecipe, tier1ItemMap.get('brightLifeStone') as ItemRecipe),
+);
+itemMap.set(
+    'coralScales',
+    new CoralScales(tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe, tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe),
 );
 itemMap.set('emptySoulcage', new EmptySoulcage());
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
@@ -56,14 +59,6 @@ itemMap.set(
 );
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe));
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
-itemMap.set(
-    'reinforcedScales',
-    new ReinforcedScales(
-        tier1ItemMap.get('coralScales') as ItemRecipe,
-        tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe,
-        tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe,
-    ),
-);
 itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippers') as ItemRecipe));
 itemMap.set('spellShield', new SpellShield(tier1ItemMap.get('lionsRing') as ItemRecipe));
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);

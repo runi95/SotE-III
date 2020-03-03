@@ -6,7 +6,6 @@ import { AgileSlippers } from './Tier1Items/AgileSlippers';
 import { BalancedShield } from './Tier1Items/BalancedShield';
 import { BookOfKnowledge } from './Tier1Items/BookOfKnowledge';
 import { BrightLifeStone } from './Tier1Items/BrightLifeStone';
-import { CoralScales } from './Tier1Items/CoralScales';
 import { CreatureClaws } from './Tier1Items/CreatureClaws';
 import { FastVampireClaws } from './Tier1Items/FastVampireClaws';
 import { FullVial } from './Tier1Items/FullVial';
@@ -72,7 +71,6 @@ itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone')
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
 itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item));
 itemMap.set('cloakOfShadowWalk', new CloakOfShadowWalk(basicItemMap.get('cloakOfShadows') as Item, itemMap.get('bootsOfSpeed') as Item));
-itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('creatureClaws', new CreatureClaws(basicItemMap.get('claws') as Item));
 itemMap.set('fastVampireClaws', new FastVampireClaws(basicItemMap.get('claws') as Item, basicItemMap.get('vampireClaws') as Item));
 itemMap.set('fullVial', new FullVial(basicItemMap.get('emptyVial') as Item, basicItemMap.get('sobiMask') as Item));

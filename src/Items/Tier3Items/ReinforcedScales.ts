@@ -1,5 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { CoralScales } from '../Tier1Items/CoralScales';
+import { CoralScales } from '../Tier2Items/CoralScales';
 import { ItemLabel } from '../ItemLabel';
 import { ImprovedReinforcedHide } from '../Tier1Items/ImprovedReinforcedHide';
 import { ReinforcedLeatherArmor } from '../Tier1Items/ReinforcedLeatherArmor';
@@ -17,7 +17,7 @@ const description: string = `Highly reinforced scales, sure to defend against th
 |cFF808080Health determines how much damage you can take before dying.|r`;
 
 export class ReinforcedScales extends ItemRecipe {
-    constructor(coralScales: CoralScales, improvedReinforcedHide: ImprovedReinforcedHide, reinforcedLeatherArmor: ReinforcedLeatherArmor) {
-        super(itemId, name, labels, goldCost, iconPath, description, [coralScales, improvedReinforcedHide, reinforcedLeatherArmor]);
+    constructor(coralScales: CoralScales) {
+        super(itemId, name, labels, goldCost, iconPath, description, [coralScales]);
     }
 }
