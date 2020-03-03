@@ -101,6 +101,8 @@ import { BloomingFlowersDrop } from './Abilities/BloomingFlowersDrop';
 import { BloomingFlowersPickup } from './Abilities/BloomingFlowersPickup';
 import { MantleOfIntelligenceDrop } from './Abilities/MantleOfIntelligenceDrop';
 import { MantleOfIntelligencePickup } from './Abilities/MantleOfIntelligencePickup';
+import { RingOfSuperiorityDrop } from './Abilities/RingOfSuperiorityDrop';
+import { RingOfSuperiorityPickup } from './Abilities/RingOfSuperiorityPickup';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -207,6 +209,8 @@ export class ItemController {
             new BloomingFlowersPickup(gameGlobals),
             new MantleOfIntelligenceDrop(gameGlobals),
             new MantleOfIntelligencePickup(gameGlobals),
+            new RingOfSuperiorityDrop(gameGlobals),
+            new RingOfSuperiorityPickup(gameGlobals),
         ];
     }
 }

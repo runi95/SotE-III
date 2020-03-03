@@ -45,6 +45,7 @@ import { AmuletOfProtection } from './Tier1Items/AmuletOfProtection';
 import { MasterExecutionerAxe } from './Tier1Items/MasterExecutionerAxe';
 import { BloomingFlowers } from './Tier1Items/BloomingFlowers';
 import { MantleOfIntelligence } from './Tier1Items/MantleOfIntelligence';
+import { RingOfSuperiority } from './Tier1Items/RingOfSuperiority';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -99,6 +100,7 @@ itemMap.set('masterExecutionerAxe', new MasterExecutionerAxe(basicItemMap.get('b
 itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe') as Item));
 itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedHide') as Item, basicItemMap.get('druidicSalve') as Item));
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
+itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
 itemMap.set('snowyOwl', new SnowyOwl(basicItemMap.get('clockworkPenguin') as Item));
 itemMap.set(
