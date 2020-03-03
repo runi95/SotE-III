@@ -44,6 +44,7 @@ import { MasterCrystalBall } from './Tier1Items/MasterCrystalBall';
 import { KhadgarsAmulet } from './Tier1Items/KhadgarsAmulet';
 import { AmuletOfProtection } from './Tier1Items/AmuletOfProtection';
 import { MasterExecutionerAxe } from './Tier1Items/MasterExecutionerAxe';
+import { BloomingFlowers } from './Tier1Items/BloomingFlowers';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -65,6 +66,7 @@ itemMap.set(
 );
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
+itemMap.set('bloomingFlowers', new BloomingFlowers(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('bookOfKnowledge', new BookOfKnowledge(basicItemMap.get('orbOfMagic') as Item));
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
