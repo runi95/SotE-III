@@ -5,6 +5,8 @@ import { MantleOfIntelligenceDrop } from './Abilities/MantleOfIntelligenceDrop';
 import { MantleOfIntelligencePickup } from './Abilities/MantleOfIntelligencePickup';
 import { RingOfSuperiorityDrop } from './Abilities/RingOfSuperiorityDrop';
 import { RingOfSuperiorityPickup } from './Abilities/RingOfSuperiorityPickup';
+import { ElementalOrbDrop } from './Abilities/ElementalOrbDrop';
+import { ElementalOrbPickup } from './Abilities/ElementalOrbPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -17,6 +19,8 @@ export class ItemController2 {
             new MantleOfIntelligencePickup(gameGlobals),
             new RingOfSuperiorityDrop(gameGlobals),
             new RingOfSuperiorityPickup(gameGlobals),
+            new ElementalOrbDrop(gameGlobals),
+            new ElementalOrbPickup(gameGlobals),
         ];
     }
 }
