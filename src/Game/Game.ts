@@ -21,6 +21,7 @@ import { FlyingMachineController } from '../FlyingMachine/FlyingMachineControlle
 import { Trigger } from '../JassOverrides/Trigger';
 import { Group } from '../JassOverrides/Group';
 import { RecipeSystem } from '../Items/RecipeSystem';
+import { ItemController2 } from '../Items/ItemController2';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -38,6 +39,7 @@ export class Game {
     private readonly spellController: SpellController;
     private readonly teleportController: TeleportController;
     private readonly itemController: ItemController;
+    private readonly itemController2: ItemController2;
     private readonly damageEventController: DamageEventController;
     private readonly flyingMachineController: FlyingMachineController;
     private readonly bossController: BossController;
@@ -77,6 +79,7 @@ export class Game {
 
         this.commands = new Commands(this.gameGlobals, this.playerVictoryUtils);
         this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.randomNumberGenerator, this.arcaneVault);
+        this.itemController2 = new ItemController2(this.gameGlobals, this.timerUtils, this.randomNumberGenerator);
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(240, true, () => {
