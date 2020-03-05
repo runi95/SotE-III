@@ -7,6 +7,8 @@ import { RingOfSuperiorityDrop } from './Abilities/RingOfSuperiorityDrop';
 import { RingOfSuperiorityPickup } from './Abilities/RingOfSuperiorityPickup';
 import { ElementalOrbDrop } from './Abilities/ElementalOrbDrop';
 import { ElementalOrbPickup } from './Abilities/ElementalOrbPickup';
+import { SkullShieldDrop } from './Abilities/SkullShieldDrop';
+import { SkullShieldPickup } from './Abilities/SkullShieldPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -21,6 +23,8 @@ export class ItemController2 {
             new RingOfSuperiorityPickup(gameGlobals),
             new ElementalOrbDrop(gameGlobals),
             new ElementalOrbPickup(gameGlobals),
+            new SkullShieldDrop(gameGlobals),
+            new SkullShieldPickup(gameGlobals),
         ];
     }
 }
