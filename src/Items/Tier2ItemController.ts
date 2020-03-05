@@ -16,6 +16,7 @@ import { ManaInfusedMask } from './Tier2Items/ManaInfusedMask';
 import { AssassinsCloak } from './Tier2Items/AssassinsCloak';
 import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
 import { CoralScales } from './Tier2Items/CoralScales';
+import { StoneArmor } from './Tier2Items/StoneArmor';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -61,6 +62,7 @@ itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as I
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
 itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippers') as ItemRecipe));
 itemMap.set('spellShield', new SpellShield(tier1ItemMap.get('lionsRing') as ItemRecipe));
+itemMap.set('stoneArmor', new StoneArmor(tier1ItemMap.get('balancedShield') as ItemRecipe, tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);
 itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe));
 
