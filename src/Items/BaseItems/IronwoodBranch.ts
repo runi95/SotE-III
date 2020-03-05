@@ -6,7 +6,7 @@ const name: string = 'Ironwood Branch';
 const labels: ItemLabel[] = [ItemLabel.THORNS];
 const goldCost: number = 1440;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNatureTouchGrow.blp';
-const description: string = `A pouch full of druidic ingredients.
+const description: string = `Very pointy.
 
 |cffffcc00Thorns:|r +18
 
