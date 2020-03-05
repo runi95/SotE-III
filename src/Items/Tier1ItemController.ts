@@ -47,6 +47,7 @@ import { BloomingFlowers } from './Tier1Items/BloomingFlowers';
 import { MantleOfIntelligence } from './Tier1Items/MantleOfIntelligence';
 import { RingOfSuperiority } from './Tier1Items/RingOfSuperiority';
 import { ElementalOrb } from './Tier1Items/ElementalOrb';
+import { SkullShield } from './Tier1Items/SkullShield';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -104,6 +105,10 @@ itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedH
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
+itemMap.set(
+    'skullShield',
+    new SkullShield(basicItemMap.get('ironwoodBranch') as Item, basicItemMap.get('amuletOfSpellReflection') as Item),
+);
 itemMap.set('snowyOwl', new SnowyOwl(basicItemMap.get('clockworkPenguin') as Item));
 itemMap.set(
     'spikedCarapace',
