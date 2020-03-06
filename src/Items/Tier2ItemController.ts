@@ -20,6 +20,7 @@ import { StoneArmor } from './Tier2Items/StoneArmor';
 import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
 import { SunkenShard } from './Tier2Items/SunkenShard';
 import { EnhancedMantleOfIntelligence } from './Tier2Items/EnhancedMantleOfIntelligence';
+import { ShamanClaws } from './Tier2Items/ShamanClaws';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -79,6 +80,7 @@ itemMap.set(
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe));
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
 itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippers') as ItemRecipe));
+itemMap.set('shamanClaws', new ShamanClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set('spellShield', new SpellShield(tier1ItemMap.get('lionsRing') as ItemRecipe));
 itemMap.set('stoneArmor', new StoneArmor(tier1ItemMap.get('balancedShield') as ItemRecipe, tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);
