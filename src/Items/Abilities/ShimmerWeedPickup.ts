@@ -1,7 +1,7 @@
+import { ItemPickup } from '../ItemPickup';
 import { GameGlobals } from '../../Game/GameGlobals';
-import { ItemDrop } from '../ItemDrop';
 
-export class BloomingFlowersDrop extends ItemDrop {
+export class ShimmerWeedPickup extends ItemPickup {
     protected readonly itemTypeId: number = FourCC('I03T');
     private readonly gameGlobals: GameGlobals;
 
@@ -13,6 +13,6 @@ export class BloomingFlowersDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerRestoration[playerId] -= 2;
+        this.gameGlobals.PlayerRestoration[playerId] += 2;
     }
 }

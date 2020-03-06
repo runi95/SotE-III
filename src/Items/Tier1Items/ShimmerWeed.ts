@@ -15,7 +15,7 @@ const description: string = `They're blooming with life.
 
 |cFF808080Restoration restores life points based on a percentage of mana used when casting spells.|r`;
 
-export class BloomingFlowers extends ItemRecipe {
+export class ShimmerWeed extends ItemRecipe {
     constructor(lifeStone: LifeStone, studdedLeatherArmor: StuddedLeatherArmor) {
         super(itemId, name, labels, goldCost, iconPath, description, [lifeStone, studdedLeatherArmor]);
     }

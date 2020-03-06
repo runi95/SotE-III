@@ -43,7 +43,7 @@ import { MasterCrystalBall } from './Tier1Items/MasterCrystalBall';
 import { KhadgarsAmulet } from './Tier1Items/KhadgarsAmulet';
 import { AmuletOfProtection } from './Tier1Items/AmuletOfProtection';
 import { MasterExecutionerAxe } from './Tier1Items/MasterExecutionerAxe';
-import { BloomingFlowers } from './Tier1Items/BloomingFlowers';
+import { ShimmerWeed } from './Tier1Items/ShimmerWeed';
 import { MantleOfIntelligence } from './Tier1Items/MantleOfIntelligence';
 import { RingOfSuperiority } from './Tier1Items/RingOfSuperiority';
 import { ElementalOrb } from './Tier1Items/ElementalOrb';
@@ -69,7 +69,6 @@ itemMap.set(
 );
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
-itemMap.set('bloomingFlowers', new BloomingFlowers(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('bookOfKnowledge', new BookOfKnowledge(basicItemMap.get('orbOfMagic') as Item));
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
@@ -105,6 +104,7 @@ itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedH
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
+itemMap.set('shimmerWeed', new ShimmerWeed(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set(
     'skullShield',
     new SkullShield(basicItemMap.get('ironwoodBranch') as Item, basicItemMap.get('amuletOfSpellReflection') as Item),
