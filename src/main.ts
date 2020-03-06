@@ -71,6 +71,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.ClockworkPenguin[i] = false;
         gameGlobals.AssassinsBlade[i] = AssassinsBladeStates.UNEQUIPPED;
         gameGlobals.RazorBladesOn[i] = false;
+        gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.ArcaniteSpearCount[i] = 0;
         gameGlobals.DivineShieldLife[i] = 0;
         gameGlobals.PlayerLifesteal[i] = 0;

@@ -25,6 +25,7 @@ import { Reflect } from './Reflect';
 import { Execute } from './Execute';
 import { CriticalCast } from './CriticalCast';
 import { Splash } from './Splash';
+import { ElementalOrb } from './ElementalOrb';
 
 export class DamageEventController {
     constructor(
@@ -63,5 +64,6 @@ export class DamageEventController {
 
         // After damage events
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
+        damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
     }
 }
