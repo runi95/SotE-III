@@ -13,6 +13,8 @@ import { StoneArmorDrop } from './Abilities/StoneArmorDrop';
 import { StoneArmorPickup } from './Abilities/StoneArmorPickup';
 import { ImprovedShimmerWeedDrop } from './Abilities/ImprovedShimmerWeedDrop';
 import { ImprovedShimmerWeedPickup } from './Abilities/ImprovedShimmerWeedPickup';
+import { SunkenShardDrop } from './Abilities/SunkenShardDrop';
+import { SunkenShardPickup } from './Abilities/SunkenShardPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -33,6 +35,8 @@ export class ItemController2 {
             new StoneArmorPickup(gameGlobals),
             new ImprovedShimmerWeedDrop(gameGlobals),
             new ImprovedShimmerWeedPickup(gameGlobals),
+            new SunkenShardDrop(gameGlobals),
+            new SunkenShardPickup(gameGlobals),
         ];
     }
 }

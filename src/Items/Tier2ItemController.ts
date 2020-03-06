@@ -18,6 +18,7 @@ import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
 import { CoralScales } from './Tier2Items/CoralScales';
 import { StoneArmor } from './Tier2Items/StoneArmor';
 import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
+import { SunkenShard } from './Tier2Items/SunkenShard';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -73,6 +74,7 @@ itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippe
 itemMap.set('spellShield', new SpellShield(tier1ItemMap.get('lionsRing') as ItemRecipe));
 itemMap.set('stoneArmor', new StoneArmor(tier1ItemMap.get('balancedShield') as ItemRecipe, tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);
+itemMap.set('sunkenShard', new SunkenShard(tier1ItemMap.get('shimmerWeed') as ItemRecipe, tier1ItemMap.get('manaStone') as ItemRecipe));
 itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe));
 
 export default [...itemMap.values()] as ItemRecipe[];
