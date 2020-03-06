@@ -21,6 +21,7 @@ import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
 import { SunkenShard } from './Tier2Items/SunkenShard';
 import { EnhancedMantleOfIntelligence } from './Tier2Items/EnhancedMantleOfIntelligence';
 import { ShamanClaws } from './Tier2Items/ShamanClaws';
+import { DevouringFangs } from './Tier2Items/DevouringFangs';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -46,6 +47,14 @@ itemMap.set(
 itemMap.set(
     'coralScales',
     new CoralScales(tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe, tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe),
+);
+itemMap.set(
+    'devouringFangs',
+    new DevouringFangs(
+        tier1ItemMap.get('fastVampireClaws') as ItemRecipe,
+        tier1ItemMap.get('vampireFangs') as ItemRecipe,
+        tier1ItemMap.get('creatureClaws') as ItemRecipe,
+    ),
 );
 itemMap.set('emptySoulcage', new EmptySoulcage());
 itemMap.set(

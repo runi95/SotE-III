@@ -17,6 +17,8 @@ import { SunkenShardDrop } from './Abilities/SunkenShardDrop';
 import { SunkenShardPickup } from './Abilities/SunkenShardPickup';
 import { EnhancedMantleOfIntelligenceDrop } from './Abilities/EnhancedMantleOfIntelligenceDrop';
 import { EnhancedMantleOfIntelligencePickup } from './Abilities/EnhancedMantleOfIntelligencePickup';
+import { DevouringFangsDrop } from './Abilities/DevouringFangsDrop';
+import { DevouringFangsPickup } from './Abilities/DevouringFangsPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -41,6 +43,8 @@ export class ItemController2 {
             new SunkenShardPickup(gameGlobals),
             new EnhancedMantleOfIntelligenceDrop(gameGlobals),
             new EnhancedMantleOfIntelligencePickup(gameGlobals),
+            new DevouringFangsDrop(gameGlobals),
+            new DevouringFangsPickup(gameGlobals),
         ];
     }
 }
