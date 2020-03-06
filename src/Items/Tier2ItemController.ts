@@ -19,6 +19,7 @@ import { CoralScales } from './Tier2Items/CoralScales';
 import { StoneArmor } from './Tier2Items/StoneArmor';
 import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
 import { SunkenShard } from './Tier2Items/SunkenShard';
+import { EnhancedMantleOfIntelligence } from './Tier2Items/EnhancedMantleOfIntelligence';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -46,6 +47,13 @@ itemMap.set(
     new CoralScales(tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe, tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe),
 );
 itemMap.set('emptySoulcage', new EmptySoulcage());
+itemMap.set(
+    'enhancedMantleOfIntelligence',
+    new EnhancedMantleOfIntelligence(
+        tier1ItemMap.get('mantleOfIntelligence') as ItemRecipe,
+        tier1ItemMap.get('bookOfKnowledge') as ItemRecipe,
+    ),
+);
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set(
     'improvedBalancedShield',
