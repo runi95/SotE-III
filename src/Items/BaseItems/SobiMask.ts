@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00T');
 const name: string = 'Sobi Mask';
 const labels: ItemLabel[] = [ItemLabel.MANA_REGEN];
-const goldCost: number = 225;
+const goldCost: number = 425;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSobiMask.blp';
 const description: string = `An odd looking mask.
 

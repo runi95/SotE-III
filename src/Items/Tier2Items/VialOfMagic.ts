@@ -5,7 +5,7 @@ import { FullVial } from '../Tier1Items/FullVial';
 const itemId: number = FourCC('I001');
 const name: string = 'Vial of Magic';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
-const goldCost: number = 1790;
+const goldCost: number = 2270;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNVialOfMagic.dds';
 const description: string = `A vial full of enchanted mana water.
 

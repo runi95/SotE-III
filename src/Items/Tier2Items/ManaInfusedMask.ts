@@ -6,7 +6,7 @@ import { FullVial } from '../Tier1Items/FullVial';
 const itemId: number = FourCC('I029');
 const name: string = 'Mana Infused Mask';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-const goldCost: number = 2850;
+const goldCost: number = 3250;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkullBlue.blp';
 const description: string = `A mask infused with pure magic.
 

@@ -6,7 +6,7 @@ import { SobiMask } from '../BaseItems/SobiMask';
 const itemId: number = FourCC('I016');
 const name: string = 'Full Vial';
 const labels: ItemLabel[] = [ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-const goldCost: number = 750;
+const goldCost: number = 1150;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNVialFull.blp';
 const description: string = `A vial full of potency.
 
