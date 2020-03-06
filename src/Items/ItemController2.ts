@@ -22,6 +22,8 @@ import { DevouringFangsPickup } from './Abilities/DevouringFangsPickup';
 import { DruidsCrowDrop } from './Abilities/DruidsCrowDrop';
 import { DruidsCrowPickup } from './Abilities/DruidsCrowPickup';
 import { ImprovedNaturesBlessingUse } from './Abilities/ImprovedNaturesBlessingUse';
+import { BoneChimesDrop } from './Abilities/BoneChimesDrop';
+import { BoneChimesPickup } from './Abilities/BoneChimesPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -51,6 +53,8 @@ export class ItemController2 {
             new DruidsCrowDrop(gameGlobals),
             new DruidsCrowPickup(gameGlobals),
             new ImprovedNaturesBlessingUse(),
+            new BoneChimesDrop(gameGlobals),
+            new BoneChimesPickup(gameGlobals),
         ];
     }
 }

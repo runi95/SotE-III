@@ -24,6 +24,7 @@ import { ShamanClaws } from './Tier2Items/ShamanClaws';
 import { DevouringFangs } from './Tier2Items/DevouringFangs';
 import { DruidsCrow } from './Tier2Items/DruidsCrow';
 import { ImprovedNaturesBlessing } from './Tier2Items/ImprovedNaturesBlessing';
+import { BoneChimes } from './Tier2Items/BoneChimes';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -41,6 +42,7 @@ itemMap.set(
     new ArcaniteSpear(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe),
 );
 itemMap.set('assassinsCloak', new AssassinsCloak(tier1ItemMap.get('cloakOfShadowWalk') as ItemRecipe));
+itemMap.set('boneChimes', new BoneChimes(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('vampireFangs') as ItemRecipe));
 itemMap.set('bookOfMagic', new BookOfMagic(tier1ItemMap.get('bookOfKnowledge') as ItemRecipe));
 itemMap.set(
     'chargedStone',
