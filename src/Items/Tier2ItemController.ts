@@ -23,6 +23,7 @@ import { EnhancedMantleOfIntelligence } from './Tier2Items/EnhancedMantleOfIntel
 import { ShamanClaws } from './Tier2Items/ShamanClaws';
 import { DevouringFangs } from './Tier2Items/DevouringFangs';
 import { DruidsCrow } from './Tier2Items/DruidsCrow';
+import { ImprovedNaturesBlessing } from './Tier2Items/ImprovedNaturesBlessing';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -79,6 +80,13 @@ itemMap.set(
     ),
 );
 itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe));
+itemMap.set(
+    'improvedNaturesBlessing',
+    new ImprovedNaturesBlessing(
+        tier1ItemMap.get('naturesBlessing') as ItemRecipe,
+        tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe,
+    ),
+);
 itemMap.set(
     'improvedShimmerWeed',
     new ImprovedShimmerWeed(
