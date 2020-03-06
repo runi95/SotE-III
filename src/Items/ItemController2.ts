@@ -19,6 +19,8 @@ import { EnhancedMantleOfIntelligenceDrop } from './Abilities/EnhancedMantleOfIn
 import { EnhancedMantleOfIntelligencePickup } from './Abilities/EnhancedMantleOfIntelligencePickup';
 import { DevouringFangsDrop } from './Abilities/DevouringFangsDrop';
 import { DevouringFangsPickup } from './Abilities/DevouringFangsPickup';
+import { DruidsCrowDrop } from './Abilities/DruidsCrowDrop';
+import { DruidsCrowPickup } from './Abilities/DruidsCrowPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -45,6 +47,8 @@ export class ItemController2 {
             new EnhancedMantleOfIntelligencePickup(gameGlobals),
             new DevouringFangsDrop(gameGlobals),
             new DevouringFangsPickup(gameGlobals),
+            new DruidsCrowDrop(gameGlobals),
+            new DruidsCrowPickup(gameGlobals),
         ];
     }
 }

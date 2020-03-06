@@ -22,6 +22,7 @@ import { SunkenShard } from './Tier2Items/SunkenShard';
 import { EnhancedMantleOfIntelligence } from './Tier2Items/EnhancedMantleOfIntelligence';
 import { ShamanClaws } from './Tier2Items/ShamanClaws';
 import { DevouringFangs } from './Tier2Items/DevouringFangs';
+import { DruidsCrow } from './Tier2Items/DruidsCrow';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -55,6 +56,10 @@ itemMap.set(
         tier1ItemMap.get('vampireFangs') as ItemRecipe,
         tier1ItemMap.get('creatureClaws') as ItemRecipe,
     ),
+);
+itemMap.set(
+    'druidsCrow',
+    new DruidsCrow(tier1ItemMap.get('improvedMoonArmor') as ItemRecipe, tier1ItemMap.get('khadgarsAmulet') as ItemRecipe),
 );
 itemMap.set('emptySoulcage', new EmptySoulcage());
 itemMap.set(
