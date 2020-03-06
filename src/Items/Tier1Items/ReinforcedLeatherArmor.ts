@@ -5,11 +5,11 @@ import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 const itemId: number = FourCC('I03O');
 const name: string = 'Reinforced Leather Armor';
 const labels: ItemLabel[] = [ItemLabel.MAX_HEALTH];
-const goldCost: number = 600;
+const goldCost: number = 3000;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeTwo.blp';
 const description: string = `A reinforced leather armor.
 
-|cffffcc00Max health:|r +150
+|cffffcc00Max health:|r +750
 
 |cFF808080Health determines how much damage you can take before dying.|r`;
 
