@@ -13,6 +13,6 @@ export class ThoriumSpearDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPiercing[playerId] -= 40;
+        this.gameGlobals.PlayerPiercing[playerId] -= 70;
     }
 }
