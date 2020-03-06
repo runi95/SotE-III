@@ -5,11 +5,11 @@ import { VampireClaws } from '../BaseItems/VampireClaws';
 const itemId: number = FourCC('I03N');
 const name: string = 'Vampire Fangs';
 const labels: ItemLabel[] = [ItemLabel.LIFESTEAL];
-const goldCost: number = 1500;
+const goldCost: number = 2250;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCannibalize.blp';
 const description: string = `These fangs are able to drain the blood of the living withing seconds.
 
-|cffffcc00Lifesteal:|r +60
+|cffffcc00Lifesteal:|r +90
 
 |cFF808080Lifesteal determines the maximum amount of health regained when attacking enemy units.|r`;
 
