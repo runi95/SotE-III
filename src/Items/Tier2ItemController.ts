@@ -17,6 +17,7 @@ import { AssassinsCloak } from './Tier2Items/AssassinsCloak';
 import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
 import { CoralScales } from './Tier2Items/CoralScales';
 import { StoneArmor } from './Tier2Items/StoneArmor';
+import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -54,6 +55,14 @@ itemMap.set(
     ),
 );
 itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe));
+itemMap.set(
+    'improvedShimmerWeed',
+    new ImprovedShimmerWeed(
+        tier1ItemMap.get('shimmerWeed') as ItemRecipe,
+        tier1ItemMap.get('brightLifeStone') as ItemRecipe,
+        tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe,
+    ),
+);
 itemMap.set(
     'manaInfusedMask',
     new ManaInfusedMask(tier1ItemMap.get('maskOfProficiency') as ItemRecipe, tier1ItemMap.get('fullVial') as ItemRecipe),
