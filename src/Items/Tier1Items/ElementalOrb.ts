@@ -7,7 +7,7 @@ const itemId: number = FourCC('I03W');
 const name: string = 'Elemental Orb';
 const labels: ItemLabel[] = [ItemLabel.SPLASH];
 const goldCost: number = 2400;
-const iconPath: string = 'ReplaceableTexturesCommandButtonsBTNMixedOrb.dds';
+const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMixedOrb.dds';
 const description: string = `The perfect storm.
 
 |cffffcc00Splash:|r +35%
