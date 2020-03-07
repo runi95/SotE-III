@@ -26,6 +26,8 @@ import { BoneChimesDrop } from './Abilities/BoneChimesDrop';
 import { BoneChimesPickup } from './Abilities/BoneChimesPickup';
 import { MedallionOfCouragePickup } from './Abilities/MedallionOfCouragePickup';
 import { MedallionOfCourageDrop } from './Abilities/MedallionOfCourageDrop';
+import { QuillsDrop } from './Abilities/QuillsDrop';
+import { QuillsPickup } from './Abilities/QuillsPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -59,6 +61,8 @@ export class ItemController2 {
             new BoneChimesPickup(gameGlobals),
             new MedallionOfCourageDrop(gameGlobals),
             new MedallionOfCouragePickup(gameGlobals),
+            new QuillsDrop(gameGlobals),
+            new QuillsPickup(gameGlobals),
         ];
     }
 }

@@ -27,6 +27,7 @@ import { ImprovedNaturesBlessing } from './Tier2Items/ImprovedNaturesBlessing';
 import { BoneChimes } from './Tier2Items/BoneChimes';
 import { MedallionOfCourage } from './Tier2Items/MedallionOfCourage';
 import { EnhancedMaskOfProficiency } from './Tier2Items/EnhancedMaskOfProficiency';
+import { Quills } from './Tier2Items/Quills';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -106,6 +107,7 @@ itemMap.set(
     'medallionOfCourage',
     new MedallionOfCourage(tier1ItemMap.get('maulOfStrength') as ItemRecipe, tier1ItemMap.get('steelShield') as ItemRecipe),
 );
+itemMap.set('quills', new Quills(tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set(
     'ringOfMagic',
     new RingOfMagic(tier1ItemMap.get('maskOfProficiency') as ItemRecipe, tier1ItemMap.get('fullVial') as ItemRecipe),
