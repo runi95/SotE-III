@@ -28,6 +28,7 @@ import { BoneChimes } from './Tier2Items/BoneChimes';
 import { MedallionOfCourage } from './Tier2Items/MedallionOfCourage';
 import { EnhancedMaskOfProficiency } from './Tier2Items/EnhancedMaskOfProficiency';
 import { Quills } from './Tier2Items/Quills';
+import { ImpalingBolt } from './Tier2Items/ImpalingBolt';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -77,6 +78,10 @@ itemMap.set(
 );
 itemMap.set('enhancedMaskOfProficiency', new EnhancedMaskOfProficiency(tier1ItemMap.get('maskOfProficiency') as ItemRecipe));
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
+itemMap.set(
+    'impalingBolt',
+    new ImpalingBolt(tier1ItemMap.get('sharpSteelAxe') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
+);
 itemMap.set(
     'improvedBalancedShield',
     new ImprovedBalancedShield(
