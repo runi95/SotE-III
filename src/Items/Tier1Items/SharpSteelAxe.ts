@@ -6,12 +6,12 @@ import { IronSword } from '../BaseItems/IronSword';
 const itemId: number = FourCC('I00Q');
 const name: string = 'Sharp Steel Axe';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 1340;
+const goldCost: number = 2340;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpTwo.blp';
 const description: string = `A perfectly grinded axe.
 
-|cffffcc00Strength:|r +7
-|cffffcc00Attack damage:|r +10
+|cffffcc00Strength:|r +12
+|cffffcc00Attack damage:|r +18
 
 |cFF808080Strength increases your max health and health regen.|r`;
 
