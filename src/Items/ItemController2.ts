@@ -30,6 +30,8 @@ import { QuillsDrop } from './Abilities/QuillsDrop';
 import { QuillsPickup } from './Abilities/QuillsPickup';
 import { SpikedWoodDrop } from './Abilities/SpikedWoodDrop';
 import { SpikedWoodPickup } from './Abilities/SpikedWoodPickup';
+import { ImprovedSpikesDrop } from './Abilities/ImprovedSpikesDrop';
+import { ImprovedSpikesPickup } from './Abilities/ImprovedSpikesPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -67,6 +69,8 @@ export class ItemController2 {
             new QuillsPickup(gameGlobals),
             new SpikedWoodDrop(gameGlobals),
             new SpikedWoodPickup(gameGlobals),
+            new ImprovedSpikesDrop(gameGlobals),
+            new ImprovedSpikesPickup(gameGlobals),
         ];
     }
 }
