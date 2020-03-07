@@ -253,6 +253,17 @@ export class Game {
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 3, 9, false, false);
 
         MultiboardDisplayBJ(true, this.gameGlobals.Multiboard);
+
+        const levelUpTrigger: Trigger = new Trigger();
+        levelUpTrigger.registerAnyUnitEventBJ(EVENT_PLAYER_HERO_LEVEL);
+        levelUpTrigger.addAction(() => {
+            MultiboardSetItemValueBJ(
+                this.gameGlobals.Multiboard as multiboard,
+                3,
+                2 + GetPlayerId(GetOwningPlayer(GetTriggerUnit())),
+                `${GetHeroLevel(GetTriggerUnit())}`,
+            );
+        });
     }
 
     private startDebugUI(): void {
