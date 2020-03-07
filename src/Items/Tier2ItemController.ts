@@ -36,7 +36,7 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
  *
  * Qualifiers:
  * - is a recipe item made only from tier 1 items
- * - is used in 1 to 2 recipes
+ * - is used in 0 to 2 recipes
  * - has a total cost between 6750 to 13500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();

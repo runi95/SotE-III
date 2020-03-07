@@ -18,7 +18,7 @@ const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
  *
  * Qualifiers:
  * - is a recipe item made only from tier 2 items
- * - is used in 1 recipes
+ * - is used in 0 to 1 recipes
  * - has a unique effect not found in any other tier 3 or lower tier item
  * - has a total cost between 20250 to 40500 gold
  */

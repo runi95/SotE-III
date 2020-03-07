@@ -56,7 +56,7 @@ const basicItemMap: Map<string, Item> = basicItemController.itemMap;
  *
  * Qualifiers:
  * - is a recipe item made only from basic items
- * - is used in 2 to 3 recipes
+ * - is used in 1 to 3 recipes
  * - has a total cost between 2250 to 4500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
