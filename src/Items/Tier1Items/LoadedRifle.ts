@@ -5,11 +5,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00W');
 const name: string = 'Loaded Rifle';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 600;
+const goldCost: number = 2250;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpOne.blp';
 const description: string = `The loaded rifle; an essential tool in warfare.
 
-|cffffcc00Attack damage:|r +12
+|cffffcc00Attack damage:|r +45
 
 |cFF808080Your attack damage determines how much damage your physical attacks do.|r`;
 
