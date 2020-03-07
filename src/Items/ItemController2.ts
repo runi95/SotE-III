@@ -28,6 +28,8 @@ import { MedallionOfCouragePickup } from './Abilities/MedallionOfCouragePickup';
 import { MedallionOfCourageDrop } from './Abilities/MedallionOfCourageDrop';
 import { QuillsDrop } from './Abilities/QuillsDrop';
 import { QuillsPickup } from './Abilities/QuillsPickup';
+import { SpikedWoodDrop } from './Abilities/SpikedWoodDrop';
+import { SpikedWoodPickup } from './Abilities/SpikedWoodPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -63,6 +65,8 @@ export class ItemController2 {
             new MedallionOfCouragePickup(gameGlobals),
             new QuillsDrop(gameGlobals),
             new QuillsPickup(gameGlobals),
+            new SpikedWoodDrop(gameGlobals),
+            new SpikedWoodPickup(gameGlobals),
         ];
     }
 }
