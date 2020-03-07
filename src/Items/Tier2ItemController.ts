@@ -12,7 +12,7 @@ import { StrengthOfTheWild } from './Tier2Items/StrengthOfTheWild';
 import { ChargedStone } from './Tier2Items/ChargedStone';
 import { MasterStaff } from './Tier2Items/MasterStaff';
 import { BookOfMagic } from './Tier2Items/BookOfMagic';
-import { ManaInfusedMask } from './Tier2Items/ManaInfusedMask';
+import { RingOfMagic } from './Tier2Items/RingOfMagic';
 import { AssassinsCloak } from './Tier2Items/AssassinsCloak';
 import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
 import { CoralScales } from './Tier2Items/CoralScales';
@@ -98,15 +98,15 @@ itemMap.set(
         tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe,
     ),
 );
-itemMap.set(
-    'manaInfusedMask',
-    new ManaInfusedMask(tier1ItemMap.get('maskOfProficiency') as ItemRecipe, tier1ItemMap.get('fullVial') as ItemRecipe),
-);
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe));
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
 itemMap.set(
     'medallionOfCourage',
     new MedallionOfCourage(tier1ItemMap.get('maulOfStrength') as ItemRecipe, tier1ItemMap.get('steelShield') as ItemRecipe),
+);
+itemMap.set(
+    'ringOfMagic',
+    new RingOfMagic(tier1ItemMap.get('maskOfProficiency') as ItemRecipe, tier1ItemMap.get('fullVial') as ItemRecipe),
 );
 itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippers') as ItemRecipe));
 itemMap.set('shamanClaws', new ShamanClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
