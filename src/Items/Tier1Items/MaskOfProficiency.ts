@@ -6,11 +6,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I026');
 const name: string = 'Mask of Proficiency';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MANA_REGEN];
-const goldCost: number = 1195;
+const goldCost: number = 2395;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
 const description: string = `A mask that is said to be worn by a master necromancer.
 
-|cffffcc00Intelligence:|r +6
+|cffffcc00Intelligence:|r +18
 |cffffcc00Mana regen:|r +7
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;
