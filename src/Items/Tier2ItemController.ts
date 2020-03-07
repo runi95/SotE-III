@@ -26,6 +26,7 @@ import { DruidsCrow } from './Tier2Items/DruidsCrow';
 import { ImprovedNaturesBlessing } from './Tier2Items/ImprovedNaturesBlessing';
 import { BoneChimes } from './Tier2Items/BoneChimes';
 import { MedallionOfCourage } from './Tier2Items/MedallionOfCourage';
+import { EnhancedMaskOfProficiency } from './Tier2Items/EnhancedMaskOfProficiency';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -73,6 +74,7 @@ itemMap.set(
         tier1ItemMap.get('bookOfKnowledge') as ItemRecipe,
     ),
 );
+itemMap.set('enhancedMaskOfProficiency', new EnhancedMaskOfProficiency(tier1ItemMap.get('maskOfProficiency') as ItemRecipe));
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set(
     'improvedBalancedShield',
