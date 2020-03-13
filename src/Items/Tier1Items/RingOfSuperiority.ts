@@ -1,6 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
-import { OrbOfMagic } from '../BaseItems/OrbOfMagic';
 import { PipeOfInsight } from '../BaseItems/PipeOfInsight';
 import { EmptyVial } from '../BaseItems/EmptyVial';
 
