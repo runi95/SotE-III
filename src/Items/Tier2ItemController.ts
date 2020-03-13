@@ -33,6 +33,7 @@ import { ImprovedAmuletOfProtection } from './Tier2Items/ImprovedAmuletOfProtect
 import { ImprovedElementalOrb } from './Tier2Items/ImprovedElementalOrb';
 import { AdvancedCannon } from './Tier2Items/AdvancedCannon';
 import { FierceTrident } from './Tier2Items/FierceTrident';
+import { RingOfPerseverance } from './Tier2Items/RingOfPerseverance';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -133,6 +134,10 @@ itemMap.set('quills', new Quills(tier1ItemMap.get('skullShield') as ItemRecipe))
 itemMap.set(
     'ringOfMagic',
     new RingOfMagic(tier1ItemMap.get('maskOfProficiency') as ItemRecipe, tier1ItemMap.get('fullVial') as ItemRecipe),
+);
+itemMap.set(
+    'ringOfPerseverance',
+    new RingOfPerseverance(tier1ItemMap.get('ringOfSuperiority') as ItemRecipe, tier1ItemMap.get('manaStone') as ItemRecipe),
 );
 itemMap.set('scrollOfAgility', new ScrollOfAgility(tier1ItemMap.get('agileSlippers') as ItemRecipe));
 itemMap.set('shamanClaws', new ShamanClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
