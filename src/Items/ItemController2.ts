@@ -36,6 +36,8 @@ import { ImprovedAmuletOfProtectionDrop } from './Abilities/ImprovedAmuletOfProt
 import { ImprovedAmuletOfProtectionPickup } from './Abilities/ImprovedAmuletOfProtectionPickup';
 import { ImprovedElementalOrbDrop } from './Abilities/ImprovedElementalOrbDrop';
 import { ImprovedElementalOrbPickup } from './Abilities/ImprovedElementalOrbPickup';
+import { LoadedCannonDrop } from './Abilities/LoadedCannonDrop';
+import { LoadedCannonPickup } from './Abilities/LoadedCannonPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -79,6 +81,8 @@ export class ItemController2 {
             new ImprovedAmuletOfProtectionPickup(gameGlobals),
             new ImprovedElementalOrbDrop(gameGlobals),
             new ImprovedElementalOrbPickup(gameGlobals),
+            new LoadedCannonDrop(gameGlobals),
+            new LoadedCannonPickup(gameGlobals),
         ];
     }
 }
