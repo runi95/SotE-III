@@ -29,7 +29,7 @@ export class Splash implements DamageEvent {
         }
 
         const loc: location = GetUnitLoc(globals.DamageEventTarget as unit);
-        const grp: GroupInRange = new GroupInRange(200.0, loc);
+        const grp: GroupInRange = new GroupInRange(200.0 + this.gameGlobals.PlayerSplashRadius[playerId], loc);
         const damage: number = this.gameGlobals.PlayerSplash[playerId] * globals.DamageEventAmount;
 
         grp.for((u: unit) => {

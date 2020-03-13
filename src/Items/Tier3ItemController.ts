@@ -9,6 +9,7 @@ import { AdvancedCreatureClaws } from './Tier3Items/AdvancedCreatureClaws';
 import { Soulcage } from './Tier3Items/Soulcage';
 import { SwordOfNaegling } from './Tier3Items/SwordOfNaegling';
 import { ReinforcedScales } from './Tier3Items/ReinforcedScales';
+import { FlakCannons } from './Tier3Items/FlakCannons';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -36,6 +37,7 @@ itemMap.set(
     new AncientBookOfMagic(tier2ItemMap.get('bookOfMagic') as ItemRecipe, unclassedItemMap.get('blueSoulstone') as ItemRecipe),
 );
 itemMap.set('dragonScales', new DragonScales(tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe));
+itemMap.set('flakCannons', new FlakCannons(tier2ItemMap.get('advancedCannon') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
 itemMap.set('reinforcedScales', new ReinforcedScales(tier2ItemMap.get('coralScales') as ItemRecipe));
 itemMap.set(

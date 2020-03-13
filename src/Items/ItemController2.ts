@@ -44,6 +44,8 @@ import { FierceTridentDrop } from './Abilities/FierceTridentDrop';
 import { FierceTridentPickup } from './Abilities/FierceTridentPickup';
 import { RingOfPerseveranceDrop } from './Abilities/RingOfPerseveranceDrop';
 import { RingOfPerseverancePickup } from './Abilities/RingOfPerseverancePickup';
+import { FlakCannonsDrop } from './Abilities/FlakCannonsDrop';
+import { FlakCannonsPickup } from './Abilities/FlakCannonsPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -95,6 +97,8 @@ export class ItemController2 {
             new FierceTridentPickup(gameGlobals),
             new RingOfPerseveranceDrop(gameGlobals),
             new RingOfPerseverancePickup(gameGlobals),
+            new FlakCannonsDrop(gameGlobals),
+            new FlakCannonsPickup(gameGlobals),
         ];
     }
 }
