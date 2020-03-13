@@ -30,6 +30,7 @@ import { EnhancedMaskOfProficiency } from './Tier2Items/EnhancedMaskOfProficienc
 import { Quills } from './Tier2Items/Quills';
 import { ImpalingBolt } from './Tier2Items/ImpalingBolt';
 import { ImprovedAmuletOfProtection } from './Tier2Items/ImprovedAmuletOfProtection';
+import { ImprovedElementalOrb } from './Tier2Items/ImprovedElementalOrb';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -99,6 +100,7 @@ itemMap.set(
     ),
 );
 itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe));
+itemMap.set('improvedElementalOrb', new ImprovedElementalOrb(tier1ItemMap.get('elementalOrb') as ItemRecipe));
 itemMap.set(
     'improvedNaturesBlessing',
     new ImprovedNaturesBlessing(
