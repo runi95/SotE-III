@@ -38,6 +38,8 @@ import { ImprovedElementalOrbDrop } from './Abilities/ImprovedElementalOrbDrop';
 import { ImprovedElementalOrbPickup } from './Abilities/ImprovedElementalOrbPickup';
 import { LoadedCannonDrop } from './Abilities/LoadedCannonDrop';
 import { LoadedCannonPickup } from './Abilities/LoadedCannonPickup';
+import { AdvancedCannonDrop } from './Abilities/AdvancedCannonDrop';
+import { AdvancedCannonPickup } from './Abilities/AdvancedCannonPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -83,6 +85,8 @@ export class ItemController2 {
             new ImprovedElementalOrbPickup(gameGlobals),
             new LoadedCannonDrop(gameGlobals),
             new LoadedCannonPickup(gameGlobals),
+            new AdvancedCannonDrop(gameGlobals),
+            new AdvancedCannonPickup(gameGlobals),
         ];
     }
 }

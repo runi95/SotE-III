@@ -31,6 +31,7 @@ import { Quills } from './Tier2Items/Quills';
 import { ImpalingBolt } from './Tier2Items/ImpalingBolt';
 import { ImprovedAmuletOfProtection } from './Tier2Items/ImprovedAmuletOfProtection';
 import { ImprovedElementalOrb } from './Tier2Items/ImprovedElementalOrb';
+import { AdvancedCannon } from './Tier2Items/AdvancedCannon';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -43,6 +44,10 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
  * - has a total cost between 6750 to 13500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
+itemMap.set(
+    'advancedCannon',
+    new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
+);
 itemMap.set(
     'arcaniteSpear',
     new ArcaniteSpear(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe),
