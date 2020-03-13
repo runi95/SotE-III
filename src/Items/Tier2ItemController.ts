@@ -32,6 +32,7 @@ import { ImpalingBolt } from './Tier2Items/ImpalingBolt';
 import { ImprovedAmuletOfProtection } from './Tier2Items/ImprovedAmuletOfProtection';
 import { ImprovedElementalOrb } from './Tier2Items/ImprovedElementalOrb';
 import { AdvancedCannon } from './Tier2Items/AdvancedCannon';
+import { FierceTrident } from './Tier2Items/FierceTrident';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -84,6 +85,7 @@ itemMap.set(
     ),
 );
 itemMap.set('enhancedMaskOfProficiency', new EnhancedMaskOfProficiency(tier1ItemMap.get('maskOfProficiency') as ItemRecipe));
+itemMap.set('fierceTrident', new FierceTrident(tier1ItemMap.get('masterExecutionerAxe') as ItemRecipe));
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set(
     'impalingBolt',
