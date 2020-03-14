@@ -13,7 +13,7 @@ export class ArcaniteSpearDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPiercing[playerId] -= 150;
+        this.gameGlobals.PlayerPiercing[playerId] -= 600;
         this.gameGlobals.ArcaniteSpearCount[playerId] -= 1;
     }
 }

@@ -1,23 +1,22 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
-import { Javelin } from '../Tier1Items/Javelin';
-import { LongRifle } from '../Tier1Items/LongRifle';
+import { ThoriumSpear } from '../Tier2Items/ThoriumSpear';
 
 const itemId: number = FourCC('I03P');
 const name: string = 'Arcanite Spear';
 const labels: ItemLabel[] = [ItemLabel.PIERCING, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 8950;
+const goldCost: number = 35800;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNArcaniteRanged.blp';
 const description: string = `Pierces through the thickest of defenses.
 
-|cffffcc00Attack damage:|r +50
-|cffffcc00Piercing:|r +150
+|cffffcc00Attack damage:|r +200
+|cffffcc00Piercing:|r +600
 |cffffcc00Passive:|r Every attack has a 5% chance to completely ignore block
 
 |cFF808080Piercing lets a certain amount of damage go through block.|r`;
 
 export class ArcaniteSpear extends ItemRecipe {
-    constructor(javelin: Javelin, longRifle: LongRifle) {
-        super(itemId, name, labels, goldCost, iconPath, description, [javelin, longRifle]);
+    constructor(thoriumSpear: ThoriumSpear) {
+        super(itemId, name, labels, goldCost, iconPath, description, [thoriumSpear]);
     }
 }

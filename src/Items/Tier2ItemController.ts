@@ -2,7 +2,6 @@ import { ItemRecipe } from './ItemRecipe';
 import * as tier1ItemController from './Tier1ItemController';
 import { VialOfMagic } from './Tier2Items/VialOfMagic';
 import { MaskOfDeath } from './Tier2Items/MaskOfDeath';
-import { ArcaniteSpear } from './Tier2Items/ArcaniteSpear';
 import { ImprovedCreatureClaws } from './Tier2Items/ImprovedCreatureClaws';
 import { ImprovedBalancedShield } from './Tier2Items/ImprovedBalancedShield';
 import { ScrollOfAgility } from './Tier2Items/ScrollOfAgility';
@@ -34,6 +33,7 @@ import { ImprovedElementalOrb } from './Tier2Items/ImprovedElementalOrb';
 import { AdvancedCannon } from './Tier2Items/AdvancedCannon';
 import { FierceTrident } from './Tier2Items/FierceTrident';
 import { RingOfPerseverance } from './Tier2Items/RingOfPerseverance';
+import { ThoriumSpear } from './Tier2Items/ThoriumSpear';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -50,7 +50,6 @@ itemMap.set(
     'advancedCannon',
     new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
 );
-itemMap.set('arcaniteSpear', new ArcaniteSpear(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe));
 itemMap.set('assassinsCloak', new AssassinsCloak(tier1ItemMap.get('cloakOfShadowWalk') as ItemRecipe));
 itemMap.set('boneChimes', new BoneChimes(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('vampireFangs') as ItemRecipe));
 itemMap.set('bookOfMagic', new BookOfMagic(tier1ItemMap.get('bookOfKnowledge') as ItemRecipe));
@@ -142,6 +141,7 @@ itemMap.set('spellShield', new SpellShield(tier1ItemMap.get('lionsRing') as Item
 itemMap.set('stoneArmor', new StoneArmor(tier1ItemMap.get('balancedShield') as ItemRecipe, tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);
 itemMap.set('sunkenShard', new SunkenShard(tier1ItemMap.get('shimmerWeed') as ItemRecipe, tier1ItemMap.get('manaStone') as ItemRecipe));
+itemMap.set('thoriumSpear', new ThoriumSpear(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe));
 itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe));
 
 export default [...itemMap.values()] as ItemRecipe[];
