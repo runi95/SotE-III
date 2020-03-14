@@ -69,8 +69,8 @@ import { SteelSpearDrop } from './Abilities/SteelSpearDrop';
 import { SteelSpearPickup } from './Abilities/SteelSpearPickup';
 import { PipeOfInsightDrop } from './Abilities/PipeOfInsightDrop';
 import { PipeOfInsightPickup } from './Abilities/PipeOfInsightPickup';
-import { ThoriumSpearDrop } from './Abilities/ThoriumSpearDrop';
-import { ThoriumSpearPickup } from './Abilities/ThoriumSpearPickup';
+import { JavelinDrop } from './Abilities/JavelinDrop';
+import { JavelinPickup } from './Abilities/JavelinPickup';
 import { LongRifleDrop } from './Abilities/LongRifleDrop';
 import { LongRiflePickup } from './Abilities/LongRiflePickup';
 import { SpikedCarapaceDrop } from './Abilities/SpikedCarapaceDrop';
@@ -173,8 +173,8 @@ export class ItemController {
             new SteelSpearPickup(gameGlobals),
             new PipeOfInsightDrop(gameGlobals),
             new PipeOfInsightPickup(gameGlobals),
-            new ThoriumSpearDrop(gameGlobals),
-            new ThoriumSpearPickup(gameGlobals),
+            new JavelinDrop(gameGlobals),
+            new JavelinPickup(gameGlobals),
             new LongRifleDrop(gameGlobals),
             new LongRiflePickup(gameGlobals),
             new SpikedCarapaceDrop(gameGlobals),

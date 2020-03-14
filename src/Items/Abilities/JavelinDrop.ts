@@ -1,7 +1,7 @@
 import { GameGlobals } from '../../Game/GameGlobals';
 import { ItemDrop } from '../ItemDrop';
 
-export class ThoriumSpearDrop extends ItemDrop {
+export class JavelinDrop extends ItemDrop {
     protected readonly itemTypeId: number = FourCC('I01F');
     private readonly gameGlobals: GameGlobals;
 

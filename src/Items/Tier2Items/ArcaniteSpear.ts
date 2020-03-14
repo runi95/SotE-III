@@ -1,6 +1,6 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
-import { ThoriumSpear } from '../Tier1Items/ThoriumSpear';
+import { Javelin } from '../Tier1Items/Javelin';
 import { LongRifle } from '../Tier1Items/LongRifle';
 
 const itemId: number = FourCC('I03P');
@@ -17,7 +17,7 @@ const description: string = `Pierces through the thickest of defenses.
 |cFF808080Piercing lets a certain amount of damage go through block.|r`;
 
 export class ArcaniteSpear extends ItemRecipe {
-    constructor(thoriumSpear: ThoriumSpear, longRifle: LongRifle) {
-        super(itemId, name, labels, goldCost, iconPath, description, [thoriumSpear, longRifle]);
+    constructor(javelin: Javelin, longRifle: LongRifle) {
+        super(itemId, name, labels, goldCost, iconPath, description, [javelin, longRifle]);
     }
 }

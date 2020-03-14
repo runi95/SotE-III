@@ -50,12 +50,9 @@ itemMap.set(
     'advancedCannon',
     new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
 );
-itemMap.set(
-    'arcaniteSpear',
-    new ArcaniteSpear(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe),
-);
+itemMap.set('arcaniteSpear', new ArcaniteSpear(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe));
 itemMap.set('assassinsCloak', new AssassinsCloak(tier1ItemMap.get('cloakOfShadowWalk') as ItemRecipe));
-itemMap.set('boneChimes', new BoneChimes(tier1ItemMap.get('thoriumSpear') as ItemRecipe, tier1ItemMap.get('vampireFangs') as ItemRecipe));
+itemMap.set('boneChimes', new BoneChimes(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('vampireFangs') as ItemRecipe));
 itemMap.set('bookOfMagic', new BookOfMagic(tier1ItemMap.get('bookOfKnowledge') as ItemRecipe));
 itemMap.set(
     'chargedStone',

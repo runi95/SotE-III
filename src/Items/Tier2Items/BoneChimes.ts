@@ -1,6 +1,6 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
-import { ThoriumSpear } from '../Tier1Items/ThoriumSpear';
+import { Javelin } from '../Tier1Items/Javelin';
 import { VampireFangs } from '../Tier1Items/VampireFangs';
 
 const itemId: number = FourCC('I046');
@@ -16,7 +16,7 @@ const description: string = `Death awaits those who can hear the chimes ring.
 |cFF808080Piercing lets a certain amount of damage go through block.|r`;
 
 export class BoneChimes extends ItemRecipe {
-    constructor(thoriumSpear: ThoriumSpear, vampireFangs: VampireFangs) {
-        super(itemId, name, labels, goldCost, iconPath, description, [thoriumSpear, vampireFangs]);
+    constructor(javelin: Javelin, vampireFangs: VampireFangs) {
+        super(itemId, name, labels, goldCost, iconPath, description, [javelin, vampireFangs]);
     }
 }

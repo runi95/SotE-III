@@ -22,7 +22,7 @@ import { SharpSteelAxe } from './Tier1Items/SharpSteelAxe';
 import { SpikedCarapace } from './Tier1Items/SpikedCarapace';
 import { SpikedWood } from './Tier1Items/SpikedWood';
 import { SteelShield } from './Tier1Items/SteelShield';
-import { ThoriumSpear } from './Tier1Items/ThoriumSpear';
+import { Javelin } from './Tier1Items/Javelin';
 import { VampireFangs } from './Tier1Items/VampireFangs';
 import { WandOfShadowsight } from './Tier1Items/WandOfShadowsight';
 import { IceBlade } from './Tier1Items/IceBlade';
@@ -82,6 +82,7 @@ itemMap.set('iceBlade', new IceBlade(basicItemMap.get('orbOfLightning') as Item)
 itemMap.set('improvedMoonArmor', new ImprovedMoonArmor(basicItemMap.get('moonArmor') as Item));
 itemMap.set('improvedReinforcedHide', new ImprovedReinforcedHide(basicItemMap.get('reinforcedHide') as Item));
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword') as Item, basicItemMap.get('claws') as Item));
+itemMap.set('javelin', new Javelin(basicItemMap.get('steelSpear') as Item));
 itemMap.set(
     'khadgarsAmulet',
     new KhadgarsAmulet(basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('moonArmor') as Item),
@@ -118,7 +119,6 @@ itemMap.set('spikedWood', new SpikedWood(basicItemMap.get('ironwoodBranch') as I
 itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield') as Item));
 itemMap.set('swordOfFreyr', new SwordOfFreyr(basicItemMap.get('warAxe') as Item, basicItemMap.get('scepter') as Item));
 itemMap.set('theAegis', new TheAegis(basicItemMap.get('goblinBattery') as Item));
-itemMap.set('thoriumSpear', new ThoriumSpear(basicItemMap.get('steelSpear') as Item));
 itemMap.set('throwableAxe', new ThrowableAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item, basicItemMap.get('scepter') as Item));
 itemMap.set(
     'vampireDagger',

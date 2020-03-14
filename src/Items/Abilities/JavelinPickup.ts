@@ -1,7 +1,7 @@
 import { ItemPickup } from '../ItemPickup';
 import { GameGlobals } from '../../Game/GameGlobals';
 
-export class ThoriumSpearPickup extends ItemPickup {
+export class JavelinPickup extends ItemPickup {
     protected readonly itemTypeId: number = FourCC('I01F');
     private readonly gameGlobals: GameGlobals;
 
