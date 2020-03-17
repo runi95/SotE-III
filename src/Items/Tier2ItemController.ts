@@ -142,6 +142,6 @@ itemMap.set('stoneArmor', new StoneArmor(tier1ItemMap.get('balancedShield') as I
 itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfStrength') as ItemRecipe) as ItemRecipe);
 itemMap.set('sunkenShard', new SunkenShard(tier1ItemMap.get('shimmerWeed') as ItemRecipe, tier1ItemMap.get('manaStone') as ItemRecipe));
 itemMap.set('thoriumSpear', new ThoriumSpear(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe));
-itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe));
+itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe, tier1ItemMap.get('bookOfKnowledge') as ItemRecipe));
 
 export default [...itemMap.values()] as ItemRecipe[];

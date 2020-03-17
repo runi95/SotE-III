@@ -1,6 +1,7 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { FullVial } from '../Tier1Items/FullVial';
+import { BookOfKnowledge } from '../Tier1Items/BookOfKnowledge';
 
 const itemId: number = FourCC('I001');
 const name: string = 'Vial of Magic';
@@ -16,7 +17,7 @@ const description: string = `A vial full of enchanted mana water.
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 
 export class VialOfMagic extends ItemRecipe {
-    constructor(fullVial: FullVial) {
-        super(itemId, name, labels, goldCost, iconPath, description, [fullVial]);
+    constructor(fullVial: FullVial, bookOfKnowledge: BookOfKnowledge) {
+        super(itemId, name, labels, goldCost, iconPath, description, [fullVial, bookOfKnowledge]);
     }
 }
