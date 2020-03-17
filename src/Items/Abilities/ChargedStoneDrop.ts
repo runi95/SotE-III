@@ -13,6 +13,6 @@ export class ChargedStoneDrop extends ItemDrop {
 
     protected action(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerRestoration[playerId] -= 3;
+        this.gameGlobals.PlayerRestoration[playerId] -= 5;
     }
 }
