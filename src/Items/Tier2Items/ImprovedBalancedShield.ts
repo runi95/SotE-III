@@ -7,12 +7,12 @@ import { ImprovedMoonArmor } from '../Tier1Items/ImprovedMoonArmor';
 const itemId: number = FourCC('I02B');
 const name: string = 'Improved Balanced Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK, ItemLabel.RESISTANCE];
-const goldCost: number = 3810;
+const goldCost: number = 9525;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefend.blp';
 const description: string = `No matter how you hold this shield it stays perfectly balanced.
 
-|cffffcc00Block:|r +30
-|cffffcc00Resistance:|r +30
+|cffffcc00Block:|r +75
+|cffffcc00Resistance:|r +75
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 
