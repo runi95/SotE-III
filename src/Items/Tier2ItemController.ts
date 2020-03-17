@@ -34,6 +34,7 @@ import { AdvancedCannon } from './Tier2Items/AdvancedCannon';
 import { FierceTrident } from './Tier2Items/FierceTrident';
 import { RingOfPerseverance } from './Tier2Items/RingOfPerseverance';
 import { ThoriumSpear } from './Tier2Items/ThoriumSpear';
+import { ImprovedSpikes } from './Tier2Items/ImprovedSpikes';
 
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
@@ -119,6 +120,10 @@ itemMap.set(
         tier1ItemMap.get('brightLifeStone') as ItemRecipe,
         tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe,
     ),
+);
+itemMap.set(
+    'improvedSpikes',
+    new ImprovedSpikes(tier1ItemMap.get('spikedWood') as ItemRecipe, tier1ItemMap.get('spikedCarapace') as ItemRecipe),
 );
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe));
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
