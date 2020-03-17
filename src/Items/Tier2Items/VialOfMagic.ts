@@ -5,12 +5,12 @@ import { FullVial } from '../Tier1Items/FullVial';
 const itemId: number = FourCC('I001');
 const name: string = 'Vial of Magic';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA];
-const goldCost: number = 2270;
+const goldCost: number = 7020;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNVialOfMagic.dds';
 const description: string = `A vial full of enchanted mana water.
 
-|cffffcc00Intelligence:|r +8
-|cffffcc00Max Mana:|r +150
+|cffffcc00Intelligence:|r +33
+|cffffcc00Max Mana:|r +900
 |cffffcc00Mana regen:|r +12
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;
