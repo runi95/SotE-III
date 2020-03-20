@@ -11,6 +11,7 @@ import { SwordOfNaegling } from './Tier3Items/SwordOfNaegling';
 import { ReinforcedScales } from './Tier3Items/ReinforcedScales';
 import { FlakCannons } from './Tier3Items/FlakCannons';
 import { ArcaniteSpear } from './Tier3Items/ArcaniteSpear';
+import { EnhancedJavelin } from './Tier3Items/EnhancedJavelin';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -39,6 +40,10 @@ itemMap.set(
 );
 itemMap.set('arcaniteSpear', new ArcaniteSpear(tier2ItemMap.get('thoriumSpear') as ItemRecipe));
 itemMap.set('dragonScales', new DragonScales(tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe));
+itemMap.set(
+    'enhancedJavelin',
+    new EnhancedJavelin(tier2ItemMap.get('thoriumSpear') as ItemRecipe, tier2ItemMap.get('shamanClaws') as ItemRecipe),
+);
 itemMap.set('flakCannons', new FlakCannons(tier2ItemMap.get('advancedCannon') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
 itemMap.set('reinforcedScales', new ReinforcedScales(tier2ItemMap.get('coralScales') as ItemRecipe));

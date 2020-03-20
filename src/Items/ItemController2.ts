@@ -48,6 +48,8 @@ import { FlakCannonsDrop } from './Abilities/FlakCannonsDrop';
 import { FlakCannonsPickup } from './Abilities/FlakCannonsPickup';
 import { ThoriumSpearDrop } from './Abilities/ThoriumSpearDrop';
 import { ThoriumSpearPickup } from './Abilities/ThoriumSpearPickup';
+import { EnhancedJavelinDrop } from './Abilities/EnhancedJavelinDrop';
+import { EnhancedJavelinPickup } from './Abilities/EnhancedJavelinPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -103,6 +105,8 @@ export class ItemController2 {
             new FlakCannonsPickup(gameGlobals),
             new ThoriumSpearDrop(gameGlobals),
             new ThoriumSpearPickup(gameGlobals),
+            new EnhancedJavelinDrop(gameGlobals),
+            new EnhancedJavelinPickup(gameGlobals),
         ];
     }
 }

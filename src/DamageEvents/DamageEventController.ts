@@ -26,6 +26,7 @@ import { Execute } from './Execute';
 import { CriticalCast } from './CriticalCast';
 import { Splash } from './Splash';
 import { ElementalOrb } from './ElementalOrb';
+import { EnhancedJavelinEvent } from './EnhancedJavelinEvent';
 
 export class DamageEventController {
     constructor(
@@ -55,6 +56,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Reflect(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new CriticalCast(gameGlobals, randomNumberGenerator));
+        damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

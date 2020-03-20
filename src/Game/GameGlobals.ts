@@ -22,6 +22,8 @@ export class GameGlobals {
     public RazorBladesOn: boolean[] = [];
     public ElementalOrbCount: number[] = [];
     public ArcaniteSpearCount: number[] = [];
+    public EnhancedJavelinCount: number[] = [];
+    public EnhancedJavelinAttackCount: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];
