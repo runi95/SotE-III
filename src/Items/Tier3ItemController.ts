@@ -12,6 +12,7 @@ import { ReinforcedScales } from './Tier3Items/ReinforcedScales';
 import { FlakCannons } from './Tier3Items/FlakCannons';
 import { ArcaniteSpear } from './Tier3Items/ArcaniteSpear';
 import { EnhancedJavelin } from './Tier3Items/EnhancedJavelin';
+import { ScrollOfWisdom } from './Tier3Items/ScrollOfWisdom';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -47,6 +48,10 @@ itemMap.set(
 itemMap.set('flakCannons', new FlakCannons(tier2ItemMap.get('advancedCannon') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
 itemMap.set('reinforcedScales', new ReinforcedScales(tier2ItemMap.get('coralScales') as ItemRecipe));
+itemMap.set(
+    'scrollOfWisdom',
+    new ScrollOfWisdom(tier2ItemMap.get('vialOfMagic') as ItemRecipe, tier2ItemMap.get('enhancedMaskOfProficiency') as ItemRecipe),
+);
 itemMap.set(
     'soulcage',
     new Soulcage(
