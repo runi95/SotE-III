@@ -27,6 +27,7 @@ import { CriticalCast } from './CriticalCast';
 import { Splash } from './Splash';
 import { ElementalOrb } from './ElementalOrb';
 import { EnhancedJavelinEvent } from './EnhancedJavelinEvent';
+import { MarkOfTheTalon } from './MarkOfTheTalon';
 
 export class DamageEventController {
     constructor(
@@ -44,6 +45,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator));
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
+        damageEngine.addInitialDamageEvent(new MarkOfTheTalon(gameGlobals));
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals, timerUtils));
