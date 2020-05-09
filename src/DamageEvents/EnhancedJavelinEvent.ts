@@ -19,7 +19,7 @@ export class EnhancedJavelinEvent implements DamageEvent {
             return;
         }
 
-        if (this.gameGlobals.EnhancedJavelinCount[playerId] > 0) {
+        if (this.gameGlobals.EnhancedJavelinCount[playerId] < 1) {
             return;
         }
 
@@ -28,6 +28,7 @@ export class EnhancedJavelinEvent implements DamageEvent {
             return;
         }
 
+        this.gameGlobals.EnhancedJavelinAttackCount[playerId] = 0;
         globals.DamageEventAmount += 200;
     }
 }
