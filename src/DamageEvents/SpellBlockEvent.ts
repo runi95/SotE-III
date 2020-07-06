@@ -1,12 +1,15 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 
 export class SpellBlockEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
+    private readonly randomNumberGenerator: RandomNumberGenerator;
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -24,6 +27,10 @@ export class SpellBlockEvent implements DamageEvent {
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
         if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
             if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
+                if (this.gameGlobals.BookOfEvilCount[damageSourcePlayerId] > 0 && this.randomNumberGenerator.random(1, 100) < 6) {
+                    return;
+                }
+
                 perseverance = this.gameGlobals.PlayerPerseverance[damageSourcePlayerId];
             }
         }

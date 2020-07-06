@@ -22,6 +22,7 @@ export class GameGlobals {
     public RazorBladesOn: boolean[] = [];
     public ElementalOrbCount: number[] = [];
     public ArcaniteSpearCount: number[] = [];
+    public BookOfEvilCount: number[] = [];
     public EnhancedJavelinCount: number[] = [];
     public EnhancedJavelinAttackCount: number[] = [];
     public MarkOfTheTalonCount: number[] = [];

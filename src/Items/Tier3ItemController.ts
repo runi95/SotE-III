@@ -14,6 +14,7 @@ import { ArcaniteSpear } from './Tier3Items/ArcaniteSpear';
 import { EnhancedJavelin } from './Tier3Items/EnhancedJavelin';
 import { ScrollOfWisdom } from './Tier3Items/ScrollOfWisdom';
 import { MarkOfTheTalon } from './Tier3Items/MarkOfTheTalon';
+import { BookOfEvil } from './Tier3Items/BookOfEvil';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -41,6 +42,7 @@ itemMap.set(
     new AncientBookOfMagic(tier2ItemMap.get('bookOfMagic') as ItemRecipe, unclassedItemMap.get('blueSoulstone') as ItemRecipe),
 );
 itemMap.set('arcaniteSpear', new ArcaniteSpear(tier2ItemMap.get('thoriumSpear') as ItemRecipe));
+itemMap.set('bookOfEvil', new BookOfEvil(tier2ItemMap.get('bookOfMagic') as ItemRecipe, tier2ItemMap.get('enhancedMantleOfIntelligence') as ItemRecipe))
 itemMap.set('dragonScales', new DragonScales(tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe));
 itemMap.set(
     'enhancedJavelin',
