@@ -34,7 +34,7 @@ export class AssassinsBladeEvent implements DamageEvent {
 
         this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.COOLDOWN;
 
-        globals.DamageEventAmount = globals.DamageEventAmount + 450;
+        globals.DamageEventAmount = globals.DamageEventAmount + 300;
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(30, false, () => {
