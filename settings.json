@@ -7,7 +7,12 @@
         "preCleanup": true
     },
     "game": {
-        "path": "C:\\Program Files\\Warcraft III\\x86_64\\Warcraft III.exe",
-        "arguments": ["-launch", "-windowmode", "windowed", "-nowfpause"]
+        "path": "D:\\Program Files (x86)\\Warcraft III\\_retail_\\x86_64\\Warcraft III.exe",
+        "arguments": [
+            "-launch",
+            "-windowmode",
+            "windowed",
+            "-nowfpause"
+        ]
     }
 }
