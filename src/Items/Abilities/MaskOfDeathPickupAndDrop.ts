@@ -13,11 +13,11 @@ export class MaskOfDeathPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] += 100;
+        this.gameGlobals.PlayerLifesteal[playerId] += 135;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] -= 100;
+        this.gameGlobals.PlayerLifesteal[playerId] -= 135;
     }
 }
