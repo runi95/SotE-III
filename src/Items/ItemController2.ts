@@ -53,6 +53,8 @@ import { EnhancedJavelinPickup } from './Abilities/EnhancedJavelinPickup';
 import { ScrollOfWisdomCast } from './Abilities/ScrollOfWisdomCast';
 import { MarkOfTheTalonDrop } from './Abilities/MarkOfTheTalonDrop';
 import { MarkOfTheTalonPickup } from './Abilities/MarkOfTheTalonPickup';
+import { ChitinousScalesDrop } from './Abilities/ChitinousScalesDrop';
+import { ChitinousScalesPickup } from './Abilities/ChitinousScalesPickup';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -113,6 +115,8 @@ export class ItemController2 {
             new ScrollOfWisdomCast(randomNumberGenerator),
             new MarkOfTheTalonDrop(gameGlobals),
             new MarkOfTheTalonPickup(gameGlobals),
+            new ChitinousScalesDrop(gameGlobals),
+            new ChitinousScalesPickup(gameGlobals)
         ];
     }
 }
