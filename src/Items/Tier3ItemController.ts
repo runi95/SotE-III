@@ -37,6 +37,7 @@ itemMap.set(
     new AdvancedCreatureClaws(
         tier2ItemMap.get('improvedCreatureClaws') as ItemRecipe,
         unclassedItemMap.get('purpleSoulstone') as ItemRecipe,
+        tier2ItemMap.get('devouringFangs') as ItemRecipe,
     ),
 );
 itemMap.set(
