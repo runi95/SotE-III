@@ -23,6 +23,7 @@ export class DamageEngineGlobals {
     public DamageEventLevel: number = 0;
     public EnhancedDamageTarget: unit | undefined = undefined;
 
+    public PiercingOverflowAmount: number = 0;
     public DamageEventAmount: number = 0;
     public DamageEventPrevAmt: number = 0;
     public LethalDamageHP: number = 0;

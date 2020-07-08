@@ -16,6 +16,7 @@ import { ScrollOfWisdom } from './Tier3Items/ScrollOfWisdom';
 import { MarkOfTheTalon } from './Tier3Items/MarkOfTheTalon';
 import { BookOfEvil } from './Tier3Items/BookOfEvil';
 import { ChitinousScales } from './Tier3Items/ChitinousScales';
+import { LegionDoomHorn } from './Tier3Items/LegionDoomHorn';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -52,6 +53,7 @@ itemMap.set(
 );
 itemMap.set('flakCannons', new FlakCannons(tier2ItemMap.get('advancedCannon') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
+itemMap.set('legionDoomHorn', new LegionDoomHorn(tier2ItemMap.get('boneChimes') as ItemRecipe, tier2ItemMap.get('maskOfDeath') as ItemRecipe));
 itemMap.set(
     'markOfTheTalon',
     new MarkOfTheTalon(tier2ItemMap.get('impalingBolt') as ItemRecipe, tier2ItemMap.get('strengthOfTheWild') as ItemRecipe),

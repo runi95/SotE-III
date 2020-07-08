@@ -373,6 +373,7 @@ export class DamageEngine {
         this.damageEngineGlobals.DamageEventSource = src;
         this.damageEngineGlobals.DamageEventTarget = tgt;
         this.damageEngineGlobals.DamageEventAmount = amt;
+        this.damageEngineGlobals.PiercingOverflowAmount = 0;
         this.damageEngineGlobals.DamageEventAttackT = GetHandleId(at);
         this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
         this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
@@ -407,7 +408,7 @@ export class DamageEngine {
                     BlzSetUnitArmor(
                         this.damageEngineGlobals.DamageEventTarget as unit,
                         BlzGetUnitArmor(this.damageEngineGlobals.DamageEventTarget as unit) -
-                            this.damageEngineGlobals.DamageEventArmorPierced,
+                        this.damageEngineGlobals.DamageEventArmorPierced,
                     );
                 }
                 if (this.armorType !== this.damageEngineGlobals.DamageEventArmorT) {
@@ -452,6 +453,7 @@ export class DamageEngine {
             this.damageEngineGlobals.DamageEventSource = GetEventDamageSource();
             this.damageEngineGlobals.DamageEventTarget = GetTriggerUnit();
             this.damageEngineGlobals.DamageEventAmount = this.prev.amount;
+            this.damageEngineGlobals.PiercingOverflowAmount = 0;
             this.damageEngineGlobals.DamageEventPrevAmt = this.prev.preAmt;
             this.damageEngineGlobals.DamageEventAttackT = GetHandleId(BlzGetEventAttackType());
             this.damageEngineGlobals.DamageEventDamageT = GetHandleId(BlzGetEventDamageType());

@@ -46,6 +46,8 @@ export class PhysicalBlockEvent implements DamageEvent {
 
         const diff: number = block - piercing;
         if (diff <= 0.405) {
+            globals.PiercingOverflowAmount = Math.abs(diff);
+
             return;
         }
 

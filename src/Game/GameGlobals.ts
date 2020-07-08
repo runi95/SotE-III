@@ -26,6 +26,7 @@ export class GameGlobals {
     public EnhancedJavelinCount: number[] = [];
     public EnhancedJavelinAttackCount: number[] = [];
     public MarkOfTheTalonCount: number[] = [];
+    public LegionDoomHornCount: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];
