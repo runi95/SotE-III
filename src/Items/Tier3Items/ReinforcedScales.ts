@@ -1,8 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { CoralScales } from '../Tier2Items/CoralScales';
 import { ItemLabel } from '../ItemLabel';
-import { ImprovedReinforcedHide } from '../Tier1Items/ImprovedReinforcedHide';
-import { ReinforcedLeatherArmor } from '../Tier1Items/ReinforcedLeatherArmor';
 
 const itemId: number = FourCC('I01K');
 const name: string = 'Reinforced Scales';
