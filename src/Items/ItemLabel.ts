@@ -18,4 +18,5 @@ export enum ItemLabel {
     PERSEVERANCE,
     CRITICAL_CAST,
     SPLASH,
+    COOLDOWN_REDUCTION,
 }

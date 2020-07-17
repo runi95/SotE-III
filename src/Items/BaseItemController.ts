@@ -30,6 +30,7 @@ import { SteelSpear } from './BaseItems/SteelSpear';
 import { PipeOfInsight } from './BaseItems/PipeOfInsight';
 import { FairyWand } from './BaseItems/FairyWand';
 import { OrbOfFire } from './BaseItems/OrbOfFire';
+import { ScrollOfWitchcraft } from './BaseItems/ScrollOfWitchcraft';
 
 /**
  * Base Item Controller
@@ -68,6 +69,7 @@ itemMap.set('pipeOfInsight', new PipeOfInsight());
 itemMap.set('reinforcedHide', new ReinforcedHide());
 itemMap.set('runedBracers', new RunedBracers());
 itemMap.set('scepter', new Scepter());
+itemMap.set('scrollOfWitchcraft', new ScrollOfWitchcraft());
 itemMap.set('sobiMask', new SobiMask());
 itemMap.set('steelSpear', new SteelSpear());
 itemMap.set('studdedLeatherArmor', new StuddedLeatherArmor());

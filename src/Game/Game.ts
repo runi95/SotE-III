@@ -22,6 +22,7 @@ import { Trigger } from '../JassOverrides/Trigger';
 import { Group } from '../JassOverrides/Group';
 import { RecipeSystem } from '../Items/RecipeSystem';
 import { ItemController2 } from '../Items/ItemController2';
+import { CooldownReduction } from './CooldownReduction';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -45,6 +46,7 @@ export class Game {
     private readonly bossController: BossController;
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
+    private readonly cooldownReduction: CooldownReduction;
     private readonly arcaneVault: unit;
 
     constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
@@ -54,6 +56,7 @@ export class Game {
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
+        this.cooldownReduction = new CooldownReduction(this.gameGlobals);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.timerUtils, this.damageEngineGlobals);

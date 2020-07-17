@@ -84,6 +84,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.PlayerReflect[i] = 0;
         gameGlobals.PlayerExecute[i] = 0;
         gameGlobals.PlayerCriticalCast[i] = 0;
+        gameGlobals.PlayerCooldownReduction[i] = 0;
         gameGlobals.PlayerSplash[i] = 0;
         gameGlobals.PlayerSplashRadius[i] = 0;
         gameGlobals.PlayerPiercing[i] = 0;

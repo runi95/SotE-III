@@ -34,6 +34,7 @@ export class GameGlobals {
     public PlayerReflect: number[] = [];
     public PlayerExecute: number[] = [];
     public PlayerCriticalCast: number[] = [];
+    public PlayerCooldownReduction: number[] = [];
     public PlayerSplash: number[] = [];
     public PlayerSplashRadius: number[] = [];
     public PlayerPiercing: number[] = [];

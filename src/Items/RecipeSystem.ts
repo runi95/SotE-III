@@ -144,6 +144,7 @@ export class RecipeSystem {
             ItemLabel.RESTORATION,
             ItemLabel.PERSEVERANCE,
             ItemLabel.CRITICAL_CAST,
+            ItemLabel.COOLDOWN_REDUCTION,
         ]);
         createFilterIcon(3, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-agi.blp', [ItemLabel.AGILITY]);
         createFilterIcon(4, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-int.blp', [ItemLabel.INTELLIGENCE]);
