@@ -128,6 +128,7 @@ export class RecipeSystem {
             ItemLabel.LIFESTEAL,
             ItemLabel.EXECUTE,
             ItemLabel.PIERCING,
+            ItemLabel.SPLASH
         ]);
         createFilterIcon(1, 'UI\\Widgets\\Console\\Human\\infocard-neutral-armor-medium.blp', [
             ItemLabel.BLOCK,
@@ -141,6 +142,8 @@ export class RecipeSystem {
             ItemLabel.MAX_MANA,
             ItemLabel.MANA_REGEN,
             ItemLabel.RESTORATION,
+            ItemLabel.PERSEVERANCE,
+            ItemLabel.CRITICAL_CAST,
         ]);
         createFilterIcon(3, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-agi.blp', [ItemLabel.AGILITY]);
         createFilterIcon(4, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-int.blp', [ItemLabel.INTELLIGENCE]);
@@ -284,8 +287,8 @@ export class RecipeSystem {
             this.menu,
             FRAMEPOINT_BOTTOMLEFT,
             0.0175 +
-                0.0425 *
-                    (this.localPlayerInterface.selectedItemFrameIndex ? (this.localPlayerInterface.selectedItemFrameIndex as number) : 0),
+            0.0425 *
+            (this.localPlayerInterface.selectedItemFrameIndex ? (this.localPlayerInterface.selectedItemFrameIndex as number) : 0),
             0.03,
         );
     }
@@ -485,9 +488,9 @@ export class RecipeSystem {
                 this.localPlayerInterface.selectedItemId =
                     items[
                         this.localPlayerInterface.filterItems[
-                            (this.localPlayerInterface.selectedItemFrameIndex as number) +
-                                this.localPlayerInterface.itemWindowMax -
-                                this.localPlayerInterface.itemWindowSize
+                        (this.localPlayerInterface.selectedItemFrameIndex as number) +
+                        this.localPlayerInterface.itemWindowMax -
+                        this.localPlayerInterface.itemWindowSize
                         ]
                     ].itemId;
             } else {
