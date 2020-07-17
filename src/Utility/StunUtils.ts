@@ -51,6 +51,6 @@ export class StunUtils {
     }
 
     public clearAllStuns(): void {
-        this.stunnedUnits.forEach((value: StunnedUnit) => value.setDuration(0));
+        this.stunnedUnits.forEach((stunnedUnit: StunnedUnit) => stunnedUnit.setDuration(0));
     }
 }
