@@ -31,6 +31,7 @@ import { PipeOfInsight } from './BaseItems/PipeOfInsight';
 import { FairyWand } from './BaseItems/FairyWand';
 import { OrbOfFire } from './BaseItems/OrbOfFire';
 import { ScrollOfWitchcraft } from './BaseItems/ScrollOfWitchcraft';
+import { OrbOfVenom } from './BaseItems/OrbOfVenom';
 
 /**
  * Base Item Controller
@@ -65,6 +66,7 @@ itemMap.set('moonArmor', new MoonArmor());
 itemMap.set('orbOfFire', new OrbOfFire());
 itemMap.set('orbOfLightning', new OrbOfLightning());
 itemMap.set('orbOfMagic', new OrbOfMagic());
+itemMap.set('orbOfVenom', new OrbOfVenom());
 itemMap.set('pipeOfInsight', new PipeOfInsight());
 itemMap.set('reinforcedHide', new ReinforcedHide());
 itemMap.set('runedBracers', new RunedBracers());

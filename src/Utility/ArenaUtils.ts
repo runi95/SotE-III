@@ -4,19 +4,22 @@ import { Timer } from '../JassOverrides/Timer';
 import { StunUtils } from './StunUtils';
 import { TimerUtils } from './TimerUtils';
 import { RandomNumberGenerator } from './RandomNumberGenerator';
+import { VenomUtils } from './VenomUtils';
 
 export class ArenaUtils {
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
+    private readonly venomUtils: VenomUtils;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly arenaGate: destructable;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, stunUtils: StunUtils, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, stunUtils: StunUtils, venomUtils: VenomUtils, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
         this.timerUtils = timerUtils;
         this.stunUtils = stunUtils;
+        this.venomUtils = venomUtils;
         this.randomNumberGenerator = randomNumberGenerator;
 
         this.trig.addCondition(() => this.condition());
@@ -109,6 +112,7 @@ export class ArenaUtils {
         }
 
         this.stunUtils.clearAllStuns();
+        this.venomUtils.clearAllVenom();
 
         // Make pause, make invulnerable, remove all buffs and heal heroes
         const teleportEffects: effect[] = [];

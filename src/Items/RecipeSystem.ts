@@ -128,7 +128,8 @@ export class RecipeSystem {
             ItemLabel.LIFESTEAL,
             ItemLabel.EXECUTE,
             ItemLabel.PIERCING,
-            ItemLabel.SPLASH
+            ItemLabel.SPLASH,
+            ItemLabel.VENOM,
         ]);
         createFilterIcon(1, 'UI\\Widgets\\Console\\Human\\infocard-neutral-armor-medium.blp', [
             ItemLabel.BLOCK,

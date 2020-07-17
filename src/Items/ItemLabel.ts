@@ -19,4 +19,5 @@ export enum ItemLabel {
     CRITICAL_CAST,
     SPLASH,
     COOLDOWN_REDUCTION,
+    VENOM,
 }

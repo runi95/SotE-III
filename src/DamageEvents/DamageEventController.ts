@@ -28,11 +28,14 @@ import { Splash } from './Splash';
 import { ElementalOrb } from './ElementalOrb';
 import { EnhancedJavelinEvent } from './EnhancedJavelinEvent';
 import { MarkOfTheTalon } from './MarkOfTheTalon';
+import { Venom } from './Venom';
+import { VenomUtils } from '../Utility/VenomUtils';
 
 export class DamageEventController {
     constructor(
         gameGlobals: GameGlobals,
         timerUtils: TimerUtils,
+        venomUtils: VenomUtils,
         randomNumberGenerator: RandomNumberGenerator,
         damageEngine: DamageEngine,
     ) {
@@ -69,5 +72,6 @@ export class DamageEventController {
         // After damage events
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
         damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
+        damageEngine.addAfterDamageEvent(new Venom(gameGlobals, venomUtils));
     }
 }

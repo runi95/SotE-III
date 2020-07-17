@@ -23,6 +23,7 @@ import { Group } from '../JassOverrides/Group';
 import { RecipeSystem } from '../Items/RecipeSystem';
 import { ItemController2 } from '../Items/ItemController2';
 import { CooldownReduction } from './CooldownReduction';
+import { VenomUtils } from '../Utility/VenomUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -31,6 +32,7 @@ export class Game {
     private readonly playerVictoryUtils: PlayerVictoryUtils;
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
+    private readonly venomUtils: VenomUtils;
     private readonly arenaUtils: ArenaUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
     private readonly damageEngine: DamageEngine;
@@ -56,8 +58,9 @@ export class Game {
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
+        this.venomUtils = new VenomUtils(this.timerUtils);
         this.cooldownReduction = new CooldownReduction(this.gameGlobals);
-        this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.randomNumberGenerator);
+        this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.venomUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.timerUtils, this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
@@ -68,6 +71,7 @@ export class Game {
         this.damageEventController = new DamageEventController(
             this.gameGlobals,
             this.timerUtils,
+            this.venomUtils,
             this.randomNumberGenerator,
             this.damageEngine,
         );
