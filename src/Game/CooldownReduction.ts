@@ -15,6 +15,10 @@ export class CooldownReduction {
 
     private action(): void {
         const trig: unit = GetTriggerUnit();
+        if (!IsUnitType(trig, UNIT_TYPE_HERO)) {
+            return;
+        }
+
         const cooldownReduction: number = this.gameGlobals.PlayerCooldownReduction[GetPlayerId(GetOwningPlayer(trig))];
         if (!(cooldownReduction > 0)) {
             return;
