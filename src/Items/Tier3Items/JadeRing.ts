@@ -16,6 +16,7 @@ const description: string = `A ring infused with pure magic.
 
 |cFF808080Mana is required when casting most spells.|r`;
 
+// TODO: Add unique effect
 export class JadeRing extends ItemRecipe {
     constructor(ringOfMagic: RingOfMagic, sunkenShard: SunkenShard) {
         super(itemId, name, labels, goldCost, iconPath, description, [ringOfMagic, sunkenShard]);
