@@ -17,6 +17,7 @@ import { MarkOfTheTalon } from './Tier3Items/MarkOfTheTalon';
 import { BookOfEvil } from './Tier3Items/BookOfEvil';
 import { ChitinousScales } from './Tier3Items/ChitinousScales';
 import { LegionDoomHorn } from './Tier3Items/LegionDoomHorn';
+import { ShimmerScales } from './Tier3Items/ShimmerScales';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -64,6 +65,7 @@ itemMap.set(
     'scrollOfWisdom',
     new ScrollOfWisdom(tier2ItemMap.get('vialOfMagic') as ItemRecipe, tier2ItemMap.get('enhancedMaskOfProficiency') as ItemRecipe),
 );
+itemMap.set('shimmerScales', new ShimmerScales(tier2ItemMap.get('improvedNaturesBlessing') as ItemRecipe, tier2ItemMap.get('improvedShimmerWeed') as ItemRecipe));
 itemMap.set(
     'soulcage',
     new Soulcage(
