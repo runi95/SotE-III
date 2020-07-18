@@ -10,7 +10,7 @@ const goldCost: number = 29400;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSirenAdept.blp';
 const description: string = `The optiomal scaley experience.
 
-|cffffcc00Max health:|r: +7000
+|cffffcc00Max health:|r: +5250
 |cffffcc00Health regen:|r +120
 |cffffcc00Passive:|r Regenerates 2% of the wearer's max health every second
 
