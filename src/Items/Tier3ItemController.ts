@@ -18,6 +18,7 @@ import { BookOfEvil } from './Tier3Items/BookOfEvil';
 import { ChitinousScales } from './Tier3Items/ChitinousScales';
 import { LegionDoomHorn } from './Tier3Items/LegionDoomHorn';
 import { ShimmerScales } from './Tier3Items/ShimmerScales';
+import { JadeRing } from './Tier3Items/JadeRing';
 
 const unclassedItemMap: Map<string, Item> = unclassedItemController.itemMap;
 const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
@@ -55,6 +56,7 @@ itemMap.set(
 );
 itemMap.set('flakCannons', new FlakCannons(tier2ItemMap.get('advancedCannon') as ItemRecipe));
 itemMap.set('improvedStrengthOfTheWild', new ImprovedStrengthOfTheWild(tier2ItemMap.get('strengthOfTheWild') as ItemRecipe));
+itemMap.set('jadeRing', new JadeRing(tier2ItemMap.get('ringOfMagic') as ItemRecipe, tier2ItemMap.get('sunkenShard') as ItemRecipe));
 itemMap.set('legionDoomHorn', new LegionDoomHorn(tier2ItemMap.get('boneChimes') as ItemRecipe, tier2ItemMap.get('maskOfDeath') as ItemRecipe));
 itemMap.set(
     'markOfTheTalon',
