@@ -1,7 +1,6 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
 import { SharpSteelAxe } from '../Tier1Items/SharpSteelAxe';
-import { LoadedRifle } from '../Tier1Items/LoadedRifle';
 
 const itemId: number = FourCC('I04B');
 const name: string = 'Impaling Bolt';
@@ -16,7 +15,7 @@ const description: string = `Can be thrown a great distance.
 |cFF808080Strength increases your max health and health regen.|r`;
 
 export class ImpalingBolt extends ItemRecipe {
-    constructor(sharpSteelAxe: SharpSteelAxe, loadedRifle: LoadedRifle) {
-        super(itemId, name, labels, goldCost, iconPath, description, [sharpSteelAxe, loadedRifle]);
+    constructor(sharpSteelAxe: SharpSteelAxe) {
+        super(itemId, name, labels, goldCost, iconPath, description, [sharpSteelAxe]);
     }
 }

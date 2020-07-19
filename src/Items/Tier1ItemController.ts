@@ -12,7 +12,6 @@ import { FullVial } from './Tier1Items/FullVial';
 import { ImprovedMoonArmor } from './Tier1Items/ImprovedMoonArmor';
 import { ImprovedReinforcedHide } from './Tier1Items/ImprovedReinforcedHide';
 import { IronClaws } from './Tier1Items/IronClaws';
-import { LoadedRifle } from './Tier1Items/LoadedRifle';
 import { ManaStone } from './Tier1Items/ManaStone';
 import { MaskOfProficiency } from './Tier1Items/MaskOfProficiency';
 import { MaulOfStrength } from './Tier1Items/MaulOfStrength';
@@ -90,7 +89,6 @@ itemMap.set(
 itemMap.set('lightningBolt', new LightningBolt(basicItemMap.get('goblinBattery') as Item, basicItemMap.get('orbOfLightning') as Item));
 itemMap.set('lionsRing', new LionsRing(basicItemMap.get('runedBracers') as Item, basicItemMap.get('moonArmor') as Item));
 itemMap.set('loadedCannon', new LoadedCannon(basicItemMap.get('orbOfFire') as Item));
-itemMap.set('loadedRifle', new LoadedRifle(basicItemMap.get('ironSword') as Item));
 itemMap.set('longRifle', new LongRifle(basicItemMap.get('steelSpear') as Item, basicItemMap.get('ironSword') as Item));
 itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial') as Item));
 itemMap.set(

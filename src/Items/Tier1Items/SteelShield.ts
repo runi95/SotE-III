@@ -15,6 +15,6 @@ const description: string = `A weak shield capable of blocking incoming physical
 
 export class SteelShield extends ItemRecipe {
     constructor(ironShield: IronShield) {
-        super(itemId, name, labels, goldCost, iconPath, description, [ironShield]);
+        super(itemId, name, labels, goldCost, iconPath, description, [ironShield, ironShield]);
     }
 }

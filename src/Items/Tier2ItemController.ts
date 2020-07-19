@@ -49,7 +49,7 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
 itemMap.set(
     'advancedCannon',
-    new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
+    new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe),
 );
 itemMap.set('assassinsCloak', new AssassinsCloak(tier1ItemMap.get('cloakOfShadowWalk') as ItemRecipe));
 itemMap.set('boneChimes', new BoneChimes(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('vampireFangs') as ItemRecipe));
@@ -87,7 +87,7 @@ itemMap.set('fierceTrident', new FierceTrident(tier1ItemMap.get('masterExecution
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set(
     'impalingBolt',
-    new ImpalingBolt(tier1ItemMap.get('sharpSteelAxe') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe),
+    new ImpalingBolt(tier1ItemMap.get('sharpSteelAxe') as ItemRecipe),
 );
 itemMap.set(
     'improvedAmuletOfProtection',
@@ -125,7 +125,7 @@ itemMap.set(
     'improvedSpikes',
     new ImprovedSpikes(tier1ItemMap.get('spikedWood') as ItemRecipe, tier1ItemMap.get('spikedCarapace') as ItemRecipe),
 );
-itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe, tier1ItemMap.get('loadedRifle') as ItemRecipe));
+itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe));
 itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
 itemMap.set(
     'medallionOfCourage',

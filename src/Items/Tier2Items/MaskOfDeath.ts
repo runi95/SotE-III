@@ -1,7 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { VampireFangs } from '../Tier1Items/VampireFangs';
-import { LoadedRifle } from '../Tier1Items/LoadedRifle';
 
 const itemId: number = FourCC('I030');
 const name: string = 'Mask of Death';
@@ -16,7 +15,7 @@ const description: string = `Makes your enemies tremble with fear.
 |cFF808080Lifesteal determines the maximum amount of health regained when attacking enemy units.|r`;
 
 export class MaskOfDeath extends ItemRecipe {
-    constructor(vampireFangs: VampireFangs, loadedRifle: LoadedRifle) {
-        super(itemId, name, labels, goldCost, iconPath, description, [vampireFangs, loadedRifle]);
+    constructor(vampireFangs: VampireFangs) {
+        super(itemId, name, labels, goldCost, iconPath, description, [vampireFangs]);
     }
 }

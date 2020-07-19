@@ -1,7 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { LoadedCannon } from '../Tier1Items/LoadedCannon';
-import { LoadedRifle } from '../Tier1Items/LoadedRifle';
 
 const itemId: number = FourCC('I04E');
 const name: string = 'Advanced Cannon';
@@ -16,7 +15,7 @@ const description: string = `Makes sure there's nothing left of your opponents
 |cFF808080Splash determines how much of the original physical damage splashes to nearby units.|r`;
 
 export class AdvancedCannon extends ItemRecipe {
-    constructor(loadedCannon: LoadedCannon, loadedRifle: LoadedRifle) {
-        super(itemId, name, labels, goldCost, iconPath, description, [loadedCannon, loadedRifle]);
+    constructor(loadedCannon: LoadedCannon) {
+        super(itemId, name, labels, goldCost, iconPath, description, [loadedCannon]);
     }
 }

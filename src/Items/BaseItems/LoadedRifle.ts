@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { IronSword } from '../BaseItems/IronSword';
 import { ItemLabel } from '../ItemLabel';
+import { Item } from '../Item';
 
 const itemId: number = FourCC('I00W');
 const name: string = 'Loaded Rifle';
@@ -13,8 +13,8 @@ const description: string = `The loaded rifle; an essential tool in warfare.
 
 |cFF808080Your attack damage determines how much damage your physical attacks do.|r`;
 
-export class LoadedRifle extends ItemRecipe {
-    constructor(ironSword: IronSword) {
-        super(itemId, name, labels, goldCost, iconPath, description, [ironSword]);
+export class LoadedRifle extends Item {
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description);
     }
 }

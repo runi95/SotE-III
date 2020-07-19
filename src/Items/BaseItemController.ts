@@ -32,6 +32,7 @@ import { FairyWand } from './BaseItems/FairyWand';
 import { OrbOfFire } from './BaseItems/OrbOfFire';
 import { ScrollOfWitchcraft } from './BaseItems/ScrollOfWitchcraft';
 import { OrbOfVenom } from './BaseItems/OrbOfVenom';
+import { LoadedRifle } from './BaseItems/LoadedRifle';
 
 /**
  * Base Item Controller
@@ -62,6 +63,7 @@ itemMap.set('ironShield', new IronShield());
 itemMap.set('ironSword', new IronSword());
 itemMap.set('ironwoodBranch', new IronwoodBranch());
 itemMap.set('lifeStone', new LifeStone());
+itemMap.set('loadedRifle', new LoadedRifle());
 itemMap.set('moonArmor', new MoonArmor());
 itemMap.set('orbOfFire', new OrbOfFire());
 itemMap.set('orbOfLightning', new OrbOfLightning());
