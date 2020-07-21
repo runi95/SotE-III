@@ -1,6 +1,5 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
-import { BookOfKnowledge } from '../Tier1Items/BookOfKnowledge';
 
 const itemId: number = FourCC('I035');
 const name: string = 'Book of Magic';
@@ -14,7 +13,7 @@ const description: string = `A book containing long lost knowledge.
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 
 export class BookOfMagic extends ItemRecipe {
-    constructor(bookOfKnowledge: BookOfKnowledge) {
-        super(itemId, name, labels, goldCost, iconPath, description, [bookOfKnowledge]);
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description, []);
     }
 }

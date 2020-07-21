@@ -1,7 +1,6 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
 import { MantleOfIntelligence } from '../Tier1Items/MantleOfIntelligence';
-import { BookOfKnowledge } from '../Tier1Items/BookOfKnowledge';
 
 const itemId: number = FourCC('I041');
 const name: string = 'Enhanced Mantle of Intelligence';
@@ -16,7 +15,7 @@ const description: string = `Makes you look fabolous.
 |cFF808080Spell damage will persevere and break through opponent's resistance.|r`;
 
 export class EnhancedMantleOfIntelligence extends ItemRecipe {
-    constructor(mantleOfIntelligence: MantleOfIntelligence, bookOfKnowledge: BookOfKnowledge) {
-        super(itemId, name, labels, goldCost, iconPath, description, [mantleOfIntelligence, bookOfKnowledge]);
+    constructor(mantleOfIntelligence: MantleOfIntelligence) {
+        super(itemId, name, labels, goldCost, iconPath, description, [mantleOfIntelligence]);
     }
 }

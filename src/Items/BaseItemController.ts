@@ -33,6 +33,7 @@ import { OrbOfFire } from './BaseItems/OrbOfFire';
 import { ScrollOfWitchcraft } from './BaseItems/ScrollOfWitchcraft';
 import { OrbOfVenom } from './BaseItems/OrbOfVenom';
 import { LoadedRifle } from './BaseItems/LoadedRifle';
+import { BookOfKnowledge } from './BaseItems/BookOfKnowledge';
 
 /**
  * Base Item Controller
@@ -48,6 +49,7 @@ export const itemMap: Map<string, Item> = new Map();
 itemMap.set('amuletOfSpellReflection', new AmuletOfSpellReflection());
 itemMap.set('bloodiedExecutionersAxe', new BloodiedExecutionersAxe());
 itemMap.set('bloodiedSacrificialDagger', new BloodiedSacrificialDagger());
+itemMap.set('bookOfKnowledge', new BookOfKnowledge());
 itemMap.set('bootsOfSpeed', new BootsOfSpeed());
 itemMap.set('claws', new Claws());
 itemMap.set('cloakOfShadows', new CloakOfShadows());

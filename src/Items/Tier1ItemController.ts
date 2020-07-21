@@ -4,7 +4,6 @@ import * as basicItemController from './BaseItemController';
 import { AdeptStaff } from './Tier1Items/AdeptStaff';
 import { AgileSlippers } from './Tier1Items/AgileSlippers';
 import { BalancedShield } from './Tier1Items/BalancedShield';
-import { BookOfKnowledge } from './Tier1Items/BookOfKnowledge';
 import { BrightLifeStone } from './Tier1Items/BrightLifeStone';
 import { CreatureClaws } from './Tier1Items/CreatureClaws';
 import { FastVampireClaws } from './Tier1Items/FastVampireClaws';
@@ -68,7 +67,6 @@ itemMap.set(
 );
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
-itemMap.set('bookOfKnowledge', new BookOfKnowledge(basicItemMap.get('orbOfMagic') as Item));
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
 itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item));
