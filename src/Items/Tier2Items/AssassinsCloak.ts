@@ -6,7 +6,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I02N');
 const name: string = `Assassin's Cloak`;
 const labels: ItemLabel[] = [];
-const goldCost: number = 2300;
+const goldCost: number = 2180;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMetamorphosis.blp';
 const description: string = `A cloak that lets you blend in with the shadows while moving.
 

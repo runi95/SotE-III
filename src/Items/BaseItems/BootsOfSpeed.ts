@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00R');
 const name: string = 'Boots of Speed';
 const labels: ItemLabel[] = [];
-const goldCost: number = 150;
+const goldCost: number = 300;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBootsOfSpeed.blp';
 const description: string = `Increases movement rate.
 
