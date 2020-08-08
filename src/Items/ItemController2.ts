@@ -33,6 +33,7 @@ import { LegionDoomHornPickupAndDrop } from './Abilities/LegionDoomHornPickupAnd
 import { ScrollOfWitchcraftPickupAndDrop } from './Abilities/ScrollOfWitchcraftPickupAndDrop';
 import { OrbOfVenomPickupAndDrop } from './Abilities/OrbOfVenomPickupAndDrop';
 import { ShimmerScalesAndDrop } from './Abilities/ShimmerScalesAndDrop';
+import { HoodOfCunningPickupAndDrop } from './Abilities/HoodOfCunningPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -73,6 +74,7 @@ export class ItemController2 {
             new ScrollOfWitchcraftPickupAndDrop(gameGlobals),
             new OrbOfVenomPickupAndDrop(gameGlobals),
             new ShimmerScalesAndDrop(timerUtils),
+            new HoodOfCunningPickupAndDrop(gameGlobals),
         ];
     }
 }
