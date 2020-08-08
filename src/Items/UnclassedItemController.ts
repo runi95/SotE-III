@@ -8,10 +8,12 @@ import { GreenSoulstone } from './UnclassedItems/GreenSoulstone';
 import { JuggernautArmor } from './UnclassedItems/JuggernautArmor';
 import { PurpleSoulstone } from './UnclassedItems/PurpleSoulstone';
 import { SpiritTalisman } from './UnclassedItems/SpiritTalisman';
+import { HoodOfCunning } from './UnclassedItems/HoodOfCunning';
 
 export const itemMap: Map<string, Item> = new Map();
 
 itemMap.set('assassinsBlade', new AssassinsBlade());
+itemMap.set('hoodOfCunning', new HoodOfCunning());
 itemMap.set('AssassinsMap', new AssassinsMap());
 itemMap.set('sacrificialDagger', new SacrificialDagger());
 itemMap.set('blueSoulstone', new BlueSoulstone());
