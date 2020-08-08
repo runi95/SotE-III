@@ -12,10 +12,15 @@ import { HoodOfCunning } from './UnclassedItems/HoodOfCunning';
 
 export const itemMap: Map<string, Item> = new Map();
 
-itemMap.set('assassinsBlade', new AssassinsBlade());
-itemMap.set('hoodOfCunning', new HoodOfCunning());
+// TRULY UNCLASSED ITEMS
 itemMap.set('AssassinsMap', new AssassinsMap());
 itemMap.set('sacrificialDagger', new SacrificialDagger());
+
+// STARTER ITEMS
+itemMap.set('assassinsBlade', new AssassinsBlade());
+itemMap.set('hoodOfCunning', new HoodOfCunning());
+
+// BOSS ITEMS
 itemMap.set('blueSoulstone', new BlueSoulstone());
 itemMap.set('enchantedGemstone', new EnchantedGemstone());
 itemMap.set('greenSoulstone', new GreenSoulstone());
