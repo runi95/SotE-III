@@ -15,6 +15,6 @@ const description: string = `The most comfortable slippers you'll ever wear.
 
 export class AgileSlippers extends ItemRecipe {
     constructor(bootsOfSpeed: BootsOfSpeed) {
-        super(itemId, name, labels, goldCost, iconPath, description, [bootsOfSpeed, bootsOfSpeed]);
+        super(itemId, name, labels, goldCost, iconPath, description, [bootsOfSpeed]);
     }
 }
