@@ -59,6 +59,16 @@ export class Commands {
             }
         } else if (this.gameGlobals.DebugMode && split[0] === 'defeat' && split.length === 2) {
             this.playerVictoryUtils.defeatPlayer(Number(split[1]), 'has been forcefully defeated!');
+        } else if (this.gameGlobals.DebugMode && split[0] === 'speed' && split.length === 1) {
+            const playerId: number = GetPlayerId(GetTriggerPlayer());
+            if (this.gameGlobals.PlayerHero[playerId] !== undefined) {
+                DisplayTextToPlayer(
+                    GetTriggerPlayer(),
+                    0,
+                    0,
+                    `Current movementspeed: ${GetUnitMoveSpeed(this.gameGlobals.PlayerHero[playerId])}`,
+                );
+            }
         } else {
             DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Unknown command!');
         }
