@@ -42,6 +42,9 @@ export class PhysicalBlockEvent implements DamageEvent {
             block = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
             block = this.gameGlobals.PlayerPhysicalBlock[playerId];
+            if (this.gameGlobals.ArmoredBootsCount[playerId] > 0) {
+                block *= 1.1;
+            }
         }
 
         const diff: number = block - piercing;

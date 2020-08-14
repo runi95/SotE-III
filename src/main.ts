@@ -86,6 +86,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.PlayerCriticalCast[i] = 0;
         gameGlobals.PlayerCooldownReduction[i] = 0;
         gameGlobals.LegionDoomHornCount[i] = 0;
+        gameGlobals.ArmoredBootsCount[i] = 0;
         gameGlobals.PlayerVenom[i] = 0;
         gameGlobals.PlayerSplash[i] = 0;
         gameGlobals.PlayerSplashRadius[i] = 0;

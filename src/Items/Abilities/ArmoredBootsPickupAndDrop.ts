@@ -14,10 +14,12 @@ export class ArmoredBootsPickupAndDrop extends ItemPickupAndDrop {
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.PlayerPhysicalBlock[playerId] += 13;
+        this.gameGlobals.ArmoredBootsCount[playerId] += 1;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.PlayerPhysicalBlock[playerId] -= 13;
+        this.gameGlobals.ArmoredBootsCount[playerId] -= 1;
     }
 }
