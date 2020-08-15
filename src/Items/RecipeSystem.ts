@@ -289,8 +289,8 @@ export class RecipeSystem {
             this.menu,
             FRAMEPOINT_BOTTOMLEFT,
             0.0175 +
-            0.0425 *
-            (this.localPlayerInterface.selectedItemFrameIndex ? (this.localPlayerInterface.selectedItemFrameIndex as number) : 0),
+                0.0425 *
+                    (this.localPlayerInterface.selectedItemFrameIndex ? (this.localPlayerInterface.selectedItemFrameIndex as number) : 0),
             0.03,
         );
     }
@@ -490,9 +490,9 @@ export class RecipeSystem {
                 this.localPlayerInterface.selectedItemId =
                     items[
                         this.localPlayerInterface.filterItems[
-                        (this.localPlayerInterface.selectedItemFrameIndex as number) +
-                        this.localPlayerInterface.itemWindowMax -
-                        this.localPlayerInterface.itemWindowSize
+                            (this.localPlayerInterface.selectedItemFrameIndex as number) +
+                                this.localPlayerInterface.itemWindowMax -
+                                this.localPlayerInterface.itemWindowSize
                         ]
                     ].itemId;
             } else {
@@ -600,6 +600,8 @@ export class RecipeSystem {
         leftClickTrigger.addAction(() => {
             if (GetTriggerPlayer() === GetLocalPlayer()) {
                 this.localPlayerInterface.isLeftClick = true;
+                BlzFrameSetEnable(itemClickFrame, false);
+                BlzFrameSetEnable(itemClickFrame, true);
             }
         });
 
