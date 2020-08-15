@@ -60,6 +60,8 @@ import { KhadgarsAmuletPickupAndDrop } from './Abilities/KhadgarsAmuletPickupAnd
 import { AmuletOfProtectionPickupAndDrop } from './Abilities/AmuletOfProtectionPickupAndDrop';
 import { MasterExecutionerAxePickupAndDrop } from './Abilities/MasterExecutionerAxePickupAndDrop';
 import { ShimmerWeedPickupAndDrop } from './Abilities/ShimmerWeedPickupAndDrop';
+import { MagesSabatonsPickupAndDrop } from './Abilities/MagesSabatonsPickupAndDrop';
+import { ScaledBootsPickupAndDrop } from './Abilities/ScaledBootsPickupAndDrop';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -78,6 +80,7 @@ export class ItemController {
             new CaduceusUse(arcaneVault),
             new ScrollOfTownPortalUse(gameGlobals, timerUtils),
             new ArmoredBootsPickupAndDrop(gameGlobals),
+            new MagesSabatonsPickupAndDrop(gameGlobals),
             new LionsRingPickupAndDrop(gameGlobals),
             new ClockworkPenguinPickupAndDrop(gameGlobals, timerUtils),
             new GoblinBatteryPickupAndDrop(gameGlobals, timerUtils),
@@ -125,6 +128,7 @@ export class ItemController {
             new AmuletOfProtectionPickupAndDrop(gameGlobals),
             new MasterExecutionerAxePickupAndDrop(gameGlobals),
             new ShimmerWeedPickupAndDrop(gameGlobals),
+            new ScaledBootsPickupAndDrop(gameGlobals),
         ];
     }
 }

@@ -28,6 +28,8 @@ export class GameGlobals {
     public MarkOfTheTalonCount: number[] = [];
     public LegionDoomHornCount: number[] = [];
     public ArmoredBootsCount: number[] = [];
+    public MagesSabatonsCount: number[] = [];
+    public ScaledBootsCount: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];

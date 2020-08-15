@@ -30,6 +30,7 @@ import { EnhancedJavelinEvent } from './EnhancedJavelinEvent';
 import { MarkOfTheTalon } from './MarkOfTheTalon';
 import { Venom } from './Venom';
 import { VenomUtils } from '../Utility/VenomUtils';
+import { MagesSabatons } from './MagesSabatons';
 
 export class DamageEventController {
     constructor(
@@ -62,6 +63,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Reflect(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new CriticalCast(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

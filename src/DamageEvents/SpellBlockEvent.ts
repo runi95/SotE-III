@@ -22,6 +22,10 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
+        if (this.gameGlobals.ScaledBootsCount[playerId] > 0) {
+            globals.DamageEventAmount *= 0.92;
+        }
+
         let perseverance: number = 0;
         let resistance: number = 0;
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
