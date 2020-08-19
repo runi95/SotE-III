@@ -159,6 +159,7 @@ export class Game {
         }
 
         UnitAddAbility(this.tombOfRelics, FourCC('A088'));
+        SetTimeOfDay(6);
 
         if (this.gameGlobals.GameIsSuddenDeathEnabled) {
             this.arenaUtils.initiateFightCountdown();
