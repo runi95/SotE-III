@@ -22,10 +22,6 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
-        if (this.gameGlobals.ScaledBootsCount[playerId] > 0) {
-            globals.DamageEventAmount *= 0.92;
-        }
-
         let perseverance: number = 0;
         let resistance: number = 0;
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
@@ -45,6 +41,9 @@ export class SpellBlockEvent implements DamageEvent {
             const creepLevel: number = GetUnitLevel(globals.DamageEventTarget as unit);
             resistance = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
+            if (this.gameGlobals.ScaledBootsCount[playerId] > 0) {
+                globals.DamageEventAmount *= 0.92;
+            }
             resistance = this.gameGlobals.PlayerSpellBlock[playerId];
         }
 
