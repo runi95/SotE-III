@@ -34,6 +34,7 @@ import { ScrollOfWitchcraft } from './BaseItems/ScrollOfWitchcraft';
 import { OrbOfVenom } from './BaseItems/OrbOfVenom';
 import { LoadedRifle } from './BaseItems/LoadedRifle';
 import { BookOfKnowledge } from './BaseItems/BookOfKnowledge';
+import { OrbOfCorruption } from './BaseItems/OrbOfCorruption';
 
 /**
  * Base Item Controller
@@ -67,6 +68,7 @@ itemMap.set('ironwoodBranch', new IronwoodBranch());
 itemMap.set('lifeStone', new LifeStone());
 itemMap.set('loadedRifle', new LoadedRifle());
 itemMap.set('moonArmor', new MoonArmor());
+itemMap.set('orbOfCorruption', new OrbOfCorruption());
 itemMap.set('orbOfFire', new OrbOfFire());
 itemMap.set('orbOfLightning', new OrbOfLightning());
 itemMap.set('orbOfMagic', new OrbOfMagic());
