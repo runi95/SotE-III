@@ -7,12 +7,11 @@ export class Devour extends Spell {
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const loc: location = GetUnitLoc(trig);
-        const grp: GroupInRange = new GroupInRange(300.00, loc);
+        const grp: GroupInRange = new GroupInRange(300.0, loc);
         const damage: number = 3 * GetHeroStr(GetTriggerUnit(), true);
         grp.for((u: unit) => {
-            if (UnitAlive(u)) {
-                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl',
-                                               GetUnitX(u), GetUnitY(u)));
+            if (UnitAlive(u) && u !== trig) {
+                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl', GetUnitX(u), GetUnitY(u)));
                 UnitDamageTargetBJ(GetTriggerUnit(), u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 SetUnitLifeBJ(GetTriggerUnit(), GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + damage);
             }
