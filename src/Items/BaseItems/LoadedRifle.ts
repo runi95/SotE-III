@@ -5,7 +5,7 @@ import { Item } from '../Item';
 const itemId: number = FourCC('I00W');
 const name: string = 'Loaded Rifle';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 2250;
+const goldCost: number = 1125;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpOne.blp';
 const description: string = `The loaded rifle; an essential tool in warfare.
 

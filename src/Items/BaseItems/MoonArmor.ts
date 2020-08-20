@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I008');
 const name: string = 'Moon Armor';
 const labels: ItemLabel[] = [ItemLabel.RESISTANCE];
-const goldCost: number = 300;
+const goldCost: number = 840;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMoonArmor.blp';
 const description: string = `A special armor capable of resisting spell damage.
 
-|cffffcc00Resistance:|r +5
+|cffffcc00Resistance:|r +14
 
 |cFF808080Incoming spell damage is reduced by the amount of resistance you have.|r`;
 

@@ -8,7 +8,7 @@ const goldCost: number = 360;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNUnholyStrength.blp';
 const description: string = `Practicing with these will surely make you super fast.
 
-|cffffcc00Agility:|r +4
+|cffffcc00Agility:|r +8
 
 |cFF808080Agility increases your attack and movement speed.|r`;
 

@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I039');
 const name: string = 'Life Stone';
 const labels: ItemLabel[] = [ItemLabel.RESTORATION];
-const goldCost: number = 1200;
+const goldCost: number = 600;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHealthStone.blp';
 const description: string = `The stone of life is often used by dryads to heal their wounds after battle.
 

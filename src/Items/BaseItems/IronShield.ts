@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I005');
 const name: string = 'Iron Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 200;
+const goldCost: number = 330;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpOne.blp';
 const description: string = `A weak shield capable of blocking incoming physical damage.
 
-|cffffcc00Block:|r +3
+|cffffcc00Block:|r +10
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 

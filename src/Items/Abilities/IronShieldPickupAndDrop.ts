@@ -13,11 +13,11 @@ export class IronShieldPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 3;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 10;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 3;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 10;
     }
 }

@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I03B');
 const name: string = 'Ironwood Branch';
 const labels: ItemLabel[] = [ItemLabel.THORNS];
-const goldCost: number = 1440;
+const goldCost: number = 720;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNatureTouchGrow.blp';
 const description: string = `Very pointy.
 

@@ -4,7 +4,7 @@ import { Item } from '../Item';
 const itemId: number = FourCC('I034');
 const name: string = 'Book of Knowledge';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE];
-const goldCost: number = 1800;
+const goldCost: number = 900;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNManual3.blp';
 const description: string = `A book full of information about the strangest things.
 
