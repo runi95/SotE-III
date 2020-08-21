@@ -36,15 +36,6 @@ export class AssassinsBladeEvent implements DamageEvent {
 
         globals.DamageEventAmount = globals.DamageEventAmount + 300;
 
-        const t: Timer = this.timerUtils.newTimer();
-        t.start(30, false, () => {
-            if (UnitHasItemOfTypeBJ(this.gameGlobals.PlayerHero[playerId], this.itemId)) {
-                this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.READY;
-            } else {
-                this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.UNEQUIPPED;
-            }
-
-            this.timerUtils.releaseTimer(t);
-        });
+        SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventSource as unit, this.itemId), 1);
     }
 }

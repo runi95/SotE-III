@@ -62,6 +62,7 @@ import { MasterExecutionerAxePickupAndDrop } from './Abilities/MasterExecutioner
 import { ShimmerWeedPickupAndDrop } from './Abilities/ShimmerWeedPickupAndDrop';
 import { MagesSabatonsPickupAndDrop } from './Abilities/MagesSabatonsPickupAndDrop';
 import { ScaledBootsPickupAndDrop } from './Abilities/ScaledBootsPickupAndDrop';
+import { AssassinsBladeSell } from './Abilities/AssassinsBladeSell';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -99,7 +100,7 @@ export class ItemController {
             new SacrificialDaggerSell(),
             new BloodiedSacrificialDaggerCast(),
             new VampireDaggerCast(),
-            new AssassinsBladePickupAndDrop(gameGlobals),
+            new AssassinsBladePickupAndDrop(gameGlobals, timerUtils),
             new AssassinsMapPickupAndDrop(),
             new NaturesBlessingUse(),
             new FastVampireClawsPickupAndDrop(gameGlobals),
@@ -129,6 +130,7 @@ export class ItemController {
             new MasterExecutionerAxePickupAndDrop(gameGlobals),
             new ShimmerWeedPickupAndDrop(gameGlobals),
             new ScaledBootsPickupAndDrop(gameGlobals),
+            new AssassinsBladeSell(),
         ];
     }
 }
