@@ -2,16 +2,13 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals, AssassinsBladeStates } from '../Game/GameGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
-import { Timer } from '../JassOverrides/Timer';
 
 export class AssassinsBladeEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
-    private readonly timerUtils: TimerUtils;
     private readonly itemId: number = FourCC('I02M');
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
-        this.timerUtils = timerUtils;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -34,7 +31,7 @@ export class AssassinsBladeEvent implements DamageEvent {
 
         this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.COOLDOWN;
 
-        globals.DamageEventAmount = globals.DamageEventAmount + 300;
+        globals.DamageEventAmount = globals.DamageEventAmount + 420;
 
         SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventSource as unit, this.itemId), 1);
     }

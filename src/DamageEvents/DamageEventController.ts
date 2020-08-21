@@ -52,7 +52,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new MarkOfTheTalon(gameGlobals));
 
         // Initial damage modification events
-        damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals, timerUtils));
+        damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
