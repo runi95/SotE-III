@@ -10,6 +10,7 @@ import { PurpleSoulstone } from './UnclassedItems/PurpleSoulstone';
 import { SpiritTalisman } from './UnclassedItems/SpiritTalisman';
 import { HoodOfCunning } from './UnclassedItems/HoodOfCunning';
 import { CircletOfNobility } from './UnclassedItems/CircletOfNobility';
+import { PillagerHammers } from './UnclassedItems/PillagerHammers';
 
 export const itemMap: Map<string, Item> = new Map();
 
@@ -21,6 +22,7 @@ itemMap.set('sacrificialDagger', new SacrificialDagger());
 itemMap.set('assassinsBlade', new AssassinsBlade());
 itemMap.set('hoodOfCunning', new HoodOfCunning());
 itemMap.set('circletOfNobility', new CircletOfNobility());
+itemMap.set('pillagerHammers', new PillagerHammers());
 
 // BOSS ITEMS
 itemMap.set('blueSoulstone', new BlueSoulstone());
