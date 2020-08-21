@@ -6,7 +6,7 @@ import { EmptyVial } from '../BaseItems/EmptyVial';
 const itemId: number = FourCC('I04X');
 const name: string = `Mage's Sabatons`;
 const labels: ItemLabel[] = [ItemLabel.MAX_MANA];
-const goldCost: number = 1500;
+const goldCost: number = 1100;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMagesSabatons.dds';
 const description: string = `Increases movement rate while keeping your feet safe.
 
