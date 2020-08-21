@@ -9,8 +9,8 @@ const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCirclet.blp';
 const description: string = `A circlet only worn by the most noble of heroes.
 
 |cffffcc00Mana:|r +50
-|cffffcc00Intelligence:|r +5
-|cffffcc00Mana regen:|r +4
+|cffffcc00Intelligence:|r +7
+|cffffcc00Mana regen:|r +5
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
 
