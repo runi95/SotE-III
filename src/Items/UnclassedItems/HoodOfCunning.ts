@@ -8,8 +8,8 @@ const goldCost: number = 500;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHoodOfCunning.blp';
 const description: string = `Something to keep your head warm and protected.
 
-|cffffcc00Health:|r +50
-|cffffcc00Health regen:|r +4
+|cffffcc00Health:|r +90
+|cffffcc00Health regen:|r +5
 |cffffcc00Block:|r +5
 
 |cFF808080Incoming physical damage is reduced by the amount of block you have.|r`;
