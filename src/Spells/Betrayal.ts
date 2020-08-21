@@ -13,9 +13,11 @@ export class Betrayal extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const targFacingDirection: number = GetUnitFacing(targ);
         const abilityLevel: number = GetUnitAbilityLevel(trig, FourCC('A00H'));
-        const damage: number = 250.0 * abilityLevel + 3 * GetHeroInt(trig, true);
+        const damage: number = 75.0 * abilityLevel + 3 * GetHeroInt(trig, true);
         const newX: number = GetUnitX(targ) + CosBJ(targFacingDirection) * -75;
         const newY: number = GetUnitY(targ) + SinBJ(targFacingDirection) * -75;
+
+        BJDebugMsg(`Betrayal damage: ${damage}`);
 
         TriggerSleepAction(0.05);
 
