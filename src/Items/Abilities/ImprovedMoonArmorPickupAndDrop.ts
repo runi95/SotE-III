@@ -13,11 +13,11 @@ export class ImprovedMoonArmorPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 14;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 15;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] -= 14;
+        this.gameGlobals.PlayerSpellBlock[playerId] -= 15;
     }
 }
