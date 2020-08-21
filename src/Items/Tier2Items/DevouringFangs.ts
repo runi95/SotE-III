@@ -1,6 +1,6 @@
 import { ItemLabel } from '../ItemLabel';
 import { ItemRecipe } from '../ItemRecipe';
-import { FastVampireClaws } from '../Tier1Items/FastVampireClaws';
+import { FastVampireClaws } from './FastVampireClaws';
 import { VampireFangs } from '../Tier1Items/VampireFangs';
 import { CreatureClaws } from '../Tier1Items/CreatureClaws';
 

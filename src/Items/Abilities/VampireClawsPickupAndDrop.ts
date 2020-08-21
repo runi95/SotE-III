@@ -13,11 +13,11 @@ export class VampireClawsPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] += 24;
+        this.gameGlobals.PlayerLifesteal[playerId] += 15;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerLifesteal[playerId] -= 24;
+        this.gameGlobals.PlayerLifesteal[playerId] -= 15;
     }
 }
