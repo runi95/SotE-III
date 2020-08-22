@@ -22,7 +22,7 @@ export class MoonBladeBuff extends Buff {
     }
 
     public onInitialBuffApply(): void {
-        this.gameGlobals.PlayerPhysicalBlock[this.playerId] += this.temporaryResistance;
+        this.gameGlobals.PlayerSpellBlock[this.playerId] += this.temporaryResistance;
     }
 
     public tick(): void {}
@@ -39,10 +39,10 @@ export class MoonBladeBuff extends Buff {
 
         const increasedTemporaryResistance: number = buff.getTemporaryResistance();
         this.temporaryResistance += increasedTemporaryResistance;
-        this.gameGlobals.PlayerPhysicalBlock[this.playerId] += increasedTemporaryResistance;
+        this.gameGlobals.PlayerSpellBlock[this.playerId] += increasedTemporaryResistance;
     }
 
     public clearBuff(): void {
-        this.gameGlobals.PlayerPhysicalBlock[this.playerId] -= this.temporaryResistance;
+        this.gameGlobals.PlayerSpellBlock[this.playerId] -= this.temporaryResistance;
     }
 }
