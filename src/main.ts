@@ -73,6 +73,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
+        gameGlobals.MoonBladeCount[i] = 0;
         gameGlobals.ArcaniteSpearCount[i] = 0;
         gameGlobals.BookOfEvilCount[i] = 0;
         gameGlobals.EnhancedJavelinCount[i] = 0;

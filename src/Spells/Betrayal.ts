@@ -17,8 +17,6 @@ export class Betrayal extends Spell {
         const newX: number = GetUnitX(targ) + CosBJ(targFacingDirection) * -75;
         const newY: number = GetUnitY(targ) + SinBJ(targFacingDirection) * -75;
 
-        BJDebugMsg(`Betrayal damage: ${damage}`);
-
         TriggerSleepAction(0.05);
 
         SetUnitPosition(trig, newX, newY);

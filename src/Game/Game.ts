@@ -24,6 +24,7 @@ import { RecipeSystem } from '../Items/RecipeSystem';
 import { ItemController2 } from '../Items/ItemController2';
 import { CooldownReduction } from './CooldownReduction';
 import { VenomUtils } from '../Utility/VenomUtils';
+import { BuffUtils } from '../Utility/BuffUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -33,6 +34,7 @@ export class Game {
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
     private readonly venomUtils: VenomUtils;
+    private readonly buffUtils: BuffUtils;
     private readonly arenaUtils: ArenaUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
     private readonly damageEngine: DamageEngine;
@@ -60,6 +62,7 @@ export class Game {
         this.timerUtils = new TimerUtils();
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.venomUtils = new VenomUtils(this.timerUtils);
+        this.buffUtils = new BuffUtils(this.timerUtils);
         this.cooldownReduction = new CooldownReduction(this.gameGlobals);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.venomUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
@@ -74,6 +77,7 @@ export class Game {
             this.timerUtils,
             this.venomUtils,
             this.randomNumberGenerator,
+            this.buffUtils,
             this.damageEngine,
         );
         this.flyingMachineController = new FlyingMachineController();

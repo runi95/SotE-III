@@ -1,0 +1,48 @@
+import { Buff } from '../Buff';
+import { BuffTypes } from '../BuffTypes';
+import { GameGlobals } from '../../Game/GameGlobals';
+
+export class MoonBladeBuff extends Buff {
+    private readonly gameGlobals: GameGlobals;
+    private readonly playerId: number;
+    private temporaryResistance: number;
+
+    constructor(playerId: number, gameGlobals: GameGlobals) {
+        const tickDuration: number = 1;
+        const initialDuration: number = 5;
+        super(tickDuration, initialDuration);
+
+        this.temporaryResistance = 5;
+        this.playerId = playerId;
+        this.gameGlobals = gameGlobals;
+    }
+
+    public getTemporaryResistance(): number {
+        return this.temporaryResistance;
+    }
+
+    public onInitialBuffApply(): void {
+        this.gameGlobals.PlayerPhysicalBlock[this.playerId] += this.temporaryResistance;
+    }
+
+    public tick(): void {}
+
+    public getBuffType(): BuffTypes {
+        return BuffTypes.MOON_BLADE;
+    }
+
+    public stackBuff(buff: this): void {
+        this.setDuration(5);
+        if (this.temporaryResistance >= 50) {
+            return;
+        }
+
+        const increasedTemporaryResistance: number = buff.getTemporaryResistance();
+        this.temporaryResistance += increasedTemporaryResistance;
+        this.gameGlobals.PlayerPhysicalBlock[this.playerId] += increasedTemporaryResistance;
+    }
+
+    public clearBuff(): void {
+        this.gameGlobals.PlayerPhysicalBlock[this.playerId] -= this.temporaryResistance;
+    }
+}

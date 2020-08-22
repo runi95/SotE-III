@@ -63,6 +63,7 @@ import { ShimmerWeedPickupAndDrop } from './Abilities/ShimmerWeedPickupAndDrop';
 import { MagesSabatonsPickupAndDrop } from './Abilities/MagesSabatonsPickupAndDrop';
 import { ScaledBootsPickupAndDrop } from './Abilities/ScaledBootsPickupAndDrop';
 import { AssassinsBladeSell } from './Abilities/AssassinsBladeSell';
+import { MoonBladePickupAndDrop } from './Abilities/MoonBladePickupAndDrop';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -131,6 +132,7 @@ export class ItemController {
             new ShimmerWeedPickupAndDrop(gameGlobals),
             new ScaledBootsPickupAndDrop(gameGlobals),
             new AssassinsBladeSell(),
+            new MoonBladePickupAndDrop(gameGlobals),
         ];
     }
 }

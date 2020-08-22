@@ -31,6 +31,8 @@ import { MarkOfTheTalon } from './MarkOfTheTalon';
 import { Venom } from './Venom';
 import { VenomUtils } from '../Utility/VenomUtils';
 import { MagesSabatons } from './MagesSabatons';
+import { MoonBladeEvent } from './MoonBladeEvent';
+import { BuffUtils } from '../Utility/BuffUtils';
 
 export class DamageEventController {
     constructor(
@@ -38,6 +40,7 @@ export class DamageEventController {
         timerUtils: TimerUtils,
         venomUtils: VenomUtils,
         randomNumberGenerator: RandomNumberGenerator,
+        buffUtils: BuffUtils,
         damageEngine: DamageEngine,
     ) {
         // Initial damage events
@@ -53,6 +56,7 @@ export class DamageEventController {
 
         // Initial damage modification events
         damageEngine.addInitialDamageModificationEvent(new AssassinsBladeEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new MoonBladeEvent(gameGlobals, buffUtils));
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
