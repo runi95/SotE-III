@@ -23,7 +23,9 @@ export class Lifesteal implements DamageEvent {
             return;
         }
 
-        const additionalLifesteal = this.gameGlobals.LegionDoomHornCount[playerId] > 0 ? globals.PiercingOverflowAmount : 0;
+        const additionalLifesteal: number =
+            (this.gameGlobals.LegionDoomHornCount[playerId] > 0 ? globals.PiercingOverflowAmount : 0) +
+            (this.gameGlobals.FastVampireClawsCount[playerId] > 0 ? 0.05 * globals.DamageEventAmount : 0);
         const healthGained: number = Math.min(globals.DamageEventAmount, this.gameGlobals.PlayerLifesteal[playerId] + additionalLifesteal);
         if (healthGained > 0) {
             DestroyEffect(

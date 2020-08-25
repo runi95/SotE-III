@@ -13,7 +13,7 @@ const description: string = `Lightweight vampire claws for faster attack speed.
 |cffffcc00Agility:|r +20
 |cffffcc00Attack Damage:|r +40
 |cffffcc00Lifesteal:|r +25
-|cffffcc00Passive:|r Increases attack speed by +15%
+|cffffcc00Unique:|r Increases lifesteal by an additional 5% of attack damage
 
 |cFF808080Lifesteal determines the maximum amount of health regained when attacking enemy units.|r`;
 
