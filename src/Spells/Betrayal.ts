@@ -1,8 +1,16 @@
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { Spell } from './Spell';
 
 export class Betrayal extends Spell {
     protected readonly abilityId: number = FourCC('A00H');
     private readonly buffId: number = FourCC('Beng');
+    private readonly spellCastUtils: SpellCastUtils;
+
+    constructor(spellCastUtils: SpellCastUtils) {
+        super();
+
+        this.spellCastUtils = spellCastUtils;
+    }
 
     protected condition(): boolean {
         return super.condition() && !UnitHasBuffBJ(GetTriggerUnit(), this.buffId);
@@ -13,7 +21,7 @@ export class Betrayal extends Spell {
         const targ: unit = GetSpellTargetUnit();
         const targFacingDirection: number = GetUnitFacing(targ);
         const abilityLevel: number = GetUnitAbilityLevel(trig, FourCC('A00H'));
-        const damage: number = 75.0 * abilityLevel + 3 * GetHeroInt(trig, true);
+        const damage: number = 75.0 * abilityLevel + 3 * this.spellCastUtils.GetIntelligence(trig);
         const newX: number = GetUnitX(targ) + CosBJ(targFacingDirection) * -75;
         const newY: number = GetUnitY(targ) + SinBJ(targFacingDirection) * -75;
 

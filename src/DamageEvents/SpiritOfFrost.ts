@@ -2,17 +2,18 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class SpiritOfFrost implements DamageEvent {
-    private readonly gameGlobals: GameGlobals;
     private readonly randomNumberGenerator: RandomNumberGenerator;
+    private readonly spellCastUtils: SpellCastUtils;
     private readonly abilityId: number = FourCC('A01L');
     private readonly dummyUnitTypeId: number = FourCC('n00J');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
 
-    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
-        this.gameGlobals = gameGlobals;
+    constructor(randomNumberGenerator: RandomNumberGenerator, spellCastUtils: SpellCastUtils) {
         this.randomNumberGenerator = randomNumberGenerator;
+        this.spellCastUtils = spellCastUtils;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -24,7 +25,7 @@ export class SpiritOfFrost implements DamageEvent {
                 if (mana > 25) {
                     const x: number = GetUnitX(globals.DamageEventTarget as unit) + GetRandomReal(0.0, 500.0) - 250.0;
                     const y: number = GetUnitY(globals.DamageEventTarget as unit) + GetRandomReal(0.0, 500.0) - 250.0;
-                    const intelligence: number = GetHeroInt(globals.DamageEventTarget as unit, true);
+                    const intelligence: number = this.spellCastUtils.GetIntelligence(globals.DamageEventTarget as unit);
                     const summon: unit = CreateUnit(
                         GetOwningPlayer(globals.DamageEventTarget as unit),
                         this.dummyUnitTypeId,

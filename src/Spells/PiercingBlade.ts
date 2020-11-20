@@ -2,16 +2,19 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class PiercingBlade extends Spell {
     protected readonly abilityId: number = FourCC('A00L');
     private readonly dummyUnitId: number = FourCC('n00M');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -25,7 +28,7 @@ export class PiercingBlade extends Spell {
         const diff: number = SquareRoot(Pow(diffX, 2.00) + Pow(diffY, 2.00));
         const x: number = trigX + 750.00 * (diffX / diff);
         const y: number = trigY + 750.00 * (diffY / diff);
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const damage: number = 20.00 * abilityLevel + 0.50 * intelligence;
         const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, trigX, trigY, GetUnitFacing(trig));

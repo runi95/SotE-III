@@ -2,25 +2,28 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { GameGlobals } from '../Game/GameGlobals';
 import { Timer } from '../JassOverrides/Timer';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class DefenseSystem extends Spell {
     protected readonly abilityId: number = FourCC('A029');
     private readonly defenseSystemDummyAbilityId: number = FourCC('A02A');
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.gameGlobals = gameGlobals;
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const bonusArmor: number = 2;
         const bonusPhysical: number = Math.floor(abilityLevel + 0.50 * intelligence);
         UnitAddAbilityBJ(this.defenseSystemDummyAbilityId, trig);

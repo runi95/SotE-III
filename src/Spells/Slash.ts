@@ -2,6 +2,7 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { StunUtils } from '../Utility/StunUtils';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Slash extends Spell {
     protected readonly abilityId: number = FourCC('A03H');
@@ -9,19 +10,21 @@ export class Slash extends Spell {
     private readonly dummyAbilityId: number = FourCC('Arav');
     private readonly timerUtils: TimerUtils;
     private readonly stunUtils: StunUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils, stunUtils: StunUtils) {
+    constructor(timerUtils: TimerUtils, stunUtils: StunUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
         this.stunUtils = stunUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const targ: unit = GetSpellTargetUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 150 * abilityLevel + 2 * intelligence;
         PauseUnit(trig, true);
         UnitAddAbility(trig, this.dummyAbilityId);

@@ -2,15 +2,18 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Swarm extends Spell {
     protected readonly abilityId: number = FourCC('A01F');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -23,7 +26,7 @@ export class Swarm extends Spell {
         const dist: number = Math.sqrt(Pow(x - targetX, 2) + Pow(y - targetY, 2));
         const multX: number = 100 * ((targetX - x) / dist);
         const multY: number = 100 * ((targetY - y) / dist);
-        const damage: number = (250 * abilityLevel + 3 * GetHeroInt(trig, true)) / 3;
+        const damage: number = (250 * abilityLevel + 3 * this.spellCastUtils.GetIntelligence(trig)) / 3;
         const fog: fogmodifier = CreateFogModifierRadius(
             GetOwningPlayer(trig),
             FOG_OF_WAR_VISIBLE,

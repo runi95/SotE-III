@@ -1,21 +1,24 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Avatar extends Spell {
     protected readonly abilityId: number = FourCC('A01E');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit());
         const bonusHP: number = 250 * abilityLevel + 5 * intelligence;
         const bonusArmor: number = abilityLevel;
         const bonusDamage: number = Math.ceil(10 * abilityLevel + 0.1 * intelligence);

@@ -1,13 +1,21 @@
 import { Spell } from './Spell';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class AbolishLight extends Spell {
     protected readonly abilityId: number = FourCC('A04C');
+    private readonly spellCastUtils: SpellCastUtils;
+
+    constructor(spellCastUtils: SpellCastUtils) {
+        super();
+
+        this.spellCastUtils = spellCastUtils;
+    }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const totalDamageAndHealing: number = 125 * abilityLevel + 2 * intelligence;
 
         const loc: location = GetUnitLoc(trig);

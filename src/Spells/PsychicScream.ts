@@ -1,13 +1,21 @@
 import { Spell } from './Spell';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class PsychicScream extends Spell {
     protected readonly abilityId: number = FourCC('A01G');
+    private readonly spellCastUtils: SpellCastUtils;
+
+    constructor(spellCastUtils: SpellCastUtils) {
+        super();
+
+        this.spellCastUtils = spellCastUtils;
+    }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const damage: number = 75 * abilityLevel + GetHeroInt(trig, true);
+        const damage: number = 75 * abilityLevel + this.spellCastUtils.GetIntelligence(trig);
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));

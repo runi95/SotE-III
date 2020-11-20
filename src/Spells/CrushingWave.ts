@@ -2,16 +2,19 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class CrushingWave extends Spell {
     protected readonly abilityId: number = FourCC('A00O');
     private readonly dummyUnitId: number = FourCC('n00L');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -20,7 +23,7 @@ export class CrushingWave extends Spell {
         let y: number = GetUnitY(trig);
         const targetX: number = GetSpellTargetX();
         const targetY: number = GetSpellTargetY();
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const damage: number = (275 * abilityLevel + 3.5 * intelligence) / 35;
         const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, GetUnitFacing(trig));

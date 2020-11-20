@@ -34,6 +34,7 @@ const tier2ItemMap: Map<string, ItemRecipe> = tier2ItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
+/*
 itemMap.set(
     'advancedCreatureClaws',
     new AdvancedCreatureClaws(
@@ -67,7 +68,10 @@ itemMap.set(
     'scrollOfWisdom',
     new ScrollOfWisdom(tier2ItemMap.get('vialOfMagic') as ItemRecipe, tier2ItemMap.get('enhancedMaskOfProficiency') as ItemRecipe),
 );
-itemMap.set('shimmerScales', new ShimmerScales(tier2ItemMap.get('improvedNaturesBlessing') as ItemRecipe, tier2ItemMap.get('improvedShimmerWeed') as ItemRecipe));
+itemMap.set(
+    'shimmerScales',
+    new ShimmerScales(tier2ItemMap.get('improvedNaturesBlessing') as ItemRecipe, tier2ItemMap.get('improvedShimmerWeed') as ItemRecipe),
+);
 itemMap.set(
     'soulcage',
     new Soulcage(
@@ -78,5 +82,6 @@ itemMap.set(
     ),
 );
 itemMap.set('swordOfNaegling', new SwordOfNaegling(tier2ItemMap.get('fragarach') as ItemRecipe));
+*/
 
 export default [...itemMap.values()] as ItemRecipe[];

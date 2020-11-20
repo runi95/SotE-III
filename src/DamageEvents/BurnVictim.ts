@@ -2,14 +2,17 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class BurnVictim implements DamageEvent {
     private readonly abilityId: number = FourCC('A02I');
     private readonly dummyAbilityId: number = FourCC('A02J');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -32,7 +35,7 @@ export class BurnVictim implements DamageEvent {
 
         UnitAddAbility(targ, this.dummyAbilityId);
 
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 5 * abilityLevel + intelligence;
 
         let ticks: number = 5;

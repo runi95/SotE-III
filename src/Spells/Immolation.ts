@@ -2,21 +2,24 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Immolation extends Spell {
     protected readonly abilityId: number = FourCC('A00K');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 50 * abilityLevel + 1.5 * intelligence;
 
         let ticks: number = 20;

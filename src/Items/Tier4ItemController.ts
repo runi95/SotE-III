@@ -19,6 +19,7 @@ const tier3ItemMap: Map<string, ItemRecipe> = tier3ItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
+/*
 itemMap.set('advancedReinforcedHides', new AdvancedReinforcedHides(tier3ItemMap.get('reinforcedScales') as ItemRecipe));
 itemMap.set(
     'advancedStrengthOfTheWild',
@@ -27,5 +28,6 @@ itemMap.set(
         unclassedItemMap.get('greenSoulstone') as Item,
     ),
 );
+*/
 
 export default [...itemMap.values()] as ItemRecipe[];

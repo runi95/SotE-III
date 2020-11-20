@@ -1,4 +1,6 @@
+import { Item } from './Item';
 import { ItemRecipe } from './ItemRecipe';
+import * as baseItemController from './BaseItemController';
 import * as tier1ItemController from './Tier1ItemController';
 import { VialOfMagic } from './Tier2Items/VialOfMagic';
 import { MaskOfDeath } from './Tier2Items/MaskOfDeath';
@@ -35,7 +37,10 @@ import { FierceTrident } from './Tier2Items/FierceTrident';
 import { RingOfPerseverance } from './Tier2Items/RingOfPerseverance';
 import { ThoriumSpear } from './Tier2Items/ThoriumSpear';
 import { ImprovedSpikes } from './Tier2Items/ImprovedSpikes';
+import { FastVampireClaws } from './Tier2Items/FastVampireClaws';
+import { MoonBlade } from './Tier2Items/MoonBlade';
 
+const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
 /**
@@ -47,6 +52,8 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
  * - has a total cost between 6750 to 13500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
+
+/*
 itemMap.set(
     'advancedCannon',
     new AdvancedCannon(tier1ItemMap.get('loadedCannon') as ItemRecipe),
@@ -82,6 +89,9 @@ itemMap.set(
     ),
 );
 itemMap.set('enhancedMaskOfProficiency', new EnhancedMaskOfProficiency(tier1ItemMap.get('maskOfProficiency') as ItemRecipe));
+*/
+itemMap.set('fastVampireClaws', new FastVampireClaws(tier1ItemMap.get('ironClaws') as ItemRecipe, baseItemMap.get('vampireClaws') as Item));
+/*
 itemMap.set('fierceTrident', new FierceTrident(tier1ItemMap.get('masterExecutionerAxe') as ItemRecipe));
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
 itemMap.set(
@@ -130,6 +140,9 @@ itemMap.set(
     'medallionOfCourage',
     new MedallionOfCourage(tier1ItemMap.get('maulOfStrength') as ItemRecipe, tier1ItemMap.get('steelShield') as ItemRecipe),
 );
+*/
+itemMap.set('moonBlade', new MoonBlade(tier1ItemMap.get('improvedMoonArmor') as ItemRecipe, baseItemMap.get('ironSword') as Item));
+/*
 itemMap.set('quills', new Quills(tier1ItemMap.get('skullShield') as ItemRecipe));
 itemMap.set(
     'ringOfMagic',
@@ -147,5 +160,6 @@ itemMap.set('strengthOfTheWild', new StrengthOfTheWild(tier1ItemMap.get('maulOfS
 itemMap.set('sunkenShard', new SunkenShard(tier1ItemMap.get('shimmerWeed') as ItemRecipe, tier1ItemMap.get('manaStone') as ItemRecipe));
 itemMap.set('thoriumSpear', new ThoriumSpear(tier1ItemMap.get('javelin') as ItemRecipe, tier1ItemMap.get('longRifle') as ItemRecipe));
 itemMap.set('vialOfMagic', new VialOfMagic(tier1ItemMap.get('fullVial') as ItemRecipe));
+*/
 
 export default [...itemMap.values()] as ItemRecipe[];

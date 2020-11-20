@@ -1,13 +1,21 @@
 import { Spell } from './Spell';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Brawl extends Spell {
     protected readonly abilityId: number = FourCC('A03I');
+    private readonly spellCastUtils: SpellCastUtils;
+
+    constructor(spellCastUtils: SpellCastUtils) {
+        super();
+
+        this.spellCastUtils = spellCastUtils;
+    }
 
     protected action(): void {
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const bonusDamage: number = 300 * abilityLevel + 4 * intelligence;
         const damage: number = BlzGetUnitBaseDamage(trig, 0) + bonusDamage;
         const x: number = GetUnitX(trig);

@@ -1,4 +1,5 @@
 import { Trigger } from '../JassOverrides/Trigger';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class DarkCorruption {
     private readonly abilityId: number = FourCC('A036');
@@ -6,8 +7,11 @@ export class DarkCorruption {
     private readonly darkSummoningId: number = FourCC('A04A');
     private summonCount: number = 0;
     private readonly trig: Trigger = new Trigger();
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor() {
+    constructor(spellCastUtils: SpellCastUtils) {
+        this.spellCastUtils = spellCastUtils;
+
         this.trig.addAction(() => this.action());
         this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_DEATH);
     }
@@ -23,7 +27,7 @@ export class DarkCorruption {
             const darkSummoningLevel: number = GetUnitAbilityLevel(GetKillingUnit(), this.darkSummoningId);
             const x: number = GetUnitX(GetDyingUnit());
             const y: number = GetUnitY(GetDyingUnit());
-            const intelligence: number = GetHeroInt(GetKillingUnit(), true);
+            const intelligence: number = this.spellCastUtils.GetIntelligence(GetKillingUnit());
             const summon: unit = CreateUnit(GetOwningPlayer(GetKillingUnit()), this.summonId, x, y, bj_UNIT_FACING);
             const maxHealth: number = darkSummoningLevel > 0 ? 4 * intelligence + 75 * darkSummoningLevel : 2 * intelligence;
             const damage: number = darkSummoningLevel > 0 ? Math.ceil(2 * intelligence + 5 * darkSummoningLevel) : Math.ceil(intelligence);

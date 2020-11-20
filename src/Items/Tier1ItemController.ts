@@ -6,7 +6,6 @@ import { AgileSlippers } from './Tier1Items/AgileSlippers';
 import { BalancedShield } from './Tier1Items/BalancedShield';
 import { BrightLifeStone } from './Tier1Items/BrightLifeStone';
 import { CreatureClaws } from './Tier1Items/CreatureClaws';
-import { FastVampireClaws } from './Tier1Items/FastVampireClaws';
 import { FullVial } from './Tier1Items/FullVial';
 import { ImprovedMoonArmor } from './Tier1Items/ImprovedMoonArmor';
 import { ImprovedReinforcedHide } from './Tier1Items/ImprovedReinforcedHide';
@@ -46,6 +45,10 @@ import { MantleOfIntelligence } from './Tier1Items/MantleOfIntelligence';
 import { RingOfSuperiority } from './Tier1Items/RingOfSuperiority';
 import { ElementalOrb } from './Tier1Items/ElementalOrb';
 import { SkullShield } from './Tier1Items/SkullShield';
+import { GoldenSabatons } from './Tier1Items/GoldenSabatons';
+import { GiantsBoots } from './Tier1Items/GiantsBoots';
+import { MagesSabatons } from './Tier1Items/MagesSabatons';
+import { ScaledBoots } from './Tier1Items/ScaledBoots';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -59,13 +62,18 @@ const basicItemMap: Map<string, Item> = basicItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
+/*
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item));
+*/
 itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
+/*
 itemMap.set(
     'amuletOfProtection',
     new AmuletOfProtection(basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('studdedLeatherArmor') as Item),
 );
+*/
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
+/*
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
@@ -73,12 +81,19 @@ itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item))
 itemMap.set('cloakOfShadowWalk', new CloakOfShadowWalk(basicItemMap.get('cloakOfShadows') as Item, itemMap.get('bootsOfSpeed') as Item));
 itemMap.set('creatureClaws', new CreatureClaws(basicItemMap.get('claws') as Item));
 itemMap.set('elementalOrb', new ElementalOrb(basicItemMap.get('orbOfFire') as Item, basicItemMap.get('orbOfLightning') as Item));
-itemMap.set('fastVampireClaws', new FastVampireClaws(basicItemMap.get('claws') as Item, basicItemMap.get('vampireClaws') as Item));
-itemMap.set('fullVial', new FullVial(basicItemMap.get('emptyVial') as Item, basicItemMap.get('sobiMask') as Item));
+*/
+itemMap.set('fullVial', new FullVial(basicItemMap.get('emptyVial') as Item, basicItemMap.get('orbOfMagic') as Item));
+itemMap.set('goldenSabatons', new GoldenSabatons(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironSword') as Item));
+itemMap.set('giantsBoots', new GiantsBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
+/*
 itemMap.set('iceBlade', new IceBlade(basicItemMap.get('orbOfLightning') as Item));
+*/
 itemMap.set('improvedMoonArmor', new ImprovedMoonArmor(basicItemMap.get('moonArmor') as Item));
+/*
 itemMap.set('improvedReinforcedHide', new ImprovedReinforcedHide(basicItemMap.get('reinforcedHide') as Item));
+*/
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword') as Item, basicItemMap.get('claws') as Item));
+/*
 itemMap.set('javelin', new Javelin(basicItemMap.get('steelSpear') as Item));
 itemMap.set(
     'khadgarsAmulet',
@@ -88,18 +103,26 @@ itemMap.set('lightningBolt', new LightningBolt(basicItemMap.get('goblinBattery')
 itemMap.set('lionsRing', new LionsRing(basicItemMap.get('runedBracers') as Item, basicItemMap.get('moonArmor') as Item));
 itemMap.set('loadedCannon', new LoadedCannon(basicItemMap.get('orbOfFire') as Item));
 itemMap.set('longRifle', new LongRifle(basicItemMap.get('steelSpear') as Item, basicItemMap.get('ironSword') as Item));
+*/
+itemMap.set('magesSabatons', new MagesSabatons(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('emptyVial') as Item));
+/*
 itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial') as Item));
 itemMap.set(
     'mantleOfIntelligence',
     new MantleOfIntelligence(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('pipeOfInsight') as Item),
 );
-itemMap.set('maskOfProficiency', new MaskOfProficiency(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('sobiMask') as Item));
+*/
+itemMap.set('maskOfProficiency', new MaskOfProficiency(basicItemMap.get('emptyVial') as Item, basicItemMap.get('sobiMask') as Item));
+/*
 itemMap.set('masterCrystalBall', new MasterCrystalBall(basicItemMap.get('crystalBall') as Item, itemMap.get('orbOfMagic') as Item));
 itemMap.set('masterExecutionerAxe', new MasterExecutionerAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item));
 itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe') as Item));
 itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedHide') as Item, basicItemMap.get('druidicSalve') as Item));
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
+*/
+itemMap.set('scaledBoots', new ScaledBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('moonArmor') as Item));
+/*
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
 itemMap.set('shimmerWeed', new ShimmerWeed(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set(
@@ -122,5 +145,6 @@ itemMap.set(
 );
 itemMap.set('vampireFangs', new VampireFangs(basicItemMap.get('vampireClaws') as Item));
 itemMap.set('wandOfShadowsight', new WandOfShadowsight(basicItemMap.get('goblinNightScope') as Item, basicItemMap.get('flareGun') as Item));
+*/
 
 export default [...itemMap.values()] as ItemRecipe[];

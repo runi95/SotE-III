@@ -2,15 +2,18 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class PandarenChi extends Spell {
     protected readonly abilityId: number = FourCC('A03J');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -18,7 +21,7 @@ export class PandarenChi extends Spell {
         const loc: location = GetUnitLoc(trig);
         const p: player = GetOwningPlayer(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damagePerTick: number = Math.ceil((200 * abilityLevel + 1.5 * intelligence) / 40);
         const healingPerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 40);
         const eff: effect = AddSpecialEffectLoc('Abilities\\Spells\\NightElf\\Tranquility\\Tranquility.mdl', loc);

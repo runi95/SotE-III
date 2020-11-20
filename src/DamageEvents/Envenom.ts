@@ -1,14 +1,15 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Envenom implements DamageEvent {
-    private readonly gameGlobals: GameGlobals;
+    private readonly spellCastUtils: SpellCastUtils;
     private readonly abilityId: number = FourCC('A017');
     private readonly envenomAbilityId: number = FourCC('A010');
 
-    constructor(gameGlobals: GameGlobals) {
-        this.gameGlobals = gameGlobals;
+    constructor(spellCastUtils: SpellCastUtils) {
+        this.spellCastUtils = spellCastUtils;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -21,7 +22,7 @@ export class Envenom implements DamageEvent {
         if (abilityLevel > 0) {
             globals.DamageEventAmount +=
                 24 * GetUnitAbilityLevel(globals.DamageEventSource as unit, this.envenomAbilityId) +
-                GetHeroInt(globals.DamageEventSource as unit, true);
+                this.spellCastUtils.GetIntelligence(globals.DamageEventSource as unit);
             if (abilityLevel > 1) {
                 DecUnitAbilityLevel(globals.DamageEventSource as unit, this.abilityId);
             } else {

@@ -3,6 +3,7 @@ import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from '../Game/GameGlobals';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class RazorBlades {
     private readonly dummyUnitId: number = FourCC('n016');
@@ -10,10 +11,12 @@ export class RazorBlades {
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;
     private readonly trig: Trigger = new Trigger();
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         this.gameGlobals = gameGlobals;
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
 
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
@@ -26,7 +29,7 @@ export class RazorBlades {
 
     private action(): void {
         const mana: number = GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA);
-        let intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit());
 
         if (mana > intelligence / 2) {
             const trig: unit = GetTriggerUnit();
@@ -63,7 +66,6 @@ export class RazorBlades {
                 ticker++;
                 tickerOne += 10;
                 tickerTwo += 10;
-                intelligence = GetHeroInt(trig, true);
 
                 if (ticker % 3 === 0) {
                     this.dealBladeDamage(trig, bladeOne, aoe, intelligence / 2);

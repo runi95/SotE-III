@@ -2,6 +2,7 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class FrostNova extends Spell {
     protected readonly abilityId: number = FourCC('A01J');
@@ -9,18 +10,20 @@ export class FrostNova extends Spell {
     private readonly dummyAbilityId: number = FourCC('A01K');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
         const loc: location = GetSpellTargetLoc();
         const trig: unit = GetTriggerUnit();
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(trig, true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 280.0 * abilityLevel + 2.25 * intelligence;
         const brillianceAura: effect = AddSpecialEffectLocBJ(loc, 'Abilities\\Spells\\Other\\Drain\\ManaDrainCaster.mdl');
 

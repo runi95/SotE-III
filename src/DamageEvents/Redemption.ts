@@ -1,14 +1,17 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
     private frozen: boolean = false;
     private readonly randomNumberGenerator: RandomNumberGenerator;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(randomNumberGenerator: RandomNumberGenerator) {
+    constructor(randomNumberGenerator: RandomNumberGenerator, spellCastUtils: SpellCastUtils) {
         this.randomNumberGenerator = randomNumberGenerator;
+        this.spellCastUtils = spellCastUtils;
     }
 
     public event(globals: DamageEngineGlobals): void {
@@ -30,7 +33,7 @@ export class Redemption implements DamageEvent {
             return;
         }
 
-        const int: number = GetHeroInt(globals.DamageEventTarget as unit, true);
+        const int: number = this.spellCastUtils.GetIntelligence(globals.DamageEventTarget as unit);
         DestroyEffect(
             AddSpecialEffect(
                 'Abilities\\Spells\\Items\\AIfb\\AIfbSpecialArt.mdl',

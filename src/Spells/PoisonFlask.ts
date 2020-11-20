@@ -2,16 +2,19 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class PoisonFlask extends Spell {
     protected readonly abilityId: number = FourCC('A039');
     private readonly chemicalSprayBuff: number = FourCC('B006');
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -19,7 +22,7 @@ export class PoisonFlask extends Spell {
         const x: number = GetUnitX(trig);
         const y: number = GetUnitY(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
-        const intelligence: number = GetHeroInt(GetTriggerUnit(), true);
+        const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = (135 * abilityLevel + 3 * intelligence) / 10;
         const units: unit[] = [];
         const unitEffects: effect[] = [];

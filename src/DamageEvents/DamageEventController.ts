@@ -33,6 +33,7 @@ import { VenomUtils } from '../Utility/VenomUtils';
 import { MagesSabatons } from './MagesSabatons';
 import { MoonBladeEvent } from './MoonBladeEvent';
 import { BuffUtils } from '../Utility/BuffUtils';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class DamageEventController {
     constructor(
@@ -42,14 +43,15 @@ export class DamageEventController {
         randomNumberGenerator: RandomNumberGenerator,
         buffUtils: BuffUtils,
         damageEngine: DamageEngine,
+        spellCastUtils: SpellCastUtils,
     ) {
         // Initial damage events
         damageEngine.addInitialDamageEvent(new ManaBrilliance());
-        damageEngine.addInitialDamageEvent(new SpiritOfFrost(gameGlobals, randomNumberGenerator));
-        damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils));
+        damageEngine.addInitialDamageEvent(new SpiritOfFrost(randomNumberGenerator, spellCastUtils));
+        damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils, spellCastUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal(gameGlobals));
-        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator));
+        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator, spellCastUtils));
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
         damageEngine.addInitialDamageEvent(new MarkOfTheTalon(gameGlobals));
@@ -60,7 +62,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
-        damageEngine.addInitialDamageModificationEvent(new Envenom(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new Envenom(spellCastUtils));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));

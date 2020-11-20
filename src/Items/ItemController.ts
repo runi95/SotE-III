@@ -64,6 +64,11 @@ import { MagesSabatonsPickupAndDrop } from './Abilities/MagesSabatonsPickupAndDr
 import { ScaledBootsPickupAndDrop } from './Abilities/ScaledBootsPickupAndDrop';
 import { AssassinsBladeSell } from './Abilities/AssassinsBladeSell';
 import { MoonBladePickupAndDrop } from './Abilities/MoonBladePickupAndDrop';
+import { FullVialPickupAndDrop } from './Abilities/FullVialPickupAndDrop';
+import { FullVialSell } from './Abilities/FullVialSell';
+import { MaskOfProficiencyPickupAndDrop } from './Abilities/MaskOfProficiencyPickupAndDrop';
+import { MaskOfProficiencySell } from './Abilities/MaskOfProficiencySell';
+import { MaskOfProficiencyCast } from './Abilities/MaskOfProficiencyCast';
 
 export class ItemController {
     private itemAbilities: any[];
@@ -133,6 +138,11 @@ export class ItemController {
             new ScaledBootsPickupAndDrop(gameGlobals),
             new AssassinsBladeSell(),
             new MoonBladePickupAndDrop(gameGlobals),
+            new FullVialPickupAndDrop(gameGlobals, timerUtils),
+            new FullVialSell(),
+            new MaskOfProficiencyPickupAndDrop(gameGlobals, timerUtils),
+            new MaskOfProficiencySell(),
+            new MaskOfProficiencyCast(),
         ];
     }
 }

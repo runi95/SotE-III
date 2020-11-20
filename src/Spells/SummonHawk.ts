@@ -2,6 +2,7 @@ import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GameGlobals } from '../Game/GameGlobals';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class SummonHawk extends Spell {
     protected readonly abilityId: number = FourCC('A00R');
@@ -12,12 +13,14 @@ export class SummonHawk extends Spell {
     private summonUnit: unit[] = [];
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
         super();
 
         this.gameGlobals = gameGlobals;
         this.timerUtils = timerUtils;
+        this.spellCastUtils = spellCastUtils;
     }
 
     protected action(): void {
@@ -26,7 +29,7 @@ export class SummonHawk extends Spell {
         const facing: number = GetUnitFacing(trig);
         const x: number = GetUnitX(trig) + 50 * Math.cos((facing * Math.PI) / 180);
         const y: number = GetUnitY(trig) + 50 * Math.sin((facing * Math.PI) / 180);
-        const int: number = GetHeroInt(trig, true);
+        const int: number = this.spellCastUtils.GetIntelligence(trig);
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
 
         if (this.summonUnit[playerId]) {

@@ -25,6 +25,7 @@ import { ItemController2 } from '../Items/ItemController2';
 import { CooldownReduction } from './CooldownReduction';
 import { VenomUtils } from '../Utility/VenomUtils';
 import { BuffUtils } from '../Utility/BuffUtils';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -36,6 +37,7 @@ export class Game {
     private readonly venomUtils: VenomUtils;
     private readonly buffUtils: BuffUtils;
     private readonly arenaUtils: ArenaUtils;
+    private readonly spellCastUtils: SpellCastUtils;
     private readonly damageEngineGlobals: DamageEngineGlobals;
     private readonly damageEngine: DamageEngine;
     private readonly creepRespawn: CreepRespawn;
@@ -63,6 +65,7 @@ export class Game {
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.venomUtils = new VenomUtils(this.timerUtils);
         this.buffUtils = new BuffUtils(this.timerUtils);
+        this.spellCastUtils = new SpellCastUtils();
         this.cooldownReduction = new CooldownReduction(this.gameGlobals);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.venomUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
@@ -70,7 +73,13 @@ export class Game {
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
         this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils);
         this.playerLeaves = new PlayerLeaves(this.playerVictoryUtils);
-        this.spellController = new SpellController(this.gameGlobals, this.stunUtils, this.timerUtils, this.randomNumberGenerator);
+        this.spellController = new SpellController(
+            this.gameGlobals,
+            this.stunUtils,
+            this.timerUtils,
+            this.randomNumberGenerator,
+            this.spellCastUtils,
+        );
         this.teleportController = new TeleportController();
         this.damageEventController = new DamageEventController(
             this.gameGlobals,
@@ -79,6 +88,7 @@ export class Game {
             this.randomNumberGenerator,
             this.buffUtils,
             this.damageEngine,
+            this.spellCastUtils,
         );
         this.flyingMachineController = new FlyingMachineController();
         this.bossController = new BossController(this.timerUtils, this.randomNumberGenerator);
@@ -183,7 +193,7 @@ export class Game {
         let index: number = 0;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
-            if (this.gameGlobals.ActivePlayerIdList.every((playerId) => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
+            if (this.gameGlobals.ActivePlayerIdList.every(playerId => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
                 this.timerUtils.releaseTimer(t);
                 this.startGame();
             } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
