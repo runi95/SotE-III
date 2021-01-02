@@ -54,7 +54,6 @@ export class Game {
     private readonly teleportMovement: TeleportMovement;
     private readonly cooldownReduction: CooldownReduction;
     private readonly arcaneVault: unit;
-    private readonly tombOfRelics: unit;
 
     constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
@@ -96,7 +95,6 @@ export class Game {
         const arcaneVaultX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
         const arcaneVaultY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
         this.arcaneVault = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00P'), arcaneVaultX, arcaneVaultY, bj_UNIT_FACING);
-        this.tombOfRelics = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), FourCC('n00Q'), 14650, -3770, bj_UNIT_FACING);
 
         this.init();
 
@@ -172,7 +170,6 @@ export class Game {
             }
         }
 
-        UnitAddAbility(this.tombOfRelics, FourCC('A088'));
         SetTimeOfDay(6);
 
         if (this.gameGlobals.GameIsSuddenDeathEnabled) {
