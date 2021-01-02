@@ -5,7 +5,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I00J');
 const name: string = 'Steel Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 2345;
+const goldCost: number = 1155;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpTwo.blp';
 const description: string = `A weak shield capable of blocking incoming physical damage.
 
@@ -15,6 +15,6 @@ const description: string = `A weak shield capable of blocking incoming physical
 
 export class SteelShield extends ItemRecipe {
     constructor(ironShield: IronShield) {
-        super(itemId, name, labels, goldCost, iconPath, description, [ironShield, ironShield]);
+        super(itemId, name, labels, goldCost, iconPath, description, [ironShield]);
     }
 }

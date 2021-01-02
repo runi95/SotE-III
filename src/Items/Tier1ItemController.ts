@@ -135,7 +135,9 @@ itemMap.set(
     new SpikedCarapace(basicItemMap.get('ironwoodBranch') as Item, basicItemMap.get('studdedLeatherArmor') as Item),
 );
 itemMap.set('spikedWood', new SpikedWood(basicItemMap.get('ironwoodBranch') as Item));
+*/
 itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield') as Item));
+/*
 itemMap.set('swordOfFreyr', new SwordOfFreyr(basicItemMap.get('warAxe') as Item, basicItemMap.get('scepter') as Item));
 itemMap.set('theAegis', new TheAegis(basicItemMap.get('goblinBattery') as Item));
 itemMap.set('throwableAxe', new ThrowableAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item, basicItemMap.get('scepter') as Item));
