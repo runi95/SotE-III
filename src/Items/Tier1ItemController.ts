@@ -49,6 +49,7 @@ import { GoldenSabatons } from './Tier1Items/GoldenSabatons';
 import { GiantsBoots } from './Tier1Items/GiantsBoots';
 import { MagesSabatons } from './Tier1Items/MagesSabatons';
 import { ScaledBoots } from './Tier1Items/ScaledBoots';
+import { CoralScales } from './Tier1Items/CoralScales';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -73,8 +74,8 @@ itemMap.set(
 );
 */
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
+itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('ironShield') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 /*
-itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('moonArmor') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
 itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item));
@@ -121,6 +122,7 @@ itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedH
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
 */
+itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as ItemRecipe, basicItemMap.get('reinforcedLeatherArmor') as ItemRecipe));
 itemMap.set('scaledBoots', new ScaledBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('moonArmor') as Item));
 /*
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));

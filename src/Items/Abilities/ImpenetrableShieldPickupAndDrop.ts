@@ -1,7 +1,7 @@
 import { GameGlobals } from '../../Game/GameGlobals';
 import { ItemPickupAndDrop } from '../ItemPickupAndDrop';
 
-export class ImprovedBalancedShieldPickupAndDrop extends ItemPickupAndDrop {
+export class ImpenetrableShieldPickupAndDrop extends ItemPickupAndDrop {
     protected readonly itemTypeId: number = FourCC('I02B');
     private readonly gameGlobals: GameGlobals;
 
@@ -13,13 +13,13 @@ export class ImprovedBalancedShieldPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 75;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 75;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 70;
+        this.gameGlobals.ImpenetrableShieldCount[playerId] += 1;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] -= 75;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 75;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 70;
+        this.gameGlobals.ImpenetrableShieldCount[playerId] -= 1;
     }
 }

@@ -5,7 +5,6 @@ import * as tier1ItemController from './Tier1ItemController';
 import { VialOfMagic } from './Tier2Items/VialOfMagic';
 import { MaskOfDeath } from './Tier2Items/MaskOfDeath';
 import { ImprovedCreatureClaws } from './Tier2Items/ImprovedCreatureClaws';
-import { ImprovedBalancedShield } from './Tier2Items/ImprovedBalancedShield';
 import { ScrollOfAgility } from './Tier2Items/ScrollOfAgility';
 import { Fragarach } from './Tier2Items/Fragarach';
 import { SpellShield } from './Tier2Items/SpellShield';
@@ -16,7 +15,6 @@ import { BookOfMagic } from './Tier2Items/BookOfMagic';
 import { RingOfMagic } from './Tier2Items/RingOfMagic';
 import { AssassinsCloak } from './Tier2Items/AssassinsCloak';
 import { EmptySoulcage } from './Tier2Items/EmptySoulcage';
-import { CoralScales } from './Tier2Items/CoralScales';
 import { StoneArmor } from './Tier2Items/StoneArmor';
 import { ImprovedShimmerWeed } from './Tier2Items/ImprovedShimmerWeed';
 import { SunkenShard } from './Tier2Items/SunkenShard';
@@ -39,6 +37,7 @@ import { ThoriumSpear } from './Tier2Items/ThoriumSpear';
 import { ImprovedSpikes } from './Tier2Items/ImprovedSpikes';
 import { FastVampireClaws } from './Tier2Items/FastVampireClaws';
 import { MoonBlade } from './Tier2Items/MoonBlade';
+import { ImpenetrableShield } from './Tier2Items/ImpenetrableShield';
 
 const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
@@ -66,10 +65,6 @@ itemMap.set(
     new ChargedStone(tier1ItemMap.get('manaStone') as ItemRecipe, tier1ItemMap.get('brightLifeStone') as ItemRecipe),
 );
 itemMap.set(
-    'coralScales',
-    new CoralScales(tier1ItemMap.get('improvedReinforcedHide') as ItemRecipe, tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe),
-);
-itemMap.set(
     'devouringFangs',
     new DevouringFangs(
         tier1ItemMap.get('fastVampireClaws') as ItemRecipe,
@@ -91,6 +86,7 @@ itemMap.set(
 itemMap.set('enhancedMaskOfProficiency', new EnhancedMaskOfProficiency(tier1ItemMap.get('maskOfProficiency') as ItemRecipe));
 */
 itemMap.set('fastVampireClaws', new FastVampireClaws(tier1ItemMap.get('ironClaws') as ItemRecipe, baseItemMap.get('vampireClaws') as Item));
+
 /*
 itemMap.set('fierceTrident', new FierceTrident(tier1ItemMap.get('masterExecutionerAxe') as ItemRecipe));
 itemMap.set('fragarach', new Fragarach(tier1ItemMap.get('iceBlade') as ItemRecipe, tier1ItemMap.get('ironClaws') as ItemRecipe));
@@ -105,14 +101,9 @@ itemMap.set(
         tier1ItemMap.get('reinforcedLeatherArmor') as ItemRecipe,
     ),
 );
-itemMap.set(
-    'improvedBalancedShield',
-    new ImprovedBalancedShield(
-        tier1ItemMap.get('balancedShield') as ItemRecipe,
-        tier1ItemMap.get('steelShield') as ItemRecipe,
-        tier1ItemMap.get('improvedMoonArmor') as ItemRecipe,
-    ),
-);
+*/
+itemMap.set('impenetrableShield', new ImpenetrableShield(tier1ItemMap.get('steelShield') as ItemRecipe, tier1ItemMap.get('coralScales') as ItemRecipe, tier1ItemMap.get('balancedShield') as ItemRecipe));
+/*
 itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe));
 itemMap.set('improvedElementalOrb', new ImprovedElementalOrb(tier1ItemMap.get('elementalOrb') as ItemRecipe));
 itemMap.set(

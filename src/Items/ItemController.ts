@@ -21,7 +21,7 @@ import { GoblinBatteryUse } from './Abilities/GoblinBatteryUse';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { LightningBoltCast } from './Abilities/LightningBoltCast';
 import { BalancedShieldPickupAndDrop } from './Abilities/BalancedShieldPickupAndDrop';
-import { ImprovedBalancedShieldPickupAndDrop } from './Abilities/ImprovedBalancedShieldPickupAndDrop';
+import { ImpenetrableShieldPickupAndDrop } from './Abilities/ImpenetrableShieldPickupAndDrop';
 import { SnowyOwlPickupAndDrop } from './Abilities/SnowyOwlPickupAndDrop';
 import { AdvancedReinforcedHidesPickupAndDrop } from './Abilities/AdvancedReinforcedHidesPickupAndDrop';
 import { VampireClawsPickupAndDrop } from './Abilities/VampireClawsPickupAndDrop';
@@ -96,7 +96,7 @@ export class ItemController {
             new GoblinBatteryUse(randomNumberGenerator),
             new LightningBoltCast(timerUtils, randomNumberGenerator),
             new BalancedShieldPickupAndDrop(gameGlobals),
-            new ImprovedBalancedShieldPickupAndDrop(gameGlobals),
+            new ImpenetrableShieldPickupAndDrop(gameGlobals),
             new SnowyOwlPickupAndDrop(gameGlobals, timerUtils),
             new AdvancedReinforcedHidesPickupAndDrop(gameGlobals),
             new VampireClawsPickupAndDrop(gameGlobals),

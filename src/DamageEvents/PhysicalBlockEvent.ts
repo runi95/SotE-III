@@ -35,12 +35,14 @@ export class PhysicalBlockEvent implements DamageEvent {
             }
         }
 
+        let damageEventTargetIsHero: boolean = false;
         if (playerId >= bj_MAX_PLAYERS) {
             // Min creep block (level 1): 0
             // Max creep block (level 100): 169
             const creepLevel: number = GetUnitLevel(globals.DamageEventTarget as unit);
             block = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
+            damageEventTargetIsHero = true;
             block = this.gameGlobals.PlayerPhysicalBlock[playerId];
             if (this.gameGlobals.ArmoredBootsCount[playerId] > 0) {
                 block *= 1.1;
@@ -54,6 +56,15 @@ export class PhysicalBlockEvent implements DamageEvent {
             return;
         }
 
-        globals.DamageEventAmount = Math.max(globals.DamageEventAmount - diff, 0.0);
+        const damageEventAmount: number = Math.max(globals.DamageEventAmount - diff, 0.0);
+        if (damageEventTargetIsHero) {
+            if (this.gameGlobals.ImpenetrableShieldCount[playerId] > 0) {
+                if (block > globals.DamageEventAmount) {
+                    SetUnitLifeBJ(globals.DamageEventTarget as unit, GetWidgetLife(globals.DamageEventTarget as unit) + block - globals.DamageEventAmount);
+                }
+            }
+        }
+
+        globals.DamageEventAmount = damageEventAmount;
     }
 }

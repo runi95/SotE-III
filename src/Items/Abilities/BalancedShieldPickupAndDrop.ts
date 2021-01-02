@@ -13,13 +13,11 @@ export class BalancedShieldPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] += 18;
         this.gameGlobals.PlayerPhysicalBlock[playerId] += 18;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerSpellBlock[playerId] -= 18;
         this.gameGlobals.PlayerPhysicalBlock[playerId] -= 18;
     }
 }

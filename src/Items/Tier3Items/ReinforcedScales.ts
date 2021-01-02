@@ -1,5 +1,4 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { CoralScales } from '../Tier2Items/CoralScales';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01K');
@@ -15,7 +14,7 @@ const description: string = `Highly reinforced scales, sure to defend against th
 |cFF808080Health determines how much damage you can take before dying.|r`;
 
 export class ReinforcedScales extends ItemRecipe {
-    constructor(coralScales: CoralScales) {
-        super(itemId, name, labels, goldCost, iconPath, description, [coralScales]);
+    constructor() {
+        super(itemId, name, labels, goldCost, iconPath, description, []);
     }
 }

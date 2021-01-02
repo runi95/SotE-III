@@ -1,7 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
-import { CoralScales } from '../Tier2Items/CoralScales';
-import { ImprovedBalancedShield } from '../Tier2Items/ImprovedBalancedShield';
+import { ImpenetrableShield } from '../Tier2Items/ImpenetrableShield';
 
 const itemId: number = FourCC('I04N');
 const name: string = 'Chitinous Scales';
@@ -18,7 +17,7 @@ const description: string = `Very strong, defensive scales.
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
 
 export class ChitinousScales extends ItemRecipe {
-    constructor(coralScales: CoralScales, improvedBalancedShield: ImprovedBalancedShield) {
-        super(itemId, name, labels, goldCost, iconPath, description, [coralScales, improvedBalancedShield]);
+    constructor(impenetrableShield: ImpenetrableShield) {
+        super(itemId, name, labels, goldCost, iconPath, description, [impenetrableShield]);
     }
 }
