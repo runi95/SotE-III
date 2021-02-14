@@ -1,7 +1,6 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals, AssassinsBladeStates } from '../Game/GameGlobals';
-import { TimerUtils } from '../Utility/TimerUtils';
 
 export class AssassinsBladeEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
