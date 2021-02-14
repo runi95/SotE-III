@@ -93,6 +93,8 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.MagesSabatonsCount[i] = 0;
         gameGlobals.ScaledBootsCount[i] = 0;
         gameGlobals.FastVampireClawsCount[i] = 0;
+        gameGlobals.MaulOfStrengthCount[i] = 0;
+        gameGlobals.MaulOfStrengthTimer[i] = 0;
         gameGlobals.PlayerVenom[i] = 0;
         gameGlobals.PlayerSplash[i] = 0;
         gameGlobals.PlayerSplashRadius[i] = 0;

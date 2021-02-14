@@ -34,6 +34,8 @@ import { MagesSabatons } from './MagesSabatons';
 import { MoonBladeEvent } from './MoonBladeEvent';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { MaulOfStrengthEvent } from './MaulOfStrengthEvent';
+import { MaulOfStrengthDamageEvent } from './MaulOfStrengthDamageEvent';
 
 export class DamageEventController {
     constructor(
@@ -70,6 +72,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new CriticalCast(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
@@ -79,6 +82,7 @@ export class DamageEventController {
 
         // After damage events
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
+        damageEngine.addAfterDamageEvent(new MaulOfStrengthEvent(gameGlobals, timerUtils));
         damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
         damageEngine.addAfterDamageEvent(new Venom(gameGlobals, venomUtils));
     }
