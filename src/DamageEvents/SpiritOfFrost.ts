@@ -1,6 +1,5 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { GameGlobals } from '../Game/GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
