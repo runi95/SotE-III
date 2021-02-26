@@ -32,8 +32,8 @@ export class SpiritOfFrost implements DamageEvent {
                         y,
                         bj_UNIT_FACING,
                     );
-                    BlzSetUnitBaseDamage(summon, 2 * intelligence, 0);
                     UnitApplyTimedLifeBJ(abilityLevel, this.timedLifeBuffId, summon);
+                    BlzSetUnitBaseDamage(summon, Math.floor(Number(2 * intelligence)), 0);
                     SetUnitManaBJ(globals.DamageEventTarget as unit, mana - 25.0);
                 }
             }
