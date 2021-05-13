@@ -9,7 +9,7 @@ const goldCost: number = 2030;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description: string = `Your wish has been granted.
 
-|cffffcc00Critical Cast:|r +35%
+|cffffcc00Critical Cast:|r +40%
 
 |cFF808080Critical cast gives a chance for spells to deal double damage.|r`;
 
