@@ -63,9 +63,7 @@ const basicItemMap: Map<string, Item> = basicItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
-/*
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item));
-*/
 itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
 /*
 itemMap.set(
