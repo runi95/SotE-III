@@ -52,6 +52,7 @@ export class RecipeSystem {
     private readonly itemRecipeGreenBorderFrames: framehandle[] = [];
     private readonly itemRecipeResultUpgradeButton: framehandle;
     private readonly itemRecipeResultIconFrame: framehandle;
+    private readonly itemRecipeResultClickFrame: framehandle;
     private readonly itemRecipeResultDescriptionFrame: framehandle;
     private animatedFrameIsVisible: boolean = true;
     private selectedItemFrame: framehandle | undefined;
@@ -203,10 +204,12 @@ export class RecipeSystem {
         BlzFrameSetModel(this.animatedFrame, 'ui\\minimap\\minimap-ping.mdx', 0);
 
         this.itemRecipeResultIconFrame = BlzCreateFrameByType('BACKDROP', 'itemRecipeResultIcon', this.menu, '', 0);
+        this.itemRecipeResultClickFrame = BlzCreateFrameByType('BUTTON', 'itemRecipeResultClickFrame', this.itemRecipeResultIconFrame, '', 0);
         this.itemRecipeResultDescriptionFrame = BlzCreateFrame('StandardValueTextTemplate', this.menu, 0, 0);
         this.itemRecipeResultUpgradeButton = BlzCreateFrame('ScriptDialogButton', this.menu, 0, 0);
         BlzFrameSetSize(this.itemRecipeResultIconFrame, 0.04, 0.04);
         BlzFrameSetPoint(this.itemRecipeResultIconFrame, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, 0.02, -0.06);
+        BlzFrameSetAllPoints(this.itemRecipeResultClickFrame, this.itemRecipeResultIconFrame);
         BlzFrameSetTexture(this.itemRecipeResultIconFrame, 'war3mapImported\\BTNNoItem.blp', 0, true);
         BlzFrameSetPoint(this.itemRecipeResultDescriptionFrame, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, 0.07, -0.06);
         BlzFrameSetTextAlignment(this.itemRecipeResultDescriptionFrame, TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_TOP);
@@ -214,6 +217,30 @@ export class RecipeSystem {
         BlzFrameSetPoint(this.itemRecipeResultUpgradeButton, FRAMEPOINT_TOPLEFT, this.menu, FRAMEPOINT_TOPLEFT, 0.01, -0.17);
         BlzFrameSetSize(this.itemRecipeResultUpgradeButton, 0.06, 0.03);
         BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, false);
+
+        const leftClickTrigger: Trigger = new Trigger();
+        leftClickTrigger.registerFrameEvent(this.itemRecipeResultClickFrame, FRAMEEVENT_CONTROL_CLICK);
+        leftClickTrigger.addAction(() => {
+            if (GetTriggerPlayer() === GetLocalPlayer()) {
+                this.localPlayerInterface.isLeftClick = true;
+            }
+        });
+
+        const clickTrigger: Trigger = new Trigger();
+        clickTrigger.registerFrameEvent(this.itemRecipeResultClickFrame, FRAMEEVENT_MOUSE_UP);
+        clickTrigger.addAction(() => {
+            if (GetTriggerPlayer() === GetLocalPlayer()) {
+                BlzFrameSetEnable(this.itemRecipeResultClickFrame, false);
+                BlzFrameSetEnable(this.itemRecipeResultClickFrame, true);
+
+                if (this.localPlayerInterface.selectedItemId !== undefined) {
+                    const currentItem: Item = this.itemMap[this.localPlayerInterface.selectedItemId];
+                    if (!this.localPlayerInterface.isLeftClick) {
+                        this.showRecipesUsingItemHandle(currentItem);
+                    }
+                }
+            }
+        });
 
         const syncTrigger: Trigger = new Trigger();
         syncTrigger.addAction(() => {
@@ -602,8 +629,6 @@ export class RecipeSystem {
         leftClickTrigger.addAction(() => {
             if (GetTriggerPlayer() === GetLocalPlayer()) {
                 this.localPlayerInterface.isLeftClick = true;
-                BlzFrameSetEnable(itemClickFrame, false);
-                BlzFrameSetEnable(itemClickFrame, true);
             }
         });
 
@@ -611,6 +636,8 @@ export class RecipeSystem {
         clickTrigger.registerFrameEvent(itemClickFrame, FRAMEEVENT_MOUSE_UP);
         clickTrigger.addAction(() => {
             if (GetTriggerPlayer() === GetLocalPlayer()) {
+                BlzFrameSetEnable(itemClickFrame, false);
+                BlzFrameSetEnable(itemClickFrame, true);
                 if (this.localPlayerInterface.selectedItemId !== undefined) {
                     const currentItem: Item = this.itemMap[this.localPlayerInterface.selectedItemId];
                     if (currentItem instanceof ItemRecipe && currentItem.recipe.length > index - 1) {
