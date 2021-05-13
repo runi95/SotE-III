@@ -103,6 +103,9 @@ export class RecipeSystem {
             clickTrigger.registerFrameEvent(filterClickFrame, FRAMEEVENT_MOUSE_UP);
             clickTrigger.addAction(() => {
                 if (GetTriggerPlayer() === GetLocalPlayer()) {
+                    BlzFrameSetEnable(filterClickFrame, false);
+                    BlzFrameSetEnable(filterClickFrame, true);
+
                     this.localPlayerInterface.filterItems = [];
                     for (let i: number = 0; i < items.length; i++) {
                         const hasLabel: boolean = items[i].labels.some((label: ItemLabel) =>
