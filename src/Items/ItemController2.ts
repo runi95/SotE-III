@@ -36,6 +36,7 @@ import { ShimmerScalesAndDrop } from './Abilities/ShimmerScalesAndDrop';
 import { HoodOfCunningPickupAndDrop } from './Abilities/HoodOfCunningPickupAndDrop';
 import { MaulOfStrengthSell } from './Abilities/MaulOfStrengthSell';
 import { MaulOfStrengthPickupAndDrop } from './Abilities/MaulOfStrengthPickupAndDrop';
+import { ManaStonePickupAndDrop } from './Abilities/ManaStonePickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -79,6 +80,7 @@ export class ItemController2 {
             new HoodOfCunningPickupAndDrop(gameGlobals),
             new MaulOfStrengthSell(),
             new MaulOfStrengthPickupAndDrop(gameGlobals),
+            new ManaStonePickupAndDrop(gameGlobals),
         ];
     }
 }

@@ -106,8 +106,8 @@ itemMap.set('loadedCannon', new LoadedCannon(basicItemMap.get('orbOfFire') as It
 itemMap.set('longRifle', new LongRifle(basicItemMap.get('steelSpear') as Item, basicItemMap.get('ironSword') as Item));
 */
 itemMap.set('magesSabatons', new MagesSabatons(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('emptyVial') as Item));
-/*
 itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial') as Item));
+/*
 itemMap.set(
     'mantleOfIntelligence',
     new MantleOfIntelligence(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('pipeOfInsight') as Item),

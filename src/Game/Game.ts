@@ -64,7 +64,7 @@ export class Game {
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.venomUtils = new VenomUtils(this.timerUtils);
         this.buffUtils = new BuffUtils(this.timerUtils);
-        this.spellCastUtils = new SpellCastUtils();
+        this.spellCastUtils = new SpellCastUtils(this.gameGlobals);
         this.cooldownReduction = new CooldownReduction(this.gameGlobals);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.venomUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();

@@ -10,6 +10,7 @@ const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNManaStone.blp'
 const description: string = `A stone surging with magical energy.
 
 |cffffcc00Max Mana:|r +800
+|cffffcc00Unique:|r Casting a spell now costs an additional 5% of your current mana, but the extra mana cost is applied to spells as an extra intelligence bonus
 
 |cFF808080Mana is required when casting most spells.|r`;
 

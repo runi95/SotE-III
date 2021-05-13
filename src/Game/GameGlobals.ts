@@ -35,6 +35,7 @@ export class GameGlobals {
     public ArmoredBootsCount: number[] = [];
     public MagesSabatonsCount: number[] = [];
     public ScaledBootsCount: number[] = [];
+    public ManaStoneCount: number[] = [];
     public FastVampireClawsCount: number[] = [];
     public MaulOfStrengthCount: number[] = [];
     public MaulOfStrengthTimer: number[] = [];

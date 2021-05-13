@@ -92,6 +92,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.ArmoredBootsCount[i] = 0;
         gameGlobals.MagesSabatonsCount[i] = 0;
         gameGlobals.ScaledBootsCount[i] = 0;
+        gameGlobals.ManaStoneCount[i] = 0;
         gameGlobals.FastVampireClawsCount[i] = 0;
         gameGlobals.MaulOfStrengthCount[i] = 0;
         gameGlobals.MaulOfStrengthTimer[i] = 0;
