@@ -13,11 +13,13 @@ export class MantleOfIntelligencePickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPerseverance[playerId] += 40;
+        this.gameGlobals.MantleOfIntelligenceCount[playerId] += 1;
+        this.gameGlobals.PlayerPerseverance[playerId] += 20;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPerseverance[playerId] -= 40;
+        this.gameGlobals.MantleOfIntelligenceCount[playerId] -= 1;
+        this.gameGlobals.PlayerPerseverance[playerId] -= 20;
     }
 }

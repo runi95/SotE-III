@@ -105,12 +105,10 @@ itemMap.set('longRifle', new LongRifle(basicItemMap.get('steelSpear') as Item, b
 */
 itemMap.set('magesSabatons', new MagesSabatons(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('emptyVial') as Item));
 itemMap.set('manaStone', new ManaStone(basicItemMap.get('emptyVial') as Item));
-/*
 itemMap.set(
     'mantleOfIntelligence',
     new MantleOfIntelligence(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('pipeOfInsight') as Item),
 );
-*/
 itemMap.set('maskOfProficiency', new MaskOfProficiency(basicItemMap.get('emptyVial') as Item, basicItemMap.get('sobiMask') as Item));
 /*
 itemMap.set('masterCrystalBall', new MasterCrystalBall(basicItemMap.get('crystalBall') as Item, itemMap.get('orbOfMagic') as Item));

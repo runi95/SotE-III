@@ -6,12 +6,13 @@ import { PipeOfInsight } from '../BaseItems/PipeOfInsight';
 const itemId: number = FourCC('I03U');
 const name: string = 'Mantle of Intelligence';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.PERSEVERANCE];
-const goldCost: number = 3440;
+const goldCost: number = 2970;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMantleOfIntelligence.blp';
 const description: string = `Makes you look fabolous.
 
-|cffffcc00Intelligence:|r +20
-|cffffcc00Perseverance:|r +40
+|cffffcc00Intelligence:|r +45
+|cffffcc00Perseverance:|r +20
+|cffffcc00Effect:|r Dealing spell damage to a hero reduces the target's resistance by 15% for 5 seconds.
 
 |cFF808080Spell damage will persevere and break through opponent's resistance.|r`;
 
