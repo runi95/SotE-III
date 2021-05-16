@@ -13,11 +13,11 @@ export class ScrollOfWitchcraftPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCooldownReduction[playerId] += 0.5;
+        this.gameGlobals.PlayerCooldownReduction[playerId] += 0.03;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCooldownReduction[playerId] -= 0.5;
+        this.gameGlobals.PlayerCooldownReduction[playerId] -= 0.03;
     }
 }
