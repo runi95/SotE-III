@@ -1,5 +1,4 @@
 import { Item } from './Item';
-import { CrystalBall } from './BaseItems/CrystalBall';
 import { SobiMask } from './BaseItems/SobiMask';
 import { MoonArmor } from './BaseItems/MoonArmor';
 import { IronShield } from './BaseItems/IronShield';
@@ -55,7 +54,6 @@ itemMap.set('bootsOfSpeed', new BootsOfSpeed());
 itemMap.set('claws', new Claws());
 itemMap.set('cloakOfShadows', new CloakOfShadows());
 itemMap.set('clockworkPenguin', new ClockworkPenguin());
-itemMap.set('crystalBall', new CrystalBall());
 itemMap.set('druidicSalve', new DruidicSalve());
 itemMap.set('emptyVial', new EmptyVial());
 itemMap.set('fairyWand', new FairyWand());

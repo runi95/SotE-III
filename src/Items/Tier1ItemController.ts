@@ -50,6 +50,7 @@ import { GiantsBoots } from './Tier1Items/GiantsBoots';
 import { MagesSabatons } from './Tier1Items/MagesSabatons';
 import { ScaledBoots } from './Tier1Items/ScaledBoots';
 import { CoralScales } from './Tier1Items/CoralScales';
+import { CrystalBall } from './Tier1Items/CrystalBall';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -110,8 +111,8 @@ itemMap.set(
     new MantleOfIntelligence(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('pipeOfInsight') as Item),
 );
 itemMap.set('maskOfProficiency', new MaskOfProficiency(basicItemMap.get('emptyVial') as Item, basicItemMap.get('sobiMask') as Item));
+itemMap.set('crystalBall', new CrystalBall(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('sobiMask') as Item, basicItemMap.get('scrollOfWitchcraft') as Item));
 /*
-itemMap.set('masterCrystalBall', new MasterCrystalBall(basicItemMap.get('crystalBall') as Item, itemMap.get('orbOfMagic') as Item));
 itemMap.set('masterExecutionerAxe', new MasterExecutionerAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item));
 */
 itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe') as Item, basicItemMap.get('studdedLeatherArmor') as Item));

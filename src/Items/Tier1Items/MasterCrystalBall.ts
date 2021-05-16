@@ -1,6 +1,6 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
-import { CrystalBall } from '../BaseItems/CrystalBall';
+import { CrystalBall } from './CrystalBall';
 import { OrbOfMagic } from '../BaseItems/OrbOfMagic';
 
 const itemId: number = FourCC('I01G');
