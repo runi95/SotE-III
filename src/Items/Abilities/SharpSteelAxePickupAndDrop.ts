@@ -41,10 +41,10 @@ export class SharpSteelAxePickupAndDrop extends ItemPickupAndDrop {
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.AssassinsBladeCount[playerId] -= 1;
+        this.gameGlobals.SharpSteelAxeCount[playerId] -= 1;
 
-        if (this.gameGlobals.AssassinsBladeCount[playerId] < 1) {
-            this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.UNEQUIPPED;
+        if (this.gameGlobals.SharpSteelAxeCount[playerId] < 1) {
+            this.gameGlobals.SharpSteelAxe[playerId] = ChargedItemStates.UNEQUIPPED;
         }
     }
 }
