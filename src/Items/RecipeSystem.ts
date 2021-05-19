@@ -557,7 +557,7 @@ export class RecipeSystem {
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         if (item instanceof ItemRecipe) {
             let hasAllItems = true;
-            const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
+            const itemsInSlots: ItemInSlot[] = [];
             for (let i = 0; i < this.localPlayerInterface.heroItems.length; i++) {
                 itemsInSlots.push({
                     itemId: this.localPlayerInterface.heroItems[i],
