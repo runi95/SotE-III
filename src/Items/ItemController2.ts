@@ -38,6 +38,8 @@ import { MaulOfStrengthSell } from './Abilities/MaulOfStrengthSell';
 import { MaulOfStrengthPickupAndDrop } from './Abilities/MaulOfStrengthPickupAndDrop';
 import { ManaStonePickupAndDrop } from './Abilities/ManaStonePickupAndDrop';
 import { CrystalBallPickupAndDrop } from './Abilities/CrystalBallPickupAndDrop';
+import { SharpSteelAxePickupAndDrop } from './Abilities/SharpSteelAxePickupAndDrop';
+import { SharpSteelAxeSell } from './Abilities/SharpSteelAxeSell';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -84,6 +86,8 @@ export class ItemController2 {
             new MaulOfStrengthPickupAndDrop(gameGlobals),
             new ManaStonePickupAndDrop(gameGlobals),
             new CrystalBallPickupAndDrop(gameGlobals),
+            new SharpSteelAxePickupAndDrop(gameGlobals, timerUtils),
+            new SharpSteelAxeSell()
         ];
     }
 }

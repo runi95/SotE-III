@@ -2,7 +2,7 @@ import { Point } from '../Utility/Point';
 import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
 
-export enum AssassinsBladeStates {
+export enum ChargedItemStates {
     UNEQUIPPED,
     READY,
     COOLDOWN,
@@ -17,12 +17,14 @@ export class GameGlobals {
     public CryostasisSummons: unit[] = [];
     public GoblinBattery: boolean[] = [];
     public MaskOfProficiency: boolean[] = [];
+    public SharpSteelAxe: ChargedItemStates[] = [];
     public FullVial: boolean[] = [];
     public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
-    public AssassinsBlade: AssassinsBladeStates[] = [];
+    public AssassinsBlade: ChargedItemStates[] = [];
     public RazorBladesOn: boolean[] = [];
     public AssassinsBladeCount: number[] = [];
+    public SharpSteelAxeCount: number[] = [];
     public MoonBladeCount: number[] = [];
     public ElementalOrbCount: number[] = [];
     public ArcaniteSpearCount: number[] = [];

@@ -123,8 +123,8 @@ itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfI
 */
 itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as ItemRecipe, basicItemMap.get('reinforcedLeatherArmor') as ItemRecipe));
 itemMap.set('scaledBoots', new ScaledBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('moonArmor') as Item));
-/*
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
+/*
 itemMap.set('shimmerWeed', new ShimmerWeed(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set(
     'skullShield',

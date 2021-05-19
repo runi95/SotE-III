@@ -1,7 +1,7 @@
 import { Trigger } from './JassOverrides/Trigger';
 import { Log, LogLevel } from './lib/Serilog/Serilog';
 import { StringSink } from './lib/Serilog/Sinks/StringSink';
-import { GameGlobals, AssassinsBladeStates } from './Game/GameGlobals';
+import { GameGlobals, ChargedItemStates } from './Game/GameGlobals';
 import { Hero } from './Game/Hero';
 import { RandomNumberGenerator } from './Utility/RandomNumberGenerator';
 import { RecipeSystem } from './Items/RecipeSystem';
@@ -67,10 +67,12 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.Regenerate[i] = false;
         gameGlobals.SnowyOwl[i] = false;
         gameGlobals.ClockworkPenguin[i] = false;
-        gameGlobals.AssassinsBlade[i] = AssassinsBladeStates.UNEQUIPPED;
+        gameGlobals.AssassinsBlade[i] = ChargedItemStates.UNEQUIPPED;
+        gameGlobals.SharpSteelAxe[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
+        gameGlobals.SharpSteelAxeCount[i] = 0;
         gameGlobals.MoonBladeCount[i] = 0;
         gameGlobals.ArcaniteSpearCount[i] = 0;
         gameGlobals.ImpenetrableShieldCount[i] = 0;

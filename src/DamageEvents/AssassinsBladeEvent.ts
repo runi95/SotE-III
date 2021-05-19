@@ -1,6 +1,6 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { GameGlobals, AssassinsBladeStates } from '../Game/GameGlobals';
+import { GameGlobals, ChargedItemStates } from '../Game/GameGlobals';
 
 export class AssassinsBladeEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -20,7 +20,7 @@ export class AssassinsBladeEvent implements DamageEvent {
             return;
         }
 
-        if (this.gameGlobals.AssassinsBlade[playerId] !== AssassinsBladeStates.READY) {
+        if (this.gameGlobals.AssassinsBlade[playerId] !== ChargedItemStates.READY) {
             return;
         }
 
@@ -28,7 +28,7 @@ export class AssassinsBladeEvent implements DamageEvent {
             return;
         }
 
-        this.gameGlobals.AssassinsBlade[playerId] = AssassinsBladeStates.COOLDOWN;
+        this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.COOLDOWN;
 
         globals.DamageEventAmount = globals.DamageEventAmount + 420;
 

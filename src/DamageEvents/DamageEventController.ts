@@ -37,6 +37,7 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { MaulOfStrengthEvent } from './MaulOfStrengthEvent';
 import { MaulOfStrengthDamageEvent } from './MaulOfStrengthDamageEvent';
 import { MantleOfIntelligenceEvent } from './MantleOfIntelligenceEvent';
+import { SharpSteelAxeEvent } from './SharpSteelAxeEvent';
 
 export class DamageEventController {
     constructor(
@@ -75,6 +76,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MantleOfIntelligenceEvent(gameGlobals, buffUtils));
+        damageEngine.addInitialDamageModificationEvent(new SharpSteelAxeEvent(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
