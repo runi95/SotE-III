@@ -42,6 +42,7 @@ import { CrystalBallPickupAndDrop } from './Abilities/CrystalBallPickupAndDrop';
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
 export class ItemController2 {
+    // eslint-disable-next-line
     private itemAbilities: any[];
 
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {

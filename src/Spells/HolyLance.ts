@@ -33,7 +33,7 @@ export class HolyLance extends Spell {
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 250 * abilityLevel + 3 * intelligence;
 
-        let tick: number = 8;
+        let tick = 8;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.2, true, () => {
             tick--;

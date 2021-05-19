@@ -7,7 +7,7 @@ export class Hero {
     private readonly dummyX: number;
     private readonly dummyY: number;
     private readonly facingAngle: number;
-    private isHeroPicked: boolean = false;
+    private isHeroPicked = false;
     private readonly gameGlobals: GameGlobals;
     private readonly trig: Trigger = new Trigger();
 

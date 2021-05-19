@@ -38,7 +38,7 @@ export class BurnVictim implements DamageEvent {
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 5 * abilityLevel + intelligence;
 
-        let ticks: number = 5;
+        let ticks = 5;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;

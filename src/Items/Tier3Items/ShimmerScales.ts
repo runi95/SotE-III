@@ -4,11 +4,11 @@ import { ImprovedNaturesBlessing } from '../Tier2Items/ImprovedNaturesBlessing';
 import { ImprovedShimmerWeed } from '../Tier2Items/ImprovedShimmerWeed';
 
 const itemId: number = FourCC('I04R');
-const name: string = 'Shimmer Scales';
+const name = 'Shimmer Scales';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH];
-const goldCost: number = 29400;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSirenAdept.blp';
-const description: string = `The optiomal scaley experience.
+const goldCost = 29400;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSirenAdept.blp';
+const description = `The optiomal scaley experience.
 
 |cffffcc00Max health:|r: +5250
 |cffffcc00Health regen:|r +120

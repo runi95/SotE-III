@@ -4,11 +4,11 @@ import { AmuletOfSpellReflection } from '../BaseItems/AmuletOfSpellReflection';
 import { MoonArmor } from '../BaseItems/MoonArmor';
 
 const itemId: number = FourCC('I03Q');
-const name: string = `Khadgar's Amulet`;
+const name = `Khadgar's Amulet`;
 const labels: ItemLabel[] = [ItemLabel.RESISTANCE, ItemLabel.REFLECT];
-const goldCost: number = 3345;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPeriapt1.blp';
-const description: string = `Reflects and blocks incoming spells.
+const goldCost = 3345;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPeriapt1.blp';
+const description = `Reflects and blocks incoming spells.
 
 |cffffcc00Resistance:|r +12
 |cffffcc00Reflect:|r +35

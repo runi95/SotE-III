@@ -3,7 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 
 export class Thorns implements DamageEvent {
-    private frozen: boolean = false;
+    private frozen = false;
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {

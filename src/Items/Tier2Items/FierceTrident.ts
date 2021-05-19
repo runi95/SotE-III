@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { MasterExecutionerAxe } from '../Tier1Items/MasterExecutionerAxe';
 
 const itemId: number = FourCC('I04F');
-const name: string = 'Fierce Trident';
+const name = 'Fierce Trident';
 const labels: ItemLabel[] = [ItemLabel.EXECUTE];
-const goldCost: number = 8000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaWeaponUp1.blp';
-const description: string = `A fierce Naga weapon
+const goldCost = 8000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNagaWeaponUp1.blp';
+const description = `A fierce Naga weapon
 
 |cffffcc00Execute:|r +1670
 

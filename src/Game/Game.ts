@@ -120,7 +120,7 @@ export class Game {
     }
 
     private initializePlayers(): void {
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 this.gameGlobals.PlayerCount++;
                 this.gameGlobals.ActivePlayerIdList.push(i);
@@ -139,7 +139,7 @@ export class Game {
             this.timerUtils.releaseTimer(t);
         });
 
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerHeroId[i] !== undefined) {
                 const x: number = GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[i]);
                 const y: number = GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]);
@@ -153,14 +153,14 @@ export class Game {
 
             if (this.gameGlobals.GameIsTeamsEnabled) {
                 if (i < 3) {
-                    for (let j: number = 0; j < 3; j++) {
+                    for (let j = 0; j < 3; j++) {
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, true);
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, true);
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, true);
                     }
                 } else {
-                    for (let j: number = 3; j < 5; j++) {
+                    for (let j = 3; j < 5; j++) {
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, true);
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, true);
                         SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, true);
@@ -187,7 +187,7 @@ export class Game {
             randomizedPlayerIdArray[j] = temp;
         }
 
-        let index: number = 0;
+        let index = 0;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
             if (this.gameGlobals.ActivePlayerIdList.every(playerId => this.gameGlobals.PlayerHeroId[playerId] !== undefined)) {
@@ -199,7 +199,7 @@ export class Game {
                 if (this.gameGlobals.GameIsAllRandomEnabled || GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
                     UnitAddAbility(heroSelector, FourCC('Aloc'));
                     const availableHeroIndexes: number[] = [];
-                    for (let i: number = 0; i < this.gameGlobals.HeroList.length; i++) {
+                    for (let i = 0; i < this.gameGlobals.HeroList.length; i++) {
                         if (!this.gameGlobals.HeroList[i].getIsHeroPicked()) {
                             availableHeroIndexes.push(i);
                         }
@@ -231,7 +231,7 @@ export class Game {
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 2, 1, true, false);
         MultiboardSetItemStyleBJ(this.gameGlobals.Multiboard, 3, 1, true, false);
 
-        for (let i: number = 0; i < 6; i++) {
+        for (let i = 0; i < 6; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 MultiboardSetItemValueBJ(
                     this.gameGlobals.Multiboard,
@@ -486,7 +486,7 @@ export class Game {
     }
 
     private createSpawnHealTriggers(): void {
-        for (let i: number = 0; i < this.gameGlobals.PlayerSpawnRegion.length; i++) {
+        for (let i = 0; i < this.gameGlobals.PlayerSpawnRegion.length; i++) {
             const index: number = i;
             const trig: Trigger = new Trigger();
             trig.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
@@ -524,8 +524,8 @@ export class Game {
     }
 
     private enableDebugMode(): void {
-        let nonBotPlayerCount: number = 0;
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        let nonBotPlayerCount = 0;
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) === MAP_CONTROL_USER) {
                 nonBotPlayerCount++;
             }

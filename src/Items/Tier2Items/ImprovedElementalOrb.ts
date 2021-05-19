@@ -3,11 +3,11 @@ import { ItemRecipe } from '../ItemRecipe';
 import { ElementalOrb } from '../Tier1Items/ElementalOrb';
 
 const itemId: number = FourCC('I04D');
-const name: string = 'Improved Elemental Orb';
+const name = 'Improved Elemental Orb';
 const labels: ItemLabel[] = [ItemLabel.SPLASH];
-const goldCost: number = 6800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedMixedOrb.dds';
-const description: string = `The perfect storm.
+const goldCost = 6800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedMixedOrb.dds';
+const description = `The perfect storm.
 
 |cffffcc00Splash:|r +95%
 |cffffcc00Passive:|r Attacked enemies are slowed by 60% for 2 seconds.

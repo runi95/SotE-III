@@ -30,9 +30,9 @@ export class BurningFlask extends Spell {
         BlzSetSpecialEffectZ(eff, 50);
 
         const fireEffects: effect[] = [];
-        const fireEffectsSize: number = 12;
-        let ticks: number = 100;
-        let effectHasBroken: boolean = false;
+        const fireEffectsSize = 12;
+        let ticks = 100;
+        let effectHasBroken = false;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             if (effectHasBroken) {
@@ -54,7 +54,7 @@ export class BurningFlask extends Spell {
                 RemoveLocation(loc);
 
                 if (ticks <= 0) {
-                    for (let i: number = 0; i < fireEffectsSize; i++) {
+                    for (let i = 0; i < fireEffectsSize; i++) {
                         DestroyEffect(fireEffects[i]);
                     }
                     this.timerUtils.releaseTimer(t);

@@ -4,11 +4,11 @@ import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 import { ReinforcedHide } from '../BaseItems/ReinforcedHide';
 
 const itemId: number = FourCC('I00N');
-const name: string = 'Coral Scales';
+const name = 'Coral Scales';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH];
-const goldCost: number = 1275;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp1.blp';
-const description: string = `Very strong, defensive scales.
+const goldCost = 1275;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp1.blp';
+const description = `Very strong, defensive scales.
 
 |cffffcc00Health regen:|r +15
 |cffffcc00Max health:|r +150

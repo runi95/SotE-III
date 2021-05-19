@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { VampireFangs } from '../Tier1Items/VampireFangs';
 
 const itemId: number = FourCC('I030');
-const name: string = 'Mask of Death';
+const name = 'Mask of Death';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.LIFESTEAL];
-const goldCost: number = 6775;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp';
-const description: string = `Makes your enemies tremble with fear.
+const goldCost = 6775;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNMaskOfDeath.blp';
+const description = `Makes your enemies tremble with fear.
 
 |cffffcc00Attack damage:|r +68
 |cffffcc00Lifesteal:|r +135

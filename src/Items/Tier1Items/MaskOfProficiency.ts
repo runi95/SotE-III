@@ -5,11 +5,11 @@ import { EmptyVial } from '../BaseItems/EmptyVial';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I026');
-const name: string = 'Mask of Proficiency';
+const name = 'Mask of Proficiency';
 const labels: ItemLabel[] = [ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-const goldCost: number = 950;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
-const description: string = `I wonder what this thing does.
+const goldCost = 950;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
+const description = `I wonder what this thing does.
 
 |cffffcc00Max Mana:|r +150
 |cffffcc00Mana regen:|r +10

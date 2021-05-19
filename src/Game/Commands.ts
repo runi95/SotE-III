@@ -30,7 +30,7 @@ export class Commands {
         if (split[0] === 'help') {
             DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'If you need help check out the quests menu');
         } else if (this.gameGlobals.DebugMode && split[0] === 'gold' && split.length === 2) {
-            const gold: number = Number(split[1]);
+            const gold = Number(split[1]);
             if (!gold) {
                 DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Invalid gold amount!');
                 return;
@@ -38,7 +38,7 @@ export class Commands {
 
             SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, gold);
         } else if (this.gameGlobals.DebugMode && split[0] === 'lumber' && split.length === 2) {
-            const lumber: number = Number(split[1]);
+            const lumber = Number(split[1]);
             if (!lumber) {
                 DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, 'Invalid lumber amount!');
                 return;

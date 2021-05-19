@@ -4,11 +4,11 @@ import { DruidicSalve } from '../BaseItems/DruidicSalve';
 import { ReinforcedHide } from '../BaseItems/ReinforcedHide';
 
 const itemId: number = FourCC('I02Z');
-const name: string = `Nature's Blessing`;
+const name = `Nature's Blessing`;
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
-const goldCost: number = 2500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNaturesBlessing.blp';
-const description: string = `A branch blessed by mother nature herself.
+const goldCost = 2500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNaturesBlessing.blp';
+const description = `A branch blessed by mother nature herself.
 
 |cffffcc00Use:|r Heals 1000 hitpoints over 10 seconds
 |cffffcc00Mana Cost:|r 300

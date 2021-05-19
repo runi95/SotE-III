@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01N');
-const name: string = 'Clockwork Penguin';
+const name = 'Clockwork Penguin';
 const labels: ItemLabel[] = [];
-const goldCost: number = 200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPenguin.blp';
-const description: string = `The most adorable clockwork you'll ever see.
+const goldCost = 200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPenguin.blp';
+const description = `The most adorable clockwork you'll ever see.
 
 |cffffcc00Effect:|r A clockwork penguin with 6 inventory spaces that will always stay by your side and follow you around.
 

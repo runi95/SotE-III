@@ -33,7 +33,7 @@ export class PsychicScream extends Spell {
                 let targetX: number = uX;
                 let targetY: number = uY;
 
-                for (let i: number = 0; i < 4; i++) {
+                for (let i = 0; i < 4; i++) {
                     targetX += multX;
                     targetY += multY;
                     if (IsTerrainPathable(targetX, targetY, PATHING_TYPE_WALKABILITY)) {

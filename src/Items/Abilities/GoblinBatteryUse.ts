@@ -20,7 +20,7 @@ export class GoblinBatteryUse extends ItemUse {
         const charges: number = GetItemCharges(GetManipulatedItem());
         SetItemCharges(GetManipulatedItem(), 1);
         const chargesDivided: number = charges / 10;
-        for (let i: number = 0; i < chargesDivided; i++) {
+        for (let i = 0; i < chargesDivided; i++) {
             DestroyEffect(
                 AddSpecialEffect(
                     'Abilities\\Weapons\\Bolt\\BoltImpact.mdl',

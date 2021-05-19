@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00L');
-const name: string = 'War Axe';
+const name = 'War Axe';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH];
-const goldCost: number = 360;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpOne.blp';
-const description: string = `Just another war axe to carry, one amongst many.
+const goldCost = 360;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpOne.blp';
+const description = `Just another war axe to carry, one amongst many.
 
 |cffffcc00Strength:|r +6
 

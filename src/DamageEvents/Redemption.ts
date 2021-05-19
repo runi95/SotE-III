@@ -5,7 +5,7 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
-    private frozen: boolean = false;
+    private frozen = false;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly spellCastUtils: SpellCastUtils;
 

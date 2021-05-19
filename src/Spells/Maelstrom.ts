@@ -26,7 +26,7 @@ export class Maelstrom extends Spell {
         const trigOwner: player = GetOwningPlayer(trig);
         const loc: location = GetUnitLoc(dummy);
 
-        let ticks: number = 100;
+        let ticks = 100;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;

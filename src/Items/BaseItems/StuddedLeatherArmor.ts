@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I007');
-const name: string = 'Studded Leather Armor';
+const name = 'Studded Leather Armor';
 const labels: ItemLabel[] = [ItemLabel.MAX_HEALTH];
-const goldCost: number = 200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeOne.blp';
-const description: string = `A weak leather armor.
+const goldCost = 200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNLeatherUpgradeOne.blp';
+const description = `A weak leather armor.
 
 |cffffcc00Max health:|r +50
 

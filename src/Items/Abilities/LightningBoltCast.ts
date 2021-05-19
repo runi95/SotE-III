@@ -1,7 +1,6 @@
 import { TimerUtils } from '../../Utility/TimerUtils';
 import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 import { GroupInRange } from '../../JassOverrides/GroupInRange';
-import { Trigger } from '../../JassOverrides/Trigger';
 import { Spell } from '../../Spells/Spell';
 import { Timer } from '../../JassOverrides/Timer';
 
@@ -23,7 +22,7 @@ export class LightningBoltCast extends Spell {
         const y: number = GetSpellTargetY();
         const eff: effect = AddSpecialEffect('Abilities\\Spells\\Human\\FlameStrike\\FlameStrike1.mdl', x, y);
 
-        let ticks: number = 6;
+        let ticks = 6;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
             ticks--;
@@ -35,7 +34,7 @@ export class LightningBoltCast extends Spell {
             if (ticks <= 0) {
                 DestroyEffect(eff);
 
-                for (let i: number = 0; i < 15; i++) {
+                for (let i = 0; i < 15; i++) {
                     DestroyEffect(
                         AddSpecialEffect(
                             'Abilities\\Weapons\\Bolt\\BoltImpact.mdl',

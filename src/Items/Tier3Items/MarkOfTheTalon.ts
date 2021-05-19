@@ -4,11 +4,11 @@ import { ImpalingBolt } from '../Tier2Items/ImpalingBolt';
 import { StrengthOfTheWild } from '../Tier2Items/StrengthOfTheWild';
 
 const itemId: number = FourCC('I04L');
-const name: string = 'Mark of the Talon';
+const name = 'Mark of the Talon';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 39140;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNEnchantedCrows.blp';
-const description: string = `Is it a bird?
+const goldCost = 39140;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNEnchantedCrows.blp';
+const description = `Is it a bird?
 
 |cffffcc00Effect:|r Attacks deal 2% of your current health as bonus damage
 |cffffcc00Attack damage:|r +250

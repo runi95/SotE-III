@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Scepter } from '../BaseItems/Scepter';
 
 const itemId: number = FourCC('I019');
-const name: string = 'Caduceus';
+const name = 'Caduceus';
 const labels: ItemLabel[] = [];
-const goldCost: number = 600;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaSteal.blp';
-const description: string = `Caduceus the protector of merchants and travellers.
+const goldCost = 600;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaSteal.blp';
+const description = `Caduceus the protector of merchants and travellers.
 
 |cffffcc00Use:|r Instantly teleport to the Arcane Vault
 |cffffcc00Mana Cost:|r 0

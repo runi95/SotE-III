@@ -4,11 +4,11 @@ import { RingOfMagic } from '../Tier2Items/RingOfMagic';
 import { SunkenShard } from '../Tier2Items/SunkenShard';
 
 const itemId: number = FourCC('I04S');
-const name: string = 'Jade Ring';
+const name = 'Jade Ring';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-const goldCost: number = 30736;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRingJadeFalcon.blp';
-const description: string = `A ring infused with pure magic.
+const goldCost = 30736;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingJadeFalcon.blp';
+const description = `A ring infused with pure magic.
 
 |cffffcc00Intelligence:|r +222
 |cffffcc00Max Mana:|r +2222

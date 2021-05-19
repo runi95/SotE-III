@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I02N');
-const name: string = `Assassin's Cloak`;
+const name = `Assassin's Cloak`;
 const labels: ItemLabel[] = [];
-const goldCost: number = 2180;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMetamorphosis.blp';
-const description: string = `A cloak that lets you blend in with the shadows while moving.
+const goldCost = 2180;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNMetamorphosis.blp';
+const description = `A cloak that lets you blend in with the shadows while moving.
 
 |cffffcc00Movement Speed:|r +200
 |cffffcc00Effect:|r Turns the wearer invisible if they're standing perfectly still

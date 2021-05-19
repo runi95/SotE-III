@@ -4,11 +4,11 @@ import { SteelSpear } from '../BaseItems/SteelSpear';
 import { IronSword } from '../BaseItems/IronSword';
 
 const itemId: number = FourCC('I027');
-const name: string = 'Long Rifle';
+const name = 'Long Rifle';
 const labels: ItemLabel[] = [ItemLabel.PIERCING, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 2790;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDwarvenLongRifle.blp';
-const description: string = `An extended long rifle.
+const goldCost = 2790;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNDwarvenLongRifle.blp';
+const description = `An extended long rifle.
 
 |cffffcc00Attack damage:|r +30
 |cffffcc00Piercing:|r +30

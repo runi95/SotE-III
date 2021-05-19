@@ -18,12 +18,12 @@ export class DoomGuard extends Boss {
     private readonly spiritTowerPosY: number[] = [-6930.0, -6480.0, -6290.0, -6480.0, -6930.0, -7380.0, -7580.0, -7380.0];
     private readonly spiritTowerUnitId: number = FourCC('u003');
     private readonly spiritTowers: number[] = [];
-    private aliveSpiritTowers: number = 0;
+    private aliveSpiritTowers = 0;
     private readonly acolytePosX: number[] = [13175.0, 13290.0, 13670.0, 14030.0, 14170.0, 14074.0, 13670.0, 13290.0];
     private readonly acolytePosY: number[] = [-6950.0, -7280.0, -7448.0, -7295.0, -6944.0, -6615.0, -6440.0, -6587.0];
     private readonly acolyteUnitId: number = FourCC('u002');
     private readonly acolytes: number[] = [];
-    private aliveAcolytes: number = 0;
+    private aliveAcolytes = 0;
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
@@ -31,7 +31,7 @@ export class DoomGuard extends Boss {
 
         this.timerUtils = timerUtils;
 
-        for (let i: number = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             const spiritTower: unit = CreateUnit(
                 Player(PLAYER_NEUTRAL_PASSIVE),
                 this.spiritTowerUnitId,
@@ -70,7 +70,7 @@ export class DoomGuard extends Boss {
         SetUnitState(boss, UNIT_STATE_LIFE, 1);
 
         this.aliveAcolytes = 8;
-        for (let i: number = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             const acolyte: unit = CreateUnit(
                 Player(PLAYER_NEUTRAL_AGGRESSIVE),
                 this.acolyteUnitId,
@@ -113,7 +113,7 @@ export class DoomGuard extends Boss {
     }
 
     private arrayIncludes(arr: number[], numb: number): boolean {
-        for (let i: number = 0; i < arr.length; i++) {
+        for (let i = 0; i < arr.length; i++) {
             if (arr[i] === numb) {
                 return true;
             }

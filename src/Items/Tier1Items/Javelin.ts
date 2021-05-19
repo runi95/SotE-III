@@ -3,11 +3,11 @@ import { ItemRecipe } from '../ItemRecipe';
 import { SteelSpear } from '../BaseItems/SteelSpear';
 
 const itemId: number = FourCC('I01F');
-const name: string = 'Javelin';
+const name = 'Javelin';
 const labels: ItemLabel[] = [ItemLabel.PIERCING];
-const goldCost: number = 3010;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNStrengthOfTheMoon.blp';
-const description: string = `A deadly sharp javelin
+const goldCost = 3010;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNStrengthOfTheMoon.blp';
+const description = `A deadly sharp javelin
 
 |cffffcc00Piercing:|r +70
 

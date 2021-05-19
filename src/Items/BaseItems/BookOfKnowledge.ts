@@ -2,11 +2,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Item } from '../Item';
 
 const itemId: number = FourCC('I034');
-const name: string = 'Book of Knowledge';
+const name = 'Book of Knowledge';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE];
-const goldCost: number = 900;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNManual3.blp';
-const description: string = `A book full of information about the strangest things.
+const goldCost = 900;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNManual3.blp';
+const description = `A book full of information about the strangest things.
 
 |cffffcc00Intelligence:|r +18
 

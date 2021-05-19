@@ -29,7 +29,7 @@ export class PlayerVictoryUtils {
     public checkForLosersAndVictors(): void {
         const alivePlayers: AlivePlayers[] = [];
         const deadPlayers: number[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerLives[i] !== undefined) {
                 if (this.gameGlobals.PlayerLives[i] > 0) {
                     alivePlayers.push({ playerId: i, lives: this.gameGlobals.PlayerLives[i] });
@@ -39,8 +39,8 @@ export class PlayerVictoryUtils {
             }
         }
 
-        let allAlivePlayersAreAllies: boolean = true;
-        for (let i: number = 0; i < alivePlayers.length; i++) {
+        let allAlivePlayersAreAllies = true;
+        for (let i = 0; i < alivePlayers.length; i++) {
             if (!alivePlayers.every(alivePlayer => alivePlayer.playerId === i || (IsPlayerAlly(Player(alivePlayers[i].playerId),
                                                                                                Player(alivePlayer.playerId))
                 && IsPlayerAlly(Player(alivePlayer.playerId), Player(alivePlayers[i].playerId))))) {

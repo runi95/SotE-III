@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02O');
-const name: string = `Assassin's Map`;
+const name = `Assassin's Map`;
 const labels: ItemLabel[] = [];
-const goldCost: number = 1000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpy.blp';
-const description: string = `A map that reveals the location of what you're hunting.
+const goldCost = 1000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSpy.blp';
+const description = `A map that reveals the location of what you're hunting.
 
 |cffffcc00Passive:|r Reveals all enemy controlled units
 

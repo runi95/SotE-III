@@ -1,4 +1,5 @@
 /** @noselfinfile */
+/* eslint-disable */
 
 /*
     A note about compiletime, runtime and macros:
@@ -137,6 +138,9 @@ declare namespace ceres {
      * @compiletime
      */
     function runMap(path: string): void;
+
+    function suppressDefaultMain(): void;
+    function oldMain(): void;
 }
 
 declare namespace fs {

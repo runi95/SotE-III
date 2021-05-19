@@ -2,11 +2,11 @@ import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01K');
-const name: string = 'Reinforced Scales';
+const name = 'Reinforced Scales';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH, ItemLabel.BLOCK];
-const goldCost: number = 4800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp3.blp';
-const description: string = `Highly reinforced scales, sure to defend against the strongest of opponents.
+const goldCost = 4800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp3.blp';
+const description = `Highly reinforced scales, sure to defend against the strongest of opponents.
 
 |cffffcc00Health regen:|r +40
 |cffffcc00Max health:|r +500

@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { StrengthOfTheWild } from '../Tier2Items/StrengthOfTheWild';
 
 const itemId: number = FourCC('I037');
-const name: string = 'Improved Strength of the Wild';
+const name = 'Improved Strength of the Wild';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH];
-const goldCost: number = 9840;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedStrengthOfTheWild.blp';
-const description: string = `Only the strongest can survive in the wild.
+const goldCost = 9840;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedStrengthOfTheWild.blp';
+const description = `Only the strongest can survive in the wild.
 
 |cffffcc00Strength:|r +82
 

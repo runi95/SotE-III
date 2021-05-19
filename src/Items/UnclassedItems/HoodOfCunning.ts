@@ -2,11 +2,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Item } from '../Item';
 
 const itemId: number = FourCC('I04T');
-const name: string = 'Hood of Cunning';
+const name = 'Hood of Cunning';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH, ItemLabel.BLOCK];
-const goldCost: number = 500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHoodOfCunning.blp';
-const description: string = `Something to keep your head warm and protected.
+const goldCost = 500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHoodOfCunning.blp';
+const description = `Something to keep your head warm and protected.
 
 |cffffcc00Health:|r +90
 |cffffcc00Health regen:|r +5

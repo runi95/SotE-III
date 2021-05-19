@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { AdvancedCannon } from '../Tier2Items/AdvancedCannon';
 
 const itemId: number = FourCC('I04H');
-const name: string = 'Flak Cannons';
+const name = 'Flak Cannons';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.SPLASH];
-const goldCost: number = 24000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNFlakCannons.blp';
-const description: string = `Makes sure there's nothing left of your opponents
+const goldCost = 24000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNFlakCannons.blp';
+const description = `Makes sure there's nothing left of your opponents
 
 |cffffcc00Passive:|r Splash radius is increased by +100
 |cffffcc00Attack damage:|r +400

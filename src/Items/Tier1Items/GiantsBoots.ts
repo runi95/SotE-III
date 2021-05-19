@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 
 const itemId: number = FourCC('I04W');
-const name: string = `Giant's Boots`;
+const name = `Giant's Boots`;
 const labels: ItemLabel[] = [ItemLabel.MAX_HEALTH];
-const goldCost: number = 1100;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGiantsBoots.dds';
-const description: string = `Increases movement rate while keeping your feet safe.
+const goldCost = 1100;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGiantsBoots.dds';
+const description = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +50
 |cffffcc00Max health:|r +150

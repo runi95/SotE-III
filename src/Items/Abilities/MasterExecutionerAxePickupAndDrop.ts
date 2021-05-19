@@ -1,4 +1,3 @@
-import { ItemDrop } from '../ItemDrop';
 import { GameGlobals } from '../../Game/GameGlobals';
 import { ItemPickupAndDrop } from '../ItemPickupAndDrop';
 

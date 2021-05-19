@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I03E');
-const name: string = 'Pipe of Insight';
+const name = 'Pipe of Insight';
 const labels: ItemLabel[] = [ItemLabel.PERSEVERANCE];
-const goldCost: number = 432;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPipeOfInsight.blp';
-const description: string = `This pipe used to belong to Khadgar, but not anymore.
+const goldCost = 432;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPipeOfInsight.blp';
+const description = `This pipe used to belong to Khadgar, but not anymore.
 
 |cffffcc00Perseverance:|r +12
 

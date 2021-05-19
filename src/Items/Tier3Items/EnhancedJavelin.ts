@@ -4,11 +4,11 @@ import { ThoriumSpear } from '../Tier2Items/ThoriumSpear';
 import { ShamanClaws } from '../Tier2Items/ShamanClaws';
 
 const itemId: number = FourCC('I04J');
-const name: string = 'Enhanced Javelin';
+const name = 'Enhanced Javelin';
 const labels: ItemLabel[] = [ItemLabel.PIERCING, ItemLabel.ATTACK_DAMAGE, ItemLabel.AGILITY];
-const goldCost: number = 30830;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedStrengthOfTheMoon.blp';
-const description: string = `An enhanced javelin
+const goldCost = 30830;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedStrengthOfTheMoon.blp';
+const description = `An enhanced javelin
 
 |cffffcc00Agility:|r +112
 |cffffcc00Attack damage:|r +200

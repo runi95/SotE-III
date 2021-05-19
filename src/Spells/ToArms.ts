@@ -5,7 +5,7 @@ import { Timer } from '../JassOverrides/Timer';
 export class ToArms extends Spell {
     protected readonly abilityId: number = FourCC('A030');
     private readonly summonId: number = FourCC('n01P');
-    private isSummonAlive: boolean = false;
+    private isSummonAlive = false;
     private readonly timerUtils: TimerUtils;
 
     constructor(timerUtils: TimerUtils) {
@@ -33,7 +33,7 @@ export class ToArms extends Spell {
         BlzSetUnitAttackCooldown(summon, 1.00 - (str * 0.06) / (5 + (str * 0.06)), 1);
         BlzSetUnitBaseDamage(summon, Math.ceil(0.80 * str), 0);
 
-        const maxDistance: number = 1200;
+        const maxDistance = 1200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(trig);

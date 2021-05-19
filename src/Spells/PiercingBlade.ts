@@ -35,7 +35,7 @@ export class PiercingBlade extends Spell {
 
         IssuePointOrder(dummy, 'move', x, y);
 
-        let ticks: number = 40;
+        let ticks = 40;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;

@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I012');
-const name: string = 'Druidic Salve';
+const name = 'Druidic Salve';
 const labels: ItemLabel[] = [];
-const goldCost: number = 1000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHealingSalve.blp';
-const description: string = `A salve often used by druids to cure wounds.
+const goldCost = 1000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHealingSalve.blp';
+const description = `A salve often used by druids to cure wounds.
 
 |cffffcc00Use:|r Heals 400 hitpoints over 12 seconds
 |cffffcc00Mana Cost:|r 125

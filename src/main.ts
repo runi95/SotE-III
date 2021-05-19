@@ -40,16 +40,14 @@ export class Initialiser {
     }
 }
 
-// @ts-ignore
 ceres.suppressDefaultMain();
-// @ts-ignore
 ceres.oldMain();
 Initialiser.run();
 
 function seedRandomNumberGenerator(randomNumberGenerator: RandomNumberGenerator): void {
     const trig: Trigger = new Trigger();
     trig.addAction(() => randomNumberGenerator.setSeed(Number(BlzGetTriggerSyncData())));
-    for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+    for (let i = 0; i < bj_MAX_PLAYERS; i++) {
         trig.registerPlayerSyncEvent(Player(i), 'randomseed', false);
     }
 
@@ -63,7 +61,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
     const heroSelectionArea: rect = Rect(-15616, -11904, -13184, -9472);
     BlzChangeMinimapTerrainTex('war3mapImported\\war3mapPreviewSmall.dds');
     SetCameraBoundsToRect(heroSelectionArea);
-    for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+    for (let i = 0; i < bj_MAX_PLAYERS; i++) {
         gameGlobals.SummonHawkInt[i] = 0;
         gameGlobals.ScrollOfTownPortal[i] = false;
         gameGlobals.Regenerate[i] = false;
@@ -115,7 +113,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
 }
 
 function spawnAllCreeps(gameGlobals: GameGlobals): void {
-    for (let i: number = 0; i < gameGlobals.CreepUnitArraySize; i++) {
+    for (let i = 0; i < gameGlobals.CreepUnitArraySize; i++) {
         SetUnitUserData(
             CreateUnit(
                 Player(PLAYER_NEUTRAL_AGGRESSIVE),
@@ -130,7 +128,7 @@ function spawnAllCreeps(gameGlobals: GameGlobals): void {
 }
 
 function initializeHeroSelection(gameGlobals: GameGlobals): void {
-    for (let i: number = 0; i < gameGlobals.HeroArraySize; i++) {
+    for (let i = 0; i < gameGlobals.HeroArraySize; i++) {
         gameGlobals.HeroList.push(
             new Hero(
                 gameGlobals,
@@ -187,6 +185,7 @@ function createQuests(): void {
     );
 }
 
+// eslint-disable-next-line
 function SendMessage(this: void, msg: any): void {
     DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `${msg}`);
 }

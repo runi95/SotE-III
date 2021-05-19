@@ -7,7 +7,7 @@ export class Chaplain extends Boss {
     protected readonly x: number = -7940.0;
     protected readonly y: number = 14020.0;
     protected readonly angle: number = 0.0;
-    private aliveDragonCounter: number = 0;
+    private aliveDragonCounter = 0;
     private dragonUnitId: number = FourCC('n02H');
     protected readonly dropTable: number[] = [
         FourCC('I02Y'), // Enhanced Gemstone (9894)

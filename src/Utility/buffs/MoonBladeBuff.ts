@@ -8,8 +8,8 @@ export class MoonBladeBuff extends Buff {
     private temporaryResistance: number;
 
     constructor(playerId: number, gameGlobals: GameGlobals) {
-        const tickDuration: number = 1;
-        const initialDuration: number = 5;
+        const tickDuration = 1;
+        const initialDuration = 5;
         super(tickDuration, initialDuration);
 
         this.temporaryResistance = 5;
@@ -25,6 +25,7 @@ export class MoonBladeBuff extends Buff {
         this.gameGlobals.PlayerSpellBlock[this.playerId] += this.temporaryResistance;
     }
 
+    // eslint-disable-next-line
     public tick(): void {}
 
     public getBuffType(): BuffTypes {

@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { AdeptStaff } from '../Tier1Items/AdeptStaff';
 
 const itemId: number = FourCC('I03M');
-const name: string = 'Master Staff';
+const name = 'Master Staff';
 const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST];
-const goldCost: number = 4640;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestMaster.blp';
-const description: string = `Your wish has been granted.
+const goldCost = 4640;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPriestMaster.blp';
+const description = `Your wish has been granted.
 
 |cffffcc00Critical Cast:|r +80%
 

@@ -1,14 +1,13 @@
 import { ItemRecipe } from '../ItemRecipe';
-import { CloakOfShadowWalk } from '../Tier1Items/CloakOfShadowWalk';
 import { ItemLabel } from '../ItemLabel';
 import { SkullShield } from '../Tier1Items/SkullShield';
 
 const itemId: number = FourCC('I049');
-const name: string = 'Quills';
+const name = 'Quills';
 const labels: ItemLabel[] = [ItemLabel.THORNS, ItemLabel.REFLECT];
-const goldCost: number = 9300;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNQuillSprayOff.blp';
-const description: string = `You should not be touching these.
+const goldCost = 9300;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNQuillSprayOff.blp';
+const description = `You should not be touching these.
 
 |cffffcc00Reflect:|r +60
 |cffffcc00Thorns:|r +60

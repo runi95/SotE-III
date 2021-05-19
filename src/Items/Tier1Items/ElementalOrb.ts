@@ -4,11 +4,11 @@ import { OrbOfFire } from '../BaseItems/OrbOfFire';
 import { OrbOfLightning } from '../BaseItems/OrbOfLightning';
 
 const itemId: number = FourCC('I03W');
-const name: string = 'Elemental Orb';
+const name = 'Elemental Orb';
 const labels: ItemLabel[] = [ItemLabel.SPLASH];
-const goldCost: number = 2400;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMixedOrb.dds';
-const description: string = `The perfect storm.
+const goldCost = 2400;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNMixedOrb.dds';
+const description = `The perfect storm.
 
 |cffffcc00Splash:|r +35%
 |cffffcc00Passive:|r Attacked enemies are slowed by 20% for 2 seconds.

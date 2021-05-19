@@ -3,11 +3,11 @@ import { ItemRecipe } from '../ItemRecipe';
 import { SharpSteelAxe } from '../Tier1Items/SharpSteelAxe';
 
 const itemId: number = FourCC('I04B');
-const name: string = 'Impaling Bolt';
+const name = 'Impaling Bolt';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 9800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImpalingBolt.btn';
-const description: string = `Can be thrown a great distance.
+const goldCost = 9800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImpalingBolt.btn';
+const description = `Can be thrown a great distance.
 
 |cffffcc00Strength:|r +40
 |cffffcc00Attack damage:|r +100

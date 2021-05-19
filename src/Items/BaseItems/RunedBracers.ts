@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00S');
-const name: string = 'Runed Bracers';
+const name = 'Runed Bracers';
 const labels: ItemLabel[] = [];
-const goldCost: number = 600;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRunedBracers.blp';
-const description: string = `You can't quite make out what the runes say.
+const goldCost = 600;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRunedBracers.blp';
+const description = `You can't quite make out what the runes say.
 
 |cffffcc00Effect (1):|r Increases item charges whenever you take spell damage.
 |cffffcc00Effect (2):|r Releases a chain lightning whenever you reach over 100 charges

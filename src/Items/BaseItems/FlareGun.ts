@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01M');
-const name: string = 'Flare';
+const name = 'Flare';
 const labels: ItemLabel[] = [];
-const goldCost: number = 200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNFlare.blp';
-const description: string = `A flare that lights up the area around you.
+const goldCost = 200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNFlare.blp';
+const description = `A flare that lights up the area around you.
 
 |cffffcc00Use:|r Reveals the target area
 |cffffcc00Mana Cost:|r 0

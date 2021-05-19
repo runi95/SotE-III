@@ -4,11 +4,11 @@ import { Javelin } from '../Tier1Items/Javelin';
 import { LongRifle } from '../Tier1Items/LongRifle';
 
 const itemId: number = FourCC('I04I');
-const name: string = 'Thorium Spear';
+const name = 'Thorium Spear';
 const labels: ItemLabel[] = [ItemLabel.PIERCING, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 8950;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNThoriumRanged.blp';
-const description: string = `A deadly sharp thorium spear
+const goldCost = 8950;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNThoriumRanged.blp';
+const description = `A deadly sharp thorium spear
 
 |cffffcc00Attack damage:|r +50
 |cffffcc00Piercing:|r +150

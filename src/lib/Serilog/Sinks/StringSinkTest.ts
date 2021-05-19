@@ -47,7 +47,7 @@ export class StringSinkTest implements ILogSink
 
     Log(level: LogLevel, events: LogEvent[]): void
     {
-        let message: string = "";
+        let message = "";
 
         for (let index = 0; index < events.length; index++)
         {

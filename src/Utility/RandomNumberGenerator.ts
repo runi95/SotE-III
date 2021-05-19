@@ -1,7 +1,7 @@
 export class RandomNumberGenerator {
     private readonly a: number = 1103515245;
     private readonly c: number = 12345;
-    private seed: number = 1;
+    private seed = 1;
 
     public setSeed(seed: number): void {
         // tslint:disable-next-line:no-bitwise

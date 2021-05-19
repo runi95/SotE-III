@@ -4,11 +4,11 @@ import { CreatureClaws } from '../Tier1Items/CreatureClaws';
 import { IronClaws } from '../Tier1Items/IronClaws';
 
 const itemId: number = FourCC('I042');
-const name: string = 'Shaman Claws';
+const name = 'Shaman Claws';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.AGILITY];
-const goldCost: number = 7960;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNShamanAdept.blp';
-const description: string = `Useful when cooking shaman recipes.
+const goldCost = 7960;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNShamanAdept.blp';
+const description = `Useful when cooking shaman recipes.
 
 |cffffcc00Attack damage:|r +80
 |cffffcc00Agility:|r +44

@@ -4,11 +4,11 @@ import { SpikedWood } from '../Tier1Items/SpikedWood';
 import { SpikedCarapace } from '../Tier1Items/SpikedCarapace';
 
 const itemId: number = FourCC('I04A');
-const name: string = 'Improved Spikes';
+const name = 'Improved Spikes';
 const labels: ItemLabel[] = [ItemLabel.THORNS, ItemLabel.MAX_HEALTH];
-const goldCost: number = 9200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedSpikedBarricades.blp';
-const description: string = `A large chunk of wood with spikes on it.
+const goldCost = 9200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedSpikedBarricades.blp';
+const description = `A large chunk of wood with spikes on it.
 
 |cffffcc00Max health:|r +600
 |cffffcc00Thorns:|r +85

@@ -21,7 +21,7 @@ export class Rupture extends Spell {
 
         UnitAddAbilityBJ(this.dummyAbilityId, targ);
 
-        let ticks: number = 200;
+        let ticks = 200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;

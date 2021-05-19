@@ -4,11 +4,11 @@ import { VampireClaws } from '../BaseItems/VampireClaws';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02L');
-const name: string = 'Vampire Dagger';
+const name = 'Vampire Dagger';
 const labels: ItemLabel[] = [];
-const goldCost: number = 5300;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSacrificialDagger.blp';
-const description: string = `A dagger often used by acolytes in sacrificial rituals
+const goldCost = 5300;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSacrificialDagger.blp';
+const description = `A dagger often used by acolytes in sacrificial rituals
 
 |cffffcc00Use:|r Deals 1000 damage to target enemy unit and heals 500 hitpoints
 |cffffcc00Mana Cost:|r 0

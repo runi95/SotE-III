@@ -4,85 +4,85 @@
  */
 
 // Damage type classifications
-export const DamageTypePureExplosive: number = -2;
-export const DamageTypeExplosive: number = -1;
-export const DamageTypeCode: number = 1;
-export const DamageTypePure: number = 2;
-export const DamageTypeHeal: number = 3;
-export const DamageTypeBlocked: number = 4;
-export const DamageTypeReduced: number = 5;
-export const DamageTypeCriticalStrike: number = 6;
+export const DamageTypePureExplosive = -2;
+export const DamageTypeExplosive = -1;
+export const DamageTypeCode = 1;
+export const DamageTypePure = 2;
+export const DamageTypeHeal = 3;
+export const DamageTypeBlocked = 4;
+export const DamageTypeReduced = 5;
+export const DamageTypeCriticalStrike = 6;
 
 // Allows detection of Bash or Pulverize or AOE spread
-export const DamageEventAOE: number = 1;
-export const DamageEventLevel: number = 1;
+export const DamageEventAOE = 1;
+export const DamageEventLevel = 1;
 
 // Attack types
-export const ATTACK_TYPE_SPELLS: number = 0;
-export const ATTACK_TYPE_NORMAL: number = 1;
-export const ATTACK_TYPE_PIERCE: number = 2;
-export const ATTACK_TYPE_SIEGE: number = 3;
-export const ATTACK_TYPE_MAGIC: number = 4;
-export const ATTACK_TYPE_CHAOS: number = 5;
-export const ATTACK_TYPE_HERO: number = 6;
+export const ATTACK_TYPE_SPELLS = 0;
+export const ATTACK_TYPE_NORMAL = 1;
+export const ATTACK_TYPE_PIERCE = 2;
+export const ATTACK_TYPE_SIEGE = 3;
+export const ATTACK_TYPE_MAGIC = 4;
+export const ATTACK_TYPE_CHAOS = 5;
+export const ATTACK_TYPE_HERO = 6;
 
-export const DAMAGE_TYPE_UNKNOWN: number = 0;
-export const DAMAGE_TYPE_NORMAL: number = 4;
-export const DAMAGE_TYPE_ENHANCED: number = 5;
-export const DAMAGE_TYPE_FIRE: number = 8;
-export const DAMAGE_TYPE_COLD: number = 9;
-export const DAMAGE_TYPE_LIGHTNING: number = 10;
-export const DAMAGE_TYPE_POISON: number = 11;
-export const DAMAGE_TYPE_DISEASE: number = 12;
-export const DAMAGE_TYPE_DIVINE: number = 13;
-export const DAMAGE_TYPE_MAGIC: number = 14;
-export const DAMAGE_TYPE_SONIC: number = 15;
-export const DAMAGE_TYPE_ACID: number = 16;
-export const DAMAGE_TYPE_FORCE: number = 17;
-export const DAMAGE_TYPE_DEATH: number = 18;
-export const DAMAGE_TYPE_MIND: number = 19;
-export const DAMAGE_TYPE_PLANT: number = 20;
-export const DAMAGE_TYPE_DEFENSIVE: number = 21;
-export const DAMAGE_TYPE_DEMOLITION: number = 22;
-export const DAMAGE_TYPE_SLOW_POISON: number = 23;
-export const DAMAGE_TYPE_SPIRIT_LINK: number = 24;
-export const DAMAGE_TYPE_SHADOW_STRIKE: number = 25;
-export const DAMAGE_TYPE_UNIVERSAL: number = 26;
+export const DAMAGE_TYPE_UNKNOWN = 0;
+export const DAMAGE_TYPE_NORMAL = 4;
+export const DAMAGE_TYPE_ENHANCED = 5;
+export const DAMAGE_TYPE_FIRE = 8;
+export const DAMAGE_TYPE_COLD = 9;
+export const DAMAGE_TYPE_LIGHTNING = 10;
+export const DAMAGE_TYPE_POISON = 11;
+export const DAMAGE_TYPE_DISEASE = 12;
+export const DAMAGE_TYPE_DIVINE = 13;
+export const DAMAGE_TYPE_MAGIC = 14;
+export const DAMAGE_TYPE_SONIC = 15;
+export const DAMAGE_TYPE_ACID = 16;
+export const DAMAGE_TYPE_FORCE = 17;
+export const DAMAGE_TYPE_DEATH = 18;
+export const DAMAGE_TYPE_MIND = 19;
+export const DAMAGE_TYPE_PLANT = 20;
+export const DAMAGE_TYPE_DEFENSIVE = 21;
+export const DAMAGE_TYPE_DEMOLITION = 22;
+export const DAMAGE_TYPE_SLOW_POISON = 23;
+export const DAMAGE_TYPE_SPIRIT_LINK = 24;
+export const DAMAGE_TYPE_SHADOW_STRIKE = 25;
+export const DAMAGE_TYPE_UNIVERSAL = 26;
 
 // Weapon sounds
 // - Metal Light/Medium/Heavy -
-export const WEAPON_TYPE_NONE: number = 0;
-export const WEAPON_TYPE_ML_CHOP: number = 1;
-export const WEAPON_TYPE_MM_CHOP: number = 2;
-export const WEAPON_TYPE_MH_CHOP: number = 3;
-export const WEAPON_TYPE_ML_SLICE: number = 4;
-export const WEAPON_TYPE_MM_SLICE: number = 5;
-export const WEAPON_TYPE_MH_SLICE: number = 6;
-export const WEAPON_TYPE_MM_BASH: number = 7;
-export const WEAPON_TYPE_MH_BASH: number = 8;
-export const WEAPON_TYPE_MM_STAB: number = 9;
-export const WEAPON_TYPE_MH_STAB: number = 10;
+export const WEAPON_TYPE_NONE = 0;
+export const WEAPON_TYPE_ML_CHOP = 1;
+export const WEAPON_TYPE_MM_CHOP = 2;
+export const WEAPON_TYPE_MH_CHOP = 3;
+export const WEAPON_TYPE_ML_SLICE = 4;
+export const WEAPON_TYPE_MM_SLICE = 5;
+export const WEAPON_TYPE_MH_SLICE = 6;
+export const WEAPON_TYPE_MM_BASH = 7;
+export const WEAPON_TYPE_MH_BASH = 8;
+export const WEAPON_TYPE_MM_STAB = 9;
+export const WEAPON_TYPE_MH_STAB = 10;
 
 // - Wood Light/Medium/Heavy -
-export const WEAPON_TYPE_WL_SLICE: number = 11;
-export const WEAPON_TYPE_WM_SLICE: number = 12;
-export const WEAPON_TYPE_WH_SLICE: number = 13;
-export const WEAPON_TYPE_WL_BASH: number = 14;
-export const WEAPON_TYPE_WM_BASH: number = 15;
-export const WEAPON_TYPE_WH_BASH: number = 16;
-export const WEAPON_TYPE_WL_STAB: number = 17;
-export const WEAPON_TYPE_WM_STAB: number = 18;
+export const WEAPON_TYPE_WL_SLICE = 11;
+export const WEAPON_TYPE_WM_SLICE = 12;
+export const WEAPON_TYPE_WH_SLICE = 13;
+export const WEAPON_TYPE_WL_BASH = 14;
+export const WEAPON_TYPE_WM_BASH = 15;
+export const WEAPON_TYPE_WH_BASH = 16;
+export const WEAPON_TYPE_WL_STAB = 17;
+export const WEAPON_TYPE_WM_STAB = 18;
 
 // - Claw Light/Medium/Heavy -
-export const WEAPON_TYPE_CL_SLICE: number = 19;
-export const WEAPON_TYPE_CM_SLICE: number = 20;
-export const WEAPON_TYPE_CH_SLICE: number = 21;
+export const WEAPON_TYPE_CL_SLICE = 19;
+export const WEAPON_TYPE_CM_SLICE = 20;
+export const WEAPON_TYPE_CH_SLICE = 21;
 
 // - Axe Medium -
-export const WEAPON_TYPE_AM_CHOP: number = 22;
+export const WEAPON_TYPE_AM_CHOP = 22;
 
 // - Rock Heavy -
-export const WEAPON_TYPE_RH_BASH: number = 23;
+export const WEAPON_TYPE_RH_BASH = 23;
 
 // Strings
 export const AttackTypeDebugStr: string[] = ['SPELLS', 'NORMAL', 'PIERCE', 'SIEGE', 'MAGIC', 'CHAOS', 'HERO'];

@@ -19,7 +19,7 @@ export class PreloadSink implements ILogSink
 
     private LogEventToJson(logEvent: LogEvent): string
     {
-        let json: string = "{";
+        let json = "{";
         //json += "ty:" + logEvent.Type + ", "; // Commented out for now, since anything that doesn't have a value, should be treated as text.
         json += "t:\"" + logEvent.Text + "\"";
         if(logEvent.Value)
@@ -40,7 +40,7 @@ export class PreloadSink implements ILogSink
 
     Log(level: LogLevel, events: LogEvent[]): void
     {
-        let json: string = "{";
+        let json = "{";
 
         json += "l:" + level + ",";
         json += "e:{"

@@ -11,7 +11,7 @@ export class SpellCastUtils {
 
     public GetIntelligence(u: unit): number {
         const int: number = GetHeroInt(u, true);
-        let bonuses: number = 0;
+        let bonuses = 0;
 
         const playerId: number = GetPlayerId(GetOwningPlayer(u));
         if (this.gameGlobals.ManaStoneCount[playerId] > 0) {

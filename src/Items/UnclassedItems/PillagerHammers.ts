@@ -2,11 +2,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Item } from '../Item';
 
 const itemId: number = FourCC('I050');
-const name: string = 'Pillager Hammers';
+const name = 'Pillager Hammers';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPillage.blp';
-const description: string = `The perfect tool for pillaging entire citites.
+const goldCost = 500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPillage.blp';
+const description = `The perfect tool for pillaging entire citites.
 
 |cffffcc00Attack damage:|r +15
 |cffffcc00Passive:|r Increases attack speed by 33%

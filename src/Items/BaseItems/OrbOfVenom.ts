@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I04Q');
-const name: string = 'Orb of Venom';
+const name = 'Orb of Venom';
 const labels: ItemLabel[] = [ItemLabel.VENOM];
-const goldCost: number = 540;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp';
-const description: string = `An orb filled with a deadly poison.
+const goldCost = 540;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp';
+const description = `An orb filled with a deadly poison.
 
 |cffffcc00Venom:|r +9
 

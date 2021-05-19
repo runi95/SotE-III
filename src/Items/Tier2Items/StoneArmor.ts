@@ -4,11 +4,11 @@ import { BalancedShield } from '../Tier1Items/BalancedShield';
 import { SkullShield } from '../Tier1Items/SkullShield';
 
 const itemId: number = FourCC('I03Y');
-const name: string = 'Stone Armor';
+const name = 'Stone Armor';
 const labels: ItemLabel[] = [ItemLabel.BLOCK, ItemLabel.RESISTANCE, ItemLabel.THORNS, ItemLabel.REFLECT];
-const goldCost: number = 11280;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNStoneForm.blp';
-const description: string = `Don't touch, pointy.
+const goldCost = 11280;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNStoneForm.blp';
+const description = `Don't touch, pointy.
 
 |cffffcc00Reflect:|r +40
 |cffffcc00Thorns:|r +40

@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { EmptyVial } from '../BaseItems/EmptyVial';
 
 const itemId: number = FourCC('I04X');
-const name: string = `Mage's Sabatons`;
+const name = `Mage's Sabatons`;
 const labels: ItemLabel[] = [ItemLabel.MAX_MANA];
-const goldCost: number = 1100;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNMagesSabatons.dds';
-const description: string = `Increases movement rate while keeping your feet safe.
+const goldCost = 1100;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNMagesSabatons.dds';
+const description = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +50
 |cffffcc00Max Mana:|r +200

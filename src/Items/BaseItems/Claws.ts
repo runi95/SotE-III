@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00M');
-const name: string = 'Claws';
+const name = 'Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY];
-const goldCost: number = 360;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNUnholyStrength.blp';
-const description: string = `Practicing with these will surely make you super fast.
+const goldCost = 360;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNUnholyStrength.blp';
+const description = `Practicing with these will surely make you super fast.
 
 |cffffcc00Agility:|r +8
 

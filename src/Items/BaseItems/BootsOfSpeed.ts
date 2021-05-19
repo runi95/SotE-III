@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00R');
-const name: string = 'Boots of Speed';
+const name = 'Boots of Speed';
 const labels: ItemLabel[] = [];
-const goldCost: number = 300;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBootsOfSpeed.blp';
-const description: string = `Increases movement rate.
+const goldCost = 300;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBootsOfSpeed.blp';
+const description = `Increases movement rate.
 
 |cffffcc00Movement Speed:|r +50
 

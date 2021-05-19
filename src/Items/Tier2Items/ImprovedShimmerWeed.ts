@@ -5,11 +5,11 @@ import { BrightLifeStone } from '../Tier1Items/BrightLifeStone';
 import { ReinforcedLeatherArmor } from '../Tier1Items/ReinforcedLeatherArmor';
 
 const itemId: number = FourCC('I03Z');
-const name: string = 'Improved Shimmer Weeed';
+const name = 'Improved Shimmer Weeed';
 const labels: ItemLabel[] = [ItemLabel.MAX_HEALTH, ItemLabel.RESTORATION];
-const goldCost: number = 12000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedShimmerWeed.dds';
-const description: string = `They're blooming with life.
+const goldCost = 12000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedShimmerWeed.dds';
+const description = `They're blooming with life.
 
 |cffffcc00Max health:|r +1500
 |cffffcc00Restoration:|r +500%

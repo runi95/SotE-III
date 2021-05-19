@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I03D');
-const name: string = 'Steel Spear';
+const name = 'Steel Spear';
 const labels: ItemLabel[] = [ItemLabel.PIERCING];
-const goldCost: number = 525;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSteelRanged.blp';
-const description: string = `A deadly sharp steel spear.
+const goldCost = 525;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSteelRanged.blp';
+const description = `A deadly sharp steel spear.
 
 |cffffcc00Piercing:|r +25
 

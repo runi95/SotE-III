@@ -37,7 +37,7 @@ export class RazorBlades {
             const playerId: number = GetPlayerId(GetOwningPlayer(trig));
             const x: number = GetUnitX(trig);
             const y: number = GetUnitY(trig);
-            let aoe: number = 50.0;
+            let aoe = 50.0;
             const bladeOne: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x + 150.0 * CosBJ(0.0), y + 150.0 * SinBJ(0.0), 0);
             const bladeTwo: unit = CreateUnit(
                 GetOwningPlayer(trig),
@@ -55,9 +55,9 @@ export class RazorBlades {
 
             this.gameGlobals.RazorBladesOn[playerId] = true;
 
-            let ticker: number = 0;
-            let tickerOne: number = 0;
-            let tickerTwo: number = 180;
+            let ticker = 0;
+            let tickerOne = 0;
+            let tickerTwo = 180;
             const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
                 SetUnitPosition(bladeOne, GetUnitX(trig) + 150.0 * CosBJ(tickerOne), GetUnitY(trig) + 150.0 * SinBJ(tickerOne));

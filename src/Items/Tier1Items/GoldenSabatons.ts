@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { IronSword } from '../BaseItems/IronSword';
 
 const itemId: number = FourCC('I04V');
-const name: string = 'Golden Sabatons';
+const name = 'Golden Sabatons';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 1125;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGoldenSabatons.dds';
-const description: string = `Increases movement rate while keeping your feet safe.
+const goldCost = 1125;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGoldenSabatons.dds';
+const description = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +50
 |cffffcc00Attack damage:|r +25

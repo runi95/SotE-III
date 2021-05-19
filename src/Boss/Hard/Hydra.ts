@@ -2,7 +2,7 @@ import { Boss } from '../Boss';
 import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class Hydra extends Boss {
-    private hydralingCounter: number = 0;
+    private hydralingCounter = 0;
     private readonly hydralingUnitId: number = FourCC('n02B');
     protected readonly bossId: number = FourCC('n02A');
     protected readonly x: number = 15071.0;

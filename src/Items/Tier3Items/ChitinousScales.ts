@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { ImpenetrableShield } from '../Tier2Items/ImpenetrableShield';
 
 const itemId: number = FourCC('I04N');
-const name: string = 'Chitinous Scales';
+const name = 'Chitinous Scales';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN, ItemLabel.MAX_HEALTH, ItemLabel.BLOCK, ItemLabel.RESISTANCE];
-const goldCost: number = 38050;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp2.blp';
-const description: string = `Very strong, defensive scales.
+const goldCost = 38050;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNagaArmorUp2.blp';
+const description = `Very strong, defensive scales.
 
 |cffffcc00Health regen:|r +100
 |cffffcc00Max health:|r +3000

@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { VampireClaws } from '../BaseItems/VampireClaws';
 
 const itemId: number = FourCC('I03N');
-const name: string = 'Vampire Fangs';
+const name = 'Vampire Fangs';
 const labels: ItemLabel[] = [ItemLabel.LIFESTEAL];
-const goldCost: number = 2250;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCannibalize.blp';
-const description: string = `These fangs are able to drain the blood of the living withing seconds.
+const goldCost = 2250;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNCannibalize.blp';
+const description = `These fangs are able to drain the blood of the living withing seconds.
 
 |cffffcc00Lifesteal:|r +90
 

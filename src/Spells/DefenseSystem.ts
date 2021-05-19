@@ -24,7 +24,7 @@ export class DefenseSystem extends Spell {
         const playerId: number = GetPlayerId(GetOwningPlayer(trig));
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
-        const bonusArmor: number = 2;
+        const bonusArmor = 2;
         const bonusPhysical: number = Math.floor(abilityLevel + 0.50 * intelligence);
         UnitAddAbilityBJ(this.defenseSystemDummyAbilityId, trig);
         this.gameGlobals.PlayerPhysicalBlock[playerId] += bonusPhysical;

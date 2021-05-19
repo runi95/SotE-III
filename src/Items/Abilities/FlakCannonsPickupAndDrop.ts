@@ -1,5 +1,4 @@
 import { GameGlobals } from '../../Game/GameGlobals';
-import { ItemDrop } from '../ItemDrop';
 import { ItemPickupAndDrop } from '../ItemPickupAndDrop';
 
 export class FlakCannonsPickupAndDrop extends ItemPickupAndDrop {

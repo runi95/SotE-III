@@ -4,11 +4,11 @@ import { VialOfMagic } from '../Tier2Items/VialOfMagic';
 import { EnhancedMaskOfProficiency } from '../Tier2Items/EnhancedMaskOfProficiency';
 
 const itemId: number = FourCC('I04K');
-const name: string = 'Scroll of Wisdom';
+const name = 'Scroll of Wisdom';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.MANA_REGEN];
-const goldCost: number = 33600;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBansheeAdept.blp';
-const description: string = `A scroll written in an ancient language
+const goldCost = 33600;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBansheeAdept.blp';
+const description = `A scroll written in an ancient language
 
 |cffffcc00Passive:|r Casting a spell has a 5% chance to instantly reset it's cooldown
 |cffffcc00Intelligence:|r +150

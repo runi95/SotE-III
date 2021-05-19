@@ -1,7 +1,6 @@
 import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
-import { Group } from '../JassOverrides/Group';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
 
 export class Inferno extends Spell {
@@ -29,8 +28,8 @@ export class Inferno extends Spell {
         let rngX: number = x + GetRandomReal(0, 1000) - 500.0;
         let rngY: number = y + GetRandomReal(0, 1000) - 500.0;
         let eff: effect = AddSpecialEffect('Units\\Demon\\Infernal\\InfernalBirth.mdl', rngX, rngY);
-        let shouldSummon: boolean = true;
-        let ticks: number = 10;
+        let shouldSummon = true;
+        let ticks = 10;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.75, true, () => {
             ticks--;

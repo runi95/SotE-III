@@ -35,7 +35,7 @@ export class Slash extends Spell {
         SetUnitAnimationByIndex(trig, 4);
         SetUnitFlyHeight(trig, 200, 400);
 
-        let ticks: number = 5;
+        let ticks = 5;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.25, true, () => {
             ticks--;

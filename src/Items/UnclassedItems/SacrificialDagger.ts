@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02I');
-const name: string = 'Sacrificial Dagger';
+const name = 'Sacrificial Dagger';
 const labels: ItemLabel[] = [];
-const goldCost: number = 3000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSacrifice.blp';
-const description: string = `A dagger often used by acolytes in sacrificial rituals
+const goldCost = 3000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSacrifice.blp';
+const description = `A dagger often used by acolytes in sacrificial rituals
 
 |cffffcc00Effect:|r Reaching 100 charges permanently upgrades this item
 |cffffcc00Use:|r Increases item charges by 9 and then deals 100 damage to you

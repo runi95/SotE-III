@@ -5,7 +5,7 @@ export class DarkCorruption {
     private readonly abilityId: number = FourCC('A036');
     private readonly summonId: number = FourCC('u001');
     private readonly darkSummoningId: number = FourCC('A04A');
-    private summonCount: number = 0;
+    private summonCount = 0;
     private readonly trig: Trigger = new Trigger();
     private readonly spellCastUtils: SpellCastUtils;
 

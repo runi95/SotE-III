@@ -8,12 +8,13 @@ export class Trigger {
     }
 
     public static evaluateCondition(func: () => boolean): boolean {
-        let answer: boolean = false;
+        let answer = false;
 
         xpcall(
             () => {
                 answer = func();
             },
+            // eslint-disable-next-line
             (err: any) => {
                 this.printError(err);
             },
@@ -22,6 +23,7 @@ export class Trigger {
         return answer;
     }
 
+    // eslint-disable-next-line
     public static printError(err: any): void {
         Log.Fatal(err);
     }

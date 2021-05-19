@@ -4,11 +4,11 @@ import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 import { LifeStone } from '../BaseItems/LifeStone';
 
 const itemId: number = FourCC('I03T');
-const name: string = 'Blooming Flowers';
+const name = 'Blooming Flowers';
 const labels: ItemLabel[] = [ItemLabel.RESTORATION, ItemLabel.MAX_HEALTH];
-const goldCost: number = 3400;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNUltravision.blp';
-const description: string = `They're blooming with life.
+const goldCost = 3400;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNUltravision.blp';
+const description = `They're blooming with life.
 
 |cffffcc00Max health:|r +300
 |cffffcc00Restoration:|r +200%

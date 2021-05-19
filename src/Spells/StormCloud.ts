@@ -31,7 +31,7 @@ export class StormCloud extends Spell {
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = (140 * abilityLevel + 1.5 * intelligence) / 5;
 
-        let ticks: number = 25;
+        let ticks = 25;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.4, true, () => {
             ticks--;

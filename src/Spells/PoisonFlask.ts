@@ -38,12 +38,12 @@ export class PoisonFlask extends Spell {
         grp.destroy();
         RemoveLocation(loc);
 
-        let ticks: number = 10;
+        let ticks = 10;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;
 
-            for (let i: number = 0; i < units.length; i++) {
+            for (let i = 0; i < units.length; i++) {
                 if (UnitHasBuffBJ(units[i], this.chemicalSprayBuff)) {
                     UnitDamageTargetBJ(trig, units[i], 2 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 } else {
@@ -52,7 +52,7 @@ export class PoisonFlask extends Spell {
             }
 
             if (ticks <= 0) {
-                for (let i: number = 0; i < unitEffects.length; i++) {
+                for (let i = 0; i < unitEffects.length; i++) {
                     DestroyEffect(unitEffects[i]);
                 }
 

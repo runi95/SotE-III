@@ -54,18 +54,18 @@ export class RecipeSystem {
     private readonly itemRecipeResultIconFrame: framehandle;
     private readonly itemRecipeResultClickFrame: framehandle;
     private readonly itemRecipeResultDescriptionFrame: framehandle;
-    private animatedFrameIsVisible: boolean = true;
+    private animatedFrameIsVisible = true;
     private selectedItemFrame: framehandle | undefined;
 
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
 
-        for (let i: number = 0; i < items.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             this.itemMap[items[i].itemId] = items[i];
             this.itemRecipeIndexMap[items[i].itemId] = i;
         }
 
-        for (let i: number = 0; i < basicItems.length; i++) {
+        for (let i = 0; i < basicItems.length; i++) {
             this.itemMap[basicItems[i].itemId] = basicItems[i];
         }
 
@@ -90,7 +90,7 @@ export class RecipeSystem {
         BlzFrameSetPoint(sidebarTitle, FRAMEPOINT_TOP, sidebar, FRAMEPOINT_TOP, 0.0, -0.01);
         BlzFrameSetText(sidebarTitle, 'Filters');
 
-        const createFilterIcon: any = (index: number, texture: string, filteredLabels: ItemLabel[]) => {
+        const createFilterIcon: (index: number, texture: string, filteredLabels: ItemLabel[]) => void = (index: number, texture: string, filteredLabels: ItemLabel[]) => {
             const filterIcon: framehandle = BlzCreateFrameByType('BACKDROP', 'filterIcon', sidebar, '', 0);
             const filterClickFrame: framehandle = BlzCreateFrameByType('BUTTON', 'filterClickFrame', filterIcon, '', 0);
             const x: number = 0.01 + 0.03125 * (index % 2);
@@ -108,7 +108,7 @@ export class RecipeSystem {
                     BlzFrameSetEnable(filterClickFrame, true);
 
                     this.localPlayerInterface.filterItems = [];
-                    for (let i: number = 0; i < items.length; i++) {
+                    for (let i = 0; i < items.length; i++) {
                         const hasLabel: boolean = items[i].labels.some((label: ItemLabel) =>
                             filteredLabels.some((filterLabel: ItemLabel) => label === filterLabel),
                         );
@@ -154,7 +154,7 @@ export class RecipeSystem {
         createFilterIcon(4, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-int.blp', [ItemLabel.INTELLIGENCE]);
         createFilterIcon(5, 'UI\\Widgets\\Console\\Human\\infocard-heroattributes-str.blp', [ItemLabel.STRENGTH]);
 
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             const escButtonTrigger: Trigger = new Trigger();
             escButtonTrigger.registerPlayerKeyEvent(Player(i), OSKEY_ESCAPE, 0, true);
             escButtonTrigger.addAction(() => {
@@ -246,19 +246,19 @@ export class RecipeSystem {
         syncTrigger.addAction(() => {
             this.buyItemRecipe(Number(BlzGetTriggerSyncData()));
         });
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             syncTrigger.registerPlayerSyncEvent(Player(i), 'buyItem', false);
         }
 
-        for (let i: number = 1; i < 7; i++) {
+        for (let i = 1; i < 7; i++) {
             this.itemRecipeFrames.push(this.createItemRecipeFrame(i));
         }
 
-        for (let i: number = 1; i < 7; i++) {
+        for (let i = 1; i < 7; i++) {
             this.itemRecipeGreenBorderFrames.push(this.createItemRecipeGreenBorderFrame(i));
         }
 
-        for (let i: number = 0; i < 11 && i < items.length; i++) {
+        for (let i = 0; i < 11 && i < items.length; i++) {
             this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
             this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].recipeCost, i));
         }
@@ -305,7 +305,7 @@ export class RecipeSystem {
     }
 
     private updateSelectedItemFrame(): void {
-        const shouldSelectedItemFrameBeVisible: boolean = !(
+        const shouldSelectedItemFrameBeVisible = !(
             this.localPlayerInterface.selectedItemFrameIndex === undefined ||
             (this.localPlayerInterface.selectedItemFrameIndex as number) < 0 ||
             (this.localPlayerInterface.selectedItemFrameIndex as number) > this.localPlayerInterface.itemWindowSize - 1
@@ -396,9 +396,9 @@ export class RecipeSystem {
             ? this.localPlayerInterface.filterItems.length + 1
             : this.localPlayerInterface.heroRecipeItems.length + items.length;
 
-        for (let i: number = 0; i < this.itemFrames.length; i++) {
+        for (let i = 0; i < this.itemFrames.length; i++) {
             const indexedItemWindowMin: number = this.localPlayerInterface.itemWindowMin + i;
-            const isOutsideItemArray: boolean = !(indexedItemWindowMin < itemArrayLength);
+            const isOutsideItemArray = !(indexedItemWindowMin < itemArrayLength);
             const texture: string = this.getItemFrameTextureString(isOutsideItemArray, indexedItemWindowMin);
             const text: string = this.getItemFrameTextString(isOutsideItemArray, indexedItemWindowMin);
 
@@ -445,10 +445,10 @@ export class RecipeSystem {
     private findRecipeUses(item: Item): number[] {
         const result: number[] = [];
 
-        for (let i: number = 0; i < items.length; i++) {
-            let hasItem: boolean = false;
+        for (let i = 0; i < items.length; i++) {
+            let hasItem = false;
 
-            for (let j: number = 0; !hasItem && j < items[i].recipe.length; j++) {
+            for (let j = 0; !hasItem && j < items[i].recipe.length; j++) {
                 if (items[i].recipe[j].itemId === item.itemId) {
                     hasItem = true;
                 }
@@ -498,7 +498,7 @@ export class RecipeSystem {
     }
 
     private findSlotItem(itemSlotArray: ItemInSlot[], itemId: number): ItemInSlot | undefined {
-        for (let i: number = 0; i < itemSlotArray.length; i++) {
+        for (let i = 0; i < itemSlotArray.length; i++) {
             if (!itemSlotArray[i].includedInRecipe && itemSlotArray[i].itemId === itemId) {
                 return itemSlotArray[i];
             }
@@ -556,16 +556,16 @@ export class RecipeSystem {
     private selectItemFromHandle(item: Item | undefined): void {
         BlzFrameSetText(this.itemRecipeResultDescriptionFrame, item ? item.description : '');
         if (item instanceof ItemRecipe) {
-            let hasAllItems: boolean = true;
+            let hasAllItems = true;
             const itemsInSlots: { itemId: number; includedInRecipe: boolean }[] = [];
-            for (let i: number = 0; i < this.localPlayerInterface.heroItems.length; i++) {
+            for (let i = 0; i < this.localPlayerInterface.heroItems.length; i++) {
                 itemsInSlots.push({
                     itemId: this.localPlayerInterface.heroItems[i],
                     includedInRecipe: false,
                 });
             }
 
-            for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
+            for (let i = 0; i < this.itemRecipeFrames.length; i++) {
                 const foundSlotItem: ItemInSlot | undefined =
                     item && item.recipe.length > i ? this.findSlotItem(itemsInSlots, item.recipe[i].itemId) : undefined;
                 if (foundSlotItem) {
@@ -593,7 +593,7 @@ export class RecipeSystem {
             BlzFrameSetEnable(this.itemRecipeResultUpgradeButton, hasAllItems && hasEnoughGold);
             BlzFrameSetTexture(this.itemRecipeResultIconFrame, item.iconPath, 0, true);
         } else {
-            for (let i: number = 0; i < this.itemRecipeFrames.length; i++) {
+            for (let i = 0; i < this.itemRecipeFrames.length; i++) {
                 BlzFrameSetTexture(this.itemRecipeGreenBorderFrames[i], 'war3mapImported\\BTNGreyedItem.blp', 0, true);
                 BlzFrameSetVisible(this.itemRecipeGreenBorderFrames[i], true);
                 BlzFrameSetTexture(this.itemRecipeFrames[i], 'war3mapImported\\BTNNoItem.blp', 0, true);
@@ -673,7 +673,7 @@ export class RecipeSystem {
     }
 
     private createMainButtonTriggers(): void {
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerSpawnRegion.length > i) {
                 const index: number = i;
 
@@ -720,15 +720,15 @@ export class RecipeSystem {
         }
 
         const itemsInSlots: ItemInSlot[] = [];
-        for (let i: number = 1; i < 7; i++) {
+        for (let i = 1; i < 7; i++) {
             itemsInSlots.push({
                 itemId: GetItemTypeId(UnitItemInSlotBJ(this.gameGlobals.PlayerHero[triggerPlayerId], i)),
                 includedInRecipe: false,
             });
         }
 
-        let hasAllItems: boolean = true;
-        for (let i: number = 0; i < selectedItem.recipe.length; i++) {
+        let hasAllItems = true;
+        for (let i = 0; i < selectedItem.recipe.length; i++) {
             const foundSlotItem: ItemInSlot | undefined = this.findSlotItem(itemsInSlots, selectedItem.recipe[i].itemId);
 
             if (foundSlotItem) {
@@ -743,7 +743,7 @@ export class RecipeSystem {
         if (hasAllItems && playerCurrentGold >= upgradeGoldCost) {
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD, playerCurrentGold - upgradeGoldCost);
 
-            for (let i: number = 0; i < selectedItem.recipe.length; i++) {
+            for (let i = 0; i < selectedItem.recipe.length; i++) {
                 RemoveItem(GetItemOfTypeFromUnitBJ(this.gameGlobals.PlayerHero[triggerPlayerId], selectedItem.recipe[i].itemId));
             }
 

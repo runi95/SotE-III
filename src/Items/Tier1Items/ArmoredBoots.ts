@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { IronShield } from '../BaseItems/IronShield';
 
 const itemId: number = FourCC('I01C');
-const name: string = 'Armored Boots';
+const name = 'Armored Boots';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 1160;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
-const description: string = `Increases movement rate while keeping your feet safe.
+const goldCost = 1160;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
+const description = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +50
 |cffffcc00Block:|r +20

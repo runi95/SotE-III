@@ -5,11 +5,11 @@ import { DevouringFangs } from '../Tier2Items/DevouringFangs';
 import { PurpleSoulstone } from '../UnclassedItems/PurpleSoulstone';
 
 const itemId: number = FourCC('I03A');
-const name: string = 'Advanced Creature Claws';
+const name = 'Advanced Creature Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.LIFESTEAL];
-const goldCost: number = 23000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedCreatureAttack.blp';
-const description: string = `Make sure you're holding these things the right way.
+const goldCost = 23000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedCreatureAttack.blp';
+const description = `Make sure you're holding these things the right way.
 
 |cffffcc00Agility:|r +200
 |cffffcc00Lifesteal:|r +200

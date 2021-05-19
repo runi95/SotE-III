@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01P');
-const name: string = 'Goblin Night Scope';
+const name = 'Goblin Night Scope';
 const labels: ItemLabel[] = [];
-const goldCost: number = 200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNTelescope.blp';
-const description: string = `An incredible scope with built in night vision.
+const goldCost = 200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNTelescope.blp';
+const description = `An incredible scope with built in night vision.
 
 |cffffcc00Passive:|r Provides an increased line of sight radius at night
 

@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { MoonArmor } from '../BaseItems/MoonArmor';
 
 const itemId: number = FourCC('I04Y');
-const name: string = 'Scaled Boots';
+const name = 'Scaled Boots';
 const labels: ItemLabel[] = [ItemLabel.RESISTANCE];
-const goldCost: number = 1160;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNScaledBoots.dds';
-const description: string = `Increases movement rate while keeping your feet safe.
+const goldCost = 1160;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScaledBoots.dds';
+const description = `Increases movement rate while keeping your feet safe.
 
 |cffffcc00Movement Speed:|r +50
 |cffffcc00Resistance:|r +12

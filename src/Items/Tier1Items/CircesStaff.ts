@@ -3,11 +3,11 @@ import { Scepter } from '../BaseItems/Scepter';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I013');
-const name: string = 'Caduceus';
+const name = 'Caduceus';
 const labels: ItemLabel[] = [];
-const goldCost: number = 1600;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
-const description: string = `An ancient staff forged by the elves.
+const goldCost = 1600;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
+const description = `An ancient staff forged by the elves.
 
 |cffffcc00Use:|r Turns the target into a harmless critter for a short duration
 |cffffcc00Mana Cost:|r 300

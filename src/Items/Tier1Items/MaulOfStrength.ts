@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 
 const itemId: number = FourCC('I023');
-const name: string = 'Maul of Strength';
+const name = 'Maul of Strength';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.MAX_HEALTH];
-const goldCost: number = 1760;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHammer.blp';
-const description: string = `A heavy maul only wielded by the strongest of heroes.
+const goldCost = 1760;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHammer.blp';
+const description = `A heavy maul only wielded by the strongest of heroes.
 
 |cffffcc00Strength:|r +16
 |cffffcc00Max health:|r +200

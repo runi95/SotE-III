@@ -1,6 +1,5 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { GameGlobals } from '../Game/GameGlobals';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Envenom implements DamageEvent {

@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00A');
-const name: string = 'Green Soulstone';
+const name = 'Green Soulstone';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.MAX_HEALTH];
-const goldCost: number = 2000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGem.blp';
-const description: string = `A soulstone can be powerful in the right hands, maybe you could find a proper container for it.
+const goldCost = 2000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGem.blp';
+const description = `A soulstone can be powerful in the right hands, maybe you could find a proper container for it.
 
 |cffffcc00Strength:|r +10
 |cffffcc00Max health:|r +200

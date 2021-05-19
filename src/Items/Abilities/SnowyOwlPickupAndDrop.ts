@@ -35,7 +35,7 @@ export class SnowyOwlPickupAndDrop extends ItemPickupAndDrop {
             bj_UNIT_FACING,
         );
         IssueTargetOrderBJ(summon, 'move', this.gameGlobals.PlayerHero[playerId]);
-        const maxDistance: number = 600;
+        const maxDistance = 600;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(this.gameGlobals.PlayerHero[playerId]);
@@ -49,7 +49,7 @@ export class SnowyOwlPickupAndDrop extends ItemPickupAndDrop {
 
             if (!this.gameGlobals.SnowyOwl[playerId]) {
                 RemoveUnit(summon);
-                for (let i: number = 0; i < 6; i++) {
+                for (let i = 0; i < 6; i++) {
                     const itemInSlot: item = UnitItemInSlotBJ(summon, i);
                     if (itemInSlot) {
                         SetItemCharges(
@@ -65,8 +65,8 @@ export class SnowyOwlPickupAndDrop extends ItemPickupAndDrop {
     }
 
     protected drop(): void {
-        let playerHasOwl: boolean = false;
-        for (let i: number = 0; i < 6; i++) {
+        let playerHasOwl = false;
+        for (let i = 0; i < 6; i++) {
             const itemInSlot: item = UnitItemInSlot(GetTriggerUnit(), i);
             if (GetItemTypeId(itemInSlot) === this.itemTypeId && itemInSlot !== GetManipulatedItem()) {
                 playerHasOwl = true;

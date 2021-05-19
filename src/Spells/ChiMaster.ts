@@ -3,8 +3,8 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 
 export class ChiMaster {
-    private abilityLevel: number = 0;
-    private ticks: number = 0;
+    private abilityLevel = 0;
+    private ticks = 0;
     private readonly dummyAbilityId: number = FourCC('A03P');
     private readonly unitTypeId: number = FourCC('N01Y');
     private readonly timerUtils: TimerUtils;

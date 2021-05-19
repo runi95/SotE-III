@@ -35,7 +35,7 @@ export class ClockworkPenguinPickupAndDrop extends ItemPickupAndDrop {
             bj_UNIT_FACING,
         );
         IssueTargetOrderBJ(summon, 'move', this.gameGlobals.PlayerHero[playerId]);
-        const maxDistance: number = 600;
+        const maxDistance = 600;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(this.gameGlobals.PlayerHero[playerId]);
@@ -49,7 +49,7 @@ export class ClockworkPenguinPickupAndDrop extends ItemPickupAndDrop {
 
             if (!this.gameGlobals.ClockworkPenguin[playerId]) {
                 RemoveUnit(summon);
-                for (let i: number = 0; i < 6; i++) {
+                for (let i = 0; i < 6; i++) {
                     const itemInSlot: item = UnitItemInSlotBJ(summon, i);
                     if (itemInSlot) {
                         SetItemCharges(
@@ -65,8 +65,8 @@ export class ClockworkPenguinPickupAndDrop extends ItemPickupAndDrop {
     }
 
     protected drop(): void {
-        let playerHasPenguin: boolean = false;
-        for (let i: number = 0; i < 6; i++) {
+        let playerHasPenguin = false;
+        for (let i = 0; i < 6; i++) {
             const itemInSlot: item = UnitItemInSlot(GetTriggerUnit(), i);
             if (GetItemTypeId(itemInSlot) === this.itemTypeId && itemInSlot !== GetManipulatedItem()) {
                 playerHasPenguin = true;

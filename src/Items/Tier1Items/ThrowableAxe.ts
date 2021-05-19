@@ -5,11 +5,11 @@ import { ItemLabel } from '../ItemLabel';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I01E');
-const name: string = 'Throwable Axe';
+const name = 'Throwable Axe';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 1200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpThree.blp';
-const description: string = `You can't quite make out what the runes say.
+const goldCost = 1200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrcMeleeUpThree.blp';
+const description = `You can't quite make out what the runes say.
 
 |cffffcc00Attack damage:|r +19
 |cffffcc00Use:|r Throw an axe at the target unit dealing 300 initial damage, 20 damage per second afterwards and drastically slows down movement speed

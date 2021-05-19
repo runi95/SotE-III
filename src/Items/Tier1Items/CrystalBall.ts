@@ -5,11 +5,11 @@ import { SobiMask } from '../BaseItems/SobiMask';
 import { ScrollOfWitchcraft } from '../BaseItems/ScrollOfWitchcraft';
 
 const itemId: number = FourCC('I00V');
-const name: string = 'Crystal Ball';
+const name = 'Crystal Ball';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MANA_REGEN, ItemLabel.COOLDOWN_REDUCTION];
-const goldCost: number = 2200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBall.blp';
-const description: string = `Can you see the future in this thing?
+const goldCost = 2200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBall.blp';
+const description = `Can you see the future in this thing?
 
 |cffffcc00Intelligence:|r +10
 |cffffcc00Mana regen:|r +10

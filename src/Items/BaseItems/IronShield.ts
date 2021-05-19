@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I005');
-const name: string = 'Iron Shield';
+const name = 'Iron Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK];
-const goldCost: number = 330;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpOne.blp';
-const description: string = `A weak shield capable of blocking incoming physical damage.
+const goldCost = 330;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHumanArmorUpOne.blp';
+const description = `A weak shield capable of blocking incoming physical damage.
 
 |cffffcc00Block:|r +10
 

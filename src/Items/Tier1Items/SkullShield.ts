@@ -4,11 +4,11 @@ import { AmuletOfSpellReflection } from '../BaseItems/AmuletOfSpellReflection';
 import { IronwoodBranch } from '../BaseItems/IronwoodBranch';
 
 const itemId: number = FourCC('I03X');
-const name: string = 'Skull Shield';
+const name = 'Skull Shield';
 const labels: ItemLabel[] = [ItemLabel.THORNS, ItemLabel.REFLECT];
-const goldCost: number = 3875;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGrimWard.blp';
-const description: string = `Can reflect anything back to attackers.
+const goldCost = 3875;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGrimWard.blp';
+const description = `Can reflect anything back to attackers.
 
 |cffffcc00Reflect:|r +25
 |cffffcc00Thorns:|r +25

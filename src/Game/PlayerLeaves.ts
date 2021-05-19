@@ -9,7 +9,7 @@ export class PlayerLeaves {
         this.playerVictoryUtils = playerVictoryUtil;
 
         this.trig.addAction(() => this.action());
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             this.trig.registerPlayerEventLeave(Player(i));
         }
     }

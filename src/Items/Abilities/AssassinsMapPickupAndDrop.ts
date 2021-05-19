@@ -10,7 +10,7 @@ export class AssassinsMapPickupAndDrop extends ItemPickupAndDrop {
     protected pickup(): void {
         const owningPlayer: player = GetOwningPlayer(GetTriggerUnit());
 
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (IsPlayerEnemy(Player(i), owningPlayer)) {
                 SetPlayerAllianceStateVisionBJ(Player(i), owningPlayer, true);
             }
@@ -20,7 +20,7 @@ export class AssassinsMapPickupAndDrop extends ItemPickupAndDrop {
     protected drop(): void {
         const owningPlayer: player = GetOwningPlayer(GetTriggerUnit());
 
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (IsPlayerEnemy(Player(i), owningPlayer)) {
                 SetPlayerAllianceStateVisionBJ(Player(i), owningPlayer, false);
             }

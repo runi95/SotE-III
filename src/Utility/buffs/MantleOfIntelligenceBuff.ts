@@ -8,8 +8,8 @@ export class MantleOfIntelligenceBuff extends Buff {
     private temporaryResistanceReductionAmount: number;
 
     constructor(playerId: number, gameGlobals: GameGlobals) {
-        const tickDuration: number = 1;
-        const initialDuration: number = 5;
+        const tickDuration = 1;
+        const initialDuration = 5;
         super(tickDuration, initialDuration);
 
         this.temporaryResistanceReductionAmount = 0;
@@ -22,12 +22,14 @@ export class MantleOfIntelligenceBuff extends Buff {
         this.gameGlobals.PlayerSpellBlock[this.playerId] -= this.temporaryResistanceReductionAmount;
     }
 
+    // eslint-disable-next-line
     public tick(): void {}
 
     public getBuffType(): BuffTypes {
         return BuffTypes.MOON_BLADE;
     }
 
+    // eslint-disable-next-line
     public stackBuff(_: this): void {
         this.setDuration(5);
     }

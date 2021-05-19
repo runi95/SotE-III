@@ -5,14 +5,14 @@ import { Node } from './Node';
 export class TimerUtils {
 
     // Settings
-    private QUANTITY: number = 256;
-    private MAX_SIZE: number = 8190;
+    private QUANTITY = 256;
+    private MAX_SIZE = 8190;
 
     // Globals
     private timerQueue: LinkedList<Timer> = new LinkedList<Timer>();
 
     constructor() {
-        for (let i: number = 0; i < this.QUANTITY; i++) {
+        for (let i = 0; i < this.QUANTITY; i++) {
             this.timerQueue.add(new Timer(CreateTimer()));
         }
     }

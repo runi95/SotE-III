@@ -3,11 +3,11 @@ import { ItemRecipe } from '../ItemRecipe';
 import { ThoriumSpear } from '../Tier2Items/ThoriumSpear';
 
 const itemId: number = FourCC('I03P');
-const name: string = 'Arcanite Spear';
+const name = 'Arcanite Spear';
 const labels: ItemLabel[] = [ItemLabel.PIERCING, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 35800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNArcaniteRanged.blp';
-const description: string = `Pierces through the thickest of defenses.
+const goldCost = 35800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNArcaniteRanged.blp';
+const description = `Pierces through the thickest of defenses.
 
 |cffffcc00Attack damage:|r +200
 |cffffcc00Piercing:|r +600

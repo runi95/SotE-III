@@ -1,3 +1,4 @@
+/* eslint-disable */
 const settings = require('./settings.json');
 const fs = require('fs-extra');
 const typescriptToLua = require('typescript-to-lua');

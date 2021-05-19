@@ -5,38 +5,38 @@ export class DamageEngineGlobals {
      */
     public DamageEventTrigger: trigger | undefined = undefined;
 
-    public DamageEventOverride: boolean = false;
-    public NextDamageType: number = 0;
-    public DamageEventType: number = 0;
-    public DamageTypeCode: number = 0;
-    public IsDamageCode: boolean = false;
-    public IsDamageSpell: boolean = false;
-    public IsDamageMelee: boolean = false;
-    public IsDamageRanged: boolean = false;
+    public DamageEventOverride = false;
+    public NextDamageType = 0;
+    public DamageEventType = 0;
+    public DamageTypeCode = 0;
+    public IsDamageCode = false;
+    public IsDamageSpell = false;
+    public IsDamageMelee = false;
+    public IsDamageRanged = false;
 
     public DamageEventSource: unit | undefined = undefined;
     public DamageEventTarget: unit | undefined = undefined;
 
-    public DamageEventAOE: number = 0;
+    public DamageEventAOE = 0;
     public DamageEventAOEGroup: group | undefined = undefined;
     public AOEDamageSource: unit | undefined = undefined;
-    public DamageEventLevel: number = 0;
+    public DamageEventLevel = 0;
     public EnhancedDamageTarget: unit | undefined = undefined;
 
-    public PiercingOverflowAmount: number = 0;
-    public DamageEventAmount: number = 0;
-    public DamageEventPrevAmt: number = 0;
-    public LethalDamageHP: number = 0;
-    public DamageEventArmorPierced: number = 0;
-    public DamageScalingWC3: number = 0;
-    public DamageScalingUser: number = 0;
+    public PiercingOverflowAmount = 0;
+    public DamageEventAmount = 0;
+    public DamageEventPrevAmt = 0;
+    public LethalDamageHP = 0;
+    public DamageEventArmorPierced = 0;
+    public DamageScalingWC3 = 0;
+    public DamageScalingUser = 0;
 
-    public DamageEventAttackT: number = 0;
-    public DamageEventDamageT: number = 0;
-    public DamageEventWeaponT: number = 0;
-    public DamageEventArmorT: number = 0;
-    public DamageEventDefenseT: number = 0;
+    public DamageEventAttackT = 0;
+    public DamageEventDamageT = 0;
+    public DamageEventWeaponT = 0;
+    public DamageEventArmorT = 0;
+    public DamageEventDefenseT = 0;
 
     // Custom SotE variables
-    public ExecuteDamage: number = 0;
+    public ExecuteDamage = 0;
 }

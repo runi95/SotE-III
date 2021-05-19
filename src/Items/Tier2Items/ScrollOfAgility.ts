@@ -3,11 +3,11 @@ import { AgileSlippers } from '../Tier1Items/AgileSlippers';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01H');
-const name: string = 'Scroll of Agility';
+const name = 'Scroll of Agility';
 const labels: ItemLabel[] = [];
-const goldCost: number = 1005;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfHaste.blp';
-const description: string = `A mystical scroll written in an ancient language.
+const goldCost = 1005;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfHaste.blp';
+const description = `A mystical scroll written in an ancient language.
 
 |cffffcc00Movement Speed:|r +80
 |cffffcc00Use:|r Increases movement speed by 50%

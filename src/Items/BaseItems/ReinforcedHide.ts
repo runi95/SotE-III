@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I006');
-const name: string = 'Reinforced Hide';
+const name = 'Reinforced Hide';
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
-const goldCost: number = 360;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNReinforcedHides.blp';
-const description: string = `A protective layer of regenerative hide.
+const goldCost = 360;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNReinforcedHides.blp';
+const description = `A protective layer of regenerative hide.
 
 |cffffcc00Health regen:|r +8
 

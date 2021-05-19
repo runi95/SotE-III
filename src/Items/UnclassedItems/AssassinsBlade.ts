@@ -2,11 +2,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Item } from '../Item';
 
 const itemId: number = FourCC('I02M');
-const name: string = `Assassin's Blade`;
+const name = `Assassin's Blade`;
 const labels: ItemLabel[] = [];
-const goldCost: number = 500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDaggerOfEscape.blp';
-const description: string = `Pierces through the thickest of defenses.
+const goldCost = 500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNDaggerOfEscape.blp';
+const description = `Pierces through the thickest of defenses.
 
 |cffffcc00Attack damage:|r +200
 |cffffcc00Piercing:|r +600

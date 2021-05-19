@@ -32,7 +32,7 @@ export class TheAegis implements DamageEvent {
         IssueTargetOrder(dummy, 'lightningshield', trig);
         UnitApplyTimedLifeBJ(3, this.timedLifeBuffId, dummy);
 
-        let ticks: number = 100;
+        let ticks = 100;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;

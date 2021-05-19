@@ -3,11 +3,11 @@ import { Claws } from '../BaseItems/Claws';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I024');
-const name: string = 'Creature Claws';
+const name = 'Creature Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY];
-const goldCost: number = 2700;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCreatureAttack.blp';
-const description: string = `Some very large claws.
+const goldCost = 2700;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNCreatureAttack.blp';
+const description = `Some very large claws.
 
 |cffffcc00Agility:|r +30
 

@@ -4,7 +4,7 @@ import { RandomNumberGenerator } from '../../Utility/RandomNumberGenerator';
 
 export class DruidOfTheClaw extends Boss {
     private readonly huntressUnitId: number = FourCC('e002');
-    private aliveHuntressCounter: number = 0;
+    private aliveHuntressCounter = 0;
     protected readonly bossId: number = FourCC('n015');
     protected readonly x: number = -578.0;
     protected readonly y: number = 14020.0;

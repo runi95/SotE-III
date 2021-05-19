@@ -5,11 +5,11 @@ import { VampireFangs } from '../Tier1Items/VampireFangs';
 import { CreatureClaws } from '../Tier1Items/CreatureClaws';
 
 const itemId: number = FourCC('I043');
-const name: string = 'Devouring Fangs';
+const name = 'Devouring Fangs';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.LIFESTEAL];
-const goldCost: number = 11500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRedDragonDevour.blp';
-const description: string = `No need to chew.
+const goldCost = 11500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRedDragonDevour.blp';
+const description = `No need to chew.
 
 |cffffcc00Agility:|r +100
 |cffffcc00Lifesteal:|r +100

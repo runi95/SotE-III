@@ -32,7 +32,7 @@ export class ScrollOfTownPortalUse extends ItemUse {
         BlzPauseUnitEx(trig, true);
         UnitAddAbility(trig, this.dummyAbilityId);
 
-        let ticks: number = 100;
+        let ticks = 100;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.1, true, () => {
             ticks--;

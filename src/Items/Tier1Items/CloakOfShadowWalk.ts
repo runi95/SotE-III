@@ -4,11 +4,11 @@ import { CloakOfShadows } from '../BaseItems/CloakOfShadows';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01J');
-const name: string = 'Cloak of Shadow Walk';
+const name = 'Cloak of Shadow Walk';
 const labels: ItemLabel[] = [];
-const goldCost: number = 930;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAcolyteCloak.blp';
-const description: string = `A cloak that lets you blend in with the shadows while moving.
+const goldCost = 930;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNAcolyteCloak.blp';
+const description = `A cloak that lets you blend in with the shadows while moving.
 
 |cffffcc00Movement Speed:|r +80
 |cffffcc00Effect:|r Turns the wearer invisible if they're standing perfectly still

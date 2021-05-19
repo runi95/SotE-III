@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I010');
-const name: string = 'Scepter';
+const name = 'Scepter';
 const labels: ItemLabel[] = [];
-const goldCost: number = 400;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
-const description: string = `A magical scepter showing high status and wealth.
+const goldCost = 400;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
+const description = `A magical scepter showing high status and wealth.
 
 |cffffcc00Use:|r Spawn 3 Footmen to fight for you
 |cffffcc00Mana Cost:|r 50

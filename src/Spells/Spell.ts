@@ -14,5 +14,6 @@ export abstract class Spell {
         return GetSpellAbilityId() === this.abilityId;
     }
 
+    // eslint-disable-next-line
     protected action(): void {}
 }

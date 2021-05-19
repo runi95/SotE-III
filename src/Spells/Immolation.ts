@@ -22,7 +22,7 @@ export class Immolation extends Spell {
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 50 * abilityLevel + 1.5 * intelligence;
 
-        let ticks: number = 20;
+        let ticks = 20;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.5, true, () => {
             ticks--;

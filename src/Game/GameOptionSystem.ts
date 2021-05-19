@@ -8,10 +8,10 @@ class RadioButton {
     private readonly hiddenButton: framehandle;
     private readonly border: framehandle;
     private readonly check: framehandle;
-    private isChecked: boolean = false;
-    private size: number = 0.015;
+    private isChecked = false;
+    private size = 0.015;
 
-    constructor(parent: framehandle, isChecked: boolean = false, size: number = 0.015) {
+    constructor(parent: framehandle, isChecked = false, size = 0.015) {
         this.isChecked = isChecked;
         this.size = size;
         this.hiddenButton = BlzCreateFrameByType('BUTTON', 'radioButtonHiddenButton', parent, 'EscMenuControlBackdropTemplate', 0);
@@ -71,9 +71,9 @@ class RadioButton {
 class FakeCheckbox {
     private readonly border: framehandle;
     private readonly checkmark: framehandle;
-    private isChecked: boolean = true;
+    private isChecked = true;
 
-    constructor(parent: framehandle, size: number = 0.02) {
+    constructor(parent: framehandle, size = 0.02) {
         this.border = BlzCreateFrameByType('BACKDROP', 'checkboxBorder', parent, 'ButtonBackdropTemplate', 0);
         this.checkmark = BlzCreateFrameByType('BACKDROP', 'checkboxCheckmark', this.border, 'ButtonBackdropTemplate', 0);
 
@@ -117,15 +117,15 @@ export class GameOptionSystem {
         this.recipeSystem = recipeSystem;
         this.randomNumberGenerator = randomNumberGenerator;
 
-        let teamOnePlayerCount: number = 0;
-        for (let i: number = 0; i < 3; i++) {
+        let teamOnePlayerCount = 0;
+        for (let i = 0; i < 3; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 teamOnePlayerCount++;
             }
         }
 
-        let teamTwoPlayerCount: number = 0;
-        for (let i: number = 3; i < 6; i++) {
+        let teamTwoPlayerCount = 0;
+        for (let i = 3; i < 6; i++) {
             if (GetPlayerSlotState(Player(i)) === PLAYER_SLOT_STATE_PLAYING) {
                 teamTwoPlayerCount++;
             }
@@ -287,19 +287,19 @@ export class GameOptionSystem {
             BlzFrameSetEnable(threeVersusThreeText, false);
         }
 
-        let isFogOfWarEnabled: boolean = true;
+        let isFogOfWarEnabled = true;
         this.createCheckboxTrigger(fogOfWarCheckbox, (state: boolean) => {
             isFogOfWarEnabled = !state;
             fakeMenuFogOfWarCheckbox.setChecked(state);
         });
 
-        let isAllRandomEnabled: boolean = false;
+        let isAllRandomEnabled = false;
         this.createCheckboxTrigger(allRandomCheckbox, (state: boolean) => {
             isAllRandomEnabled = state;
             fakeMenuAllRandomCheckbox.setChecked(state);
         });
 
-        let isTeamsEnabled: boolean = !disableTeams;
+        let isTeamsEnabled = !disableTeams;
         threeVersusThreeRadioButton.setClickEvent(() => {
             isTeamsEnabled = true;
             noTeamsRadioButton.setChecked(false);
@@ -314,13 +314,13 @@ export class GameOptionSystem {
             BlzFrameSetText(fakeMenuTeamsText, 'Teams: None');
         });
 
-        let isSuddenDeathEnabled: boolean = true;
+        let isSuddenDeathEnabled = true;
         this.createCheckboxTrigger(suddenDeathCheckbox, (state: boolean) => {
             isSuddenDeathEnabled = !state;
             fakeMenuSuddenDeathCheckbox.setChecked(state);
         });
 
-        let lives: number = 10;
+        let lives = 10;
         this.createSliderTrigger(livesSlider, (value: number) => {
             lives = Math.max(Math.ceil(100 * value), 1);
             BlzFrameSetText(livesCurrentValueText, lives.toString());
@@ -328,7 +328,7 @@ export class GameOptionSystem {
         });
 
         const startButtonTrigger: Trigger = new Trigger();
-        let startButtonClicked: boolean = false;
+        let startButtonClicked = false;
         startButtonTrigger.addAction(() => {
             if (startButtonClicked) {
                 return;
@@ -343,11 +343,11 @@ export class GameOptionSystem {
             this.gameGlobals.GameIsSuddenDeathEnabled = isSuddenDeathEnabled;
             this.gameGlobals.GameStartingLife = lives;
 
-            const game: Game = new Game(this.gameGlobals, this.recipeSystem, this.randomNumberGenerator);
+            new Game(this.gameGlobals, this.recipeSystem, this.randomNumberGenerator);
         });
         startButtonTrigger.registerFrameEvent(startButton, FRAMEEVENT_CONTROL_CLICK);
 
-        let showHostMenu: boolean = false;
+        let showHostMenu = false;
 
         if (GetLocalPlayer() === Player(0)) {
             showHostMenu = true;
@@ -371,7 +371,7 @@ export class GameOptionSystem {
         syncTrig.addAction(() => {
             event(Number(BlzGetTriggerSyncData()));
         });
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             syncTrig.registerPlayerSyncEvent(Player(i), 'livesupdate', false);
         }
 

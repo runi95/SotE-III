@@ -34,7 +34,7 @@ export class GoblinBombShip extends Spell {
         IssuePointOrder(summon, 'move', GetLocationX(loc) + 300 * CosBJ(angle), GetLocationY(loc) + 300 * SinBJ(angle));
         UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, summon);
 
-        let ticks: number = 15;
+        let ticks = 15;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.10, true, () => {
             ticks--;

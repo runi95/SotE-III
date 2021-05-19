@@ -36,14 +36,14 @@ export class ArenaUtils {
 
     private action(): void {
         const alivePlayers: number[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerHero[i] !== undefined && UnitAlive(this.gameGlobals.PlayerHero[i])) {
                 alivePlayers.push(i);
             }
         }
 
-        let allAlivePlayersAreAllies: boolean = true;
-        for (let i: number = 0; i < alivePlayers.length; i++) {
+        let allAlivePlayersAreAllies = true;
+        for (let i = 0; i < alivePlayers.length; i++) {
             if (
                 !alivePlayers.every(
                     (alivePlayer) =>
@@ -61,7 +61,7 @@ export class ArenaUtils {
             SetCameraBoundsToRect(GetCameraBoundsMapRect());
             ModifyGateBJ(bj_GATEOPERATION_OPEN, this.arenaGate);
 
-            for (let i: number = 0; i < alivePlayers.length; i++) {
+            for (let i = 0; i < alivePlayers.length; i++) {
                 DisplayTextToForce(
                     GetPlayersAll(),
                     // tslint:disable-next-line:max-line-length
@@ -69,7 +69,7 @@ export class ArenaUtils {
                 );
             }
 
-            for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+            for (let i = 0; i < bj_MAX_PLAYERS; i++) {
                 if (
                     this.gameGlobals.PlayerLives[i] !== undefined &&
                     this.gameGlobals.PlayerLives[i] > 0 &&
@@ -96,7 +96,7 @@ export class ArenaUtils {
         PlaySoundBJ(this.gameGlobals.ArenaStartedSound);
 
         // Respawn all dead heroes
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (
                 this.gameGlobals.PlayerHero[i] !== undefined &&
                 !UnitAlive(this.gameGlobals.PlayerHero[i]) &&
@@ -116,7 +116,7 @@ export class ArenaUtils {
 
         // Make pause, make invulnerable, remove all buffs and heal heroes
         const teleportEffects: effect[] = [];
-        for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
             if (this.gameGlobals.PlayerHero[i] !== undefined && this.gameGlobals.PlayerLives[i] > 0) {
                 PauseUnit(this.gameGlobals.PlayerHero[i], true);
                 SetUnitInvulnerable(this.gameGlobals.PlayerHero[i], true);
@@ -133,17 +133,17 @@ export class ArenaUtils {
             }
         }
 
-        let ticks: number = 10;
+        let ticks = 10;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             ticks--;
 
             if (ticks === 7) {
-                for (let i: number = 0; i < teleportEffects.length; i++) {
+                for (let i = 0; i < teleportEffects.length; i++) {
                     DestroyEffect(teleportEffects[i]);
                 }
 
-                for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+                for (let i = 0; i < bj_MAX_PLAYERS; i++) {
                     if (this.gameGlobals.PlayerHero[i] !== undefined && this.gameGlobals.PlayerLives[i] > 0) {
                         const x: number = this.randomNumberGenerator.random(
                             GetRectMinX(this.gameGlobals.TheArenaRegion),
@@ -165,7 +165,7 @@ export class ArenaUtils {
 
             if (ticks < 6 && ticks > 0) {
                 PlaySoundBJ(this.gameGlobals.ArenaCountdownSound);
-                for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+                for (let i = 0; i < bj_MAX_PLAYERS; i++) {
                     if (this.gameGlobals.PlayerHero[i] !== undefined && this.gameGlobals.PlayerLives[i] > 0) {
                         const tag: texttag = CreateTextTag();
                         SetTextTagText(tag, ticks.toString(), 0.048);
@@ -183,7 +183,7 @@ export class ArenaUtils {
 
             if (ticks <= 0) {
                 PlaySoundBJ(this.gameGlobals.ArenaFightSound);
-                for (let i: number = 0; i < bj_MAX_PLAYERS; i++) {
+                for (let i = 0; i < bj_MAX_PLAYERS; i++) {
                     if (this.gameGlobals.PlayerHero[i] !== undefined && this.gameGlobals.PlayerLives[i] > 0) {
                         PauseUnit(this.gameGlobals.PlayerHero[i], false);
                         SetUnitInvulnerable(this.gameGlobals.PlayerHero[i], false);

@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { StuddedLeatherArmor } from '../BaseItems/StuddedLeatherArmor';
 
 const itemId: number = FourCC('I028');
-const name: string = 'Balanced Shield';
+const name = 'Balanced Shield';
 const labels: ItemLabel[] = [ItemLabel.BLOCK, ItemLabel.RESISTANCE];
-const goldCost: number = 994;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDefendStop.blp';
-const description: string = `No matter how you hold this shield it stays perfectly balanced.
+const goldCost = 994;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNDefendStop.blp';
+const description = `No matter how you hold this shield it stays perfectly balanced.
 
 |cffffcc00Block:|r +18
 |cffffcc00Max health:|r +100

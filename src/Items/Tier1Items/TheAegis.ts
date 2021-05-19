@@ -4,11 +4,11 @@ import { GoblinBattery } from '../BaseItems/GoblinBattery';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I014');
-const name: string = 'The Aegis';
+const name = 'The Aegis';
 const labels: ItemLabel[] = [];
-const goldCost: number = 1985;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNLightningShield.blp';
-const description: string = `A shield said to be forged by gods.
+const goldCost = 1985;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNLightningShield.blp';
+const description = `A shield said to be forged by gods.
 
 |cffffcc00Effect (1):|r Increases charges by +1 each second
 |cffffcc00Effect (2):|r Taking damage with 100 charges resets the charges and forms a shield of electricity around the wearer, dealing 350 damage per second to surrounding units for 20 seconds

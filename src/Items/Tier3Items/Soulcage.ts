@@ -6,11 +6,11 @@ import { PurpleSoulstone } from '../UnclassedItems/PurpleSoulstone';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I011');
-const name: string = 'Soulcage';
+const name = 'Soulcage';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.STRENGTH, ItemLabel.INTELLIGENCE];
-const goldCost: number = 9800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTN3M3.blp';
-const description: string = `A soulcage harnessing the powers of three soulstones.
+const goldCost = 9800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTN3M3.blp';
+const description = `A soulcage harnessing the powers of three soulstones.
 
 |cffffcc00Agility:|r +30
 |cffffcc00Strength:|r +30

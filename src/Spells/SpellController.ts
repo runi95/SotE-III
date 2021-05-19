@@ -70,7 +70,8 @@ import { Restoration } from './Restoration';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class SpellController {
-    private spells: any[];
+    // eslint-disable-next-line
+    private spells: any;
 
     constructor(
         gameGlobals: GameGlobals,

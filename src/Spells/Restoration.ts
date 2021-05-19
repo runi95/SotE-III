@@ -1,4 +1,3 @@
-import { GroupInRange } from '../JassOverrides/GroupInRange';
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from '../Game/GameGlobals';
 

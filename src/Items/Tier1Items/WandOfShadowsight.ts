@@ -4,11 +4,11 @@ import { GoblinNightScope } from '../BaseItems/GoblinNightScope';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I020');
-const name: string = 'Wand of Shadowsight';
+const name = 'Wand of Shadowsight';
 const labels: ItemLabel[] = [];
-const goldCost: number = 500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
-const description: string = `An incredible scope with built in night vision.
+const goldCost = 500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNWandOfShadowSight.blp';
+const description = `An incredible scope with built in night vision.
 
 |cffffcc00Effect:|r Provides an increase to the Hero's line of sight radius at night when carried
 |cffffcc00Use:|r Reveals the target unit until the debuff is dispelled

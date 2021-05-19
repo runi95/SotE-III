@@ -3,11 +3,11 @@ import { Fragarach } from '../Tier2Items/Fragarach';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02G');
-const name: string = 'Sword of Naegling';
+const name = 'Sword of Naegling';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE, ItemLabel.STRENGTH, ItemLabel.AGILITY];
-const goldCost: number = 7300;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDarkSword.blp';
-const description: string = `The wind howls with anticipation as you raise the sword
+const goldCost = 7300;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNDarkSword.blp';
+const description = `The wind howls with anticipation as you raise the sword
 
 |cffffcc00Attack damage:|r +50
 |cffffcc00Strength:|r +20

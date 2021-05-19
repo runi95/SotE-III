@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Trigger } from '../JassOverrides/Trigger';
 import { DamageEngineGlobals } from './DamageEngineGlobals';
 import * as settings from '../Game/GameSettings';
@@ -32,7 +33,7 @@ interface Previous {
  * Damage Engine 5.4.2.3
  */
 export class DamageEngine {
-    private static inception: boolean = false;
+    private static inception = false;
 
     /**
      * Damage Event Arrays
@@ -51,16 +52,16 @@ export class DamageEngine {
      * Damage Engine Variables
      */
     private readonly alarm: Timer;
-    private alarmSet: boolean = false;
-    private canKick: boolean = true;
-    private totem: boolean = false;
-    private armorType: number = 0;
-    private defenseType: number = 0;
-    private eventsRun: boolean = false;
-    private kicking: boolean = false;
-    private eventTrig: number = 0;
-    private dreaming: boolean = false;
-    private sleepLevel: number = 0;
+    private alarmSet = false;
+    private canKick = true;
+    private totem = false;
+    private armorType = 0;
+    private defenseType = 0;
+    private eventsRun = false;
+    private kicking = false;
+    private eventTrig = 0;
+    private dreaming = false;
+    private sleepLevel = 0;
 
     private readonly stack: Damage[] = [];
     private readonly levelsDeep: number[] = [];
@@ -220,7 +221,7 @@ export class DamageEngine {
             let n: number = this.stack.length;
             if (n > 0) {
                 this.kicking = true;
-                let i: number = 0;
+                let i = 0;
                 let open: any;
                 do {
                     this.sleepLevel++;
@@ -263,7 +264,7 @@ export class DamageEngine {
         if (this.damageEngineGlobals.NextDamageType === 0) {
             this.damageEngineGlobals.NextDamageType = settings.DamageTypeCode;
         }
-        let b: boolean = false;
+        let b = false;
         if (this.dreaming) {
             if (amt !== 0.0) {
                 this.stack.push({

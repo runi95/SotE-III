@@ -49,7 +49,7 @@ export class SummonQuilbeast extends Spell {
             UnitAddAbility(this.summonUnit[playerId], this.enduranceAuraAbilityId);
         }
 
-        const maxDistance: number = 1200;
+        const maxDistance = 1200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {
             const newX: number = GetUnitX(trig);

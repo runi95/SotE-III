@@ -4,11 +4,11 @@ import { ImprovedReinforcedHide } from '../Tier1Items/ImprovedReinforcedHide';
 import { NaturesBlessing } from '../Tier1Items/NaturesBlessing';
 
 const itemId: number = FourCC('I045');
-const name: string = `Improved Nature's Blessing`;
+const name = `Improved Nature's Blessing`;
 const labels: ItemLabel[] = [ItemLabel.HEALTH_REGEN];
-const goldCost: number = 10450;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNImprovedNaturesBlessing.dds';
-const description: string = `A branch blessed by mother nature herself.
+const goldCost = 10450;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedNaturesBlessing.dds';
+const description = `A branch blessed by mother nature herself.
 
 |cffffcc00Health regen:|r +60
 |cffffcc00Use:|r Heals 2500 hitpoints over 10 seconds

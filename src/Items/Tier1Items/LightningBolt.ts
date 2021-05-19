@@ -5,11 +5,11 @@ import { OrbOfLightning } from '../BaseItems/OrbOfLightning';
 
 // tslint:disable: max-line-length
 const itemId: number = FourCC('I01Q');
-const name: string = 'Lightning Bolt';
+const name = 'Lightning Bolt';
 const labels: ItemLabel[] = [];
-const goldCost: number = 1850;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPurge.blp';
-const description: string = `A lightning bolt capable of devastating damage.
+const goldCost = 1850;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPurge.blp';
+const description = `A lightning bolt capable of devastating damage.
 
 |cffffcc00Use:|r Sends a lightning bolt down at the target location, dealing 2200 damage to enemy units in the center of the target area after 0.6 seconds.
 |cffffcc00Mana Cost:|r 150

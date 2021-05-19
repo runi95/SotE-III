@@ -4,11 +4,11 @@ import { VampireClaws } from '../BaseItems/VampireClaws';
 import { IronClaws } from '../Tier1Items/IronClaws';
 
 const itemId: number = FourCC('I032');
-const name: string = 'Fast Vampire Claws';
+const name = 'Fast Vampire Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.LIFESTEAL];
-const goldCost: number = 2525;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNGreaterVampireClaws.dds';
-const description: string = `Lightweight vampire claws for faster attack speed.
+const goldCost = 2525;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGreaterVampireClaws.dds';
+const description = `Lightweight vampire claws for faster attack speed.
 
 |cffffcc00Agility:|r +20
 |cffffcc00Attack Damage:|r +40

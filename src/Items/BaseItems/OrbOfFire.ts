@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I03G');
-const name: string = 'Orb of Fire';
+const name = 'Orb of Fire';
 const labels: ItemLabel[] = [ItemLabel.SPLASH];
-const goldCost: number = 600;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp';
-const description: string = `The orb burns brightly.
+const goldCost = 600;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp';
+const description = `The orb burns brightly.
 
 |cffffcc00Splash:|r +10%
 

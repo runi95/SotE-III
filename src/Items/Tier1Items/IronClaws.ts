@@ -4,11 +4,11 @@ import { Claws } from '../BaseItems/Claws';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00P');
-const name: string = 'Iron Claws';
+const name = 'Iron Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 1425;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp';
-const description: string = `Sharp claws combined with speed and precision is a deadly combination.
+const goldCost = 1425;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNClawsOfAttack.blp';
+const description = `Sharp claws combined with speed and precision is a deadly combination.
 
 |cffffcc00Agility:|r +15
 |cffffcc00Attack damage:|r +30

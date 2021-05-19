@@ -17,8 +17,8 @@ export class ItemRecipe extends Item {
         super(itemId, name, labels, goldCost, iconPath, description);
         this.recipe = recipe;
 
-        let recipeItemsCost: number = 0;
-        for (let i: number = 0; i < this.recipe.length; i++) {
+        let recipeItemsCost = 0;
+        for (let i = 0; i < this.recipe.length; i++) {
             recipeItemsCost += this.recipe[i].goldCost;
         }
 

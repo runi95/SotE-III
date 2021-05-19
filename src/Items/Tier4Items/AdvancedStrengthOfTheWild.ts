@@ -4,11 +4,11 @@ import { ImprovedStrengthOfTheWild } from '../Tier3Items/ImprovedStrengthOfTheWi
 import { GreenSoulstone } from '../UnclassedItems/GreenSoulstone';
 
 const itemId: number = FourCC('I038');
-const name: string = 'Advanced Strength of the Wild';
+const name = 'Advanced Strength of the Wild';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.BLOCK, ItemLabel.MAX_HEALTH];
-const goldCost: number = 26500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedStrengthOfTheWild.blp';
-const description: string = `The strength of the wild can be truly impressive.
+const goldCost = 26500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedStrengthOfTheWild.blp';
+const description = `The strength of the wild can be truly impressive.
 
 |cffffcc00Max health:|r +1000
 |cffffcc00Strength:|r +200

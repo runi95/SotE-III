@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export enum LogLevel
 {
     None = -1,
@@ -26,7 +28,7 @@ export interface ILogSink
     Log(level: LogLevel, events: LogEvent[]): void;
 }
 
-export module Log
+export namespace Log
 {
     let _sinks: ILogSink[];
 
@@ -37,17 +39,17 @@ export module Log
 
     function Parse(this: void, message: string, ...args: any[]): LogEvent[]
     {
-        let logEvents: LogEvent[] = [];
+        const logEvents: LogEvent[] = [];
 
         const matcher = string.gmatch(message, "{.-}");
         let match: string;
         let text: string;
-        let n: number = 0;
-        let i: number = 0;
+        let n = 0;
+        let i = 0;
         // @ts-ignore
         while (match = matcher())
         {
-            let [s, e] = string.find(message, match, 1, true);
+            const [s, e] = string.find(message, match, 1, true);
             if (!s || !e) continue; // this should never happen
             text = message.substring(i, s - 1);
             if (text != "")

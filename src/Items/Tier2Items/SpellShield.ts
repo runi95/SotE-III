@@ -3,11 +3,11 @@ import { LionsRing } from '../Tier1Items/LionsRing';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02F');
-const name: string = 'Spell Shield';
+const name = 'Spell Shield';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.RESISTANCE];
-const goldCost: number = 2200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
-const description: string = `A shield that glows with magical potency.
+const goldCost = 2200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSpellShieldAmulet.blp';
+const description = `A shield that glows with magical potency.
 
 |cffffcc00Resistance:|r +30
 |cffffcc00Effect:|r Blocks a negative spell cast directly on you every 40 seconds

@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 import { Scepter } from '../BaseItems/Scepter';
 
 const itemId: number = FourCC('I018');
-const name: string = 'Sword of Freyr';
+const name = 'Sword of Freyr';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 2790;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRitualDagger.blp';
-const description: string = `A sword that somehow dances in front of your very eyes.
+const goldCost = 2790;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRitualDagger.blp';
+const description = `A sword that somehow dances in front of your very eyes.
 
 |cffffcc00Strength:|r +12
 |cffffcc00Attack damage:|r +15

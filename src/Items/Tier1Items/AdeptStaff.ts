@@ -4,11 +4,11 @@ import { FairyWand } from '../BaseItems/FairyWand';
 import { OrbOfMagic } from '../BaseItems/OrbOfMagic';
 
 const itemId: number = FourCC('I03L');
-const name: string = 'Adept Staff';
+const name = 'Adept Staff';
 const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST, ItemLabel.INTELLIGENCE];
-const goldCost: number = 2240;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
-const description: string = `Your wish has been granted.
+const goldCost = 2240;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
+const description = `Your wish has been granted.
 
 |cffffcc00Intelligence:|r +10
 |cffffcc00Critical Cast:|r +30%

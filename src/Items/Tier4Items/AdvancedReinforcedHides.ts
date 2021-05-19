@@ -3,11 +3,11 @@ import { ReinforcedScales } from '../Tier3Items/ReinforcedScales';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02D');
-const name: string = 'Advanced Reinforced Hides';
+const name = 'Advanced Reinforced Hides';
 const labels: ItemLabel[] = [ItemLabel.MAX_HEALTH, ItemLabel.HEALTH_REGEN, ItemLabel.BLOCK, ItemLabel.RESISTANCE];
-const goldCost: number = 13550;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedReinforcedHides.blp';
-const description: string = `No matter how you hold this shield it stays perfectly balanced.
+const goldCost = 13550;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNAdvancedReinforcedHides.blp';
+const description = `No matter how you hold this shield it stays perfectly balanced.
 
 |cffffcc00Health:|r +750
 |cffffcc00Health regen:|r +60

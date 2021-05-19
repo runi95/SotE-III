@@ -22,8 +22,8 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
-        let perseverance: number = 0;
-        let resistance: number = 0;
+        let perseverance = 0;
+        let resistance = 0;
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
         if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
             if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {

@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I00H');
-const name: string = 'Iron Sword';
+const name = 'Iron Sword';
 const labels: ItemLabel[] = [ItemLabel.ATTACK_DAMAGE];
-const goldCost: number = 375;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSteelMelee.blp';
-const description: string = `A dull sword capable of damaging enemy units through physical contact.
+const goldCost = 375;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSteelMelee.blp';
+const description = `A dull sword capable of damaging enemy units through physical contact.
 
 |cffffcc00Attack damage:|r +16
 

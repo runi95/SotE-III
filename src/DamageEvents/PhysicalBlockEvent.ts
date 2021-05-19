@@ -22,8 +22,8 @@ export class PhysicalBlockEvent implements DamageEvent {
             return;
         }
 
-        let piercing: number = 0;
-        let block: number = 0;
+        let piercing = 0;
+        let block = 0;
         const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
         if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
             if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
@@ -35,7 +35,7 @@ export class PhysicalBlockEvent implements DamageEvent {
             }
         }
 
-        let damageEventTargetIsHero: boolean = false;
+        let damageEventTargetIsHero = false;
         if (playerId >= bj_MAX_PLAYERS) {
             // Min creep block (level 1): 0
             // Max creep block (level 100): 169

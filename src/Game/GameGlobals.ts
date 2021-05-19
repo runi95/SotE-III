@@ -60,16 +60,16 @@ export class GameGlobals {
     public PlayerHeroId: number[] = [];
     public ActivePlayerIdList: number[] = [];
 
-    public PlayerCount: number = 0;
+    public PlayerCount = 0;
 
     public Multiboard: multiboard | undefined = undefined;
 
-    public DebugMode: boolean = false;
-    public TeleportMovement: boolean = false;
+    public DebugMode = false;
+    public TeleportMovement = false;
 
     public CenterPortalRegion: rect = Rect(2880.0, 192, 3008, 320);
     public TheArenaRegion: rect = Rect(1280.0, 6016.0, 4608.0, 9344.0);
-    public IsArenaBattleInProgress: boolean = false;
+    public IsArenaBattleInProgress = false;
     public ArenaOneMinuteSound: sound = CreateSound('Sound\\Interface\\Hint.wav', false, false, false, 0, 0, 'DefaultEAXON');
     public ArenaStartedSound: sound = CreateSound('Sound\\Interface\\NewTournament.wav', false, false, false, 0, 0, 'DefaultEAXON');
     public ArenaCountdownSound: sound = CreateSound('Sound\\Interface\\BattleNetTick.wav', false, false, false, 0, 0, 'DefaultEAXON');
@@ -82,12 +82,12 @@ export class GameGlobals {
     //
     // ========================================
 
-    public GameIsFogOfWarEnabled: boolean = true;
-    public GameIsAllRandomEnabled: boolean = false;
-    public GameIsTeamsEnabled: boolean = true;
-    public GameIsSuddenDeathEnabled: boolean = true;
-    public GameStartingLife: number = 10;
-    public GameSuddenDeathTime: number = 600;
+    public GameIsFogOfWarEnabled = true;
+    public GameIsAllRandomEnabled = false;
+    public GameIsTeamsEnabled = true;
+    public GameIsSuddenDeathEnabled = true;
+    public GameStartingLife = 10;
+    public GameSuddenDeathTime = 600;
 
     // ========================================
     //

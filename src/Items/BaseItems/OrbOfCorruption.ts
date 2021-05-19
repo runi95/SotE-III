@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I04Z');
-const name: string = 'Orb of Corruption';
+const name = 'Orb of Corruption';
 const labels: ItemLabel[] = [];
-const goldCost: number = 550;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfCorruption.blp';
-const description: string = `This orb is filled with something... you need...
+const goldCost = 550;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfCorruption.blp';
+const description = `This orb is filled with something... you need...
 
 |cffffcc00Unique:|r Decreases the armor of attacked units by 2
 

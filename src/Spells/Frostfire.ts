@@ -20,12 +20,12 @@ export class Frostfire extends Spell {
         const y: number = GetUnitY(GetTriggerUnit());
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
 
-        let ticks: number = 20;
+        let ticks = 20;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.10, true, () => {
             ticks--;
 
-            const randX: number = GetRandomReal(0, 600) - 300.0;
+            const randX: number = x + GetRandomReal(0, 600) - 300.0;
             const randY: number = y + GetRandomReal(0, 600) - 300.0;
             const dummy: unit = CreateUnit(Player(playerId), this.unitTypeId, randX, randY, bj_UNIT_FACING);
             UnitAddAbilityBJ(this.dummyAbilityId, dummy);
@@ -38,7 +38,7 @@ export class Frostfire extends Spell {
             }
         });
 
-        for (let i: number = 0; i < 20; i++) {
+        for (let i = 0; i < 20; i++) {
             TriggerSleepAction(GetRandomReal(0.10, 3));
         }
     }

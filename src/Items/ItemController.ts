@@ -71,6 +71,7 @@ import { MaskOfProficiencySell } from './Abilities/MaskOfProficiencySell';
 import { MaskOfProficiencyCast } from './Abilities/MaskOfProficiencyCast';
 
 export class ItemController {
+    // eslint-disable-next-line
     private itemAbilities: any[];
 
     constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator, arcaneVault: unit) {

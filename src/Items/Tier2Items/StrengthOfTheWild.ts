@@ -3,11 +3,11 @@ import { MaulOfStrength } from '../Tier1Items/MaulOfStrength';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02A');
-const name: string = 'Strength of the Wild';
+const name = 'Strength of the Wild';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH];
-const goldCost: number = 7200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNDOCAdeptTraining.blp';
-const description: string = `Only the strong can survive in the wild.
+const goldCost = 7200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNDOCAdeptTraining.blp';
+const description = `Only the strong can survive in the wild.
 
 |cffffcc00Strength:|r +60
 

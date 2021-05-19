@@ -52,7 +52,7 @@ export class IceSpider extends Boss {
                 );
             }
 
-            for (let i: number = 0; i < this.eggSacks.length; i++) {
+            for (let i = 0; i < this.eggSacks.length; i++) {
                 const currentMana: number = GetUnitState(this.eggSacks[i], UNIT_STATE_MANA) - 1;
                 if (currentMana > 0) {
                     SetUnitManaBJ(this.eggSacks[i], currentMana);

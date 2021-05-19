@@ -2,11 +2,11 @@ import { Item } from '../Item';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I04P');
-const name: string = 'Scroll of Witchcraft';
+const name = 'Scroll of Witchcraft';
 const labels: ItemLabel[] = [ItemLabel.COOLDOWN_REDUCTION];
-const goldCost: number = 450;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp';
-const description: string = `A scroll cleverly crafted by the elves.
+const goldCost = 450;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp';
+const description = `A scroll cleverly crafted by the elves.
 
 |cffffcc00Cooldown Reduction:|r +3%
 

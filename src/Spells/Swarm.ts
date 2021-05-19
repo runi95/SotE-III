@@ -38,7 +38,7 @@ export class Swarm extends Spell {
         );
         FogModifierStart(fog);
 
-        let ticks: number = 5;
+        let ticks = 5;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.03, true, () => {
             ticks--;

@@ -3,11 +3,11 @@ import { ClockworkPenguin } from '../BaseItems/ClockworkPenguin';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02C');
-const name: string = 'Snowy Owl';
+const name = 'Snowy Owl';
 const labels: ItemLabel[] = [];
-const goldCost: number = 800;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
-const description: string = `It is said that these creatures can see the dead.
+const goldCost = 800;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSnowOwl.blp';
+const description = `It is said that these creatures can see the dead.
 
 |cffffcc00Effect:|r A clockwork penguin with 6 inventory spaces that will always stay by your side and follow you around.
 

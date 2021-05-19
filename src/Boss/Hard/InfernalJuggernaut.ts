@@ -23,7 +23,7 @@ export class InfernalJuggernaut extends Boss {
 
     protected spawnAction(): void {
         const t: Timer = this.timerUtils.newTimer();
-        let ticks: number = 4;
+        let ticks = 4;
         t.start(3, true, () => {
             ticks--;
 

@@ -3,11 +3,11 @@ import { ItemLabel } from '../ItemLabel';
 import { OrbOfFire } from '../BaseItems/OrbOfFire';
 
 const itemId: number = FourCC('I00X');
-const name: string = 'Loaded Cannon';
+const name = 'Loaded Cannon';
 const labels: ItemLabel[] = [ItemLabel.SPLASH];
-const goldCost: number = 3200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpTwo.blp';
-const description: string = `Make your enemies tremble!
+const goldCost = 3200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHumanMissileUpTwo.blp';
+const description = `Make your enemies tremble!
 
 |cffffcc00Splash:|r +80%
 

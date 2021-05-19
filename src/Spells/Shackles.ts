@@ -26,7 +26,7 @@ export class Shackles extends Spell {
 
         UnitAddAbility(targ, this.dummySlowAbilityId);
 
-        let ticks: number = 100;
+        let ticks = 100;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;

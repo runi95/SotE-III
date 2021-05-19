@@ -3,11 +3,11 @@ import { ImprovedCreatureClaws } from '../Tier2Items/ImprovedCreatureClaws';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I02H');
-const name: string = 'Dragon Scales';
+const name = 'Dragon Scales';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.MAX_HEALTH];
-const goldCost: number = 8500;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNCreatureCarapace.tga';
-const description: string = `These scales are deadly sharp
+const goldCost = 8500;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNCreatureCarapace.tga';
+const description = `These scales are deadly sharp
 
 |cffffcc00Max health:|r +1000
 |cffffcc00Agility:|r +50

@@ -4,11 +4,11 @@ import { BookOfMagic } from '../Tier2Items/BookOfMagic';
 import { EnhancedMantleOfIntelligence } from '../Tier2Items/EnhancedMantleOfIntelligence';
 
 const itemId: number = FourCC('I04M');
-const name: string = 'Book of Evil';
+const name = 'Book of Evil';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.PERSEVERANCE];
-const goldCost: number = 32200;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNNecromancerMaster.blp';
-const description: string = `A book full of true evil.
+const goldCost = 32200;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNecromancerMaster.blp';
+const description = `A book full of true evil.
 
 |cffffcc00Intelligence:|r +250
 |cffffcc00Perseverance:|r +200

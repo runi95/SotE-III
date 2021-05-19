@@ -4,11 +4,11 @@ import { ManaStone } from '../Tier1Items/ManaStone';
 import { BrightLifeStone } from '../Tier1Items/BrightLifeStone';
 
 const itemId: number = FourCC('I03J');
-const name: string = 'Charged Stone';
+const name = 'Charged Stone';
 const labels: ItemLabel[] = [ItemLabel.RESTORATION, ItemLabel.MAX_MANA];
-const goldCost: number = 9000;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNChargedStone.dds';
-const description: string = `A stone charged with mana and life.
+const goldCost = 9000;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNChargedStone.dds';
+const description = `A stone charged with mana and life.
 
 |cffffcc00Max Mana:|r +1000
 |cffffcc00Restoration:|r +500%

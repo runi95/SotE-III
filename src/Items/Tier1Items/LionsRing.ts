@@ -4,11 +4,11 @@ import { MoonArmor } from '../BaseItems/MoonArmor';
 import { ItemLabel } from '../ItemLabel';
 
 const itemId: number = FourCC('I01L');
-const name: string = 'Lions Ring';
+const name = 'Lions Ring';
 const labels: ItemLabel[] = [ItemLabel.RESISTANCE];
-const goldCost: number = 2040;
-const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNRingLionHead.blp';
-const description: string = `Lion's ring is known to protect it's wearers from magic attacks.
+const goldCost = 2040;
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingLionHead.blp';
+const description = `Lion's ring is known to protect it's wearers from magic attacks.
 
 |cffffcc00Resistance:|r +24
 |cffffcc00Effect (1):|r Increases item charges whenever you take spell damage.

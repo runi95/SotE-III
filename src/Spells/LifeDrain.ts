@@ -23,7 +23,7 @@ export class LifeDrain extends Spell {
         const damageAndHeal: number = (160 * abilityLevel + 2 * intelligence) / 200;
         const light: lightning = AddLightning('DRAL', true, GetUnitX(trig), GetUnitY(trig), GetUnitX(targ), GetUnitY(targ));
 
-        let ticks: number = 200;
+        let ticks = 200;
         const t: Timer = this.timerUtils.newTimer();
         t.start(0.05, true, () => {
             ticks--;
