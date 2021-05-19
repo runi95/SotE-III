@@ -260,7 +260,7 @@ export class RecipeSystem {
 
         for (let i = 0; i < 11 && i < items.length; i++) {
             this.itemFrames.push(this.createItemFrame(this.menu, items[i].iconPath, i));
-            this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].recipeCost, i));
+            this.itemGoldCost.push(this.createItemGoldCostFrame(this.menu, items[i].goldCost, i));
         }
 
         this.createMainButtonTriggers();
@@ -381,14 +381,14 @@ export class RecipeSystem {
             if (indexedItemWindowMin === 0) {
                 return '';
             }
-            return `|cFFFFCC00${items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].recipeCost}|r`;
+            return `|cFFFFCC00${items[this.localPlayerInterface.filterItems[indexedItemWindowMin - 1]].goldCost}|r`;
         }
 
         if (indexedItemWindowMin < this.localPlayerInterface.heroRecipeItems.length) {
             return '|cFF808080Held|r';
         }
 
-        return `|cFFFFCC00${items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].recipeCost}|r`;
+        return `|cFFFFCC00${items[indexedItemWindowMin - this.localPlayerInterface.heroRecipeItems.length].goldCost}|r`;
     }
 
     private updateItemFrames(): void {
