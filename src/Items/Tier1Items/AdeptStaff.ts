@@ -5,7 +5,7 @@ import { OrbOfMagic } from '../BaseItems/OrbOfMagic';
 
 const itemId: number = FourCC('I03L');
 const name: string = 'Adept Staff';
-const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST];
+const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST, ItemLabel.INTELLIGENCE];
 const goldCost: number = 2240;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description: string = `Your wish has been granted.
