@@ -1,20 +1,23 @@
 import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { FairyWand } from '../BaseItems/FairyWand';
+import { OrbOfMagic } from '../BaseItems/OrbOfMagic';
 
 const itemId: number = FourCC('I03L');
 const name: string = 'Adept Staff';
 const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST];
-const goldCost: number = 2030;
+const goldCost: number = 2240;
 const iconPath: string = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description: string = `Your wish has been granted.
 
-|cffffcc00Critical Cast:|r +40%
+|cffffcc00Intelligence:|r +10
+|cffffcc00Critical Cast:|r +30%
+|cffffcc00Effect:|r Increases the effect of critical cast by 25% 
 
 |cFF808080Critical cast gives a chance for spells to deal double damage.|r`;
 
 export class AdeptStaff extends ItemRecipe {
-    constructor(fairyWand: FairyWand) {
-        super(itemId, name, labels, goldCost, iconPath, description, [fairyWand]);
+    constructor(fairyWand: FairyWand, orbOfMagic: OrbOfMagic) {
+        super(itemId, name, labels, goldCost, iconPath, description, [fairyWand, orbOfMagic]);
     }
 }

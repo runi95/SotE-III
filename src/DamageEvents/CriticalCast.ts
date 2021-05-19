@@ -31,7 +31,7 @@ export class CriticalCast implements DamageEvent {
             return;
         }
 
-        globals.DamageEventAmount *= 2;
+        globals.DamageEventAmount *= (2 + 0.25 * this.gameGlobals.AdeptStaffCount[playerId]);
         const txt: texttag = CreateTextTag();
         SetTextTagText(txt, Math.floor(globals.DamageEventAmount).toString(), 0.02);
         SetTextTagPos(
