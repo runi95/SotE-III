@@ -69,12 +69,13 @@ import { FullVialSell } from './Abilities/FullVialSell';
 import { MaskOfProficiencyPickupAndDrop } from './Abilities/MaskOfProficiencyPickupAndDrop';
 import { MaskOfProficiencySell } from './Abilities/MaskOfProficiencySell';
 import { MaskOfProficiencyCast } from './Abilities/MaskOfProficiencyCast';
+import { ItemChargeUtils } from '../Utility/ItemChargeUtils';
 
 export class ItemController {
     // eslint-disable-next-line
     private itemAbilities: any[];
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator, arcaneVault: unit) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, itemChargeUtils: ItemChargeUtils, randomNumberGenerator: RandomNumberGenerator, arcaneVault: unit) {
         this.itemAbilities = [
             new ClarityPotionUse(),
             new ExecutionerAxe(),
@@ -91,7 +92,7 @@ export class ItemController {
             new MagesSabatonsPickupAndDrop(gameGlobals),
             new LionsRingPickupAndDrop(gameGlobals),
             new ClockworkPenguinPickupAndDrop(gameGlobals, timerUtils),
-            new GoblinBatteryPickupAndDrop(gameGlobals, timerUtils),
+            new GoblinBatteryPickupAndDrop(gameGlobals, itemChargeUtils),
             new GoblinBatteryBuy(),
             new GoblinBatterySell(),
             new GoblinBatteryUse(randomNumberGenerator),
@@ -107,7 +108,7 @@ export class ItemController {
             new SacrificialDaggerSell(),
             new BloodiedSacrificialDaggerCast(),
             new VampireDaggerCast(),
-            new AssassinsBladePickupAndDrop(gameGlobals, timerUtils),
+            new AssassinsBladePickupAndDrop(gameGlobals, itemChargeUtils),
             new AssassinsMapPickupAndDrop(),
             new NaturesBlessingUse(),
             new FastVampireClawsPickupAndDrop(gameGlobals),
@@ -139,9 +140,9 @@ export class ItemController {
             new ScaledBootsPickupAndDrop(gameGlobals),
             new AssassinsBladeSell(),
             new MoonBladePickupAndDrop(gameGlobals),
-            new FullVialPickupAndDrop(gameGlobals, timerUtils),
+            new FullVialPickupAndDrop(gameGlobals, itemChargeUtils),
             new FullVialSell(),
-            new MaskOfProficiencyPickupAndDrop(gameGlobals, timerUtils),
+            new MaskOfProficiencyPickupAndDrop(gameGlobals, itemChargeUtils),
             new MaskOfProficiencySell(),
             new MaskOfProficiencyCast(),
         ];

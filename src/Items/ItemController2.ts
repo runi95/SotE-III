@@ -40,6 +40,7 @@ import { ManaStonePickupAndDrop } from './Abilities/ManaStonePickupAndDrop';
 import { CrystalBallPickupAndDrop } from './Abilities/CrystalBallPickupAndDrop';
 import { SharpSteelAxePickupAndDrop } from './Abilities/SharpSteelAxePickupAndDrop';
 import { SharpSteelAxeSell } from './Abilities/SharpSteelAxeSell';
+import { ItemChargeUtils } from '../Utility/ItemChargeUtils';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -47,7 +48,7 @@ export class ItemController2 {
     // eslint-disable-next-line
     private itemAbilities: any[];
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, itemChargeUtils: ItemChargeUtils, randomNumberGenerator: RandomNumberGenerator) {
         this.itemAbilities = [
             new MantleOfIntelligencePickupAndDrop(gameGlobals),
             new RingOfSuperiorityPickupAndDrop(gameGlobals),
@@ -86,7 +87,7 @@ export class ItemController2 {
             new MaulOfStrengthPickupAndDrop(gameGlobals),
             new ManaStonePickupAndDrop(gameGlobals),
             new CrystalBallPickupAndDrop(gameGlobals),
-            new SharpSteelAxePickupAndDrop(gameGlobals, timerUtils),
+            new SharpSteelAxePickupAndDrop(gameGlobals, itemChargeUtils),
             new SharpSteelAxeSell()
         ];
     }

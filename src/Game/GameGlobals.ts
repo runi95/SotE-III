@@ -15,10 +15,7 @@ export class GameGlobals {
     public RepetitionCounter: number[] = [];
     public Regenerate: boolean[] = [];
     public CryostasisSummons: unit[] = [];
-    public GoblinBattery: boolean[] = [];
-    public MaskOfProficiency: boolean[] = [];
     public SharpSteelAxe: ChargedItemStates[] = [];
-    public FullVial: boolean[] = [];
     public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
     public AssassinsBlade: ChargedItemStates[] = [];

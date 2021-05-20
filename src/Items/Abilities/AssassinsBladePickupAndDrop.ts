@@ -1,18 +1,18 @@
 import { GameGlobals, ChargedItemStates } from '../../Game/GameGlobals';
 import { ItemPickupAndDrop } from '../ItemPickupAndDrop';
-import { TimerUtils } from '../../Utility/TimerUtils';
-import { Timer } from '../../JassOverrides/Timer';
+import { ItemChargeUtils } from '../../Utility/ItemChargeUtils';
+import { ChargingItem } from '../../Utility/ChargingItem';
 
 export class AssassinsBladePickupAndDrop extends ItemPickupAndDrop {
     protected readonly itemTypeId: number = FourCC('I02M');
     private readonly gameGlobals: GameGlobals;
-    private readonly timerUtils: TimerUtils;
+    private readonly itemChargeUtils: ItemChargeUtils;
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, itemChargeUtils: ItemChargeUtils) {
         super();
 
         this.gameGlobals = gameGlobals;
-        this.timerUtils = timerUtils;
+        this.itemChargeUtils = itemChargeUtils;
     }
 
     protected pickup(): void {
@@ -23,20 +23,11 @@ export class AssassinsBladePickupAndDrop extends ItemPickupAndDrop {
             return;
         }
 
-        const t: Timer = this.timerUtils.newTimer();
-        t.start(1, true, () => {
-            if (this.gameGlobals.AssassinsBladeCount[playerId] === 0) {
-                t.destroy();
-            }
-
-            const item: item = GetItemOfTypeFromUnitBJ(this.gameGlobals.PlayerHero[playerId], this.itemTypeId);
-            const itemCharges: number = GetItemCharges(item);
-            if (itemCharges < 30) {
-                SetItemCharges(item, itemCharges + 1);
-            } else {
-                this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.READY;
-            }
+        const chargingItem = new ChargingItem(GetManipulatedItem(), 30);
+        chargingItem.setChargeLimitReachFunction(() => {
+            this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.READY;
         });
+        this.itemChargeUtils.addItem(chargingItem);
     }
 
     protected drop(): void {
@@ -46,5 +37,7 @@ export class AssassinsBladePickupAndDrop extends ItemPickupAndDrop {
         if (this.gameGlobals.AssassinsBladeCount[playerId] < 1) {
             this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.UNEQUIPPED;
         }
+
+        this.itemChargeUtils.removeItem(GetHandleId(GetManipulatedItem()));
     }
 }

@@ -1,18 +1,18 @@
 import { GameGlobals } from '../../Game/GameGlobals';
+import { ChargingItem } from '../../Utility/ChargingItem';
+import { ItemChargeUtils } from '../../Utility/ItemChargeUtils';
 import { ItemPickupAndDrop } from '../ItemPickupAndDrop';
-import { Timer } from '../../JassOverrides/Timer';
-import { TimerUtils } from '../../Utility/TimerUtils';
 
 export class GoblinBatteryPickupAndDrop extends ItemPickupAndDrop {
     protected readonly itemTypeId: number = FourCC('I01O');
     private readonly gameGlobals: GameGlobals;
-    private readonly timerUtils: TimerUtils;
+    private readonly itemChargeUtils: ItemChargeUtils;
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils) {
+    constructor(gameGlobals: GameGlobals, itemChargeUtils: ItemChargeUtils) {
         super();
 
         this.gameGlobals = gameGlobals;
-        this.timerUtils = timerUtils;
+        this.itemChargeUtils = itemChargeUtils;
     }
 
     protected pickup(): void {
@@ -21,28 +21,20 @@ export class GoblinBatteryPickupAndDrop extends ItemPickupAndDrop {
             return;
         }
 
-        const battery: item = GetManipulatedItem();
-        const batteryHandleId: number = GetHandleId(battery);
-        this.gameGlobals.GoblinBattery[batteryHandleId] = true;
-        const t: Timer = this.timerUtils.newTimer();
-        t.start(1, true, () => {
-            if (this.gameGlobals.GoblinBattery[batteryHandleId]) {
-                const charges: number = GetItemCharges(battery);
-                if (charges < 100) {
-                    const mana: number = GetUnitState(this.gameGlobals.PlayerHero[playerId], UNIT_STATE_MANA);
-                    if (mana > 0) {
-                        SetUnitManaBJ(this.gameGlobals.PlayerHero[playerId], mana - 1);
-                        SetItemCharges(battery, charges + 1);
-                    }
-                }
-            } else {
-                this.timerUtils.releaseTimer(t);
+        const chargingItem = new ChargingItem(GetManipulatedItem(), 100);
+        chargingItem.setChargeCondition(() => {
+            const mana: number = GetUnitState(this.gameGlobals.PlayerHero[playerId], UNIT_STATE_MANA);
+            if (mana < 1) {
+                return false;
             }
+
+            SetUnitManaBJ(this.gameGlobals.PlayerHero[playerId], mana - 1);
+            return true;
         });
+        this.itemChargeUtils.addItem(chargingItem);
     }
 
     protected drop(): void {
-        const itemHandleId: number = GetHandleId(GetManipulatedItem());
-        this.gameGlobals.GoblinBattery[itemHandleId] = false;
+        this.itemChargeUtils.removeItem(GetHandleId(GetManipulatedItem()));
     }
 }

@@ -26,6 +26,7 @@ import { CooldownReduction } from './CooldownReduction';
 import { VenomUtils } from '../Utility/VenomUtils';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { ItemChargeUtils } from '../Utility/ItemChargeUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -53,6 +54,7 @@ export class Game {
     private readonly commands: Commands;
     private readonly teleportMovement: TeleportMovement;
     private readonly cooldownReduction: CooldownReduction;
+    private readonly itemChargeUtils: ItemChargeUtils;
     private readonly arcaneVault: unit;
 
     constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
@@ -66,6 +68,7 @@ export class Game {
         this.buffUtils = new BuffUtils(this.timerUtils);
         this.spellCastUtils = new SpellCastUtils(this.gameGlobals);
         this.cooldownReduction = new CooldownReduction(this.gameGlobals);
+        this.itemChargeUtils = new ItemChargeUtils(this.timerUtils);
         this.arenaUtils = new ArenaUtils(this.gameGlobals, this.timerUtils, this.stunUtils, this.venomUtils, this.randomNumberGenerator);
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.timerUtils, this.damageEngineGlobals);
@@ -99,8 +102,8 @@ export class Game {
         this.init();
 
         this.commands = new Commands(this.gameGlobals, this.playerVictoryUtils);
-        this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.randomNumberGenerator, this.arcaneVault);
-        this.itemController2 = new ItemController2(this.gameGlobals, this.timerUtils, this.randomNumberGenerator);
+        this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.itemChargeUtils, this.randomNumberGenerator, this.arcaneVault);
+        this.itemController2 = new ItemController2(this.gameGlobals, this.timerUtils, this.itemChargeUtils, this.randomNumberGenerator);
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(240, true, () => {
