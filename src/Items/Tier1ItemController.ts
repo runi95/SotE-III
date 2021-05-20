@@ -51,6 +51,7 @@ import { MagesSabatons } from './Tier1Items/MagesSabatons';
 import { ScaledBoots } from './Tier1Items/ScaledBoots';
 import { CoralScales } from './Tier1Items/CoralScales';
 import { CrystalBall } from './Tier1Items/CrystalBall';
+import { BeltOfGiantStrength } from './Tier1Items/BeltOfGiantStrength';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -124,6 +125,7 @@ itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfI
 itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as ItemRecipe, basicItemMap.get('reinforcedLeatherArmor') as ItemRecipe));
 itemMap.set('scaledBoots', new ScaledBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('moonArmor') as Item));
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
+itemMap.set('beltOfGiantStrength', new BeltOfGiantStrength(basicItemMap.get('warAxe') as Item, basicItemMap.get('reinforcedHide') as Item));
 /*
 itemMap.set('shimmerWeed', new ShimmerWeed(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set(
