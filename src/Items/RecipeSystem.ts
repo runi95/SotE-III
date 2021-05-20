@@ -175,7 +175,7 @@ export class RecipeSystem {
 
                     this.localPlayerInterface.isMainWindowVisible = true;
                     BlzFrameSetVisible(this.menu, this.localPlayerInterface.isMainWindowVisible);
-                    this.updateItemFrames();
+                    this.selectItem();
                 }
             });
         }
