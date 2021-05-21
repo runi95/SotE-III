@@ -5,7 +5,7 @@ import { Timer } from "../JassOverrides/Timer";
 export class VenomUtils {
     private readonly timerUtils: TimerUtils;
     private readonly envenomedUnits: Map<number, EnvenomedUnit>;
-    private readonly VENOM_DURATION: number = 2;
+    private readonly VENOM_DURATION: number = 4;
 
     constructor(timerUtils: TimerUtils) {
         this.timerUtils = timerUtils;
