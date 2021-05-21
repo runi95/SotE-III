@@ -53,6 +53,7 @@ import { CoralScales } from './Tier1Items/CoralScales';
 import { CrystalBall } from './Tier1Items/CrystalBall';
 import { BeltOfGiantStrength } from './Tier1Items/BeltOfGiantStrength';
 import { CrownOfKings } from './Tier1Items/CrownOfKings';
+import { AgileBow } from './Tier1Items/AgileBow';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -97,6 +98,7 @@ itemMap.set('improvedMoonArmor', new ImprovedMoonArmor(basicItemMap.get('moonArm
 itemMap.set('improvedReinforcedHide', new ImprovedReinforcedHide(basicItemMap.get('reinforcedHide') as Item));
 */
 itemMap.set('ironClaws', new IronClaws(basicItemMap.get('ironSword') as Item, basicItemMap.get('claws') as Item));
+itemMap.set('agileBow', new AgileBow(basicItemMap.get('claws') as Item, basicItemMap.get('steelSpear') as Item));
 /*
 itemMap.set('javelin', new Javelin(basicItemMap.get('steelSpear') as Item));
 itemMap.set(

@@ -79,6 +79,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.BookOfEvilCount[i] = 0;
         gameGlobals.CrownOfKingsCount[i] = 0;
         gameGlobals.EnhancedJavelinCount[i] = 0;
+        gameGlobals.AgileBowCount[i] = 0;
         gameGlobals.MarkOfTheTalonCount[i] = 0;
         gameGlobals.EnhancedJavelinAttackCount[i] = 0;
         gameGlobals.DivineShieldLife[i] = 0;

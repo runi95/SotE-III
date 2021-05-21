@@ -4,11 +4,11 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I03D');
 const name = 'Steel Spear';
 const labels: ItemLabel[] = [ItemLabel.PIERCING];
-const goldCost = 525;
+const goldCost = 210;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSteelRanged.blp';
 const description = `A deadly sharp steel spear.
 
-|cffffcc00Piercing:|r +25
+|cffffcc00Piercing:|r +10
 
 |cFF808080Piercing lets a certain amount of damage go through block.|r`;
 

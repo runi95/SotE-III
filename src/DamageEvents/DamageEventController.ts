@@ -39,6 +39,7 @@ import { MaulOfStrengthDamageEvent } from './MaulOfStrengthDamageEvent';
 import { MantleOfIntelligenceEvent } from './MantleOfIntelligenceEvent';
 import { SharpSteelAxeEvent } from './SharpSteelAxeEvent';
 import { CrownOfKingsEvent } from './CrownOfKingsEvent';
+import { AgileBowEvent } from './AgileBowEvent';
 
 export class DamageEventController {
     constructor(
@@ -78,7 +79,6 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MantleOfIntelligenceEvent(gameGlobals, buffUtils));
-        damageEngine.addInitialDamageModificationEvent(new SharpSteelAxeEvent(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
@@ -91,5 +91,7 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new MaulOfStrengthEvent(gameGlobals, timerUtils));
         damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
         damageEngine.addAfterDamageEvent(new Venom(gameGlobals, venomUtils));
+        damageEngine.addAfterDamageEvent(new SharpSteelAxeEvent(gameGlobals));
+        damageEngine.addAfterDamageEvent(new AgileBowEvent(gameGlobals));
     }
 }

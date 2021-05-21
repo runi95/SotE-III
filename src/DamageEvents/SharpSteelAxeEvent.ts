@@ -4,7 +4,7 @@ import { GameGlobals, ChargedItemStates } from '../Game/GameGlobals';
 
 export class SharpSteelAxeEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
-    private readonly itemId: number = FourCC('I00Q');
+    private readonly itemTypeId: number = FourCC('I00Q');
     private readonly dummyUnitTypeId: number = FourCC('n001');
     private readonly dummyAbilityId: number = FourCC('A08J');
     private readonly timedLifeBuffId: number = FourCC('BTLF');
@@ -39,6 +39,6 @@ export class SharpSteelAxeEvent implements DamageEvent {
         UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
         IssueTargetOrder(dummy, 'lightningshield', globals.DamageEventTarget as unit);
 
-        SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemId), 1);
+        SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemTypeId), 1);
     }
 }
