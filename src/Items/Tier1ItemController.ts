@@ -73,14 +73,16 @@ itemMap.set(
     new AmuletOfProtection(basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('studdedLeatherArmor') as Item),
 );
 */
+/*
 itemMap.set('armoredBoots', new ArmoredBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('ironShield') as Item));
 itemMap.set('balancedShield', new BalancedShield(basicItemMap.get('ironShield') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
-/*
 itemMap.set('brightLifeStone', new BrightLifeStone(basicItemMap.get('lifeStone') as Item));
 itemMap.set('caduceus', new Caduceus(basicItemMap.get('scepter') as Item));
 itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item));
 itemMap.set('cloakOfShadowWalk', new CloakOfShadowWalk(basicItemMap.get('cloakOfShadows') as Item, itemMap.get('bootsOfSpeed') as Item));
-itemMap.set('creatureClaws', new CreatureClaws(basicItemMap.get('claws') as Item));
+*/
+itemMap.set('creatureClaws', new CreatureClaws(basicItemMap.get('claws') as Item, basicItemMap.get('orbOfVenom') as Item));
+/*
 itemMap.set('elementalOrb', new ElementalOrb(basicItemMap.get('orbOfFire') as Item, basicItemMap.get('orbOfLightning') as Item));
 */
 itemMap.set('fullVial', new FullVial(basicItemMap.get('emptyVial') as Item, basicItemMap.get('orbOfMagic') as Item));
