@@ -24,6 +24,7 @@ export class DarkCorruption {
             GetUnitAbilityLevel(GetKillingUnit(), this.abilityId) > 0 &&
             IsUnitEnemy(GetDyingUnit(), GetOwningPlayer(GetKillingUnit()))
         ) {
+            this.summonCount++;
             const darkSummoningLevel: number = GetUnitAbilityLevel(GetKillingUnit(), this.darkSummoningId);
             const x: number = GetUnitX(GetDyingUnit());
             const y: number = GetUnitY(GetDyingUnit());
