@@ -42,6 +42,7 @@ import { SharpSteelAxePickupAndDrop } from './Abilities/SharpSteelAxePickupAndDr
 import { SharpSteelAxeSell } from './Abilities/SharpSteelAxeSell';
 import { ItemChargeUtils } from '../Utility/ItemChargeUtils';
 import { CreatureClawsPickupAndDrop } from './Abilities/CreatureClawsPickupAndDrop';
+import { CrownOfKingsPickupAndDrop } from './Abilities/CrownOfKingsPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -90,7 +91,8 @@ export class ItemController2 {
             new CrystalBallPickupAndDrop(gameGlobals),
             new SharpSteelAxePickupAndDrop(gameGlobals, itemChargeUtils),
             new SharpSteelAxeSell(),
-            new CreatureClawsPickupAndDrop(gameGlobals)
+            new CreatureClawsPickupAndDrop(gameGlobals),
+            new CrownOfKingsPickupAndDrop(gameGlobals)
         ];
     }
 }

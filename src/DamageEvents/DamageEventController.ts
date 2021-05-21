@@ -38,6 +38,7 @@ import { MaulOfStrengthEvent } from './MaulOfStrengthEvent';
 import { MaulOfStrengthDamageEvent } from './MaulOfStrengthDamageEvent';
 import { MantleOfIntelligenceEvent } from './MantleOfIntelligenceEvent';
 import { SharpSteelAxeEvent } from './SharpSteelAxeEvent';
+import { CrownOfKingsEvent } from './CrownOfKingsEvent';
 
 export class DamageEventController {
     constructor(
@@ -65,6 +66,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new MoonBladeEvent(gameGlobals, buffUtils));
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals, randomNumberGenerator));
+        damageEngine.addInitialDamageModificationEvent(new CrownOfKingsEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(spellCastUtils));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
