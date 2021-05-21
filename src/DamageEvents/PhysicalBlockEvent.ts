@@ -37,10 +37,21 @@ export class PhysicalBlockEvent implements DamageEvent {
 
         let damageEventTargetIsHero = false;
         if (playerId >= bj_MAX_PLAYERS) {
-            // Min creep block (level 1): 0
-            // Max creep block (level 100): 169
             const creepLevel: number = GetUnitLevel(globals.DamageEventTarget as unit);
+
+            // Min creep block (level 1): 0
+            //     creep block (level 25): 81
+            //     creep block (level 50): 144
+            //     creep block (level 75): 169
+            // Max creep block (level 100): 169
             block = Pow(Math.floor(16 * ((creepLevel * 0.06) / (1 + 0.06 * creepLevel))), 2);
+
+            // Min creep piercing (level 1): 1
+            //     creep piercing (level 25): 25
+            //     creep piercing (level 50): 50
+            //     creep piercing (level 75): 75
+            // Max creep piercing (level 100): 100
+            piercing = creepLevel
         } else if (IsUnitType(globals.DamageEventTarget as unit, UNIT_TYPE_HERO)) {
             damageEventTargetIsHero = true;
             block = this.gameGlobals.PlayerPhysicalBlock[playerId];
