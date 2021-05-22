@@ -82,7 +82,7 @@ export class Game {
             this.randomNumberGenerator,
             this.spellCastUtils,
         );
-        this.teleportController = new TeleportController();
+        this.teleportController = new TeleportController(this.gameGlobals);
         this.damageEventController = new DamageEventController(
             this.gameGlobals,
             this.timerUtils,
@@ -493,10 +493,13 @@ export class Game {
             const index: number = i;
             const trig: Trigger = new Trigger();
             trig.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
-            trig.addCondition(() => GetOwningPlayer(GetTriggerUnit()) === Player(index));
             trig.addAction(() => {
-                SetUnitLifePercentBJ(GetTriggerUnit(), 100);
-                SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+                if (GetOwningPlayer(GetTriggerUnit()) === Player(index)) {
+                    SetUnitLifePercentBJ(GetTriggerUnit(), 100);
+                    SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+                } else {
+                    SetUnitPosition(GetTriggerUnit(), this.gameGlobals.PlayerExitPoint[index].x, this.gameGlobals.PlayerExitPoint[index].y);
+                }
             });
         }
     }
