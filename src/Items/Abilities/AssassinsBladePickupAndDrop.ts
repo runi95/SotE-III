@@ -18,6 +18,7 @@ export class AssassinsBladePickupAndDrop extends ItemPickupAndDrop {
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.AssassinsBladeCount[playerId] += 1;
+        this.gameGlobals.PlayerLifesteal[playerId] += 10;
 
         if (this.gameGlobals.AssassinsBladeCount[playerId] > 1) {
             return;
@@ -33,6 +34,7 @@ export class AssassinsBladePickupAndDrop extends ItemPickupAndDrop {
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.AssassinsBladeCount[playerId] -= 1;
+        this.gameGlobals.PlayerLifesteal[playerId] -= 10;
 
         if (this.gameGlobals.AssassinsBladeCount[playerId] < 1) {
             this.gameGlobals.AssassinsBlade[playerId] = ChargedItemStates.UNEQUIPPED;
