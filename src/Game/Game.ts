@@ -494,9 +494,13 @@ export class Game {
             const trig: Trigger = new Trigger();
             trig.registerEnterRectSimple(this.gameGlobals.PlayerSpawnRegion[i]);
             trig.addAction(() => {
-                if (GetOwningPlayer(GetTriggerUnit()) === Player(index)) {
+                const owningPlayerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+                if (owningPlayerId === index) {
                     SetUnitLifePercentBJ(GetTriggerUnit(), 100);
                     SetUnitManaPercentBJ(GetTriggerUnit(), 100);
+                } else if (owningPlayerId === PLAYER_NEUTRAL_AGGRESSIVE && !IsUnitType(GetTriggerUnit(), UNIT_TYPE_ANCIENT)) {
+                    const userData: number = GetUnitUserData(GetTriggerUnit());
+                    SetUnitPosition(GetTriggerUnit(), this.gameGlobals.CreepSpawnPoint[userData].x, this.gameGlobals.CreepSpawnPoint[userData].y);
                 } else {
                     SetUnitPosition(GetTriggerUnit(), this.gameGlobals.PlayerExitPoint[index].x, this.gameGlobals.PlayerExitPoint[index].y);
                 }
