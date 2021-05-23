@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I04P');
 const name = 'Scroll of Witchcraft';
 const labels: ItemLabel[] = [ItemLabel.COOLDOWN_REDUCTION];
-const goldCost = 450;
+const goldCost = 210;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp';
 const description = `A scroll cleverly crafted by the elves.
 
