@@ -1,30 +1,13 @@
-import { RedEntrance } from './RedEntrance';
-import { BlueEntrance } from './BlueEntrance';
-import { TealEntrance } from './TealEntrance';
-import { PurpleEntrance } from './PurpleEntrance';
-import { YellowEntrance } from './YellowEntrance';
-import { OrangeEntrance } from './OrangeEntrance';
-import { SpawnTeleporter } from './SpawnTeleporter';
 import { GameGlobals } from "../Game/GameGlobals";
 import { Trigger } from "../JassOverrides/Trigger";
 
 export class TeleportController {
-    private readonly teleports: SpawnTeleporter[];
-    private readonly locustAbilityId: number = FourCC('Aloc');
     private readonly waygateUnitId: number = FourCC('n00Z');
     private readonly gameGlobals: GameGlobals;
     private freeze = false;
 
     constructor(gameGlobals: GameGlobals) {
         this.gameGlobals = gameGlobals;
-        this.teleports = [
-            new RedEntrance(),
-            new BlueEntrance(),
-            new TealEntrance(),
-            new PurpleEntrance(),
-            new YellowEntrance(),
-            new OrangeEntrance(),
-        ];
 
         this.createWaygate(Player(0), 8576, 10240, 10048, 10240);
         this.createWaygate(Player(1), 8576, -256, 10048, -256);
@@ -56,6 +39,5 @@ export class TeleportController {
         const waygate: unit = CreateUnit(p, this.waygateUnitId, x, y, 270);
         WaygateSetDestination(waygate, destinationX, destinationY);
         WaygateActivate(waygate, true);
-        UnitAddAbility(waygate, this.locustAbilityId);
     }
 }
