@@ -54,6 +54,7 @@ import { CrystalBall } from './Tier1Items/CrystalBall';
 import { BeltOfGiantStrength } from './Tier1Items/BeltOfGiantStrength';
 import { CrownOfKings } from './Tier1Items/CrownOfKings';
 import { AgileBow } from './Tier1Items/AgileBow';
+import { RingOfKings } from './Tier1Items/RingOfKings';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -123,6 +124,7 @@ itemMap.set('masterExecutionerAxe', new MasterExecutionerAxe(basicItemMap.get('b
 */
 itemMap.set('maulOfStrength', new MaulOfStrength(basicItemMap.get('warAxe') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('crownOfKings', new CrownOfKings(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironShield') as Item, basicItemMap.get('moonArmor') as Item));
+itemMap.set('ringOfKings', new RingOfKings(basicItemMap.get('warAxe') as Item, basicItemMap.get('orbOfCorruption') as Item));
 /*
 itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedHide') as Item, basicItemMap.get('druidicSalve') as Item));
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));

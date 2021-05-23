@@ -40,6 +40,7 @@ import { MantleOfIntelligenceEvent } from './MantleOfIntelligenceEvent';
 import { SharpSteelAxeEvent } from './SharpSteelAxeEvent';
 import { CrownOfKingsEvent } from './CrownOfKingsEvent';
 import { AgileBowEvent } from './AgileBowEvent';
+import { RingOfKingsEvent } from './RingOfKingsEvent';
 
 export class DamageEventController {
     constructor(
@@ -93,5 +94,6 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new Venom(gameGlobals, venomUtils));
         damageEngine.addAfterDamageEvent(new SharpSteelAxeEvent(gameGlobals));
         damageEngine.addAfterDamageEvent(new AgileBowEvent(gameGlobals));
+        damageEngine.addAfterDamageEvent(new RingOfKingsEvent(gameGlobals));
     }
 }

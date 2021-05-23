@@ -19,8 +19,10 @@ export class GameGlobals {
     public SnowyOwl: boolean[] = [];
     public ClockworkPenguin: boolean[] = [];
     public AssassinsBlade: ChargedItemStates[] = [];
+    public RingOfKings: ChargedItemStates[] = [];
     public RazorBladesOn: boolean[] = [];
     public AssassinsBladeCount: number[] = [];
+    public RingOfKingsCount: number[] = [];
     public SharpSteelAxeCount: number[] = [];
     public MoonBladeCount: number[] = [];
     public ElementalOrbCount: number[] = [];
