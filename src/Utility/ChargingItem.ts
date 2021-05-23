@@ -3,6 +3,7 @@ export class ChargingItem {
     private readonly chargeLimit: number;
     private chargeLimitReachedFunction: ((chargedItem: item) => void) | undefined;
     private chargeConditionFunction: (() => boolean) | undefined;
+    private itemLimitFreeze = false;
     readonly chargingItemHandleId: number;
 
     constructor(chargingItem: item, chargeLimit: number) {
@@ -20,8 +21,13 @@ export class ChargingItem {
             const charges: number = GetItemCharges(this.chargingItem);
             if (charges < this.chargeLimit) {
                 SetItemCharges(this.chargingItem, charges + 1);
+                if (this.itemLimitFreeze) {
+                    this.itemLimitFreeze = false;
+                }
             } else {
-                this.onChargeLimitReached();
+                if (!this.itemLimitFreeze) {
+                    this.onChargeLimitReached();
+                }
             }
         }
     }
@@ -32,6 +38,7 @@ export class ChargingItem {
 
     // eslint-disable-next-line
     onChargeLimitReached(): void {
+        this.itemLimitFreeze = true;
         if (this.chargeLimitReachedFunction !== undefined) {
             this.chargeLimitReachedFunction(this.chargingItem);
         }
