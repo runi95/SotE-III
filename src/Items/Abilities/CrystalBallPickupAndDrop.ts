@@ -13,11 +13,11 @@ export class CrystalBallPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCooldownReduction[playerId] += 0.08;
+        this.gameGlobals.PlayerCooldownReduction[playerId] += 0.05;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCooldownReduction[playerId] -= 0.08;
+        this.gameGlobals.PlayerCooldownReduction[playerId] -= 0.05;
     }
 }
