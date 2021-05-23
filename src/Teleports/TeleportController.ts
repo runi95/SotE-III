@@ -11,10 +11,10 @@ export class TeleportController {
 
         this.createWaygate(Player(0), 8576, 10240, 10048, 10240);
         this.createWaygate(Player(1), 8576, -256, 10048, -256);
-        this.createWaygate(Player(2), 8576, -10720, 10048, -10720);
-        this.createWaygate(Player(3), -2656, 10240, -4128, 10240);
-        this.createWaygate(Player(4), -2656, -256, -4128, -256);
-        this.createWaygate(Player(5), -2656, -10720, -4128, -10720);
+        this.createWaygate(Player(2), 8576, -10752, 10048, -10752);
+        this.createWaygate(Player(3), -2688, 10240, -4160, 10240);
+        this.createWaygate(Player(4), -2688, -256, -4160, -256);
+        this.createWaygate(Player(5), -2688, -10752, -4160, -10752);
 
         const trig: Trigger = new Trigger();
         trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER);
