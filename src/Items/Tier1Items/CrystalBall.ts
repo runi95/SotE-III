@@ -7,13 +7,13 @@ import { ScrollOfWitchcraft } from '../BaseItems/ScrollOfWitchcraft';
 const itemId: number = FourCC('I00V');
 const name = 'Crystal Ball';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MANA_REGEN, ItemLabel.COOLDOWN_REDUCTION];
-const goldCost = 2200;
+const goldCost = 1100;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNCrystalBall.blp';
 const description = `Can you see the future in this thing?
 
-|cffffcc00Intelligence:|r +10
-|cffffcc00Mana regen:|r +10
-|cffffcc00Cooldown reduction:|r +8%
+|cffffcc00Intelligence:|r +8
+|cffffcc00Mana regen:|r +7
+|cffffcc00Cooldown reduction:|r +5%
 |cffffcc00Use:|r Reveals the area of the map that it is cast upon. Also reveals invisible units
 |cffffcc00Mana Cost:|r 25
 |cffffcc00Range:|r 99999
