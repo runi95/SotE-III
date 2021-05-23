@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I02I');
 const name = 'Sacrificial Dagger';
 const labels: ItemLabel[] = [];
-const goldCost = 3000;
+const goldCost = 1300;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSacrifice.blp';
 const description = `A dagger often used by acolytes in sacrificial rituals
 

@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I02J');
 const name = 'Bloodied Sacrificial Dagger';
 const labels: ItemLabel[] = [];
-const goldCost = 3000;
+const goldCost = 1300;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBloodiedSacrifice.blp';
 const description = `A dagger often used by acolytes in sacrificial rituals
 
