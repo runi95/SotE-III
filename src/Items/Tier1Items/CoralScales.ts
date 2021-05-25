@@ -12,7 +12,7 @@ const description = `Very strong, defensive scales.
 
 |cffffcc00Health regen:|r +15
 |cffffcc00Max health:|r +150
-|cffffcc00Defence:|r +1
+|cffffcc00Armor:|r +1
 
 |cFF808080Health regeneration determines how much health you're passively regaining every second.|r`;
 
