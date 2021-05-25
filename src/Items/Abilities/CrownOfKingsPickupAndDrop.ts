@@ -14,14 +14,14 @@ export class CrownOfKingsPickupAndDrop extends ItemPickupAndDrop {
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.CrownOfKingsCount[playerId] += 1;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 12;
-        this.gameGlobals.PlayerSpellBlock[playerId] += 12;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 10;
+        this.gameGlobals.PlayerSpellBlock[playerId] += 10;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.CrownOfKingsCount[playerId] -= 1;
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 12;
-        this.gameGlobals.PlayerSpellBlock[playerId] -= 12;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 10;
+        this.gameGlobals.PlayerSpellBlock[playerId] -= 10;
     }
 }
