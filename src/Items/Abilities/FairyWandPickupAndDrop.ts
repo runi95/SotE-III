@@ -13,11 +13,11 @@ export class FairyWandPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] += 20;
+        this.gameGlobals.PlayerCriticalCast[playerId] += 10;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] -= 20;
+        this.gameGlobals.PlayerCriticalCast[playerId] -= 10;
     }
 }
