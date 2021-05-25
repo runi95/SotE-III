@@ -23,7 +23,6 @@ import { AssassinsBladeEvent } from './AssassinsBladeEvent';
 import { Thorns } from './Thorns';
 import { Reflect } from './Reflect';
 import { Execute } from './Execute';
-import { CriticalCast } from './CriticalCast';
 import { Splash } from './Splash';
 import { ElementalOrb } from './ElementalOrb';
 import { EnhancedJavelinEvent } from './EnhancedJavelinEvent';
@@ -76,7 +75,6 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Reflect(gameGlobals));
-        damageEngine.addInitialDamageModificationEvent(new CriticalCast(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));

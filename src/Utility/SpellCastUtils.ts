@@ -1,12 +1,14 @@
 import { GameGlobals } from "../Game/GameGlobals";
+import { RandomNumberGenerator } from "./RandomNumberGenerator";
 
 export class SpellCastUtils {
     private readonly gameGlobals: GameGlobals;
-
+    private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly fullVialItemId: number = FourCC('I016');
 
-    constructor(gameGlobals: GameGlobals) {
+    constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public GetIntelligence(u: unit): number {
@@ -26,6 +28,12 @@ export class SpellCastUtils {
             if (GetItemCharges(fullVial) === 60) {
                 SetItemCharges(fullVial, 0);
                 bonuses += 0.25 * int;
+            }
+        }
+
+        if (this.gameGlobals.PlayerCriticalCast[playerId] > 0) {
+            if (this.randomNumberGenerator.random(1, 100) <= 25) {
+                bonuses += (int + bonuses) * this.gameGlobals.PlayerCriticalCast[playerId]
             }
         }
 

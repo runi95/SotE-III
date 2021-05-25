@@ -4,13 +4,13 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I03F');
 const name = 'Fairy Wand';
 const labels: ItemLabel[] = [ItemLabel.CRITICAL_CAST];
-const goldCost = 1160;
+const goldCost = 580;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNStarWand.blp';
 const description = `Your wish has been granted.
 
-|cffffcc00Critical Cast:|r +20%
+|cffffcc00Critical cast:|r +10%
 
-|cFF808080Critical cast gives a chance for spells to deal double damage.|r`;
+|cFF808080Critical cast gives a chance for spells to cast with an additional intelligence bonus.|r`;
 
 export class FairyWand extends Item {
     constructor() {
