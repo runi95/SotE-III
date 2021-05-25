@@ -43,7 +43,6 @@ export class GameGlobals {
     public FastVampireClawsCount: number[] = [];
     public MaulOfStrengthCount: number[] = [];
     public MaulOfStrengthTimer: number[] = [];
-    public AdeptStaffCount: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];

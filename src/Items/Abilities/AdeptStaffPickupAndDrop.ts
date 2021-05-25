@@ -13,13 +13,11 @@ export class AdeptStaffPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] += 30;
-        this.gameGlobals.AdeptStaffCount[playerId] += 1;
+        this.gameGlobals.PlayerCriticalCast[playerId] += 15;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] -= 30;
-        this.gameGlobals.AdeptStaffCount[playerId] -= 1;
+        this.gameGlobals.PlayerCriticalCast[playerId] -= 15;
     }
 }
