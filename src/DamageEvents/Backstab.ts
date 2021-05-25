@@ -15,17 +15,18 @@ export class Backstab implements DamageEvent {
         if (angleDiff <= 35 || angleDiff >= 325) {
             globals.DamageEventAmount *= 2;
             const txt: texttag = CreateTextTag();
-            SetTextTagText(txt, Math.floor(globals.DamageEventAmount).toString(), 0.02);
+            SetTextTagText(txt, 'Backstab!', 0.020);
             SetTextTagPos(
                 txt,
-                GetUnitX(globals.DamageEventSource as unit),
+                GetUnitX(globals.DamageEventSource as unit) + 32,
                 GetUnitY(globals.DamageEventSource as unit),
                 BlzGetUnitZ(globals.DamageEventSource as unit),
             );
             SetTextTagColor(txt, 255.0, 0.0, 0.0, 255.0);
             SetTextTagPermanent(txt, false);
-            SetTextTagLifespan(txt, 2.0);
-            SetTextTagVelocityBJ(txt, 64, 90);
+            SetTextTagLifespan(txt, 1.5);
+            SetTextTagVelocity(txt, 0, 0.01);
+            SetTextTagFadepoint(txt, 0.9375);
         }
     }
 }

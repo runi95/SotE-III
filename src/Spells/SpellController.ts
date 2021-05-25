@@ -68,6 +68,7 @@ import { AbolishLight } from './AbolishLight';
 import { MarkForDeath } from './MarkForDeath';
 import { Restoration } from './Restoration';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { ShadowMeld } from './ShadowMeld';
 
 export class SpellController {
     // eslint-disable-next-line
@@ -146,6 +147,7 @@ export class SpellController {
             new AbolishLight(spellCastUtils),
             new MarkForDeath(),
             new Restoration(gameGlobals),
+            new ShadowMeld()
         ];
     }
 }
