@@ -41,6 +41,7 @@ import { SharpSteelAxeEvent } from './SharpSteelAxeEvent';
 import { CrownOfKingsEvent } from './CrownOfKingsEvent';
 import { AgileBowEvent } from './AgileBowEvent';
 import { RingOfKingsEvent } from './RingOfKingsEvent';
+import { CriticalHit } from './CriticalHit';
 
 export class DamageEventController {
     constructor(
@@ -85,9 +86,10 @@ export class DamageEventController {
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
         damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
         damageEngine.addFinalDamageModificationEvent(new Execute(gameGlobals));
-        damageEngine.addAfterDamageEvent(new Splash(gameGlobals));
+        damageEngine.addFinalDamageModificationEvent(new CriticalHit(randomNumberGenerator));
 
         // After damage events
+        damageEngine.addAfterDamageEvent(new Splash(gameGlobals));
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
         damageEngine.addAfterDamageEvent(new MaulOfStrengthEvent(gameGlobals, timerUtils));
         damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
