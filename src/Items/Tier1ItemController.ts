@@ -61,15 +61,21 @@ const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 /**
  * Tier 1 Item Controller
  *
+ * Lower cost items in this tier are simple upgrades from their base components
+ * Higher cost items in this tier are very strong items that are not meant to be replaced
+ * until your other items consists of mostly t1 and t2 items
+ * 
+ * Average tier 1 item price should be around 1000 gold
+ * 
  * Qualifiers:
  * - is a recipe item made only from basic items
  * - is used in 1 to 3 recipes
- * - has a total cost between 2250 to 4500 gold
+ * - has a total cost between 650  to 1500 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item, basicItemMap.get('orbOfMagic') as Item));
-itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
+// itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
 /*
 itemMap.set(
     'amuletOfProtection',

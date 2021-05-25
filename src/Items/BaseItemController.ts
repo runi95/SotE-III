@@ -38,10 +38,15 @@ import { OrbOfCorruption } from './BaseItems/OrbOfCorruption';
 /**
  * Base Item Controller
  *
+ * Lower cost base items are very weak and only meant to be used very early on in t1 item recipes
+ * Higher cost base items are very strong and only used in t2+ item recipes
+ * 
+ * Average base item price should be around 440 gold
+ * 
  * Qualifiers:
  * - has to be purchasable in a shop
  * - is used in 2 to 4 recipes
- * - costs between 100 - 1500 gold
+ * - costs between 100 - 1300 gold
  */
 
 export const itemMap: Map<string, Item> = new Map();

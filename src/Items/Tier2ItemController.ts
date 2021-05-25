@@ -44,11 +44,17 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
 
 /**
  * Tier 2 Item Controller
- *
+ * 
+ * Lower cost items in this tier are strong, but not meant to be a permanent item
+ * Higher cost items in this tier are very strong items that are not meant to be replaced
+ * until your inventory consists of mostly t2 items
+ * 
+ * Average tier 2 item price should be around 2900 gold
+ * 
  * Qualifiers:
  * - is a recipe item made only from tier 1 items
  * - is used in 0 to 2 recipes
- * - has a total cost between 6750 to 13500 gold
+ * - has a total cost between 1600 to 3600 gold
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
