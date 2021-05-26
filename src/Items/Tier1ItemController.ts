@@ -55,6 +55,7 @@ import { BeltOfGiantStrength } from './Tier1Items/BeltOfGiantStrength';
 import { CrownOfKings } from './Tier1Items/CrownOfKings';
 import { AgileBow } from './Tier1Items/AgileBow';
 import { RingOfKings } from './Tier1Items/RingOfKings';
+import { GlovesOfAntiMagic } from './Tier1Items/GlovesOfAntiMagic';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -91,6 +92,7 @@ itemMap.set('circesStaff', new CircesStaff(basicItemMap.get('scepter') as Item))
 itemMap.set('cloakOfShadowWalk', new CloakOfShadowWalk(basicItemMap.get('cloakOfShadows') as Item, itemMap.get('bootsOfSpeed') as Item));
 */
 itemMap.set('creatureClaws', new CreatureClaws(basicItemMap.get('claws') as Item, basicItemMap.get('orbOfVenom') as Item));
+itemMap.set('glovesOfAntiMagic', new GlovesOfAntiMagic(basicItemMap.get('claws') as Item, basicItemMap.get('goblinBattery') as Item));
 /*
 itemMap.set('elementalOrb', new ElementalOrb(basicItemMap.get('orbOfFire') as Item, basicItemMap.get('orbOfLightning') as Item));
 */
