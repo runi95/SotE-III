@@ -13,11 +13,11 @@ export class LifeStonePickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerRestoration[playerId] += 1;
+        this.gameGlobals.PlayerRestoration[playerId] += 0.7;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerRestoration[playerId] -= 1;
+        this.gameGlobals.PlayerRestoration[playerId] -= 0.7;
     }
 }
