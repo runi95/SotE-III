@@ -56,6 +56,7 @@ import { CrownOfKings } from './Tier1Items/CrownOfKings';
 import { AgileBow } from './Tier1Items/AgileBow';
 import { RingOfKings } from './Tier1Items/RingOfKings';
 import { GlovesOfAntiMagic } from './Tier1Items/GlovesOfAntiMagic';
+import { WandOfReanimation } from './Tier1Items/WandOfReanimation';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -76,6 +77,7 @@ const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
 itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item, basicItemMap.get('orbOfMagic') as Item));
+itemMap.set('wandOfReanimation', new WandOfReanimation(basicItemMap.get('emptyVial') as Item, basicItemMap.get('lifeStone') as Item, basicItemMap.get('scepter') as Item));
 // itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
 /*
 itemMap.set(

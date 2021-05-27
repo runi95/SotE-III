@@ -46,6 +46,7 @@ import { CrownOfKingsPickupAndDrop } from './Abilities/CrownOfKingsPickupAndDrop
 import { AgileBowPickupAndDrop } from './Abilities/AgileBowPickupAndDrop';
 import { RingOfKingsPickupAndDrop } from './Abilities/RingOfKingsPickupAndDrop';
 import { RingOfKingsSell } from './Abilities/RingOfKingsSell';
+import { WandOfReanimationPickupAndDrop } from './Abilities/WandOfReanimationPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -98,7 +99,8 @@ export class ItemController2 {
             new CrownOfKingsPickupAndDrop(gameGlobals),
             new AgileBowPickupAndDrop(gameGlobals),
             new RingOfKingsPickupAndDrop(gameGlobals, itemChargeUtils),
-            new RingOfKingsSell()
+            new RingOfKingsSell(),
+            new WandOfReanimationPickupAndDrop(gameGlobals)
         ];
     }
 }
