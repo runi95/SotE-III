@@ -29,8 +29,7 @@ export class MantleOfIntelligenceBuff extends Buff {
         return BuffTypes.MANTLE_OF_INTELLIGENCE;
     }
 
-    // eslint-disable-next-line
-    public stackBuff(_: this): void {
+    public stackBuff(): void {
         this.setDuration(5);
     }
 
