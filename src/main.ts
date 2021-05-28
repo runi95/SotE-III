@@ -71,6 +71,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.SharpSteelAxe[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RingOfKings[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RazorBladesOn[i] = false;
+        gameGlobals.AncientFigurineActive[i] = false;
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
         gameGlobals.RingOfKingsCount[i] = 0;
@@ -82,6 +83,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.CrownOfKingsCount[i] = 0;
         gameGlobals.EnhancedJavelinCount[i] = 0;
         gameGlobals.AgileBowCount[i] = 0;
+        gameGlobals.AncientFigurineCount[i] = 0;
         gameGlobals.MarkOfTheTalonCount[i] = 0;
         gameGlobals.EnhancedJavelinAttackCount[i] = 0;
         gameGlobals.DivineShieldLife[i] = 0;

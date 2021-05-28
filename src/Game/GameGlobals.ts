@@ -32,6 +32,8 @@ export class GameGlobals {
     public CrownOfKingsCount: number[] = [];
     public EnhancedJavelinCount: number[] = [];
     public AgileBowCount: number[] = [];
+    public AncientFigurineCount: number[] = [];
+    public AncientFigurineActive: boolean[] = [];
     public EnhancedJavelinAttackCount: number[] = [];
     public MarkOfTheTalonCount: number[] = [];
     public LegionDoomHornCount: number[] = [];

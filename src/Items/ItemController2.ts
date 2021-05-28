@@ -47,6 +47,9 @@ import { AgileBowPickupAndDrop } from './Abilities/AgileBowPickupAndDrop';
 import { RingOfKingsPickupAndDrop } from './Abilities/RingOfKingsPickupAndDrop';
 import { RingOfKingsSell } from './Abilities/RingOfKingsSell';
 import { WandOfReanimationPickupAndDrop } from './Abilities/WandOfReanimationPickupAndDrop';
+import { AncientFigurinePickupAndDrop } from './Abilities/AncientFigurinePickupAndDrop';
+import { AncientFigurineCast } from './Abilities/AncientFigurineCast';
+import { BuffUtils } from '../Utility/BuffUtils';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -54,7 +57,7 @@ export class ItemController2 {
     // eslint-disable-next-line
     private itemAbilities: any[];
 
-    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, itemChargeUtils: ItemChargeUtils, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(gameGlobals: GameGlobals, timerUtils: TimerUtils, itemChargeUtils: ItemChargeUtils, randomNumberGenerator: RandomNumberGenerator, buffUtils: BuffUtils) {
         this.itemAbilities = [
             new MantleOfIntelligencePickupAndDrop(gameGlobals),
             new RingOfSuperiorityPickupAndDrop(gameGlobals),
@@ -100,7 +103,9 @@ export class ItemController2 {
             new AgileBowPickupAndDrop(gameGlobals),
             new RingOfKingsPickupAndDrop(gameGlobals, itemChargeUtils),
             new RingOfKingsSell(),
-            new WandOfReanimationPickupAndDrop(gameGlobals)
+            new WandOfReanimationPickupAndDrop(gameGlobals),
+            new AncientFigurinePickupAndDrop(gameGlobals),
+            new AncientFigurineCast(gameGlobals, buffUtils)
         ];
     }
 }

@@ -41,6 +41,7 @@ import { CrownOfKingsEvent } from './CrownOfKingsEvent';
 import { AgileBowEvent } from './AgileBowEvent';
 import { RingOfKingsEvent } from './RingOfKingsEvent';
 import { CriticalHit } from './CriticalHit';
+import { AncientFigurineEvent } from './AncientFigurineEvent';
 
 export class DamageEventController {
     constructor(
@@ -85,6 +86,7 @@ export class DamageEventController {
         damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
         damageEngine.addFinalDamageModificationEvent(new Execute(gameGlobals));
         damageEngine.addFinalDamageModificationEvent(new CriticalHit(randomNumberGenerator));
+        damageEngine.addFinalDamageModificationEvent(new AncientFigurineEvent(gameGlobals));
 
         // After damage events
         damageEngine.addAfterDamageEvent(new Splash(gameGlobals));
