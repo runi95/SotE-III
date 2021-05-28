@@ -30,7 +30,14 @@ export class GoblinBatteryUse extends ItemUse {
             );
         }
 
-        const damage: number = Pow(0.94, -charges);
+        // Min damage (1 charge): 2
+        //     damage (25 charges): 75
+        //     damage (50 charges): 200
+        //     damage (75 charges): 375
+        //     damage (90 charges): 504
+        // Max damage (100 charges): 600
+        const damage: number = 2 * charges + 4 * Pow(charges / 10, 2);
+        // const damage: number = Pow(0.94, -charges);
         const loc: location = GetUnitLoc(trig);
         const grp: GroupInRange = new GroupInRange(400, loc);
         grp.for((u: unit) => {
