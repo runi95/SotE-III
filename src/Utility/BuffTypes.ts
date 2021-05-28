@@ -1,4 +1,5 @@
 export enum BuffTypes {
     MOON_BLADE,
+    MANTLE_OF_INTELLIGENCE,
     ANCIENT_FIGURINE
 }

@@ -26,7 +26,7 @@ export class MantleOfIntelligenceBuff extends Buff {
     public tick(): void {}
 
     public getBuffType(): BuffTypes {
-        return BuffTypes.MOON_BLADE;
+        return BuffTypes.MANTLE_OF_INTELLIGENCE;
     }
 
     // eslint-disable-next-line
