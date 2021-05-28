@@ -25,8 +25,9 @@ export class MoonBladeBuff extends Buff {
         this.gameGlobals.PlayerSpellBlock[this.playerId] += this.temporaryResistance;
     }
 
-    // eslint-disable-next-line
-    public tick(): void {}
+    public tick(): void {
+        // This function is intentionally left empty!
+    }
 
     public getBuffType(): BuffTypes {
         return BuffTypes.MOON_BLADE;

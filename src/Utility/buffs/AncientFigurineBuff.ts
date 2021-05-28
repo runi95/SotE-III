@@ -21,8 +21,9 @@ export class AncientFigurineBuff extends Buff {
         this.gameGlobals.AncientFigurineActive[this.playerId] = true;
     }
 
-    // eslint-disable-next-line
-    public tick(): void {}
+    public tick(): void {
+        // This function is intentionally left empty!
+    }
 
     public getBuffType(): BuffTypes {
         return BuffTypes.ANCIENT_FIGURINE;

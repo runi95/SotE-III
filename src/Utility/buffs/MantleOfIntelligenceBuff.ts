@@ -22,8 +22,9 @@ export class MantleOfIntelligenceBuff extends Buff {
         this.gameGlobals.PlayerSpellBlock[this.playerId] -= this.temporaryResistanceReductionAmount;
     }
 
-    // eslint-disable-next-line
-    public tick(): void {}
+    public tick(): void {
+        // This function is intentionally left empty!
+    }
 
     public getBuffType(): BuffTypes {
         return BuffTypes.MANTLE_OF_INTELLIGENCE;
