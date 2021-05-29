@@ -13,13 +13,13 @@ export class SkullShieldPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerThorns[playerId] += 25;
-        this.gameGlobals.PlayerReflect[playerId] += 25;
+        this.gameGlobals.PlayerThorns[playerId] += 14;
+        this.gameGlobals.PlayerReflect[playerId] += 14;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerThorns[playerId] -= 25;
-        this.gameGlobals.PlayerReflect[playerId] -= 25;
+        this.gameGlobals.PlayerThorns[playerId] -= 14;
+        this.gameGlobals.PlayerReflect[playerId] -= 14;
     }
 }

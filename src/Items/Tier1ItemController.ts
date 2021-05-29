@@ -148,10 +148,12 @@ itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Ite
 itemMap.set('beltOfGiantStrength', new BeltOfGiantStrength(basicItemMap.get('warAxe') as Item, basicItemMap.get('reinforcedHide') as Item));
 /*
 itemMap.set('shimmerWeed', new ShimmerWeed(basicItemMap.get('lifeStone') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
+*/
 itemMap.set(
     'skullShield',
-    new SkullShield(basicItemMap.get('ironwoodBranch') as Item, basicItemMap.get('amuletOfSpellReflection') as Item),
+    new SkullShield(basicItemMap.get('ironwoodBranch') as Item, basicItemMap.get('amuletOfSpellReflection') as Item, basicItemMap.get('reinforcedHide') as Item),
 );
+/*
 itemMap.set('snowyOwl', new SnowyOwl(basicItemMap.get('clockworkPenguin') as Item));
 itemMap.set(
     'spikedCarapace',
