@@ -1,14 +1,8 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
-import { GameGlobals } from '../Game/GameGlobals';
 
 export class Immunity implements DamageEvent {
-    private readonly gameGlobals: GameGlobals;
     private readonly abilityId: number = FourCC('A01B');
-
-    constructor(gameGlobals: GameGlobals) {
-        this.gameGlobals = gameGlobals;
-    }
 
     public event(globals: DamageEngineGlobals): void {
         if (GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId) > 0) {

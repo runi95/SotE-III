@@ -105,7 +105,7 @@ export class SpellController {
             new FrostNova(timerUtils, spellCastUtils),
             new GoblinBombShip(timerUtils, randomNumberGenerator),
             new GoblinMine(timerUtils, spellCastUtils),
-            new Immunity(gameGlobals),
+            new Immunity(),
             new Maelstrom(timerUtils, spellCastUtils),
             new ManaBrilliance(),
             new ManaShield(),

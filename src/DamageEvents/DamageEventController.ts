@@ -83,7 +83,7 @@ export class DamageEventController {
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());
-        damageEngine.addFinalDamageModificationEvent(new Immunity(gameGlobals));
+        damageEngine.addFinalDamageModificationEvent(new Immunity());
         damageEngine.addFinalDamageModificationEvent(new Execute(gameGlobals));
         damageEngine.addFinalDamageModificationEvent(new CriticalHit(randomNumberGenerator));
         damageEngine.addFinalDamageModificationEvent(new AncientFigurineEvent(gameGlobals));
