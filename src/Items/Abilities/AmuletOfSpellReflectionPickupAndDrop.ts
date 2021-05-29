@@ -13,11 +13,11 @@ export class AmuletOfSpellReflectionPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerReflect[playerId] += 20;
+        this.gameGlobals.PlayerReflect[playerId] += 10;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerReflect[playerId] -= 20;
+        this.gameGlobals.PlayerReflect[playerId] -= 10;
     }
 }
