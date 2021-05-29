@@ -3,6 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import * as settings from '../Game/GameSettings';
 
 export class BurnVictim implements DamageEvent {
     private readonly abilityId: number = FourCC('A02I');
@@ -17,6 +18,10 @@ export class BurnVictim implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (!globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

@@ -1,5 +1,6 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class RunedBracers implements DamageEvent {
     private readonly itemTypeId: number = FourCC('I00S');
@@ -9,6 +10,10 @@ export class RunedBracers implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (!globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

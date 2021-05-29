@@ -2,6 +2,7 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { VenomUtils } from '../Utility/VenomUtils';
+import * as settings from '../Game/GameSettings';
 
 export class Venom implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -14,6 +15,10 @@ export class Venom implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

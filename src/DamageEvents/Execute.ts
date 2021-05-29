@@ -1,6 +1,7 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class Execute implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -11,6 +12,10 @@ export class Execute implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

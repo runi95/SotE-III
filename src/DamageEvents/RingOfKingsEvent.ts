@@ -1,6 +1,7 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { ChargedItemStates, GameGlobals } from '../Game/GameGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class RingOfKingsEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -14,6 +15,10 @@ export class RingOfKingsEvent implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
+            return;
+        }
+
         const owningPlayer: player = GetOwningPlayer(globals.DamageEventTarget as unit);
         const playerId: number = GetPlayerId(owningPlayer);
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {

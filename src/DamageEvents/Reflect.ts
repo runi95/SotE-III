@@ -1,6 +1,7 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class Reflect implements DamageEvent {
     private frozen = false;
@@ -16,6 +17,10 @@ export class Reflect implements DamageEvent {
         }
 
         if (this.frozen) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

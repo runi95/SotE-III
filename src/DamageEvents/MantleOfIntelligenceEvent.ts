@@ -3,6 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { MantleOfIntelligenceBuff } from '../Utility/buffs/MantleOfIntelligenceBuff';
+import * as settings from '../Game/GameSettings';
 
 export class MantleOfIntelligenceEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -15,6 +16,10 @@ export class MantleOfIntelligenceEvent implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

@@ -2,6 +2,7 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import * as settings from '../Game/GameSettings';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
@@ -20,6 +21,10 @@ export class Redemption implements DamageEvent {
         }
 
         if (globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

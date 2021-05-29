@@ -1,10 +1,15 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class Backstab implements DamageEvent {
     private readonly unitTypeId: number = FourCC('E000');
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
+            return;
+        }
+        
         if (GetUnitTypeId(globals.DamageEventSource as unit) !== this.unitTypeId) {
             return;
         }

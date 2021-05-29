@@ -3,6 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import * as settings from '../Game/GameSettings';
 
 export class MaulOfStrengthEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -15,6 +16,10 @@ export class MaulOfStrengthEvent implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
+            return;
+        }
+        
         const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;

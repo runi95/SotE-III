@@ -1,6 +1,7 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import * as settings from '../Game/GameSettings';
 
 export class CriticalHit implements DamageEvent {
     private readonly randomNumberGenerator: RandomNumberGenerator;
@@ -11,6 +12,10 @@ export class CriticalHit implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.DamageEventAmount < 1) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

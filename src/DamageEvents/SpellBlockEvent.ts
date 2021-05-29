@@ -2,6 +2,7 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
+import * as settings from '../Game/GameSettings';
 
 export class SpellBlockEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -14,6 +15,10 @@ export class SpellBlockEvent implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (!globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

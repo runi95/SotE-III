@@ -3,6 +3,7 @@ import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { MoonBladeBuff } from '../Utility/buffs/MoonBladeBuff';
+import * as settings from '../Game/GameSettings';
 
 export class MoonBladeEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
@@ -15,6 +16,10 @@ export class MoonBladeEvent implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

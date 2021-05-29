@@ -2,6 +2,7 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import * as settings from '../Game/GameSettings';
 
 export class SpiritOfFrost implements DamageEvent {
     private readonly randomNumberGenerator: RandomNumberGenerator;
@@ -16,6 +17,10 @@ export class SpiritOfFrost implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
+            return;
+        }
+
         const abilityLevel: number = GetUnitAbilityLevel(globals.DamageEventTarget as unit, this.abilityId);
 
         if (abilityLevel > 0) {

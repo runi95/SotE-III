@@ -1,11 +1,16 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
+import * as settings from '../Game/GameSettings';
 
 export class ManaBrilliance implements DamageEvent {
     private readonly unitTypeId: number = FourCC('N000');
 
     public event(globals: DamageEngineGlobals): void {
         if (!globals.IsDamageSpell) {
+            return;
+        }
+
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
             return;
         }
 

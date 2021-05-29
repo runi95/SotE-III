@@ -2,6 +2,7 @@ import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
+import * as settings from '../Game/GameSettings';
 
 export class TheAegis implements DamageEvent {
     private readonly itemId: number = FourCC('I014');
@@ -15,6 +16,10 @@ export class TheAegis implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
+        if (globals.DamageEventDamageT === settings.DAMAGE_TYPE_UNIVERSAL) {
+            return;
+        }
+
         const trig: unit = globals.DamageEventTarget as unit;
 
         if (!UnitHasItemOfTypeBJ(trig, this.itemId)) {
