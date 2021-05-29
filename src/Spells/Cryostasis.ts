@@ -20,7 +20,7 @@ export class Cryostasis extends Spell {
         const y: number = GetUnitY(GetTriggerUnit());
         const abilityLevel: number = GetUnitAbilityLevel(GetTriggerUnit(), this.abilityId);
         const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit());
-        const damage: number = 75 * abilityLevel + 3 * intelligence;
+        const damage: number = 20 * abilityLevel + 0.5 * intelligence;
         const playerid: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         this.gameGlobals.CryostasisSummons[playerid] = CreateUnit(GetOwningPlayer(GetTriggerUnit()), this.dummyUnitTypeId, x, y, 0);
         BlzSetUnitBaseDamage(this.gameGlobals.CryostasisSummons[playerid], damage, 0);
