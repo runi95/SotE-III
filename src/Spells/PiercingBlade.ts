@@ -1,20 +1,27 @@
-import { Spell } from './Spell';
 import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { Trigger } from '../JassOverrides/Trigger';
 
-export class PiercingBlade extends Spell {
+export class PiercingBlade {
     protected readonly abilityId: number = FourCC('A00L');
     private readonly dummyUnitId: number = FourCC('n00M');
+    private readonly trig: Trigger = new Trigger();
     private readonly timerUtils: TimerUtils;
     private readonly spellCastUtils: SpellCastUtils;
 
     constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
-        super();
-
         this.timerUtils = timerUtils;
         this.spellCastUtils = spellCastUtils;
+
+        this.trig.addCondition(() => this.condition());
+        this.trig.addAction(() => this.action());
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_SPELL_CAST);
+    }
+
+    protected condition(): boolean {
+        return GetSpellAbilityId() === this.abilityId;
     }
 
     protected action(): void {
