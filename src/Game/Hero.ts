@@ -11,7 +11,7 @@ export class Hero {
     private readonly gameGlobals: GameGlobals;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(gameGlobals: GameGlobals, selectRect: rect, heroId: number, dummyX: number, dummyY: number, facingAngle: number) {
+    constructor(gameGlobals: GameGlobals, selectRect: rect, heroId: number, dummyX: number, dummyY: number, facingAngle: number, heroReadySoundPath: string) {
         this.selectRect = selectRect;
         this.heroId = heroId;
         this.dummyX = dummyX;
@@ -27,7 +27,13 @@ export class Hero {
             this.isHeroPicked = true;
             RemoveUnit(GetEnteringUnit());
             RemoveUnit(statueUnit);
-            const playerId: number = GetPlayerId(GetOwningPlayer(GetEnteringUnit()));
+            const owningPlayer: player = GetOwningPlayer(GetEnteringUnit());
+            const playerId: number = GetPlayerId(owningPlayer);
+            if (GetLocalPlayer() !== owningPlayer) {
+                heroReadySoundPath = '';
+            }
+            
+            PlaySoundBJ(CreateSound(heroReadySoundPath, false, false, false, 0, 0, 'DefaultEAXON'));
             this.gameGlobals.PlayerHeroId[playerId] = this.heroId;
             this.gameGlobals.PlayerLives[playerId] = this.gameGlobals.GameStartingLife;
         });

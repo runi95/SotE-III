@@ -149,6 +149,7 @@ function initializeHeroSelection(gameGlobals: GameGlobals): void {
                 gameGlobals.HeroSelectPoints[i].x,
                 gameGlobals.HeroSelectPoints[i].y,
                 gameGlobals.HeroSelectAngles[i],
+                gameGlobals.HeroReadySoundPaths[i],
             ),
         );
     }

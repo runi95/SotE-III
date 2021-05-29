@@ -1099,6 +1099,22 @@ export class GameGlobals {
         270.0,
     ];
 
+    public HeroReadySoundPaths: string[] = [
+        'Units\\NightElf\\HeroWarden\\HeroWardenReady1.wav',
+        'Units\\Orc\\HeroShadowHunter\\ShadowHunterReady1.wav',
+        'Units\\Undead\\HeroLich\\HeroLichReady1.wav',
+        'Units\\Naga \\LadyVashj\\LadyVashjReady1.wav',
+        'Units\\Creeps\\HeroTinker\\HeroTinkerReady1.wav',
+        'Units\\Creeps\\BeastMaster\\OgreBeastMasterReady1.wav',
+        'Units\\Demon\\HeroPitLord\\HPitLordReady1.wav',
+        'Units\\Creeps\\HeroFireLord\\HeroFireLordReady1.wav',
+        'Units\\Human\\HeroPaladin\\HeroPaladinReady1.wav',
+        'Units\\Creeps\\BansheeRanger\\DarkRangerReady1.wav',
+        'Units\\Creeps\\PandarenBrewmaster\\PandarenBrewmasterReady1.wav',
+        'Units\\Creeps\\HEROGoblinALCHEMIST\\HeroAlchemistReady1.wav',
+        'Units\\Orc\\HeroBladeMaster\\HeroBladeMasterReady1.wav',
+    ];
+
     public SelectedHeroIndexes: number[] = [];
 
     public HeroList: Hero[] = [];
