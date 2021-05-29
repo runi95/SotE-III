@@ -4,7 +4,6 @@ import { GameGlobals } from '../Game/GameGlobals';
 import * as settings from '../Game/GameSettings';
 
 export class Thorns implements DamageEvent {
-    private frozen = false;
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -13,10 +12,6 @@ export class Thorns implements DamageEvent {
 
     public event(globals: DamageEngineGlobals): void {
         if (globals.IsDamageSpell) {
-            return;
-        }
-
-        if (this.frozen) {
             return;
         }
 
@@ -37,14 +32,12 @@ export class Thorns implements DamageEvent {
             return;
         }
 
-        this.frozen = true;
         UnitDamageTargetBJ(
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
             this.gameGlobals.PlayerThorns[playerId],
             ATTACK_TYPE_NORMAL,
-            DAMAGE_TYPE_NORMAL,
+            DAMAGE_TYPE_UNIVERSAL,
         );
-        this.frozen = false;
     }
 }

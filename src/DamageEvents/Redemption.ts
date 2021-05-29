@@ -6,7 +6,6 @@ import * as settings from '../Game/GameSettings';
 
 export class Redemption implements DamageEvent {
     private readonly abilityId: number = FourCC('A034');
-    private frozen = false;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly spellCastUtils: SpellCastUtils;
 
@@ -16,10 +15,6 @@ export class Redemption implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        if (this.frozen) {
-            return;
-        }
-
         if (globals.IsDamageSpell) {
             return;
         }
@@ -47,14 +42,12 @@ export class Redemption implements DamageEvent {
             ),
         );
 
-        this.frozen = true;
         UnitDamageTargetBJ(
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
             7 + 3 * abilityLevel + 0.3333 * abilityLevel * int,
             ATTACK_TYPE_NORMAL,
-            DAMAGE_TYPE_NORMAL,
+            DAMAGE_TYPE_UNIVERSAL,
         );
-        this.frozen = false;
     }
 }
