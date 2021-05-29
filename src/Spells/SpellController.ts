@@ -85,7 +85,7 @@ export class SpellController {
             new Avatar(timerUtils, spellCastUtils),
             new Backstab(),
             new BeastSense(),
-            new Betrayal(spellCastUtils),
+            new Betrayal(spellCastUtils, timerUtils, stunUtils),
             new Clarity(spellCastUtils),
             new ClockwerkGoblinDeath(stunUtils),
             new Combust(spellCastUtils),
