@@ -26,7 +26,7 @@ export class Slash extends Spell {
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = 150 * abilityLevel + 2 * intelligence;
-        PauseUnit(trig, true);
+        BlzPauseUnitEx(trig, true);
         UnitAddAbility(trig, this.dummyAbilityId);
         UnitRemoveAbility(trig, this.dummyAbilityId);
 
@@ -56,7 +56,7 @@ export class Slash extends Spell {
                 DestroyEffect(eff);
                 const stunAbilityLevel: number = GetUnitAbilityLevel(trig, this.stunAbilityId);
                 if (stunAbilityLevel === 0) {
-                    PauseUnit(trig, false);
+                    BlzPauseUnitEx(trig, false);
                 }
 
                 this.timerUtils.releaseTimer(t);
