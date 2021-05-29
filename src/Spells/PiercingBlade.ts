@@ -17,7 +17,7 @@ export class PiercingBlade {
 
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
-        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_SPELL_CAST);
+        this.trig.registerAnyUnitEventBJ(EVENT_PLAYER_UNIT_SPELL_EFFECT);
     }
 
     protected condition(): boolean {
