@@ -22,11 +22,24 @@ export class Avatar extends Spell {
         const bonusHP: number = 250 * abilityLevel + 5 * intelligence;
         const bonusArmor: number = abilityLevel;
         const bonusDamage: number = Math.ceil(10 * abilityLevel + 0.1 * intelligence);
-        SetUnitScalePercent(trig, 150, 150, 150);
+        DestroyEffect(AddSpecialEffectTarget('Abilities\\Spells\\Human\\Avatar\\AvatarCaster.mdl', trig, 'origin'));
         BlzSetUnitMaxHP(trig, BlzGetUnitMaxHP(trig) + bonusHP);
         SetUnitLifeBJ(trig, GetUnitState(trig, UNIT_STATE_LIFE) + bonusHP);
         BlzSetUnitArmor(trig, BlzGetUnitArmor(trig) + bonusArmor);
         BlzSetUnitBaseDamage(trig, BlzGetUnitBaseDamage(trig, 0) + bonusDamage, 0);
+
+        let unitScaleTick = 20;
+        const unitScaleTimer: Timer = this.timerUtils.newTimer();
+        unitScaleTimer.start(0.05, true, () => {
+            unitScaleTick--;
+
+            const scaleSize = 150 - 2.5 * unitScaleTick;
+            SetUnitScalePercent(trig, scaleSize, scaleSize, scaleSize);
+
+            if (unitScaleTick <= 0) {
+                this.timerUtils.releaseTimer(unitScaleTimer);
+            }
+        });
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(10, false, () => {
