@@ -6,8 +6,6 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class FrostNova extends Spell {
     protected readonly abilityId: number = FourCC('A01J');
-    private readonly dummyOrbUnitId: number = FourCC('n00Q');
-    private readonly dummyMarkerUnitId: number = FourCC('n01R');
     private readonly dummyUnitId: number = FourCC('n001');
     private readonly dummyAbilityId: number = FourCC('A01K');
     private readonly dummySlowAuraAbilityId: number = FourCC('A08W');
@@ -36,20 +34,21 @@ export class FrostNova extends Spell {
         const locY: number = GetLocationY(loc);
 
         const p: player = GetOwningPlayer(trig);
-        const orbUnits: unit[] = [];
+        const orbEffects: effect[] = [];
         for (let i = 0; i < orbCount; i++) {
-            orbUnits[i] = CreateUnit(p, this.dummyMarkerUnitId, locX + radius * CosBJ(i * orbCountDiv), locY + radius * SinBJ(i * orbCountDiv), 0);
-            SetUnitTimeScale(orbUnits[i], 0.5);
+            orbEffects[i] = AddSpecialEffect('Doodads\\Cinematic\\GlowingRunes\\GlowingRunes4.mdl', locX + radius * CosBJ(i * orbCountDiv), locY + radius * SinBJ(i * orbCountDiv));
+            BlzSetSpecialEffectTimeScale(orbEffects[i], 4);
         }
 
-        const tickerOrb: unit = CreateUnit(p, this.dummyOrbUnitId, locX + radius * CosBJ(0.0), locY + radius * SinBJ(0.0), 0);
+        const tickerOrb: effect = AddSpecialEffect('Abilities\\Weapons\\ZigguratMissile\\ZigguratMissile.mdl', locX + radius * CosBJ(0.0), locY + radius * SinBJ(0.0));
+        const tickerOrbZ: number = BlzGetLocalSpecialEffectZ(tickerOrb);
 
         let ticker = 0;
         const orbTimer: Timer = this.timerUtils.newTimer();
         orbTimer.start(0.05, true, () => {
             ticker += 9;
             const tickerModulo = ticker % 360;
-            SetUnitPosition(tickerOrb, locX + radius * SinBJ(tickerModulo), locY + radius * CosBJ(tickerModulo));
+            BlzSetSpecialEffectPosition(tickerOrb, locX + radius * SinBJ(tickerModulo), locY + radius * CosBJ(tickerModulo), tickerOrbZ);
         });
 
         const dummySlowAura: unit = CreateUnitAtLoc(p, this.dummyUnitId, loc, 0);
@@ -78,9 +77,9 @@ export class FrostNova extends Spell {
 
             RemoveLocation(loc);
             grp.destroy();
-            RemoveUnit(tickerOrb);
+            DestroyEffect(tickerOrb);
             for (let i = 0; i < orbCount; i++) {
-                RemoveUnit(orbUnits[i]);
+                DestroyEffect(orbEffects[i]);
             }
 
             this.timerUtils.releaseTimer(orbTimer);
