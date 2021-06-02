@@ -13,10 +13,13 @@ export class Conversion extends Spell {
 
     protected action(): void {
         const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit());
+        const damageOrHealing: number = 80 + 2 * intelligence;
+
+        DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl', GetUnitX(GetSpellTargetUnit()), GetUnitY(GetSpellTargetUnit())));
         if (IsUnitEnemy(GetSpellTargetUnit(), GetOwningPlayer(GetTriggerUnit()))) {
-            UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), intelligence, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damageOrHealing, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
         } else {
-            SetUnitLifeBJ(GetSpellTargetUnit(), GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE) + intelligence);
+            SetUnitLifeBJ(GetSpellTargetUnit(), GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE) + damageOrHealing);
         }
     }
 }
