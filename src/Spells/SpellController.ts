@@ -56,7 +56,7 @@ import { Slash } from './Slash';
 import { Brawl } from './Brawl';
 import { PandarenChi } from './PandarenChi';
 import { CommandoFlag } from './CommandoFlag';
-import { Challenge } from './Challenge';
+import { PandaBash } from './PandaBash';
 import { ChiMaster } from './ChiMaster';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
 import { BurningFlask } from './BurningFlask';
@@ -138,7 +138,7 @@ export class SpellController {
             new Brawl(spellCastUtils),
             new PandarenChi(timerUtils, spellCastUtils),
             new CommandoFlag(),
-            new Challenge(),
+            new PandaBash(timerUtils),
             new ChiMaster(buffUtils, spellCastUtils),
             new BurningFlask(timerUtils, spellCastUtils),
             new PoisonFlask(timerUtils, spellCastUtils),
