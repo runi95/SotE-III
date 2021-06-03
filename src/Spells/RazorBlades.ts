@@ -29,11 +29,11 @@ export class RazorBlades {
 
     private action(): void {
         const mana: number = GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA);
-        const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit());
+        const intelligence: number = this.spellCastUtils.GetIntelligence(GetTriggerUnit()) / 2;
 
-        if (mana > intelligence / 2) {
+        if (mana > intelligence) {
             const trig: unit = GetTriggerUnit();
-            SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence / 2);
+            SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence);
             const playerId: number = GetPlayerId(GetOwningPlayer(trig));
             const x: number = GetUnitX(trig);
             const y: number = GetUnitY(trig);
@@ -68,13 +68,13 @@ export class RazorBlades {
                 tickerTwo += 10;
 
                 if (ticker % 3 === 0) {
-                    this.dealBladeDamage(trig, bladeOne, aoe, intelligence / 2);
-                    this.dealBladeDamage(trig, bladeTwo, aoe, intelligence / 2);
+                    this.dealBladeDamage(trig, bladeOne, aoe, 3 + intelligence);
+                    this.dealBladeDamage(trig, bladeTwo, aoe, 3 + intelligence);
                 }
 
                 if (ticker > 9) {
                     ticker = 0;
-                    SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence / 2);
+                    SetUnitManaBJ(trig, GetUnitState(trig, UNIT_STATE_MANA) - intelligence);
                     if (GetUnitState(trig, UNIT_STATE_MANA) === 0) {
                         this.gameGlobals.RazorBladesOn[playerId] = false;
                     }
