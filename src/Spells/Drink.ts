@@ -13,6 +13,6 @@ export class Drink extends Spell {
 
     protected action(): void {
         SetUnitLifeBJ(GetTriggerUnit(),
-                      GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + 2 * this.spellCastUtils.GetIntelligence(GetTriggerUnit()));
+                      GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + 120 + 2 * this.spellCastUtils.GetIntelligence(GetTriggerUnit()));
     }
 }
