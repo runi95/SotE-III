@@ -59,7 +59,6 @@ import { CommandoFlag } from './CommandoFlag';
 import { Challenge } from './Challenge';
 import { ChiMaster } from './ChiMaster';
 import { RandomNumberGenerator } from '../Utility/RandomNumberGenerator';
-import { Regenerate } from './Regenerate';
 import { BurningFlask } from './BurningFlask';
 import { PoisonFlask } from './PoisonFlask';
 import { FrozenFlask } from './FrozenFlask';
@@ -69,6 +68,7 @@ import { MarkForDeath } from './MarkForDeath';
 import { Restoration } from './Restoration';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { ShadowMeld } from './ShadowMeld';
+import { BuffUtils } from '../Utility/BuffUtils';
 
 export class SpellController {
     // eslint-disable-next-line
@@ -80,6 +80,7 @@ export class SpellController {
         timerUtils: TimerUtils,
         randomNumberGenerator: RandomNumberGenerator,
         spellCastUtils: SpellCastUtils,
+        buffUtils: BuffUtils
     ) {
         this.spells = [
             new Avatar(timerUtils, spellCastUtils),
@@ -138,8 +139,7 @@ export class SpellController {
             new PandarenChi(timerUtils, spellCastUtils),
             new CommandoFlag(),
             new Challenge(),
-            new ChiMaster(timerUtils),
-            new Regenerate(gameGlobals, timerUtils, spellCastUtils),
+            new ChiMaster(buffUtils, spellCastUtils),
             new BurningFlask(timerUtils, spellCastUtils),
             new PoisonFlask(timerUtils, spellCastUtils),
             new FrozenFlask(stunUtils, spellCastUtils),

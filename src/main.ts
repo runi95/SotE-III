@@ -64,7 +64,6 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
     for (let i = 0; i < bj_MAX_PLAYERS; i++) {
         gameGlobals.SummonHawkInt[i] = 0;
         gameGlobals.ScrollOfTownPortal[i] = false;
-        gameGlobals.Regenerate[i] = false;
         gameGlobals.SnowyOwl[i] = false;
         gameGlobals.ClockworkPenguin[i] = false;
         gameGlobals.AssassinsBlade[i] = ChargedItemStates.UNEQUIPPED;

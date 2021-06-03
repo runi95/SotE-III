@@ -13,7 +13,6 @@ export class GameGlobals {
     public ScrollOfTownPortal: boolean[] = [];
     public Repetition: number[] = [];
     public RepetitionCounter: number[] = [];
-    public Regenerate: boolean[] = [];
     public CryostasisSummons: unit[] = [];
     public SharpSteelAxe: ChargedItemStates[] = [];
     public SnowyOwl: boolean[] = [];

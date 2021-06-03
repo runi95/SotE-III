@@ -1,17 +1,17 @@
 import { Trigger } from '../JassOverrides/Trigger';
-import { TimerUtils } from '../Utility/TimerUtils';
-import { Timer } from '../JassOverrides/Timer';
+import { ChiMasterBuff } from '../Utility/buffs/ChiMasterBuff';
+import { BuffUtils } from '../Utility/BuffUtils';
+import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class ChiMaster {
-    private abilityLevel = 0;
-    private ticks = 0;
-    private readonly dummyAbilityId: number = FourCC('A03P');
     private readonly unitTypeId: number = FourCC('N01Y');
-    private readonly timerUtils: TimerUtils;
     private readonly trig: Trigger = new Trigger();
+    private readonly buffUtils: BuffUtils;
+    private readonly spellCastUtils: SpellCastUtils;
 
-    constructor(timerUtils: TimerUtils) {
-        this.timerUtils = timerUtils;
+    constructor(buffUtils: BuffUtils, spellCastUtils: SpellCastUtils) {
+        this.buffUtils = buffUtils;
+        this.spellCastUtils = spellCastUtils;
 
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
@@ -23,27 +23,6 @@ export class ChiMaster {
     }
 
     private action(): void {
-        this.ticks = 10;
-
-        if (this.abilityLevel < 5) {
-            const trig: unit = GetTriggerUnit();
-            if (this.abilityLevel === 0) {
-                this.abilityLevel = 1;
-                UnitAddAbility(trig, this.dummyAbilityId);
-                const t: Timer = this.timerUtils.newTimer();
-                t.start(1, true, () => {
-                    this.ticks--;
-
-                    if (this.ticks <= 0) {
-                        UnitRemoveAbility(trig, this.dummyAbilityId);
-                        this.timerUtils.releaseTimer(t);
-                        this.abilityLevel = 0;
-                    }
-                });
-            } else {
-                this.abilityLevel++;
-                SetUnitAbilityLevel(trig, this.dummyAbilityId, this.abilityLevel);
-            }
-        }
+        this.buffUtils.applyBuff(GetTriggerUnit(), new ChiMasterBuff(this.spellCastUtils, GetTriggerUnit()));
     }
 }

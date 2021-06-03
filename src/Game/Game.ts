@@ -81,6 +81,7 @@ export class Game {
             this.timerUtils,
             this.randomNumberGenerator,
             this.spellCastUtils,
+            this.buffUtils,
         );
         this.teleportController = new TeleportController(this.gameGlobals);
         this.damageEventController = new DamageEventController(
