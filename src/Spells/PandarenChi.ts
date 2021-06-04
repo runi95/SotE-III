@@ -25,8 +25,8 @@ export class PandarenChi extends Spell {
         const p: player = GetOwningPlayer(trig);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
-        const damagePerTick: number = Math.ceil((200 * abilityLevel + 1.5 * intelligence) / 40);
-        const healingPerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 40);
+        const damagePerTick: number = Math.ceil((200 * abilityLevel + 1.5 * intelligence) / 10);
+        const healingPerTick: number = Math.ceil((75 * abilityLevel + 1.5 * intelligence) / 10);
         const eff: effect = AddSpecialEffectLoc('Abilities\\Spells\\NightElf\\Tranquility\\Tranquility.mdl', loc);
 
         let ticks = 40;
@@ -41,7 +41,7 @@ export class PandarenChi extends Spell {
                         DestroyEffect(
                             AddSpecialEffect('Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl', GetUnitX(u), GetUnitY(u)),
                         );
-                        this.damageEngineGlobals.NextDefensiveReduction = 0.975;
+                        this.damageEngineGlobals.NextDefensiveReduction = 0.9;
                         UnitDamageTargetBJ(trig, u, damagePerTick, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
 
