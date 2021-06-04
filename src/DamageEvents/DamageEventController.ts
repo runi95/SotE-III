@@ -59,7 +59,6 @@ export class DamageEventController {
         damageEngine.addInitialDamageEvent(new BurnVictim(timerUtils, spellCastUtils));
         damageEngine.addInitialDamageEvent(new TheAegis(timerUtils));
         damageEngine.addInitialDamageEvent(new ScrollOfTownPortal(gameGlobals));
-        damageEngine.addInitialDamageEvent(new Redemption(randomNumberGenerator, spellCastUtils));
         damageEngine.addInitialDamageEvent(new RunedBracers());
         damageEngine.addInitialDamageEvent(new LionsRing());
         damageEngine.addInitialDamageEvent(new MarkOfTheTalon(gameGlobals));
@@ -74,8 +73,6 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new Envenom(spellCastUtils));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new HawkSpellDamage(gameGlobals));
-        damageEngine.addInitialDamageModificationEvent(new Thorns(gameGlobals));
-        damageEngine.addInitialDamageModificationEvent(new Reflect(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
@@ -97,5 +94,8 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new SharpSteelAxeEvent(gameGlobals));
         damageEngine.addAfterDamageEvent(new AgileBowEvent(gameGlobals));
         damageEngine.addAfterDamageEvent(new RingOfKingsEvent(gameGlobals));
+        damageEngine.addAfterDamageEvent(new Thorns(gameGlobals));
+        damageEngine.addAfterDamageEvent(new Reflect(gameGlobals));
+        damageEngine.addAfterDamageEvent(new Redemption(randomNumberGenerator, spellCastUtils));
     }
 }
