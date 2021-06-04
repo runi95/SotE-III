@@ -20,7 +20,8 @@ export class MaulOfStrengthEvent implements DamageEvent {
             return;
         }
         
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
+        const damageEventTarget: unit = globals.DamageEventTarget as unit;
+        const playerId: number = GetPlayerId(GetOwningPlayer(damageEventTarget));
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }
@@ -29,7 +30,7 @@ export class MaulOfStrengthEvent implements DamageEvent {
             return;
         }
 
-        const maulOfStrength: item = GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemId);
+        const maulOfStrength: item = GetItemOfTypeFromUnitBJ(damageEventTarget, this.itemId);
         const charges: number = GetItemCharges(maulOfStrength);
         if (charges < 15) {
             SetItemCharges(maulOfStrength, charges + 1);
@@ -43,7 +44,7 @@ export class MaulOfStrengthEvent implements DamageEvent {
                 this.gameGlobals.MaulOfStrengthTimer[playerId]--;
 
                 if (this.gameGlobals.MaulOfStrengthTimer[playerId] <= 0) {
-                    SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemId), 1);
+                    SetItemCharges(GetItemOfTypeFromUnitBJ(damageEventTarget, this.itemId), 1);
                     this.timerUtils.releaseTimer(t);
                 }
             });
