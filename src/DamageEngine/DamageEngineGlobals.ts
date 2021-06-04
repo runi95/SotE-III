@@ -39,4 +39,6 @@ export class DamageEngineGlobals {
 
     // Custom SotE variables
     public ExecuteDamage = 0;
+    public NextDefensiveReduction = 0;
+    public DamageEventDefenseReduction = 0;
 }

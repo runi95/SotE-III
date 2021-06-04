@@ -65,10 +65,13 @@ export class PhysicalBlockEvent implements DamageEvent {
             }
         }
 
-        const diff: number = block - piercing;
+        let diff: number = block - piercing;
+        if (globals.DamageEventDefenseReduction > 0) {
+            diff -= (diff * globals.DamageEventDefenseReduction);
+        }
+
         if (diff <= 0.405) {
             globals.PiercingOverflowAmount = Math.abs(diff);
-
             return;
         }
 

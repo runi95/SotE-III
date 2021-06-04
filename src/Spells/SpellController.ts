@@ -69,6 +69,7 @@ import { Restoration } from './Restoration';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { ShadowMeld } from './ShadowMeld';
 import { BuffUtils } from '../Utility/BuffUtils';
+import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 
 export class SpellController {
     // eslint-disable-next-line
@@ -80,7 +81,8 @@ export class SpellController {
         timerUtils: TimerUtils,
         randomNumberGenerator: RandomNumberGenerator,
         spellCastUtils: SpellCastUtils,
-        buffUtils: BuffUtils
+        buffUtils: BuffUtils,
+        damageEngineGloblals: DamageEngineGlobals
     ) {
         this.spells = [
             new Avatar(timerUtils, spellCastUtils),
@@ -136,7 +138,7 @@ export class SpellController {
             new Drink(spellCastUtils),
             new Slash(timerUtils, stunUtils, spellCastUtils),
             new Brawl(spellCastUtils),
-            new PandarenChi(timerUtils, spellCastUtils),
+            new PandarenChi(timerUtils, spellCastUtils, damageEngineGloblals),
             new CommandoFlag(),
             new PandaBash(timerUtils),
             new ChiMaster(buffUtils, spellCastUtils),

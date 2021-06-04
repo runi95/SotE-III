@@ -3,17 +3,20 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 
 export class PandarenChi extends Spell {
     protected readonly abilityId: number = FourCC('A03J');
     private readonly timerUtils: TimerUtils;
     private readonly spellCastUtils: SpellCastUtils;
+    private readonly damageEngineGlobals: DamageEngineGlobals;
 
-    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils, damageEngineGlobals: DamageEngineGlobals) {
         super();
 
         this.timerUtils = timerUtils;
         this.spellCastUtils = spellCastUtils;
+        this.damageEngineGlobals = damageEngineGlobals;
     }
 
     protected action(): void {
@@ -38,6 +41,7 @@ export class PandarenChi extends Spell {
                         DestroyEffect(
                             AddSpecialEffect('Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl', GetUnitX(u), GetUnitY(u)),
                         );
+                        this.damageEngineGlobals.NextDefensiveReduction = 0.975;
                         UnitDamageTargetBJ(trig, u, damagePerTick, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                     }
 

@@ -26,6 +26,7 @@ interface Previous {
     preArm: number;
     defense: number;
     preDef: number;
+    redDef: number; // <--- This is custom SotE code!
     code: boolean;
 }
 
@@ -314,6 +315,7 @@ export class DamageEngine {
 
         DamageEngine.inception = false;
         this.damageEngineGlobals.NextDamageType = 0;
+        this.damageEngineGlobals.NextDefensiveReduction = 0; // <--- This is custom SotE code!
         if (b && !this.dreaming) {
             this.finish();
         }
@@ -346,6 +348,7 @@ export class DamageEngine {
                         this.prev.defense = this.damageEngineGlobals.DamageEventDefenseT;
                         this.prev.preDef = this.defenseType;
                         this.prev.code = this.damageEngineGlobals.IsDamageCode;
+                        this.prev.redDef = this.damageEngineGlobals.DamageEventDefenseReduction; // <--- This is custom SotE code!
                     }
                 }
                 if (src !== this.damageEngineGlobals.AOEDamageSource) {
@@ -379,6 +382,7 @@ export class DamageEngine {
         this.damageEngineGlobals.DamageEventDamageT = GetHandleId(dt);
         this.damageEngineGlobals.DamageEventWeaponT = GetHandleId(wt);
         this.damageEngineGlobals.ExecuteDamage = 0; // <--- This is custom SotE code!
+        this.damageEngineGlobals.DamageEventDefenseReduction = this.damageEngineGlobals.NextDefensiveReduction; // <--- This is custom SotE code!
 
         this.calibrateMR();
 
@@ -464,6 +468,7 @@ export class DamageEngine {
             this.damageEngineGlobals.DamageEventArmorT = this.prev.armor;
             this.damageEngineGlobals.DamageEventDefenseT = this.prev.defense;
             this.damageEngineGlobals.DamageEventArmorPierced = this.prev.pierce;
+            this.damageEngineGlobals.DamageEventDefenseReduction = this.prev.redDef; // <--- This is custom SotE code!
             this.armorType = this.prev.preArm;
             this.defenseType = this.prev.preDef;
             this.calibrateMR();

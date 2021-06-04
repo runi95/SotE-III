@@ -63,7 +63,11 @@ export class SpellBlockEvent implements DamageEvent {
             resistance = this.gameGlobals.PlayerSpellBlock[playerId];
         }
 
-        const diff: number = resistance - perseverance;
+        let diff: number = resistance - perseverance;
+        if (globals.DamageEventDefenseReduction > 0) {
+            diff -= (diff * globals.DamageEventDefenseReduction);
+        }
+
         if (diff <= 0.405) {
             return;
         }
