@@ -27,6 +27,7 @@ import { VenomUtils } from '../Utility/VenomUtils';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { ItemChargeUtils } from '../Utility/ItemChargeUtils';
+import { KnockbackUtils } from '../Utility/KnockbackUtils';
 
 export class Game {
     private readonly gameGlobals: GameGlobals;
@@ -55,6 +56,7 @@ export class Game {
     private readonly teleportMovement: TeleportMovement;
     private readonly cooldownReduction: CooldownReduction;
     private readonly itemChargeUtils: ItemChargeUtils;
+    private readonly knockbackUtils: KnockbackUtils;
     private readonly arcaneVault: unit;
 
     constructor(gameGlobals: GameGlobals, recipeSystem: RecipeSystem, randomNumberGenerator: RandomNumberGenerator) {
@@ -63,6 +65,7 @@ export class Game {
         this.randomNumberGenerator = randomNumberGenerator;
         this.playerVictoryUtils = new PlayerVictoryUtils(this.gameGlobals);
         this.timerUtils = new TimerUtils();
+        this.knockbackUtils = new KnockbackUtils(this.timerUtils);
         this.stunUtils = new StunUtils(this.gameGlobals, this.timerUtils);
         this.venomUtils = new VenomUtils(this.timerUtils);
         this.buffUtils = new BuffUtils(this.timerUtils);
