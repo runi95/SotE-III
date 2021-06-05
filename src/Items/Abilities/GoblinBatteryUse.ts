@@ -47,5 +47,6 @@ export class GoblinBatteryUse extends ItemUse {
         });
 
         RemoveLocation(loc);
+        grp.destroy();
     }
 }

@@ -137,7 +137,7 @@ export class SpellController {
             new DarkCorruption(spellCastUtils),
             new Drink(spellCastUtils),
             new Slash(timerUtils, stunUtils, spellCastUtils),
-            new Brawl(spellCastUtils),
+            new Brawl(spellCastUtils, timerUtils),
             new PandarenChi(timerUtils, spellCastUtils, damageEngineGloblals),
             new CommandoFlag(),
             new PandaBash(timerUtils),

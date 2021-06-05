@@ -53,6 +53,7 @@ export class PandarenChi extends Spell {
                     }
                 }
             });
+            grp.destroy();
 
             if (ticks <= 0) {
                 DestroyEffect(eff);

@@ -55,6 +55,7 @@ export class LightningBoltCast extends Spell {
                 });
 
                 RemoveLocation(loc);
+                grp.destroy();
                 this.timerUtils.releaseTimer(t);
             }
         });

@@ -94,6 +94,8 @@ export class DoomGuard extends Boss {
                 BlzPauseUnitEx(u, false);
             }
         });
+        RemoveLocation(loc);
+        grp.destroy();
 
         const t: Timer = this.timerUtils.newTimer();
         t.start(1, true, () => {

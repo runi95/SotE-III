@@ -31,5 +31,7 @@ export class Brawl extends Spell {
                 UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
             }
         });
+
+        grp.destroy();
     }
 }
