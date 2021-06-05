@@ -52,8 +52,10 @@ export class Brawl extends Spell {
             if (UnitAlive(u)) {
                 unitsInLoc.push(u);
                 unitsInLocCount++;
-                DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlakCannons\\FlakTarget.mdl', GetUnitX(u), GetUnitY(u)));
-                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                if (u !== trig) {
+                    DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Human\\FlakCannons\\FlakTarget.mdl', GetUnitX(u), GetUnitY(u)));
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                }
             }
         });
         grp.destroy();
