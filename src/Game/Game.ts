@@ -86,6 +86,7 @@ export class Game {
             this.spellCastUtils,
             this.buffUtils,
             this.damageEngineGlobals,
+            this.knockbackUtils,
         );
         this.teleportController = new TeleportController(this.gameGlobals);
         this.damageEventController = new DamageEventController(

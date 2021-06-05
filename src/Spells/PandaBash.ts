@@ -1,15 +1,14 @@
-import { Timer } from '../JassOverrides/Timer';
-import { TimerUtils } from '../Utility/TimerUtils';
+import { KnockbackUtils } from '../Utility/KnockbackUtils';
 import { Spell } from './Spell';
 
 export class PandaBash extends Spell {
     protected readonly abilityId: number = FourCC('A03N');
-    private readonly timerUtils: TimerUtils;
+    private readonly knockbackUtils: KnockbackUtils;
 
-    constructor(timerUtils: TimerUtils) {
+    constructor(knockbackUtils: KnockbackUtils) {
         super();
 
-        this.timerUtils = timerUtils;
+        this.knockbackUtils = knockbackUtils;
     }
 
     protected action(): void {
@@ -29,31 +28,14 @@ export class PandaBash extends Spell {
         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl', GetUnitX(spellTargetUnit), GetUnitY(spellTargetUnit)));
         UnitDamageTargetBJ(trig, spellTargetUnit, 70 + abilityLevel * str, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
 
-        let ticks = 8;
-        const t: Timer = this.timerUtils.newTimer();
-        t.start(0.03, true, () => {
-            ticks--;
-
-            if (UnitAlive(spellTargetUnit)) {
-                let targetX: number = GetUnitX(spellTargetUnit);
-                let targetY: number = GetUnitY(spellTargetUnit);
-                DestroyEffect(AddSpecialEffect('Abilities\\Weapons\\AncientProtectorMissile\\AncientProtectorMissile.mdl', targetX, targetY));
-    
-                targetX += multX;
-                targetY += multY;
-                if (IsTerrainPathable(targetX, targetY, PATHING_TYPE_WALKABILITY)) {
-                    targetX -= multX;
-                    targetY -= multY;
-                }
-    
-                SetUnitPosition(spellTargetUnit, targetX, targetY);
-            } else {
-                this.timerUtils.releaseTimer(t);
-            }
-
-            if (ticks <= 0) {
-                this.timerUtils.releaseTimer(t);
-            }
-        })
+        this.knockbackUtils.knockback({
+            knockbackTarget: spellTargetUnit,
+            targetX: spellTargetX + multX,
+            targetY: spellTargetY + multY,
+            dist: 400,
+            vel: 50,
+            onWallHit: undefined,
+            onKnockbackEnd: undefined
+        });
     }
 }

@@ -70,6 +70,7 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 import { ShadowMeld } from './ShadowMeld';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
+import { KnockbackUtils } from '../Utility/KnockbackUtils';
 
 export class SpellController {
     // eslint-disable-next-line
@@ -82,7 +83,8 @@ export class SpellController {
         randomNumberGenerator: RandomNumberGenerator,
         spellCastUtils: SpellCastUtils,
         buffUtils: BuffUtils,
-        damageEngineGloblals: DamageEngineGlobals
+        damageEngineGloblals: DamageEngineGlobals,
+        knockbackUtils: KnockbackUtils,
     ) {
         this.spells = [
             new Avatar(timerUtils, spellCastUtils),
@@ -140,7 +142,7 @@ export class SpellController {
             new Brawl(spellCastUtils, timerUtils),
             new PandarenChi(timerUtils, spellCastUtils, damageEngineGloblals),
             new CommandoFlag(),
-            new PandaBash(timerUtils),
+            new PandaBash(knockbackUtils),
             new ChiMaster(buffUtils, spellCastUtils),
             new BurningFlask(timerUtils, spellCastUtils),
             new PoisonFlask(timerUtils, spellCastUtils),
