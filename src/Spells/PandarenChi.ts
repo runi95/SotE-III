@@ -82,7 +82,7 @@ export class PandarenChi extends Spell {
                 const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitTypeId, GetUnitX(trig), GetUnitY(trig), 0);
                 UnitAddAbility(dummy, this.monsoonAbilityId);
                 BlzSetAbilityRealLevelField(BlzGetUnitAbility(dummy, this.monsoonAbilityId), ABILITY_RLF_AREA_OF_EFFECT_DAMAGE, 0, 20 * stormEarthAndFireAbilityLevel + 2 * intelligence);
-                UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
+                UnitApplyTimedLifeBJ(15, this.timedLifeBuffId, dummy);
                 IssuePointOrder(dummy, 'monsoon', GetUnitX(trig), GetUnitY(trig));
 
             // Earth
