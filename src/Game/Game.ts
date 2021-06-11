@@ -154,6 +154,7 @@ export class Game {
                 const y: number = GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[i]);
                 this.gameGlobals.PlayerHero[i] = CreateUnit(Player(i), this.gameGlobals.PlayerHeroId[i], x, y, bj_UNIT_FACING);
                 SetCameraPositionForPlayer(Player(i), x, y);
+                SelectUnitForPlayerSingle(this.gameGlobals.PlayerHero[i], Player(i));
             }
 
             if (!this.gameGlobals.GameIsFogOfWarEnabled) {
