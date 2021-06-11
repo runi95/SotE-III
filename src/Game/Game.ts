@@ -205,6 +205,7 @@ export class Game {
             } else if (index === 0 || this.gameGlobals.PlayerHeroId[randomizedPlayerIdArray[index - 1]] !== undefined) {
                 const playerId: number = randomizedPlayerIdArray[index++];
                 const heroSelector: unit = CreateUnit(Player(playerId), heroSelectorId, -14400.0, -10700.0, bj_UNIT_FACING);
+                SelectUnitForPlayerSingle(heroSelector, Player(playerId));
                 if (this.gameGlobals.GameIsAllRandomEnabled || GetPlayerController(Player(playerId)) === MAP_CONTROL_COMPUTER) {
                     UnitAddAbility(heroSelector, FourCC('Aloc'));
                     const availableHeroIndexes: number[] = [];
