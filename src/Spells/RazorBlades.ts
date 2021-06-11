@@ -6,7 +6,6 @@ import { GroupInRange } from '../JassOverrides/GroupInRange';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class RazorBlades {
-    private readonly dummyUnitId: number = FourCC('n016');
     private readonly defenseSystemAbilityId: number = FourCC('A02A');
     private readonly gameGlobals: GameGlobals;
     private readonly timerUtils: TimerUtils;
@@ -38,19 +37,13 @@ export class RazorBlades {
             const x: number = GetUnitX(trig);
             const y: number = GetUnitY(trig);
             let aoe = 50.0;
-            const bladeOne: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x + 150.0 * CosBJ(0.0), y + 150.0 * SinBJ(0.0), 0);
-            const bladeTwo: unit = CreateUnit(
-                GetOwningPlayer(trig),
-                this.dummyUnitId,
-                x + 150.0 * CosBJ(180.0),
-                y + 150.0 * SinBJ(180.0),
-                0,
-            );
+            const bladeOne: effect = AddSpecialEffect('Abilities\\Weapons\\GlaiveMissile\\GlaiveMissile.mdl', x + 150.0 * CosBJ(0.0), y + 150.0 * SinBJ(0.0));
+            const bladeTwo: effect = AddSpecialEffect('Abilities\\Weapons\\GlaiveMissile\\GlaiveMissile.mdl', x + 150.0 * CosBJ(180.0), y + 150.0 * SinBJ(180.0));
 
             if (GetUnitAbilityLevel(trig, this.defenseSystemAbilityId) > 0) {
                 aoe = 100.0;
-                SetUnitScalePercent(bladeOne, 150, 150, 150);
-                SetUnitScalePercent(bladeTwo, 150, 150, 150);
+                BlzSetSpecialEffectScale(bladeOne, 1.5);
+                BlzSetSpecialEffectScale(bladeTwo, 1.5);
             }
 
             this.gameGlobals.RazorBladesOn[playerId] = true;
@@ -60,16 +53,21 @@ export class RazorBlades {
             let tickerTwo = 180;
             const t: Timer = this.timerUtils.newTimer();
             t.start(0.05, true, () => {
-                SetUnitPosition(bladeOne, GetUnitX(trig) + 150.0 * CosBJ(tickerOne), GetUnitY(trig) + 150.0 * SinBJ(tickerOne));
-                SetUnitPosition(bladeTwo, GetUnitX(trig) + 150.0 * CosBJ(tickerTwo), GetUnitY(trig) + 150.0 * SinBJ(tickerTwo));
+                const bladeOneX: number = GetUnitX(trig) + 150.0 * CosBJ(tickerOne);
+                const bladeOneY: number = GetUnitY(trig) + 150.0 * SinBJ(tickerOne);
+                const bladeTwoX: number = GetUnitX(trig) + 150.0 * CosBJ(tickerTwo);
+                const bladeTwoY: number = GetUnitY(trig) + 150.0 * SinBJ(tickerTwo);
+                const bladeZ: number = BlzGetUnitZ(trig) + 50.0;
+                BlzSetSpecialEffectPosition(bladeOne, bladeOneX, bladeOneY, bladeZ);
+                BlzSetSpecialEffectPosition(bladeTwo, bladeTwoX, bladeTwoY, bladeZ);
 
                 ticker++;
                 tickerOne += 10;
                 tickerTwo += 10;
 
                 if (ticker % 3 === 0) {
-                    this.dealBladeDamage(trig, bladeOne, aoe, 3 + intelligence);
-                    this.dealBladeDamage(trig, bladeTwo, aoe, 3 + intelligence);
+                    this.dealBladeDamage(trig, bladeOneX, bladeOneY, aoe, 3 + intelligence);
+                    this.dealBladeDamage(trig, bladeTwoX, bladeTwoY, aoe, 3 + intelligence);
                 }
 
                 if (ticker > 9) {
@@ -90,8 +88,8 @@ export class RazorBlades {
 
                 if (!this.gameGlobals.RazorBladesOn[playerId]) {
                     IssueImmediateOrderBJ(trig, 'undefend');
-                    RemoveUnit(bladeOne);
-                    RemoveUnit(bladeTwo);
+                    DestroyEffect(bladeOne);
+                    DestroyEffect(bladeTwo);
                     this.timerUtils.releaseTimer(t);
                 }
             });
@@ -106,8 +104,8 @@ export class RazorBlades {
         }
     }
 
-    private dealBladeDamage(trig: unit, blade: unit, aoe: number, damage: number): void {
-        const loc: location = GetUnitLoc(blade);
+    private dealBladeDamage(trig: unit, bladeX: number, bladeY: number, aoe: number, damage: number): void {
+        const loc: location = Location(bladeX, bladeY);
         const grp: GroupInRange = new GroupInRange(aoe, loc);
 
         grp.for((u: unit) => {
