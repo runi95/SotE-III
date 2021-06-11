@@ -10,6 +10,7 @@ export class Hero {
     private isHeroPicked = false;
     private readonly gameGlobals: GameGlobals;
     private readonly trig: Trigger = new Trigger();
+    private readonly heroSelectorUnitTypeId: number = FourCC('e001');
 
     constructor(gameGlobals: GameGlobals, selectRect: rect, heroId: number, dummyX: number, dummyY: number, facingAngle: number, heroReadySoundPath: string) {
         this.selectRect = selectRect;
@@ -20,7 +21,7 @@ export class Hero {
         this.gameGlobals = gameGlobals;
 
         this.trig.addCondition(() => {
-            return !this.isHeroPicked && GetUnitTypeId(GetEnteringUnit()) === FourCC('e001');
+            return !this.isHeroPicked && GetUnitTypeId(GetEnteringUnit()) === this.heroSelectorUnitTypeId;
         });
         const statueUnit: unit = CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), this.heroId, this.dummyX, this.dummyY, this.facingAngle);
         this.trig.addAction(() => {
