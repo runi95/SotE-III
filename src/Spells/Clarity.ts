@@ -13,6 +13,6 @@ export class Clarity extends Spell {
 
     protected action(): void {
         SetUnitManaBJ(GetTriggerUnit(),
-                      GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA) + 1.5 * this.spellCastUtils.GetIntelligence(GetTriggerUnit()));
+                      GetUnitState(GetTriggerUnit(), UNIT_STATE_MANA) + 100 + 1.5 * this.spellCastUtils.GetIntelligence(GetTriggerUnit()));
     }
 }
