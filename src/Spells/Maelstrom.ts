@@ -3,6 +3,7 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { Timer } from '../JassOverrides/Timer';
 import { GroupInRange } from '../JassOverrides/GroupInRange';
 import { SpellCastUtils } from '../Utility/SpellCastUtils';
+import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 
 export class Maelstrom extends Spell {
     protected readonly abilityId: number = FourCC('A001');
@@ -10,12 +11,14 @@ export class Maelstrom extends Spell {
     private readonly dummyAbilityId: number = FourCC('A002');
     private readonly timerUtils: TimerUtils;
     private readonly spellCastUtils: SpellCastUtils;
+    private readonly damageEngineGlobals: DamageEngineGlobals;
 
-    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils) {
+    constructor(timerUtils: TimerUtils, spellCastUtils: SpellCastUtils, damageEngineGlobals: DamageEngineGlobals) {
         super();
 
         this.timerUtils = timerUtils;
         this.spellCastUtils = spellCastUtils;
+        this.damageEngineGlobals = damageEngineGlobals;
     }
 
     protected action(): void {
@@ -37,6 +40,7 @@ export class Maelstrom extends Spell {
             const grp: GroupInRange = new GroupInRange(500.00, loc);
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, trigOwner) && UnitAlive(u)) {
+                    this.damageEngineGlobals.NextDefensiveReduction = 0.95;
                     UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
                 }
             });

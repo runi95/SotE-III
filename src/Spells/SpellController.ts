@@ -111,7 +111,7 @@ export class SpellController {
             new GoblinBombShip(timerUtils, randomNumberGenerator),
             new GoblinMine(timerUtils, spellCastUtils),
             new Immunity(),
-            new Maelstrom(timerUtils, spellCastUtils),
+            new Maelstrom(timerUtils, spellCastUtils, damageEngineGloblals),
             new ManaBrilliance(),
             new ManaShield(),
             new Permafrost(stunUtils, spellCastUtils),
