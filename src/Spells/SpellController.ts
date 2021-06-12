@@ -95,7 +95,7 @@ export class SpellController {
             new ClockwerkGoblinDeath(stunUtils),
             new Combust(spellCastUtils),
             new Conversion(spellCastUtils),
-            new CrushingWave(timerUtils, spellCastUtils),
+            new CrushingWave(spellCastUtils, stunUtils),
             new Cryostasis(gameGlobals, spellCastUtils),
             new CryostasisStop(gameGlobals),
             new DeathGrasp(stunUtils, timerUtils),
