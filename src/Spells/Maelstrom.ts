@@ -6,7 +6,8 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class Maelstrom extends Spell {
     protected readonly abilityId: number = FourCC('A001');
-    private readonly dummyUnitId: number = FourCC('n002');
+    private readonly dummyUnitId: number = FourCC('n001');
+    private readonly dummyAbilityId: number = FourCC('A002');
     private readonly timerUtils: TimerUtils;
     private readonly spellCastUtils: SpellCastUtils;
 
@@ -22,9 +23,11 @@ export class Maelstrom extends Spell {
         const x: number = GetSpellTargetX();
         const y: number = GetSpellTargetY();
         const damage: number = 2.50 * GetUnitAbilityLevel(trig, this.abilityId) + 0.05 * this.spellCastUtils.GetIntelligence(trig);
+        const specialEffect: effect = AddSpecialEffect('war3mapImported\\Whirlpool.mdl', x, y);
         const dummy: unit = CreateUnit(GetOwningPlayer(GetTriggerUnit()), this.dummyUnitId, x, y, 0);
+        UnitAddAbility(dummy, this.dummyAbilityId);
         const trigOwner: player = GetOwningPlayer(trig);
-        const loc: location = GetUnitLoc(dummy);
+        const loc: location = Location(x, y);
 
         let ticks = 100;
         const t: Timer = this.timerUtils.newTimer();
@@ -40,6 +43,7 @@ export class Maelstrom extends Spell {
             grp.destroy();
 
             if (ticks <= 0) {
+                DestroyEffect(specialEffect);
                 RemoveUnit(dummy);
                 RemoveLocation(loc);
                 this.timerUtils.releaseTimer(t);
