@@ -7,7 +7,6 @@ import { SpellCastUtils } from '../Utility/SpellCastUtils';
 
 export class StormCloud extends Spell {
     protected readonly abilityId: number = FourCC('A003');
-    private readonly dummyUnitId: number = FourCC('n004');
     private readonly timerUtils: TimerUtils;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly spellCastUtils: SpellCastUtils;
@@ -25,8 +24,8 @@ export class StormCloud extends Spell {
         const trigOwner: player = GetOwningPlayer(trig);
         const x: number = GetSpellTargetX();
         const y: number = GetSpellTargetY();
-        const dummy: unit = CreateUnit(GetOwningPlayer(trig), this.dummyUnitId, x, y, 0);
-        const loc: location = GetUnitLoc(dummy);
+        const specialEffect: effect = AddSpecialEffect('Abilities\\Spells\\Other\\Monsoon\\MonsoonRain.mdl', x, y);
+        const loc: location = Location(x, y);
         const abilityLevel: number = GetUnitAbilityLevel(trig, this.abilityId);
         const intelligence: number = this.spellCastUtils.GetIntelligence(trig);
         const damage: number = (140 * abilityLevel + 1.5 * intelligence) / 5;
@@ -46,7 +45,7 @@ export class StormCloud extends Spell {
             grp.destroy();
 
             if (ticks <= 0) {
-                RemoveUnit(dummy);
+                DestroyEffect(specialEffect);
                 RemoveLocation(loc);
                 this.timerUtils.releaseTimer(t);
             }
