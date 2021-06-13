@@ -30,7 +30,7 @@ export class DemonicSacrifice extends Spell {
             const maxDamage: number = 50.0 * abilityLevel + 3 * GetHeroStr(GetTriggerUnit(), true);
             const damage: number = RMinBJ(GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE), maxDamage);
             UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
-            UnitDamageTargetBJ(GetSpellTargetUnit(), GetTriggerUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(GetSpellTargetUnit(), GetTriggerUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL);
             DestroyEffect(
                 AddSpecialEffect(
                     'Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl',

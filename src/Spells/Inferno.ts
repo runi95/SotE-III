@@ -23,7 +23,7 @@ export class Inferno extends Spell {
         const str: number = GetHeroStr(trig, true);
         const damage: number = abilityLevel * 200 + 5 * str;
 
-        UnitDamageTargetBJ(trig, trig, 200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(trig, trig, 200, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL);
 
         let rngX: number = x + GetRandomReal(0, 1000) - 500.0;
         let rngY: number = y + GetRandomReal(0, 1000) - 500.0;
