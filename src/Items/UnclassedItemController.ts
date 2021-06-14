@@ -32,4 +32,4 @@ itemMap.set('juggernautArmor', new JuggernautArmor());
 itemMap.set('purpleSoulstone', new PurpleSoulstone());
 itemMap.set('spiritTalisman', new SpiritTalisman());
 
-export default [...itemMap.values()] as Item[];
+export const unclassedItems: Item[] = [...itemMap.values()] as Item[];

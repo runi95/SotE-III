@@ -2,6 +2,7 @@ import { GameGlobals } from '../Game/GameGlobals';
 import { Trigger } from '../JassOverrides/Trigger';
 import ItemRecipeController from './ItemRecipeController';
 import { basicItems } from './BaseItemController';
+import { unclassedItems } from './UnclassedItemController';
 import { ItemRecipe } from './ItemRecipe';
 import { Item } from './Item';
 import { ItemLabel } from './ItemLabel';
@@ -67,6 +68,10 @@ export class RecipeSystem {
 
         for (let i = 0; i < basicItems.length; i++) {
             this.itemMap[basicItems[i].itemId] = basicItems[i];
+        }
+
+        for (let i = 0; i < unclassedItems.length; i++) {
+            this.itemMap[unclassedItems[i].itemId] = unclassedItems[i];
         }
 
         const originFrameGameUi: framehandle = BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0);
