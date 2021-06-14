@@ -15,7 +15,7 @@ import { PillagerHammers } from './UnclassedItems/PillagerHammers';
 export const itemMap: Map<string, Item> = new Map();
 
 // TRULY UNCLASSED ITEMS
-itemMap.set('AssassinsMap', new AssassinsMap());
+itemMap.set('assassinsMap', new AssassinsMap());
 itemMap.set('sacrificialDagger', new SacrificialDagger());
 
 // STARTER ITEMS
