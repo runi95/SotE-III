@@ -64,7 +64,6 @@ export class ArenaUtils {
             for (let i = 0; i < alivePlayers.length; i++) {
                 DisplayTextToForce(
                     GetPlayersAll(),
-                    // tslint:disable-next-line:max-line-length
                     `${this.gameGlobals.PlayerColorCodes[alivePlayers[i]]}${GetPlayerName(Player(alivePlayers[i]))}|r has won the arena!`,
                 );
             }
