@@ -4,7 +4,7 @@ import { ItemLabel } from '../ItemLabel';
 const itemId: number = FourCC('I04Z');
 const name = 'Orb of Corruption';
 const labels: ItemLabel[] = [];
-const goldCost = 550;
+const goldCost = 300;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfCorruption.blp';
 const description = `This orb is filled with something... you need...
 
