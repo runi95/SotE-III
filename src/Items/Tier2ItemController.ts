@@ -38,6 +38,7 @@ import { ImprovedSpikes } from './Tier2Items/ImprovedSpikes';
 import { FastVampireClaws } from './Tier2Items/FastVampireClaws';
 import { MoonBlade } from './Tier2Items/MoonBlade';
 import { ImpenetrableShield } from './Tier2Items/ImpenetrableShield';
+import { EnhancedIronClaws } from './Tier2Items/EnhancedIronClaws';
 
 const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
@@ -58,6 +59,8 @@ const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
  */
 export const itemMap: Map<string, ItemRecipe> = new Map();
 
+
+itemMap.set('enhancedIronClaws', new EnhancedIronClaws(tier1ItemMap.get('ironClaws') as ItemRecipe, baseItemMap.get('loadedRifle') as Item, baseItemMap.get('claws') as Item));
 /*
 itemMap.set(
     'advancedCannon',

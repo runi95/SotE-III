@@ -42,6 +42,7 @@ import { AgileBowEvent } from './AgileBowEvent';
 import { RingOfKingsEvent } from './RingOfKingsEvent';
 import { CriticalHit } from './CriticalHit';
 import { AncientFigurineEvent } from './AncientFigurineEvent';
+import { EnhancedIronClawsEvent } from './EnhancedIronClawsEvent';
 
 export class DamageEventController {
     constructor(
@@ -77,6 +78,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MantleOfIntelligenceEvent(gameGlobals, buffUtils));
+        damageEngine.addInitialDamageModificationEvent(new EnhancedIronClawsEvent(gameGlobals));
 
         // Final damage modification events
         damageEngine.addFinalDamageModificationEvent(new ManaShield());

@@ -50,6 +50,7 @@ import { WandOfReanimationPickupAndDrop } from './Abilities/WandOfReanimationPic
 import { AncientFigurinePickupAndDrop } from './Abilities/AncientFigurinePickupAndDrop';
 import { AncientFigurineCast } from './Abilities/AncientFigurineCast';
 import { BuffUtils } from '../Utility/BuffUtils';
+import { EnhancedIronClawsPickupAndDrop } from './Abilities/EnhancedIronClawsPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -105,7 +106,8 @@ export class ItemController2 {
             new RingOfKingsSell(),
             new WandOfReanimationPickupAndDrop(gameGlobals),
             new AncientFigurinePickupAndDrop(gameGlobals),
-            new AncientFigurineCast(gameGlobals, buffUtils)
+            new AncientFigurineCast(gameGlobals, buffUtils),
+            new EnhancedIronClawsPickupAndDrop(gameGlobals)
         ];
     }
 }
