@@ -51,6 +51,7 @@ import { AncientFigurinePickupAndDrop } from './Abilities/AncientFigurinePickupA
 import { AncientFigurineCast } from './Abilities/AncientFigurineCast';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { EnhancedIronClawsPickupAndDrop } from './Abilities/EnhancedIronClawsPickupAndDrop';
+import { ImprovedCreatureClawsPickupAndDrop } from './Abilities/ImprovedCreatureClawsPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -107,7 +108,8 @@ export class ItemController2 {
             new WandOfReanimationPickupAndDrop(gameGlobals),
             new AncientFigurinePickupAndDrop(gameGlobals),
             new AncientFigurineCast(gameGlobals, buffUtils),
-            new EnhancedIronClawsPickupAndDrop(gameGlobals)
+            new EnhancedIronClawsPickupAndDrop(gameGlobals),
+            new ImprovedCreatureClawsPickupAndDrop(gameGlobals)
         ];
     }
 }

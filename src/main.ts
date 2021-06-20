@@ -82,6 +82,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.CrownOfKingsCount[i] = 0;
         gameGlobals.EnhancedJavelinCount[i] = 0;
         gameGlobals.AgileBowCount[i] = 0;
+        gameGlobals.ImprovedCreatureClawsCount[i] = 0;
         gameGlobals.EnhancedIronClawsCount[i] = 0;
         gameGlobals.AncientFigurineCount[i] = 0;
         gameGlobals.MarkOfTheTalonCount[i] = 0;

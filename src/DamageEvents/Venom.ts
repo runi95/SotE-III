@@ -36,6 +36,6 @@ export class Venom implements DamageEvent {
             return;
         }
 
-        this.venomUtils.applyVenom(globals.DamageEventTarget as unit, venom);
+        this.venomUtils.applyVenom(globals.DamageEventTarget as unit, playerId, venom);
     }
 }

@@ -112,8 +112,8 @@ itemMap.set(
 );
 */
 itemMap.set('impenetrableShield', new ImpenetrableShield(tier1ItemMap.get('steelShield') as ItemRecipe, tier1ItemMap.get('coralScales') as ItemRecipe));
+itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe, baseItemMap.get('orbOfVenom') as Item, baseItemMap.get('orbOfLightning') as Item));
 /*
-itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe));
 itemMap.set('improvedElementalOrb', new ImprovedElementalOrb(tier1ItemMap.get('elementalOrb') as ItemRecipe));
 itemMap.set(
     'improvedNaturesBlessing',
