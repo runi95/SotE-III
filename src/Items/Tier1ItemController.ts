@@ -29,7 +29,7 @@ import { SwordOfFreyr } from './Tier1Items/SwordOfFreyr';
 import { VampireDagger } from './Tier1Items/VampireDagger';
 import { CloakOfShadowWalk } from './Tier1Items/CloakOfShadowWalk';
 import { ArmoredBoots } from './Tier1Items/ArmoredBoots';
-import { ThrowableAxe } from './Tier1Items/ThrowableAxe';
+import { FieryBloodAxe } from './Tier1Items/FieryBloodAxe';
 import { LongRifle } from './Tier1Items/LongRifle';
 import { Caduceus } from './Tier1Items/Caduceus';
 import { CircesStaff } from './Tier1Items/CircesStaff';
@@ -167,7 +167,9 @@ itemMap.set('steelShield', new SteelShield(basicItemMap.get('ironShield') as Ite
 /*
 itemMap.set('swordOfFreyr', new SwordOfFreyr(basicItemMap.get('warAxe') as Item, basicItemMap.get('scepter') as Item));
 itemMap.set('theAegis', new TheAegis(basicItemMap.get('goblinBattery') as Item));
-itemMap.set('throwableAxe', new ThrowableAxe(basicItemMap.get('bloodiedExecutionersAxe') as Item, basicItemMap.get('scepter') as Item));
+*/
+itemMap.set('fieryBloodAxe', new FieryBloodAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('bloodiedExecutionersAxe') as Item, basicItemMap.get('orbOfFire') as Item));
+/*
 itemMap.set(
     'vampireDagger',
     new VampireDagger(basicItemMap.get('bloodiedSacrificialDagger') as Item, basicItemMap.get('vampireClaws') as Item),
