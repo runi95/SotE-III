@@ -8,7 +8,7 @@ const goldCost = 400;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSpiritWalkerMasterTraining.blp';
 const description = `A well used bloodied executioner's axe.
 
-|cffffcc00Execute:|r +150
+|cffffcc00Execute:|r +50
 
 |cFF808080Execute instantly kills units below the execute threshold when damaging them with phyiscal attacks.|r`;
 

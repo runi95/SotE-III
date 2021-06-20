@@ -13,11 +13,11 @@ export class BloodiedExecutionersAxePickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerExecute[playerId] += 150;
+        this.gameGlobals.PlayerExecute[playerId] += 50;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerExecute[playerId] -= 150;
+        this.gameGlobals.PlayerExecute[playerId] -= 50;
     }
 }
