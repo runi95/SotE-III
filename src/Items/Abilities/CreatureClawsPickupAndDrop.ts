@@ -13,11 +13,11 @@ export class CreatureClawsPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerVenom[playerId] += 12;
+        this.gameGlobals.PlayerVenom[playerId] += 16;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerVenom[playerId] -= 12;
+        this.gameGlobals.PlayerVenom[playerId] -= 16;
     }
 }

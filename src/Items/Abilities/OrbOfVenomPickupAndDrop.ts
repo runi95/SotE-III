@@ -13,11 +13,11 @@ export class OrbOfVenomPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerVenom[playerId] += 9;
+        this.gameGlobals.PlayerVenom[playerId] += 10;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerVenom[playerId] -= 9;
+        this.gameGlobals.PlayerVenom[playerId] -= 10;
     }
 }
