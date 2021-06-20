@@ -7,7 +7,7 @@ import { OrbOfLightning } from '../BaseItems/OrbOfLightning';
 const itemId: number = FourCC('I025');
 const name = 'Improved Creature Claws';
 const labels: ItemLabel[] = [ItemLabel.AGILITY, ItemLabel.VENOM];
-const goldCost = 2500;
+const goldCost = 1930;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNImprovedCreatureAttack.tga';
 const description = `These claws seem to cut through things better than any sharp knife would.
 
