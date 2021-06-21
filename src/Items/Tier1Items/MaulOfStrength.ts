@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHammer.blp';
 const description = `A heavy maul only wielded by the strongest of heroes.
 
 |cffffcc00Strength:|r +11
-|cffffcc00Max health:|r +200
+|cffffcc00Max health:|r +320
 |cffffcc00Effect(1):|r Taking damage increases item charges by 1 (max 15 charges) for 5 seconds
 |cffffcc00Effect(2):|r Physical damage dealt is increased by 5 for each item stack
 
