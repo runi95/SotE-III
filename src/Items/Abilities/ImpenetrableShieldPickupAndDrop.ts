@@ -13,13 +13,13 @@ export class ImpenetrableShieldPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] += 45;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] += 28;
         this.gameGlobals.ImpenetrableShieldCount[playerId] += 1;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 45;
+        this.gameGlobals.PlayerPhysicalBlock[playerId] -= 28;
         this.gameGlobals.ImpenetrableShieldCount[playerId] -= 1;
     }
 }

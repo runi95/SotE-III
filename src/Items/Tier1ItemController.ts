@@ -144,7 +144,7 @@ itemMap.set('naturesBlessing', new NaturesBlessing(basicItemMap.get('reinforcedH
 itemMap.set('reinforcedLeatherArmor', new ReinforcedLeatherArmor(basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('ringOfSuperiority', new RingOfSuperiority(basicItemMap.get('pipeOfInsight') as Item, basicItemMap.get('emptyVial') as Item));
 */
-itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as ItemRecipe, basicItemMap.get('reinforcedLeatherArmor') as ItemRecipe));
+itemMap.set('coralScales', new CoralScales(basicItemMap.get('reinforcedHide') as ItemRecipe, basicItemMap.get('studdedLeatherArmor') as ItemRecipe));
 itemMap.set('scaledBoots', new ScaledBoots(basicItemMap.get('bootsOfSpeed') as Item, basicItemMap.get('moonArmor') as Item));
 itemMap.set('sharpSteelAxe', new SharpSteelAxe(basicItemMap.get('warAxe') as Item, basicItemMap.get('ironSword') as Item));
 itemMap.set('beltOfGiantStrength', new BeltOfGiantStrength(basicItemMap.get('warAxe') as Item, basicItemMap.get('reinforcedHide') as Item));
