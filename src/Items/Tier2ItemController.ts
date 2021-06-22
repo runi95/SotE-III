@@ -39,6 +39,7 @@ import { FastVampireClaws } from './Tier2Items/FastVampireClaws';
 import { MoonBlade } from './Tier2Items/MoonBlade';
 import { ImpenetrableShield } from './Tier2Items/ImpenetrableShield';
 import { EnhancedIronClaws } from './Tier2Items/EnhancedIronClaws';
+import { TomeOfGreaterKnowledge } from './Tier2Items/TomeOfGreaterKnowledge';
 
 const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
@@ -112,6 +113,7 @@ itemMap.set(
 );
 */
 itemMap.set('impenetrableShield', new ImpenetrableShield(tier1ItemMap.get('steelShield') as ItemRecipe, tier1ItemMap.get('coralScales') as ItemRecipe));
+itemMap.set('tomeOfGreaterKnowledge', new TomeOfGreaterKnowledge(tier1ItemMap.get('fullVial') as ItemRecipe, baseItemMap.get('bookOfKnowledge') as Item, baseItemMap.get('scrollOfWitchcraft') as Item));
 itemMap.set('improvedCreatureClaws', new ImprovedCreatureClaws(tier1ItemMap.get('creatureClaws') as ItemRecipe, baseItemMap.get('orbOfVenom') as Item, baseItemMap.get('orbOfLightning') as Item));
 /*
 itemMap.set('improvedElementalOrb', new ImprovedElementalOrb(tier1ItemMap.get('elementalOrb') as ItemRecipe));

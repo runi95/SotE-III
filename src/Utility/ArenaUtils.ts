@@ -173,9 +173,11 @@ export class ArenaUtils {
                         SetTextTagFadepoint(tag, 0.5);
                         SetTextTagLifespan(tag, 1.0);
                         SetTextTagPermanent(tag, false);
+                        let textTagVisibility = false;
                         if (GetLocalPlayer() === Player(i)) {
-                            SetTextTagVisibility(tag, true);
+                            textTagVisibility = true;
                         }
+                        SetTextTagVisibility(tag, textTagVisibility);
                     }
                 }
             }

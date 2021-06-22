@@ -5,6 +5,7 @@ export class SpellCastUtils {
     private readonly gameGlobals: GameGlobals;
     private readonly randomNumberGenerator: RandomNumberGenerator;
     private readonly fullVialItemId: number = FourCC('I016');
+    private readonly tomeOfGreaterKnowledgeItemId: number = FourCC('I05B');
 
     constructor(gameGlobals: GameGlobals, randomNumberGenerator: RandomNumberGenerator) {
         this.gameGlobals = gameGlobals;
@@ -27,6 +28,14 @@ export class SpellCastUtils {
         if (fullVial !== undefined) {
             if (GetItemCharges(fullVial) === 60) {
                 SetItemCharges(fullVial, 0);
+                bonuses += 0.25 * int;
+            }
+        }
+
+        const tomeOfGreaterKnowledge: item = GetItemOfTypeFromUnitBJ(u, this.tomeOfGreaterKnowledgeItemId);
+        if (tomeOfGreaterKnowledge !== undefined) {
+            if (GetItemCharges(tomeOfGreaterKnowledge) === 60) {
+                SetItemCharges(tomeOfGreaterKnowledge, 0);
                 bonuses += 0.25 * int;
             }
         }
