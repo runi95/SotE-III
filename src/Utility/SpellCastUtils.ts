@@ -46,6 +46,6 @@ export class SpellCastUtils {
             }
         }
 
-        return int + bonuses;
+        return Math.floor(int + bonuses);
     }
 }
