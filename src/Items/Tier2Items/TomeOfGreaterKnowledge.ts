@@ -7,7 +7,7 @@ import { ScrollOfWitchcraft } from '../BaseItems/ScrollOfWitchcraft';
 const itemId: number = FourCC('I05B');
 const name = 'Tome of Greater Knowledge';
 const labels: ItemLabel[] = [ItemLabel.INTELLIGENCE, ItemLabel.MAX_MANA, ItemLabel.COOLDOWN_REDUCTION];
-const goldCost = 3150;
+const goldCost = 2850;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNTomeRed.blp';
 const description = `Could this possibly contain all knowledge known to man?
 
