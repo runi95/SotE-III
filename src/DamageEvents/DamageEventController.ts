@@ -43,6 +43,7 @@ import { RingOfKingsEvent } from './RingOfKingsEvent';
 import { CriticalHit } from './CriticalHit';
 import { AncientFigurineEvent } from './AncientFigurineEvent';
 import { EnhancedIronClawsEvent } from './EnhancedIronClawsEvent';
+import { HelmOfValorEvent } from './HelmOfValorEvent';
 
 export class DamageEventController {
     constructor(
@@ -70,6 +71,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new PhysicalBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new SpellBlockEvent(gameGlobals, randomNumberGenerator));
         damageEngine.addInitialDamageModificationEvent(new CrownOfKingsEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new HelmOfValorEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new Backstab());
         damageEngine.addInitialDamageModificationEvent(new Envenom(spellCastUtils));
         damageEngine.addInitialDamageModificationEvent(new Repetition(gameGlobals));

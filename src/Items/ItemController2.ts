@@ -55,6 +55,7 @@ import { ImprovedCreatureClawsPickupAndDrop } from './Abilities/ImprovedCreature
 import { FieryBloodAxePickupAndDrop } from './Abilities/FieryBloodAxePickupAndDrop';
 import { TomeOfGreaterKnowledgePickupAndDrop } from './Abilities/TomeOfGreaterKnowledgePickupAndDrop';
 import { TomeOfGreaterKnowledgeSell } from './Abilities/TomeOfGreaterKnowledgeSell';
+import { HelmOfValorPickupAndDrop } from './Abilities/HelmOfValorPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -115,7 +116,8 @@ export class ItemController2 {
             new ImprovedCreatureClawsPickupAndDrop(gameGlobals),
             new FieryBloodAxePickupAndDrop(gameGlobals),
             new TomeOfGreaterKnowledgePickupAndDrop(gameGlobals, itemChargeUtils),
-            new TomeOfGreaterKnowledgeSell()
+            new TomeOfGreaterKnowledgeSell(),
+            new HelmOfValorPickupAndDrop(gameGlobals)
         ];
     }
 }

@@ -29,6 +29,7 @@ export class GameGlobals {
     public ImpenetrableShieldCount: number[] = [];
     public BookOfEvilCount: number[] = [];
     public CrownOfKingsCount: number[] = [];
+    public HelmOfValorCount: number[] = [];
     public EnhancedJavelinCount: number[] = [];
     public AgileBowCount: number[] = [];
     public ImprovedCreatureClawsCount: number[] = [];
