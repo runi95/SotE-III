@@ -41,6 +41,7 @@ import { ImpenetrableShield } from './Tier2Items/ImpenetrableShield';
 import { EnhancedIronClaws } from './Tier2Items/EnhancedIronClaws';
 import { TomeOfGreaterKnowledge } from './Tier2Items/TomeOfGreaterKnowledge';
 import { HelmOfValor } from './Tier2Items/HelmOfValor';
+import { GreaterRingOfRegeneration } from './Tier2Items/GreaterRingOfRegeneration';
 
 const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
@@ -63,6 +64,7 @@ export const itemMap: Map<string, ItemRecipe> = new Map();
 
 
 itemMap.set('enhancedIronClaws', new EnhancedIronClaws(tier1ItemMap.get('ironClaws') as ItemRecipe, baseItemMap.get('loadedRifle') as Item, baseItemMap.get('claws') as Item));
+itemMap.set('greaterRingOfRegeneration', new GreaterRingOfRegeneration(tier1ItemMap.get('ringOfKings') as ItemRecipe, tier1ItemMap.get('beltOfGiantStrength') as ItemRecipe));
 /*
 itemMap.set(
     'advancedCannon',

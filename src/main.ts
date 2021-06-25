@@ -69,11 +69,13 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.AssassinsBlade[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.SharpSteelAxe[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RingOfKings[i] = ChargedItemStates.UNEQUIPPED;
+        gameGlobals.GreaterRingOfRegeneration[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.AncientFigurineActive[i] = false;
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
         gameGlobals.RingOfKingsCount[i] = 0;
+        gameGlobals.GreaterRingOfRegenerationCount[i] = 0;
         gameGlobals.SharpSteelAxeCount[i] = 0;
         gameGlobals.MoonBladeCount[i] = 0;
         gameGlobals.ArcaniteSpearCount[i] = 0;

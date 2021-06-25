@@ -19,9 +19,11 @@ export class GameGlobals {
     public ClockworkPenguin: boolean[] = [];
     public AssassinsBlade: ChargedItemStates[] = [];
     public RingOfKings: ChargedItemStates[] = [];
+    public GreaterRingOfRegeneration: ChargedItemStates[] = [];
     public RazorBladesOn: boolean[] = [];
     public AssassinsBladeCount: number[] = [];
     public RingOfKingsCount: number[] = [];
+    public GreaterRingOfRegenerationCount: number[] = [];
     public SharpSteelAxeCount: number[] = [];
     public MoonBladeCount: number[] = [];
     public ElementalOrbCount: number[] = [];
