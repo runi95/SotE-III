@@ -44,6 +44,7 @@ import { CriticalHit } from './CriticalHit';
 import { AncientFigurineEvent } from './AncientFigurineEvent';
 import { EnhancedIronClawsEvent } from './EnhancedIronClawsEvent';
 import { HelmOfValorEvent } from './HelmOfValorEvent';
+import { GreaterRingOfRegenerationEvent } from './GreaterRingOfRegenerationEvent';
 
 export class DamageEventController {
     constructor(
@@ -98,6 +99,7 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new SharpSteelAxeEvent(gameGlobals));
         damageEngine.addAfterDamageEvent(new AgileBowEvent(gameGlobals));
         damageEngine.addAfterDamageEvent(new RingOfKingsEvent(gameGlobals));
+        damageEngine.addAfterDamageEvent(new GreaterRingOfRegenerationEvent(gameGlobals, buffUtils));
         damageEngine.addAfterDamageEvent(new Thorns(gameGlobals));
         damageEngine.addAfterDamageEvent(new Reflect(gameGlobals));
         damageEngine.addAfterDamageEvent(new Redemption(randomNumberGenerator, spellCastUtils));
