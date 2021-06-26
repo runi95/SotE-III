@@ -56,6 +56,8 @@ import { FieryBloodAxePickupAndDrop } from './Abilities/FieryBloodAxePickupAndDr
 import { TomeOfGreaterKnowledgePickupAndDrop } from './Abilities/TomeOfGreaterKnowledgePickupAndDrop';
 import { TomeOfGreaterKnowledgeSell } from './Abilities/TomeOfGreaterKnowledgeSell';
 import { HelmOfValorPickupAndDrop } from './Abilities/HelmOfValorPickupAndDrop';
+import { GreaterRingOfRegenerationPickupAndDrop } from './Abilities/GreaterRingOfRegenerationPickupAndDrop';
+import { GreaterRingOfRegenerationSell } from './Abilities/GreaterRingOfRegenerationSell';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -117,7 +119,9 @@ export class ItemController2 {
             new FieryBloodAxePickupAndDrop(gameGlobals),
             new TomeOfGreaterKnowledgePickupAndDrop(gameGlobals, itemChargeUtils),
             new TomeOfGreaterKnowledgeSell(),
-            new HelmOfValorPickupAndDrop(gameGlobals)
+            new HelmOfValorPickupAndDrop(gameGlobals),
+            new GreaterRingOfRegenerationPickupAndDrop(gameGlobals, itemChargeUtils),
+            new GreaterRingOfRegenerationSell()
         ];
     }
 }
