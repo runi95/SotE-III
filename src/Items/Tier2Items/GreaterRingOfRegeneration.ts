@@ -7,7 +7,7 @@ const itemId: number = FourCC('I05D');
 const name = 'Greater Ring of Regeneration';
 const labels: ItemLabel[] = [ItemLabel.STRENGTH, ItemLabel.HEALTH_REGEN];
 const goldCost = 2565;
-const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingSkull.blp';
+const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNEnhancedRingSkull.dds';
 const description = `A ring that provides the wielder with infinite life or so they say.
 
 |cffffcc00Strength:|r +30
