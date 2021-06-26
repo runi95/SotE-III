@@ -17,7 +17,7 @@ export class GreaterRingOfRegenerationBuff extends Buff {
     }
 
     public tick(): void {
-        SetUnitLifeBJ(this.buffedUnit, GetWidgetLife(this.buffedUnit) + 15);
+        SetUnitLifeBJ(this.buffedUnit, GetWidgetLife(this.buffedUnit) + 25);
     }
 
     public getBuffType(): BuffTypes {
