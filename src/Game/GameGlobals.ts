@@ -1,3 +1,4 @@
+import { FigurineTypes } from '../Utility/buffs/FigurineBuff';
 import { Point } from '../Utility/Point';
 import { Region } from '../Utility/Region';
 import { Hero } from './Hero';
@@ -36,8 +37,8 @@ export class GameGlobals {
     public AgileBowCount: number[] = [];
     public ImprovedCreatureClawsCount: number[] = [];
     public EnhancedIronClawsCount: number[] = [];
-    public AncientFigurineCount: number[] = [];
-    public AncientFigurineActive: boolean[] = [];
+    public FigurineActive: boolean[] = [];
+    public FigurineType: FigurineTypes[] = [];
     public EnhancedJavelinAttackCount: number[] = [];
     public MarkOfTheTalonCount: number[] = [];
     public LegionDoomHornCount: number[] = [];

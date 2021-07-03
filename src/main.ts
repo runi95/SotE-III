@@ -6,6 +6,7 @@ import { Hero } from './Game/Hero';
 import { RandomNumberGenerator } from './Utility/RandomNumberGenerator';
 import { RecipeSystem } from './Items/RecipeSystem';
 import { GameOptionSystem } from './Game/GameOptionSystem';
+import { FigurineTypes } from './Utility/buffs/FigurineBuff';
 
 export class Initialiser {
     public static run(): void {
@@ -71,7 +72,8 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.RingOfKings[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.GreaterRingOfRegeneration[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RazorBladesOn[i] = false;
-        gameGlobals.AncientFigurineActive[i] = false;
+        gameGlobals.FigurineActive[i] = false;
+        gameGlobals.FigurineType[i] = FigurineTypes.NONE;
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
         gameGlobals.RingOfKingsCount[i] = 0;
@@ -87,7 +89,6 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.AgileBowCount[i] = 0;
         gameGlobals.ImprovedCreatureClawsCount[i] = 0;
         gameGlobals.EnhancedIronClawsCount[i] = 0;
-        gameGlobals.AncientFigurineCount[i] = 0;
         gameGlobals.MarkOfTheTalonCount[i] = 0;
         gameGlobals.EnhancedJavelinAttackCount[i] = 0;
         gameGlobals.DivineShieldLife[i] = 0;

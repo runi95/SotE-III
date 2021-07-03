@@ -47,7 +47,6 @@ import { AgileBowPickupAndDrop } from './Abilities/AgileBowPickupAndDrop';
 import { RingOfKingsPickupAndDrop } from './Abilities/RingOfKingsPickupAndDrop';
 import { RingOfKingsSell } from './Abilities/RingOfKingsSell';
 import { WandOfReanimationPickupAndDrop } from './Abilities/WandOfReanimationPickupAndDrop';
-import { AncientFigurinePickupAndDrop } from './Abilities/AncientFigurinePickupAndDrop';
 import { AncientFigurineCast } from './Abilities/AncientFigurineCast';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { EnhancedIronClawsPickupAndDrop } from './Abilities/EnhancedIronClawsPickupAndDrop';
@@ -60,6 +59,7 @@ import { GreaterRingOfRegenerationPickupAndDrop } from './Abilities/GreaterRingO
 import { GreaterRingOfRegenerationSell } from './Abilities/GreaterRingOfRegenerationSell';
 import { EnhancedMaulOfStrengthPickupAndDrop } from './Abilities/EnhancedMaulOfStrengthPickupAndDrop';
 import { EnhancedMaulOfStrengthSell } from './Abilities/EnhancedMaulOfStrengthSell';
+import { ScalyFigurineCast } from './Abilities/ScalyFigurineCast';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -114,7 +114,6 @@ export class ItemController2 {
             new RingOfKingsPickupAndDrop(gameGlobals, itemChargeUtils),
             new RingOfKingsSell(),
             new WandOfReanimationPickupAndDrop(gameGlobals),
-            new AncientFigurinePickupAndDrop(gameGlobals),
             new AncientFigurineCast(gameGlobals, buffUtils),
             new EnhancedIronClawsPickupAndDrop(gameGlobals),
             new ImprovedCreatureClawsPickupAndDrop(gameGlobals),
@@ -125,7 +124,8 @@ export class ItemController2 {
             new GreaterRingOfRegenerationPickupAndDrop(gameGlobals, itemChargeUtils),
             new GreaterRingOfRegenerationSell(),
             new EnhancedMaulOfStrengthPickupAndDrop(gameGlobals),
-            new EnhancedMaulOfStrengthSell()
+            new EnhancedMaulOfStrengthSell(),
+            new ScalyFigurineCast(gameGlobals, buffUtils)
         ];
     }
 }

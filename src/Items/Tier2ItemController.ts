@@ -44,6 +44,7 @@ import { HelmOfValor } from './Tier2Items/HelmOfValor';
 import { GreaterRingOfRegeneration } from './Tier2Items/GreaterRingOfRegeneration';
 import { EnhancedIronClawsEvent } from '../DamageEvents/EnhancedIronClawsEvent';
 import { EnhancedMaulOfStrength } from './Tier2Items/EnhancedMaulOfStrength';
+import { ScalyFigurine } from './Tier2Items/ScalyFigurine';
 
 const baseItemMap: Map<string, Item> = baseItemController.itemMap;
 const tier1ItemMap: Map<string, ItemRecipe> = tier1ItemController.itemMap;
@@ -68,6 +69,7 @@ export const itemMap: Map<string, ItemRecipe> = new Map();
 itemMap.set('enhancedIronClaws', new EnhancedIronClaws(tier1ItemMap.get('ironClaws') as ItemRecipe, baseItemMap.get('loadedRifle') as Item, baseItemMap.get('claws') as Item));
 itemMap.set('greaterRingOfRegeneration', new GreaterRingOfRegeneration(tier1ItemMap.get('ringOfKings') as ItemRecipe, tier1ItemMap.get('beltOfGiantStrength') as ItemRecipe));
 itemMap.set('enhancedMaulOfStrength', new EnhancedMaulOfStrength(tier1ItemMap.get('maulOfStrength') as ItemRecipe, baseItemMap.get('studdedLeatherArmor') as Item, baseItemMap.get('warAxe') as Item));
+itemMap.set('scalyFigurine', new ScalyFigurine(tier1ItemMap.get('ancientFigurine') as ItemRecipe, tier1ItemMap.get('coralScales') as ItemRecipe));
 /*
 itemMap.set(
     'advancedCannon',

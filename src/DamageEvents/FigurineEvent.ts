@@ -1,8 +1,9 @@
 import { DamageEvent } from '../DamageEngine/DamageEvent';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { GameGlobals } from '../Game/GameGlobals';
+import { FigurineTypes } from '../Utility/buffs/FigurineBuff';
 
-export class AncientFigurineEvent implements DamageEvent {
+export class FigurineEvent implements DamageEvent {
     private readonly gameGlobals: GameGlobals;
 
     constructor(gameGlobals: GameGlobals) {
@@ -16,7 +17,7 @@ export class AncientFigurineEvent implements DamageEvent {
             return;
         }
 
-        if (!this.gameGlobals.AncientFigurineActive[playerId]) {
+        if (!this.gameGlobals.FigurineActive[playerId]) {
             return;
         }
 
@@ -24,6 +25,10 @@ export class AncientFigurineEvent implements DamageEvent {
             return;
         }
 
-        globals.DamageEventAmount *= 0.9;
+        if (this.gameGlobals.FigurineType[playerId] === FigurineTypes.ANCIENT_FIGURINE) {
+            globals.DamageEventAmount *= 0.9;
+        } else if (this.gameGlobals.FigurineType[playerId] === FigurineTypes.SCALY_FIGURINE) {
+            globals.DamageEventAmount *= 0.75;
+        }
     }
 }

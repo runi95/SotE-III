@@ -3,8 +3,8 @@ import { Trigger } from '../../JassOverrides/Trigger';
 import { FigurineBuff, FigurineTypes } from '../../Utility/buffs/FigurineBuff';
 import { BuffUtils } from '../../Utility/BuffUtils';
 
-export class AncientFigurineCast {
-    protected readonly itemTypeId: number = FourCC('I058');
+export class ScalyFigurineCast {
+    protected readonly itemTypeId: number = FourCC('I05F');
     private readonly trig: Trigger = new Trigger();
     private readonly gameGlobals: GameGlobals;
     private readonly buffUtils: BuffUtils;
@@ -24,6 +24,6 @@ export class AncientFigurineCast {
 
     private action(): void {
         const trig: unit = GetTriggerUnit();
-        this.buffUtils.applyBuff(trig, new FigurineBuff(GetPlayerId(GetOwningPlayer(trig)), FigurineTypes.ANCIENT_FIGURINE, this.gameGlobals));
+        this.buffUtils.applyBuff(trig, new FigurineBuff(GetPlayerId(GetOwningPlayer(trig)), FigurineTypes.SCALY_FIGURINE, this.gameGlobals));
     }
 }
