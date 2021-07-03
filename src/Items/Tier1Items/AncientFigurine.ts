@@ -12,7 +12,7 @@ const description = `A very old, ancient figurine.
 
 |cffffcc00Intelligence:|r +10
 |cffffcc00Max health:|r +240
-|cffffcc00Effect:|r Reduces damage taken by 10% for a duration of 5 seconds after casting a spell
+|cffffcc00Unique:|r Reduces damage taken by 10% for a duration of 5 seconds after casting a spell
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 
