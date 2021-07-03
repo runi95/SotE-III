@@ -45,6 +45,8 @@ import { AncientFigurineEvent } from './AncientFigurineEvent';
 import { EnhancedIronClawsEvent } from './EnhancedIronClawsEvent';
 import { HelmOfValorEvent } from './HelmOfValorEvent';
 import { GreaterRingOfRegenerationEvent } from './GreaterRingOfRegenerationEvent';
+import { EnhancedMaulOfStrengthDamageEvent } from './EnhancedMaulOfStrengthDamageEvent';
+import { EnhancedMaulOfStrengthEvent } from './EnhancedMaulOfStrengthEvent';
 
 export class DamageEventController {
     constructor(
@@ -80,6 +82,7 @@ export class DamageEventController {
         damageEngine.addInitialDamageModificationEvent(new EnhancedJavelinEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MagesSabatons(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MaulOfStrengthDamageEvent(gameGlobals));
+        damageEngine.addInitialDamageModificationEvent(new EnhancedMaulOfStrengthDamageEvent(gameGlobals));
         damageEngine.addInitialDamageModificationEvent(new MantleOfIntelligenceEvent(gameGlobals, buffUtils));
         damageEngine.addInitialDamageModificationEvent(new EnhancedIronClawsEvent(gameGlobals));
 
@@ -94,6 +97,7 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new Splash(gameGlobals));
         damageEngine.addAfterDamageEvent(new Lifesteal(gameGlobals));
         damageEngine.addAfterDamageEvent(new MaulOfStrengthEvent(gameGlobals, timerUtils));
+        damageEngine.addAfterDamageEvent(new EnhancedMaulOfStrengthEvent(gameGlobals, timerUtils));
         damageEngine.addAfterDamageEvent(new ElementalOrb(gameGlobals));
         damageEngine.addAfterDamageEvent(new Venom(gameGlobals, venomUtils));
         damageEngine.addAfterDamageEvent(new SharpSteelAxeEvent(gameGlobals));

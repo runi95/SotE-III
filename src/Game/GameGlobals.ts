@@ -48,7 +48,9 @@ export class GameGlobals {
     public MantleOfIntelligenceCount: number[] = [];
     public FastVampireClawsCount: number[] = [];
     public MaulOfStrengthCount: number[] = [];
+    public EnhancedMaulOfStrengthCount: number[] = [];
     public MaulOfStrengthTimer: number[] = [];
+    public EnhancedMaulOfStrengthTimer: number[] = [];
     public DivineShieldLife: number[] = [];
     public PlayerLifesteal: number[] = [];
     public PlayerRestoration: number[] = [];
