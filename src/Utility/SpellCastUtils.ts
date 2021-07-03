@@ -36,7 +36,7 @@ export class SpellCastUtils {
         if (tomeOfGreaterKnowledge !== undefined) {
             if (GetItemCharges(tomeOfGreaterKnowledge) === 60) {
                 SetItemCharges(tomeOfGreaterKnowledge, 0);
-                bonuses += 0.25 * int;
+                bonuses += 0.5 * int;
             }
         }
 
