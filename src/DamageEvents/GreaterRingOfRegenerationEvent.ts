@@ -23,8 +23,7 @@ export class GreaterRingOfRegenerationEvent implements DamageEvent {
             return;
         }
 
-        const owningPlayer: player = GetOwningPlayer(globals.DamageEventTarget as unit);
-        const playerId: number = GetPlayerId(owningPlayer);
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }
@@ -43,7 +42,7 @@ export class GreaterRingOfRegenerationEvent implements DamageEvent {
 
         SetItemCharges(GetItemOfTypeFromUnitBJ(globals.DamageEventTarget as unit, this.itemTypeId), 1);
         this.gameGlobals.GreaterRingOfRegeneration[playerId] = ChargedItemStates.COOLDOWN;
-        const dummy: unit = CreateUnit(owningPlayer, this.dummyUnitTypeId, GetUnitX(globals.DamageEventTarget as unit), GetUnitY(globals.DamageEventTarget as unit), 0);
+        const dummy: unit = CreateUnit(globals.DamageEventTargetOwningPlayer as player, this.dummyUnitTypeId, GetUnitX(globals.DamageEventTarget as unit), GetUnitY(globals.DamageEventTarget as unit), 0);
         UnitAddAbilityBJ(this.dummyAbilityId, dummy);
         UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
         IssueTargetOrder(dummy, 'bloodlust', globals.DamageEventTarget as unit);

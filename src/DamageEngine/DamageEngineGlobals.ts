@@ -14,6 +14,10 @@ export class DamageEngineGlobals {
     public IsDamageMelee = false;
     public IsDamageRanged = false;
 
+    public DamageEventSourceOwningPlayer: player | undefined = undefined;
+    public DamageEventTargetOwningPlayer: player | undefined = undefined;
+    public DamageEventSourceOwningPlayerId: number | undefined = undefined;
+    public DamageEventTargetOwningPlayerId: number | undefined = undefined;
     public DamageEventSource: unit | undefined = undefined;
     public DamageEventTarget: unit | undefined = undefined;
 

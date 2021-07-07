@@ -23,8 +23,8 @@ export class SharpSteelAxeEvent implements DamageEvent {
             return;
         }
 
-        const owningPlayer: player = GetOwningPlayer(globals.DamageEventTarget as unit);
-        const playerId: number = GetPlayerId(owningPlayer);
+        const owningPlayer: player = globals.DamageEventTargetOwningPlayer as player;
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }

@@ -375,7 +375,11 @@ export class DamageEngine {
         this.damageEngineGlobals.DamageEventOverride = dt === undefined;
         this.damageEngineGlobals.DamageEventPrevAmt = amt;
         this.damageEngineGlobals.DamageEventSource = src;
+        this.damageEngineGlobals.DamageEventSourceOwningPlayer = GetOwningPlayer(this.damageEngineGlobals.DamageEventSource);
+        this.damageEngineGlobals.DamageEventSourceOwningPlayerId = GetPlayerId(this.damageEngineGlobals.DamageEventSourceOwningPlayer);
         this.damageEngineGlobals.DamageEventTarget = tgt;
+        this.damageEngineGlobals.DamageEventTargetOwningPlayer = GetOwningPlayer(this.damageEngineGlobals.DamageEventTarget);
+        this.damageEngineGlobals.DamageEventTargetOwningPlayerId = GetPlayerId(this.damageEngineGlobals.DamageEventTargetOwningPlayer);
         this.damageEngineGlobals.DamageEventAmount = amt;
         this.damageEngineGlobals.PiercingOverflowAmount = 0;
         this.damageEngineGlobals.DamageEventAttackT = GetHandleId(at);
@@ -456,7 +460,11 @@ export class DamageEngine {
             this.canKick = true;
 
             this.damageEngineGlobals.DamageEventSource = GetEventDamageSource();
+            this.damageEngineGlobals.DamageEventSourceOwningPlayer = GetOwningPlayer(this.damageEngineGlobals.DamageEventSource);
+            this.damageEngineGlobals.DamageEventSourceOwningPlayerId = GetPlayerId(this.damageEngineGlobals.DamageEventSourceOwningPlayer);
             this.damageEngineGlobals.DamageEventTarget = GetTriggerUnit();
+            this.damageEngineGlobals.DamageEventTargetOwningPlayer = GetOwningPlayer(this.damageEngineGlobals.DamageEventTarget);
+            this.damageEngineGlobals.DamageEventTargetOwningPlayerId = GetPlayerId(this.damageEngineGlobals.DamageEventTargetOwningPlayer);
             this.damageEngineGlobals.DamageEventAmount = this.prev.amount;
             this.damageEngineGlobals.PiercingOverflowAmount = 0;
             this.damageEngineGlobals.DamageEventPrevAmt = this.prev.preAmt;

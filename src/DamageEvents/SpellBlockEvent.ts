@@ -22,14 +22,14 @@ export class SpellBlockEvent implements DamageEvent {
             return;
         }
 
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0) {
             return;
         }
 
         let perseverance = 0;
         let resistance = 0;
-        const damageSourcePlayerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
+        const damageSourcePlayerId: number = globals.DamageEventSourceOwningPlayerId as number;
         if (damageSourcePlayerId >= 0 && damageSourcePlayerId < bj_MAX_PLAYERS) {
             if (IsUnitType(globals.DamageEventSource as unit, UNIT_TYPE_HERO)) {
                 if (this.gameGlobals.BookOfEvilCount[damageSourcePlayerId] > 0 && this.randomNumberGenerator.random(1, 100) < 6) {

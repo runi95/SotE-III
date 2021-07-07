@@ -19,7 +19,7 @@ export class Reflect implements DamageEvent {
             return;
         }
 
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }

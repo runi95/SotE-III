@@ -11,7 +11,7 @@ export class ScrollOfTownPortal implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventTarget as unit));
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
 
         if (
             this.gameGlobals.ScrollOfTownPortal[playerId] &&

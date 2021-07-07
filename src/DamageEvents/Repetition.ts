@@ -25,7 +25,7 @@ export class Repetition implements DamageEvent {
             return;
         }
 
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
+        const playerId: number = globals.DamageEventSourceOwningPlayerId as number;
         const unitHandleId: number = GetHandleId(globals.DamageEventTarget as unit);
         if (this.gameGlobals.Repetition[playerId] === unitHandleId) {
             const currentRepetitions: number = this.gameGlobals.RepetitionCounter[playerId];

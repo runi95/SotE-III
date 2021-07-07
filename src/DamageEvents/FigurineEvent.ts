@@ -11,8 +11,7 @@ export class FigurineEvent implements DamageEvent {
     }
 
     public event(globals: DamageEngineGlobals): void {
-        const owningPlayer: player = GetOwningPlayer(globals.DamageEventTarget as unit);
-        const playerId: number = GetPlayerId(owningPlayer);
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }

@@ -20,7 +20,7 @@ export class MaulOfStrengthDamageEvent implements DamageEvent {
             return;
         }
 
-        const playerId: number = GetPlayerId(GetOwningPlayer(globals.DamageEventSource as unit));
+        const playerId: number = globals.DamageEventSourceOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }

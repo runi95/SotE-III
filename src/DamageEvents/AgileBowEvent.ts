@@ -23,8 +23,7 @@ export class AgileBowEvent implements DamageEvent {
             return;
         }
 
-        const owningPlayer: player = GetOwningPlayer(globals.DamageEventSource as unit);
-        const playerId: number = GetPlayerId(owningPlayer);
+        const playerId: number = globals.DamageEventSourceOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }
@@ -38,7 +37,7 @@ export class AgileBowEvent implements DamageEvent {
         if (charges < 10) {
             SetItemCharges(agileBow, charges + 1);
         } else {
-            const dummy: unit = CreateUnit(owningPlayer, this.dummyUnitTypeId, GetUnitX(globals.DamageEventTarget as unit), GetUnitY(globals.DamageEventTarget as unit), 0);
+            const dummy: unit = CreateUnit(globals.DamageEventSourceOwningPlayer as player, this.dummyUnitTypeId, GetUnitX(globals.DamageEventTarget as unit), GetUnitY(globals.DamageEventTarget as unit), 0);
             UnitAddAbilityBJ(this.dummyAbilityId, dummy);
             UnitApplyTimedLifeBJ(2, this.timedLifeBuffId, dummy);
             IssueImmediateOrder(dummy, 'creepthunderclap');

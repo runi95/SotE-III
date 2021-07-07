@@ -17,7 +17,7 @@ export class RunedBracers implements DamageEvent {
             return;
         }
 
-        if (GetOwningPlayer(globals.DamageEventTarget as unit) === Player(PLAYER_NEUTRAL_AGGRESSIVE)) {
+        if (globals.DamageEventTargetOwningPlayer as player === Player(PLAYER_NEUTRAL_AGGRESSIVE)) {
             return;
         }
 

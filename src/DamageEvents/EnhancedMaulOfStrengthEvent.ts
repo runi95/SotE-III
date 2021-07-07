@@ -20,8 +20,7 @@ export class EnhancedMaulOfStrengthEvent implements DamageEvent {
             return;
         }
 
-        const damageEventTarget: unit = globals.DamageEventTarget as unit;
-        const playerId: number = GetPlayerId(GetOwningPlayer(damageEventTarget));
+        const playerId: number = globals.DamageEventTargetOwningPlayerId as number;
         if (playerId < 0 || playerId >= bj_MAX_PLAYERS) {
             return;
         }
@@ -30,6 +29,7 @@ export class EnhancedMaulOfStrengthEvent implements DamageEvent {
             return;
         }
 
+        const damageEventTarget: unit = globals.DamageEventTarget as unit;
         const enhancedMaulOfStrength: item = GetItemOfTypeFromUnitBJ(damageEventTarget, this.itemId);
         const charges: number = GetItemCharges(enhancedMaulOfStrength);
         if (charges < 15) {
