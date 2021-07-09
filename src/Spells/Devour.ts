@@ -12,7 +12,7 @@ export class Devour extends Spell {
         grp.for((u: unit) => {
             if (UnitAlive(u) && u !== trig) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl', GetUnitX(u), GetUnitY(u)));
-                UnitDamageTargetBJ(GetTriggerUnit(), u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(GetTriggerUnit(), u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 SetUnitLifeBJ(GetTriggerUnit(), GetUnitState(GetTriggerUnit(), UNIT_STATE_LIFE) + damage);
             }
         });

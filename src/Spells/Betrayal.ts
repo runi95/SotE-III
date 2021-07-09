@@ -58,7 +58,7 @@ export class Betrayal extends Spell {
             }
 
             if (ticks === 8) {
-                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
             }
 
             if (ticks <= 0) {

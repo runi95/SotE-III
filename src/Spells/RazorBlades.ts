@@ -111,7 +111,7 @@ export class RazorBlades {
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, GetOwningPlayer(trig)) && UnitAlive(u)) {
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl', GetUnitX(u), GetUnitY(u)));
-                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
             }
         });
 

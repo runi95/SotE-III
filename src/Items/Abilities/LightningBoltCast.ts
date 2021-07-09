@@ -50,7 +50,7 @@ export class LightningBoltCast extends Spell {
                     if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
                         const dist: number = Math.sqrt(Pow(x - GetUnitX(u), 2) + Pow(y - GetUnitY(u), 2));
                         const damage: number = 2200 * (1 - dist / 800);
-                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                     }
                 });
 

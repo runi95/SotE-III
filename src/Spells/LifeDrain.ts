@@ -34,7 +34,7 @@ export class LifeDrain extends Spell {
                 this.timerUtils.releaseTimer(t);
             } else {
                 MoveLightning(light, true, GetUnitX(trig), GetUnitY(trig), GetUnitX(targ), GetUnitY(targ));
-                UnitDamageTargetBJ(trig, targ, damageAndHeal, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, targ, damageAndHeal, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 SetUnitLifeBJ(trig, GetUnitState(trig, UNIT_STATE_LIFE) + damageAndHeal);
             }
         });

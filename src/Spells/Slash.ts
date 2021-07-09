@@ -52,7 +52,7 @@ export class Slash extends Spell {
                 SetUnitFlyHeight(trig, 0, 400);
                 SetUnitAnimationByIndex(trig, 3);
             } else if (ticks <= 0) {
-                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 DestroyEffect(eff);
                 const stunAbilityLevel: number = GetUnitAbilityLevel(trig, this.stunAbilityId);
                 if (stunAbilityLevel === 0) {

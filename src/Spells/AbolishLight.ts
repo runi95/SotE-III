@@ -39,7 +39,7 @@ export class AbolishLight extends Spell {
         }
 
         for (let i = 0; i < enemies.length; i++) {
-            UnitDamageTargetBJ(trig, enemies[i], fractionedDamageAndHealing, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(trig, enemies[i], fractionedDamageAndHealing, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
             DestroyEffect(AddSpecialEffectTarget('Abilities\\Spells\\Undead\\DeathCoil\\DeathCoilSpecialArt.mdl', enemies[i], 'origin'));
         }
     }

@@ -41,7 +41,7 @@ export class Maelstrom extends Spell {
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, trigOwner) && UnitAlive(u)) {
                     this.damageEngineGlobals.NextDefensiveReduction = 0.95;
-                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 }
             });
             grp.destroy();

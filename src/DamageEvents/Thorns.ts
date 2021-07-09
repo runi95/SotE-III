@@ -36,7 +36,7 @@ export class Thorns implements DamageEvent {
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
             this.gameGlobals.PlayerThorns[playerId],
-            ATTACK_TYPE_NORMAL,
+            ATTACK_TYPE_MELEE,
             DAMAGE_TYPE_UNIVERSAL,
         );
     }

@@ -25,7 +25,7 @@ export class Permafrost extends Spell {
 
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, GetOwningPlayer(trig))) {
-                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Undead\\FrostNova\\FrostNovaTarget.mdl', GetUnitX(u), GetUnitY(u)));
                 this.stunUtils.stunUnit(u, 2);
             }

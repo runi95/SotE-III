@@ -20,7 +20,7 @@ export class Necromancer extends Boss {
         araeDeathTrigger.addCondition(() => GetUnitTypeId(GetDyingUnit()) === this.araeUnitId);
         araeDeathTrigger.addAction(() => {
             const dyingUnitHandleId: number = GetHandleId(GetDyingUnit());
-            UnitDamageTargetBJ(GetDyingUnit(), GetKillingUnit(), 1000, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(GetDyingUnit(), GetKillingUnit(), 1000, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
 
             if (this.araeOne !== undefined && dyingUnitHandleId === GetHandleId(this.araeOne)) {
                 this.araeOne = undefined;

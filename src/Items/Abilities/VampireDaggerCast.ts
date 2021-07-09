@@ -4,7 +4,7 @@ export class VampireDaggerCast extends Spell {
     protected readonly abilityId: number = FourCC('A05C');
 
     protected action(): void {
-        UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), 1000, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), 1000, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
         DestroyEffect(
             AddSpecialEffect(
                 'Abilities\\Spells\\Other\\Stampede\\StampedeMissileDeath.mdl',

@@ -12,7 +12,7 @@ export class SacrificialDaggerUse extends ItemUse {
             UnitAddItemByIdSwapped(this.bloodiedSacrificialDagger, GetTriggerUnit());
         }
 
-        UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 100, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 100, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
         SetItemCharges(GetManipulatedItem(), charges);
     }
 }

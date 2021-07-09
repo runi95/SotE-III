@@ -28,7 +28,7 @@ export class Rupture extends Spell {
             const x: number = GetUnitX(targ);
             const y: number = GetUnitY(targ);
             const dist: number = Math.sqrt(Math.pow(x - previousX, 2) + Math.pow(y - previousY, 2));
-            UnitDamageTargetBJ(trig, targ, dist, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(trig, targ, dist, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
             previousX = x;
             previousY = y;
 

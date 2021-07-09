@@ -45,9 +45,9 @@ export class PoisonFlask extends Spell {
 
             for (let i = 0; i < units.length; i++) {
                 if (UnitHasBuffBJ(units[i], this.chemicalSprayBuff)) {
-                    UnitDamageTargetBJ(trig, units[i], 2 * damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                    UnitDamageTargetBJ(trig, units[i], 2 * damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 } else {
-                    UnitDamageTargetBJ(trig, units[i], damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                    UnitDamageTargetBJ(trig, units[i], damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 }
             }
 

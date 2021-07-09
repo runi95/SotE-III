@@ -24,7 +24,7 @@ export class PsychicScream extends Spell {
 
         grp.for((u: unit) => {
             if (IsUnitEnemy(u, Player(playerId)) && UnitAlive(u)) {
-                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                 const uX: number = GetUnitX(u);
                 const uY: number = GetUnitY(u);
                 const dist: number = Math.sqrt(Pow(uX - x, 2) + Pow(uY - y, 2));

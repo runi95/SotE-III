@@ -37,7 +37,7 @@ export class Shackles extends Spell {
             const targY: number = GetUnitY(targ);
             const dist: number = Math.sqrt(Pow(x - targX, 2) + Pow(y - targY, 2));
             if (ticks % 5 === 0) {
-                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
             }
             MoveLightning(light, true, x, y, targX, targY);
 

@@ -39,7 +39,7 @@ export class PandaBash extends Spell {
         const multY: number = 50 * ((spellTargetY - y) / dist);
         
         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Orc\\WarStomp\\WarStompCaster.mdl', GetUnitX(spellTargetUnit), GetUnitY(spellTargetUnit)));
-        UnitDamageTargetBJ(trig, spellTargetUnit, 70 + abilityLevel * str, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(trig, spellTargetUnit, 70 + abilityLevel * str, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
 
         this.knockbackUtils.knockback({
             knockbackTarget: spellTargetUnit,
@@ -74,7 +74,7 @@ export class PandaBash extends Spell {
                     // Fire
                     } else {
                         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl', GetUnitX(spellTargetUnit), GetUnitY(spellTargetUnit)));
-                        UnitDamageTargetBJ(trig, spellTargetUnit, 75 * stormEarthAndFireAbilityLevel + intelligence, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        UnitDamageTargetBJ(trig, spellTargetUnit, 75 * stormEarthAndFireAbilityLevel + intelligence, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                     }
                 }
             }

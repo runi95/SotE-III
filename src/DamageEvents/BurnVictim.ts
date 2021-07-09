@@ -48,7 +48,7 @@ export class BurnVictim implements DamageEvent {
         t.start(1, true, () => {
             ticks--;
 
-            UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
 
             if (ticks <= 0) {
                 UnitRemoveAbility(targ, this.dummyAbilityId);

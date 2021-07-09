@@ -17,7 +17,7 @@ export class Conversion extends Spell {
 
         DestroyEffect(AddSpecialEffect('Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl', GetUnitX(GetSpellTargetUnit()), GetUnitY(GetSpellTargetUnit())));
         if (IsUnitEnemy(GetSpellTargetUnit(), GetOwningPlayer(GetTriggerUnit()))) {
-            UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damageOrHealing, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+            UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damageOrHealing, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
         } else {
             SetUnitLifeBJ(GetSpellTargetUnit(), GetUnitState(GetSpellTargetUnit(), UNIT_STATE_LIFE) + damageOrHealing);
         }

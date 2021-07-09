@@ -34,6 +34,6 @@ export class SummonFelbeast extends Spell {
             UnitAddAbility(summon, this.criticalStrikeAbilityId);
         }
 
-        UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 100, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_UNIVERSAL);
+        UnitDamageTargetBJ(GetTriggerUnit(), GetTriggerUnit(), 100, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_UNIVERSAL);
     }
 }

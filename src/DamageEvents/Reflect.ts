@@ -36,7 +36,7 @@ export class Reflect implements DamageEvent {
             globals.DamageEventTarget as unit,
             globals.DamageEventSource as unit,
             this.gameGlobals.PlayerReflect[playerId],
-            ATTACK_TYPE_NORMAL,
+            ATTACK_TYPE_MAGIC,
             DAMAGE_TYPE_UNIVERSAL,
         );
     }

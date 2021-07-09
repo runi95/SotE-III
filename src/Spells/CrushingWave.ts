@@ -22,7 +22,7 @@ export class CrushingWave extends Spell {
         const damage: number = 150 * abilityLevel + intelligence;
 
         DestroyEffect(AddSpecialEffect('Objects\\Spawnmodels\\Naga\\NagaDeath\\NagaDeath.mdl', GetUnitX(targ), GetUnitY(targ)));
-        UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(trig, targ, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
         this.stunUtils.stunUnit(targ, 1.5);
     }
 }

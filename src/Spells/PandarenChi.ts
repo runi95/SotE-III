@@ -52,7 +52,7 @@ export class PandarenChi extends Spell {
                             AddSpecialEffect('Abilities\\Spells\\NightElf\\ManaBurn\\ManaBurnTarget.mdl', GetUnitX(u), GetUnitY(u)),
                         );
                         this.damageEngineGlobals.NextDefensiveReduction = 0.9;
-                        UnitDamageTargetBJ(trig, u, damagePerTick, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                        UnitDamageTargetBJ(trig, u, damagePerTick, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
                     }
 
                     if (IsUnitAlly(u, p)) {

@@ -18,7 +18,7 @@ export class FrozenFlask extends Spell {
     protected action(): void {
         const abilityLevel: number = GetUnitAbilityLevel(GetTriggerUnit(), this.abilityId);
         const damage: number = 190 * abilityLevel + 1.5 * this.spellCastUtils.GetIntelligence(GetTriggerUnit());
-        UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+        UnitDamageTargetBJ(GetTriggerUnit(), GetSpellTargetUnit(), damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
         if (UnitHasBuffBJ(GetSpellTargetUnit(), this.chemicalSprayBuff)) {
             this.stunUtils.stunUnit(GetSpellTargetUnit(), 1 + 0.5 * abilityLevel);
         } else {

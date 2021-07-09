@@ -63,7 +63,7 @@ export class FrostNova extends Spell {
 
             grp.for((u: unit) => {
                 if (IsUnitEnemy(u, p)) {
-                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL);
+                    UnitDamageTargetBJ(trig, u, damage, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC);
 
                     const x: number = GetUnitX(u);
                     const y: number = GetUnitY(u);
