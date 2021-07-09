@@ -34,6 +34,7 @@ import { OrbOfVenom } from './BaseItems/OrbOfVenom';
 import { LoadedRifle } from './BaseItems/LoadedRifle';
 import { BookOfKnowledge } from './BaseItems/BookOfKnowledge';
 import { OrbOfCorruption } from './BaseItems/OrbOfCorruption';
+import { UrnOfWitchcraft } from './BaseItems/UrnOfWitchcraft';
 
 /**
  * Base Item Controller
@@ -84,6 +85,7 @@ itemMap.set('scrollOfWitchcraft', new ScrollOfWitchcraft());
 itemMap.set('sobiMask', new SobiMask());
 itemMap.set('steelSpear', new SteelSpear());
 itemMap.set('studdedLeatherArmor', new StuddedLeatherArmor());
+itemMap.set('urnOfWitchcraft', new UrnOfWitchcraft());
 itemMap.set('vampireClaws', new VampireClaws());
 itemMap.set('warAxe', new WarAxe());
 

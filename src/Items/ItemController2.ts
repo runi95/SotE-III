@@ -60,6 +60,7 @@ import { GreaterRingOfRegenerationSell } from './Abilities/GreaterRingOfRegenera
 import { EnhancedMaulOfStrengthPickupAndDrop } from './Abilities/EnhancedMaulOfStrengthPickupAndDrop';
 import { EnhancedMaulOfStrengthSell } from './Abilities/EnhancedMaulOfStrengthSell';
 import { ScalyFigurineCast } from './Abilities/ScalyFigurineCast';
+import { UrnOfWitchcraftPickupAndDrop } from './Abilities/UrnOfWitchcraftPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -125,7 +126,8 @@ export class ItemController2 {
             new GreaterRingOfRegenerationSell(),
             new EnhancedMaulOfStrengthPickupAndDrop(gameGlobals),
             new EnhancedMaulOfStrengthSell(),
-            new ScalyFigurineCast(gameGlobals, buffUtils)
+            new ScalyFigurineCast(gameGlobals, buffUtils),
+            new UrnOfWitchcraftPickupAndDrop(gameGlobals),
         ];
     }
 }
