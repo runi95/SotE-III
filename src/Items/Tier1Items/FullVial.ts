@@ -11,7 +11,7 @@ const goldCost = 900;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNVialFull.blp';
 const description = `A vial full of potency.
 
-|cffffcc00Max Mana:|r +100
+|cffffcc00Max mana:|r +100
 |cffffcc00Intelligence:|r +12
 |cffffcc00Effect(1):|r Increases item charges by 1 every second (max 60 charges)
 |cffffcc00Effect(2):|r Casting a spell with 60 item charges removes all charges and casts the spell with a +25% bonus to intelligence

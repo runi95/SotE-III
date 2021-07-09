@@ -8,7 +8,7 @@ const goldCost = 560;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNUrnOfKelThuzad.blp';
 const description = `An urn often used by witches when crafting spells.
 
-|cffffcc00Cooldown Reduction:|r +8%
+|cffffcc00Cooldown reduction:|r +8%
 
 |cFF808080Cooldown determines how often you can cast spells|r`;
 

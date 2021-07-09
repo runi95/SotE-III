@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNNaturesBlessing.blp';
 const description = `A branch blessed by mother nature herself.
 
 |cffffcc00Use:|r Heals 1000 hitpoints over 10 seconds
-|cffffcc00Mana Cost:|r 300
+|cffffcc00Mana cost:|r 300
 |cffffcc00Duration:|r 10
 |cffffcc00Cooldown:|r 20
 

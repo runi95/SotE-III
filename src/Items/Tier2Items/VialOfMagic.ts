@@ -10,7 +10,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNVialOfMagic.dds';
 const description = `A vial full of enchanted mana water.
 
 |cffffcc00Intelligence:|r +33
-|cffffcc00Max Mana:|r +900
+|cffffcc00Max mana:|r +900
 |cffffcc00Mana regen:|r +12
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;

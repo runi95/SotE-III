@@ -8,7 +8,7 @@ const goldCost = 210;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfProtection.blp';
 const description = `A scroll cleverly crafted by the elves.
 
-|cffffcc00Cooldown Reduction:|r +3%
+|cffffcc00Cooldown reduction:|r +3%
 
 |cFF808080Cooldown determines how often you can cast spells|r`;
 

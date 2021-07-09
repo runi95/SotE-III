@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description = `Your wish has been granted.
 
 |cffffcc00Intelligence:|r +10
-|cffffcc00Critical Cast:|r +15%
+|cffffcc00Critical cast:|r +15%
 
 |cFF808080Critical cast gives a chance for spells to cast with an additional intelligence bonus.|r`;
 

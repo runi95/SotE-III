@@ -10,7 +10,7 @@ const goldCost = 8400;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingPurple.blp';
 const description = `A ring once sought after by pirates
 
-|cffffcc00Max Mana:|r +1000
+|cffffcc00Max mana:|r +1000
 |cffffcc00Perseverance:|r +150
 
 |cFF808080Spell damage will persevere and break through opponent's resistance.|r`;

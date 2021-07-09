@@ -10,7 +10,7 @@ const goldCost = 1100;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGiantsBoots.dds';
 const description = `Increases movement rate while keeping your feet safe.
 
-|cffffcc00Movement Speed:|r +50
+|cffffcc00Movement speed:|r +50
 |cffffcc00Max health:|r +240
 |cffffcc00Unique:|r Regenerates 2% of your missing health every second
 

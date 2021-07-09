@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSacrificialDagger.blp'
 const description = `A dagger often used by acolytes in sacrificial rituals
 
 |cffffcc00Use:|r Deals 1000 damage to target enemy unit and heals 500 hitpoints
-|cffffcc00Mana Cost:|r 0
+|cffffcc00Mana cost:|r 0
 |cffffcc00Range:|r 500
 |cffffcc00Cooldown:|r 60
 

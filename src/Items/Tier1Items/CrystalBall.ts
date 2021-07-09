@@ -15,9 +15,9 @@ const description = `Can you see the future in this thing?
 |cffffcc00Mana regen:|r +7
 |cffffcc00Cooldown reduction:|r +5%
 |cffffcc00Use:|r Reveals the area of the map that it is cast upon. Also reveals invisible units
-|cffffcc00Mana Cost:|r 25
+|cffffcc00Mana cost:|r 25
 |cffffcc00Range:|r 99999
-|cffffcc00Area of Effect:|r 600
+|cffffcc00Area of effect:|r 600
 |cffffcc00Duration:|r 8
 |cffffcc00Cooldown:|r 20
 

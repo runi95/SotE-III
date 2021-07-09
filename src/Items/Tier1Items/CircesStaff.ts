@@ -10,7 +10,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNEntrapmentWard.blp';
 const description = `An ancient staff forged by the elves.
 
 |cffffcc00Use:|r Turns the target into a harmless critter for a short duration
-|cffffcc00Mana Cost:|r 300
+|cffffcc00Mana cost:|r 300
 |cffffcc00Range:|r 800
 |cffffcc00Duration (hero):|r 6
 |cffffcc00Duration (creep):|r 12

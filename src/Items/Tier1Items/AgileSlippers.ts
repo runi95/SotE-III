@@ -9,7 +9,7 @@ const goldCost = 480;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSlippersOfAgility.blp';
 const description = `The most comfortable slippers you'll ever wear.
 
-|cffffcc00Movement Speed:|r +80
+|cffffcc00Movement speed:|r +80
 
 |cFF808080Movement speed determines how fast you're able to move.|r`;
 

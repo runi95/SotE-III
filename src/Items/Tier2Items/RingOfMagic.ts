@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingVioletSpider.blp';
 const description = `A ring infused with pure magic.
 
 |cffffcc00Intelligence:|r +33
-|cffffcc00Max Mana:|r +800
+|cffffcc00Max mana:|r +800
 |cffffcc00Mana regen:|r +16
 
 |cFF808080Mana is required when casting most spells.|r`;

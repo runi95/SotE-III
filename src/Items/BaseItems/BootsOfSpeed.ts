@@ -8,7 +8,7 @@ const goldCost = 300;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBootsOfSpeed.blp';
 const description = `Increases movement rate.
 
-|cffffcc00Movement Speed:|r +50
+|cffffcc00Movement speed:|r +50
 
 |cFF808080Movement speed determines how fast you're able to move.|r`;
 

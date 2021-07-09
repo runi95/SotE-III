@@ -8,7 +8,7 @@ const goldCost = 150;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNVialEmpty.tga';
 const description = `An empty vial that very slowly collects magical energy.
 
-|cffffcc00Max Mana:|r +50
+|cffffcc00Max mana:|r +50
 
 |cFF808080Mana is required when casting most spells.|r`;
 

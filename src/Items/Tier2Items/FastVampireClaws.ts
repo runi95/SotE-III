@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGreaterVampireClaws.dd
 const description = `Lightweight vampire claws for faster attack speed.
 
 |cffffcc00Agility:|r +20
-|cffffcc00Attack Damage:|r +40
+|cffffcc00Attack damage:|r +40
 |cffffcc00Lifesteal:|r +25
 |cffffcc00Unique:|r Increases lifesteal by an additional 5% of attack damage
 

@@ -12,7 +12,7 @@ const description = `An incredible scope with built in night vision.
 
 |cffffcc00Effect:|r Provides an increase to the Hero's line of sight radius at night when carried
 |cffffcc00Use:|r Reveals the target unit until the debuff is dispelled
-|cffffcc00Mana Cost:|r 0
+|cffffcc00Mana cost:|r 0
 |cffffcc00Range:|r 800
 |cffffcc00Duration:|r Until dispelled
 |cffffcc00Cooldown:|r 30

@@ -10,7 +10,7 @@ const goldCost = 1125;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGoldenSabatons.dds';
 const description = `Increases movement rate while keeping your feet safe.
 
-|cffffcc00Movement Speed:|r +50
+|cffffcc00Movement speed:|r +50
 |cffffcc00Attack damage:|r +25
 |cffffcc00Unique:|r Increases attack speed by +30%
 

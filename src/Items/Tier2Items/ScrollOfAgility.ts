@@ -9,10 +9,10 @@ const goldCost = 1005;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScrollOfHaste.blp';
 const description = `A mystical scroll written in an ancient language.
 
-|cffffcc00Movement Speed:|r +80
+|cffffcc00Movement speed:|r +80
 |cffffcc00Use:|r Increases movement speed by 50%
-|cffffcc00Mana Cost:|r 0
-|cffffcc00Area of Effect:|r 600
+|cffffcc00Mana cost:|r 0
+|cffffcc00Area of effect:|r 600
 |cffffcc00Duration:|r 60
 |cffffcc00Cooldown:|r 60
 

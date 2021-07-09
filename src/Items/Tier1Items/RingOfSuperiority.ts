@@ -10,7 +10,7 @@ const goldCost = 2310;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGoldRing.blp';
 const description = `Are you wealthy enough for this?
 
-|cffffcc00Max Mana:|r +350
+|cffffcc00Max mana:|r +350
 |cffffcc00Perseverance:|r +35
 
 |cFF808080Spell damage will persevere and break through opponent's resistance.|r`;

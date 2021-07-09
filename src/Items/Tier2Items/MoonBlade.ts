@@ -10,7 +10,7 @@ const goldCost = 1725;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNMoonBlade.dds';
 const description = `A normal sword infused with a special kind of moon armor.
 
-|cffffcc00Attack Damage:|r +25
+|cffffcc00Attack damage:|r +25
 |cffffcc00Resistance:|r +20
 |cffffcc00Unique:|r Physical attacks temporarily increases resistance by +5 (up to 50)
 

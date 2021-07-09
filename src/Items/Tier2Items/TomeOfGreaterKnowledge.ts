@@ -11,7 +11,7 @@ const goldCost = 2850;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNTomeRed.blp';
 const description = `Could this possibly contain all knowledge known to man?
 
-|cffffcc00Max Mana:|r +150
+|cffffcc00Max mana:|r +150
 |cffffcc00Intelligence:|r +40
 |cffffcc00Cooldown reduction:|r +10%
 |cffffcc00Effect(1):|r Increases item charges by 1 every second (max 60 charges)

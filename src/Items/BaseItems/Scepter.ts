@@ -9,7 +9,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNPriestAdept.blp';
 const description = `A magical scepter showing high status and wealth.
 
 |cffffcc00Use:|r Spawn 3 Footmen to fight for you
-|cffffcc00Mana Cost:|r 50
+|cffffcc00Mana cost:|r 50
 |cffffcc00Duration:|r 40
 |cffffcc00Cooldown:|r 60
 

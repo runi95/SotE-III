@@ -12,7 +12,7 @@ const description = `A branch blessed by mother nature herself.
 
 |cffffcc00Health regen:|r +60
 |cffffcc00Use:|r Heals 2500 hitpoints over 10 seconds
-|cffffcc00Mana Cost:|r 600
+|cffffcc00Mana cost:|r 600
 |cffffcc00Duration:|r 10
 |cffffcc00Cooldown:|r 25
 

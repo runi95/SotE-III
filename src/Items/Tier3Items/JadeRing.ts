@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNRingJadeFalcon.blp';
 const description = `A ring infused with pure magic.
 
 |cffffcc00Intelligence:|r +222
-|cffffcc00Max Mana:|r +2222
+|cffffcc00Max mana:|r +2222
 |cffffcc00Mana regen:|r +22
 
 |cFF808080Mana is required when casting most spells.|r`;

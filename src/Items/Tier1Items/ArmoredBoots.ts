@@ -10,7 +10,7 @@ const goldCost = 1160;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNBoots.blp';
 const description = `Increases movement rate while keeping your feet safe.
 
-|cffffcc00Movement Speed:|r +50
+|cffffcc00Movement speed:|r +50
 |cffffcc00Block:|r +20
 |cffffcc00Unique:|r Increases block by +10%
 

@@ -10,7 +10,7 @@ const goldCost = 1160;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNScaledBoots.dds';
 const description = `Increases movement rate while keeping your feet safe.
 
-|cffffcc00Movement Speed:|r +50
+|cffffcc00Movement speed:|r +50
 |cffffcc00Resistance:|r +12
 |cffffcc00Unique:|r Reduces incoming spell damage by 8%
 

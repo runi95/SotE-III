@@ -11,7 +11,7 @@ const goldCost = 950;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNGuldanSkull.blp';
 const description = `I wonder what this thing does.
 
-|cffffcc00Max Mana:|r +150
+|cffffcc00Max mana:|r +150
 |cffffcc00Mana regen:|r +10
 |cffffcc00Effect(1):|r Increases item charges by 1 every second (max 12 charges)
 |cffffcc00Effect(2):|r Casting a spell with at least 4 item charges reduces the charge count by 3 and permanently increases the wearer's mana by +2

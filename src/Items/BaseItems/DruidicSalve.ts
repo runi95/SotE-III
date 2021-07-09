@@ -9,7 +9,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNHealingSalve.blp';
 const description = `A salve often used by druids to cure wounds.
 
 |cffffcc00Use:|r Heals 400 hitpoints over 12 seconds
-|cffffcc00Mana Cost:|r 125
+|cffffcc00Mana cost:|r 125
 |cffffcc00Range:|r 400
 |cffffcc00Duration:|r 12
 |cffffcc00Cooldown:|r 5

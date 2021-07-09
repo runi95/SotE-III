@@ -12,7 +12,7 @@ const description = `A scroll written in an ancient language
 
 |cffffcc00Passive:|r Casting a spell has a 5% chance to instantly reset it's cooldown
 |cffffcc00Intelligence:|r +150
-|cffffcc00Max Mana:|r +4500
+|cffffcc00Max mana:|r +4500
 |cffffcc00Mana regen:|r +60
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;

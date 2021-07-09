@@ -11,7 +11,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNSorceressMaster.blp';
 const description = `A book containing long lost knowledge.
 
 |cffffcc00Intelligence:|r +200
-|cffffcc00Max Mana:|r +600
+|cffffcc00Max mana:|r +600
 
 |cFF808080Intelligence increases the damage done by your spells.|r`;
 

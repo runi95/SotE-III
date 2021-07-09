@@ -10,7 +10,7 @@ const goldCost = 9000;
 const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNChargedStone.dds';
 const description = `A stone charged with mana and life.
 
-|cffffcc00Max Mana:|r +1000
+|cffffcc00Max mana:|r +1000
 |cffffcc00Restoration:|r +500%
 
 |cFF808080Restoration restores life points based on a percentage of mana used when casting spells.|r`;

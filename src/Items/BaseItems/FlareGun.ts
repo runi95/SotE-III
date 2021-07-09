@@ -9,9 +9,9 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNFlare.blp';
 const description = `A flare that lights up the area around you.
 
 |cffffcc00Use:|r Reveals the target area
-|cffffcc00Mana Cost:|r 0
+|cffffcc00Mana cost:|r 0
 |cffffcc00Range:|r 99999
-|cffffcc00Area of Effect:|r 1800
+|cffffcc00Area of effect:|r 1800
 |cffffcc00Duration:|r 45
 |cffffcc00Cooldown:|r 180
 

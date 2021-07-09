@@ -9,7 +9,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp';
 const description = `The orb seems to brew up a storm from within.
 
 |cffffcc00Use:|r Slows the target enemy unit's movement speed by 20%
-|cffffcc00Mana Cost:|r 45
+|cffffcc00Mana cost:|r 45
 |cffffcc00Range:|r 700
 |cffffcc00Duration:|r 5
 |cffffcc00Cooldown:|r 60

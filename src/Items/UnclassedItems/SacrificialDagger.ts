@@ -10,7 +10,7 @@ const description = `A dagger often used by acolytes in sacrificial rituals
 
 |cffffcc00Effect:|r Reaching 100 charges permanently upgrades this item
 |cffffcc00Use:|r Increases item charges by 9 and then deals 100 damage to you
-|cffffcc00Life Cost:|r 100
+|cffffcc00Life cost:|r 100
 |cffffcc00Cooldown:|r 60
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;

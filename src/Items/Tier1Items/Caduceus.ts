@@ -10,7 +10,7 @@ const iconPath = 'ReplaceableTextures\\CommandButtons\\BTNWandOfManaSteal.blp';
 const description = `Caduceus the protector of merchants and travellers.
 
 |cffffcc00Use:|r Instantly teleport to the Arcane Vault
-|cffffcc00Mana Cost:|r 0
+|cffffcc00Mana cost:|r 0
 |cffffcc00Cooldown:|r 240
 
 |cFF808080Use is an effect that occurs when an item is used by clicking on it.|r`;

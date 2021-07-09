@@ -10,8 +10,8 @@ const description = `A battery made for storing energy in the form of mana.
 
 |cffffcc00Effect:|r Drains 1 mana per second to increase item charges until it reaches 100 charges.
 |cffffcc00Use:|r Deals a maximum of 600 damage to all units around you and resets the item charge counter.
-|cffffcc00Mana Cost:|r 0
-|cffffcc00Area of Effect:|r 400
+|cffffcc00Mana cost:|r 0
+|cffffcc00Area of effect:|r 400
 |cffffcc00Cooldown:|r 5
 
 |cFF808080Effects are special properties that usually trigger on an event.|r`;
