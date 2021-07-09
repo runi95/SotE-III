@@ -146,7 +146,9 @@ itemMap.set(
     new ImprovedSpikes(tier1ItemMap.get('spikedWood') as ItemRecipe, tier1ItemMap.get('spikedCarapace') as ItemRecipe),
 );
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe));
-itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe));
+*/
+itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe, baseItemMap.get('bookOfKnowledge') as Item, baseItemMap.get('scrollOfWitchcraft') as Item));
+/*
 itemMap.set(
     'medallionOfCourage',
     new MedallionOfCourage(tier1ItemMap.get('maulOfStrength') as ItemRecipe, tier1ItemMap.get('steelShield') as ItemRecipe),

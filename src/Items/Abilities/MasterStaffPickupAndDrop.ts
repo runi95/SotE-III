@@ -13,11 +13,13 @@ export class MasterStaffPickupAndDrop extends ItemPickupAndDrop {
 
     protected pickup(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] += 80;
+        this.gameGlobals.PlayerCriticalCast[playerId] += 20;
+        this.gameGlobals.PlayerCooldownReduction[playerId] += 0.1;
     }
 
     protected drop(): void {
         const playerId: number = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        this.gameGlobals.PlayerCriticalCast[playerId] -= 80;
+        this.gameGlobals.PlayerCriticalCast[playerId] -= 20;
+        this.gameGlobals.PlayerCooldownReduction[playerId] -= 0.1;
     }
 }
