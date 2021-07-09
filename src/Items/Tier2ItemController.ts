@@ -147,7 +147,7 @@ itemMap.set(
 );
 itemMap.set('maskOfDeath', new MaskOfDeath(tier1ItemMap.get('vampireFangs') as ItemRecipe));
 */
-itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe, baseItemMap.get('bookOfKnowledge') as Item, baseItemMap.get('scrollOfWitchcraft') as Item));
+itemMap.set('masterStaff', new MasterStaff(tier1ItemMap.get('adeptStaff') as ItemRecipe, baseItemMap.get('bookOfKnowledge') as Item, baseItemMap.get('urnOfWitchcraft') as Item));
 /*
 itemMap.set(
     'medallionOfCourage',

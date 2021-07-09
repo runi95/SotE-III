@@ -2,7 +2,7 @@ import { ItemRecipe } from '../ItemRecipe';
 import { ItemLabel } from '../ItemLabel';
 import { AdeptStaff } from '../Tier1Items/AdeptStaff';
 import { BookOfKnowledge } from '../BaseItems/BookOfKnowledge';
-import { ScrollOfWitchcraft } from '../BaseItems/ScrollOfWitchcraft';
+import { UrnOfWitchcraft } from '../BaseItems/UrnOfWitchcraft';
 
 const itemId: number = FourCC('I03M');
 const name = 'Master Staff';
@@ -22,7 +22,7 @@ const description = `Your wish has been granted.
 |cFF808080Critical cast gives a chance for spells to deal double damage.|r`;
 
 export class MasterStaff extends ItemRecipe {
-    constructor(adeptStaff: AdeptStaff, bookOfKnowledge: BookOfKnowledge, scrollOfWitchcraft: ScrollOfWitchcraft) {
-        super(itemId, name, labels, goldCost, iconPath, description, [adeptStaff, bookOfKnowledge, scrollOfWitchcraft]);
+    constructor(adeptStaff: AdeptStaff, bookOfKnowledge: BookOfKnowledge, urnOfWitchcraft: UrnOfWitchcraft) {
+        super(itemId, name, labels, goldCost, iconPath, description, [adeptStaff, bookOfKnowledge, urnOfWitchcraft]);
     }
 }
