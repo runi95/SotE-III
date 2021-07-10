@@ -111,11 +111,36 @@ export class Game {
         this.itemController = new ItemController(this.gameGlobals, this.timerUtils, this.itemChargeUtils, this.randomNumberGenerator, this.arcaneVault);
         this.itemController2 = new ItemController2(this.gameGlobals, this.timerUtils, this.itemChargeUtils, this.randomNumberGenerator, this.buffUtils);
 
+        let arcaneVaultTicks = 240;
+        const arcaneVaultText: texttag = CreateTextTag();
+        SetTextTagText(arcaneVaultText, arcaneVaultTicks.toString(), 0.040);
+        SetTextTagColor(arcaneVaultText, 255.0, 255.0, 255.0, 255.0);
+        SetTextTagPosUnit(
+            arcaneVaultText,
+            this.arcaneVault,
+            40,
+        );
+
         const t: Timer = this.timerUtils.newTimer();
-        t.start(240, true, () => {
-            const newX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
-            const newY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
-            SetUnitPosition(this.arcaneVault, newX, newY);
+        t.start(1, true, () => {
+            arcaneVaultTicks--;
+            SetTextTagText(arcaneVaultText, arcaneVaultTicks.toString(), 0.040);
+            const ticksRemainingPercentage: number = arcaneVaultTicks / 240;
+            SetTextTagColor(arcaneVaultText, Math.floor(132.0 + 123.0 * ticksRemainingPercentage), Math.floor(22.0 + 233 * ticksRemainingPercentage), Math.floor(23.0 + 232.0 * ticksRemainingPercentage), 255.0);
+
+            if (arcaneVaultTicks <= 0) {
+                arcaneVaultTicks = 240;
+                const newX: number = this.randomNumberGenerator.random(0, 10630) - 2370;
+                const newY: number = this.randomNumberGenerator.random(0, 25400) - 12700;
+                SetUnitPosition(this.arcaneVault, newX, newY);
+                SetTextTagPosUnit(
+                    arcaneVaultText,
+                    this.arcaneVault,
+                    40,
+                );
+                SetTextTagText(arcaneVaultText, arcaneVaultTicks.toString(), 0.040);
+                SetTextTagColor(arcaneVaultText, 255.0, 255.0, 255.0, 255.0);
+            }
         });
     }
 
