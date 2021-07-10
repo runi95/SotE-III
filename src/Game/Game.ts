@@ -76,7 +76,7 @@ export class Game {
         this.damageEngineGlobals = new DamageEngineGlobals();
         this.damageEngine = new DamageEngine(this.timerUtils, this.damageEngineGlobals);
         this.creepRespawn = new CreepRespawn(this.gameGlobals);
-        this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils);
+        this.playerRespawn = new PlayerRespawn(this.gameGlobals, this.playerVictoryUtils, this.timerUtils);
         this.playerLeaves = new PlayerLeaves(this.playerVictoryUtils);
         this.spellController = new SpellController(
             this.gameGlobals,

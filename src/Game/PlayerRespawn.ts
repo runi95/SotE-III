@@ -1,15 +1,19 @@
 import { Trigger } from '../JassOverrides/Trigger';
 import { GameGlobals } from './GameGlobals';
 import { PlayerVictoryUtils } from '../Utility/PlayerVictoryUtils';
+import { TimerUtils } from '../Utility/TimerUtils';
+import { Timer } from '../JassOverrides/Timer';
 
 export class PlayerRespawn {
     private readonly gameGlobals: GameGlobals;
     private readonly playerVictoryUtils: PlayerVictoryUtils;
+    private readonly timerUtils: TimerUtils;
     private readonly trig: Trigger = new Trigger();
 
-    constructor(gameGlobals: GameGlobals, playerVictoryUtils: PlayerVictoryUtils) {
+    constructor(gameGlobals: GameGlobals, playerVictoryUtils: PlayerVictoryUtils, timerUtils: TimerUtils) {
         this.gameGlobals = gameGlobals;
         this.playerVictoryUtils = playerVictoryUtils;
+        this.timerUtils = timerUtils;
 
         this.trig.addCondition(() => this.condition());
         this.trig.addAction(() => this.action());
@@ -58,16 +62,21 @@ export class PlayerRespawn {
                 2 + playerId,
                 I2S(this.gameGlobals.PlayerLives[playerId]),
             );
-            TriggerSleepAction(RMinBJ(I2R(GetHeroLevel(trig)), 10.0));
-            if (!this.gameGlobals.IsArenaBattleInProgress) {
-                ReviveHero(
-                    trig,
-                    GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                    GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
-                    true,
-                );
-                SetUnitManaPercentBJ(trig, 100);
-            }
+            
+            const t: Timer = this.timerUtils.newTimer();
+            t.start(5, false, () => {
+                if (!this.gameGlobals.IsArenaBattleInProgress) {
+                    ReviveHero(
+                        trig,
+                        GetRectCenterX(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                        GetRectCenterY(this.gameGlobals.PlayerSpawnRegion[playerId]),
+                        true,
+                    );
+                    SetUnitManaPercentBJ(trig, 100);
+                }
+
+                this.timerUtils.releaseTimer(t);
+            });
         } else {
             this.playerVictoryUtils.defeatPlayer(playerId, 'has been defeated!');
         }
