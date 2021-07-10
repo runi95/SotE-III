@@ -21,11 +21,14 @@ export class GameGlobals {
     public AssassinsBlade: ChargedItemStates[] = [];
     public RingOfKings: ChargedItemStates[] = [];
     public GreaterRingOfRegeneration: ChargedItemStates[] = [];
+    public ClawsOfUnholyStrength: ChargedItemStates[] = [];
+    public ClawsOfUnholyStrengthOn: boolean[] = [];
     public RazorBladesOn: boolean[] = [];
     public AssassinsBladeCount: number[] = [];
     public RingOfKingsCount: number[] = [];
     public CorruptShieldCount: number[] = [];
     public GreaterRingOfRegenerationCount: number[] = [];
+    public ClawsOfUnholyStrengthCount: number[] = [];
     public SharpSteelAxeCount: number[] = [];
     public MoonBladeCount: number[] = [];
     public ElementalOrbCount: number[] = [];

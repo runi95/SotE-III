@@ -71,6 +71,8 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.SharpSteelAxe[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.RingOfKings[i] = ChargedItemStates.UNEQUIPPED;
         gameGlobals.GreaterRingOfRegeneration[i] = ChargedItemStates.UNEQUIPPED;
+        gameGlobals.ClawsOfUnholyStrength[i] = ChargedItemStates.UNEQUIPPED;
+        gameGlobals.ClawsOfUnholyStrengthOn[i] = false;
         gameGlobals.RazorBladesOn[i] = false;
         gameGlobals.FigurineActive[i] = false;
         gameGlobals.FigurineType[i] = FigurineTypes.NONE;
@@ -79,6 +81,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.RingOfKingsCount[i] = 0;
         gameGlobals.CorruptShieldCount[i] = 0;
         gameGlobals.GreaterRingOfRegenerationCount[i] = 0;
+        gameGlobals.ClawsOfUnholyStrengthCount[i] = 0;
         gameGlobals.SharpSteelAxeCount[i] = 0;
         gameGlobals.MoonBladeCount[i] = 0;
         gameGlobals.ArcaniteSpearCount[i] = 0;
