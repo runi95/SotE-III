@@ -503,13 +503,13 @@ export class DamageEngine {
                 this.damageEngineGlobals.DamageEventAmount -
                 this.damageEngineGlobals.ExecuteDamage; // <--- This is custom SotE code!
             if (this.damageEngineGlobals.LethalDamageHP <= 0.405) {
-                this.damageEventLethal();
-
                 this.damageEngineGlobals.DamageEventAmount =
                     GetWidgetLife(this.damageEngineGlobals.DamageEventTarget as unit) - this.damageEngineGlobals.LethalDamageHP;
                 if (this.damageEngineGlobals.DamageEventType < 0 && this.damageEngineGlobals.LethalDamageHP <= 0.405) {
                     SetUnitExploded(this.damageEngineGlobals.DamageEventTarget as unit, true);
                 }
+
+                this.damageEventLethal();
             }
             this.damageEngineGlobals.DamageScalingUser =
                 this.damageEngineGlobals.DamageEventAmount /
