@@ -59,6 +59,7 @@ import { GlovesOfAntiMagic } from './Tier1Items/GlovesOfAntiMagic';
 import { WandOfReanimation } from './Tier1Items/WandOfReanimation';
 import { AncientFigurine } from './Tier1Items/AncientFigurine';
 import { CorruptedClaws } from './Tier1Items/CorruptedClaws';
+import { CorruptShield } from './Tier1Items/CorruptShield';
 
 const basicItemMap: Map<string, Item> = basicItemController.itemMap;
 
@@ -82,6 +83,7 @@ itemMap.set('adeptStaff', new AdeptStaff(basicItemMap.get('fairyWand') as Item, 
 itemMap.set('wandOfReanimation', new WandOfReanimation(basicItemMap.get('emptyVial') as Item, basicItemMap.get('lifeStone') as Item, basicItemMap.get('scepter') as Item));
 itemMap.set('ancientFigurine', new AncientFigurine(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('studdedLeatherArmor') as Item));
 itemMap.set('corruptedClaws', new CorruptedClaws(basicItemMap.get('claws') as Item, basicItemMap.get('orbOfCorruption') as Item));
+itemMap.set('corruptShield', new CorruptShield(basicItemMap.get('orbOfMagic') as Item, basicItemMap.get('ironShield') as Item));
 // itemMap.set('agileSlippers', new AgileSlippers(basicItemMap.get('bootsOfSpeed') as Item));
 /*
 itemMap.set(

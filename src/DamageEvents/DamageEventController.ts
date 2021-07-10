@@ -47,6 +47,7 @@ import { HelmOfValorEvent } from './HelmOfValorEvent';
 import { GreaterRingOfRegenerationEvent } from './GreaterRingOfRegenerationEvent';
 import { EnhancedMaulOfStrengthDamageEvent } from './EnhancedMaulOfStrengthDamageEvent';
 import { EnhancedMaulOfStrengthEvent } from './EnhancedMaulOfStrengthEvent';
+import { CorruptShieldEvent } from './CorruptShieldEvent';
 
 export class DamageEventController {
     constructor(
@@ -107,5 +108,6 @@ export class DamageEventController {
         damageEngine.addAfterDamageEvent(new Thorns(gameGlobals));
         damageEngine.addAfterDamageEvent(new Reflect(gameGlobals));
         damageEngine.addAfterDamageEvent(new Redemption(randomNumberGenerator, spellCastUtils));
+        damageEngine.addAfterDamageEvent(new CorruptShieldEvent(gameGlobals));
     }
 }

@@ -61,6 +61,7 @@ import { EnhancedMaulOfStrengthPickupAndDrop } from './Abilities/EnhancedMaulOfS
 import { EnhancedMaulOfStrengthSell } from './Abilities/EnhancedMaulOfStrengthSell';
 import { ScalyFigurineCast } from './Abilities/ScalyFigurineCast';
 import { UrnOfWitchcraftPickupAndDrop } from './Abilities/UrnOfWitchcraftPickupAndDrop';
+import { CorruptShieldPickupAndDrop } from './Abilities/CorruptShieldPickupAndDrop';
 
 // TODO: The item controllers need to be split into item tiers, this class is just a temp solution to the local variables problem
 
@@ -128,6 +129,7 @@ export class ItemController2 {
             new EnhancedMaulOfStrengthSell(),
             new ScalyFigurineCast(gameGlobals, buffUtils),
             new UrnOfWitchcraftPickupAndDrop(gameGlobals),
+            new CorruptShieldPickupAndDrop(gameGlobals),
         ];
     }
 }

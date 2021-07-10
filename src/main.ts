@@ -77,6 +77,7 @@ function setPlayerCameras(gameGlobals: GameGlobals): void {
         gameGlobals.ElementalOrbCount[i] = 0;
         gameGlobals.AssassinsBladeCount[i] = 0;
         gameGlobals.RingOfKingsCount[i] = 0;
+        gameGlobals.CorruptShieldCount[i] = 0;
         gameGlobals.GreaterRingOfRegenerationCount[i] = 0;
         gameGlobals.SharpSteelAxeCount[i] = 0;
         gameGlobals.MoonBladeCount[i] = 0;
