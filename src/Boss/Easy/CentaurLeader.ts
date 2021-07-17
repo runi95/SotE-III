@@ -7,11 +7,11 @@ export class CentaurLeader extends Boss {
     protected readonly y: number = 14658.0;
     protected readonly angle: number = 235.0;
     protected readonly dropTable: number[] = [
-        FourCC('I02S'), // Gold Coins (250)
-        FourCC('I02T'), // Gold Coins (375)
-        FourCC('I02R'), // Gold Coins (500)
-        FourCC('I02Q'), // Gold Coins (750)
-        FourCC('I02P'), // Gold Coins (1500)
+        FourCC('I02S'), // Gold Coins (525)
+        FourCC('I02T'), // Gold Coins (625)
+        FourCC('I02R'), // Gold Coins (675)
+        FourCC('I02Q'), // Gold Coins (725)
+        FourCC('I02P'), // Gold Coins (825)
     ];
 
     constructor(randomNumberGenerator: RandomNumberGenerator) {
