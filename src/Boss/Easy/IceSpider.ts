@@ -8,7 +8,7 @@ export class IceSpider extends Boss {
     protected readonly x: number = 14169.0;
     protected readonly y: number = 579.0;
     protected readonly angle: number = 280.0;
-    protected readonly dropTable: number[] = [FourCC('I00C')]; // Purple Soulstone (1700)
+    protected readonly dropTable: number[] = [FourCC('I00C')]; // Purple Soulstone (750)
     private readonly timerUtils: TimerUtils;
     private timer: Timer | undefined;
     private iceSpider: unit | undefined;
