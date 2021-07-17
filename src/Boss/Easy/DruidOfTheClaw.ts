@@ -9,7 +9,7 @@ export class DruidOfTheClaw extends Boss {
     protected readonly x: number = -578.0;
     protected readonly y: number = 14020.0;
     protected readonly angle: number = 265.0;
-    protected readonly dropTable: number[] = [FourCC('I00A')]; // Green Soulstone (2000)
+    protected readonly dropTable: number[] = [FourCC('I00A')]; // Green Soulstone (800)
 
     constructor(randomNumberGenerator: RandomNumberGenerator) {
         super(Rect(-608, 13984, -544, 14048), randomNumberGenerator);
