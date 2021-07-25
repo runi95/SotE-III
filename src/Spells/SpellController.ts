@@ -3,7 +3,6 @@ import { TimerUtils } from '../Utility/TimerUtils';
 import { GameGlobals } from '../Game/GameGlobals';
 import { Backstab } from '../DamageEvents/Backstab';
 import { BeastSense } from './BeastSense';
-import { Clarity } from './Clarity';
 import { ClockwerkGoblinDeath } from './ClockwerkGoblinDeath';
 import { Conversion } from './Conversion';
 import { Cryostasis } from './Cryostasis';
@@ -71,6 +70,7 @@ import { ShadowMeld } from './ShadowMeld';
 import { BuffUtils } from '../Utility/BuffUtils';
 import { DamageEngineGlobals } from '../DamageEngine/DamageEngineGlobals';
 import { KnockbackUtils } from '../Utility/KnockbackUtils';
+import { Tornado } from './Tornado';
 
 export class SpellController {
     // eslint-disable-next-line
@@ -91,7 +91,6 @@ export class SpellController {
             new Backstab(),
             new BeastSense(),
             new Betrayal(spellCastUtils, timerUtils, stunUtils),
-            new Clarity(spellCastUtils),
             new ClockwerkGoblinDeath(stunUtils),
             new Combust(spellCastUtils),
             new Conversion(spellCastUtils),
@@ -151,7 +150,8 @@ export class SpellController {
             new AbolishLight(spellCastUtils),
             new MarkForDeath(),
             new Restoration(gameGlobals),
-            new ShadowMeld()
+            new ShadowMeld(),
+            new Tornado(timerUtils, spellCastUtils),
         ];
     }
 }
