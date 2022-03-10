@@ -26,7 +26,6 @@ import { PsychicScream } from './PsychicScream';
 import { RazorBlades } from './RazorBlades';
 import { RazorBladesStop } from './RazorBladesStop';
 import { Rupture } from './Rupture';
-import { ShadowStep } from './ShadowStep';
 import { SnareTrap } from './SnareTrap';
 import { SpiritOfFrost } from '../DamageEvents/SpiritOfFrost';
 import { StormCloud } from './StormCloud';
@@ -120,7 +119,6 @@ export class SpellController {
             new RazorBladesStop(gameGlobals),
             new Rupture(timerUtils),
             new Shackles(timerUtils, spellCastUtils),
-            new ShadowStep(),
             new SnareTrap(),
             new SnareTrapDeath(),
             new SpiritOfFrost(randomNumberGenerator, spellCastUtils),
