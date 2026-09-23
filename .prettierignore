@@ -1,0 +1,12 @@
+# Generated output
+dist/
+maps/
+*.w3x
+*.lua
+
+# Lockfiles and logs are noise when reformatted
+package-lock.json
+project.log
+
+# Local, machine-specific config (also gitignored)
+config.json

@@ -6,7 +6,7 @@ import { Timer } from '../JassOverrides/Timer';
 export class BuffedUnit {
     private readonly handleId: number;
     private readonly timerUtils: TimerUtils;
-    private readonly clearCallback: (buffedUnit: BuffedUnit) => void;
+    private readonly clearCallback: (this: void, buffedUnit: BuffedUnit) => void;
     private buffs: Map<BuffTypes, Buff>;
 
     constructor(handleId: number, timerUtils: TimerUtils, clearCallback: (buffedUnit: BuffedUnit) => void) {

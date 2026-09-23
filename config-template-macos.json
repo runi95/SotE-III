@@ -1,0 +1,4 @@
+{
+  "gameExecutable": "/Applications/Warcraft III/_retail_/x86_64/Warcraft III.app/Contents/MacOS/Warcraft III",
+  "launchArgs": ["-launch", "-windowmode", "windowed"]
+}

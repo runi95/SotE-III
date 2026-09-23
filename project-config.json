@@ -1,0 +1,6 @@
+{
+  "mapPath": "maps/map.w3x",
+  "outDir": "dist",
+  "saveAsFolder": true,
+  "minifyScript": false
+}

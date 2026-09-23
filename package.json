@@ -2,36 +2,49 @@
   "name": "sote-iii",
   "version": "1.0.0",
   "description": "A warcraft III hero arena map",
-  "directories": {
-    "lib": "src/lib"
-  },
-  "main": "src/init_game.ts",
+  "main": "src/main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build build",
-    "runbuild": "node build build run"
+    "start": "npm run build:dev",
+    "build:dev": "ts-node --transpile-only scripts/test.ts",
+    "build:release": "ts-node --transpile-only scripts/build.ts",
+    "build:defs": "ts-node scripts/dev",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "runi95",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "12.12.26",
-    "busted-tstl": "0.1.0",
-    "codelyzer": "5.2.1",
-    "convertjasstots": "1.0.11",
-    "fs-extra": "8.1.0",
-    "lua-types": "latest",
-    "luamin": "1.0.4",
-    "rimraf": "2.7.1",
-    "sync-rpc": "1.3.6",
-    "typescript": "3.7.5",
-    "typescript-to-lua": "0.31.0"
+    "w3ts": "3.0.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.24.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^4.24.0",
-    "@typescript-eslint/parser": "^4.24.0",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.2"
+    "@eslint/js": "10.0.1",
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "26.6.2",
+    "@types/pako": "2.0.4",
+    "eslint": "10.11.0",
+    "fs-extra": "11.4.0",
+    "logform": "2.7.0",
+    "lua-types": "2.14.1",
+    "luamin": "1.0.4",
+    "mdx-m3-viewer": "5.12.0",
+    "prettier": "3.9.9",
+    "ts-node": "10.9.2",
+    "tsutils": "3.21.0",
+    "typescript": "6.0.2",
+    "typescript-eslint": "8.70.1",
+    "typescript-to-lua": "1.37.1",
+    "war3-transformer": "3.0.10",
+    "war3-types": "1.0.4",
+    "war3tstlhelper": "1.0.1",
+    "winston": "3.19.0"
+  },
+  "overrides": {
+    "w3ts": {
+      "typescript": "$typescript"
+    },
+    "war3-transformer": {
+      "typescript": "$typescript"
+    }
   }
 }

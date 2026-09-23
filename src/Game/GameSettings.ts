@@ -86,15 +86,15 @@ export const WEAPON_TYPE_RH_BASH = 23;
 
 // Strings
 export const AttackTypeDebugStr: string[] = ['SPELLS', 'NORMAL', 'PIERCE', 'SIEGE', 'MAGIC', 'CHAOS', 'HERO'];
-export const DamageTypeDebugStr: (string | undefined)[] = [
+export const DamageTypeDebugStr: string[] = [
     'UNKNOWN',
-    undefined,
-    undefined,
-    undefined,
+    '',
+    '',
+    '',
     'NORMAL',
     'ENHANCED',
-    undefined,
-    undefined,
+    '',
+    '',
     'FIRE',
     'COLD',
     'LIGHTNING',

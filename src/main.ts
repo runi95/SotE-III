@@ -1,3 +1,4 @@
+import { addScriptHook, W3TS_HOOK } from 'w3ts/hooks';
 import { Trigger } from './JassOverrides/Trigger';
 import { Log, LogLevel } from './lib/Serilog/Serilog';
 import { StringSink } from './lib/Serilog/Sinks/StringSink';
@@ -41,9 +42,7 @@ export class Initialiser {
     }
 }
 
-ceres.suppressDefaultMain();
-ceres.oldMain();
-Initialiser.run();
+addScriptHook(W3TS_HOOK.MAIN_AFTER, () => Initialiser.run());
 
 function seedRandomNumberGenerator(randomNumberGenerator: RandomNumberGenerator): void {
     const trig: Trigger = new Trigger();
